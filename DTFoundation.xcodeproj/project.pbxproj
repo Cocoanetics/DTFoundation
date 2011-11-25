@@ -1,0 +1,329 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		A7F4DFA8147FB61500F4059A /* Universal_Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A7F4DFB5147FB61600F4059A /* Build configuration list for PBXAggregateTarget "Universal_Framework" */;
+			buildPhases = (
+				A7F4DFA7147FB61500F4059A /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Universal_Framework;
+			productName = Universal_Framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		A7F4DFAE147FB61500F4059A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7F4DFAC147FB61500F4059A /* InfoPlist.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A7F4DFA5147FB61500F4059A /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7F4DFAB147FB61500F4059A /* DTFoundation-Info.plist */ = {isa = PBXFileReference; path = "DTFoundation-Info.plist"; sourceTree = "<group>"; };
+		A7F4DFAD147FB61500F4059A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7F4DFAF147FB61500F4059A /* DTFoundation-Prefix.pch */ = {isa = PBXFileReference; path = "DTFoundation-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A7F4DFA0147FB61500F4059A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A7F4DF98147FB61500F4059A = {
+			isa = PBXGroup;
+			children = (
+				A7F4DFA9147FB61500F4059A /* DTFoundation */,
+				A7F4DFA6147FB61500F4059A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A7F4DFA6147FB61500F4059A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A7F4DFA5147FB61500F4059A /* DTFoundation.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7F4DFA9147FB61500F4059A /* DTFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				A7F4DFAA147FB61500F4059A /* Supporting Files */,
+			);
+			path = DTFoundation;
+			sourceTree = "<group>";
+		};
+		A7F4DFAA147FB61500F4059A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A7F4DFAB147FB61500F4059A /* DTFoundation-Info.plist */,
+				A7F4DFAC147FB61500F4059A /* InfoPlist.strings */,
+				A7F4DFAF147FB61500F4059A /* DTFoundation-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A7F4DFA1147FB61500F4059A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A7F4DFA4147FB61500F4059A /* DTFoundation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7F4DFB2147FB61600F4059A /* Build configuration list for PBXNativeTarget "DTFoundation" */;
+			buildPhases = (
+				A7F4DF9F147FB61500F4059A /* Sources */,
+				A7F4DFA0147FB61500F4059A /* Frameworks */,
+				A7F4DFA1147FB61500F4059A /* Headers */,
+				A7F4DFA2147FB61500F4059A /* Resources */,
+				A7F4DFA3147FB61500F4059A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DTFoundation;
+			productName = DTFoundation;
+			productReference = A7F4DFA5147FB61500F4059A /* DTFoundation.framework */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A7F4DF9A147FB61500F4059A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = Cocoanetics;
+			};
+			buildConfigurationList = A7F4DF9D147FB61500F4059A /* Build configuration list for PBXProject "DTFoundation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A7F4DF98147FB61500F4059A;
+			productRefGroup = A7F4DFA6147FB61500F4059A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A7F4DFA4147FB61500F4059A /* DTFoundation */,
+				A7F4DFA8147FB61500F4059A /* Universal_Framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A7F4DFA2147FB61500F4059A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7F4DFAE147FB61500F4059A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A7F4DFA3147FB61500F4059A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nrm -f \"${CONFIGURATION_BUILD_DIR}/FakeFramework\"\nif [ -f \"${CONFIGURATION_BUILD_DIR}/${EXECUTABLE_PATH}\" ]; then\n\tcp \"${CONFIGURATION_BUILD_DIR}/${EXECUTABLE_PATH}\" \"${CONFIGURATION_BUILD_DIR}/FakeFramework\"\nfi\n\t\t\t\t\t";
+		};
+		A7F4DFA7147FB61500F4059A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n# Assume the target name is the same as the project name\nUFW_TARGET=${PROJECT}\n\nif [ -z ${SDK_NAME} ]; then\n    # Use the latest iphoneos SDK available\n    UFW_GREP_RESULT=$(xcodebuild -showsdks | grep -o \"iphoneos.*$\")\n    while read -r line; do\n        UFW_SDK_VERSION=\"${line}\"\n    done <<< \"${UFW_GREP_RESULT}\"\nelse\n    # Use the SDK specified by XCode\n    UFW_SDK_VERSION=\"${SDK_NAME}\"\nfi\n\nUFW_SDK_VERSION=$(echo \"${UFW_SDK_VERSION}\" | grep -o \"[0-9].*$\")\nUFW_FMWK_DIRNAME=\"${UFW_TARGET}.framework\"\nUFW_EMBEDDED_DIRNAME=\"${UFW_TARGET}.embeddedframework\"\nUFW_EXE_PATH=\"${UFW_FMWK_DIRNAME}/${UFW_TARGET}\"\nUFW_IPHONE_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nUFW_SIMULATOR_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\nUFW_UNIVERSAL_DIR=\"${BUILD_DIR}/${CONFIGURATION}-universal\"\n\n\n# Build Framework\n\nrm -rf \"${UFW_UNIVERSAL_DIR}\"\n\nxcodebuild -target \"${UFW_TARGET}\" -configuration ${CONFIGURATION} -sdk iphoneos${UFW_SDK_VERSION} BUILD_DIR=${BUILD_DIR} CONFIGURATION_TEMP_DIR=${CONFIGURATION_TEMP_DIR} clean build\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: xcodebuild failed\"; exit 1; fi\nxcodebuild -target \"${UFW_TARGET}\" -configuration ${CONFIGURATION} -sdk iphonesimulator${UFW_SDK_VERSION} BUILD_DIR=${BUILD_DIR} CONFIGURATION_TEMP_DIR=${CONFIGURATION_TEMP_DIR} clean build\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: xcodebuild failed\"; exit 1; fi\n\nif [ ! -f \"${UFW_IPHONE_DIR}/${UFW_EXE_PATH}\" ]; then\necho \"Framework target \\\"${UFW_TARGET}\\\" had no source files to build from. Make sure your source files have the correct target membership\"\nexit 1\nfi\n\nmkdir -p \"${UFW_UNIVERSAL_DIR}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mkdir failed\"; exit 1; fi\n\ncp -a \"${UFW_IPHONE_DIR}/${UFW_FMWK_DIRNAME}\" \"${UFW_UNIVERSAL_DIR}/${UFW_FMWK_DIRNAME}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cp failed\"; exit 1; fi\n\nlipo -create -output \"${UFW_UNIVERSAL_DIR}/${UFW_EXE_PATH}\" \"${UFW_IPHONE_DIR}/${UFW_EXE_PATH}\" \"${UFW_SIMULATOR_DIR}/${UFW_EXE_PATH}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: lipo failed\"; exit 1; fi\n\n\n# Build standard framework structure\n\nmkdir -p \"${UFW_UNIVERSAL_DIR}/${UFW_FMWK_DIRNAME}/Versions/A/Resources\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mkdir failed\"; exit 1; fi\n\ncd \"${UFW_UNIVERSAL_DIR}/${UFW_FMWK_DIRNAME}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cd failed\"; exit 1; fi\n\nmv \"${UFW_TARGET}\" \"Versions/A/\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mv failed\"; exit 1; fi\n\nmkdir -p Headers\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mkdir failed\"; exit 1; fi\n\nmv \"Headers\" \"Versions/A/\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mv failed\"; exit 1; fi\n\nUFW_RESOURCE_LIST=$(ls)\nwhile read -r filename; do\n    if [ \"${filename}\" != \"Versions\" ]; then\n        mv \"${filename}\" \"Versions/A/Resources/\"\n        if [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mv failed\"; exit 1; fi\n    fi\ndone <<< \"${UFW_RESOURCE_LIST}\"\n\ncd Versions\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cd failed\"; exit 1; fi\n\nln -s A Current\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: ln failed\"; exit 1; fi\n\ncd ..\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cd failed\"; exit 1; fi\n\nln -s \"Versions/Current/${UFW_TARGET}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: ln failed\"; exit 1; fi\n\nln -s \"Versions/Current/Headers\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: ln failed\"; exit 1; fi\n\nln -s \"Versions/Current/Resources\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: ln failed\"; exit 1; fi\n\n\n# Build Embedded Framework\n\nmkdir -p \"${UFW_UNIVERSAL_DIR}/${UFW_EMBEDDED_DIRNAME}/Resources\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mkdir failed\"; exit 1; fi\n\ncp -a \"${UFW_UNIVERSAL_DIR}/${UFW_FMWK_DIRNAME}\" \"${UFW_UNIVERSAL_DIR}/${UFW_EMBEDDED_DIRNAME}/\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cp failed\"; exit 1; fi\n\ncd \"${UFW_UNIVERSAL_DIR}/${UFW_FMWK_DIRNAME}/Resources\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cd failed\"; exit 1; fi\n\nUFW_RESOURCE_LIST=$(ls)\n\ncd \"${UFW_UNIVERSAL_DIR}/${UFW_EMBEDDED_DIRNAME}/Resources\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cd failed\"; exit 1; fi\n\nwhile read -r filename; do\n    if [ \"${filename}\" != \"Info.plist\" ]; then\n        ln -s \"../${UFW_FMWK_DIRNAME}/Resources/${filename}\"\n        if [ \"$?\" != \"0\" ]; then echo >&2 \"Error: link failed\"; exit 1; fi\n    fi\ndone <<< \"${UFW_RESOURCE_LIST}\"\n\t\t\t\t\t";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A7F4DF9F147FB61500F4059A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A7F4DFAC147FB61500F4059A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7F4DFAD147FB61500F4059A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A7F4DFB0147FB61500F4059A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A7F4DFB1147FB61500F4059A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A7F4DFB3147FB61600F4059A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DTFoundation/DTFoundation-Prefix.pch";
+				INFOPLIST_FILE = "DTFoundation/DTFoundation-Info.plist";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		A7F4DFB4147FB61600F4059A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DTFoundation/DTFoundation-Prefix.pch";
+				INFOPLIST_FILE = "DTFoundation/DTFoundation-Info.plist";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		A7F4DFB6147FB61600F4059A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = UniversalFramework;
+			};
+			name = Debug;
+		};
+		A7F4DFB7147FB61600F4059A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = UniversalFramework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A7F4DF9D147FB61500F4059A /* Build configuration list for PBXProject "DTFoundation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7F4DFB0147FB61500F4059A /* Debug */,
+				A7F4DFB1147FB61500F4059A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7F4DFB2147FB61600F4059A /* Build configuration list for PBXNativeTarget "DTFoundation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7F4DFB3147FB61600F4059A /* Debug */,
+				A7F4DFB4147FB61600F4059A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A7F4DFB5147FB61600F4059A /* Build configuration list for PBXAggregateTarget "Universal_Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7F4DFB6147FB61600F4059A /* Debug */,
+				A7F4DFB7147FB61600F4059A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A7F4DF9A147FB61500F4059A /* Project object */;
+}
