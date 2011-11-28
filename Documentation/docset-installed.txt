@@ -1,4 +1,0 @@
-Documentation set was installed to Xcode!
-
-Path: /Users/Oliver/Library/Developer/Shared/Documentation/DocSets/com.cocoanetics.DTFoundation.docset
-Time: 2011-11-28 15:32:00 +0000
