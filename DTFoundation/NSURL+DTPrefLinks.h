@@ -70,8 +70,6 @@ typedef enum
 
 /** Returns the URL to open the settings app to a specific page.
  
- The list of available settings pages was found at [online](http://cydiahelp.com/how-to-make-custom-shortcuts-for-favorite-settings-without-jailbreak/).
- 
  The pageType parameter can have these values:
  
  - DTPrefLinkSettings
@@ -110,6 +108,9 @@ typedef enum
  - DTPrefLinkVPN
  - DTPrefLinkWallpaper
  - DTPrefLinkWiFi
+
+ The list of available settings pages was found [online](http://cydiahelp.com/how-to-make-custom-shortcuts-for-favorite-settings-without-jailbreak/).
+ 
  
  @bug *Warning*: The prefs URL scheme has not been made public by Apple and thus might be cause for rejection. Use at your own risk.
  @param pageType The settings page to jump to.
