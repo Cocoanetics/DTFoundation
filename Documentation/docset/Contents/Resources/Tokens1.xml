@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSString(DTFormatNumbers).html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSString(DTFormatNumbers)</TokenIdentifier>
+			<Abstract>A collection of category extensions for NSString dealing with the formatting of numbers in special contexts.</Abstract>
+			<DeclaredIn>NSString+DTFormatNumbers.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSString(DTFormatNumbers)/stringByFormattingBytes:</TokenIdentifier>
+			<Abstract>Formats the passed number as a byte value in a form that is pleasing to the user when displayed next to a progress bar.</Abstract>
+			<DeclaredIn>NSString+DTFormatNumbers.h</DeclaredIn>			
+			
+			<Declaration>+ (NSString *)stringByFormattingBytes:(long long)bytes</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>bytes</Name>
+					<Abstract>The value of the bytes to be formatted</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract>Returns the formatted string.</Abstract></ReturnValue>
+			<Anchor>//api/name/stringByFormattingBytes:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

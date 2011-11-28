@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSURL(DTAppLinks).html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSURL(DTAppLinks)</TokenIdentifier>
+			<Abstract>A collection of category extensions for NSURL that provide direct access to built-in app capabilites.</Abstract>
+			<DeclaredIn>NSURL+DTAppLinks.h</DeclaredIn>
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSURL(DTAppLinks)/appStoreURLforApplicationIdentifier:</TokenIdentifier>
+			<Abstract>Returns the URL to open the mobile app store on the app's page.</Abstract>
+			<DeclaredIn>NSURL+DTAppLinks.h</DeclaredIn>			
+			
+			<Declaration>+ (NSURL *)appStoreURLforApplicationIdentifier:(NSString *)identifier</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>identifier</Name>
+					<Abstract>The application identifier that gets assigned to a new app when you add it to iTunes Connect.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract>Returns the URL to the direct app store link</Abstract></ReturnValue>
+			<Anchor>//api/name/appStoreURLforApplicationIdentifier:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSURL(DTAppLinks)/appStoreReviewURLForApplicationIdentifier:</TokenIdentifier>
+			<Abstract>Returns the URL to open the mobile app store on the app's review page.</Abstract>
+			<DeclaredIn>NSURL+DTAppLinks.h</DeclaredIn>			
+			
+			<Declaration>+ (NSURL *)appStoreReviewURLForApplicationIdentifier:(NSString *)identifier</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>identifier</Name>
+					<Abstract>The application identifier that gets assigned to a new app when you add it to iTunes Connect.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract>Returns the URL to the direct app store link</Abstract></ReturnValue>
+			<Anchor>//api/name/appStoreReviewURLForApplicationIdentifier:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>
