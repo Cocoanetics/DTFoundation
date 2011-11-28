@@ -24,6 +24,8 @@ Documentation can be browsed online at http://cocoanetics.github.com/DTFoundatio
 Usage
 -----
 
+The DTFoundation.framework is using the "Fake Framework" template put together by Karl Stenerud (https://github.com/kstenerud/iOS-Universal-Framework).
+
 1. Include the DTFoundation.framework in your project. 
 2. Import the DTFoundation.h in your PCH file or include the individual header files where needed.
 3. Add -ObjC to "Other Linker Flags".
