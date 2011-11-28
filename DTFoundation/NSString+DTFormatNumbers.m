@@ -7,6 +7,10 @@
 //
 
 #import "NSString+DTFormatNumbers.h"
+#import "LoadableCategory.h"
+
+// force this category to be loaded by linker
+MAKE_CATEGORIES_LOADABLE(NSString_DTFormatNumbers);
 
 @implementation NSString (DTFormatNumbers)
 

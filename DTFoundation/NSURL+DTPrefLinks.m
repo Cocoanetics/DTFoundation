@@ -7,6 +7,10 @@
 //
 
 #import "NSURL+DTPrefLinks.h"
+#import "LoadableCategory.h"
+
+// force this category to be loaded by linker
+MAKE_CATEGORIES_LOADABLE(NSURL_DTPrefLinks);
 
 @implementation NSURL (DTPrefLinks)
 

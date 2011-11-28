@@ -26,4 +26,4 @@ Usage
 
 1. Include the DTFoundation.framework in your project. 
 2. Import the DTFoundation.h in your PCH file or include the individual header files where needed.
-3. There is no step 3.
+3. Add -ObjC to "Other Linker Flags".
