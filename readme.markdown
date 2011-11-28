@@ -16,6 +16,11 @@ License
  
 It is open source and covered by a standard BSD license. That means you have to mention *Cocoanetics* as the original author of this code. You can purchase a Non-Attribution-License from us.
 
+Documentation
+-------------
+
+Documentation can be browsed online at http://cocoanetics.github.com/DTFoundation or installed in your Xcode organizer via feed URL http://cocoanetics.github.com/DTFoundation/DTFoundation.atom
+
 Usage
 -----
 
