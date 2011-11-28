@@ -19,12 +19,12 @@ It is open source and covered by a standard BSD license. That means you have to 
 Documentation
 -------------
 
-Documentation can be browsed online at http://cocoanetics.github.com/DTFoundation or installed in your Xcode organizer via feed URL http://cocoanetics.github.com/DTFoundation/DTFoundation.atom
+Documentation can be [browsed online](http://cocoanetics.github.com/DTFoundation) or installed in your Xcode Organizer via the [Atom Feed URL](http://cocoanetics.github.com/DTFoundation/DTFoundation.atom).
 
 Usage
 -----
 
-The DTFoundation.framework is using the "Fake Framework" template put together by Karl Stenerud (https://github.com/kstenerud/iOS-Universal-Framework).
+The DTFoundation.framework is using the "Fake Framework" template put together by [Karl Stenerud](https://github.com/kstenerud/iOS-Universal-Framework).
 
 1. Include the DTFoundation.framework in your project. 
 2. Import the DTFoundation.h in your PCH file or include the individual header files where needed.
