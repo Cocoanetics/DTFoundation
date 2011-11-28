@@ -18,17 +18,47 @@
 			name = Universal_Framework;
 			productName = Universal_Framework;
 		};
+		A7F4DFED147FBAC600F4059A /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A7F4DFEE147FBAC600F4059A /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				A7F4DFF1147FBB0B00F4059A /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A7AB49DD1483C84000028FE8 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A7AB49DC1483C84000028FE8 /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7E1404314839F95001E221E /* NSURL+DTPrefLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E1404114839F95001E221E /* NSURL+DTPrefLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7E1404414839F95001E221E /* NSURL+DTPrefLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E1404214839F95001E221E /* NSURL+DTPrefLinks.m */; };
 		A7F4DFAE147FB61500F4059A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7F4DFAC147FB61500F4059A /* InfoPlist.strings */; };
+		A7F4DFDA147FB69400F4059A /* NSString+DTFormatNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = A7F4DFD8147FB69400F4059A /* NSString+DTFormatNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7F4DFDB147FB69400F4059A /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F4DFD9147FB69400F4059A /* NSString+DTFormatNumbers.m */; };
+		A7F4DFF4147FC5E600F4059A /* NSURL+DTAppLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = A7F4DFF2147FC5E600F4059A /* NSURL+DTAppLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7F4DFF5147FC5E600F4059A /* NSURL+DTAppLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F4DFF3147FC5E600F4059A /* NSURL+DTAppLinks.m */; };
+		A7F4DFF9147FD08900F4059A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
+		A7F4DFFB147FD08F00F4059A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7AB49DC1483C84000028FE8 /* DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFoundation.h; sourceTree = "<group>"; };
+		A7C4EF691483D22E00ED8181 /* readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.markdown; sourceTree = SOURCE_ROOT; };
+		A7E1404114839F95001E221E /* NSURL+DTPrefLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTPrefLinks.h"; sourceTree = "<group>"; };
+		A7E1404214839F95001E221E /* NSURL+DTPrefLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTPrefLinks.m"; sourceTree = "<group>"; };
 		A7F4DFA5147FB61500F4059A /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7F4DFAB147FB61500F4059A /* DTFoundation-Info.plist */ = {isa = PBXFileReference; path = "DTFoundation-Info.plist"; sourceTree = "<group>"; };
+		A7F4DFAB147FB61500F4059A /* DTFoundation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DTFoundation-Info.plist"; sourceTree = "<group>"; };
 		A7F4DFAD147FB61500F4059A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A7F4DFAF147FB61500F4059A /* DTFoundation-Prefix.pch */ = {isa = PBXFileReference; path = "DTFoundation-Prefix.pch"; sourceTree = "<group>"; };
+		A7F4DFAF147FB61500F4059A /* DTFoundation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DTFoundation-Prefix.pch"; sourceTree = "<group>"; };
+		A7F4DFD8147FB69400F4059A /* NSString+DTFormatNumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTFormatNumbers.h"; sourceTree = "<group>"; };
+		A7F4DFD9147FB69400F4059A /* NSString+DTFormatNumbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTFormatNumbers.m"; sourceTree = "<group>"; };
+		A7F4DFF2147FC5E600F4059A /* NSURL+DTAppLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTAppLinks.h"; sourceTree = "<group>"; };
+		A7F4DFF3147FC5E600F4059A /* NSURL+DTAppLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTAppLinks.m"; sourceTree = "<group>"; };
+		A7F4DFF8147FD08900F4059A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +66,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7F4DFFB147FD08F00F4059A /* Foundation.framework in Frameworks */,
+				A7F4DFF9147FD08900F4059A /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7AB49DB1483C47F00028FE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7F4DFFA147FD08F00F4059A /* Foundation.framework */,
+				A7F4DFF8147FD08900F4059A /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A7F4DF98147FB61500F4059A = {
 			isa = PBXGroup;
 			children = (
 				A7F4DFA9147FB61500F4059A /* DTFoundation */,
 				A7F4DFA6147FB61500F4059A /* Products */,
+				A7AB49DB1483C47F00028FE8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +103,13 @@
 		A7F4DFA9147FB61500F4059A /* DTFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				A7AB49DC1483C84000028FE8 /* DTFoundation.h */,
+				A7F4DFD8147FB69400F4059A /* NSString+DTFormatNumbers.h */,
+				A7F4DFD9147FB69400F4059A /* NSString+DTFormatNumbers.m */,
+				A7F4DFF2147FC5E600F4059A /* NSURL+DTAppLinks.h */,
+				A7F4DFF3147FC5E600F4059A /* NSURL+DTAppLinks.m */,
+				A7E1404114839F95001E221E /* NSURL+DTPrefLinks.h */,
+				A7E1404214839F95001E221E /* NSURL+DTPrefLinks.m */,
 				A7F4DFAA147FB61500F4059A /* Supporting Files */,
 			);
 			path = DTFoundation;
@@ -69,6 +118,7 @@
 		A7F4DFAA147FB61500F4059A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A7C4EF691483D22E00ED8181 /* readme.markdown */,
 				A7F4DFAB147FB61500F4059A /* DTFoundation-Info.plist */,
 				A7F4DFAC147FB61500F4059A /* InfoPlist.strings */,
 				A7F4DFAF147FB61500F4059A /* DTFoundation-Prefix.pch */,
@@ -83,6 +133,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7F4DFDA147FB69400F4059A /* NSString+DTFormatNumbers.h in Headers */,
+				A7F4DFF4147FC5E600F4059A /* NSURL+DTAppLinks.h in Headers */,
+				A7E1404314839F95001E221E /* NSURL+DTPrefLinks.h in Headers */,
+				A7AB49DD1483C84000028FE8 /* DTFoundation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +185,7 @@
 			targets = (
 				A7F4DFA4147FB61500F4059A /* DTFoundation */,
 				A7F4DFA8147FB61500F4059A /* Universal_Framework */,
+				A7F4DFED147FBAC600F4059A /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -173,6 +228,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\n# Assume the target name is the same as the project name\nUFW_TARGET=${PROJECT}\n\nif [ -z ${SDK_NAME} ]; then\n    # Use the latest iphoneos SDK available\n    UFW_GREP_RESULT=$(xcodebuild -showsdks | grep -o \"iphoneos.*$\")\n    while read -r line; do\n        UFW_SDK_VERSION=\"${line}\"\n    done <<< \"${UFW_GREP_RESULT}\"\nelse\n    # Use the SDK specified by XCode\n    UFW_SDK_VERSION=\"${SDK_NAME}\"\nfi\n\nUFW_SDK_VERSION=$(echo \"${UFW_SDK_VERSION}\" | grep -o \"[0-9].*$\")\nUFW_FMWK_DIRNAME=\"${UFW_TARGET}.framework\"\nUFW_EMBEDDED_DIRNAME=\"${UFW_TARGET}.embeddedframework\"\nUFW_EXE_PATH=\"${UFW_FMWK_DIRNAME}/${UFW_TARGET}\"\nUFW_IPHONE_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nUFW_SIMULATOR_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\nUFW_UNIVERSAL_DIR=\"${BUILD_DIR}/${CONFIGURATION}-universal\"\n\n\n# Build Framework\n\nrm -rf \"${UFW_UNIVERSAL_DIR}\"\n\nxcodebuild -target \"${UFW_TARGET}\" -configuration ${CONFIGURATION} -sdk iphoneos${UFW_SDK_VERSION} BUILD_DIR=${BUILD_DIR} CONFIGURATION_TEMP_DIR=${CONFIGURATION_TEMP_DIR} clean build\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: xcodebuild failed\"; exit 1; fi\nxcodebuild -target \"${UFW_TARGET}\" -configuration ${CONFIGURATION} -sdk iphonesimulator${UFW_SDK_VERSION} BUILD_DIR=${BUILD_DIR} CONFIGURATION_TEMP_DIR=${CONFIGURATION_TEMP_DIR} clean build\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: xcodebuild failed\"; exit 1; fi\n\nif [ ! -f \"${UFW_IPHONE_DIR}/${UFW_EXE_PATH}\" ]; then\necho \"Framework target \\\"${UFW_TARGET}\\\" had no source files to build from. Make sure your source files have the correct target membership\"\nexit 1\nfi\n\nmkdir -p \"${UFW_UNIVERSAL_DIR}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mkdir failed\"; exit 1; fi\n\ncp -a \"${UFW_IPHONE_DIR}/${UFW_FMWK_DIRNAME}\" \"${UFW_UNIVERSAL_DIR}/${UFW_FMWK_DIRNAME}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cp failed\"; exit 1; fi\n\nlipo -create -output \"${UFW_UNIVERSAL_DIR}/${UFW_EXE_PATH}\" \"${UFW_IPHONE_DIR}/${UFW_EXE_PATH}\" \"${UFW_SIMULATOR_DIR}/${UFW_EXE_PATH}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: lipo failed\"; exit 1; fi\n\n\n# Build standard framework structure\n\nmkdir -p \"${UFW_UNIVERSAL_DIR}/${UFW_FMWK_DIRNAME}/Versions/A/Resources\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mkdir failed\"; exit 1; fi\n\ncd \"${UFW_UNIVERSAL_DIR}/${UFW_FMWK_DIRNAME}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cd failed\"; exit 1; fi\n\nmv \"${UFW_TARGET}\" \"Versions/A/\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mv failed\"; exit 1; fi\n\nmkdir -p Headers\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mkdir failed\"; exit 1; fi\n\nmv \"Headers\" \"Versions/A/\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mv failed\"; exit 1; fi\n\nUFW_RESOURCE_LIST=$(ls)\nwhile read -r filename; do\n    if [ \"${filename}\" != \"Versions\" ]; then\n        mv \"${filename}\" \"Versions/A/Resources/\"\n        if [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mv failed\"; exit 1; fi\n    fi\ndone <<< \"${UFW_RESOURCE_LIST}\"\n\ncd Versions\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cd failed\"; exit 1; fi\n\nln -s A Current\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: ln failed\"; exit 1; fi\n\ncd ..\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cd failed\"; exit 1; fi\n\nln -s \"Versions/Current/${UFW_TARGET}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: ln failed\"; exit 1; fi\n\nln -s \"Versions/Current/Headers\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: ln failed\"; exit 1; fi\n\nln -s \"Versions/Current/Resources\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: ln failed\"; exit 1; fi\n\n\n# Build Embedded Framework\n\nmkdir -p \"${UFW_UNIVERSAL_DIR}/${UFW_EMBEDDED_DIRNAME}/Resources\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mkdir failed\"; exit 1; fi\n\ncp -a \"${UFW_UNIVERSAL_DIR}/${UFW_FMWK_DIRNAME}\" \"${UFW_UNIVERSAL_DIR}/${UFW_EMBEDDED_DIRNAME}/\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cp failed\"; exit 1; fi\n\ncd \"${UFW_UNIVERSAL_DIR}/${UFW_FMWK_DIRNAME}/Resources\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cd failed\"; exit 1; fi\n\nUFW_RESOURCE_LIST=$(ls)\n\ncd \"${UFW_UNIVERSAL_DIR}/${UFW_EMBEDDED_DIRNAME}/Resources\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cd failed\"; exit 1; fi\n\nwhile read -r filename; do\n    if [ \"${filename}\" != \"Info.plist\" ]; then\n        ln -s \"../${UFW_FMWK_DIRNAME}/Resources/${filename}\"\n        if [ \"$?\" != \"0\" ]; then echo >&2 \"Error: link failed\"; exit 1; fi\n    fi\ndone <<< \"${UFW_RESOURCE_LIST}\"\n\t\t\t\t\t";
 		};
+		A7F4DFF1147FBB0B00F4059A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"DTFoundation\" \\\n--project-company \"Cocoanetics\" \\\n--company-id \"com.cocoanetics\" \\\n--docset-atom-filename \"DTFoundation.atom\" \\\n--docset-feed-url \"http://cocoanetics.com/docs/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"http://cocoanetics.com/docs/%DOCSETPACKAGEFILENAME\" \\\n--output ~/help \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--ignore \"*.m\" \\\n--keep-intermediate-files \\\n--exit-threshold 2 \\\n--verbose 6 \\\n--index-desc \"${PROJECT_DIR}/readme.markdown\" \\\n\"${PROJECT_DIR}\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -180,6 +248,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7F4DFDB147FB69400F4059A /* NSString+DTFormatNumbers.m in Sources */,
+				A7F4DFF5147FC5E600F4059A /* NSURL+DTAppLinks.m in Sources */,
+				A7E1404414839F95001E221E /* NSURL+DTPrefLinks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +272,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -225,7 +299,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -251,7 +328,7 @@
 				GCC_PREFIX_HEADER = "DTFoundation/DTFoundation-Prefix.pch";
 				INFOPLIST_FILE = "DTFoundation/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				LINK_WITH_STANDARD_LIBRARIES = NO;
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				MACH_O_TYPE = mh_object;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -272,7 +349,7 @@
 				GCC_PREFIX_HEADER = "DTFoundation/DTFoundation-Prefix.pch";
 				INFOPLIST_FILE = "DTFoundation/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				LINK_WITH_STANDARD_LIBRARIES = NO;
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				MACH_O_TYPE = mh_object;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,6 +372,20 @@
 			};
 			name = Release;
 		};
+		A7F4DFEF147FBAC600F4059A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A7F4DFF0147FBAC600F4059A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -314,6 +405,7 @@
 				A7F4DFB4147FB61600F4059A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A7F4DFB5147FB61600F4059A /* Build configuration list for PBXAggregateTarget "Universal_Framework" */ = {
 			isa = XCConfigurationList;
@@ -322,6 +414,16 @@
 				A7F4DFB7147FB61600F4059A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7F4DFEE147FBAC600F4059A /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7F4DFEF147FBAC600F4059A /* Debug */,
+				A7F4DFF0147FBAC600F4059A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
