@@ -44,7 +44,7 @@
  creates and returns a `DTVersion` object initialized using the provided string
  
  @param versionString A string with a version number.
- @returns A DTVersion object or `nil` if the string is not a valid version number 
+ @returns A `DTVersion` object or `nil` if the string is not a valid version number 
  @see initWithMajor:minor:maintenance:
  */
 + (DTVersion *)versionWithString:(NSString *)versionString;
@@ -52,7 +52,7 @@
 /**
  creates and retuns a `DTVersion` object initialized with the version information of the current application
  
- @returns A DTVersion object or `nil` if the string of the current application is not a valid version number 
+ @returns A `DTVersion` object or `nil` if the string of the current application is not a valid version number 
  */
 + (DTVersion *)appBundleVersion;
 
