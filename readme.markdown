@@ -10,7 +10,6 @@ Contained are several category methods
 - NSString - formatting Numbers
 - NSURL - getting direct-access URLs for preferences and the mobile app store
 
-
 License
 ------- 
  
