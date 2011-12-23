@@ -7,9 +7,6 @@
 //
 
 #import "NSURL+DTAppLinks.h"
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import "LoadableCategory.h"
 
 // force this category to be loaded by linker
 MAKE_CATEGORIES_LOADABLE(NSURL_DTAppLinks);

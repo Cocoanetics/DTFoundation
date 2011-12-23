@@ -7,7 +7,6 @@
 //
 
 #import "DTVersion.h"
-#import <UIKit/UIKit.h>
 
 @implementation DTVersion
 
