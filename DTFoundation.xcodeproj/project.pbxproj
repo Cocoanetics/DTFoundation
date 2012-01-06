@@ -21,35 +21,68 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		A7577A761483F99B00076E2B /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F4DFD9147FB69400F4059A /* NSString+DTFormatNumbers.m */; };
-		A7577A771483F99B00076E2B /* NSURL+DTAppLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F4DFF3147FC5E600F4059A /* NSURL+DTAppLinks.m */; };
-		A7577A781483F99B00076E2B /* NSURL+DTPrefLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E1404214839F95001E221E /* NSURL+DTPrefLinks.m */; };
-		A7577A7A1483F9A600076E2B /* NSString+DTFormatNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = A7F4DFD8147FB69400F4059A /* NSString+DTFormatNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7577A7B1483F9A600076E2B /* NSURL+DTAppLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = A7F4DFF2147FC5E600F4059A /* NSURL+DTAppLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7577A7C1483F9A600076E2B /* NSURL+DTPrefLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E1404114839F95001E221E /* NSURL+DTPrefLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7577A801483FA0C00076E2B /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A7AB49DC1483C84000028FE8 /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7577A841483FB2300076E2B /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7577A831483FB2300076E2B /* LoadableCategory.h */; };
+		A70B4CD01486621B00873A4A /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CD11486621B00873A4A /* DTVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC71486621B00873A4A /* DTVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CD21486621B00873A4A /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
+		A70B4CD31486621B00873A4A /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC91486621B00873A4A /* LoadableCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CD41486621B00873A4A /* NSString+DTFormatNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CD51486621B00873A4A /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
+		A70B4CD61486621B00873A4A /* NSURL+DTAppLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCC1486621B00873A4A /* NSURL+DTAppLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CD71486621B00873A4A /* NSURL+DTAppLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCD1486621B00873A4A /* NSURL+DTAppLinks.m */; };
+		A70B4CD81486621B00873A4A /* NSURL+DTPrefLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCE1486621B00873A4A /* NSURL+DTPrefLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CD91486621B00873A4A /* NSURL+DTPrefLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCF1486621B00873A4A /* NSURL+DTPrefLinks.m */; };
+		A70B4CDD1486628A00873A4A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A70B4CDB1486628A00873A4A /* LICENSE */; };
+		A70B4CDE1486628A00873A4A /* readme.markdown in Resources */ = {isa = PBXBuildFile; fileRef = A70B4CDC1486628A00873A4A /* readme.markdown */; };
+		A70B4CE2148662B000873A4A /* DTFoundation-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CE0148662B000873A4A /* DTFoundation-Prefix.pch */; };
+		A70B4CE81486637E00873A4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
+		A70B4CF2148663A800873A4A /* DTVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC71486621B00873A4A /* DTVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CF3148663A800873A4A /* NSString+DTFormatNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CF4148663A800873A4A /* NSURL+DTAppLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCC1486621B00873A4A /* NSURL+DTAppLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CF5148663A800873A4A /* NSURL+DTPrefLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCE1486621B00873A4A /* NSURL+DTPrefLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CF6148663A800873A4A /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC91486621B00873A4A /* LoadableCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70B4CF7148663AF00873A4A /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A72C110514A4946800F4EF69 /* UIView+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */; };
+		A72C110614A4946800F4EF69 /* UIView+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */; };
+		A72C110714A4946800F4EF69 /* UIView+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */; };
+		A72C110814A4946800F4EF69 /* UIView+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */; };
+		A7A7CC7914866CAF00EC2EE4 /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
+		A7A7CC7A14866CAF00EC2EE4 /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
+		A7A7CC7B14866CAF00EC2EE4 /* NSURL+DTAppLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCD1486621B00873A4A /* NSURL+DTAppLinks.m */; };
+		A7A7CC7C14866CAF00EC2EE4 /* NSURL+DTPrefLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCF1486621B00873A4A /* NSURL+DTPrefLinks.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A7577A831483FB2300076E2B /* LoadableCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
-		A7AB49DC1483C84000028FE8 /* DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFoundation.h; sourceTree = "<group>"; };
+		A70B4CC51486621B00873A4A /* DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFoundation.h; sourceTree = "<group>"; };
+		A70B4CC71486621B00873A4A /* DTVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTVersion.h; sourceTree = "<group>"; };
+		A70B4CC81486621B00873A4A /* DTVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTVersion.m; sourceTree = "<group>"; };
+		A70B4CC91486621B00873A4A /* LoadableCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
+		A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTFormatNumbers.h"; sourceTree = "<group>"; };
+		A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTFormatNumbers.m"; sourceTree = "<group>"; };
+		A70B4CCC1486621B00873A4A /* NSURL+DTAppLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTAppLinks.h"; sourceTree = "<group>"; };
+		A70B4CCD1486621B00873A4A /* NSURL+DTAppLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTAppLinks.m"; sourceTree = "<group>"; };
+		A70B4CCE1486621B00873A4A /* NSURL+DTPrefLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTPrefLinks.h"; sourceTree = "<group>"; };
+		A70B4CCF1486621B00873A4A /* NSURL+DTPrefLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTPrefLinks.m"; sourceTree = "<group>"; };
+		A70B4CDB1486628A00873A4A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A70B4CDC1486628A00873A4A /* readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.markdown; sourceTree = "<group>"; };
+		A70B4CDF148662B000873A4A /* DTFoundation-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DTFoundation-Info.plist"; sourceTree = "<group>"; };
+		A70B4CE0148662B000873A4A /* DTFoundation-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DTFoundation-Prefix.pch"; sourceTree = "<group>"; };
+		A70B4CE71486637E00873A4A /* libDTFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTFoundation.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DTFoundation.h"; sourceTree = "<group>"; };
+		A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DTFoundation.m"; sourceTree = "<group>"; };
 		A7BAD10E1483F934000E2B6A /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7C4EF691483D22E00ED8181 /* readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.markdown; sourceTree = SOURCE_ROOT; };
-		A7E1404114839F95001E221E /* NSURL+DTPrefLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTPrefLinks.h"; sourceTree = "<group>"; };
-		A7E1404214839F95001E221E /* NSURL+DTPrefLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTPrefLinks.m"; sourceTree = "<group>"; };
-		A7F4DFAB147FB61500F4059A /* DTFoundation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DTFoundation-Info.plist"; sourceTree = "<group>"; };
-		A7F4DFAD147FB61500F4059A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A7F4DFAF147FB61500F4059A /* DTFoundation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DTFoundation-Prefix.pch"; sourceTree = "<group>"; };
-		A7F4DFD8147FB69400F4059A /* NSString+DTFormatNumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTFormatNumbers.h"; sourceTree = "<group>"; };
-		A7F4DFD9147FB69400F4059A /* NSString+DTFormatNumbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTFormatNumbers.m"; sourceTree = "<group>"; };
-		A7F4DFF2147FC5E600F4059A /* NSURL+DTAppLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTAppLinks.h"; sourceTree = "<group>"; };
-		A7F4DFF3147FC5E600F4059A /* NSURL+DTAppLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTAppLinks.m"; sourceTree = "<group>"; };
 		A7F4DFF8147FD08900F4059A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A70B4CE41486637E00873A4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70B4CE81486637E00873A4A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7BAD1091483F934000E2B6A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,6 +93,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A70B4CC41486621B00873A4A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A70B4CC51486621B00873A4A /* DTFoundation.h */,
+				A70B4CDF148662B000873A4A /* DTFoundation-Info.plist */,
+				A70B4CE0148662B000873A4A /* DTFoundation-Prefix.pch */,
+				A70B4CC61486621B00873A4A /* Source */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A70B4CC61486621B00873A4A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A70B4CC91486621B00873A4A /* LoadableCategory.h */,
+				A70B4CC71486621B00873A4A /* DTVersion.h */,
+				A70B4CC81486621B00873A4A /* DTVersion.m */,
+				A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */,
+				A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */,
+				A70B4CCC1486621B00873A4A /* NSURL+DTAppLinks.h */,
+				A70B4CCD1486621B00873A4A /* NSURL+DTAppLinks.m */,
+				A70B4CCE1486621B00873A4A /* NSURL+DTPrefLinks.h */,
+				A70B4CCF1486621B00873A4A /* NSURL+DTPrefLinks.m */,
+				A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */,
+				A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		A70B4CDA1486626900873A4A /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				A70B4CDB1486628A00873A4A /* LICENSE */,
+				A70B4CDC1486628A00873A4A /* readme.markdown */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
 		A7AB49DB1483C47F00028FE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,7 +143,8 @@
 		A7F4DF98147FB61500F4059A = {
 			isa = PBXGroup;
 			children = (
-				A7F4DFA9147FB61500F4059A /* DTFoundation */,
+				A70B4CC41486621B00873A4A /* Core */,
+				A70B4CDA1486626900873A4A /* Documentation */,
 				A7F4DFA6147FB61500F4059A /* Products */,
 				A7AB49DB1483C47F00028FE8 /* Frameworks */,
 			);
@@ -82,58 +154,67 @@
 			isa = PBXGroup;
 			children = (
 				A7BAD10E1483F934000E2B6A /* DTFoundation.framework */,
+				A70B4CE71486637E00873A4A /* libDTFoundation.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A7F4DFA9147FB61500F4059A /* DTFoundation */ = {
-			isa = PBXGroup;
-			children = (
-				A7AB49DC1483C84000028FE8 /* DTFoundation.h */,
-				A7F4DFD8147FB69400F4059A /* NSString+DTFormatNumbers.h */,
-				A7F4DFD9147FB69400F4059A /* NSString+DTFormatNumbers.m */,
-				A7F4DFF2147FC5E600F4059A /* NSURL+DTAppLinks.h */,
-				A7F4DFF3147FC5E600F4059A /* NSURL+DTAppLinks.m */,
-				A7E1404114839F95001E221E /* NSURL+DTPrefLinks.h */,
-				A7E1404214839F95001E221E /* NSURL+DTPrefLinks.m */,
-				A7F4DFAA147FB61500F4059A /* Supporting Files */,
-			);
-			path = DTFoundation;
-			sourceTree = "<group>";
-		};
-		A7F4DFAA147FB61500F4059A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A7C4EF691483D22E00ED8181 /* readme.markdown */,
-				A7F4DFAB147FB61500F4059A /* DTFoundation-Info.plist */,
-				A7F4DFAC147FB61500F4059A /* InfoPlist.strings */,
-				A7F4DFAF147FB61500F4059A /* DTFoundation-Prefix.pch */,
-				A7577A831483FB2300076E2B /* LoadableCategory.h */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
+			path = ../..;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		A70B4CE51486637E00873A4A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70B4CF2148663A800873A4A /* DTVersion.h in Headers */,
+				A70B4CF3148663A800873A4A /* NSString+DTFormatNumbers.h in Headers */,
+				A70B4CF4148663A800873A4A /* NSURL+DTAppLinks.h in Headers */,
+				A70B4CF5148663A800873A4A /* NSURL+DTPrefLinks.h in Headers */,
+				A70B4CF6148663A800873A4A /* LoadableCategory.h in Headers */,
+				A70B4CF7148663AF00873A4A /* DTFoundation.h in Headers */,
+				A72C110614A4946800F4EF69 /* UIView+DTFoundation.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7BAD10A1483F934000E2B6A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7577A801483FA0C00076E2B /* DTFoundation.h in Headers */,
-				A7577A7A1483F9A600076E2B /* NSString+DTFormatNumbers.h in Headers */,
-				A7577A7B1483F9A600076E2B /* NSURL+DTAppLinks.h in Headers */,
-				A7577A7C1483F9A600076E2B /* NSURL+DTPrefLinks.h in Headers */,
-				A7577A841483FB2300076E2B /* LoadableCategory.h in Headers */,
+				A70B4CD01486621B00873A4A /* DTFoundation.h in Headers */,
+				A70B4CD11486621B00873A4A /* DTVersion.h in Headers */,
+				A70B4CD31486621B00873A4A /* LoadableCategory.h in Headers */,
+				A70B4CD41486621B00873A4A /* NSString+DTFormatNumbers.h in Headers */,
+				A70B4CD61486621B00873A4A /* NSURL+DTAppLinks.h in Headers */,
+				A70B4CD81486621B00873A4A /* NSURL+DTPrefLinks.h in Headers */,
+				A70B4CE2148662B000873A4A /* DTFoundation-Prefix.pch in Headers */,
+				A72C110514A4946800F4EF69 /* UIView+DTFoundation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A7BAD10D1483F934000E2B6A /* DTFoundation */ = {
+		A70B4CE61486637E00873A4A /* Static Library */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7BAD1161483F934000E2B6A /* Build configuration list for PBXNativeTarget "DTFoundation" */;
+			buildConfigurationList = A70B4CEF1486637E00873A4A /* Build configuration list for PBXNativeTarget "Static Library" */;
+			buildPhases = (
+				A70B4CE31486637E00873A4A /* Sources */,
+				A70B4CE41486637E00873A4A /* Frameworks */,
+				A70B4CE51486637E00873A4A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Static Library";
+			productName = DTFoundation;
+			productReference = A70B4CE71486637E00873A4A /* libDTFoundation.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A7BAD10D1483F934000E2B6A /* Static Framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7BAD1161483F934000E2B6A /* Build configuration list for PBXNativeTarget "Static Framework" */;
 			buildPhases = (
 				A7BAD1071483F934000E2B6A /* ShellScript */,
 				A7BAD1081483F934000E2B6A /* Sources */,
@@ -146,7 +227,7 @@
 			);
 			dependencies = (
 			);
-			name = DTFoundation;
+			name = "Static Framework";
 			productName = DTFoundation;
 			productReference = A7BAD10E1483F934000E2B6A /* DTFoundation.framework */;
 			productType = "com.apple.product-type.bundle";
@@ -173,7 +254,8 @@
 			projectRoot = "";
 			targets = (
 				A7F4DFED147FBAC600F4059A /* Documentation */,
-				A7BAD10D1483F934000E2B6A /* DTFoundation */,
+				A7BAD10D1483F934000E2B6A /* Static Framework */,
+				A70B4CE61486637E00873A4A /* Static Library */,
 			);
 		};
 /* End PBXProject section */
@@ -183,6 +265,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A70B4CDD1486628A00873A4A /* LICENSE in Resources */,
+				A70B4CDE1486628A00873A4A /* readme.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,35 +310,64 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"DTFoundation\" \\\n--project-company \"Cocoanetics\" \\\n--company-id \"com.cocoanetics\" \\\n--docset-atom-filename \"DTFoundation.atom\" \\\n--docset-feed-url \"http://cocoanetics.github.com/DTFoundation/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"http://cocoanetics.github.com/DTFoundation/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"http://cocoanetics.github.com/DTFoundation/\" \\\n--output \"~/help\" \\\n--publish-docset \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--ignore \"*.m\" \\\n--ignore \"LoadableCategory.h\" \\\n--index-desc \"${PROJECT_DIR}/readme.markdown\" \\\n\"${PROJECT_DIR}\"";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"DTFoundation\" \\\n--project-company \"Cocoanetics\" \\\n--company-id \"com.cocoanetics\" \\\n--docset-atom-filename \"DTFoundation.atom\" \\\n--docset-feed-url \"http://cocoanetics.github.com/DTFoundation/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"http://cocoanetics.github.com/DTFoundation/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"http://cocoanetics.github.com/DTFoundation/\" \\\n--output \"~/help/DTFoundation\" \\\n--publish-docset \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--ignore \"*.m\" \\\n--ignore \"LoadableCategory.h\" \\\n--index-desc \"${PROJECT_DIR}/readme.markdown\" \\\n\"${PROJECT_DIR}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A70B4CE31486637E00873A4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7A7CC7914866CAF00EC2EE4 /* DTVersion.m in Sources */,
+				A7A7CC7A14866CAF00EC2EE4 /* NSString+DTFormatNumbers.m in Sources */,
+				A7A7CC7B14866CAF00EC2EE4 /* NSURL+DTAppLinks.m in Sources */,
+				A7A7CC7C14866CAF00EC2EE4 /* NSURL+DTPrefLinks.m in Sources */,
+				A72C110814A4946800F4EF69 /* UIView+DTFoundation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7BAD1081483F934000E2B6A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7577A761483F99B00076E2B /* NSString+DTFormatNumbers.m in Sources */,
-				A7577A771483F99B00076E2B /* NSURL+DTAppLinks.m in Sources */,
-				A7577A781483F99B00076E2B /* NSURL+DTPrefLinks.m in Sources */,
+				A70B4CD21486621B00873A4A /* DTVersion.m in Sources */,
+				A70B4CD51486621B00873A4A /* NSString+DTFormatNumbers.m in Sources */,
+				A70B4CD71486621B00873A4A /* NSURL+DTAppLinks.m in Sources */,
+				A70B4CD91486621B00873A4A /* NSURL+DTPrefLinks.m in Sources */,
+				A72C110714A4946800F4EF69 /* UIView+DTFoundation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		A7F4DFAC147FB61500F4059A /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A7F4DFAD147FB61500F4059A /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
+		A70B4CF01486637E00873A4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/DTFoundation.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DTFoundation;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A70B4CF11486637E00873A4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/DTFoundation.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DTFoundation;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		A7BAD1171483F934000E2B6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -266,13 +379,13 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DTFoundation/DTFoundation-Prefix.pch";
-				INFOPLIST_FILE = "DTFoundation/DTFoundation-Info.plist";
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DTFoundation;
 				SKIP_INSTALL = YES;
 				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
 				WRAPPER_EXTENSION = framework;
@@ -290,13 +403,13 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DTFoundation/DTFoundation-Prefix.pch";
-				INFOPLIST_FILE = "DTFoundation/DTFoundation-Info.plist";
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DTFoundation;
 				SKIP_INSTALL = YES;
 				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
 				WRAPPER_EXTENSION = framework;
@@ -368,7 +481,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A7BAD1161483F934000E2B6A /* Build configuration list for PBXNativeTarget "DTFoundation" */ = {
+		A70B4CEF1486637E00873A4A /* Build configuration list for PBXNativeTarget "Static Library" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70B4CF01486637E00873A4A /* Debug */,
+				A70B4CF11486637E00873A4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7BAD1161483F934000E2B6A /* Build configuration list for PBXNativeTarget "Static Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7BAD1171483F934000E2B6A /* Debug */,
