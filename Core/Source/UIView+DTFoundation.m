@@ -8,6 +8,7 @@
 
 #import "UIView+DTFoundation.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LoadableCategory.h"
 
 // force this category to be loaded by linker
 MAKE_CATEGORIES_LOADABLE(UIView_DTFoundation);
