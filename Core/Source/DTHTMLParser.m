@@ -96,6 +96,8 @@ void _startElement(void *context, const xmlChar *name,const xmlChar **atts)
 	}
 	
 	[myself.delegate parser:myself didStartElement:nameStr attributes:attributes];
+	
+	[myself abortParsing];
 }
 
 void _endElement(void *context, const xmlChar *chars)
@@ -107,11 +109,13 @@ void _endElement(void *context, const xmlChar *chars)
 	[myself.delegate parser:myself didEndElement:nameStr];
 }
 
+// libxml reports characters with max 1000 at a time
+// also entities are reported separately
 void _characters(void *context, const xmlChar *chars, int len)
 {
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
 	
-	NSString *string = [NSString stringWithUTF8String:(char *)chars];
+	NSString *string = [[NSString alloc] initWithBytes:chars length:len encoding:NSUTF8StringEncoding];
 	
 	[myself.delegate parser:myself foundCharacters:string];
 }
@@ -142,8 +146,6 @@ void _error(void *context, const char *msg, ...)
 	myself.parserError = [NSError errorWithDomain:@"DTHTMLParser" code:1 userInfo:userInfo];
 	
 	[myself.delegate parser:myself parseErrorOccurred:myself.parserError];
-	
-	[myself abortParsing];
 }
 
 @implementation DTHTMLParser
@@ -155,11 +157,18 @@ void _error(void *context, const char *msg, ...)
 	
 	__unsafe_unretained id <DTHTMLParserDelegate> _delegate;
 	htmlParserCtxtPtr _parserContext;
+	
+	BOOL _isAborting;
 }
 
 
 - (id)initWithData:(NSData *)data encoding:(NSStringEncoding)encoding
 {
+	if (!data)
+	{
+		return nil;
+	}
+	
 	self = [super init];
 	if (self)
 	{
@@ -167,6 +176,9 @@ void _error(void *context, const char *msg, ...)
 		_encoding = encoding;
 		
 		xmlSAX2InitHtmlDefaultSAXHandler(&_handler);
+		
+		// set default handlers, otherwise crash if no delegate set
+		self.delegate = nil;
 	}
 	
 	return self;
@@ -184,14 +196,14 @@ void _error(void *context, const char *msg, ...)
 - (BOOL)parse
 {
 	void *dataBytes = (char *)[_data bytes];
-	int dataSize = [_data length];
+	unsigned long dataSize = [_data length];
 	
 	// detect encoding if necessary
 	xmlCharEncoding charEnc = 0;
 	
 	if (!_encoding)
 	{
-		charEnc = xmlDetectCharEncoding(dataBytes, dataSize);
+		charEnc = xmlDetectCharEncoding(dataBytes, (int)dataSize);
 	}
 	else
 	{
@@ -205,15 +217,15 @@ void _error(void *context, const char *msg, ...)
 	}
 	
 	// create a parse context
-	_parserContext = htmlCreatePushParserCtxt(&_handler, (__bridge void *)self, dataBytes, dataSize, NULL, charEnc);
+	_parserContext = htmlCreatePushParserCtxt(&_handler, (__bridge void *)self, dataBytes, (int)dataSize, NULL, charEnc);
 	
 	// set some options
-	htmlCtxtUseOptions(_parserContext, HTML_PARSE_RECOVER | HTML_PARSE_NONET | HTML_PARSE_COMPACT);
+	htmlCtxtUseOptions(_parserContext, HTML_PARSE_RECOVER | HTML_PARSE_NONET | HTML_PARSE_COMPACT | 8192);
 	
 	// parse!
 	int result = htmlParseDocument(_parserContext);
 	
-	return (result==0);
+	return (result==0 && !_isAborting);
 }
 
 - (void)abortParsing
@@ -224,79 +236,98 @@ void _error(void *context, const char *msg, ...)
 		xmlStopParser(_parserContext);
 		_parserContext = NULL;
 	}
+	
+	_isAborting = YES;
+
+	// prevent future callbacks
+	_handler.startDocument = NULL;
+	_handler.endDocument = NULL;
+	_handler.startElement = NULL;
+	_handler.endElement = NULL;
+	_handler.characters = NULL;
+	_handler.comment = NULL;
+	_handler.error = NULL;
+	
+	// inform delegate
+	if ([_delegate respondsToSelector:@selector(parser:parseErrorOccurred:)])
+	{
+		[_delegate parser:self parseErrorOccurred:self.parserError];
+	}
 }
 
 #pragma mark Properties
 
+- (__unsafe_unretained id<DTHTMLParserDelegate>)delegate
+{
+	return _delegate;
+}
+
 - (void)setDelegate:(__unsafe_unretained id<DTHTMLParserDelegate>)delegate;
 {
-	if (delegate != _delegate)
+	_delegate = delegate;
+	
+	if ([_delegate respondsToSelector:@selector(parserDidStartDocument:)])
 	{
-		_delegate = delegate;
-		
-		if ([_delegate respondsToSelector:@selector(parserDidStartDocument:)])
-		{
-			_handler.startDocument = _startDocument;
-		}
-		else
-		{
-			_handler.startDocument = NULL;
-		}
-		
-		if ([_delegate respondsToSelector:@selector(parserDidEndDocument:)])
-		{
-			_handler.endDocument = _endDocument;
-		}
-		else
-		{
-			_handler.endDocument = NULL;
-		}
-		
-		if ([delegate respondsToSelector:@selector(parser:didStartElement:attributes:)])
-		{
-			_handler.startElement = _startElement;
-		}
-		else
-		{
-			_handler.startElement = NULL;
-		}
-		
-		if ([delegate respondsToSelector:@selector(parser:didEndElement:)])
-		{
-			_handler.endElement = _endElement;
-		}
-		else
-		{
-			_handler.endElement = NULL;
-		}
-		
-		if ([delegate respondsToSelector:@selector(parser:foundCharacters:)])
-		{
-			_handler.characters = _characters;
-		}
-		else
-		{
-			_handler.characters = NULL;
-		} 
-		
-		if ([delegate respondsToSelector:@selector(parser:foundComment:)])
-		{
-			_handler.comment = _comment;
-		}
-		else
-		{
-			_handler.comment = NULL;
-		} 
-		
-		if ([delegate respondsToSelector:@selector(parser:parseErrorOccurred:)])
-		{
-			_handler.error = _error;
-		}
-		else
-		{
-			_handler.error = NULL;
-		} 
+		_handler.startDocument = _startDocument;
 	}
+	else
+	{
+		_handler.startDocument = NULL;
+	}
+	
+	if ([_delegate respondsToSelector:@selector(parserDidEndDocument:)])
+	{
+		_handler.endDocument = _endDocument;
+	}
+	else
+	{
+		_handler.endDocument = NULL;
+	}
+	
+	if ([delegate respondsToSelector:@selector(parser:didStartElement:attributes:)])
+	{
+		_handler.startElement = _startElement;
+	}
+	else
+	{
+		_handler.startElement = NULL;
+	}
+	
+	if ([delegate respondsToSelector:@selector(parser:didEndElement:)])
+	{
+		_handler.endElement = _endElement;
+	}
+	else
+	{
+		_handler.endElement = NULL;
+	}
+	
+	if ([delegate respondsToSelector:@selector(parser:foundCharacters:)])
+	{
+		_handler.characters = _characters;
+	}
+	else
+	{
+		_handler.characters = NULL;
+	} 
+	
+	if ([delegate respondsToSelector:@selector(parser:foundComment:)])
+	{
+		_handler.comment = _comment;
+	}
+	else
+	{
+		_handler.comment = NULL;
+	} 
+	
+	if ([delegate respondsToSelector:@selector(parser:parseErrorOccurred:)])
+	{
+		_handler.error = _error;
+	}
+	else
+	{
+		_handler.error = NULL;
+	} 
 }
 
 - (NSInteger)lineNumber
@@ -334,7 +365,6 @@ void _error(void *context, const char *msg, ...)
 }
 
 
-@synthesize delegate = _delegate;
 @synthesize parserError = _parserError;
 
 @end
