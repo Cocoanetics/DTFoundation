@@ -129,7 +129,7 @@
 /**
  Sets the receiver’s delegate.
  
- @param delegate An object that is the new delegate. It is not retained. The delegate must conform to the `DTHTMLParserDelegate` Protocol protocol.
+ @param delegate An object that is the new delegate. It is not retained. The delegate must conform to the DTHTMLParserDelegate Protocol protocol.
  
  @see delegate
  */
