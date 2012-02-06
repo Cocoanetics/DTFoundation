@@ -10,6 +10,11 @@ Contained are several category methods
 - NSString - formatting Numbers
 - NSURL - getting direct-access URLs for preferences and the mobile app store
 
+Other classes simplify working with specialized data
+
+- DTVersion - parsing and comparing version numbers
+- DTHTMLParser - a libxml2-based HTML parser
+
 License
 ------- 
  
