@@ -6,7 +6,6 @@
 //  Copyright (c) 2011 Cocoanetics. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
 /**
  Class that represents a version number comprised of major, minor and maintenance number separarated by dots. For example "1.2.2".

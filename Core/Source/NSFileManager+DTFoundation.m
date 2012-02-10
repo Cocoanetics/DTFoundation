@@ -3,10 +3,11 @@
 //  iCatalog
 //
 //  Created by Oliver Drobnik on 2/10/12.
-//  Copyright (c) 2012 International Color Services. All rights reserved.
+//  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
 #import "NSFileManager+DTFoundation.h"
+
 
 // force this category to be loaded by linker
 MAKE_CATEGORIES_LOADABLE(NSFoundation_DTFoundation);

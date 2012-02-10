@@ -53,6 +53,10 @@
 		A7A7CC7A14866CAF00EC2EE4 /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
 		A7A7CC7B14866CAF00EC2EE4 /* NSURL+DTAppLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCD1486621B00873A4A /* NSURL+DTAppLinks.m */; };
 		A7A7CC7C14866CAF00EC2EE4 /* NSURL+DTPrefLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCF1486621B00873A4A /* NSURL+DTPrefLinks.m */; };
+		A7D6B50514E54CAE007B52A3 /* NSFileManager+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D6B50314E54CAE007B52A3 /* NSFileManager+DTFoundation.h */; };
+		A7D6B50614E54CAE007B52A3 /* NSFileManager+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D6B50314E54CAE007B52A3 /* NSFileManager+DTFoundation.h */; };
+		A7D6B50714E54CAE007B52A3 /* NSFileManager+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D6B50414E54CAE007B52A3 /* NSFileManager+DTFoundation.m */; };
+		A7D6B50814E54CAE007B52A3 /* NSFileManager+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D6B50414E54CAE007B52A3 /* NSFileManager+DTFoundation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +80,8 @@
 		A7949A3814C963F500A8CCDE /* DTHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTHTMLParser.h; sourceTree = "<group>"; };
 		A7949A3914C963F500A8CCDE /* DTHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTHTMLParser.m; sourceTree = "<group>"; };
 		A7BAD10E1483F934000E2B6A /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7D6B50314E54CAE007B52A3 /* NSFileManager+DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DTFoundation.h"; sourceTree = "<group>"; };
+		A7D6B50414E54CAE007B52A3 /* NSFileManager+DTFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DTFoundation.m"; sourceTree = "<group>"; };
 		A7F4DFF8147FD08900F4059A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -118,6 +124,8 @@
 				A70B4CC81486621B00873A4A /* DTVersion.m */,
 				A7949A3814C963F500A8CCDE /* DTHTMLParser.h */,
 				A7949A3914C963F500A8CCDE /* DTHTMLParser.m */,
+				A7D6B50314E54CAE007B52A3 /* NSFileManager+DTFoundation.h */,
+				A7D6B50414E54CAE007B52A3 /* NSFileManager+DTFoundation.m */,
 				A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */,
 				A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */,
 				A70B4CCC1486621B00873A4A /* NSURL+DTAppLinks.h */,
@@ -183,6 +191,7 @@
 				A70B4CF7148663AF00873A4A /* DTFoundation.h in Headers */,
 				A72C110614A4946800F4EF69 /* UIView+DTFoundation.h in Headers */,
 				A7949A3B14C963F500A8CCDE /* DTHTMLParser.h in Headers */,
+				A7D6B50614E54CAE007B52A3 /* NSFileManager+DTFoundation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +208,7 @@
 				A70B4CE2148662B000873A4A /* DTFoundation-Prefix.pch in Headers */,
 				A72C110514A4946800F4EF69 /* UIView+DTFoundation.h in Headers */,
 				A7949A3A14C963F500A8CCDE /* DTHTMLParser.h in Headers */,
+				A7D6B50514E54CAE007B52A3 /* NSFileManager+DTFoundation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +345,7 @@
 				A7A7CC7C14866CAF00EC2EE4 /* NSURL+DTPrefLinks.m in Sources */,
 				A72C110814A4946800F4EF69 /* UIView+DTFoundation.m in Sources */,
 				A7949A3D14C963F500A8CCDE /* DTHTMLParser.m in Sources */,
+				A7D6B50814E54CAE007B52A3 /* NSFileManager+DTFoundation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +359,7 @@
 				A70B4CD91486621B00873A4A /* NSURL+DTPrefLinks.m in Sources */,
 				A72C110714A4946800F4EF69 /* UIView+DTFoundation.m in Sources */,
 				A7949A3C14C963F500A8CCDE /* DTHTMLParser.m in Sources */,
+				A7D6B50714E54CAE007B52A3 /* NSFileManager+DTFoundation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
