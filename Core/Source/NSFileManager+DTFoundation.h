@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-/** This category adds several useful file operations for NSFileManager.
+/** This category adds several useful file operations for `NSFileManager`.
  */
 
 @interface NSFileManager (DTFoundation)

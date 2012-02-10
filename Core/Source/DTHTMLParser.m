@@ -3,15 +3,12 @@
 //  DTFoundation
 //
 //  Created by Oliver Drobnik on 1/18/12.
-//  Copyright (c) 2012 Drobnik.com. All rights reserved.
+//  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
 #import "DTHTMLParser.h"
 #import <libxml/HTMLparser.h>
 
-#if !__has_feature(objc_arc)
-#error THIS CODE MUST BE COMPILED WITH ARC ENABLED!
-#endif
 
 @interface DTHTMLParser()
 
