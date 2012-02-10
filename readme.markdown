@@ -29,7 +29,7 @@ Documentation can be [browsed online](http://cocoanetics.github.com/DTFoundation
 Usage
 -----
 
-The DTFoundation.framework is using the "Fake Framework" template put together by [Karl Stenerud](https://github.com/kstenerud/iOS-Universal-Framework). All categories employ Karl's LoadabeCategory hack to avoid having to use the -all_load linker flag.
+The DTFoundation.framework is using the "Fake Framework" template put together by [Karl Stenerud](https://github.com/kstenerud/iOS-Universal-Framework). All categories employ Karl's LoadabeCategory hack to avoid having to use the -all_load linker flag. If your app does not use ARC yet (but DTFoundation does) then you also need the -fobjc-arc linker flag.
 
 1. Include the DTFoundation.framework in your project. 
 2. Import the DTFoundation.h in your PCH file or include the individual header files where needed.
