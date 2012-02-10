@@ -16,7 +16,8 @@ MAKE_CATEGORIES_LOADABLE(NSFoundation_DTFoundation);
 
 - (void)removeItemAsynchronousAtPath:(NSString *)path
 {
-	@synchronized(self)
+	// FIXME: How can this method synchronize itself if it is called twice for the same name versus in short succession for two large files?
+	//@synchronized(self)
 	{
 		// move it to a tmp name to that it appears gone
 		CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
