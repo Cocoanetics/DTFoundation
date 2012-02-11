@@ -7,14 +7,14 @@ At a Glance
 -----------
 Contained are several category methods
 
-- NSFileManager - asynchronous operations
 - NSString - formatting Numbers
 - NSURL - getting direct-access URLs for preferences and the mobile app store
 
 Other classes simplify working with specialized data
 
-- DTVersion - parsing and comparing version numbers
+- DTAsyncFileDeleter - asynchronous non-blocking file/folder deletion
 - DTHTMLParser - a libxml2-based HTML parser
+- DTVersion - parsing and comparing version numbers
 
 License
 ------- 
