@@ -14,7 +14,6 @@ static dispatch_group_t _delGroup;
 static dispatch_once_t onceToken;
 
 static dispatch_queue_t _renameQueue;
-static dispatch_group_t _renameGroup;
 
 static DTAsyncFileDeleter *_sharedInstance;
 
@@ -39,7 +38,6 @@ static DTAsyncFileDeleter *_sharedInstance;
 			_delQueue = dispatch_queue_create("DTAsyncFileDeleterRemoveQueue", 0);
 			_delGroup = dispatch_group_create();
 			_renameQueue = dispatch_queue_create("DTAsyncFileDeleterRenameQueue", 0);
-			_renameGroup = dispatch_group_create();
 		});
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -55,7 +53,6 @@ static DTAsyncFileDeleter *_sharedInstance;
 
 - (void)waitUntilFinished
 {
-	dispatch_group_wait(_renameGroup, DISPATCH_TIME_FOREVER);
 	dispatch_group_wait(_delGroup, DISPATCH_TIME_FOREVER);
 }
 
@@ -68,8 +65,8 @@ static DTAsyncFileDeleter *_sharedInstance;
 	CFRelease(newUniqueId);
 	CFRelease(newUniqueIdString);
 	
-	// rename the file, AFTER previous renames
-	dispatch_group_async(_renameGroup, _renameQueue, ^{
+	// rename the file, waiting for the rename to finish before async deletion
+	dispatch_sync(_renameQueue, ^{
 		NSFileManager *fileManager = [[NSFileManager alloc] init];
 		
 		if ([fileManager moveItemAtPath:path toPath:tmpPath error:NULL])
@@ -80,10 +77,7 @@ static DTAsyncFileDeleter *_sharedInstance;
 				[fileManager removeItemAtPath:tmpPath error:NULL];
 			});
 		}
-	});
-	
-	// block until all renames are done
-	dispatch_group_wait(_renameGroup, DISPATCH_TIME_FOREVER);
+	});	
 }
 
 - (void)removeItemAtURL:(NSURL *)URL
