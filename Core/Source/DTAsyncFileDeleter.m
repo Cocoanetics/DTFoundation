@@ -17,6 +17,13 @@ static dispatch_queue_t _renameQueue;
 
 static DTAsyncFileDeleter *_sharedInstance;
 
+
+// private utilites
+@interface DTAsyncFileDeleter ()
+- (BOOL)_supportsTaskCompletion;
+@end
+
+
 @implementation DTAsyncFileDeleter
 
 + (DTAsyncFileDeleter *)sharedInstance
@@ -39,16 +46,9 @@ static DTAsyncFileDeleter *_sharedInstance;
 			_delGroup = dispatch_group_create();
 			_renameQueue = dispatch_queue_create("DTAsyncFileDeleterRenameQueue", 0);
 		});
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 	}
 	
 	return self;
-}
-
-- (void)dealloc
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
 - (void)waitUntilFinished
@@ -73,8 +73,28 @@ static DTAsyncFileDeleter *_sharedInstance;
 		{
 			// schedule the removal and immediately return	
 			dispatch_group_async(_delGroup, _delQueue, ^{
+				__block UIBackgroundTaskIdentifier backgroundTaskID = UIBackgroundTaskInvalid;
+				
+				// block to use for timeout as well as completed task
+				void (^completionBlock)() = ^{
+					[[UIApplication sharedApplication] endBackgroundTask:backgroundTaskID];
+					backgroundTaskID = UIBackgroundTaskInvalid;
+				};
+				
+				if ([self _supportsTaskCompletion])
+				{
+					// according to docs this is safe to be called from background threads
+					backgroundTaskID = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:completionBlock];
+				}
+				
 				// file manager is not used any more in the rename queue, so we reuse it
 				[fileManager removeItemAtPath:tmpPath error:NULL];
+				
+				// ... when the task completes:
+				if (backgroundTaskID != UIBackgroundTaskInvalid)
+				{
+					completionBlock();		
+				}
 			});
 		}
 	});	
@@ -87,37 +107,24 @@ static DTAsyncFileDeleter *_sharedInstance;
 	[self removeItemAtPath:[URL path]];
 }
 
-#pragma mark Notifications
-- (void)applicationDidEnterBackground:(NSNotification *)notification
+#pragma mark Utilities
+- (BOOL)_supportsTaskCompletion
 {
 	UIDevice *device = [UIDevice currentDevice];
 	
 	if ([device respondsToSelector:@selector(isMultitaskingSupported)])
 	{
-		if (!device.multitaskingSupported)
+		if (device.multitaskingSupported)
 		{
-			return;
+			return YES;
+		}
+		else
+		{
+			return NO;
 		}
 	}
 	
-	UIApplication *app = [UIApplication sharedApplication];
-	__block UIBackgroundTaskIdentifier backgroundTaskID;
-	
-	void (^completionBlock)() = ^{
-		[app endBackgroundTask:backgroundTaskID];
-		backgroundTaskID = UIBackgroundTaskInvalid;
-	};
-	
-	backgroundTaskID = [app beginBackgroundTaskWithExpirationHandler:completionBlock];
-	
-	// wait for all deletions to be done
-	[self waitUntilFinished];
-	
-	// ... when the syncing task completes:
-	if (backgroundTaskID != UIBackgroundTaskInvalid)
-	{
-		completionBlock();		
-	}
+	return NO;
 }
 
 @end
