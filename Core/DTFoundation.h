@@ -1,5 +1,8 @@
 // Classes
+#import "DTAsyncFileDeleter.h"
+#import "DTHTMLParser.h"
 #import "DTVersion.h"
+#import "DTZipArchive.h"
 
 // Categories
 #import "NSString+DTFormatNumbers.h"

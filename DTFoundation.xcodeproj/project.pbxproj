@@ -45,11 +45,33 @@
 		A72C110614A4946800F4EF69 /* UIView+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */; };
 		A72C110714A4946800F4EF69 /* UIView+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */; };
 		A72C110814A4946800F4EF69 /* UIView+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */; };
-		A77DD39E14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; };
+		A77DD39E14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD39F14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; };
 		A77DD3A014E648AD00F34B03 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */; };
 		A77DD3A114E648AD00F34B03 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */; };
-		A7949A3A14C963F500A8CCDE /* DTHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7949A3814C963F500A8CCDE /* DTHTMLParser.h */; };
+		A77DD40814E81AEE00F34B03 /* DTZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40614E81AED00F34B03 /* DTZipArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A77DD40914E81AEE00F34B03 /* DTZipArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40614E81AED00F34B03 /* DTZipArchive.h */; };
+		A77DD40A14E81AEE00F34B03 /* DTZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD40714E81AEE00F34B03 /* DTZipArchive.m */; };
+		A77DD40B14E81AEE00F34B03 /* DTZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD40714E81AEE00F34B03 /* DTZipArchive.m */; };
+		A77DD41614E825FC00F34B03 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40D14E825FC00F34B03 /* crypt.h */; };
+		A77DD41714E825FC00F34B03 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40D14E825FC00F34B03 /* crypt.h */; };
+		A77DD41814E825FC00F34B03 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD40E14E825FC00F34B03 /* ioapi.c */; };
+		A77DD41914E825FC00F34B03 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD40E14E825FC00F34B03 /* ioapi.c */; };
+		A77DD41A14E825FC00F34B03 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40F14E825FC00F34B03 /* ioapi.h */; };
+		A77DD41B14E825FC00F34B03 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40F14E825FC00F34B03 /* ioapi.h */; };
+		A77DD41C14E825FC00F34B03 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41014E825FC00F34B03 /* mztools.c */; };
+		A77DD41D14E825FC00F34B03 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41014E825FC00F34B03 /* mztools.c */; };
+		A77DD41E14E825FC00F34B03 /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD41114E825FC00F34B03 /* mztools.h */; };
+		A77DD41F14E825FC00F34B03 /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD41114E825FC00F34B03 /* mztools.h */; };
+		A77DD42014E825FC00F34B03 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41214E825FC00F34B03 /* unzip.c */; };
+		A77DD42114E825FC00F34B03 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41214E825FC00F34B03 /* unzip.c */; };
+		A77DD42214E825FC00F34B03 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD41314E825FC00F34B03 /* unzip.h */; };
+		A77DD42314E825FC00F34B03 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD41314E825FC00F34B03 /* unzip.h */; };
+		A77DD42414E825FC00F34B03 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41414E825FC00F34B03 /* zip.c */; };
+		A77DD42514E825FC00F34B03 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41414E825FC00F34B03 /* zip.c */; };
+		A77DD42614E825FC00F34B03 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD41514E825FC00F34B03 /* zip.h */; };
+		A77DD42714E825FC00F34B03 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD41514E825FC00F34B03 /* zip.h */; };
+		A7949A3A14C963F500A8CCDE /* DTHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7949A3814C963F500A8CCDE /* DTHTMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7949A3B14C963F500A8CCDE /* DTHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7949A3814C963F500A8CCDE /* DTHTMLParser.h */; };
 		A7949A3C14C963F500A8CCDE /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7949A3914C963F500A8CCDE /* DTHTMLParser.m */; };
 		A7949A3D14C963F500A8CCDE /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7949A3914C963F500A8CCDE /* DTHTMLParser.m */; };
@@ -79,6 +101,17 @@
 		A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DTFoundation.m"; sourceTree = "<group>"; };
 		A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
+		A77DD40614E81AED00F34B03 /* DTZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchive.h; sourceTree = "<group>"; };
+		A77DD40714E81AEE00F34B03 /* DTZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchive.m; sourceTree = "<group>"; };
+		A77DD40D14E825FC00F34B03 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		A77DD40E14E825FC00F34B03 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		A77DD40F14E825FC00F34B03 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		A77DD41014E825FC00F34B03 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		A77DD41114E825FC00F34B03 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		A77DD41214E825FC00F34B03 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		A77DD41314E825FC00F34B03 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		A77DD41414E825FC00F34B03 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		A77DD41514E825FC00F34B03 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		A7949A3814C963F500A8CCDE /* DTHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTHTMLParser.h; sourceTree = "<group>"; };
 		A7949A3914C963F500A8CCDE /* DTHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTHTMLParser.m; sourceTree = "<group>"; };
 		A7BAD10E1483F934000E2B6A /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +152,7 @@
 		A70B4CC61486621B00873A4A /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A77DD3D014E81A0B00F34B03 /* Externals */,
 				A70B4CC91486621B00873A4A /* LoadableCategory.h */,
 				A70B4CC71486621B00873A4A /* DTVersion.h */,
 				A70B4CC81486621B00873A4A /* DTVersion.m */,
@@ -134,6 +168,8 @@
 				A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */,
 				A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */,
 				A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */,
+				A77DD40614E81AED00F34B03 /* DTZipArchive.h */,
+				A77DD40714E81AEE00F34B03 /* DTZipArchive.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -145,6 +181,30 @@
 				A70B4CDC1486628A00873A4A /* readme.markdown */,
 			);
 			name = Documentation;
+			sourceTree = "<group>";
+		};
+		A77DD3D014E81A0B00F34B03 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				A77DD40C14E825FC00F34B03 /* minizip */,
+			);
+			path = Externals;
+			sourceTree = "<group>";
+		};
+		A77DD40C14E825FC00F34B03 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				A77DD40D14E825FC00F34B03 /* crypt.h */,
+				A77DD40E14E825FC00F34B03 /* ioapi.c */,
+				A77DD40F14E825FC00F34B03 /* ioapi.h */,
+				A77DD41014E825FC00F34B03 /* mztools.c */,
+				A77DD41114E825FC00F34B03 /* mztools.h */,
+				A77DD41214E825FC00F34B03 /* unzip.c */,
+				A77DD41314E825FC00F34B03 /* unzip.h */,
+				A77DD41414E825FC00F34B03 /* zip.c */,
+				A77DD41514E825FC00F34B03 /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		A7AB49DB1483C47F00028FE8 /* Frameworks */ = {
@@ -192,6 +252,12 @@
 				A72C110614A4946800F4EF69 /* UIView+DTFoundation.h in Headers */,
 				A7949A3B14C963F500A8CCDE /* DTHTMLParser.h in Headers */,
 				A77DD39F14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */,
+				A77DD40914E81AEE00F34B03 /* DTZipArchive.h in Headers */,
+				A77DD41714E825FC00F34B03 /* crypt.h in Headers */,
+				A77DD41B14E825FC00F34B03 /* ioapi.h in Headers */,
+				A77DD41F14E825FC00F34B03 /* mztools.h in Headers */,
+				A77DD42314E825FC00F34B03 /* unzip.h in Headers */,
+				A77DD42714E825FC00F34B03 /* zip.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +275,12 @@
 				A72C110514A4946800F4EF69 /* UIView+DTFoundation.h in Headers */,
 				A7949A3A14C963F500A8CCDE /* DTHTMLParser.h in Headers */,
 				A77DD39E14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */,
+				A77DD40814E81AEE00F34B03 /* DTZipArchive.h in Headers */,
+				A77DD41614E825FC00F34B03 /* crypt.h in Headers */,
+				A77DD41A14E825FC00F34B03 /* ioapi.h in Headers */,
+				A77DD41E14E825FC00F34B03 /* mztools.h in Headers */,
+				A77DD42214E825FC00F34B03 /* unzip.h in Headers */,
+				A77DD42614E825FC00F34B03 /* zip.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +418,11 @@
 				A72C110814A4946800F4EF69 /* UIView+DTFoundation.m in Sources */,
 				A7949A3D14C963F500A8CCDE /* DTHTMLParser.m in Sources */,
 				A77DD3A114E648AD00F34B03 /* DTAsyncFileDeleter.m in Sources */,
+				A77DD40B14E81AEE00F34B03 /* DTZipArchive.m in Sources */,
+				A77DD41914E825FC00F34B03 /* ioapi.c in Sources */,
+				A77DD41D14E825FC00F34B03 /* mztools.c in Sources */,
+				A77DD42114E825FC00F34B03 /* unzip.c in Sources */,
+				A77DD42514E825FC00F34B03 /* zip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +437,11 @@
 				A72C110714A4946800F4EF69 /* UIView+DTFoundation.m in Sources */,
 				A7949A3C14C963F500A8CCDE /* DTHTMLParser.m in Sources */,
 				A77DD3A014E648AD00F34B03 /* DTAsyncFileDeleter.m in Sources */,
+				A77DD40A14E81AEE00F34B03 /* DTZipArchive.m in Sources */,
+				A77DD41814E825FC00F34B03 /* ioapi.c in Sources */,
+				A77DD41C14E825FC00F34B03 /* mztools.c in Sources */,
+				A77DD42014E825FC00F34B03 /* unzip.c in Sources */,
+				A77DD42414E825FC00F34B03 /* zip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
