@@ -79,6 +79,10 @@
 		A7A7CC7A14866CAF00EC2EE4 /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
 		A7A7CC7B14866CAF00EC2EE4 /* NSURL+DTAppLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCD1486621B00873A4A /* NSURL+DTAppLinks.m */; };
 		A7A7CC7C14866CAF00EC2EE4 /* NSURL+DTPrefLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCF1486621B00873A4A /* NSURL+DTPrefLinks.m */; };
+		A7D8628114EBF65C001436AF /* NSString+DTPaths.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D8627F14EBF65C001436AF /* NSString+DTPaths.h */; };
+		A7D8628214EBF65C001436AF /* NSString+DTPaths.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D8627F14EBF65C001436AF /* NSString+DTPaths.h */; };
+		A7D8628314EBF65C001436AF /* NSString+DTPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D8628014EBF65C001436AF /* NSString+DTPaths.m */; };
+		A7D8628414EBF65C001436AF /* NSString+DTPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D8628014EBF65C001436AF /* NSString+DTPaths.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +119,8 @@
 		A7949A3814C963F500A8CCDE /* DTHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTHTMLParser.h; sourceTree = "<group>"; };
 		A7949A3914C963F500A8CCDE /* DTHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTHTMLParser.m; sourceTree = "<group>"; };
 		A7BAD10E1483F934000E2B6A /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7D8627F14EBF65C001436AF /* NSString+DTPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTPaths.h"; sourceTree = "<group>"; };
+		A7D8628014EBF65C001436AF /* NSString+DTPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTPaths.m"; sourceTree = "<group>"; };
 		A7F4DFF8147FD08900F4059A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -170,6 +176,8 @@
 				A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */,
 				A77DD40614E81AED00F34B03 /* DTZipArchive.h */,
 				A77DD40714E81AEE00F34B03 /* DTZipArchive.m */,
+				A7D8627F14EBF65C001436AF /* NSString+DTPaths.h */,
+				A7D8628014EBF65C001436AF /* NSString+DTPaths.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -258,6 +266,7 @@
 				A77DD41F14E825FC00F34B03 /* mztools.h in Headers */,
 				A77DD42314E825FC00F34B03 /* unzip.h in Headers */,
 				A77DD42714E825FC00F34B03 /* zip.h in Headers */,
+				A7D8628214EBF65C001436AF /* NSString+DTPaths.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +290,7 @@
 				A77DD41E14E825FC00F34B03 /* mztools.h in Headers */,
 				A77DD42214E825FC00F34B03 /* unzip.h in Headers */,
 				A77DD42614E825FC00F34B03 /* zip.h in Headers */,
+				A7D8628114EBF65C001436AF /* NSString+DTPaths.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +433,7 @@
 				A77DD41D14E825FC00F34B03 /* mztools.c in Sources */,
 				A77DD42114E825FC00F34B03 /* unzip.c in Sources */,
 				A77DD42514E825FC00F34B03 /* zip.c in Sources */,
+				A7D8628414EBF65C001436AF /* NSString+DTPaths.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +453,7 @@
 				A77DD41C14E825FC00F34B03 /* mztools.c in Sources */,
 				A77DD42014E825FC00F34B03 /* unzip.c in Sources */,
 				A77DD42414E825FC00F34B03 /* zip.c in Sources */,
+				A7D8628314EBF65C001436AF /* NSString+DTPaths.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
