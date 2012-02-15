@@ -15,6 +15,7 @@ Other classes simplify working with specialized data
 - DTAsyncFileDeleter - asynchronous non-blocking file/folder deletion
 - DTHTMLParser - a libxml2-based HTML parser
 - DTVersion - parsing and comparing version numbers
+- DTZipArchive - uncompressing ZIP and GZ files
 
 License
 ------- 
