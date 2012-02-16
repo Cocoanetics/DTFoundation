@@ -7,6 +7,7 @@
 //
 
 #import "DTAsyncFileDeleter.h"
+#import "NSString+DTPaths.h"
 
 
 static dispatch_queue_t _delQueue;
@@ -59,11 +60,7 @@ static DTAsyncFileDeleter *_sharedInstance;
 - (void)removeItemAtPath:(NSString *)path
 {
 	// make a unique temporary name in tmp folder
-	CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
-	CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
-	NSString *tmpPath = [NSTemporaryDirectory() stringByAppendingPathComponent:(__bridge NSString *)newUniqueIdString];
-	CFRelease(newUniqueId);
-	CFRelease(newUniqueIdString);
+	NSString *tmpPath = [NSString pathForTemporaryFile];
 	
 	// rename the file, waiting for the rename to finish before async deletion
 	dispatch_sync(_renameQueue, ^{
