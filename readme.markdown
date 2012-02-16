@@ -7,8 +7,10 @@ At a Glance
 -----------
 Contained are several category methods
 
-- NSString - formatting Numbers
-- NSURL - getting direct-access URLs for preferences and the mobile app store
+- NSString+DTFormatNumbers - formatting Numbers
+- NSString+DTPaths - working with paths
+- NSURL+DTPrefLinks - getting direct-access URLs for preferences
+- NSURL+DTAppLinks - getting direct-access URLs for an app's app store and review page
 
 Other classes simplify working with specialized data
 
