@@ -57,7 +57,7 @@ MAKE_CATEGORIES_LOADABLE(NSString_DTPaths);
 {
 	CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
 	CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
-	NSString *tmpPath = [NSTemporaryDirectory() stringByAppendingPathComponent:(__bridge NSString *)newUniqueIdString];
+	NSString *tmpPath = [[NSString temporaryPath] stringByAppendingPathComponent:(__bridge NSString *)newUniqueIdString];
 	CFRelease(newUniqueId);
 	CFRelease(newUniqueIdString);
 	
