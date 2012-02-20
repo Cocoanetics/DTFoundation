@@ -9,6 +9,8 @@
 
 @class DTHTMLParser;
 /** The DTHTMLParserDelegate protocol defines the optional methods implemented by delegates of DTHTMLParser objects. 
+ 
+ Dependencies: libxml2.dylib
  */
 @protocol DTHTMLParserDelegate <NSObject>
 

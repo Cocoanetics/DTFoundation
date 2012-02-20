@@ -19,6 +19,8 @@ typedef enum
 } DTZipArchiveFormat;
 
 /** This class represents a compressed file in GZIP or PKZIP format. The used format is auto-detected. 
+ 
+ Dependencies: minizip (in Core/Source/Externals), libz.dylib
  */
 
 @interface DTZipArchive : NSObject
