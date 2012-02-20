@@ -73,7 +73,7 @@ typedef enum
  Sent by a parser object to its delegate when it encounters the end of a constructed element.
  
  @param parser A parser object.
- @param elementName A string that is the name of an element (in its end tag).
+ @param type A string that is the name of an element (in its end tag).
  */
 - (void)parser:(DTASN1Parser *)parser didEndContainerWithType:(DTASN1Type)type;
 
@@ -88,12 +88,9 @@ typedef enum
 - (void)parser:(DTASN1Parser *)parser parseErrorOccurred:(NSError *)parseError;
 
 /**
- Sent by a parser object to provide its delegate with the `NSDate` encoded in the current element.
- 
- The UTCdate type is decoded via this method.
+ Sent by a parser object when a NULL element is encountered.
  
  @param parser A parser object.
- @param date A date representing the date encoded in the current element.
  */
 - (void)parserFoundNull:(DTASN1Parser *)parser;
 
@@ -109,7 +106,7 @@ typedef enum
  Sent by a parser object to provide its delegate with the object identifier encoded in the current element.
  
  @param parser A parser object.
- @param date A string representing the object identifier encoded in the current element.
+ @param objIdentifier A string representing the object identifier encoded in the current element.
  */
 - (void)parser:(DTASN1Parser *)parser foundObjectIdentifier:(NSString *)objIdentifier;
 
@@ -119,7 +116,7 @@ typedef enum
  All the ASN1 string types are provided via this method.
  
  @param parser A parser object.
- @param date A string representing the object identifier encoded in the current element.
+ @param string A string contained in the current element.
  */
 - (void)parser:(DTASN1Parser *)parser foundString:(NSString *)string;
 
@@ -129,7 +126,7 @@ typedef enum
  Both bit strings and octet strings are provided via this method. Also Integer data that is longer than 32 bits is provided this way.
  
  @param parser A parser object.
- @param date A data object representing the contents of the current element.
+ @param data A data object representing the contents of the current element.
  */
 - (void)parser:(DTASN1Parser *)parser foundData:(NSData *)data;
 
