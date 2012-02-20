@@ -1,4 +1,5 @@
 // Classes
+#import "DTASN1Parser.h"
 #import "DTAsyncFileDeleter.h"
 #import "DTHTMLParser.h"
 #import "DTVersion.h"
