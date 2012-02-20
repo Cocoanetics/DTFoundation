@@ -45,6 +45,10 @@
 		A72C110614A4946800F4EF69 /* UIView+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */; };
 		A72C110714A4946800F4EF69 /* UIView+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */; };
 		A72C110814A4946800F4EF69 /* UIView+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */; };
+		A760F52C14F24B9F00AD1B0E /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A760F52D14F24B9F00AD1B0E /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */; };
+		A760F52E14F24B9F00AD1B0E /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */; };
+		A760F52F14F24B9F00AD1B0E /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */; };
 		A77DD39E14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD39F14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; };
 		A77DD3A014E648AD00F34B03 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */; };
@@ -103,6 +107,8 @@
 		A70B4CE71486637E00873A4A /* libDTFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTFoundation.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DTFoundation.h"; sourceTree = "<group>"; };
 		A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DTFoundation.m"; sourceTree = "<group>"; };
+		A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTASN1Parser.h; sourceTree = "<group>"; };
+		A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTASN1Parser.m; sourceTree = "<group>"; };
 		A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
 		A77DD40614E81AED00F34B03 /* DTZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchive.h; sourceTree = "<group>"; };
@@ -174,6 +180,8 @@
 				A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */,
 				A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */,
 				A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */,
+				A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */,
+				A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */,
 				A77DD40614E81AED00F34B03 /* DTZipArchive.h */,
 				A77DD40714E81AEE00F34B03 /* DTZipArchive.m */,
 				A7D8627F14EBF65C001436AF /* NSString+DTPaths.h */,
@@ -267,6 +275,7 @@
 				A77DD42314E825FC00F34B03 /* unzip.h in Headers */,
 				A77DD42714E825FC00F34B03 /* zip.h in Headers */,
 				A7D8628214EBF65C001436AF /* NSString+DTPaths.h in Headers */,
+				A760F52D14F24B9F00AD1B0E /* DTASN1Parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +300,7 @@
 				A77DD42214E825FC00F34B03 /* unzip.h in Headers */,
 				A77DD42614E825FC00F34B03 /* zip.h in Headers */,
 				A7D8628114EBF65C001436AF /* NSString+DTPaths.h in Headers */,
+				A760F52C14F24B9F00AD1B0E /* DTASN1Parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +444,7 @@
 				A77DD42114E825FC00F34B03 /* unzip.c in Sources */,
 				A77DD42514E825FC00F34B03 /* zip.c in Sources */,
 				A7D8628414EBF65C001436AF /* NSString+DTPaths.m in Sources */,
+				A760F52F14F24B9F00AD1B0E /* DTASN1Parser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +465,7 @@
 				A77DD42014E825FC00F34B03 /* unzip.c in Sources */,
 				A77DD42414E825FC00F34B03 /* zip.c in Sources */,
 				A7D8628314EBF65C001436AF /* NSString+DTPaths.m in Sources */,
+				A760F52E14F24B9F00AD1B0E /* DTASN1Parser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

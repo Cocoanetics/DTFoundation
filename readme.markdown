@@ -14,6 +14,7 @@ Contained are several category methods
 
 Other classes simplify working with specialized data
 
+- DTASN1Parser - a parser for ASN.1-encoded data (eg. Certificates)
 - DTAsyncFileDeleter - asynchronous non-blocking file/folder deletion
 - DTHTMLParser - a libxml2-based HTML parser
 - DTVersion - parsing and comparing version numbers
