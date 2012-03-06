@@ -25,7 +25,7 @@ void _startElement(void *context, const xmlChar *name,const xmlChar **atts);
 void _endElement(void *context, const xmlChar *name);
 void _characters(void *context, const xmlChar *ch, int len);
 void _comment(void *context, const xmlChar *value);
-void _error(void *context, const char *msg, ...);
+void _dterror(void *context, const char *msg, ...);
 
 void _cdataBlock(void *context, const xmlChar *value, int len);
 
@@ -128,7 +128,7 @@ void _comment(void *context, const xmlChar *chars)
 	[myself.delegate parser:myself foundComment:string];
 }
 
-void _error(void *context, const char *msg, ...)
+void _dterror(void *context, const char *msg, ...)
 {
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
 	
@@ -330,7 +330,7 @@ void _cdataBlock(void *context, const xmlChar *value, int len)
 	
 	if ([delegate respondsToSelector:@selector(parser:parseErrorOccurred:)])
 	{
-		_handler.error = _error;
+		_handler.error = _dterror;
 	}
 	else
 	{
