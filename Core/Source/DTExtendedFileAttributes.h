@@ -28,7 +28,7 @@
 
 
 /**
- @name Reading/Writing extended attributes
+ @name Reading/Writing Extended Attributes
  */
 
 /**
