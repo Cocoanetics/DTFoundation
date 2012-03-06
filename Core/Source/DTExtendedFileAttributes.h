@@ -34,6 +34,7 @@
 /**
  Removes an extended file attribute from the receiver.
  
+ @param attribute The name of the attribute.
  @returns `YES` if successful.
  */
 - (BOOL)removeAttribute:(NSString *)attribute;
@@ -44,6 +45,7 @@
  
  If the value is `nil` then this is the same as calling <removeAttribute:>.
  
+ @param value The string to save for this attribute.
  @param attribute The name of the attribute.
  @returns `YES` if successful.
  */
