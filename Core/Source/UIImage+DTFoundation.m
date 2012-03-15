@@ -23,8 +23,9 @@ MAKE_CATEGORIES_LOADABLE(UIImage_DTFoundation);
 		case UIViewContentModeRedraw:
 		case UIViewContentModeScaleToFill:
 		{
-			drawRect = rect;
-			break;
+			// nothing to do
+			[self drawInRect:rect];
+			return;
 		}
 			
 		case UIViewContentModeScaleAspectFit:
@@ -171,12 +172,8 @@ MAKE_CATEGORIES_LOADABLE(UIImage_DTFoundation);
 	CGContextAddRect(context, rect);
 	CGContextClip(context);
 	
-	// flip coordinates
-	CGContextTranslateCTM(context, 0, rect.size.height);
-	CGContextScaleCTM(context, 1.0, -1.0);
-	
 	// draw
-	CGContextDrawImage(context, drawRect, [self CGImage]);
+	[self drawInRect:drawRect];
 
 	CGContextRestoreGState(context);
 }
