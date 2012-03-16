@@ -13,6 +13,8 @@
 // force this category to be loaded by linker
 MAKE_CATEGORIES_LOADABLE(UIView_DTFoundation);
 
+NSString *shadowContext = @"Shadow";
+
 @implementation UIView (DTFoundation)
 
 - (UIImage *)snapshotImage
@@ -36,4 +38,28 @@ MAKE_CATEGORIES_LOADABLE(UIView_DTFoundation);
 		self.layer.borderColor = color.CGColor;
 	}
 }
+
+- (void)addShadowWithColor:(UIColor *)color alpha:(CGFloat)alpha radius:(CGFloat)radius offset:(CGSize)offset
+{
+	self.layer.shadowOpacity = alpha;
+	self.layer.shadowRadius = radius;
+	self.layer.shadowOffset = offset;
+	
+	if (color)
+	{
+		self.layer.shadowColor = [color CGColor];
+	}
+	
+	// cannot have masking	
+	self.layer.masksToBounds = NO;
+}
+
+- (void)updateShadowPathToBounds
+{
+	// add shadow path, needs to be updated when frame changes
+	CGPathRef path = CGPathCreateWithRect(self.bounds, NULL);
+	self.layer.shadowPath = path;
+	CGPathRelease(path);
+}
+
 @end
