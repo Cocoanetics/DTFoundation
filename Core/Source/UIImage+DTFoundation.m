@@ -17,7 +17,7 @@ MAKE_CATEGORIES_LOADABLE(UIImage_DTFoundation);
 {
 	CGRect drawRect;
 	CGSize size = self.size;
-
+	
 	switch (contentMode) 
 	{
 		case UIViewContentModeRedraw:
@@ -90,7 +90,7 @@ MAKE_CATEGORIES_LOADABLE(UIImage_DTFoundation);
 								  size.height);
 			break;
 		}	
-
+			
 		case UIViewContentModeTop:
 		{
 			drawRect = CGRectMake(roundf(CGRectGetMidX(rect)-size.width/2.0f), 
@@ -121,7 +121,7 @@ MAKE_CATEGORIES_LOADABLE(UIImage_DTFoundation);
 		case UIViewContentModeRight:
 		{
 			drawRect = CGRectMake(CGRectGetMaxX(rect)-size.width, 
-								 roundf(CGRectGetMidY(rect)-size.height/2.0f), 
+								  roundf(CGRectGetMidY(rect)-size.height/2.0f), 
 								  size.width,
 								  size.height);
 			break;
@@ -174,7 +174,7 @@ MAKE_CATEGORIES_LOADABLE(UIImage_DTFoundation);
 	
 	// draw
 	[self drawInRect:drawRect];
-
+	
 	CGContextRestoreGState(context);
 }
 
