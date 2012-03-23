@@ -10,4 +10,5 @@
 #import "NSString+DTPaths.h"
 #import "NSURL+DTAppLinks.h"
 #import "NSURL+DTPrefLinks.h"
+#import "UIImage+DTFoundation.h"
 #import "UIView+DTFoundation.h"

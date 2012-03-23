@@ -11,12 +11,13 @@ Contained are several category methods
 - NSString+DTPaths - working with paths
 - NSURL+DTPrefLinks - getting direct-access URLs for preferences
 - NSURL+DTAppLinks - getting direct-access URLs for an app's app store and review page
+- UIImage+DTFoundation - helpful methods for drawing images
+- UIView+DTFoundation - helpful methods for working with views
 
 Other classes simplify working with specialized data
 
 - DTASN1Parser - a parser for ASN.1-encoded data (eg. Certificates)
 - DTAsyncFileDeleter - asynchronous non-blocking file/folder deletion
-- DTExtendedFileAttributes - reading/writing extended file attributes
 - DTHTMLParser - a libxml2-based HTML parser
 - DTVersion - parsing and comparing version numbers
 - DTZipArchive - uncompressing ZIP and GZ files
