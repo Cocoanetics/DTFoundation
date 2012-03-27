@@ -178,5 +178,56 @@ MAKE_CATEGORIES_LOADABLE(UIImage_DTFoundation);
 	CGContextRestoreGState(context);
 }
 
+#pragma mark Tiles
+- (UIImage *)tileImageAtColumn:(NSUInteger)column ofColumns:(NSUInteger)columns row:(NSUInteger)row ofRows:(NSUInteger)rows
+{
+	// calculate resulting size
+	CGFloat retWidth = roundf(self.size.width / (CGFloat)columns);
+	CGFloat retHeight = roundf(self.size.height / (CGFloat)rows);
+	
+	UIGraphicsBeginImageContextWithOptions(CGSizeMake(retWidth, retHeight), YES, self.scale);
+	
+	// move the context such that the left/top of the tile is at the left/top of the context
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextTranslateCTM(context, -retWidth*column, -retHeight*row);
+	
+	// draw the image
+	[self drawAtPoint:CGPointZero];
+
+	UIImage *retImage = UIGraphicsGetImageFromCurrentImageContext();
+	
+	UIGraphicsEndImageContext();
+	
+	return retImage;
+}
+
+- (UIImage *)tileImageInClipRect:(CGRect)clipRect inBounds:(CGRect)bounds scale:(CGFloat)scale
+{
+	UIGraphicsBeginImageContextWithOptions(clipRect.size, YES, scale);
+
+
+	CGFloat zoom = self.size.width / bounds.size.width;
+	
+	// this is the part from the origin image
+	CGRect clipInOriginal = clipRect;
+	clipInOriginal.origin.x *= zoom;
+	clipInOriginal.origin.y *= zoom;
+	clipInOriginal.size.width *= zoom;
+	clipInOriginal.size.height *= zoom;
+	
+	// move the context such that the left/top of the tile is at the left/top of the context
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextTranslateCTM(context, -clipRect.origin.x, -clipRect.origin.y);
+	CGContextScaleCTM(context, 1.0/zoom, 1.0/zoom);
+	
+	// draw the image
+	[self drawAtPoint:CGPointZero];
+
+	UIImage *retImage = UIGraphicsGetImageFromCurrentImageContext();
+
+	UIGraphicsEndImageContext();
+	
+	return retImage;
+}
 
 @end
