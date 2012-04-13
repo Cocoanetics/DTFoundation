@@ -64,4 +64,48 @@ MAKE_CATEGORIES_LOADABLE(NSString_DTPaths);
 	return tmpPath;
 }
 
+#pragma mark Working with Paths
+
+- (NSString *)pathByIncrementingSequenceNumber
+{
+	NSString *baseName = [self stringByDeletingPathExtension];
+	NSString *extension = [self pathExtension];
+	
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\(([0-9]+)\\)$" options:0 error:NULL];
+	__block NSInteger sequenceNumber = 0;
+	
+	[regex enumerateMatchesInString:baseName options:0 range:NSMakeRange(0, [baseName length]) usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
+		NSRange range = [match rangeAtIndex:1]; // first capture group
+		NSString *substring= [self substringWithRange:range];
+		
+		sequenceNumber = [substring integerValue];
+		*stop = YES;
+	}];
+	
+	NSString *nakedName = [baseName pathByDeletingSequenceNumber];
+	
+	return [[nakedName stringByAppendingFormat:@"(%d)", sequenceNumber+1] stringByAppendingPathExtension:extension];
+}
+
+- (NSString *)pathByDeletingSequenceNumber
+{
+	NSString *baseName = [self stringByDeletingPathExtension];
+	
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\([0-9]+\\)$" options:0 error:NULL];
+	__block NSRange range = NSMakeRange(0, NSNotFound);
+	
+	[regex enumerateMatchesInString:baseName options:0 range:NSMakeRange(0, [baseName length]) usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
+		range = [match range];
+		
+		*stop = YES;
+	}];
+	
+	if (range.length != NSNotFound)
+	{
+		return [self stringByReplacingCharactersInRange:range withString:@""];
+	}
+	
+	return self;
+}
+
 @end
