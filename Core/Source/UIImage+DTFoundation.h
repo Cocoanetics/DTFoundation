@@ -11,6 +11,34 @@
  */
 @interface UIImage (DTFoundation)
 
+
+/**
+ @name Loading from RemoteURLs
+ */
+
+
+/**
+ Creates and returns an image object synchronously by loading the image data from the specified URL and optionally caching it.
+ 
+ Useful values for cachePolicy are:
+ 
+ - NSURLRequestUseProtocolCachePolicy (default)
+ - NSURLRequestReloadIgnoringLocalCacheData
+ - NSURLRequestReturnCacheDataElseLoad
+ - NSURLRequestReturnCacheDataDontLoad
+ 
+ @param URL The URL to load the image from
+ @param cachePolicy The cache policy to apply.
+ @param error An optional output parameter to return an error if the loading fails
+ @returns The image object for the specified URL, or nil if the method could not load the specified image.
+ */
++ (UIImage *)imageWithContentsOfURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy error:(NSError **)error;
+
+
+ /**
+ @name Drawing
+ */
+ 
 /**
  Mimicks the way images are drawn differently by UIImageView based on the set content mode.
  @param rect The rectangle to drawn in
@@ -32,5 +60,11 @@
  */
 - (UIImage *)tileImageInClipRect:(CGRect)clipRect inBounds:(CGRect)bounds scale:(CGFloat)scale;
 
+
+/**
+ @name Modifying Images
+ */
+
+- (UIImage *)imageScaledToSize:(CGSize)newSize;
 
 @end
