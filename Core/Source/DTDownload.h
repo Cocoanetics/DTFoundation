@@ -16,58 +16,32 @@
 - (BOOL)shouldResumeDownload:(DTDownload *)download;
 - (void)download:(DTDownload *)download downloadedBytes:(long long)downloadedBytes ofTotalBytes:(long long)totalBytes withSpeed:(float)speed;
 
-
 - (void)downloadDidFinishHEAD:(DTDownload *)download;
 
 - (void)download:(DTDownload *)download didFailWithError:(NSError *)error;
-- (void)downloadWillStartUncompressing:(DTDownload *)download;
-- (void)download:(DTDownload *)download didFinishWithFiles:(NSArray *)downloadedFiles;
-
+- (void)download:(DTDownload *)download didFinishWithFile:(NSString *)path;
 
 @end
 
 
 
+/**
+ A Class that represents a download of a file from a remote server.
+ */
+
 @interface DTDownload : NSObject 
-{
-	NSURL *_url;
-	NSString *internalDownloadFolder;
-	NSString *downloadEntityTag;
-	NSDate *lastModifiedDate;
-	NSString *downloadEntryIdentifier;
-	
-	NSString *folderForDownloading;
-	
-	// downloading
-	NSURLConnection *urlConnection;
-	NSMutableData *receivedData;
-	
-	NSDate *lastPaketTimestamp;
-	float previousSpeed;
-	
-	long long receivedBytes;
-	long long totalBytes;
-	
-	
-	NSString *receivedDataFilePath;
-	NSFileHandle *receivedDataFile;
-	
-	__unsafe_unretained id <DTDownloadDelegate> delegate;
-	
-	BOOL headOnly;
-}
-
-@property (nonatomic, retain) NSURL *url;
-
-@property (nonatomic, retain) NSString *downloadEntityTag;
-@property (nonatomic, retain) NSDate *lastModifiedDate;
-
-@property (nonatomic, retain) NSString *downloadEntryIdentifier;
-@property (nonatomic, retain) NSString *folderForDownloading;
-
-@property (nonatomic, retain) id context;
 
 
+
+@property (nonatomic, strong, readonly) NSURL *url;
+
+@property (nonatomic, strong, readonly) NSString *downloadEntityTag;
+@property (nonatomic, strong, readonly) NSDate *lastModifiedDate;
+
+@property (nonatomic, strong, readonly) NSString *downloadEntryIdentifier;
+@property (nonatomic, strong) NSString *folderForDownloading;
+
+@property (nonatomic, strong) id context;
 
 @property (nonatomic, assign) id <DTDownloadDelegate> delegate;
 
@@ -75,8 +49,5 @@
 - (void)startWithResume:(BOOL)shouldResume;
 - (void)startHEAD;
 - (void)cancel;
-
-+ (NSString *)stringByFormattingBytesAsHumanReadable:(long long)bytes;
-
 
 @end

@@ -1,13 +1,12 @@
 //
-//  CatalogDownloader.m
-//  iCatalog
+//  DTDownload.m
+//  DTFoundation
 //
 //  Created by Oliver Drobnik on 8/6/10.
 //  Copyright 2010 Drobnik.com. All rights reserved.
 //
 
 #import "DTDownload.h"
-#import "DTZipArchive.h"
 #import "NSString+DTUtilities.h"
 
 @interface DTDownload ()
@@ -15,16 +14,39 @@
 @property (nonatomic, retain) NSString *internalDownloadFolder;
 @property (nonatomic, retain) NSDate *lastPaketTimestamp;
 
-- (void)updateInfoDictionary;
-- (void)completeDownload;
-- (void)startWithResume:(BOOL)shouldResume;
+- (void)_updateDownloadInfo;
+- (void)_completeDownload;
 
 @end
 
-
-
-
 @implementation DTDownload
+{
+	NSURL *_url;
+	NSString *internalDownloadFolder;
+	NSString *downloadEntityTag;
+	NSDate *lastModifiedDate;
+	NSString *downloadEntryIdentifier;
+	
+	NSString *folderForDownloading;
+	
+	// downloading
+	NSURLConnection *urlConnection;
+	NSMutableData *receivedData;
+	
+	NSDate *lastPaketTimestamp;
+	float previousSpeed;
+	
+	long long receivedBytes;
+	long long totalBytes;
+	
+	
+	NSString *receivedDataFilePath;
+	NSFileHandle *receivedDataFile;
+	
+	__unsafe_unretained id <DTDownloadDelegate> delegate;
+	
+	BOOL headOnly;
+}
 
 @synthesize url = _url, internalDownloadFolder, downloadEntityTag, downloadEntryIdentifier, folderForDownloading, lastPaketTimestamp, delegate, lastModifiedDate;
 @synthesize context;
@@ -33,10 +55,10 @@
 
 - (id)initWithURL:(NSURL *)url
 {
-  self = [super init];
+	self = [super init];
 	if (self)
 	{
-		self.url = url;
+		_url = url;
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:UIApplicationWillTerminateNotification object:nil];
 	}
@@ -52,7 +74,7 @@
 	if (!headOnly && receivedBytes < totalBytes)
 	{
 		// update resume info on disk
-		[self updateInfoDictionary];
+		[self _updateDownloadInfo];
 	}
 }
 
@@ -89,13 +111,13 @@
 		
 		totalBytes = [[infoDictionary objectForKey:@"DownloadEntryProgressTotalToLoad"] longLongValue];
 		receivedBytes = [[resumeInfo objectForKey:@"NSURLDownloadBytesReceived"] longLongValue];
-		self.downloadEntryIdentifier = [infoDictionary objectForKey:@"DownloadEntryIdentifier"];
+		downloadEntryIdentifier = [infoDictionary objectForKey:@"DownloadEntryIdentifier"];
 		if (!downloadEntryIdentifier)
 		{
-			self.downloadEntryIdentifier = [NSString stringWithUUID];
+			downloadEntryIdentifier = [NSString stringWithUUID];
 		}
 		
-		self.downloadEntityTag = [resumeInfo objectForKey:@"NSURLDownloadEntityTag"];
+		downloadEntityTag = [resumeInfo objectForKey:@"NSURLDownloadEntityTag"];
 		
 		
 		if ([delegate respondsToSelector:@selector(shouldResumeDownload:)])
@@ -127,8 +149,8 @@
 				// inconsistency, reset
 				receivedBytes = 0;
 				totalBytes = 0;
-				self.downloadEntityTag = nil;
-				self.lastModifiedDate = nil;
+				downloadEntityTag = nil;
+				lastModifiedDate = nil;
 				
 				[receivedDataFile closeFile];
 				
@@ -147,8 +169,7 @@
 				{
 					NSLog(@"Already done!");
 					
-					//[self completeDownload];
-					[self performSelectorInBackground:@selector(completeDownload) withObject:nil];
+					[self _completeDownload];
 					return;
 				}
 			}
@@ -165,7 +186,7 @@
 			return;
 		}
 		
-		self.downloadEntryIdentifier = [NSString stringWithUUID];
+		downloadEntryIdentifier = [NSString stringWithUUID];
 	}
 	
 	
@@ -196,7 +217,7 @@
 	if (receivedBytes < totalBytes)
 	{
 		// update resume info on disk
-		[self updateInfoDictionary];
+		[self _updateDownloadInfo];
 	}
 	
 	[urlConnection cancel];
@@ -205,125 +226,29 @@
 	urlConnection = nil;
 }
 
-- (void)notifyDelegateOfSuccessWithFiles:(NSArray *)files
+- (void)_completeDownload
 {
-	// notify delegate
-	if ([delegate respondsToSelector:@selector(download:didFinishWithFiles:)])
-	{
-		[delegate download:self didFinishWithFiles:files];
-	}
-}
-
-- (void)notifyDelegateOfError:(NSError *)error
-{
-	if ([delegate respondsToSelector:@selector(download:didFailWithError:)])
-	{
-		[delegate download:self didFailWithError:error];
-	}
-}
-
-
-- (void)completeDownload
-{
-	@autoreleasepool 
-	{
-	
 	NSError *error = nil;
 	
 	NSFileManager *fm = [NSFileManager defaultManager];
 	
-	NSMutableArray *downloadedFiles = [NSMutableArray array];
+	NSString *fileName = [[_url path] lastPathComponent];
+	NSString *targetPath = [self.folderForDownloading stringByAppendingPathComponent:fileName];
 	
-	NSString *extension = [[[_url path] pathExtension] lowercaseString];
-	
-	if ([extension isEqualToString:@"zip"])
+	if ([fm fileExistsAtPath:targetPath])
 	{
-		// notify delegate
-		if ([delegate respondsToSelector:@selector(downloadWillStartUncompressing:)])
+		// remove existing file
+		if (![fm removeItemAtPath:targetPath error:&error])
 		{
-			[(id)delegate performSelectorOnMainThread:@selector(downloadWillStartUncompressing:) withObject:self waitUntilDone:YES];
-		}
-		
-		// create unzip folder
-		NSString *unzipPath = [self.internalDownloadFolder stringByAppendingPathComponent:@"unzip"];
-		
-		if ([fm fileExistsAtPath:unzipPath])
-		{
-			if (![fm removeItemAtPath:unzipPath error:&error])
-			{
-				NSLog(@"Cannot remove item %@, %@", unzipPath, [error localizedDescription]);
-				return;
-			}
-		}
-		
-		if (![fm createDirectoryAtPath:unzipPath withIntermediateDirectories:NO attributes:nil error:&error])
-		{
-			NSLog(@"Cannot create directory %@, %@", unzipPath, [error localizedDescription]);
+			NSLog(@"Cannot remove item %@", [error localizedDescription]);
 			return;
-		}
-		
-		DTZipArchive *zip = [[DTZipArchive alloc] init];
-		
-		[zip enumerateUncompressedFilesAsDataUsingBlock:^(NSString *fileName, NSData *data, BOOL *stop) {
-			NSString *filePath = [unzipPath stringByAppendingPathComponent:fileName];
-			[data writeToFile:filePath atomically:YES];
-		}];					 
-							 
-		// make list of unzipped result files
-		NSArray *unzippedFiles = [fm contentsOfDirectoryAtPath:unzipPath error:&error];
-		
-		// move resulting files into final location
-		for (NSString *oneFile in unzippedFiles)
-		{
-			if (![oneFile isEqualToString:@"__MACOSX"])
-			{
-				
-				NSString *fullPath = [unzipPath stringByAppendingPathComponent:oneFile];
-				NSString *targetPath = [self.folderForDownloading stringByAppendingPathComponent:oneFile];
-				
-				if ([fm fileExistsAtPath:targetPath])
-				{
-					// remove existing file
-					if (![fm removeItemAtPath:targetPath error:&error])
-					{
-						NSLog(@"Cannot remove item %@", [error localizedDescription]);
-						return;
-					}
-				}
-				
-				if (![fm moveItemAtPath:fullPath toPath:targetPath error:&error])
-				{
-					NSLog(@"Cannot move item from %@ to %@, %@", fullPath, targetPath, [error localizedDescription]);
-					return;
-				}
-				
-				[downloadedFiles addObject:targetPath];
-			}
 		}
 	}
-	else 
+	
+	if (![fm moveItemAtPath:receivedDataFilePath toPath:targetPath error:&error])
 	{
-		// just a single file
-		NSString *fileName = [[_url path] lastPathComponent];
-		NSString *targetPath = [self.folderForDownloading stringByAppendingPathComponent:fileName];
-		
-		if ([fm fileExistsAtPath:targetPath])
-		{
-			// remove existing file
-			if (![fm removeItemAtPath:targetPath error:&error])
-			{
-				NSLog(@"Cannot remove item %@", [error localizedDescription]);
-				return;
-			}
-		}
-		
-		if (![fm moveItemAtPath:receivedDataFilePath toPath:targetPath error:&error])
-		{
-			NSLog(@"Cannot move item from %@ to %@, %@", receivedDataFilePath, targetPath, [error localizedDescription]);
-			return;
-		}
-		
-		[downloadedFiles addObject:targetPath];
+		NSLog(@"Cannot move item from %@ to %@, %@", receivedDataFilePath, targetPath, [error localizedDescription]);
+		return;
 	}
 	
 	// remove internal download folder
@@ -334,22 +259,15 @@
 	}
 	
 	// notify delegate
-	NSArray *files = [downloadedFiles copy];
-	
-	[self performSelectorOnMainThread:@selector(notifyDelegateOfSuccessWithFiles:) withObject:files waitUntilDone:YES];
-
-	}
+	dispatch_sync(dispatch_get_main_queue(), ^{
+		if ([delegate respondsToSelector:@selector(download:didFinishWithFile:)])
+		{
+			[delegate download:self didFinishWithFile:targetPath];
+		}
+	});
 }
 
--(void) ErrorMessage:(NSString*) msg
-{
-	NSError *error = [NSError errorWithDomain:@"UnZip" code:1 userInfo:[NSDictionary dictionaryWithObject:msg forKey:NSLocalizedDescriptionKey]];
-	[self performSelectorOnMainThread:@selector(notifyDelegateOfError:) withObject:error waitUntilDone:YES];
-}
-
-
-
-- (void)updateInfoDictionary
+- (void)_updateDownloadInfo
 {
 	NSMutableDictionary *resumeDict = [NSMutableDictionary dictionary];
 	
@@ -387,9 +305,9 @@
 	[receivedDataFile closeFile];
 	
 	// update resume info on disk
-	[self updateInfoDictionary];
+	[self _updateDownloadInfo];
 	
-	
+	// notify delegate of error
 	if ([delegate respondsToSelector:@selector(download:didFailWithError:)])
 	{
 		[delegate download:self didFailWithError:error];
@@ -407,7 +325,7 @@
 		if (http.statusCode>=400)
 		{
 			NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[NSHTTPURLResponse localizedStringForStatusCode:http.statusCode] forKey:NSLocalizedDescriptionKey];
-
+			
 			NSError *error = [NSError errorWithDomain:@"iCatalog" code:http.statusCode userInfo:userInfo];
 			
 			[connection cancel];
@@ -415,7 +333,7 @@
 			[self connection:connection didFailWithError:error];
 			return;
 		}
-			
+		
 		if (totalBytes<=0)
 		{
 			totalBytes = [response expectedContentLength];
@@ -424,7 +342,7 @@
 		NSString * currentEntityTag = [http.allHeaderFields objectForKey:@"Etag"];
 		if (!downloadEntityTag)
 		{
-			self.downloadEntityTag = currentEntityTag;
+			downloadEntityTag = currentEntityTag;
 		}
 		else 
 		{
@@ -448,7 +366,7 @@
 			NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 			[dateFormatter setLocale:locale];
 			
-			self.lastModifiedDate = [dateFormatter dateFromString:modified];
+			lastModifiedDate = [dateFormatter dateFromString:modified];
 		}
 		
 	}
@@ -499,7 +417,6 @@
 	{
 		[delegate download:self downloadedBytes:receivedBytes ofTotalBytes:totalBytes withSpeed:downloadSpeed];
 	}
-	
 }
 
 
@@ -519,8 +436,7 @@
 	}
 	else
 	{
-		//[self completeDownload];
-		[self performSelectorInBackground:@selector(completeDownload) withObject:nil];
+		[self _completeDownload];
 	}
 }
 
@@ -529,30 +445,10 @@
 {
 	if (!folderForDownloading)
 	{
-		// default = NSCachesDirectory
 		self.folderForDownloading = NSTemporaryDirectory();
 	}
 	
 	return folderForDownloading;
-}
-
-#pragma mark Formatting
-+ (NSString *)stringByFormattingBytesAsHumanReadable:(long long)bytes
-{
-	if (bytes>1024*1024)
-	{
-		float mb = bytes/(1024.0*1024.0);
-		return [NSString stringWithFormat:@"%.2f MB", mb];
-	}
-	else if (bytes>1024)
-	{
-		float kb = bytes/(1024.0);
-		return [NSString stringWithFormat:@"%.2f KB", kb];
-	}
-	else 
-	{
-		return [NSString stringWithFormat:@"%.0f B", bytes];
-	}
 }
 
 #pragma mark Notifications
