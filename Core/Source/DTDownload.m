@@ -48,7 +48,7 @@
 	BOOL headOnly;
 }
 
-@synthesize url = _url, internalDownloadFolder, downloadEntityTag, downloadEntryIdentifier, folderForDownloading, lastPaketTimestamp, delegate, lastModifiedDate;
+@synthesize url = _url, internalDownloadFolder, downloadEntityTag, folderForDownloading, lastPaketTimestamp, delegate, lastModifiedDate;
 @synthesize context;
 
 #pragma mark Downloading
