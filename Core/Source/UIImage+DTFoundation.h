@@ -52,11 +52,22 @@
  
 /**
  Cuts out a tile at the given row and column
+ 
+ @param column The index of the column
+ @param columns The total number of columns
+ @param row The index of the row
+ @param rows The total number of rows
+ @returns The resulting image
  */
 - (UIImage *)tileImageAtColumn:(NSUInteger)column ofColumns:(NSUInteger)columns row:(NSUInteger)row ofRows:(NSUInteger)rows;
 
 /**
  Cuts out a tile at the given clip rect relative to the bounds
+ 
+ @param clipRect The clipping rect to extract
+ @param bounds The bounds to which the clipRect is relative to
+ @param scale The image scale
+ @returns The resulting image
  */
 - (UIImage *)tileImageInClipRect:(CGRect)clipRect inBounds:(CGRect)bounds scale:(CGFloat)scale;
 
@@ -65,6 +76,12 @@
  @name Modifying Images
  */
 
+/**
+ Resizes the receiver to the given size.
+ 
+ @param newSize The target image size
+ @returns The resulting image
+ */
 - (UIImage *)imageScaledToSize:(CGSize)newSize;
 
 @end
