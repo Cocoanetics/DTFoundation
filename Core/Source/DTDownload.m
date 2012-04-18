@@ -259,12 +259,10 @@
 	}
 	
 	// notify delegate
-	dispatch_sync(dispatch_get_main_queue(), ^{
-		if ([delegate respondsToSelector:@selector(download:didFinishWithFile:)])
-		{
-			[delegate download:self didFinishWithFile:targetPath];
-		}
-	});
+	if ([delegate respondsToSelector:@selector(download:didFinishWithFile:)])
+	{
+		[delegate download:self didFinishWithFile:targetPath];
+	}
 }
 
 - (void)_updateDownloadInfo
