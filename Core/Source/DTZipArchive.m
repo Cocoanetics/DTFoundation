@@ -249,16 +249,35 @@
 		NSDate *fileDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
 		*/
 		
-		NSMutableData *tmpData = [[NSMutableData alloc] init];
+		// determine if this is a file or directory
+		BOOL isDirectory = NO;
 		
-		int readBytes;
-		while((readBytes = unzReadCurrentFile(_unzFile, buffer, BUFFER_SIZE)) > 0)
+		if ([fileName hasSuffix:@"/"] || [fileName hasSuffix:@"\\"])
 		{
-			[tmpData appendBytes:buffer length:readBytes];
+			isDirectory = YES;
 		}
 		
-		// call the enum block
-		enumerationBlock(fileName, tmpData, &shouldStop);
+		// change to only use forward slashes
+		fileName = [fileName stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
+
+		if (isDirectory)
+		{
+			// call the enum block
+			enumerationBlock(fileName, nil, &shouldStop);
+		}
+		else 
+		{
+			NSMutableData *tmpData = [[NSMutableData alloc] init];
+			
+			int readBytes;
+			while((readBytes = unzReadCurrentFile(_unzFile, buffer, BUFFER_SIZE)) > 0)
+			{
+				[tmpData appendBytes:buffer length:readBytes];
+			}
+			
+			// call the enum block
+			enumerationBlock(fileName, tmpData, &shouldStop);
+		}
 		
 		// close the current file
 		unzCloseCurrentFile(_unzFile);
