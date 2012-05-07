@@ -24,4 +24,11 @@
  */
 + (NSString *)stringWithUUID;
 
+
+/** creates an MD5 checksum 
+ 
+ @return returns an MD5 hash for the receiver.
+ */
+- (NSString *)md5Checksum;
+
 @end

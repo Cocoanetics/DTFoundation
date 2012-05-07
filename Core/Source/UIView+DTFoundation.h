@@ -59,8 +59,11 @@
 
 /** sets the shadow path to fit the receiver's bounds.
  
- This should be called whenever the receiver's bounds change, or else the shadow detaches.
+ This should be called whenever the receiver's bounds change, or else the shadow detaches. 
+ @warn Since this a CALayer property it needs to be explicitly animated, for example in the willRotate ... method of a `UIViewController`.
+ @param bounds The new bounds of the shadow path
+ @aram duration The animation duration. Specify a duration of 0 to not do an animation
 */
-- (void)updateShadowPathToBounds;
+- (void)updateShadowPathToBounds:(CGRect)bounds withDuration:(NSTimeInterval)duration;
 
 @end
