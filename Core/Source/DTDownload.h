@@ -80,6 +80,16 @@
 @property (nonatomic, strong, readonly) NSString *downloadEntityTag;
 
 /**
+ Returns the MIME type of the downloading file.
+ */
+@property (nonatomic, strong, readonly) NSString *MIMEType;
+
+/**
+ Returns the MIME type of the downloading file.
+ */
+@property (nonatomic, assign, readonly) long long totalBytes;
+
+/**
  Returns the last modified date of the downloading file.
  */
 @property (nonatomic, strong, readonly) NSDate *lastModifiedDate;
@@ -137,5 +147,7 @@
  Cancels a download in progress
  */
 - (void)cancel;
+
+- (BOOL)isLoading;
 
 @end
