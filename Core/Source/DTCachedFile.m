@@ -14,6 +14,7 @@
 @dynamic remoteURL;
 @dynamic fileData;
 @dynamic lastAccessDate;
+@dynamic lastModifiedDate;
 @dynamic expirationDate;
 @dynamic contentType;
 @dynamic fileSize;

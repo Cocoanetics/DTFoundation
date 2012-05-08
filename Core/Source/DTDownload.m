@@ -21,7 +21,7 @@
 
 @implementation DTDownload
 {
-	NSURL *_url;
+	NSURL *_URL;
 	NSString *internalDownloadFolder;
 	NSString *downloadEntityTag;
 	NSDate *lastModifiedDate;
@@ -54,12 +54,12 @@
 
 #pragma mark Downloading
 
-- (id)initWithURL:(NSURL *)url
+- (id)initWithURL:(NSURL *)URL
 {
 	self = [super init];
 	if (self)
 	{
-		_url = url;
+		_URL = URL;
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:UIApplicationWillTerminateNotification object:nil];
 	}
@@ -81,7 +81,7 @@
 
 - (void)startHEAD
 {
-	NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:_url
+	NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:_URL
 														 cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
 													 timeoutInterval:60.0];
 	[request setHTTPMethod:@"HEAD"];
@@ -97,7 +97,7 @@
 {
 	_isLoading = YES;
 	
-	NSString *fileName = [[_url absoluteString] md5Checksum];
+	NSString *fileName = [[_URL absoluteString] md5Checksum];
 	self.internalDownloadFolder = [[self.folderForDownloading stringByAppendingPathComponent:fileName] stringByAppendingPathExtension:@"download"];
 	
 	receivedDataFilePath = [internalDownloadFolder stringByAppendingPathComponent:fileName];
@@ -194,7 +194,7 @@
 	
 	
 	
-	NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:_url
+	NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:_URL
 														 cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
 													 timeoutInterval:60.0];
 	
@@ -237,7 +237,7 @@
 	
 	NSFileManager *fm = [NSFileManager defaultManager];
 	
-	NSString *fileName = [[_url path] lastPathComponent];
+	NSString *fileName = [[_URL path] lastPathComponent];
 	NSString *targetPath = [self.folderForDownloading stringByAppendingPathComponent:fileName];
 	
 	if ([fm fileExistsAtPath:targetPath])
@@ -281,7 +281,7 @@
 		[resumeDict setObject:downloadEntityTag forKey:@"NSURLDownloadEntityTag"];
 	}
 	
-	[resumeDict setObject:[_url description] forKey:@"DownloadEntryURL"];
+	[resumeDict setObject:[_URL description] forKey:@"DownloadEntryURL"];
 	
 	NSDictionary *writeDict = [NSDictionary dictionaryWithObjectsAndKeys:
 							   [NSNumber numberWithInt:-999], @"DownloadEntryErrorCodeDictionaryKey",
@@ -292,7 +292,7 @@
 							   [NSNumber numberWithLongLong:receivedBytes], @"DownloadEntryProgressBytesSoFar",
 							   [NSNumber numberWithLongLong:_totalBytes], @"DownloadEntryProgressTotalToLoad",
 							   resumeDict, @"DownloadEntryResumeInformation",
-							   [_url description], @"DownloadEntryURL"
+							   [_URL description], @"DownloadEntryURL"
 							   , nil];
 	
 	NSString *infoPath = [internalDownloadFolder stringByAppendingPathComponent:@"Info.plist"];
@@ -468,7 +468,7 @@
 	return _isLoading;
 }
 
-@synthesize url = _url, internalDownloadFolder, downloadEntityTag, folderForDownloading, lastPaketTimestamp, delegate, lastModifiedDate;
+@synthesize URL = _URL, internalDownloadFolder, downloadEntityTag, folderForDownloading, lastPaketTimestamp, delegate, lastModifiedDate;
 @synthesize MIMEType = _MIMEType;
 @synthesize totalBytes = _totalBytes;
 @synthesize context;
