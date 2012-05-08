@@ -95,10 +95,10 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	[_downloadQueue addObject:download];
 }
 
-- (void)_finishDownload:(DTDownload *)download
+- (void)_removeDownloadFromQueue:(DTDownload *)download
 {
 	[_activeDownloads removeObject:download];
-	[_downloads removeObjectForKey:download.url];
+	[_downloads removeObjectForKey:download.URL];
 	[_downloadQueue removeObject:download];
 }
 
@@ -106,11 +106,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 {
 	NSUInteger numberLoading = 0;
 
-	NSEnumerator *reverseEnumerator = [_downloadQueue reverseObjectEnumerator];
-	
-	DTDownload *nextDownload = nil;
-	
-	while ((nextDownload = [reverseEnumerator nextObject])) 
+	for (DTDownload *nextDownload in [_downloadQueue reverseObjectEnumerator]) 
 	{
 		if (numberLoading<_maxNumberOfConcurrentDownloads)
 		{
@@ -151,8 +147,14 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	
 	if (download)
 	{
-		// already loading
-		// TODO: higher prio in queue?
+		// already in queue, give it higher prio
+		if (![download isLoading])
+		{
+			// move it to end of LIFO queue
+			[_downloadQueue removeObject:download];
+			[_downloadQueue addObject:download];
+		}
+		
 		return nil;
 	}
 	
@@ -171,7 +173,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 - (void)download:(DTDownload *)download didFailWithError:(NSError *)error
 {
-	[self _finishDownload:download];
+	[self _removeDownloadFromQueue:download];
 
 	[self _startNextQueuedDownload];
 }
@@ -187,22 +189,22 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 																				 inManagedObjectContext:tmpContext];	
 		cachedFile.lastAccessDate = [NSDate date];
 		cachedFile.expirationDate = [NSDate distantFuture];
+		cachedFile.lastModifiedDate = download.lastModifiedDate;
 		NSData *data = [NSData dataWithContentsOfMappedFile:path];
 		cachedFile.entityTagIdentifier = download.downloadEntityTag;
 		cachedFile.fileData = data;
 		cachedFile.fileSize = [NSNumber numberWithLongLong:download.totalBytes];
 		cachedFile.contentType = download.MIMEType;
-		cachedFile.remoteURL = [download.url absoluteString];
+		cachedFile.remoteURL = [download.URL absoluteString];
 		
 		[self _commitContext:tmpContext];
 		
 		dispatch_sync(dispatch_get_main_queue(), ^{
-			NSLog(@"done: %@", download.url);
-			[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadCacheDidCacheFileNotification object:download.url];
+			[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadCacheDidCacheFileNotification object:download.URL];
 		});
 	});
 	
-	[self _finishDownload:download];
+	[self _removeDownloadFromQueue:download];
 	
 	[self _startNextQueuedDownload];
 }
@@ -241,6 +243,12 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	[lastAccessDateAttribute setAttributeType:NSDateAttributeType];
 	[lastAccessDateAttribute setOptional:NO];
 	[properties addObject:lastAccessDateAttribute];
+	
+	NSAttributeDescription *lastModifiedDateAttribute = [[NSAttributeDescription alloc] init];
+	[lastModifiedDateAttribute setName:@"lastModifiedDate"];
+	[lastModifiedDateAttribute setAttributeType:NSDateAttributeType];
+	[lastModifiedDateAttribute setOptional:YES];
+	[properties addObject:lastModifiedDateAttribute];
 
 	NSAttributeDescription *expirationDateAttribute = [[NSAttributeDescription alloc] init];
 	[expirationDateAttribute setName:@"expirationDate"];
@@ -311,7 +319,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	[_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];
 	
 	// subscribe to change notifications
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mocChanged:) name:NSManagedObjectContextDidSaveNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_mocDidSaveNotification:) name:NSManagedObjectContextDidSaveNotification object:nil];
 }
 
 
@@ -343,7 +351,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	}
 }
 
-- (void)mocChanged:(NSNotification *)notification
+- (void)_mocDidSaveNotification:(NSNotification *)notification
 {
 	// ignore change notifications for the main MOC
 	
