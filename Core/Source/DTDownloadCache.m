@@ -124,8 +124,21 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 #pragma mark External Methods
 
+
 - (NSData *)cachedDataForURL:(NSURL *)URL shouldLoad:(BOOL)shouldLoad
 {
+	// TODO: make this thread-safe so it can be called from background threads
+	if (dispatch_get_current_queue() != dispatch_get_main_queue())
+	{
+		__block NSData *retData;
+		
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			retData = [self cachedDataForURL:URL shouldLoad:shouldLoad];
+		});
+		
+		return retData;
+	}
+	
 	DTCachedFile *existingCacheEntry = [self _cachedFileForURL:URL];
 	
 	if (existingCacheEntry)
@@ -511,6 +524,8 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 
 @implementation DTDownloadCache (Images)
+
+//TODO: make this thread-safe to be called from background threads
 
 - (UIImage *)cachedImageForURL:(NSURL *)URL shouldLoad:(BOOL)shouldLoad
 {
