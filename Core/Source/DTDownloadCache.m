@@ -21,7 +21,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 @interface DTDownloadCache ()
 
 - (void)_setupCoreDataStack;
-- (DTCachedFile *)_cachedFileForURL:(NSURL *)URL;
+- (DTCachedFile *)_cachedFileForURL:(NSURL *)URL inContext:(NSManagedObjectContext *)context;
 - (NSUInteger)_currentDiskUsageInContext:(NSManagedObjectContext *)context;
 - (void)_commitContext:(NSManagedObjectContext *)context;
 
@@ -139,7 +139,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		return retData;
 	}
 	
-	DTCachedFile *existingCacheEntry = [self _cachedFileForURL:URL];
+	DTCachedFile *existingCacheEntry = [self _cachedFileForURL:URL inContext:_managedObjectContext];
 	
 	if (existingCacheEntry)
 	{
@@ -335,8 +335,8 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_mocDidSaveNotification:) name:NSManagedObjectContextDidSaveNotification object:nil];
 }
 
-
-- (DTCachedFile *)_cachedFileForURL:(NSURL *)URL
+// returned objects can only be used from the same context
+- (DTCachedFile *)_cachedFileForURL:(NSURL *)URL inContext:(NSManagedObjectContext *)context
 {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DTCachedFile"];
 	
@@ -344,7 +344,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	request.fetchLimit = 1;
 	
 	NSError *error;
-	NSArray *results = [_managedObjectContext executeFetchRequest:request error:&error];
+	NSArray *results = [context executeFetchRequest:request error:&error];
 	
 	if (!results)
 	{
