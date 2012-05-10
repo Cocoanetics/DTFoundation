@@ -95,7 +95,9 @@ typedef enum
 - (void)parserFoundNull:(DTASN1Parser *)parser;
 
 /**
- Sent by a parser object when a NULL type is encountered.
+ Sent by a parser object to provide its delegate with the date encoded in the current element.
+ 
+ All the ASN1 date types are provided via this method.
  
  @param parser A parser object.
  @param date A date representing the date encoded in the current element.
