@@ -9,6 +9,8 @@
 #import "DTDownload.h"
 #import "NSString+DTUtilities.h"
 
+NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotification";
+
 @interface DTDownload ()
 
 @property (nonatomic, retain) NSString *internalDownloadFolder;
@@ -50,6 +52,9 @@
 	BOOL headOnly;
 	
 	BOOL _isLoading;
+	
+	// response handlers
+	DTDownloadResponseHandler _responseHandler;
 }
 
 #pragma mark Downloading
@@ -97,7 +102,7 @@
 {
 	_isLoading = YES;
 	
-	NSString *fileName = [[_URL absoluteString] md5Checksum];
+	NSString *fileName = [[_URL path] lastPathComponent];
 	self.internalDownloadFolder = [[self.folderForDownloading stringByAppendingPathComponent:fileName] stringByAppendingPathExtension:@"download"];
 	
 	receivedDataFilePath = [internalDownloadFolder stringByAppendingPathComponent:fileName];
@@ -120,9 +125,6 @@
 			downloadEntryIdentifier = [NSString stringWithUUID];
 		}
 		
-		downloadEntityTag = [resumeInfo objectForKey:@"NSURLDownloadEntityTag"];
-		
-		
 		if ([delegate respondsToSelector:@selector(shouldResumeDownload:)])
 		{
 			if (!shouldResume || ![delegate shouldResumeDownload:self])
@@ -140,6 +142,9 @@
 		
 		if (shouldResume)
 		{
+			downloadEntityTag = [resumeInfo objectForKey:@"NSURLDownloadEntityTag"];
+
+			
 			// here we assume we should continue download
 			receivedDataFile = [NSFileHandle fileHandleForWritingAtPath:receivedDataFilePath];
 			[receivedDataFile seekToEndOfFile];
@@ -170,12 +175,19 @@
 			{
 				if (receivedBytes && receivedBytes == _totalBytes)
 				{
-					NSLog(@"Already done!");
-					
+					// Already done!
 					[self _completeDownload];
 					return;
 				}
 			}
+		}
+		else 
+		{
+			// reset
+			receivedBytes = 0;
+			_totalBytes = 0;
+			downloadEntityTag = nil;
+			lastModifiedDate = nil;
 		}
 	}
 	else 
@@ -183,7 +195,7 @@
 		// create download folder
 		NSError *error = nil;
 		
-		if (![[NSFileManager defaultManager] createDirectoryAtPath:internalDownloadFolder withIntermediateDirectories:NO attributes:nil error:&error])
+		if (![[NSFileManager defaultManager] createDirectoryAtPath:internalDownloadFolder withIntermediateDirectories:YES attributes:nil error:&error])
 		{
 			NSLog(@"Cannot create download folder %@, %@", internalDownloadFolder, [error localizedDescription]);
 			return;
@@ -191,8 +203,6 @@
 		
 		downloadEntryIdentifier = [NSString stringWithUUID];
 	}
-	
-	
 	
 	NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:_URL
 														 cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
@@ -267,6 +277,11 @@
 	if ([delegate respondsToSelector:@selector(download:didFinishWithFile:)])
 	{
 		[delegate download:self didFinishWithFile:targetPath];
+	}
+	
+	if (_completionHandler)
+	{
+		_completionHandler(self);
 	}
 }
 
@@ -359,8 +374,6 @@
 			}
 		}
 		
-		
-		
 		// get something to identify file
 		NSString *modified = [http.allHeaderFields objectForKey:@"Last-Modified"];
 		if (modified) 
@@ -373,6 +386,10 @@
 			lastModifiedDate = [dateFormatter dateFromString:modified];
 		}
 		
+		if (_responseHandler)
+		{
+			_responseHandler(self, [http allHeaderFields]);
+		}
 	}
 	else 
 	{
@@ -415,20 +432,27 @@
 	
 	self.lastPaketTimestamp = now;
 	
-	
 	// notify delegate
 	if ([delegate respondsToSelector:@selector(download:downloadedBytes:ofTotalBytes:withSpeed:)])
 	{
 		[delegate download:self downloadedBytes:receivedBytes ofTotalBytes:_totalBytes withSpeed:downloadSpeed];
 	}
+	
+	// send notification
+	if (_totalBytes)
+	{
+		NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:(float)receivedBytes / (float)_totalBytes] forKey:@"ProgressPercent"];
+		[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadProgressNotification object:self userInfo:userInfo];
+	}
 }
-
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 	receivedData = nil;
 	urlConnection = nil;
-	
+
+	_isLoading = NO;
+
 	[receivedDataFile closeFile];
 	
 	if (headOnly)
@@ -442,8 +466,6 @@
 	{
 		[self _completeDownload];
 	}
-	
-	_isLoading = NO;
 }
 
 #pragma mark Notifications
@@ -457,7 +479,9 @@
 {
 	if (!folderForDownloading)
 	{
-		self.folderForDownloading = NSTemporaryDirectory();
+		NSString *md5 = [[_URL absoluteString] md5Checksum];
+		
+		self.folderForDownloading = [NSTemporaryDirectory() stringByAppendingPathComponent:md5];
 	}
 	
 	return folderForDownloading;
@@ -472,6 +496,8 @@
 @synthesize MIMEType = _MIMEType;
 @synthesize totalBytes = _totalBytes;
 @synthesize context;
+@synthesize responseHandler = _responseHandler;
+@synthesize completionHandler = _completionHandler;
 
 
 @end
