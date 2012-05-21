@@ -435,8 +435,16 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 {
 	// ignore change notifications for the main MOC
 	
-	if (_managedObjectContext == [notification object])
+	NSManagedObjectContext *savedContext = [notification object];
+	
+	if (_managedObjectContext == savedContext)
 	{
+		return;
+	}
+	
+	if (_managedObjectContext.persistentStoreCoordinator != savedContext.persistentStoreCoordinator)
+	{
+		// that's another database
 		return;
 	}
 	
