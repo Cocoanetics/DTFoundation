@@ -10,6 +10,16 @@
 
 extern NSString *DTDownloadCacheDidCacheFileNotification;
 
+
+enum {
+    DTDownloadCacheOptionNeverLoad = 0,
+    DTDownloadCacheOptionLoadIfNotCached,
+    DTDownloadCacheOptionReturnCacheAndLoadAlways,
+    DTDownloadCacheOptionReturnCacheAndLoadIfChanged,
+};
+typedef NSUInteger DTDownloadCacheOption;
+
+
 @interface DTDownloadCache : NSObject <DTDownloadDelegate>
 
 /**
@@ -20,10 +30,10 @@ extern NSString *DTDownloadCacheDidCacheFileNotification;
 
 /**
  @param URL The URL of the file
- @param shouldLoad If the data should be loaded from the web in case it is not cached already.
+ @param option A loading option to specify wheter the file should be loaded if it is already cached.
  @returns The cached image or `nil` if none is cached.
  */
-- (NSData *)cachedDataForURL:(NSURL *)URL shouldLoad:(BOOL)shouldLoad;
+- (NSData *)cachedDataForURL:(NSURL *)URL option:(DTDownloadCacheOption)option;
 
 /**
  current sum of cached files in Bytes
@@ -52,9 +62,9 @@ extern NSString *DTDownloadCacheDidCacheFileNotification;
 /**
  Specialized method for retrieving cached images.
  @param URL The URL of the image
- @param shouldLoad If the image should be loaded from the web in case it is not cached already.
+ @param option A loading option to specify wheter the file should be loaded if it is already cached.
  @returns The cached image or `nil` if none is cached.
  */
-- (UIImage *)cachedImageForURL:(NSURL *)URL shouldLoad:(BOOL)shouldLoad;
+- (UIImage *)cachedImageForURL:(NSURL *)URL option:(DTDownloadCacheOption)option;
 
 @end

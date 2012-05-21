@@ -210,8 +210,21 @@
     {
         return;
     }
+
+    // clean up
+    for (UIView *oneView in _visiblePageViews)
+    {
+        [oneView removeFromSuperview];
+    }
     
+    [_visiblePageViews removeAllObjects];
+    [_viewsByPage removeAllObjects];
+    
+    // load
     _numberOfPages = [_pageDatasource numberOfPagesInSmartPagingScrollView:self];
+    
+    // make sure we stay in valid range
+    _currentPageIndex = MAX(0, MIN(_currentPageIndex, _numberOfPages-1));
 
     [self setNeedsLayout];
 }

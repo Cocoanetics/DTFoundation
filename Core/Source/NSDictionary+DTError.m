@@ -16,11 +16,10 @@
 	CFPropertyListRef propertyList;
 	CFStringRef       errorString;
 	CFDataRef         resourceData;
-	Boolean           status;
 	SInt32            errorCode;
 	
 	// Read the XML file.
-	status = CFURLCreateDataAndPropertiesFromResource(
+	CFURLCreateDataAndPropertiesFromResource(
 													  kCFAllocatorDefault,
 													  (__bridge CFURLRef)URL,
 													  &resourceData,            // place to put file data
@@ -40,7 +39,6 @@
 	if (resourceData) 
 	{
 		readDictionary = [NSDictionary dictionaryWithDictionary:(__bridge NSDictionary *)propertyList];
-		CFRelease(propertyList);
 		CFRelease( resourceData );
 	}
 	else 
@@ -59,6 +57,11 @@
 			
 			CFRelease(errorString);
 		}
+	}
+	
+	if (propertyList)
+	{
+		CFRelease(propertyList);
 	}
 	
 	return readDictionary;
@@ -87,7 +90,7 @@
 	// we check if it is the correct type and only return it if it is
 	if ([(__bridge id)plist isKindOfClass:[NSDictionary class]])
 	{
-		return (__bridge NSDictionary *)plist;
+		return (__bridge_transfer NSDictionary *)plist;
 	}
 	else
 	{

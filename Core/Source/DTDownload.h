@@ -1,14 +1,23 @@
 //
-//  CatalogDownloader.h
-//  iCatalog
+//  DTDownload.h
+//  DTFoundation
 //
 //  Created by Oliver Drobnik on 8/6/10.
 //  Copyright 2010 Drobnik.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+// notifications
+extern NSString * const DTDownloadProgressNotification;
+
 
 @class DTDownload;
+
+// block-based response handler, called after headers were received
+typedef void (^DTDownloadResponseHandler)(DTDownload *, NSDictionary *headers);
+
+// block-based completion handler, called once the download has finished
+typedef void (^DTDownloadCompletionHandler)(DTDownload *);
+
 
 /**
  Methods that a delegate of a download object is being queried with.
@@ -149,5 +158,20 @@
 - (void)cancel;
 
 - (BOOL)isLoading;
+
+/**-------------------------------------------------------------------------------------
+ @name Block Handlers
+ ---------------------------------------------------------------------------------------
+ */
+
+/**
+ Sets the block to execute as soon as the HTTP response has been received.
+ */
+@property (nonatomic, copy) DTDownloadResponseHandler responseHandler;
+
+/**
+ Sets the block to execute as soon as the download has completed.
+ */
+@property (nonatomic, copy) DTDownloadCompletionHandler completionHandler;
 
 @end
