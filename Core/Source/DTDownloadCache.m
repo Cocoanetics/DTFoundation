@@ -78,7 +78,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		
 		_memoryCache = [[NSCache alloc] init];
 		
-		_maxNumberOfConcurrentDownloads = 5;
+		_maxNumberOfConcurrentDownloads = 1;
 		_diskCapacity = 1024*1024*20; // 20 MB
 	}
 	
@@ -153,13 +153,48 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		{
 			if (![nextDownload isLoading])
 			{
+				NSLog(@"download for URL %@ started", nextDownload.URL);
+				
 				[_activeDownloads addObject:nextDownload];
 				[nextDownload startWithResume:YES];
 			}
-			
+
 			numberLoading++;
 		}
 	}
+	
+	NSLog(@"Loading Downloads: %d", numberLoading);
+}
+
+- (void)_cancelDownloadsOverConcurrencyLimit
+{
+	NSUInteger numberLoading = 0;
+	
+	for (DTDownload *nextDownload in [_downloadQueue reverseObjectEnumerator]) 
+	{
+		if ([nextDownload isLoading])
+		{
+			numberLoading++;
+
+			if (numberLoading<=_maxNumberOfConcurrentDownloads)
+			{
+				// leave it be
+			}
+			else 
+			{
+				// cancel
+				[nextDownload cancel];
+				
+				[_activeDownloads removeObject:nextDownload];
+				
+				// cancel ditches the delegate, lets restore that
+				nextDownload.delegate = self;
+			}
+
+		}
+	}
+	
+	NSLog(@"Loading Downloads: %d", numberLoading);
 }
 
 
@@ -577,8 +612,23 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 - (void)setMaxNumberOfConcurrentDownloads:(NSUInteger)maxNumberOfConcurrentDownloads
 {
-	NSAssert(maxNumberOfConcurrentDownloads>0, @"maximum number of concurrent downloads cannot be zero");
-	_maxNumberOfConcurrentDownloads = maxNumberOfConcurrentDownloads;
+	if (_maxNumberOfConcurrentDownloads != maxNumberOfConcurrentDownloads)
+	{
+		BOOL needsTrim = (maxNumberOfConcurrentDownloads < _maxNumberOfConcurrentDownloads);
+		
+		NSAssert(maxNumberOfConcurrentDownloads>0, @"maximum number of concurrent downloads cannot be zero");
+		_maxNumberOfConcurrentDownloads = maxNumberOfConcurrentDownloads;
+	
+		NSLog(@"Concurrent Downloads set to %d", maxNumberOfConcurrentDownloads);
+		
+		// starts/stops enough downloads to match the max number
+		[self _startNextQueuedDownload];
+		
+		if (needsTrim)
+		{
+			[self _cancelDownloadsOverConcurrencyLimit];
+		}
+	}
 }
 
 - (void)setDiskCapacity:(NSUInteger)diskCapacity

@@ -9,6 +9,8 @@
 #import "DTDownload.h"
 #import "NSString+DTUtilities.h"
 
+NSString * const DTDownloadDidStartNotification = @"DTDownloadDidStartNotification";
+NSString * const DTDownloadDidFinishNotification = @"DTDownloadDidFinishNotification";
 NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotification";
 
 @interface DTDownload ()
@@ -52,6 +54,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	BOOL headOnly;
 	
 	BOOL _isLoading;
+	BOOL _cancelled;
 	
 	// response handlers
 	DTDownloadResponseHandler _responseHandler;
@@ -92,7 +95,11 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	[request setHTTPMethod:@"HEAD"];
 	
 	// start downloading
-	urlConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+	
+	// without this special it would get paused during scrolling of scroll views
+	[urlConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode: NSRunLoopCommonModes];
+	[urlConnection start];
 	
 	// getting only a HEAD
 	headOnly = YES;
@@ -100,6 +107,16 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 
 - (void)startWithResume:(BOOL)shouldResume
 {
+	if (_isLoading)
+	{
+		return;
+	}
+	
+	if (_cancelled)
+	{
+		_cancelled = NO;
+	}
+	
 	_isLoading = YES;
 	
 	NSString *fileName = [[_URL path] lastPathComponent];
@@ -214,8 +231,15 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		[request setValue:[NSString stringWithFormat:@"bytes=%lld-", receivedBytes] forHTTPHeaderField:@"Range"];
 	}
 	
+	// send notification
+	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidStartNotification object:self];
+	
 	// start downloading
-	urlConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+	
+	// without this special it would get paused during scrolling of scroll views
+	[urlConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode: NSRunLoopCommonModes];
+	[urlConnection start];
 	
 	if (urlConnection) 
 	{
@@ -225,6 +249,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 
 - (void)cancel
 {
+	_cancelled = YES;
 	self.delegate = nil;
 	
 	if (receivedBytes < _totalBytes)
@@ -239,6 +264,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	urlConnection = nil;
 	
 	_isLoading = NO;
+	
+	// send notification
+	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidFinishNotification object:self];
 }
 
 - (void)_completeDownload
@@ -332,6 +360,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	}
 	
 	_isLoading = NO;
+	
+	// send notification
+	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidFinishNotification object:self];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -454,6 +485,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	_isLoading = NO;
 
 	[receivedDataFile closeFile];
+	receivedDataFile = nil;
 	
 	if (headOnly)
 	{
@@ -466,6 +498,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	{
 		[self _completeDownload];
 	}
+	
+	// send notification
+	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidFinishNotification object:self];
 }
 
 #pragma mark Notifications
