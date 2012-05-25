@@ -153,8 +153,6 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		{
 			if (![nextDownload isLoading])
 			{
-				NSLog(@"download for URL %@ started", nextDownload.URL);
-				
 				[_activeDownloads addObject:nextDownload];
 				[nextDownload startWithResume:YES];
 			}
@@ -162,8 +160,6 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 			numberLoading++;
 		}
 	}
-	
-	NSLog(@"Loading Downloads: %d", numberLoading);
 }
 
 - (void)_cancelDownloadsOverConcurrencyLimit
