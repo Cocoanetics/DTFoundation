@@ -401,6 +401,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 			{
 				// file was changed on server restart from beginning
 				[urlConnection cancel];
+                
+                // update loading flag to allow resume
+                _isLoading = NO;
 				[self startWithResume:NO];
 			}
 		}
