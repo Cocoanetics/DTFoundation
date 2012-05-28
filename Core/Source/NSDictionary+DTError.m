@@ -7,7 +7,9 @@
 //
 
 #import "NSDictionary+DTError.h"
-#import <Foundation/Foundation.h>
+
+// force this category to be loaded by linker
+MAKE_CATEGORIES_LOADABLE(NSDictionary_DTError);
 
 @implementation NSDictionary (DTError)
 
