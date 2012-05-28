@@ -92,7 +92,11 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	[request setHTTPMethod:@"HEAD"];
 	
 	// start downloading
-	urlConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+	
+	// without this special it would get paused during scrolling of scroll views
+	[urlConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode: NSRunLoopCommonModes];
+	[urlConnection start];
 	
 	// getting only a HEAD
 	headOnly = YES;
@@ -215,7 +219,11 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	}
 	
 	// start downloading
-	urlConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	urlConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+
+	// without this special it would get paused during scrolling of scroll views
+	[urlConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode: NSRunLoopCommonModes];
+	[urlConnection start];
 	
 	if (urlConnection) 
 	{
