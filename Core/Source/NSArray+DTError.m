@@ -8,6 +8,8 @@
 
 #import "NSArray+DTError.h"
 
+// force this category to be loaded by linker
+MAKE_CATEGORIES_LOADABLE(NSArray_DTError);
 
 @implementation NSArray (DTError)
 

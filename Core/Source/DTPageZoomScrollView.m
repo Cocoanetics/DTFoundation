@@ -99,7 +99,6 @@ NSString * const DTPageZoomScrollViewDidZoomNotification = @"DTPageZoomScrollVie
 
 - (void)layoutSubviews
 {
-    
     [super layoutSubviews];
     
     CGSize boundsSize = self.bounds.size;
