@@ -9,6 +9,7 @@
 /** This is how the enumeration block needs to look like. Setting *stop to YES will stop the enumeration.
  */
 typedef void (^DTZipArchiveEnumerationResultsBlock)(NSString *fileName, NSData *data, BOOL *stop);
+typedef void (^DTZipArchiveUncompressionCompletionBlock)();
 
 /** Supported compression schemes
  */

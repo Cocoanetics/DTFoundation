@@ -6,6 +6,9 @@
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
 	#import "LoadableCategory.h"
+
+	// DTDownloadCache
+	#import <CoreData/CoreData.h>
 #endif
 
 //#if !__has_feature(objc_arc)

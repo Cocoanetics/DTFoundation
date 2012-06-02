@@ -11,7 +11,47 @@
 // force this category to be loaded by linker
 MAKE_CATEGORIES_LOADABLE(UIImage_DTFoundation);
 
+
+
 @implementation UIImage (DTFoundation)
+
+#pragma mark Loading
+
++ (UIImage *)imageWithContentsOfURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy error:(NSError **)error
+{
+	NSURLRequest *request = [NSURLRequest requestWithURL:URL cachePolicy:cachePolicy timeoutInterval:10.0];
+	
+	NSCachedURLResponse *cacheResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:request];
+	
+	NSData *data;
+	
+	if (cacheResponse)
+	{
+		data = [cacheResponse data];
+		NSLog(@"cache hit");
+	}
+	else {
+		NSLog(@"cache fail");
+	}
+
+	
+	NSURLResponse *response;
+	data = [NSURLConnection sendSynchronousRequest:request
+										 returningResponse:&response
+													 error:error];
+	
+	if (!data)
+	{
+		NSLog(@"Error loading image at %@", URL);
+		return nil;
+	}
+	
+	UIImage *image = [UIImage imageWithData:data];
+	return image;
+}
+
+
+#pragma mark Drawing
 
 - (void)drawInRect:(CGRect)rect withContentMode:(UIViewContentMode)contentMode
 {
@@ -178,5 +218,70 @@ MAKE_CATEGORIES_LOADABLE(UIImage_DTFoundation);
 	CGContextRestoreGState(context);
 }
 
+#pragma mark Tiles
+- (UIImage *)tileImageAtColumn:(NSUInteger)column ofColumns:(NSUInteger)columns row:(NSUInteger)row ofRows:(NSUInteger)rows
+{
+	// calculate resulting size
+	CGFloat retWidth = roundf(self.size.width / (CGFloat)columns);
+	CGFloat retHeight = roundf(self.size.height / (CGFloat)rows);
+	
+	UIGraphicsBeginImageContextWithOptions(CGSizeMake(retWidth, retHeight), YES, self.scale);
+	
+	// move the context such that the left/top of the tile is at the left/top of the context
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextTranslateCTM(context, -retWidth*column, -retHeight*row);
+	
+	// draw the image
+	[self drawAtPoint:CGPointZero];
+
+	UIImage *retImage = UIGraphicsGetImageFromCurrentImageContext();
+	
+	UIGraphicsEndImageContext();
+	
+	return retImage;
+}
+
+- (UIImage *)tileImageInClipRect:(CGRect)clipRect inBounds:(CGRect)bounds scale:(CGFloat)scale
+{
+	UIGraphicsBeginImageContextWithOptions(clipRect.size, YES, scale);
+
+
+	CGFloat zoom = self.size.width / bounds.size.width;
+	
+	// this is the part from the origin image
+	CGRect clipInOriginal = clipRect;
+	clipInOriginal.origin.x *= zoom;
+	clipInOriginal.origin.y *= zoom;
+	clipInOriginal.size.width *= zoom;
+	clipInOriginal.size.height *= zoom;
+	
+	// move the context such that the left/top of the tile is at the left/top of the context
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextTranslateCTM(context, -clipRect.origin.x, -clipRect.origin.y);
+	CGContextScaleCTM(context, 1.0/zoom, 1.0/zoom);
+	
+	// draw the image
+	[self drawAtPoint:CGPointZero];
+
+	UIImage *retImage = UIGraphicsGetImageFromCurrentImageContext();
+
+	UIGraphicsEndImageContext();
+	
+	return retImage;
+}
+
+#pragma mark Modifying Images
+
+- (UIImage *)imageScaledToSize:(CGSize)newSize
+{
+	UIGraphicsBeginImageContextWithOptions(newSize, NO, self.scale);
+	[self drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+	
+	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+	
+	UIGraphicsEndImageContext();
+	
+	return image;
+}
 
 @end
