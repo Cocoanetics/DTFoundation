@@ -54,12 +54,24 @@ NSString *shadowContext = @"Shadow";
 	self.layer.masksToBounds = NO;
 }
 
-- (void)updateShadowPathToBounds
+- (void)updateShadowPathToBounds:(CGRect)bounds withDuration:(NSTimeInterval)duration
 {
-	// add shadow path, needs to be updated when frame changes
-	CGPathRef path = CGPathCreateWithRect(self.bounds, NULL);
-	self.layer.shadowPath = path;
-	CGPathRelease(path);
+	CGPathRef oldPath = self.layer.shadowPath;
+	CGPathRef newPath = CGPathCreateWithRect(bounds, NULL);
+	
+	if (oldPath && duration>0)
+	{
+		CABasicAnimation *theAnimation = [CABasicAnimation animationWithKeyPath:@"shadowPath"];
+		theAnimation.duration = duration;
+		theAnimation.fromValue = (__bridge id)oldPath;
+		theAnimation.toValue = (__bridge id)newPath;
+		theAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+		[self.layer addAnimation:theAnimation forKey:@"shadowPath"];
+	}
+	
+	self.layer.shadowPath = newPath;
+
+	CGPathRelease(newPath);
 }
 
 @end

@@ -7,7 +7,8 @@
 //
 
 
-/** A collection of useful additions for `NSString` to deal with paths.
+/** 
+ A collection of useful additions for `NSString` to deal with paths.
  */
 
 @interface NSString (DTPaths)
@@ -55,5 +56,31 @@
  @return The generated temporary path.
  */
 + (NSString *)pathForTemporaryFile;
+
+
+/**-------------------------------------------------------------------------------------
+ @name Working with Paths
+ ---------------------------------------------------------------------------------------
+ */
+
+/** Appends or Increments a sequence number in brackets 
+ 
+ If the receiver already has a number suffix then it is incremented. If not then (1) is added.
+ 
+ @return The incremented path
+*/
+- (NSString *)pathByIncrementingSequenceNumber;
+
+
+/** Removes a sequence number in brackets 
+ 
+ If the receiver number suffix then it is removed. If not the receiver is returned.
+ 
+ @return The modified path
+ */
+- (NSString *)pathByDeletingSequenceNumber;
+
+
+
 
 @end
