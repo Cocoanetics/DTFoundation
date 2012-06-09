@@ -8,6 +8,10 @@
 
 #import "DTActionSheet.h"
 
+@interface DTActionSheet () <UIActionSheetDelegate>
+
+@end
+
 @implementation DTActionSheet
 {
 	id <UIActionSheetDelegate> _externalDelegate;
@@ -27,7 +31,7 @@
 
 - (id)initWithTitle:(NSString *)title
 {
-	self = [super initWithTitle:title delegate:(id)self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles: nil];
+	self = [super initWithTitle:title delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
 	
 	if (self)
 	{
@@ -126,11 +130,11 @@
 	return _externalDelegate;
 }
 
-- (void)setDelegate:(id<UIActionSheetDelegate>)delegate
+- (void)setDelegate:(id <UIActionSheetDelegate>)delegate
 {
-	if (delegate == (id)self)
+	if (delegate == self)
 	{
-		[super setDelegate:(id)self];
+		[super setDelegate:self];
 	}
 	else if (delegate == nil)
 	{
