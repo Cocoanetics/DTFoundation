@@ -13,6 +13,16 @@
 	id <UIActionSheetDelegate> _externalDelegate;
 	
 	NSMutableDictionary *_actionsPerIndex;
+	
+	// lookup bitmask what delegate methods are implemented
+	struct 
+	{
+		unsigned int delegateSupportsActionSheetCancel:1;
+		unsigned int delegateSupportsWillPresentActionSheet:1;
+		unsigned int delegateSupportsDidPresentActionSheet:1;
+		unsigned int delegateSupportsWillDismissWithButtonIndex:1;
+		unsigned int delegateSupportsDidDismissWithButtonIndex:1;
+	} _delegateFlags;
 }
 
 - (id)initWithTitle:(NSString *)title
@@ -60,22 +70,34 @@
 
 - (void)actionSheetCancel:(UIActionSheet *)actionSheet
 {
-	[_externalDelegate actionSheetCancel:actionSheet];
+	if (_delegateFlags.delegateSupportsActionSheetCancel)
+	{
+		[_externalDelegate actionSheetCancel:actionSheet];
+	}
 }
 
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet
 {
-	[_externalDelegate willPresentActionSheet:actionSheet];	
+	if (_delegateFlags.delegateSupportsWillPresentActionSheet)
+	{
+		[_externalDelegate willPresentActionSheet:actionSheet];	
+	}
 }
 
 - (void)didPresentActionSheet:(UIActionSheet *)actionSheet
 {
-	[_externalDelegate didPresentActionSheet:actionSheet];
+	if (_delegateFlags.delegateSupportsDidPresentActionSheet)
+	{
+		[_externalDelegate didPresentActionSheet:actionSheet];
+	}
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	[_externalDelegate actionSheet:actionSheet willDismissWithButtonIndex:buttonIndex];
+	if (_delegateFlags.delegateSupportsWillDismissWithButtonIndex)
+	{
+		[_externalDelegate actionSheet:actionSheet willDismissWithButtonIndex:buttonIndex];
+	}
 }
 
 
@@ -89,8 +111,11 @@
 	{
 		block();
 	}
-	
-	[_externalDelegate actionSheet:actionSheet didDismissWithButtonIndex:buttonIndex];
+
+	if (_delegateFlags.delegateSupportsDidDismissWithButtonIndex)
+	{
+		[_externalDelegate actionSheet:actionSheet didDismissWithButtonIndex:buttonIndex];
+	}
 }
 
 
@@ -115,6 +140,35 @@
 	else 
 	{
 		_externalDelegate = delegate;
+	}
+	
+	// wipe
+	memset(&_delegateFlags, 0, sizeof(_delegateFlags));
+	
+	// set flags according to available methods in delegate
+	if ([_externalDelegate respondsToSelector:@selector(actionSheetCancel:)])
+	{
+		_delegateFlags.delegateSupportsActionSheetCancel = YES;
+	}
+
+	if ([_externalDelegate respondsToSelector:@selector(willPresentActionSheet:)])
+	{
+		_delegateFlags.delegateSupportsWillPresentActionSheet = YES;
+	}
+
+	if ([_externalDelegate respondsToSelector:@selector(didPresentActionSheet:)])
+	{
+		_delegateFlags.delegateSupportsDidPresentActionSheet = YES;
+	}
+
+	if ([_externalDelegate respondsToSelector:@selector(actionSheet:willDismissWithButtonIndex:)])
+	{
+		_delegateFlags.delegateSupportsWillDismissWithButtonIndex = YES;
+	}
+
+	if ([_externalDelegate respondsToSelector:@selector(actionSheet:didDismissWithButtonIndex:)])
+	{
+		_delegateFlags.delegateSupportsDidDismissWithButtonIndex = YES;
 	}
 }
 
