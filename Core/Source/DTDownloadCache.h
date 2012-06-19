@@ -20,6 +20,9 @@ enum {
 typedef NSUInteger DTDownloadCacheOption;
 
 
+typedef void (^DTDownloadCacheDataCompletionBlock)(NSData *);
+typedef void (^DTDownloadCacheImageCompletionBlock)(UIImage *);
+
 @interface DTDownloadCache : NSObject <DTDownloadDelegate>
 
 /**
@@ -66,5 +69,17 @@ typedef NSUInteger DTDownloadCacheOption;
  @returns The cached image or `nil` if none is cached.
  */
 - (UIImage *)cachedImageForURL:(NSURL *)URL option:(DTDownloadCacheOption)option;
+
+
+/**
+ Provides the cached or downloaded image.
+ 
+ If the image is already cached it will be returned and the block not be executed. If it needs to be loaded then `nil` is returned and the block gets executed as soon as the image has been downloaded.
+ @param URL The URL of the image
+ @param option A loading option to specify wheter the file should be loaded if it is already cached.
+ @param completion The block to be executed when the image is available.
+ @returns The cached image or `nil` if none is cached.
+ */
+- (UIImage *)cachedImageForURL:(NSURL *)URL option:(DTDownloadCacheOption)option completion:(DTDownloadCacheImageCompletionBlock)completion;
 
 @end
