@@ -6,7 +6,9 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+/**
+ Some convenient functions that can be also achieved if you know JavaScript, but are way more easy to remember like this
+ */
 
 @interface UIWebView (DTFoundation)
 

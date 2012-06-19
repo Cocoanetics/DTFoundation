@@ -46,6 +46,9 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	NSUInteger _maxNumberOfConcurrentDownloads;
 	NSUInteger _diskCapacity;
 	
+	// completion handling
+	NSMutableDictionary *_completionHandlers;
+	
 	// maintenance
 	dispatch_queue_t _maintenanceQueue;
 	dispatch_queue_t _storeQueue;
@@ -80,6 +83,8 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		
 		_maxNumberOfConcurrentDownloads = 1;
 		_diskCapacity = 1024*1024*20; // 20 MB
+		
+		_completionHandlers = [[NSMutableDictionary alloc] init];
 	}
 	
 	return self;
@@ -141,6 +146,14 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	[_activeDownloads removeObject:download];
 	[_downloads removeObjectForKey:download.URL];
 	[_downloadQueue removeObject:download];
+	
+	// remove a handler if it exists
+	DTDownloadCacheDataCompletionBlock completion = [_completionHandlers objectForKey:download.URL];
+	
+	if (completion)
+	{
+		[_completionHandlers removeObjectForKey:download.URL];
+	}
 }
 
 - (void)_startNextQueuedDownload
@@ -274,7 +287,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 - (void)download:(DTDownload *)download didFailWithError:(NSError *)error
 {
 	[self _removeDownloadFromQueue:download];
-
+	
 	[self _startNextQueuedDownload];
 }
 
@@ -308,6 +321,17 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		[self _commitContext:tmpContext];
 		
 		dispatch_sync(dispatch_get_main_queue(), ^{
+			// execute completion block if there is one registered
+			DTDownloadCacheDataCompletionBlock completion = [_completionHandlers objectForKey:download.URL];
+			
+			if (completion)
+			{
+				completion(data);
+				
+				[_completionHandlers removeObjectForKey:download.URL];
+			}
+			
+			// send notification 
 			[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadCacheDidCacheFileNotification object:download.URL];
 			
 			// we transfered the file into the database, so we don't need it any more
@@ -604,6 +628,13 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	});
 }
 
+#pragma mark Completion Blocks
+
+- (void)_registerCompletion:(DTDownloadCacheDataCompletionBlock)completion forURL:(NSURL *)URL
+{
+	[_completionHandlers setObject:[completion copy] forKey:URL];	
+}
+
 #pragma mark Properties
 
 - (void)setMaxNumberOfConcurrentDownloads:(NSUInteger)maxNumberOfConcurrentDownloads
@@ -680,5 +711,43 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	
 	return cachedImage;
 }
+
+- (UIImage *)cachedImageForURL:(NSURL *)URL option:(DTDownloadCacheOption)option completion:(DTDownloadCacheImageCompletionBlock)completion
+{
+	UIImage *cachedImage = [self cachedImageForURL:URL option:option];
+	
+	if (cachedImage)
+	{
+		return cachedImage;
+	}
+	
+	// register handler
+	if (completion)
+	{
+		DTDownloadCacheDataCompletionBlock internalBlock = ^(NSData *data)
+		{
+			// make an image out of the data
+			UIImage *cachedImage = [UIImage imageWithData:data];
+			
+			if (!cachedImage)
+			{
+				NSLog(@"Illegal Data cached for %@", URL);	
+				return;
+			}
+			
+			// put in memory cache
+			NSUInteger cost = (NSUInteger)(cachedImage.size.width * cachedImage.size.height);
+			[_memoryCache setObject:cachedImage forKey:URL cost:cost];
+			
+			// execute wrapped completion block
+			completion(cachedImage);
+		};
+		
+		[self _registerCompletion:internalBlock forURL:URL];
+	}
+	
+	return nil;
+}
+
 
 @end
