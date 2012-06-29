@@ -697,11 +697,20 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		return nil;
 	}
 	
-	cachedImage = [UIImage imageWithData:data];
+    @try {
+        cachedImage = [UIImage imageWithData:data];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@", exception);
+    }
+    @finally {
+    }
 	
 	if (!cachedImage)
 	{
-		NSLog(@"Illegal Data cached for %@", URL);	
+		NSLog(@"Illegal Data cached for %@", URL);
+        
+        [_memoryCache removeObjectForKey:URL];
 		return nil;
 	}
 	
