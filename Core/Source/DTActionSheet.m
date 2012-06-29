@@ -29,15 +29,27 @@
 	} _delegateFlags;
 }
 
-- (id)initWithTitle:(NSString *)title
+- (id)init 
 {
-	self = [super initWithTitle:title delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-	
+	self = [super init];
 	if (self)
 	{
 		_actionsPerIndex = [[NSMutableDictionary alloc] init];
+		self.delegate = self;
 	}
+	
+	return self;
+}
 
+// designated initializer
+- (id)initWithTitle:(NSString *)title
+{
+	self = [self init];
+	if (self) 
+	{
+		self.title = title;
+	}
+	
 	return self;
 }
 
