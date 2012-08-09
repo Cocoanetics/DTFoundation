@@ -135,6 +135,16 @@
 		A7D0AA6E153C39920020F18B /* DTUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA6B153C39920020F18B /* DTUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D0AA6F153C39920020F18B /* DTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA6C153C39920020F18B /* DTUtils.m */; };
 		A7D0AA70153C39920020F18B /* DTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA6C153C39920020F18B /* DTUtils.m */; };
+		A7D60FD115D3B0BC00AEDD1B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D60FD015D3B0BC00AEDD1B /* SenTestingKit.framework */; };
+		A7D60FD215D3B0BC00AEDD1B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
+		A7D60FD315D3B0BC00AEDD1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
+		A7D60FEC15D3B16900AEDD1B /* DTVersionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D60FE915D3B15300AEDD1B /* DTVersionTest.m */; };
+		A7D60FEF15D3B18A00AEDD1B /* DTHTMLParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D60FEE15D3B18A00AEDD1B /* DTHTMLParserTest.m */; };
+		A7D60FF015D3B1BD00AEDD1B /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
+		A7D60FF415D3B1FB00AEDD1B /* html_doctype.html in Resources */ = {isa = PBXBuildFile; fileRef = A7D60FF215D3B1FB00AEDD1B /* html_doctype.html */; };
+		A7D60FF515D3B1FB00AEDD1B /* processing_instruction.html in Resources */ = {isa = PBXBuildFile; fileRef = A7D60FF315D3B1FB00AEDD1B /* processing_instruction.html */; };
+		A7D60FF615D3B26F00AEDD1B /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7949A3914C963F500A8CCDE /* DTHTMLParser.m */; };
+		A7D60FF815D3B28B00AEDD1B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D60FF715D3B28B00AEDD1B /* libxml2.dylib */; };
 		A7D6F2E515063448001CACDD /* DTExtendedFileAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D6F2E315063448001CACDD /* DTExtendedFileAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D6F2E615063448001CACDD /* DTExtendedFileAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D6F2E315063448001CACDD /* DTExtendedFileAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D6F2E715063448001CACDD /* DTExtendedFileAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */; };
@@ -227,6 +237,17 @@
 		A7D0AA49153C233E0020F18B /* NSString+DTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTUtilities.m"; sourceTree = "<group>"; };
 		A7D0AA6B153C39920020F18B /* DTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTUtils.h; sourceTree = "<group>"; };
 		A7D0AA6C153C39920020F18B /* DTUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTUtils.m; sourceTree = "<group>"; };
+		A7D60FCF15D3B0BC00AEDD1B /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7D60FD015D3B0BC00AEDD1B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		A7D60FE815D3B15300AEDD1B /* DTVersionTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTVersionTest.h; sourceTree = "<group>"; };
+		A7D60FE915D3B15300AEDD1B /* DTVersionTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTVersionTest.m; sourceTree = "<group>"; };
+		A7D60FEA15D3B15300AEDD1B /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
+		A7D60FEB15D3B15300AEDD1B /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		A7D60FED15D3B18A00AEDD1B /* DTHTMLParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTHTMLParserTest.h; sourceTree = "<group>"; };
+		A7D60FEE15D3B18A00AEDD1B /* DTHTMLParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTHTMLParserTest.m; sourceTree = "<group>"; };
+		A7D60FF215D3B1FB00AEDD1B /* html_doctype.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = html_doctype.html; sourceTree = "<group>"; };
+		A7D60FF315D3B1FB00AEDD1B /* processing_instruction.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = processing_instruction.html; sourceTree = "<group>"; };
+		A7D60FF715D3B28B00AEDD1B /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		A7D6F2E315063448001CACDD /* DTExtendedFileAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTExtendedFileAttributes.h; sourceTree = "<group>"; };
 		A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTExtendedFileAttributes.m; sourceTree = "<group>"; };
 		A7D8627F14EBF65C001436AF /* NSString+DTPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTPaths.h"; sourceTree = "<group>"; };
@@ -258,6 +279,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7D60FCB15D3B0BC00AEDD1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7D60FF815D3B28B00AEDD1B /* libxml2.dylib in Frameworks */,
+				A7D60FD115D3B0BC00AEDD1B /* SenTestingKit.framework in Frameworks */,
+				A7D60FD215D3B0BC00AEDD1B /* UIKit.framework in Frameworks */,
+				A7D60FD315D3B0BC00AEDD1B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,8 +368,10 @@
 		A7AB49DB1483C47F00028FE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7D60FF715D3B28B00AEDD1B /* libxml2.dylib */,
 				A7F4DFFA147FD08F00F4059A /* Foundation.framework */,
 				A7F4DFF8147FD08900F4059A /* UIKit.framework */,
+				A7D60FD015D3B0BC00AEDD1B /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -413,9 +447,41 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		A7D60FE415D3B15300AEDD1B /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				A7D60FF115D3B1E300AEDD1B /* Resources */,
+				A7D60FE515D3B15300AEDD1B /* Source */,
+				A7D60FEA15D3B15300AEDD1B /* UnitTests-Info.plist */,
+				A7D60FEB15D3B15300AEDD1B /* UnitTests-Prefix.pch */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		A7D60FE515D3B15300AEDD1B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A7D60FE815D3B15300AEDD1B /* DTVersionTest.h */,
+				A7D60FE915D3B15300AEDD1B /* DTVersionTest.m */,
+				A7D60FED15D3B18A00AEDD1B /* DTHTMLParserTest.h */,
+				A7D60FEE15D3B18A00AEDD1B /* DTHTMLParserTest.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		A7D60FF115D3B1E300AEDD1B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A7D60FF215D3B1FB00AEDD1B /* html_doctype.html */,
+				A7D60FF315D3B1FB00AEDD1B /* processing_instruction.html */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		A7F4DF98147FB61500F4059A = {
 			isa = PBXGroup;
 			children = (
+				A7D60FE415D3B15300AEDD1B /* Test */,
 				A70B4CC41486621B00873A4A /* Core */,
 				A70B4CDA1486626900873A4A /* Documentation */,
 				A7F4DFA6147FB61500F4059A /* Products */,
@@ -428,6 +494,7 @@
 			children = (
 				A7BAD10E1483F934000E2B6A /* DTFoundation.framework */,
 				A70B4CE71486637E00873A4A /* libDTFoundation.a */,
+				A7D60FCF15D3B0BC00AEDD1B /* UnitTests.octest */,
 			);
 			name = Products;
 			path = ../..;
@@ -574,13 +641,31 @@
 			productReference = A7BAD10E1483F934000E2B6A /* DTFoundation.framework */;
 			productType = "com.apple.product-type.bundle";
 		};
+		A7D60FCE15D3B0BC00AEDD1B /* Unit Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7D60FDE15D3B0BC00AEDD1B /* Build configuration list for PBXNativeTarget "Unit Tests" */;
+			buildPhases = (
+				A7D60FCA15D3B0BC00AEDD1B /* Sources */,
+				A7D60FCB15D3B0BC00AEDD1B /* Frameworks */,
+				A7D60FCC15D3B0BC00AEDD1B /* Resources */,
+				A7D60FCD15D3B0BC00AEDD1B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Unit Tests";
+			productName = UnitTest;
+			productReference = A7D60FCF15D3B0BC00AEDD1B /* UnitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A7F4DF9A147FB61500F4059A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = Cocoanetics;
 			};
 			buildConfigurationList = A7F4DF9D147FB61500F4059A /* Build configuration list for PBXProject "DTFoundation" */;
@@ -598,6 +683,7 @@
 				A7F4DFED147FBAC600F4059A /* Documentation */,
 				A7BAD10D1483F934000E2B6A /* Static Framework */,
 				A70B4CE61486637E00873A4A /* Static Library */,
+				A7D60FCE15D3B0BC00AEDD1B /* Unit Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -609,6 +695,15 @@
 			files = (
 				A70B4CDD1486628A00873A4A /* LICENSE in Resources */,
 				A70B4CDE1486628A00873A4A /* readme.markdown in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7D60FCC15D3B0BC00AEDD1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7D60FF415D3B1FB00AEDD1B /* html_doctype.html in Resources */,
+				A7D60FF515D3B1FB00AEDD1B /* processing_instruction.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +735,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nset +u\nif [[ $UFW_MASTER_SCRIPT_RUNNING ]]\nthen\n    # Nothing for the slave script to do\n    exit 0\nfi\nset -u\nexport UFW_MASTER_SCRIPT_RUNNING=1\n\n\n# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n        eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n\n# Sanity check\n\nif [[ ! -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]]\nthen\n    echo \"Framework target \\\"${TARGET_NAME}\\\" had no source files to build from. Make sure your source files have the correct target membership\"\n    exit 1\nfi\n\n\n# Gather information\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    UFW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n    UFW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$UFW_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    UFW_OTHER_PLATFORM=iphonesimulator\nelse\n    UFW_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$UFW_SDK_PLATFORM$ ]]\nthen\n    UFW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${UFW_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find $UFW_SDK_PLATFORM in $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\n\n# Short-circuit if all binaries are up to date.\n# We already checked the other platform in the prerun script.\n\nif [[ -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && [[ -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && [[ ! \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\nthen\n    exit 0\nfi\n\n\n# Make sure the other platform gets built\n\necho \"Build other platform\"\n\necho xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\n\n\n# Build the fat static library binary\n\necho \"Create universal static library\"\n\necho \"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\necho mv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nmv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n\n# Build framework structure\n\necho \"Build symlinks\"\n\necho ln -sf A \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Versions/Current\"\nln -sf A \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Versions/Current\"\necho ln -sf Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Headers\"\nln -sf Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Headers\"\necho ln -sf Versions/Current/Resources \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Resources\"\nln -sf Versions/Current/Resources \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Resources\"\necho ln -sf \"Versions/Current/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${EXECUTABLE_NAME}\"\nln -sf \"Versions/Current/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${EXECUTABLE_NAME}\"\n\n\n# Link to binary for unit tests\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/.fake_fw_testing.framework\"\nln -sf \"../${WRAPPER_NAME}/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/.fake_fw_testing.framework/.fake_fw_testing\"\n\n\n# Build embedded framework structure\n\necho \"Build Embedded Framework\"\n\necho rm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\necho mkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\necho cp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\ncp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\n\ndeclare -a UFW_FILE_LIST\nlist_files \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" UFW_FILE_LIST\nfor filename in \"${UFW_FILE_LIST[@]}\"\ndo\n    if [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\n    then\n        echo ln -sf \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n        ln -sf \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n    fi\ndone\n\n\n# Replace other platform's framework with a copy of this one (so that both have the same universal binary)\n\necho \"Copy from $UFW_SDK_PLATFORM to $UFW_OTHER_PLATFORM\"\n\necho rm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\necho cp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\ncp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\n";
+		};
+		A7D60FCD15D3B0BC00AEDD1B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 		A7F4DFF1147FBB0B00F4059A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -737,6 +845,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A7D60FCA15D3B0BC00AEDD1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7D60FEC15D3B16900AEDD1B /* DTVersionTest.m in Sources */,
+				A7D60FEF15D3B18A00AEDD1B /* DTHTMLParserTest.m in Sources */,
+				A7D60FF015D3B1BD00AEDD1B /* DTVersion.m in Sources */,
+				A7D60FF615D3B26F00AEDD1B /* DTHTMLParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
@@ -830,6 +949,48 @@
 			};
 			name = Release;
 		};
+		A7D60FDF15D3B0BC00AEDD1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Test/UnitTests-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = UnitTests;
+				TEST_AFTER_BUILD = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		A7D60FE015D3B0BC00AEDD1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Test/UnitTests-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = UnitTests;
+				TEST_AFTER_BUILD = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		A7F4DFB0147FB61500F4059A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -915,6 +1076,15 @@
 			buildConfigurations = (
 				A7BAD1171483F934000E2B6A /* Debug */,
 				A7BAD1181483F934000E2B6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7D60FDE15D3B0BC00AEDD1B /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7D60FDF15D3B0BC00AEDD1B /* Debug */,
+				A7D60FE015D3B0BC00AEDD1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
