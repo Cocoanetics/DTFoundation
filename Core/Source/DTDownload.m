@@ -249,6 +249,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 
 - (void)cancel
 {
+	if (_cancelled) {
+		return;
+	}
 	_cancelled = YES;
 	self.delegate = nil;
 	
@@ -529,6 +532,16 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 {
 	return _isLoading;
 }
+
+- (void)cleanup
+{
+	[self cancel];
+
+	// remove cached file
+	NSFileManager *fileManager = [[NSFileManager alloc] init];
+	[fileManager removeItemAtPath:self.internalDownloadFolder error:nil];
+}
+
 
 @synthesize URL = _URL, internalDownloadFolder, downloadEntityTag, folderForDownloading, lastPaketTimestamp, delegate, lastModifiedDate;
 @synthesize MIMEType = _MIMEType;

@@ -161,6 +161,13 @@ typedef void (^DTDownloadCompletionHandler)(DTDownload *);
 
 - (BOOL)isLoading;
 
+/**
+*  Removes the downloaded file or the incomplete file if the download is currently running.
+*	 Note: Also the download is cancelled if necessary
+*/
+- (void)cleanup;
+
+
 /**-------------------------------------------------------------------------------------
  @name Block Handlers
  ---------------------------------------------------------------------------------------
@@ -170,6 +177,7 @@ typedef void (^DTDownloadCompletionHandler)(DTDownload *);
  Sets the block to execute as soon as the HTTP response has been received.
  */
 @property (nonatomic, copy) DTDownloadResponseHandler responseHandler;
+
 
 /**
  Sets the block to execute as soon as the download has completed.

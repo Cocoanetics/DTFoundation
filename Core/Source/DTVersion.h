@@ -1,113 +1,86 @@
 //
 //  DTVersion.h
-//  DTFoundation
+//  iCatalog
 //
-//  Created by Oliver Drobnik on 11/25/11.
-//  Copyright (c) 2011 Cocoanetics. All rights reserved.
+//  Created by Rene Pirringer on 20.07.11.
+//  Copyright 2011 Drobnik.com. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 
-/**
- Class that represents a version number comprised of major, minor and maintenance number separarated by dots. For example "1.2.2".
- 
- This encapsulation simplifies comparing versions against each other. Sub-numbers that are omitted on creating a `DTVersion` are assumed to be 0.
+/*
+ Class that take a version string with the format major.minor.maintenance (e.g. 1.2.2) that is parsed and
+ can be compared with other version numbers
  */
 @interface DTVersion : NSObject
 {
-	NSUInteger _majorVersion;
-	NSUInteger _minorVersion;
-	NSUInteger _maintenanceVersion;
+	NSUInteger _major;
+	NSUInteger _minor;
+	NSUInteger _maintenance;
+	NSUInteger _build;
 }
 
-/**
- The receiver's major version number.
- */
-@property (nonatomic, readonly) NSUInteger majorVersion;
 
-/**
- The receiver's minor version number.
- */
-@property (nonatomic, readonly) NSUInteger minorVersion;
+@property (nonatomic, readonly) NSUInteger major;
+@property (nonatomic, readonly) NSUInteger minor;
+@property (nonatomic, readonly) NSUInteger maintenance;
+@property (nonatomic, readonly) NSUInteger build;
 
-/**
- The receiver's maintenance version number.
- */
-@property (nonatomic, readonly) NSUInteger maintenanceVersion;
-
-/**-------------------------------------------------------------------------------------
- @name Creating Versions
- ---------------------------------------------------------------------------------------
- */
-
-/**
- creates and returns a `DTVersion` object initialized using the provided string
- 
- @param versionString A string with a version number.
- @returns A `DTVersion` object or `nil` if the string is not a valid version number 
- @see initWithMajor:minor:maintenance:
+/*
+ creates and returns a DTVersion object initialized using the provided string
+ @returns A DTVersion object or <code>nil</code> if the string is not a valid version number 
  */
 + (DTVersion *)versionWithString:(NSString *)versionString;
 
-/**
- creates and retuns a `DTVersion` object initialized with the version information of the current application
- 
- @returns A `DTVersion` object or `nil` if the string of the current application is not a valid version number 
+/*
+ creates and retuns a DTVersion object initialized with the version information of the current application
+ @returns A DTVersion object or <code>nil</code> if the string of the current application is not a valid version number 
  */
 + (DTVersion *)appBundleVersion;
 
-/**
- creates and retuns a `DTVersion` object initialized with the version information of the operating system
- 
- @returns A `DTVersion` object or `nil` if the string of the current application is not a valid version number 
+/*
+ creates and retuns a DTVersion object initialized with the version information of the operating system
+ @returns A DTVersion object or <code>nil</code> if the string of the current application is not a valid version number 
  */
 + (DTVersion *)osVersion;
 
 /**
- creates and returns a `DTVersion` object initialized using the provided string
- 
- @param major The major version number of the version.
- @param minor The minor version number of the version.
- @param maintenance The maintenance version number of the version.
- @returns A `DTVersion` object or `nil` if the string is not a valid version number 
- */
+* @returns <code>true</code> if the given version string is valid and less then the osVersion
+*/
++ (BOOL)osVersionIsLessThen:(NSString *)versionString;
+
+
++ (BOOL)osVersionIsGreaterThen:(NSString *)versionString;
+
+/**
+* @returns <code>true</code> if the give version is less then this version
+*/
+- (BOOL)isLessThenVersion:(DTVersion *)version;
+
+/**
+* @returns <code>true</code> if the give version is greater then this version
+*/
+- (BOOL)isGreaterThenVersion:(DTVersion *)version;
+
+/**
+* @returns <code>true</code> if the give version is less then this version string
+*/
+- (BOOL)isLessThenVersionString:(NSString *)versionString;
+
+/**
+* @returns <code>true</code> if the give version is greater then version string
+*/
+- (BOOL)isGreaterThenVersionString:(NSString *)versionString;
+
+
+
 - (DTVersion *)initWithMajor:(NSUInteger)major minor:(NSUInteger)minor maintenance:(NSUInteger)maintenance;
 
-/**-------------------------------------------------------------------------------------
- @name Comparing Versions 
- ---------------------------------------------------------------------------------------
- */
+- (DTVersion *)initWithMajor:(NSUInteger)major minor:(NSUInteger)minor maintenance:(NSUInteger)maintenance build:(NSUInteger)build;
 
-/**
- Returns a Boolean value that indicates whether a given `DTVersion` is equal to the receiver.
- 
- @param version The `DTVersion` instance to compare against.
- @returns `YES` if the other object is equal to the receiver 
- */
 - (BOOL) isEqualToVersion:(DTVersion *)version;
-
-/**
- Returns a Boolean value that indicates whether a given string is equal to the receiver.
- 
- @param versionString The string to compare the receiver against.
- @returns `YES` if the other object is equal to the receiver 
- */
 - (BOOL) isEqualToString:(NSString *)versionString;
-
-/**
- Returns a Boolean value that indicates whether a given object is equal to the receiver.
- 
- If the other object is an `NSString` then isEqualToString: is called. If it is a `DTVersion` instance isEqualToVersion: is called. 
- @param object An NSString or `DTVersion` to compare against.
- @returns `YES` if the other object is equal to the receiver 
- */
 - (BOOL) isEqual:(id)object;
-
-/**
-Compares the receiver to object.
-
- @param version The `DTVersion` instance to compare the receiver with.
- @returns `NSOrderedAscending` if the receiver precedes object in version ordering, `NSOrderedSame` if they are equal, and `NSOrderedDescending` if the receiver is higher than object.
- */
 - (NSComparisonResult)compare:(DTVersion *)version;
 
 @end
