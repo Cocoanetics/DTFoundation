@@ -13,8 +13,11 @@
 #import "NSString+DTURLEncoding.h"
 #import "NSURL+DTAppLinks.h"
 #import "NSURL+DTPrefLinks.h"
+
+#if TARGET_OS_IPHONE
 #import "UIImage+DTFoundation.h"
 #import "UIView+DTFoundation.h"
+#endif
 
 // Utility Functions
 #import "DTUtils.h"

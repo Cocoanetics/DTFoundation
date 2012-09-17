@@ -3,7 +3,11 @@
 //
 
 #ifdef __OBJC__
+
+#if TARGET_OS_IPHONE
 	#import <UIKit/UIKit.h>
+#endif
+
 	#import <Foundation/Foundation.h>
 	#import "LoadableCategory.h"
 
@@ -11,8 +15,8 @@
 	#import <CoreData/CoreData.h>
 #endif
 
-//#if !__has_feature(objc_arc)
-//#error THIS CODE MUST BE COMPILED WITH ARC ENABLED!
-//#endif
+#if !__has_feature(objc_arc)
+#error THIS CODE MUST BE COMPILED WITH ARC ENABLED!
+#endif
 
 
