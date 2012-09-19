@@ -95,11 +95,22 @@
 	return retVersion;
 }
 
+
+#if TARGET_OS_IPHONE
 + (DTVersion *)osVersion
 {
 	NSString *version = [[UIDevice currentDevice] systemVersion];
 	return [DTVersion versionWithString:version];
 }
+#else
++ (DTVersion *)osVersion
+{
+    NSString *versionStr = [[NSProcessInfo processInfo] operatingSystemVersionString];
+    versionStr = [versionStr stringByReplacingOccurrencesOfString:@"Version" withString:@""];
+    versionStr = [versionStr stringByReplacingOccurrencesOfString:@"Build" withString:@""];
+    return [DTVersion versionWithString:versionStr];
+}
+#endif
 
 - (BOOL) isEqualToVersion:(DTVersion *)version
 {
@@ -164,7 +175,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%d.%d.%d", _majorVersion, _minorVersion, _maintenanceVersion];
+	return [NSString stringWithFormat:@"%d.%d.%d", (int)_majorVersion, (int)_minorVersion, (int)_maintenanceVersion];
 }
 
 
