@@ -158,7 +158,7 @@ void _cdataBlock(void *context, const xmlChar *value, int len)
 void _processingInstruction (void *context, const xmlChar *target, const xmlChar *data)
 {
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
-
+	
 	NSStringEncoding encoding = myself.encoding;
 	
 	NSString *targetStr = [NSString stringWithCString:(const char *)target encoding:encoding];
@@ -172,6 +172,7 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	htmlSAXHandler _handler;
 	
 	NSData *_data;
+	NSStringEncoding _encoding;
 	
 	__unsafe_unretained id <DTHTMLParserDelegate> _delegate;
 	htmlParserCtxtPtr _parserContext;
@@ -328,7 +329,7 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	else
 	{
 		_handler.characters = NULL;
-	} 
+	}
 	
 	if ([delegate respondsToSelector:@selector(parser:foundComment:)])
 	{
@@ -337,7 +338,7 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	else
 	{
 		_handler.comment = NULL;
-	} 
+	}
 	
 	if ([delegate respondsToSelector:@selector(parser:parseErrorOccurred:)])
 	{
@@ -346,7 +347,7 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	else
 	{
 		_handler.error = NULL;
-	} 
+	}
 	
 	if ([delegate respondsToSelector:@selector(parser:foundCDATA:)])
 	{
@@ -403,5 +404,7 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 
 
 @synthesize parserError = _parserError;
+@synthesize encoding = _encoding;
+
 
 @end
