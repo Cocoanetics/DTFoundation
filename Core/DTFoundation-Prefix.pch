@@ -2,6 +2,8 @@
 // Prefix header for all source files of the 'DTFoundation' target in the 'DTFoundation' project
 //
 
+#import <TargetConditionals.h>
+
 #ifdef __OBJC__
 
 #if TARGET_OS_IPHONE
