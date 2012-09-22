@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'DTDownloadCache' target in the 'DTDownloadCache' project
-//
-
-#ifdef __OBJC__
-	#import <Foundation/Foundation.h>
-#endif
