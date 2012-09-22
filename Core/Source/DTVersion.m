@@ -95,22 +95,25 @@
 	return retVersion;
 }
 
-
++ (DTVersion *)osVersion
+{
+	static dispatch_once_t onceToken;
+	static DTVersion *version = nil;
+	
+	dispatch_once(&onceToken, ^{
 #if TARGET_OS_IPHONE
-+ (DTVersion *)osVersion
-{
-	NSString *version = [[UIDevice currentDevice] systemVersion];
-	return [DTVersion versionWithString:version];
-}
+			NSString *versionStr = [[UIDevice currentDevice] systemVersion];
+			version = [DTVersion versionWithString:versionStr];
 #else
-+ (DTVersion *)osVersion
-{
-    NSString *versionStr = [[NSProcessInfo processInfo] operatingSystemVersionString];
-    versionStr = [versionStr stringByReplacingOccurrencesOfString:@"Version" withString:@""];
-    versionStr = [versionStr stringByReplacingOccurrencesOfString:@"Build" withString:@""];
-    return [DTVersion versionWithString:versionStr];
-}
+			NSString *versionStr = [[NSProcessInfo processInfo] operatingSystemVersionString];
+			versionStr = [versionStr stringByReplacingOccurrencesOfString:@"Version" withString:@""];
+			versionStr = [versionStr stringByReplacingOccurrencesOfString:@"Build" withString:@""];
+		version = [DTVersion versionWithString:versionStr];
 #endif
+	});
+	
+	return version;
+}
 
 - (BOOL) isEqualToVersion:(DTVersion *)version
 {
