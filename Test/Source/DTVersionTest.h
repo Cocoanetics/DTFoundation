@@ -16,5 +16,6 @@
 - (void)testCreate; 
 - (void)testEquals;
 - (void)testCompare;
+- (void)testLessThan;
 
 @end

@@ -2,22 +2,33 @@
 //  DTVersion.m
 //  DTFoundation
 //
-//  Created by Oliver Drobnik on 11/25/11.
-//  Copyright (c) 2011 Cocoanetics. All rights reserved.
+//  Created by Oliver Drobnik
+//  Copyright 2012 Cocoanetics. All rights reserved.
 //
 
 #import "DTVersion.h"
 
 @implementation DTVersion
 
-- (DTVersion *)initWithMajor:(NSUInteger)majorVersion minor:(NSUInteger)minorVersion maintenance:(NSUInteger)maintenanceVersion
+#pragma mark Creating Versions
+
+- (DTVersion *)initWithMajor:(NSUInteger)major minor:(NSUInteger)minor maintenance:(NSUInteger)maintenance build:(NSUInteger)build
 {
 	self = [super init];
-	if (self) 
+	if (self) {
+		_major = major;
+		_minor = minor;
+		_maintenance = maintenance;
+		_build = build;
+	}
+	return self;
+}
+
+- (DTVersion *)initWithMajor:(NSUInteger)major minor:(NSUInteger)minor maintenance:(NSUInteger)maintenance
+{
+	self = [self initWithMajor:major minor:minor maintenance:maintenance build:0];
+	if (self)
 	{
-		_majorVersion = majorVersion;
-		_minorVersion = minorVersion;
-		_maintenanceVersion = maintenanceVersion;
 	}
 	return self;
 }
@@ -32,56 +43,58 @@
 	NSInteger major = 0;
 	NSInteger minor = 0;
 	NSInteger maintenance = 0;
-	
-	int i=0;
-	NSScanner *scanner = [NSScanner scannerWithString:versionString];
-	[scanner setCharactersToBeSkipped:[NSCharacterSet characterSetWithCharactersInString:@"."]];
+	NSInteger build = 0;
 
-	while (i<3 && ![scanner isAtEnd]) 
+	NSError *error;
+	NSString *pattern = @"^(\\d+)(?:\\.(\\d+))?(?:\\.(\\d+))?(?:\\.(\\d+))?(?:$|\\s)";
+
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+																																				 options:NSRegularExpressionCaseInsensitive
+																																					 error:&error];
+
+	NSTextCheckingResult *match = [regex firstMatchInString:versionString
+	                                                options:NSRegularExpressionCaseInsensitive
+	                                                  range:NSMakeRange(0, [versionString length])];
+	
+	if (!match)
 	{
-		switch (i) 
+		return nil;
+	}
+	for (int i = 1; i < match.numberOfRanges; i++)
+	{
+		NSRange range = [match rangeAtIndex:i];
+		if (range.location == NSNotFound)
 		{
-			case 0:
-			{
-				if (![scanner scanInteger:&major]) 
-				{
-					return nil;
-				}
-				break;
-			}
-				
-			case 1:
-			{
-				if (![scanner scanInteger:&minor]) 
-				{
-					return nil;
-				};
-				break;
-			}
-				
-			case 2:
-			{
-				if (![scanner scanInteger:&maintenance]) 
-				{
-					return nil;
-				};
-				break;
-			}
-				
-			default:
-			{
-				// ignore suffix
-				break;
-			}
+			break;
 		}
-		i++;
+		NSUInteger value = [[versionString substringWithRange:range] integerValue];
+
+		switch (i)
+		{
+			case 1:
+				major = value;
+				break;
+			case 2:
+				minor = value;
+				break;
+			case 3:
+				maintenance = value;
+				break;
+			case 4:
+				build = value;
+				break;
+			default:
+				break;
+		}
+		//NSLog(@"value for %d: %d", i, value);
 	}
 
 	if (major >= 0 &&
 			minor >= 0 &&
-			maintenance >= 0)
+			maintenance >= 0 &&
+			build >= 0)
 	{
-		return [[DTVersion alloc] initWithMajor:major minor:minor maintenance:maintenance];
+		return [[DTVersion alloc] initWithMajor:major minor:minor maintenance:maintenance build:build];
 	}
 		
 	return nil;
@@ -115,9 +128,46 @@
 	return version;
 }
 
+#pragma mark Comparing Versions
+
++ (BOOL)osVersionIsLessThen:(NSString *)versionString
+{
+	return [[DTVersion osVersion] isLessThenVersionString:versionString];
+}
+
++ (BOOL)osVersionIsGreaterThen:(NSString *)versionString
+{
+	return [[DTVersion osVersion] isGreaterThenVersionString:versionString];
+}
+
+
+- (BOOL)isLessThenVersion:(DTVersion *)version
+{
+	int result = [self compare:version] == NSOrderedAscending;
+	//DDLogVerbose(@"%@ < %@? %d =  %@", self, version, result, result ? @"YES" : @"NO");
+	return result;
+}
+
+- (BOOL)isGreaterThenVersion:(DTVersion *)version
+{
+	return [self compare:version] == NSOrderedDescending;
+}
+
+- (BOOL)isLessThenVersionString:(NSString *)versionString
+{
+	return [self isLessThenVersion:[DTVersion versionWithString:versionString]];
+}
+
+- (BOOL)isGreaterThenVersionString:(NSString *)versionString
+{
+	return [self isGreaterThenVersion:[DTVersion versionWithString:versionString]];
+}
+
+
+
 - (BOOL) isEqualToVersion:(DTVersion *)version
 {
-	return (self.majorVersion == version.majorVersion) && (self.minorVersion == version.minorVersion) && (self.maintenanceVersion == version.maintenanceVersion);
+	return (self.major == version.major) && (self.minor == version.minor) && (self.maintenance == version.maintenance);
 }
 
 - (BOOL) isEqualToString:(NSString *)versionString
@@ -147,30 +197,39 @@
 		return NSOrderedDescending;
 	}
 	
-	if (self.majorVersion < version.majorVersion)
+	if (self.major < version.major)
 	{
 		return NSOrderedAscending;
 	}
-	if (self.majorVersion > version.majorVersion)
+	if (self.major > version.major)
 	{
 		return NSOrderedDescending;
 	}
-	if (self.minorVersion < version.minorVersion)
+	if (self.minor < version.minor)
 	{
 		return NSOrderedAscending;
 	}
-	if (self.minorVersion > version.minorVersion)
+	if (self.minor > version.minor)
 	{
 		return NSOrderedDescending;
 	}
-	if (self.maintenanceVersion < version.maintenanceVersion)
+	if (self.maintenance < version.maintenance)
 	{
 		return NSOrderedAscending;
 	}
-	if (self.maintenanceVersion > version.maintenanceVersion)
+	if (self.maintenance > version.maintenance)
 	{
 		return NSOrderedDescending;
-	}			
+	}
+	if (self.build < version.build)
+	{
+		return NSOrderedAscending;
+	}
+	if (self.build > version.build)
+	{
+		return NSOrderedDescending;
+	}
+	
 	
 	return NSOrderedSame;
 }
@@ -178,13 +237,22 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%d.%d.%d", (int)_majorVersion, (int)_minorVersion, (int)_maintenanceVersion];
+	if (_build > 0)
+	{
+		return [NSString stringWithFormat:@"%d.%d.%d.%d", _major, _minor, _maintenance, _build];
+	}
+	if (_maintenance > 0)
+	{
+		return [NSString stringWithFormat:@"%d.%d.%d", _major, _minor, _maintenance];
+	}
+	return [NSString stringWithFormat:@"%d.%d", _major, _minor];
 }
 
+#pragma mark Properties
 
+@synthesize major = _major;
+@synthesize minor = _minor;
+@synthesize maintenance = _maintenance;
+@synthesize build = _build;
 
-@synthesize majorVersion = _majorVersion;
-@synthesize minorVersion = _minorVersion;
-@synthesize maintenanceVersion = _maintenanceVersion;
-	
 @end
