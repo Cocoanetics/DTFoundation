@@ -1,16 +1,15 @@
 //
 //  DTVersion.h
-//  iCatalog
+//  DTFoundation
 //
-//  Created by Rene Pirringer on 20.07.11.
-//  Copyright 2011 Drobnik.com. All rights reserved.
-//
+//  Created by Oliver Drobnik on 11/25/11.
+//  Copyright (c) 2011 Cocoanetics. All rights reserved.
 
 #import <Foundation/Foundation.h>
 
 /*
- Class that take a version string with the format major.minor.maintenance (e.g. 1.2.2) that is parsed and
- can be compared with other version numbers
+  Class that represents a version number comprised of major, minor and maintenance number separarated by dots. For example "1.2.2".
+  This encapsulation simplifies comparing versions against each other. Sub-numbers that are omitted on creating a `DTVersion` are assumed to be 0.
  */
 @interface DTVersion : NSObject
 {
@@ -50,6 +49,9 @@
 + (BOOL)osVersionIsLessThen:(NSString *)versionString;
 
 
+/**
+* @returns <code>true</code> if the given version string is valid and greater then the osVersion
+*/
 + (BOOL)osVersionIsGreaterThen:(NSString *)versionString;
 
 /**
