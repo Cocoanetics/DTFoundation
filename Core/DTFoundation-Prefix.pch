@@ -3,6 +3,7 @@
 //
 
 #import <TargetConditionals.h>
+#import <Availability.h>
 
 #ifdef __OBJC__
 

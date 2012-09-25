@@ -55,6 +55,9 @@
 		A73D5BAC155271FD0024BDB7 /* NSArray+DTError.h in Headers */ = {isa = PBXBuildFile; fileRef = A73D5BA9155271FD0024BDB7 /* NSArray+DTError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A73D5BAD155271FD0024BDB7 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
 		A73D5BAE155271FD0024BDB7 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
+		A747797215F78D630026ABA8 /* DTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA43153C22B00020F18B /* DTDownload.m */; };
+		A747797415F78DEA0026ABA8 /* DTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EE2A0C1582CBFC00BB06DE /* DTActionSheet.m */; };
+		A747797515F78E3F0026ABA8 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */; };
 		A7494DFB15418B3100BDDB7D /* DTDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A7494DF915418B3100BDDB7D /* DTDownloadCache.h */; };
 		A7494DFC15418B3100BDDB7D /* DTDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A7494DF915418B3100BDDB7D /* DTDownloadCache.h */; };
 		A7494E53154190F500BDDB7D /* DTCachedFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A7494E51154190F500BDDB7D /* DTCachedFile.h */; };
@@ -1160,6 +1163,9 @@
 				A7D60FEF15D3B18A00AEDD1B /* DTHTMLParserTest.m in Sources */,
 				A7D60FF015D3B1BD00AEDD1B /* DTVersion.m in Sources */,
 				A7D60FF615D3B26F00AEDD1B /* DTHTMLParser.m in Sources */,
+				A747797215F78D630026ABA8 /* DTDownload.m in Sources */,
+				A747797415F78DEA0026ABA8 /* DTActionSheet.m in Sources */,
+				A747797515F78E3F0026ABA8 /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
