@@ -73,6 +73,7 @@
 		A766136416143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */ = {isa = PBXBuildFile; fileRef = A766135F16143F8A00DF6C2B /* NSMutableArray+DTMoving.m */; };
 		A766136516143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */ = {isa = PBXBuildFile; fileRef = A766135F16143F8A00DF6C2B /* NSMutableArray+DTMoving.m */; };
 		A766136616143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */ = {isa = PBXBuildFile; fileRef = A766135F16143F8A00DF6C2B /* NSMutableArray+DTMoving.m */; };
+		A76613E5161444FD00DF6C2B /* NSString+DTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA49153C233E0020F18B /* NSString+DTUtilities.m */; };
 		A77DD39E14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD39F14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD3A014E648AD00F34B03 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */; };
@@ -1137,6 +1138,7 @@
 				FACE186F1612035600758319 /* DTPDFDocument.m in Sources */,
 				FACE18701612035600758319 /* DTPDFPage.m in Sources */,
 				A766136616143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */,
+				A76613E5161444FD00DF6C2B /* NSString+DTUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1243,10 +1245,6 @@
 		A70B4CF01486637E00873A4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
 				DSTROOT = /tmp/DTFoundation.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
@@ -1261,10 +1259,6 @@
 		A70B4CF11486637E00873A4A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
 				DSTROOT = /tmp/DTFoundation.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";

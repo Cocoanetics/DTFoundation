@@ -17,10 +17,10 @@
 	NSArray *objectsToMove = [self objectsAtIndexes:indexes];
 	
 	// If any of the removed objects come before the index, we want to decrement the index appropriately
-	index -= [indexes countOfIndexesInRange:(NSRange){0, index}];
+	idx -= [indexes countOfIndexesInRange:(NSRange){0, idx}];
 	
 	[self removeObjectsAtIndexes:indexes];
-	[self replaceObjectsInRange:(NSRange){index,0} withObjectsFromArray:objectsToMove];
+	[self replaceObjectsInRange:(NSRange){idx,0} withObjectsFromArray:objectsToMove];
 }
 
 @end

@@ -239,13 +239,13 @@
 {
 	if (_build > 0)
 	{
-		return [NSString stringWithFormat:@"%d.%d.%d.%d", _major, _minor, _maintenance, _build];
+		return [NSString stringWithFormat:@"%d.%d.%d.%d", (int)_major, (int)_minor, (int)_maintenance, (int)_build];
 	}
 	if (_maintenance > 0)
 	{
-		return [NSString stringWithFormat:@"%d.%d.%d", _major, _minor, _maintenance];
+		return [NSString stringWithFormat:@"%d.%d.%d", (int)_major, (int)_minor, (int)_maintenance];
 	}
-	return [NSString stringWithFormat:@"%d.%d", _major, _minor];
+	return [NSString stringWithFormat:@"%d.%d", (int)_major, (int)_minor];
 }
 
 #pragma mark Properties
