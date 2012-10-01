@@ -55,6 +55,7 @@
 		A73D5BAC155271FD0024BDB7 /* NSArray+DTError.h in Headers */ = {isa = PBXBuildFile; fileRef = A73D5BA9155271FD0024BDB7 /* NSArray+DTError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A73D5BAD155271FD0024BDB7 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
 		A73D5BAE155271FD0024BDB7 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
+		A7437DE216147A450091C1A2 /* NSString+DTPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D8628014EBF65C001436AF /* NSString+DTPaths.m */; };
 		A747797215F78D630026ABA8 /* DTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA43153C22B00020F18B /* DTDownload.m */; };
 		A747797415F78DEA0026ABA8 /* DTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EE2A0C1582CBFC00BB06DE /* DTActionSheet.m */; };
 		A747797515F78E3F0026ABA8 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */; };
@@ -98,6 +99,11 @@
 		A79231CF157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */ = {isa = PBXBuildFile; fileRef = A79231CC157A0B9400C3ACBB /* NSURL+DTUnshorten.h */; };
 		A79231D0157A0B9400C3ACBB /* NSURL+DTUnshorten.m in Sources */ = {isa = PBXBuildFile; fileRef = A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */; };
 		A79231D1157A0B9400C3ACBB /* NSURL+DTUnshorten.m in Sources */ = {isa = PBXBuildFile; fileRef = A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */; };
+		A79296811619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.h in Headers */ = {isa = PBXBuildFile; fileRef = A792967F1619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.h */; };
+		A79296821619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.m in Sources */ = {isa = PBXBuildFile; fileRef = A79296801619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.m */; };
+		A792968D1619D99400D5C979 /* NSDocument+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A792968B1619D99400D5C979 /* NSDocument+DTFoundation.h */; };
+		A792968E1619D99400D5C979 /* NSDocument+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A792968C1619D99400D5C979 /* NSDocument+DTFoundation.m */; };
+		A792968F1619F0FA00D5C979 /* DTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA6C153C39920020F18B /* DTUtils.m */; };
 		A7949A3A14C963F500A8CCDE /* DTHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7949A3814C963F500A8CCDE /* DTHTMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7949A3B14C963F500A8CCDE /* DTHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A7949A3814C963F500A8CCDE /* DTHTMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7A7CC7914866CAF00EC2EE4 /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
@@ -292,6 +298,10 @@
 		A78DF5C4157BBC5B00E360B5 /* UIView+DTActionHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DTActionHandlers.m"; sourceTree = "<group>"; };
 		A79231CC157A0B9400C3ACBB /* NSURL+DTUnshorten.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTUnshorten.h"; sourceTree = "<group>"; };
 		A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTUnshorten.m"; sourceTree = "<group>"; };
+		A792967F1619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindowController+DTPanelControllerPresenting.h"; sourceTree = "<group>"; };
+		A79296801619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindowController+DTPanelControllerPresenting.m"; sourceTree = "<group>"; };
+		A792968B1619D99400D5C979 /* NSDocument+DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDocument+DTFoundation.h"; sourceTree = "<group>"; };
+		A792968C1619D99400D5C979 /* NSDocument+DTFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDocument+DTFoundation.m"; sourceTree = "<group>"; };
 		A7949A3814C963F500A8CCDE /* DTHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTHTMLParser.h; sourceTree = "<group>"; };
 		A7949A3914C963F500A8CCDE /* DTHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTHTMLParser.m; sourceTree = "<group>"; };
 		A7AB8BF8156AA00700CBAB7E /* UIApplication+DTNetworkActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+DTNetworkActivity.h"; sourceTree = "<group>"; };
@@ -514,6 +524,34 @@
 			path = minizip;
 			sourceTree = "<group>";
 		};
+		A79296841619D37A00D5C979 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				A792967F1619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.h */,
+				A79296801619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.m */,
+				A792968B1619D99400D5C979 /* NSDocument+DTFoundation.h */,
+				A792968C1619D99400D5C979 /* NSDocument+DTFoundation.m */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		A79296851619D38600D5C979 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A7AB8BF8156AA00700CBAB7E /* UIApplication+DTNetworkActivity.h */,
+				A7AB8BF9156AA00700CBAB7E /* UIApplication+DTNetworkActivity.m */,
+				A7200AC9150917FD00D81719 /* UIImage+DTFoundation.h */,
+				A7200ACA150917FD00D81719 /* UIImage+DTFoundation.m */,
+				A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */,
+				A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */,
+				A7B57ED8157004630091D4EF /* UIWebView+DTFoundation.h */,
+				A7B57ED9157004630091D4EF /* UIWebView+DTFoundation.m */,
+				A78DF5C3157BBC5B00E360B5 /* UIView+DTActionHandlers.h */,
+				A78DF5C4157BBC5B00E360B5 /* UIView+DTActionHandlers.m */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		A7AB49DB1483C47F00028FE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +578,8 @@
 		A7D0AA69153C39540020F18B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				A79296851619D38600D5C979 /* iOS */,
+				A79296841619D37A00D5C979 /* OS X */,
 				A73D5BA9155271FD0024BDB7 /* NSArray+DTError.h */,
 				A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */,
 				A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */,
@@ -554,8 +594,6 @@
 				A7D0AA49153C233E0020F18B /* NSString+DTUtilities.m */,
 				A7D8627F14EBF65C001436AF /* NSString+DTPaths.h */,
 				A7D8628014EBF65C001436AF /* NSString+DTPaths.m */,
-				A7AB8BF8156AA00700CBAB7E /* UIApplication+DTNetworkActivity.h */,
-				A7AB8BF9156AA00700CBAB7E /* UIApplication+DTNetworkActivity.m */,
 				A7D0AA29153C1FE40020F18B /* NSString+DTURLEncoding.h */,
 				A7D0AA2A153C1FE40020F18B /* NSString+DTURLEncoding.m */,
 				A70B4CCC1486621B00873A4A /* NSURL+DTAppLinks.h */,
@@ -564,14 +602,6 @@
 				A70B4CCF1486621B00873A4A /* NSURL+DTPrefLinks.m */,
 				A79231CC157A0B9400C3ACBB /* NSURL+DTUnshorten.h */,
 				A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */,
-				A7200AC9150917FD00D81719 /* UIImage+DTFoundation.h */,
-				A7200ACA150917FD00D81719 /* UIImage+DTFoundation.m */,
-				A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */,
-				A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */,
-				A7B57ED8157004630091D4EF /* UIWebView+DTFoundation.h */,
-				A7B57ED9157004630091D4EF /* UIWebView+DTFoundation.m */,
-				A78DF5C3157BBC5B00E360B5 /* UIView+DTActionHandlers.h */,
-				A78DF5C4157BBC5B00E360B5 /* UIView+DTActionHandlers.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -781,6 +811,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A766136216143F8A00DF6C2B /* NSMutableArray+DTMoving.h in Headers */,
+				A79296811619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.h in Headers */,
+				A792968D1619D99400D5C979 /* NSDocument+DTFoundation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1139,6 +1171,10 @@
 				FACE18701612035600758319 /* DTPDFPage.m in Sources */,
 				A766136616143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */,
 				A76613E5161444FD00DF6C2B /* NSString+DTUtilities.m in Sources */,
+				A7437DE216147A450091C1A2 /* NSString+DTPaths.m in Sources */,
+				A79296821619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.m in Sources */,
+				A792968E1619D99400D5C979 /* NSDocument+DTFoundation.m in Sources */,
+				A792968F1619F0FA00D5C979 /* DTUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

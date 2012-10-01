@@ -18,3 +18,30 @@ CGSize sizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
 	CGSize scaledSize = CGSizeMake(roundf(originalSize.width*smallerZoom), roundf(originalSize.height*smallerZoom));
 	return scaledSize;
 }
+
+BOOL DTCGSizeMakeWithDictionaryRepresentation(NSDictionary *dict, CGSize *size)
+{
+	NSNumber *widthNumber = dict[@"Width"];
+	NSNumber *heightNumber = dict[@"Height"];
+	
+	if (!widthNumber || !heightNumber)
+	{
+		return NO;
+	}
+	
+	if (size)
+	{
+		size->width = [widthNumber floatValue];
+		size->height = [heightNumber floatValue];
+	}
+	
+	return YES;
+}
+
+NSDictionary *DTCGSizeCreateDictionaryRepresentation(CGSize size)
+{
+	NSNumber *widthNumber = [NSNumber numberWithFloat:size.width];
+	NSNumber *heightNumber = [NSNumber numberWithFloat:size.height];
+	
+	return @{@"Width":widthNumber, @"Height":heightNumber};
+}

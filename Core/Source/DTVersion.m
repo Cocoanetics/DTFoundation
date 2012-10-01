@@ -248,7 +248,14 @@
 	return [NSString stringWithFormat:@"%d.%d", (int)_major, (int)_minor];
 }
 
-#pragma mark Properties
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+	return [[DTVersion allocWithZone:zone] initWithMajor:_major minor:_minor maintenance:_maintenance build:_build];
+}
+
+#pragma mark - Properties
 
 @synthesize major = _major;
 @synthesize minor = _minor;
