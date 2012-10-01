@@ -85,10 +85,10 @@ MAKE_CATEGORIES_LOADABLE(NSString_DTPaths);
 	NSString *nakedName = [baseName pathByDeletingSequenceNumber];
 	
 	if ([extension isEqualToString:@""]) {
-		return [nakedName stringByAppendingFormat:@"(%d)", sequenceNumber+1];
+		return [nakedName stringByAppendingFormat:@"(%d)", (int)sequenceNumber+1];
 	}
 	
-	return [[nakedName stringByAppendingFormat:@"(%d)", sequenceNumber+1] stringByAppendingPathExtension:extension];
+	return [[nakedName stringByAppendingFormat:@"(%d)", (int)sequenceNumber+1] stringByAppendingPathExtension:extension];
 }
 
 - (NSString *)pathByDeletingSequenceNumber
