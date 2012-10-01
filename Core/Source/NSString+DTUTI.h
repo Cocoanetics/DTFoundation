@@ -22,6 +22,6 @@
 *
 * @return the recommended MIME-Type for the given path extension.
 */
-- (NSString *)MIMETypeForFileExtension:(NSString *)extension;
++ (NSString *)MIMETypeForFileExtension:(NSString *)extension;
 
 @end
