@@ -10,7 +10,7 @@
 
 @implementation NSString (DTUTI)
 
-- (NSString *)MIMETypeForFileExtension:(NSString *)extension
++ (NSString *)MIMETypeForFileExtension:(NSString *)extension
 {
 	CFStringRef typeForExt = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,(__bridge CFStringRef)extension , NULL);
 	NSString *result = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass(typeForExt, kUTTagClassMIMEType);
