@@ -16,11 +16,9 @@
  */
 
 /**
-* Method to get the MIME-Type for the given file extension. If no MIME-Type can be determined then 'application/octet-stream' is returned.
-*
-* @param extension the file extension
-*
-* @return the recommended MIME-Type for the given path extension.
+ Method to get the MIME-Type for the given file extension. If no MIME-Type can be determined then 'application/octet-stream' is returned.
+ @param extension the file extension
+ @return the recommended MIME-Type for the given path extension.
 */
 + (NSString *)MIMETypeForFileExtension:(NSString *)extension;
 
