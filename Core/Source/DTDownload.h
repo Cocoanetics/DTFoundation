@@ -159,6 +159,9 @@ typedef void (^DTDownloadCompletionHandler)(DTDownload *);
  */
 - (void)cancel;
 
+/**
+ Determins if the download is currently in progress
+ */
 - (BOOL)isLoading;
 
 /**

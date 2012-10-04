@@ -52,7 +52,7 @@
  @param alpha The alpha value of the shadow.
  @param radius The amount that the shadow is blurred.
  @param offset The offset of the shadow
- @see updateShadowPathToBounds
+ @see updateShadowPathToBounds:withDuration:
  */
 - (void)addShadowWithColor:(UIColor *)color alpha:(CGFloat)alpha radius:(CGFloat)radius offset:(CGSize)offset;
 
@@ -62,7 +62,7 @@
  This should be called whenever the receiver's bounds change, or else the shadow detaches. 
  @warn Since this a CALayer property it needs to be explicitly animated, for example in the willRotate ... method of a `UIViewController`.
  @param bounds The new bounds of the shadow path
- @aram duration The animation duration. Specify a duration of 0 to not do an animation
+ @param duration The animation duration. Specify a duration of 0 to not do an animation
 */
 - (void)updateShadowPathToBounds:(CGRect)bounds withDuration:(NSTimeInterval)duration;
 

@@ -18,6 +18,7 @@
 
 /**
  Encodes the receiver to JPEG using the given compression Factor
+ @param path The file path to write to
  @param compressionFactor The compression factor between 0.0 and 1.0
  @param useAuxiliaryFile If `YES` then the writing is atomically
  @returns `YES` if the writing to disk was successful
