@@ -45,8 +45,6 @@
     [super viewWillAppear:animated];
     
     self.view.alpha = 1;
-    
-    NSLog(@"appear");
 }
 
 @end
