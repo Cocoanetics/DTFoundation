@@ -1,11 +1,14 @@
 //
-// Created by rene on 01.10.12.
+//  NSString+DTUTI.h
+//  DTFoundation
 //
-// To change the template use AppCode | Preferences | File Templates.
+//  Created by Oliver Drobnik on 03.10.12.
+//  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-
-#import <Foundation/Foundation.h>
+/**
+ Utility methods that work with Universal Type Identifiers (UTI).
+ */
 
 @interface NSString (DTUTI)
 
@@ -16,7 +19,7 @@
  */
 
 /**
- Method to get the MIME-Type for the given file extension. If no MIME-Type can be determined then 'application/octet-stream' is returned.
+ Method to get the recommended MIME-Type for the given file extension. If no MIME-Type can be determined then 'application/octet-stream' is returned.
  @param extension the file extension
  @return the recommended MIME-Type for the given path extension.
 */
