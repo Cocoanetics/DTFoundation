@@ -12,3 +12,21 @@
 
 CGSize sizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit);
 
+
+/**
+ Replacement for buggy CGSizeMakeWithDictionaryRepresentation
+ @param dict The dictionary containing an encoded `CGSize`
+ @param size The `CGSize` to decode from the dictionary
+ @see http://www.cocoanetics.com/2012/09/radar-cgrectmakewithdictionaryrepresentation/
+ */
+BOOL DTCGSizeMakeWithDictionaryRepresentation(NSDictionary *dict, CGSize *size);
+
+/**
+ Replacement for buggy CGSizeCreateDictionaryRepresentation
+ @param size The `CGSize` to encode in the returned dictionary
+ @see http://www.cocoanetics.com/2012/09/radar-cgrectmakewithdictionaryrepresentation/
+ */
+NSDictionary *DTCGSizeCreateDictionaryRepresentation(CGSize size);
+
+
+
