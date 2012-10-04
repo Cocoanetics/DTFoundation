@@ -16,6 +16,7 @@ typedef void (^DTActionSheetBlock)(void);
 
 /**
  Initializes the action sheet using the specified title. 
+ @param title The title
  */
 - (id)initWithTitle:(NSString *)title;
 

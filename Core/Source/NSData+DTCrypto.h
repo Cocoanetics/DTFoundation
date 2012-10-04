@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+/**
+ Useful cryptography methods
+ */
+
 @interface NSData (DTCrypto)
 
 /**-------------------------------------------------------------------------------------
@@ -13,7 +17,7 @@
  ---------------------------------------------------------------------------------------
  */
 
-/*
+/**
  Generates a HMAC from the receiver using the SHA1 algorithm
  @param key The encryption key
  @returns The encrypted hash
