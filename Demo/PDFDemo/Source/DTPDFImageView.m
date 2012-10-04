@@ -28,8 +28,6 @@
         _PDFPage = PDFPage;
         
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-        _imageView.layer.borderWidth = 3;
-        _imageView.layer.borderColor = [[UIColor blueColor] CGColor];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_imageView];
     }
