@@ -8,6 +8,16 @@
 
 @interface NSData (DTCrypto)
 
+/**-------------------------------------------------------------------------------------
+ @name Generating HMAC Hashes
+ ---------------------------------------------------------------------------------------
+ */
+
+/*
+ Generates a HMAC from the receiver using the SHA1 algorithm
+ @param key The encryption key
+ @returns The encrypted hash
+ */
 - (NSData *)encryptedDataUsingSHA1WithKey:(NSData *)key;
 
 @end
