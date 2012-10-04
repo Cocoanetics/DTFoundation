@@ -1,12 +1,12 @@
 //
-// Created by rene on 01.10.12.
+//  NSString+DTUTI.m
+//  DTFoundation
 //
-// To change the template use AppCode | Preferences | File Templates.
+//  Created by Oliver Drobnik on 03.10.12.
+//  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
-
 
 #import "NSString+DTUTI.h"
-
 
 @implementation NSString (DTUTI)
 
@@ -14,9 +14,12 @@
 {
 	CFStringRef typeForExt = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,(__bridge CFStringRef)extension , NULL);
 	NSString *result = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass(typeForExt, kUTTagClassMIMEType);
-	if (!result) {
+	
+	if (!result)
+	{
 		return @"application/octet-stream";
 	}
+	
 	return result;
 }
 

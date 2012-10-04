@@ -23,6 +23,10 @@ typedef NSUInteger DTDownloadCacheOption;
 typedef void (^DTDownloadCacheDataCompletionBlock)(NSData *);
 typedef void (^DTDownloadCacheImageCompletionBlock)(UIImage *);
 
+/**
+ A global cache for <DTDownload> instances
+ */
+
 @interface DTDownloadCache : NSObject <DTDownloadDelegate>
 
 /**

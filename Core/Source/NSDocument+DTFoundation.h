@@ -6,10 +6,18 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+/**
+ Utility Methods for working with `NSDocument` instances
+ */
 
 @interface NSDocument (DTFoundation)
 
+/**
+ Finds the current window controller showing the main document
+ 
+ At present this always returns the window controller at index 0.
+ @returns mainDocumentWindowController The main document window controller
+ */
 - (NSWindowController *)mainDocumentWindowController;
 
 @end
