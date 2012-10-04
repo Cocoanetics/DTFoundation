@@ -37,6 +37,11 @@ char *NewDTBase64Encode(
  */
 @interface NSData (DTBase64)
 
+/**-------------------------------------------------------------------------------------
+ @name Working with base64-encoded Strings
+ ---------------------------------------------------------------------------------------
+ */
+
 /**
  Retrieve the NSData of a string encoded in Base64 encoding.
  @param aString The base 64 string.
