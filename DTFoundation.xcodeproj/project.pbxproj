@@ -200,10 +200,6 @@
 		A7FE30681548009A00F5DC66 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */; };
 		A7FE30691548009A00F5DC66 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */; };
 		FA2A29291609F7330023CDD7 /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
-		FA4264F2155D6B5B00E39D79 /* DTPageZoomScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4264EE155D6B5B00E39D79 /* DTPageZoomScrollView.h */; };
-		FA4264F3155D6B5B00E39D79 /* DTPageZoomScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4264EE155D6B5B00E39D79 /* DTPageZoomScrollView.h */; };
-		FA4264F4155D6B5B00E39D79 /* DTPageZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4264EF155D6B5B00E39D79 /* DTPageZoomScrollView.m */; };
-		FA4264F5155D6B5B00E39D79 /* DTPageZoomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4264EF155D6B5B00E39D79 /* DTPageZoomScrollView.m */; };
 		FA4264F6155D6B5B00E39D79 /* DTSmartPagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4264F0155D6B5B00E39D79 /* DTSmartPagingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA4264F7155D6B5B00E39D79 /* DTSmartPagingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4264F0155D6B5B00E39D79 /* DTSmartPagingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA4264F8155D6B5B00E39D79 /* DTSmartPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4264F1155D6B5B00E39D79 /* DTSmartPagingScrollView.m */; };
@@ -374,8 +370,6 @@
 		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A7FE30631548005700F5DC66 /* NSObject+DTRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DTRuntime.h"; sourceTree = "<group>"; };
 		A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DTRuntime.m"; sourceTree = "<group>"; };
-		FA4264EE155D6B5B00E39D79 /* DTPageZoomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPageZoomScrollView.h; sourceTree = "<group>"; };
-		FA4264EF155D6B5B00E39D79 /* DTPageZoomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPageZoomScrollView.m; sourceTree = "<group>"; };
 		FA4264F0155D6B5B00E39D79 /* DTSmartPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSmartPagingScrollView.h; sourceTree = "<group>"; };
 		FA4264F1155D6B5B00E39D79 /* DTSmartPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSmartPagingScrollView.m; sourceTree = "<group>"; };
 		FACE18851612074D00758319 /* PDFDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PDFDemo-Info.plist"; sourceTree = "<group>"; };
@@ -647,7 +641,6 @@
 		A7D0AA6A153C395C0020F18B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				FA4264EC155D6B2500E39D79 /* DTSmartPagingScrollView */,
 				A7494E4A154190C000BDDB7D /* DTDownloadCache */,
 				FACE18361611DA5F00758319 /* DTPDF */,
 				A7EE2A0B1582CBFC00BB06DE /* DTActionSheet.h */,
@@ -662,6 +655,8 @@
 				A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */,
 				A7949A3814C963F500A8CCDE /* DTHTMLParser.h */,
 				A7949A3914C963F500A8CCDE /* DTHTMLParser.m */,
+				FA4264F0155D6B5B00E39D79 /* DTSmartPagingScrollView.h */,
+				FA4264F1155D6B5B00E39D79 /* DTSmartPagingScrollView.m */,
 				A70B4CC71486621B00873A4A /* DTVersion.h */,
 				A70B4CC81486621B00873A4A /* DTVersion.m */,
 				A77DD40614E81AED00F34B03 /* DTZipArchive.h */,
@@ -728,17 +723,6 @@
 			name = Products;
 			path = ../..;
 			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FA4264EC155D6B2500E39D79 /* DTSmartPagingScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				FA4264EE155D6B5B00E39D79 /* DTPageZoomScrollView.h */,
-				FA4264EF155D6B5B00E39D79 /* DTPageZoomScrollView.m */,
-				FA4264F0155D6B5B00E39D79 /* DTSmartPagingScrollView.h */,
-				FA4264F1155D6B5B00E39D79 /* DTSmartPagingScrollView.m */,
-			);
-			name = DTSmartPagingScrollView;
-			sourceTree = "<group>";
 		};
 		FACE18361611DA5F00758319 /* DTPDF */ = {
 			isa = PBXGroup;
@@ -832,7 +816,6 @@
 				A7494E54154190F500BDDB7D /* DTCachedFile.h in Headers */,
 				A7FE30651548005700F5DC66 /* NSObject+DTRuntime.h in Headers */,
 				A73D5BAC155271FD0024BDB7 /* NSArray+DTError.h in Headers */,
-				FA4264F3155D6B5B00E39D79 /* DTPageZoomScrollView.h in Headers */,
 				FA4264F7155D6B5B00E39D79 /* DTSmartPagingScrollView.h in Headers */,
 				A7D8C2AB15643C4E009E94AD /* DTPieProgressIndicator.h in Headers */,
 				A7B57EDB157004630091D4EF /* UIWebView+DTFoundation.h in Headers */,
@@ -893,7 +876,6 @@
 				A7494E53154190F500BDDB7D /* DTCachedFile.h in Headers */,
 				A7FE30641548005700F5DC66 /* NSObject+DTRuntime.h in Headers */,
 				A73D5BAB155271FD0024BDB7 /* NSArray+DTError.h in Headers */,
-				FA4264F2155D6B5B00E39D79 /* DTPageZoomScrollView.h in Headers */,
 				FA4264F6155D6B5B00E39D79 /* DTSmartPagingScrollView.h in Headers */,
 				A7D8C2AA15643C4E009E94AD /* DTPieProgressIndicator.h in Headers */,
 				A7B57EDA157004630091D4EF /* UIWebView+DTFoundation.h in Headers */,
@@ -1194,7 +1176,6 @@
 				A7D0AA70153C39920020F18B /* DTUtils.m in Sources */,
 				A7FE30691548009A00F5DC66 /* NSObject+DTRuntime.m in Sources */,
 				A73D5BAE155271FD0024BDB7 /* NSArray+DTError.m in Sources */,
-				FA4264F5155D6B5B00E39D79 /* DTPageZoomScrollView.m in Sources */,
 				FA4264F9155D6B5B00E39D79 /* DTSmartPagingScrollView.m in Sources */,
 				A7D8C2AD15643C4E009E94AD /* DTPieProgressIndicator.m in Sources */,
 				A7B57EDD157004630091D4EF /* UIWebView+DTFoundation.m in Sources */,
@@ -1252,7 +1233,6 @@
 				A7D0AA6F153C39920020F18B /* DTUtils.m in Sources */,
 				A7FE30681548009A00F5DC66 /* NSObject+DTRuntime.m in Sources */,
 				A73D5BAD155271FD0024BDB7 /* NSArray+DTError.m in Sources */,
-				FA4264F4155D6B5B00E39D79 /* DTPageZoomScrollView.m in Sources */,
 				FA4264F8155D6B5B00E39D79 /* DTSmartPagingScrollView.m in Sources */,
 				A7D8C2AC15643C4E009E94AD /* DTPieProgressIndicator.m in Sources */,
 				A7B57EDC157004630091D4EF /* UIWebView+DTFoundation.m in Sources */,
