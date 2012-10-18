@@ -45,3 +45,37 @@ NSDictionary *DTCGSizeCreateDictionaryRepresentation(CGSize size)
 	
 	return [NSDictionary dictionaryWithObjectsAndKeys:widthNumber, @"Width", heightNumber, @"Height", nil];
 }
+
+
+BOOL DTCGRectMakeWithDictionaryRepresentation(NSDictionary *dict, CGRect *rect)
+{
+	NSNumber *widthNumber = [dict objectForKey:@"Width"];
+	NSNumber *heightNumber = [dict objectForKey:@"Height"];
+	NSNumber *xNumber = [dict objectForKey:@"X"];
+	NSNumber *yNumber = [dict objectForKey:@"Y"];
+	
+	if (!widthNumber || !heightNumber || !xNumber || !yNumber)
+	{
+		return NO;
+	}
+	
+	if (rect)
+	{
+		rect->origin.x = [xNumber floatValue];
+		rect->origin.y = [yNumber floatValue];
+		rect->size.width = [widthNumber floatValue];
+		rect->size.height = [heightNumber floatValue];
+	}
+	
+	return YES;
+}
+
+NSDictionary *DTCGRectCreateDictionaryRepresentation(CGRect rect)
+{
+	NSNumber *widthNumber = [NSNumber numberWithFloat:rect.size.width];
+	NSNumber *heightNumber = [NSNumber numberWithFloat:rect.size.height];
+	NSNumber *xNumber = [NSNumber numberWithFloat:rect.origin.x];
+	NSNumber *yNumber = [NSNumber numberWithFloat:rect.origin.y];
+	
+	return [NSDictionary dictionaryWithObjectsAndKeys:widthNumber, @"Width", heightNumber, @"Height", xNumber, @"X", yNumber, @"Y", nil];
+}
