@@ -58,8 +58,8 @@
 	DTVersion *first = [DTVersion versionWithString:@"1.2.3"];
 	DTVersion *second = [DTVersion versionWithString:@"1.2.4"];
 	
-	STAssertTrue([first isEqualToVersion:second], @"first version is not equal to second, but should");
-	STAssertTrue([first isEqual:second], @"first version is not equal to second, but should");
+	STAssertFalse([first isEqualToVersion:second], @"first version is not equal to second, but should");
+	STAssertFalse([first isEqual:second], @"first version is not equal to second, but should");
 
 	second = [DTVersion versionWithString:@"1.2"];
 	STAssertFalse([first isEqualToVersion:second], @"first version is equal to second, but should not");
