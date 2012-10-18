@@ -28,5 +28,20 @@ BOOL DTCGSizeMakeWithDictionaryRepresentation(NSDictionary *dict, CGSize *size);
  */
 NSDictionary *DTCGSizeCreateDictionaryRepresentation(CGSize size);
 
+/**
+ Replacement for buggy CGRectMakeWithDictionaryRepresentation
+ @param dict The dictionary containing an encoded `CGRect`
+ @param rect The `CGRect` to decode from the dictionary
+ @see http://www.cocoanetics.com/2012/09/radar-cgrectmakewithdictionaryrepresentation/
+ */
+BOOL DTCGRectMakeWithDictionaryRepresentation(NSDictionary *dict, CGRect *rect);
+
+/**
+ Replacement for buggy CGRectCreateDictionaryRepresentation
+ @param rect The `CGRect` to encode in the returned dictionary
+ @see http://www.cocoanetics.com/2012/09/radar-cgrectmakewithdictionaryrepresentation/
+ */
+NSDictionary *DTCGRectCreateDictionaryRepresentation(CGRect rect);
+
 
 
