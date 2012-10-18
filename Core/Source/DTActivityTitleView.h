@@ -17,7 +17,7 @@
 /**
  Title that is shown
  */
-@property (nonatomic, assign) NSString *title;
+@property (nonatomic, copy) NSString *title;
 
 /**
  When busy is set to YES the activity indicator starts spinning
