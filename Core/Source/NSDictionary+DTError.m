@@ -84,8 +84,28 @@ MAKE_CATEGORIES_LOADABLE(NSDictionary_DTError);
 															   kCFPropertyListImmutable,
 															   &errorString);
 	
+    if (errorString)
+    {
+        if (error)
+        {
+            NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+            NSString *domain = [infoDict objectForKey:(id)kCFBundleIdentifierKey];
+            
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObject:(__bridge NSString *)errorString
+                                                                 forKey:NSLocalizedDescriptionKey];
+            *error = [NSError errorWithDomain:domain code:1 userInfo:userInfo];
+        }
+        
+        CFRelease(errorString);
+    }
+    
+    
+    
 	if (!plist)
 	{
+        // clean up ref
+        //CFRelease(plist);
+        
 		return nil;
 	}
 	
@@ -96,23 +116,9 @@ MAKE_CATEGORIES_LOADABLE(NSDictionary_DTError);
 	}
 	else
 	{
-		if (errorString)
-		{
-			if (error)
-			{
-				NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-				NSString *domain = [infoDict objectForKey:(id)kCFBundleIdentifierKey];
-				
-				NSDictionary *userInfo = [NSDictionary dictionaryWithObject:(__bridge NSString *)errorString 
-																	 forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:domain code:1 userInfo:userInfo];
-			}
-			
-			CFRelease(errorString);
-		}
+        // clean up ref
+        //CFRelease(plist);
 		
-		// clean up ref
-		CFRelease(plist);
 		return nil;
 	}
 }

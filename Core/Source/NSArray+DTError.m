@@ -18,13 +18,24 @@ MAKE_CATEGORIES_LOADABLE(NSArray_DTError);
 {
 	NSData *readData = [NSData dataWithContentsOfURL:url];
 	
+	return [NSArray arrayWithContentsOfData:readData error:error];
+}
+
++ (NSArray *)arrayWithContentsOfFile:(NSString *)path error:(NSError **)error
+{
+	NSURL *url = [NSURL fileURLWithPath:path];
+	return [NSArray arrayWithContentsOfURL:url error:error];
+}
+
++ (NSArray *)arrayWithContentsOfData:(NSData *)data error:(NSError **)error
+{
 	CFStringRef errorString = NULL;
 	
-	CFPropertyListRef plist = CFPropertyListCreateFromXMLData(kCFAllocatorDefault, 
-															  (__bridge CFDataRef)readData, 
-															  kCFPropertyListImmutable,
-															  (CFStringRef *)&errorString);
-
+	CFPropertyListRef plist = CFPropertyListCreateFromXMLData(kCFAllocatorDefault,
+																				 (__bridge CFDataRef)data,
+																				 kCFPropertyListImmutable,
+																				 (CFStringRef *)&errorString);
+	
 	if (plist)
 	{
 		NSArray *readArray = [NSArray arrayWithArray:(__bridge id)plist];
@@ -32,24 +43,18 @@ MAKE_CATEGORIES_LOADABLE(NSArray_DTError);
 		
 		return readArray;
 	}
-
+	
 	if (errorString&&error)
 	{
 		NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
 		NSString *domain = [infoDict objectForKey:(id)kCFBundleIdentifierKey];
 		
-		NSDictionary *userInfo = [NSDictionary dictionaryWithObject:(__bridge NSString *)errorString 
-															 forKey:NSLocalizedDescriptionKey];
+		NSDictionary *userInfo = [NSDictionary dictionaryWithObject:(__bridge NSString *)errorString
+																			  forKey:NSLocalizedDescriptionKey];
 		*error = [NSError errorWithDomain:domain code:1 userInfo:userInfo];
 	}
-
-	return nil;			 
-}
-
-+ (NSArray *)arrayWithContentsOfFile:(NSString *)path error:(NSError **)error
-{
-	NSURL *url = [NSURL fileURLWithPath:path];
-	return [NSArray arrayWithContentsOfURL:url error:error];
+	
+	return nil;
 }
 
 
