@@ -2,6 +2,5 @@
 // Prefix header for all source files of the 'UnitTests' target in the 'UnitTests' project
 //
 
-#ifdef __OBJC__
-	#import <Foundation/Foundation.h>
-#endif
+// use same prefix as rest of project
+#import "DTFoundation-Prefix.pch"
