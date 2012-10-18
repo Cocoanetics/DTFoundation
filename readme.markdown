@@ -7,19 +7,35 @@ At a Glance
 -----------
 Contained are several category methods
 
+- NSArray+DTError - parsing array property lists with error reporting
+- NSData+Base64 - Matt Gallagher's base64 methods
+- NSData+DTCrypto - Cryptography methods for NSData
+- NSDictionary+DTError - parsing dictionary property lists with error reporting
+- NSMutableArray+DTMoving - moving multiple array elements to a new location
+- NSObject+DTRuntime - runtime hacking methods
 - NSString+DTFormatNumbers - formatting Numbers
+- NSString+DTUtilities - various utility methods for strings
 - NSString+DTPaths - working with paths
-- NSURL+DTPrefLinks - getting direct-access URLs for preferences
+- NSString+DTURLEncoding - URL encoding methods
+- NSString+DTUTI - string utility methods using UTIs
+- NSURL+DTUnshorten - unshorting of NSURLs
 - NSURL+DTAppLinks - getting direct-access URLs for an app's app store and review page
 - UIImage+DTFoundation - helpful methods for drawing images
 - UIView+DTFoundation - helpful methods for working with views
 
 Other classes simplify working with specialized data
 
+- DTActionSheet - block-based additions for UIActionSheet
 - DTASN1Parser - a parser for ASN.1-encoded data (eg. Certificates)
 - DTAsyncFileDeleter - asynchronous non-blocking file/folder deletion
 - DTDownload - asynchronous file download with optional resume
+- DTDownloadCache - A file and image cache using DTDownload for downloading
+- DTExtendedFileAttributes - access and modify extended file attributes
 - DTHTMLParser - a libxml2-based HTML parser
+- DTPDFDocument - simplified wrapper to work with PDF documents
+- DTPieProgressIndicator - pie-shaped progress indicator
+- DTScripting - things to work with Objective-C script
+- DTSmartPagingScrollView - a page-based scroll view
 - DTVersion - parsing and comparing version numbers
 - DTZipArchive - uncompressing ZIP and GZ files
 
