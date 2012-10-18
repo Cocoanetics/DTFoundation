@@ -7,6 +7,7 @@
 //
 
 #import "NSArray+DTError.h"
+#import "DTFoundationConstants.h"
 
 // force this category to be loaded by linker
 MAKE_CATEGORIES_LOADABLE(NSArray_DTError);
@@ -31,27 +32,17 @@ MAKE_CATEGORIES_LOADABLE(NSArray_DTError);
 {
 	CFStringRef errorString = NULL;
 	
-	CFPropertyListRef plist = CFPropertyListCreateFromXMLData(kCFAllocatorDefault,
-																				 (__bridge CFDataRef)data,
-																				 kCFPropertyListImmutable,
-																				 (CFStringRef *)&errorString);
+	NSArray *array = (__bridge_transfer NSArray *)CFPropertyListCreateFromXMLData(kCFAllocatorDefault, (__bridge CFDataRef)data, kCFPropertyListImmutable, (CFStringRef *)&errorString);
 	
-	if (plist)
+	if ([array isKindOfClass:[NSArray class]])
 	{
-		NSArray *readArray = [NSArray arrayWithArray:(__bridge id)plist];
-		CFRelease(plist);
-		
-		return readArray;
+        return array;
 	}
 	
 	if (errorString&&error)
-	{
-		NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-		NSString *domain = [infoDict objectForKey:(id)kCFBundleIdentifierKey];
-		
-		NSDictionary *userInfo = [NSDictionary dictionaryWithObject:(__bridge NSString *)errorString
-																			  forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:domain code:1 userInfo:userInfo];
+	{		
+		NSDictionary *userInfo = [NSDictionary dictionaryWithObject:(__bridge NSString *)errorString forKey:NSLocalizedDescriptionKey];
+		*error = [NSError errorWithDomain:DTFoundationErrorDomain code:1 userInfo:userInfo];
 	}
 	
 	return nil;
