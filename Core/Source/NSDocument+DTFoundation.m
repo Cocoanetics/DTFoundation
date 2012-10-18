@@ -12,6 +12,11 @@
 
 - (NSWindowController *)mainDocumentWindowController
 {
+	if (![self.windowControllers count])
+	{
+		return nil;
+	}
+	
 	// TODO: what if there are more than one window for a document?
 	return [self.windowControllers objectAtIndex:0];
 }
