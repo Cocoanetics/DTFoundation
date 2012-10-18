@@ -12,6 +12,9 @@
 	#import <Cocoa/Cocoa.h>
 #endif
 
+// Constants
+#import "DTFoundationConstants.h"
+
 // Classes
 #import "DTASN1Parser.h"
 #import "DTAsyncFileDeleter.h"
