@@ -66,7 +66,7 @@
 	
 	CGRect titleRect = CGRectMake(self.activityIndicator.frame.size.width+gap, 0, neededSize.width, height);
 	self.titleLabel.frame = titleRect;
-	self.frame = CGRectMake(0, 0, self.activityIndicator.frame.size.width+neededSize.width+gap, height);
+	self.bounds = CGRectMake(0, 0, self.activityIndicator.frame.size.width+neededSize.width+gap, height);
 }
 
 #pragma mark - Properties
@@ -81,6 +81,8 @@
 	{
 		[self.activityIndicator stopAnimating];
 	}
+    
+    [self setNeedsLayout];
 }
 
 - (BOOL)busy
