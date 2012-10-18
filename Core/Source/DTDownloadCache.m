@@ -319,27 +319,28 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		cachedFile.remoteURL = [download.URL absoluteString];
 		
 		[self _commitContext:tmpContext];
-		
-		dispatch_sync(dispatch_get_main_queue(), ^{
+        
+        // we transfered the file into the database, so we don't need it any more
+        [[DTAsyncFileDeleter sharedInstance] removeItemAtPath:path];
+
+        // get reference to completion block if it exists
+        DTDownloadCacheDataCompletionBlock completion = [_completionHandlers objectForKey:download.URL];
+
+        // remove all traces of this download so that something triggered in completion block or notification gets the image right away
+        [self _removeDownloadFromQueue:download];
+
+		// completion block and notification
+		dispatch_async(dispatch_get_main_queue(), ^{
 			// execute completion block if there is one registered
-			DTDownloadCacheDataCompletionBlock completion = [_completionHandlers objectForKey:download.URL];
-			
 			if (completion)
 			{
 				completion(data);
-				
-				[_completionHandlers removeObjectForKey:download.URL];
 			}
 			
 			// send notification 
 			[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadCacheDidCacheFileNotification object:download.URL];
-			
-			// we transfered the file into the database, so we don't need it any more
-			[[DTAsyncFileDeleter sharedInstance] removeItemAtPath:path];
 		});
 	});
-	
-	[self _removeDownloadFromQueue:download];
 	
 	[self _startNextQueuedDownload];
 }
