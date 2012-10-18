@@ -17,21 +17,18 @@
 @end
 
 @implementation DTActivityTitleView
-{
-    
-}
-@synthesize activityIndicator = _activityIndicator;
-
 
 - (id)init
 {
 	self = [super init];
+	
 	if (self)
     {
-        
 		self.titleLabel = [[UILabel alloc] init];
-		self.activityIndicator.hidesWhenStopped = YES;
 		self.titleLabel.backgroundColor = [UIColor clearColor];
+		
+		self.activityIndicator.hidesWhenStopped = YES;
+		
 		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
         {
 			self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -46,52 +43,42 @@
 			self.titleLabel.shadowOffset = CGSizeMake(0, -1);
 			self.titleLabel.shadowColor = [UIColor blackColor];
 		}
+		
 		self.titleLabel.font = [UIFont boldSystemFontOfSize:20];
 		[self addSubview:self.titleLabel];
 		[self addSubview:self.activityIndicator];
-        
-        
-        //self.titleLabel.text
-        
-		[self calculateSize];
 	}
 	return self;
 }
 
-- (void)setTitle:(NSString *)title
+- (void)layoutSubviews
 {
-	self.titleLabel.text = title;
-	[self calculateSize];
-}
-
-- (NSString *)title
-{
-	return self.titleLabel.text;
-}
-
-
-- (void)calculateSize
-{
+	[super layoutSubviews];
+	
 	CGFloat gap = 5.0;
 	CGFloat height = self.activityIndicator.frame.size.height;
 	CGSize neededSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font];
+	
 	if (height < neededSize.height)
     {
 		height = neededSize.height;
 	}
+	
 	CGRect titleRect = CGRectMake(self.activityIndicator.frame.size.width+gap, 0, neededSize.width, height);
 	self.titleLabel.frame = titleRect;
 	self.frame = CGRectMake(0, 0, self.activityIndicator.frame.size.width+neededSize.width+gap, height);
 }
 
-
+#pragma mark - Properties
 
 - (void)setBusy:(BOOL)busy
 {
 	if (busy)
     {
 		[self.activityIndicator startAnimating];
-	} else {
+	}
+	else
+	{
 		[self.activityIndicator stopAnimating];
 	}
 }
@@ -101,5 +88,17 @@
 	return self.activityIndicator.isAnimating;
 }
 
+- (void)setTitle:(NSString *)title
+{
+	self.titleLabel.text = title;
+	[self setNeedsLayout];
+}
+
+- (NSString *)title
+{
+	return self.titleLabel.text;
+}
+
+@synthesize activityIndicator = _activityIndicator;
 
 @end

@@ -517,8 +517,6 @@
 				A7D0AA68153C39490020F18B /* Utility Functions */,
 				A77DD3D014E81A0B00F34B03 /* Externals */,
 				A70B4CC91486621B00873A4A /* LoadableCategory.h */,
-				FA964841162D8294005BF101 /* DTActivityTitleView.h */,
-				FA964842162D8294005BF101 /* DTActivityTitleView.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -691,6 +689,8 @@
 				FACE18361611DA5F00758319 /* DTPDF */,
 				A7EE2A0B1582CBFC00BB06DE /* DTActionSheet.h */,
 				A7EE2A0C1582CBFC00BB06DE /* DTActionSheet.m */,
+				FA964841162D8294005BF101 /* DTActivityTitleView.h */,
+				FA964842162D8294005BF101 /* DTActivityTitleView.m */,
 				A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */,
 				A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */,
 				A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */,
