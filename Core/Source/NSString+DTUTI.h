@@ -25,4 +25,47 @@
 */
 + (NSString *)MIMETypeForFileExtension:(NSString *)extension;
 
+
+/**
+ Method to get the official description for a given file extension.
+ @param extension the file extension
+ @return the description
+ */
++ (NSString *)fileTypeDescriptionForFileExtension:(NSString *)extension;
+
+
+/**
+ Method to get the preferred UTI for a given file extension.
+ @param extension the file extension
+ @return the UTI
+ */
++ (NSString *)universalTypeIdentifierForFileExtension:(NSString *)extension;
+
+/**
+ Tests if the receiver conforms to a given UTI.
+ @param conformingUTI the UTI that is tested against
+ @return `YES` if the receiver conforms
+ */
+- (BOOL)conformsToUniversalTypeIdentifier:(NSString *)conformingUTI;
+
+/**
+ @returns `YES` if the receiver is a movie file name
+ */
+- (BOOL)isMovieFileName;
+
+/**
+ @Returns `YES` if the receiver is an audio file name
+ */
+- (BOOL)isAudioFileName;
+
+/**
+ @Returns `YES` if the receiver is an image file name
+ */
+- (BOOL)isImageFileName;
+
+/**
+ @Returns `YES` if the receiver is an HTML file name
+ */
+- (BOOL)isHTMLFileName;
+
 @end
