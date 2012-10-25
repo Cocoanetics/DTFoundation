@@ -15,7 +15,7 @@ MAKE_CATEGORIES_LOADABLE(NSString_DTFormatNumbers);
 
 + (NSString *)stringByFormattingBytes:(long long)bytes
 {
-	NSArray *units = [NSArray arrayWithObjects:@"%1.0f Bytes", @"%1.1f kB", @"%1.1f MB", @"%1.1f GB", @"%1.1f TB", nil];
+	NSArray *units = [NSArray arrayWithObjects:@"%1.0f Bytes", @"%1.1f KB", @"%1.1f MB", @"%1.1f GB", @"%1.1f TB", nil];
 	
 	long long value = bytes * 10;
 	for (int i=0; i<[units count]; i++)
