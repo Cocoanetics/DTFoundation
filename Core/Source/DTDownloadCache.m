@@ -42,6 +42,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	
 	// memory cache for certain types, e.g. images
 	NSCache *_memoryCache;
+    NSCache *_entityCache;
 	
 	NSUInteger _maxNumberOfConcurrentDownloads;
 	NSUInteger _diskCapacity;
@@ -80,6 +81,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		_activeDownloads = [[NSMutableSet alloc] init];
 		
 		_memoryCache = [[NSCache alloc] init];
+        _entityCache = [[NSCache alloc] init];
 		
 		_maxNumberOfConcurrentDownloads = 1;
 		_diskCapacity = 1024*1024*20; // 20 MB
@@ -232,16 +234,29 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	{
 		retData = existingCacheEntry.fileData;
 
-		if (option == DTDownloadCacheOptionReturnCacheAndLoadAlways)
-		{
-			[_managedObjectContext deleteObject:existingCacheEntry];
-		}
-		else 
-		{
-			existingCacheEntry.lastAccessDate = [NSDate date];
-		}
-
-		[self _commitContext:_managedObjectContext];
+        NSManagedObjectContext *tmpContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        tmpContext.parentContext = _managedObjectContext;
+        
+        [tmpContext performBlock:^{
+            // transfer the existing cache file entity to the temp context
+            DTCachedFile *cacheEntry = (DTCachedFile *)[tmpContext objectWithID:existingCacheEntry.objectID];
+            
+            if (option == DTDownloadCacheOptionReturnCacheAndLoadAlways)
+            {
+                [tmpContext deleteObject:cacheEntry];
+            }
+            else
+            {
+                cacheEntry.lastAccessDate = [NSDate date];
+            }
+            
+            if ([tmpContext save:NULL])
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self _commitContext:_managedObjectContext];
+                });
+            }
+        }];
 	}
 
 	if (option == DTDownloadCacheOptionNeverLoad)
@@ -451,7 +466,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	}
 
 	// create MOC
-	_managedObjectContext = [[NSManagedObjectContext alloc] init];
+	_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
 	[_managedObjectContext setPersistentStoreCoordinator:_persistentStoreCoordinator];
 	
 	// subscribe to change notifications
@@ -461,6 +476,16 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 // returned objects can only be used from the same context
 - (DTCachedFile *)_cachedFileForURL:(NSURL *)URL inContext:(NSManagedObjectContext *)context
 {
+    NSManagedObjectID *cachedIdentifier = [_entityCache objectForKey:URL];
+    
+    if (cachedIdentifier)
+    {
+        DTCachedFile *cachedFile = (DTCachedFile *)[context objectWithID:cachedIdentifier];
+        
+        return cachedFile;
+    }
+    
+    
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DTCachedFile"];
 	
 	request.predicate = [NSPredicate predicateWithFormat:@"remoteURL == %@", [URL absoluteString]];
@@ -473,12 +498,26 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	{
 		NSLog(@"error occured fetching %@", [error localizedDescription]);
 	}
-	
-	return [results lastObject];
+
+
+    DTCachedFile *cachedFile = [results lastObject];
+    
+    if (cachedFile)
+    {
+        // cache the file entity for this URL
+        [_entityCache setObject:cachedFile.objectID forKey:URL];
+    }
+
+	return cachedFile;
 }
 
 - (void)_commitContext:(NSManagedObjectContext *)context
 {
+    if (![context hasChanges])
+    {
+        return;
+    }
+    
 	NSError *error;
 	
 	if (![context save:&error])
