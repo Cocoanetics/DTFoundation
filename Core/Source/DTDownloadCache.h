@@ -20,8 +20,8 @@ enum {
 typedef NSUInteger DTDownloadCacheOption;
 
 
-typedef void (^DTDownloadCacheDataCompletionBlock)(NSData *);
-typedef void (^DTDownloadCacheImageCompletionBlock)(UIImage *);
+typedef void (^DTDownloadCacheDataCompletionBlock)(NSURL *, NSData *);
+typedef void (^DTDownloadCacheImageCompletionBlock)(NSURL *, UIImage *);
 
 /**
  A global cache for <DTDownload> instances
