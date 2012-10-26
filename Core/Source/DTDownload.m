@@ -255,11 +255,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	_cancelled = YES;
 	self.delegate = nil;
 	
-	if (receivedBytes < _totalBytes)
-	{
-		// update resume info on disk
-		[self _updateDownloadInfo];
-	}
+    // update resume info on disk
+    [self _updateDownloadInfo];
 	
 	[urlConnection cancel];
 	
@@ -318,6 +315,12 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 
 - (void)_updateDownloadInfo
 {
+    // no need to save resume info if we have not received any bytes yet, or download is complete
+	if (receivedBytes==0 || (receivedBytes == _totalBytes))
+	{
+		return;
+	}
+    
 	NSMutableDictionary *resumeDict = [NSMutableDictionary dictionary];
 	
 	[resumeDict setObject:[NSNumber numberWithLongLong:receivedBytes] forKey:@"NSURLDownloadBytesReceived"];
