@@ -21,22 +21,12 @@ static NSUInteger __internalOperationCount = 0;
 	{
 		__internalOperationCount++;
 		
-		void (^block)() = ^{
+		dispatch_async(dispatch_get_main_queue(), ^{
 			if (!self.isNetworkActivityIndicatorVisible && __internalOperationCount)
 			{
 				self.networkActivityIndicatorVisible = YES;
 			}
-		};
-		
-		if (dispatch_get_main_queue() == dispatch_get_current_queue())
-		{
-			// already on main thread
-			block();
-		}
-		else 
-		{
-			dispatch_async(dispatch_get_main_queue(), block);
-		}
+		});
 	}
 }
 
@@ -52,23 +42,12 @@ static NSUInteger __internalOperationCount = 0;
 		
 		__internalOperationCount--;
 		
-		void (^block)() = ^{
+		dispatch_async(dispatch_get_main_queue(), ^{
 			if (self.isNetworkActivityIndicatorVisible && !__internalOperationCount)
 			{
 				self.networkActivityIndicatorVisible = NO;
 			}
-		};
-		
-		
-		if (dispatch_get_main_queue() == dispatch_get_current_queue())
-		{
-			// already on main thread
-			block();
-		}
-		else 
-		{
-			dispatch_async(dispatch_get_main_queue(), block);
-		}
+		});
 	}
 }
 
