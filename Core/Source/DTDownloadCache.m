@@ -332,12 +332,6 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 - (void)download:(DTDownload *)download didFinishWithFile:(NSString *)path
 {
-<<<<<<< HEAD
-	//NSLog(@"did finish %@", download.URL);
-=======
-	NSLog(@"did finish %@", download.URL);
->>>>>>> cf6e01720bddec66632e898647db0fabf198ea15
-	
     [_workerContext performBlock:^{
 		// check if URL already exists
 		DTCachedFile *cachedFile = [self _cachedFileForURL:download.URL inContext:_workerContext];
