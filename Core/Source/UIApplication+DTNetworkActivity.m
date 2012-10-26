@@ -35,7 +35,7 @@ static NSUInteger __internalOperationCount = 0;
 		}
 		else 
 		{
-			dispatch_sync(dispatch_get_main_queue(), block); 
+			dispatch_async(dispatch_get_main_queue(), block);
 		}
 	}
 }
@@ -67,7 +67,7 @@ static NSUInteger __internalOperationCount = 0;
 		}
 		else 
 		{
-			dispatch_sync(dispatch_get_main_queue(), block); 
+			dispatch_async(dispatch_get_main_queue(), block);
 		}
 	}
 }
