@@ -98,6 +98,9 @@
 		A76613E5161444FD00DF6C2B /* NSString+DTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA49153C233E0020F18B /* NSString+DTUtilities.m */; };
 		A76E1F5F163A95FC00042DB3 /* DTScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = A76E1F5D163A95FC00042DB3 /* DTScrollView.h */; };
 		A76E1F60163A95FC00042DB3 /* DTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A76E1F5E163A95FC00042DB3 /* DTScrollView.m */; };
+		A7787A0E16441B1800AF5830 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
+		A7787A1916441B4500AF5830 /* DTBonjourDataConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A7787A0616441AB700AF5830 /* DTBonjourDataConnection.m */; };
+		A7787A1A16441B4500AF5830 /* DTBonjourServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7787A0816441AB700AF5830 /* DTBonjourServer.m */; };
 		A77DD39E14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD39F14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD3A014E648AD00F34B03 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */; };
@@ -278,6 +281,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A7787A0B16441B1800AF5830 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7E383C0160DFEDB00CF72D6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +364,11 @@
 		A766135F16143F8A00DF6C2B /* NSMutableArray+DTMoving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+DTMoving.m"; sourceTree = "<group>"; };
 		A76E1F5D163A95FC00042DB3 /* DTScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTScrollView.h; sourceTree = "<group>"; };
 		A76E1F5E163A95FC00042DB3 /* DTScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTScrollView.m; sourceTree = "<group>"; };
+		A7787A0516441AB700AF5830 /* DTBonjourDataConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTBonjourDataConnection.h; sourceTree = "<group>"; };
+		A7787A0616441AB700AF5830 /* DTBonjourDataConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTBonjourDataConnection.m; sourceTree = "<group>"; };
+		A7787A0716441AB700AF5830 /* DTBonjourServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTBonjourServer.h; sourceTree = "<group>"; };
+		A7787A0816441AB700AF5830 /* DTBonjourServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTBonjourServer.m; sourceTree = "<group>"; };
+		A7787A0D16441B1800AF5830 /* libDTBonjour.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTBonjour.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
 		A77DD40614E81AED00F34B03 /* DTZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchive.h; sourceTree = "<group>"; };
@@ -475,6 +492,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A710A5011607556000437D36 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7787A0A16441B1800AF5830 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7787A0E16441B1800AF5830 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +643,17 @@
 			name = "OS X";
 			sourceTree = "<group>";
 		};
+		A7787A0316441A8D00AF5830 /* DTBonjour */ = {
+			isa = PBXGroup;
+			children = (
+				A7787A0516441AB700AF5830 /* DTBonjourDataConnection.h */,
+				A7787A0616441AB700AF5830 /* DTBonjourDataConnection.m */,
+				A7787A0716441AB700AF5830 /* DTBonjourServer.h */,
+				A7787A0816441AB700AF5830 /* DTBonjourServer.m */,
+			);
+			name = DTBonjour;
+			sourceTree = "<group>";
+		};
 		A77DD3D014E81A0B00F34B03 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,6 +778,7 @@
 				A7556F63162EEF6700A69F63 /* DTScripting */,
 				A7494E4A154190C000BDDB7D /* DTDownloadCache */,
 				FACE18361611DA5F00758319 /* DTPDF */,
+				A7787A0316441A8D00AF5830 /* DTBonjour */,
 				A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */,
 				A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */,
 				A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */,
@@ -835,6 +872,7 @@
 				A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */,
 				A7E383F1160E002200CF72D6 /* libDTDownloadCache.a */,
 				FAE5B92D1610A38200CA0D99 /* PDFDemo.app */,
+				A7787A0D16441B1800AF5830 /* libDTBonjour.a */,
 			);
 			name = Products;
 			path = ../..;
@@ -1059,6 +1097,23 @@
 			productReference = A710A5001607556000437D36 /* libDTFoundation_Mac.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		A7787A0C16441B1800AF5830 /* DTBonjour */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7787A1616441B1800AF5830 /* Build configuration list for PBXNativeTarget "DTBonjour" */;
+			buildPhases = (
+				A7787A0916441B1800AF5830 /* Sources */,
+				A7787A0A16441B1800AF5830 /* Frameworks */,
+				A7787A0B16441B1800AF5830 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DTBonjour;
+			productName = DTBonjour;
+			productReference = A7787A0D16441B1800AF5830 /* libDTBonjour.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		A7BAD10D1483F934000E2B6A /* Static Framework */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7BAD1161483F934000E2B6A /* Build configuration list for PBXNativeTarget "Static Framework" */;
@@ -1197,6 +1252,7 @@
 				A7E383D9160DFF8600CF72D6 /* DTZipArchive */,
 				A7E383F0160E002200CF72D6 /* DTDownloadCache */,
 				FAE5B92C1610A38200CA0D99 /* PDFDemo */,
+				A7787A0C16441B1800AF5830 /* DTBonjour */,
 			);
 		};
 /* End PBXProject section */
@@ -1358,6 +1414,15 @@
 				A73B6F90163169BB002CCCA7 /* NSFileWrapper+DTCopying.m in Sources */,
 				A73B6FA716318EBC002CCCA7 /* NSString+DTFormatNumbers.m in Sources */,
 				A76E1F60163A95FC00042DB3 /* DTScrollView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7787A0916441B1800AF5830 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7787A1916441B4500AF5830 /* DTBonjourDataConnection.m in Sources */,
+				A7787A1A16441B4500AF5830 /* DTBonjourServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1540,6 +1605,57 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = DTFoundation_Mac;
 				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A7787A1716441B1800AF5830 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+					"$(ARCHS_STANDARD_64_BIT)",
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DSTROOT = /tmp/DTBonjour.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macos";
+				VALID_ARCHS = "armv7 armv7s x86_64";
+			};
+			name = Debug;
+		};
+		A7787A1816441B1800AF5830 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+					"$(ARCHS_STANDARD_64_BIT)",
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DSTROOT = /tmp/DTBonjour.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macos";
+				VALID_ARCHS = "armv7 armv7s x86_64";
 			};
 			name = Release;
 		};
@@ -1888,6 +2004,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A7787A1616441B1800AF5830 /* Build configuration list for PBXNativeTarget "DTBonjour" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7787A1716441B1800AF5830 /* Debug */,
+				A7787A1816441B1800AF5830 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		A7BAD1161483F934000E2B6A /* Build configuration list for PBXNativeTarget "Static Framework" */ = {
 			isa = XCConfigurationList;
