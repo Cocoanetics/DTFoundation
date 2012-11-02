@@ -53,6 +53,7 @@
 #else
 	#import "NSImage+DTUtilities.h"
 	#import "NSDocument+DTFoundation.h"
+	#import "NSView+DTAutoLayout.h"
 	#import "NSWindowController+DTPanelControllerPresenting.h"
 #endif
 

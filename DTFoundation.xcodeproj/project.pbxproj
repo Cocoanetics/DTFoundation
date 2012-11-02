@@ -101,6 +101,8 @@
 		A7787A0E16441B1800AF5830 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A7787A1916441B4500AF5830 /* DTBonjourDataConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A7787A0616441AB700AF5830 /* DTBonjourDataConnection.m */; };
 		A7787A1A16441B4500AF5830 /* DTBonjourServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7787A0816441AB700AF5830 /* DTBonjourServer.m */; };
+		A7787A5C1644385100AF5830 /* NSView+DTAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A7787A5A1644385100AF5830 /* NSView+DTAutoLayout.m */; };
+		A7787A5D1644385100AF5830 /* NSView+DTAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = A7787A5B1644385100AF5830 /* NSView+DTAutoLayout.h */; };
 		A77DD39E14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD39F14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD3A014E648AD00F34B03 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */; };
@@ -369,6 +371,8 @@
 		A7787A0716441AB700AF5830 /* DTBonjourServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTBonjourServer.h; sourceTree = "<group>"; };
 		A7787A0816441AB700AF5830 /* DTBonjourServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTBonjourServer.m; sourceTree = "<group>"; };
 		A7787A0D16441B1800AF5830 /* libDTBonjour.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTBonjour.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7787A5A1644385100AF5830 /* NSView+DTAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+DTAutoLayout.m"; sourceTree = "<group>"; };
+		A7787A5B1644385100AF5830 /* NSView+DTAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+DTAutoLayout.h"; sourceTree = "<group>"; };
 		A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
 		A77DD40614E81AED00F34B03 /* DTZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchive.h; sourceTree = "<group>"; };
@@ -681,12 +685,14 @@
 		A79296841619D37A00D5C979 /* OS X */ = {
 			isa = PBXGroup;
 			children = (
-				A79500F0161D67E300358BC3 /* NSImage+DTUtilities.h */,
-				A79500F1161D67E300358BC3 /* NSImage+DTUtilities.m */,
-				A792967F1619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.h */,
-				A79296801619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.m */,
 				A792968B1619D99400D5C979 /* NSDocument+DTFoundation.h */,
 				A792968C1619D99400D5C979 /* NSDocument+DTFoundation.m */,
+				A79500F0161D67E300358BC3 /* NSImage+DTUtilities.h */,
+				A79500F1161D67E300358BC3 /* NSImage+DTUtilities.m */,
+				A7787A5A1644385100AF5830 /* NSView+DTAutoLayout.m */,
+				A7787A5B1644385100AF5830 /* NSView+DTAutoLayout.h */,
+				A792967F1619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.h */,
+				A79296801619C94100D5C979 /* NSWindowController+DTPanelControllerPresenting.m */,
 			);
 			name = "OS X";
 			sourceTree = "<group>";
@@ -1006,6 +1012,7 @@
 				A73B6F8D163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */,
 				E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */,
 				A76E1F5F163A95FC00042DB3 /* DTScrollView.h in Headers */,
+				A7787A5D1644385100AF5830 /* NSView+DTAutoLayout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1414,6 +1421,7 @@
 				A73B6F90163169BB002CCCA7 /* NSFileWrapper+DTCopying.m in Sources */,
 				A73B6FA716318EBC002CCCA7 /* NSString+DTFormatNumbers.m in Sources */,
 				A76E1F60163A95FC00042DB3 /* DTScrollView.m in Sources */,
+				A7787A5C1644385100AF5830 /* NSView+DTAutoLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2012,6 +2020,7 @@
 				A7787A1816441B1800AF5830 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A7BAD1161483F934000E2B6A /* Build configuration list for PBXNativeTarget "Static Framework" */ = {
 			isa = XCConfigurationList;
