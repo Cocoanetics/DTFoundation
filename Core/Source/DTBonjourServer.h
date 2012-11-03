@@ -25,4 +25,7 @@
 
 @property (nonatomic, weak) id <DTBonjourServerDelegate> delegate;
 
+@property (nonatomic, assign, readonly ) NSUInteger port;   // the actual port bound to, valid after -start
+
+
 @end
