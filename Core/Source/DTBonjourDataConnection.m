@@ -76,13 +76,21 @@ typedef enum
 	
 	if (self)
 	{
-		[service getInputStream:&_inputStream outputStream:&_outputStream];
+		if (![service getInputStream:&_inputStream outputStream:&_outputStream])
+		{
+			return nil;
+		}
 		
 		_inputBuffer = [[NSMutableData alloc] init];
 		_outputBuffer = [[NSMutableData alloc] init];
 	}
 	
 	return self;
+}
+
+- (void)dealloc
+{
+	[self close];
 }
 
 - (BOOL)open
@@ -105,6 +113,8 @@ typedef enum
 	[_outputStream close];
 	[_inputStream  removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 	[_outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+	_inputStream = nil;
+	_outputStream = nil;
 	
 	if ([_delegate respondsToSelector:@selector(connectionDidClose:)])
 	{
@@ -423,7 +433,8 @@ typedef enum
 		default:
 		{
 			// do nothing
-		} break;
+			break;
+		} 
 	}
 }
 

@@ -11,6 +11,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
 #import <CoreFoundation/CoreFoundation.h>
 
@@ -26,12 +27,47 @@
 
 @end
 
-
-void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, const void *data, void *info);
-
-void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, const void *data, void *info)
+// call-back function for incoming connections
+static void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef address, const void *data, void *info)
 {
 	DTBonjourServer *server = (__bridge DTBonjourServer *)info;
+	
+	const struct sockaddr *sa = (const struct sockaddr *)CFDataGetBytePtr(address);
+	
+	sa_family_t family = sa->sa_family;
+	
+	NSString *ipString = nil;
+	NSString *familyString = nil;
+	NSUInteger port = 0;
+	
+	if (family == AF_INET)
+	{
+		familyString = @"IPv4";
+		
+		struct sockaddr_in addr4;
+		CFDataGetBytes(address, CFRangeMake(0, sizeof(addr4)), (void *)&addr4);
+		
+		char str[INET_ADDRSTRLEN];
+		inet_ntop(AF_INET, &(addr4.sin_addr), str, INET_ADDRSTRLEN);
+		ipString = [[NSString alloc] initWithBytes:str length:strlen(str) encoding:NSUTF8StringEncoding];
+		
+		port = ntohs(addr4.sin_port);
+	}
+	else if (family == AF_INET6)
+	{
+		familyString = @"IPv6";
+		
+		struct sockaddr_in6 addr6;
+		CFDataGetBytes(address, CFRangeMake(0, sizeof(addr6)), (void *)&addr6);
+		
+		char str[INET6_ADDRSTRLEN];
+		inet_ntop(AF_INET6, &(addr6.sin6_addr), str, INET6_ADDRSTRLEN);
+		ipString = [[NSString alloc] initWithBytes:str length:strlen(str) encoding:NSUTF8StringEncoding];
+		
+		port = ntohs(addr6.sin6_port);
+	}
+	
+	NSLog(@"Accepting %@ connection from %@ on port %d", familyString, ipString, (int)port);
 	
 	// For an accept callback, the data parameter is a pointer to a CFSocketNativeHandle.
 	[server _acceptConnection:*(CFSocketNativeHandle *)data];
@@ -65,6 +101,11 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 		}
 		
 		_connections = [[NSMutableSet alloc] init];
+		
+#if TARGET_OS_IPHONE
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+#endif
 	}
 	
 	return self;
@@ -98,8 +139,86 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 
 - (BOOL)start
 {
-	CFSocketContext context = {0, (__bridge void *)self, NULL, NULL, NULL};
+	assert(_ipv4socket == NULL && _ipv6socket == NULL);       // don't call -start twice!
+	
+	CFSocketContext socketCtxt = {0, (__bridge void *) self, NULL, NULL, NULL};
+	_ipv4socket = CFSocketCreate(kCFAllocatorDefault, AF_INET,  SOCK_STREAM, 0, kCFSocketAcceptCallBack, &ListeningSocketCallback, &socketCtxt);
+	_ipv6socket = CFSocketCreate(kCFAllocatorDefault, AF_INET6, SOCK_STREAM, 0, kCFSocketAcceptCallBack, &ListeningSocketCallback, &socketCtxt);
+	
+	if (NULL == _ipv4socket || NULL == _ipv6socket)
+	{
+		[self stop];
+		return NO;
+	}
+	
+	static const int yes = 1;
+	(void) setsockopt(CFSocketGetNative(_ipv4socket), SOL_SOCKET, SO_REUSEADDR, (const void *) &yes, sizeof(yes));
+	(void) setsockopt(CFSocketGetNative(_ipv6socket), SOL_SOCKET, SO_REUSEADDR, (const void *) &yes, sizeof(yes));
+	
+	// Set up the IPv4 listening socket; port is 0, which will cause the kernel to choose a port for us.
+	struct sockaddr_in addr4;
+	memset(&addr4, 0, sizeof(addr4));
+	addr4.sin_len = sizeof(addr4);
+	addr4.sin_family = AF_INET;
+	addr4.sin_port = htons(0);
+	addr4.sin_addr.s_addr = htonl(INADDR_ANY);
+	
+	if (kCFSocketSuccess != CFSocketSetAddress(_ipv4socket, (__bridge CFDataRef) [NSData dataWithBytes:&addr4 length:sizeof(addr4)]))
+	{
+		[self stop];
+		return NO;
+	}
+	
+	// Now that the IPv4 binding was successful, we get the port number
+	// -- we will need it for the IPv6 listening socket and for the NSNetService.
+	NSData *addr = (__bridge_transfer NSData *)CFSocketCopyAddress(_ipv4socket);
+	assert([addr length] == sizeof(struct sockaddr_in));
+	_port = ntohs(((const struct sockaddr_in *)[addr bytes])->sin_port);
+	
+	// Set up the IPv6 listening socket.
+	struct sockaddr_in6 addr6;
+	memset(&addr6, 0, sizeof(addr6));
+	addr6.sin6_len = sizeof(addr6);
+	addr6.sin6_family = AF_INET6;
+	addr6.sin6_port = htons(self.port);
+	memcpy(&(addr6.sin6_addr), &in6addr_any, sizeof(addr6.sin6_addr));
+	if (kCFSocketSuccess != CFSocketSetAddress(_ipv6socket, (__bridge CFDataRef) [NSData dataWithBytes:&addr6 length:sizeof(addr6)]))
+	{
+		[self stop];
+		return NO;
+	}
+	
+	// Set up the run loop sources for the sockets.
+	CFRunLoopSourceRef source4 = CFSocketCreateRunLoopSource(kCFAllocatorDefault, _ipv4socket, 0);
+	CFRunLoopAddSource(CFRunLoopGetCurrent(), source4, kCFRunLoopCommonModes);
+	CFRelease(source4);
+	
+	CFRunLoopSourceRef source6 = CFSocketCreateRunLoopSource(kCFAllocatorDefault, _ipv6socket, 0);
+	CFRunLoopAddSource(CFRunLoopGetCurrent(), source6, kCFRunLoopCommonModes);
+	CFRelease(source6);
+	
+	if (_ipv6socket)
+	{
+		CFSocketInvalidate(_ipv6socket);
+		CFRelease(_ipv6socket);
+		_ipv6socket = NULL;
+	}
+	
+	assert(self.port > 0 && self.port < 65536);
+	_service = [[NSNetService alloc] initWithDomain:@"" type:_bonjourType name:@"" port:(int)_port];
+	_service.delegate = self;
+	
+	[_service publishWithOptions:0];
+	
+	return YES;
+}
 
+/*
+ // this is the way to create the sockets on the Posix-level
+- (BOOL)start
+{
+	CFSocketContext context = {0, (__bridge void *)self, NULL, NULL, NULL};
+	
 	// create IPv4 socket
 	int fd4 = socket(AF_INET, SOCK_STREAM, 0);
 	
@@ -159,7 +278,6 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 	CFRunLoopSourceRef source6 = CFSocketCreateRunLoopSource(kCFAllocatorDefault, _ipv6socket, 0);
 	CFRunLoopAddSource(CFRunLoopGetCurrent(), source6, kCFRunLoopCommonModes);
 	CFRelease(source6);
-	
 	_service = [[NSNetService alloc] initWithDomain:@"" // use all available domains
 															type:_bonjourType
 															name:@"" // uses default name of system
@@ -177,6 +295,7 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 	
 	return YES;
 }
+ */
 
 - (void)stop
 {
@@ -191,7 +310,6 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 	{
 		[connection close];
 	}
-	
 	
 	if (_ipv4socket)
 	{
@@ -211,6 +329,9 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 - (void)_acceptConnection:(CFSocketNativeHandle)nativeSocketHandle
 {
 	DTBonjourDataConnection *newConnection = [[DTBonjourDataConnection alloc] initWithNativeSocketHandle:nativeSocketHandle];
+	
+	//DTBonjourDataConnection *newConnection = [[DTBonjourDataConnection alloc] initWithService:service];
+	
 	newConnection.delegate = self;
 	[newConnection open];
 	[_connections addObject:newConnection];
@@ -233,6 +354,11 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 	NSLog(@"My name: %@ port: %d", [sender name], (int)sender.port);
 }
 
+- (void)netServiceDidStop:(NSNetService *)sender
+{
+	NSLog(@"Bonjour Service shut down");
+}
+
 #pragma mark - DTBonjourDataConnection Delegate
 - (void)connectionDidClose:(DTBonjourDataConnection *)connection
 {
@@ -243,16 +369,17 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 
 - (void)appDidEnterBackground:(NSNotification *)notification
 {
-	[_service stop];
+	[self stop];
 }
 
 - (void)appWillEnterForeground:(NSNotification *)notification
 {
-	[_service publish];
+	[self start];
 }
 
 #pragma mark - Properties
 
 @synthesize delegate = _delegate;
+@synthesize port = _port;
 
 @end
