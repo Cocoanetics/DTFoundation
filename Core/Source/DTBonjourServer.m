@@ -42,17 +42,15 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 {
 	NSNetService *_service;
 	
-	NSInputStream *_inputStream;
-	NSOutputStream *_outputStream;
+	CFSocketRef _ipv4socket;
+	CFSocketRef _ipv6socket;
 	
-	NSMutableData *_inputBuffer;
-	NSMutableData *_outputBuffer;
-	
-	BOOL isInputConnected;
-	BOOL isOutputConnected;
+	NSUInteger _port; // used port, assigned during start
 	
 	NSMutableSet *_connections;
 	NSString *_bonjourType;
+	
+	__weak id <DTBonjourServerDelegate> _delegate;
 }
 
 - (id)init
@@ -94,44 +92,45 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
+	[self stop];
 }
 
-- (void)_addRunLoopSourceForFileDescriptor:(int)fd
+- (BOOL)start
 {
 	CFSocketContext context = {0, (__bridge void *)self, NULL, NULL, NULL};
-	CFSocketRef sock;
-	CFRunLoopSourceRef rls;
-	
-	sock = CFSocketCreateWithNative(NULL, fd, kCFSocketAcceptCallBack, ListeningSocketCallback, &context);
-	rls = CFSocketCreateRunLoopSource(NULL, sock, 0);
-	CFRunLoopAddSource(CFRunLoopGetCurrent(), rls, kCFRunLoopCommonModes);
-	
-	CFRelease(rls);
-	CFRelease(sock);
-}
 
-- (void)startListening
-{
 	// create IPv4 socket
 	int fd4 = socket(AF_INET, SOCK_STREAM, 0);
 	
 	// allow for reuse of local address
 	static const int yes = 1;
 	int err = setsockopt(fd4, SOL_SOCKET, SO_REUSEADDR, (const void *) &yes, sizeof(yes));
-
+	
 	// a structure for the socket address
 	struct sockaddr_in sin;
 	memset(&sin, 0, sizeof(sin));
 	sin.sin_family = AF_INET;
 	sin.sin_len = sizeof(sin);
 	sin.sin_port = htons(0);  // asks kernel for arbitrary port number
-
+	
 	err = bind(fd4, (const struct sockaddr *) &sin, sin.sin_len);
 	
 	socklen_t addrLen = sizeof(sin);
 	err = getsockname(fd4, (struct sockaddr *)&sin, &addrLen);
 	err = listen(fd4, 5);
-
+	
+	// should have a port number now
+	_port = sin.sin_port;
+	
+	if (!_port)
+	{
+		return NO;
+	}
+	
+	// create a CFSocket for the file descriptor
+	_ipv4socket = CFSocketCreateWithNative(NULL, fd4, kCFSocketAcceptCallBack, ListeningSocketCallback, &context);
+	
 	// create IPv6 socket
 	int fd6 = socket(AF_INET6, SOCK_STREAM, 0);
 	
@@ -149,24 +148,22 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 	
 	err = listen(fd6, 5);
 	
+	// create a CFSocket for the file descriptor
+	_ipv6socket = CFSocketCreateWithNative(NULL, fd6, kCFSocketAcceptCallBack, ListeningSocketCallback, &context);
 	
-	[self _addRunLoopSourceForFileDescriptor:fd4];
-	[self _addRunLoopSourceForFileDescriptor:fd6];
+	// Set up the run loop sources for the sockets.
+	CFRunLoopSourceRef source4 = CFSocketCreateRunLoopSource(kCFAllocatorDefault, _ipv4socket, 0);
+	CFRunLoopAddSource(CFRunLoopGetCurrent(), source4, kCFRunLoopCommonModes);
+	CFRelease(source4);
+	
+	CFRunLoopSourceRef source6 = CFSocketCreateRunLoopSource(kCFAllocatorDefault, _ipv6socket, 0);
+	CFRunLoopAddSource(CFRunLoopGetCurrent(), source6, kCFRunLoopCommonModes);
+	CFRelease(source6);
 	
 	_service = [[NSNetService alloc] initWithDomain:@"" // use all available domains
 															type:_bonjourType
 															name:@"" // uses default name of system
-															port:ntohs(sin.sin_port)];
-	
-	/*
-	 Misspelled type: _typ instead of _tcp:
-	 
-	 Error publishing: {
-    NSNetServicesErrorCode = "-72004";
-    NSNetServicesErrorDomain = 10;
-	 }
-	 
-	 */
+															port:ntohs(_port)];
 	
 	[_service scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 	_service.delegate = self;
@@ -177,6 +174,38 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 #endif
+	
+	return YES;
+}
+
+- (void)stop
+{
+	// stop the bonjour advertising
+	[_service stop];
+	_service = nil;
+	
+	// Closes all the open connections.  The EchoConnectionDidCloseNotification notification will ensure
+	// that the connection gets removed from the self.connections set.  To avoid mututation under iteration
+	// problems, we make a copy of that set and iterate over the copy.
+	for (DTBonjourDataConnection *connection in [_connections copy])
+	{
+		[connection close];
+	}
+	
+	
+	if (_ipv4socket)
+	{
+		CFSocketInvalidate(_ipv4socket);
+		CFRelease(_ipv4socket);
+		_ipv4socket = NULL;
+	}
+	
+	if (_ipv6socket)
+	{
+		CFSocketInvalidate(_ipv6socket);
+		CFRelease(_ipv6socket);
+		_ipv6socket = NULL;
+	}
 }
 
 - (void)_acceptConnection:(CFSocketNativeHandle)nativeSocketHandle
@@ -185,6 +214,11 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 	newConnection.delegate = self;
 	[newConnection open];
 	[_connections addObject:newConnection];
+	
+	if ([_delegate respondsToSelector:@selector(bonjourServer:didAcceptConnection:)])
+	{
+		[_delegate bonjourServer:self didAcceptConnection:newConnection];
+	}
 }
 
 #pragma mark - NSNetService Delegate
@@ -216,5 +250,9 @@ void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CFDataRef
 {
 	[_service publish];
 }
+
+#pragma mark - Properties
+
+@synthesize delegate = _delegate;
 
 @end

@@ -8,10 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+
+@class DTBonjourServer, DTBonjourDataConnection;
+
+@protocol DTBonjourServerDelegate <NSObject>
+@optional
+- (void)bonjourServer:(DTBonjourServer *)server didAcceptConnection:(DTBonjourDataConnection *)connection;
+@end
+
 @interface DTBonjourServer : NSObject
 
 - (id)initWithBonjourType:(NSString *)bonjourType;
 
-- (void)startListening;
+- (BOOL)start;
+- (void)stop;
+
+@property (nonatomic, weak) id <DTBonjourServerDelegate> delegate;
 
 @end
