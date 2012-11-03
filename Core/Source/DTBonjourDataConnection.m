@@ -11,8 +11,6 @@
 
 NSString * DTBonjourDataConnectionErrorDomain = @"DTBonjourDataConnection";
 
-#define USE_JSON 1
-
 @interface DTBonjourDataConnection () <NSStreamDelegate>
 
 @end
@@ -108,7 +106,10 @@ typedef enum
 	[_inputStream  removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 	[_outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 	
-	[_delegate connectionDidClose:self];
+	if ([_delegate respondsToSelector:@selector(connectionDidClose:)])
+	{
+		[_delegate connectionDidClose:self];
+	}
 }
 
 
@@ -216,7 +217,7 @@ typedef enum
 				}
 			}
 			
-			if (![scanner scanString:@"Length:" intoString:NULL])
+			if (![scanner scanString:@"Content-Length:" intoString:NULL])
 			{
 				return;
 			}
@@ -258,6 +259,11 @@ typedef enum
 				{
 					NSLog(@"Unable to decode object");
 					return;
+				}
+				
+				if ([_delegate respondsToSelector:@selector(connection:didReceiveObject:)])
+				{
+					[_delegate connection:self didReceiveObject:object];
 				}
 				
 				[_inputBuffer replaceBytesInRange:payloadRange withBytes:NULL length:0];
@@ -345,7 +351,7 @@ typedef enum
 	}
 	
 	NSString *type = NSStringFromClass([object class]);
-	NSString *header = [NSString stringWithFormat:@"PUT\r\nClass: %@\r\nContent-Type: %@\r\nLength:%ld\r\n\r\n", type, contentType, (long)[archivedData length]];
+	NSString *header = [NSString stringWithFormat:@"PUT\r\nClass: %@\r\nContent-Type: %@\r\nContent-Length:%ld\r\n\r\n", type, contentType, (long)[archivedData length]];
 	NSData *headerData = [header dataUsingEncoding:NSUTF8StringEncoding];
 	
 	[self _sendData:headerData];

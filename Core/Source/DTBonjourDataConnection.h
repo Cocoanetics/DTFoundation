@@ -18,7 +18,9 @@ typedef enum
 
 @class DTBonjourDataConnection;
 
-@protocol DTBonjourDataConnectionDelegate
+@protocol DTBonjourDataConnectionDelegate <NSObject>
+@optional
+- (void)connection:(DTBonjourDataConnection *)connection didReceiveObject:(id)object;
 - (void)connectionDidClose:(DTBonjourDataConnection *)connection;
 @end
 
