@@ -24,4 +24,16 @@
  */
 - (NSData *)encryptedDataUsingSHA1WithKey:(NSData *)key;
 
+
+/**-------------------------------------------------------------------------------------
+ @name Digest Hashes
+ ---------------------------------------------------------------------------------------
+ */
+
+/**
+ Generate an md5 checksum from the receiver
+ @returns An `NSData` containing the md5 digest.
+ */
+-(NSData *)dataWithMD5Hash;
+
 @end
