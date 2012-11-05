@@ -122,6 +122,10 @@ typedef enum
 	}
 }
 
+- (BOOL)isOpen
+{
+	return (_inputStream&&_outputStream);
+}
 
 - (void)_startOutput
 {
@@ -294,6 +298,17 @@ typedef enum
 
 - (BOOL)sendObject:(id)object error:(NSError **)error
 {
+	if (![self isOpen])
+	{
+		if (error)
+		{
+			NSDictionary *userInfo = @{NSLocalizedDescriptionKey:@"Connection is not open"};
+			*error = [NSError errorWithDomain:@"DTBonjourDataConnection" code:1 userInfo:userInfo];
+		}
+		
+		return NO;
+	}
+	
 	NSData *archivedData = nil;
 	NSString *contentType = nil;
 	

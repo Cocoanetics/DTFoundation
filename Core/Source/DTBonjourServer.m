@@ -77,6 +77,7 @@ static void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CF
 @implementation DTBonjourServer
 {
 	NSNetService *_service;
+	NSDictionary *_TXTRecord;
 	
 	CFSocketRef _ipv4socket;
 	CFSocketRef _ipv6socket;
@@ -207,6 +208,11 @@ static void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CF
 	assert(self.port > 0 && self.port < 65536);
 	_service = [[NSNetService alloc] initWithDomain:@"" type:_bonjourType name:@"" port:(int)_port];
 	_service.delegate = self;
+	
+	if (_TXTRecord)
+	{
+		[_service setTXTRecordData:[NSNetService dataFromTXTRecordDictionary:_TXTRecord]];
+	}
 	
 	[_service publishWithOptions:0];
 	
@@ -342,6 +348,19 @@ static void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CF
 	}
 }
 
+- (void)broadcastObject:(id)object
+{
+	for (DTBonjourDataConnection *connection in _connections)
+	{
+		NSError *error;
+		
+		if (![connection sendObject:object error:&error])
+		{
+			NSLog(@"%@", [error localizedDescription]);
+		}
+	}
+}
+
 #pragma mark - NSNetService Delegate
 
 - (void)netService:(NSNetService *)sender didNotPublish:(NSDictionary *)errorDict
@@ -360,6 +379,14 @@ static void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CF
 }
 
 #pragma mark - DTBonjourDataConnection Delegate
+- (void)connection:(DTBonjourDataConnection *)connection didReceiveObject:(id)object
+{
+	if ([_delegate respondsToSelector:@selector(bonjourServer:didReceiveObject:onConnection:)])
+	{
+		[_delegate bonjourServer:self didReceiveObject:object onConnection:connection];
+	}
+}
+
 - (void)connectionDidClose:(DTBonjourDataConnection *)connection
 {
 	[_connections removeObject:connection];
@@ -379,6 +406,24 @@ static void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CF
 
 #pragma mark - Properties
 
+- (NSSet *)connections
+{
+	// make a copy to be non-mutable
+	return [_connections copy];
+}
+
+- (void)setTXTRecord:(NSDictionary *)TXTRecord
+{
+	_TXTRecord = TXTRecord;
+
+	// update service if it is running
+	if (_service)
+	{
+		[_service setTXTRecordData:[NSNetService dataFromTXTRecordDictionary:_TXTRecord]];
+	}
+}
+
+@synthesize TXTRecord = _TXTRecord;
 @synthesize delegate = _delegate;
 @synthesize port = _port;
 
