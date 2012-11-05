@@ -135,6 +135,8 @@ static void ListeningSocketCallback(CFSocketRef s, CFSocketCallBackType type, CF
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
+	_delegate = nil;
+
 	[self stop];
 }
 
