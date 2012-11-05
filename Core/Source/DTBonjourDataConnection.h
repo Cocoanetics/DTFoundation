@@ -23,6 +23,7 @@ typedef enum
 @protocol DTBonjourDataConnectionDelegate <NSObject>
 @optional
 - (void)connection:(DTBonjourDataConnection *)connection didReceiveObject:(id)object;
+- (void)connection:(DTBonjourDataConnection *)connection didSendBytes:(NSUInteger)bytesSent ofBufferLength:(NSUInteger)bufferLength;
 - (void)connectionDidClose:(DTBonjourDataConnection *)connection;
 @end
 

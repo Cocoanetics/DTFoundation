@@ -90,6 +90,7 @@ typedef enum
 
 - (void)dealloc
 {
+	_delegate = nil;
 	[self close];
 }
 
@@ -107,6 +108,11 @@ typedef enum
 
 - (void)close
 {
+	if (!_inputStream&&!_outputStream)
+	{
+		return;
+	}
+	
 	[_inputStream  setDelegate:nil];
 	[_outputStream setDelegate:nil];
 	[_inputStream  close];
@@ -134,13 +140,20 @@ typedef enum
 		return;
 	}
 	
-	NSInteger actuallyWritten = [_outputStream write:[_outputBuffer bytes] maxLength:[_outputBuffer length]];
+	NSUInteger bufferLength = [_outputBuffer length];
+	
+	NSInteger actuallyWritten = [_outputStream write:[_outputBuffer bytes] maxLength:bufferLength];
 	
 	if (actuallyWritten > 0)
 	{
 		[_outputBuffer replaceBytesInRange:NSMakeRange(0, (NSUInteger) actuallyWritten) withBytes:NULL length:0];
 		// If we didn't write all the bytes we'll continue writing them in response to the next
 		// has-space-available event.
+		
+		if ([_delegate respondsToSelector:@selector(connection:didSendBytes:ofBufferLength:)])
+		{
+			[_delegate connection:self didSendBytes:actuallyWritten ofBufferLength:bufferLength];
+		}
 	}
 	else
 	{
