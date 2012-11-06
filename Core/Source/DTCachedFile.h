@@ -52,6 +52,21 @@
 @property (nonatomic, retain) NSNumber *fileSize;
 
 /**
+ Flag to force the loading of the file, even if data is cached
+ */
+@property (nonatomic, retain) NSNumber *forceLoad;
+
+/**
+Abort a download if the ETag and/or last modified are the same
+ */
+@property (nonatomic, retain) NSNumber *abortDownloadIfNotChanged;
+
+/**
+ Transient flag to show that this is already being downloaded
+ */
+@property (nonatomic, retain) NSNumber *isLoading;
+
+/**
  The ETag of the receiver if the remote host did return one
  */
 @property (nonatomic, retain) NSString *entityTagIdentifier;

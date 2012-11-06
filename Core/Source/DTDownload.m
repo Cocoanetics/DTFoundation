@@ -70,6 +70,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		_URL = URL;
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillTerminate:) name:UIApplicationWillTerminateNotification object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downloadWillStartNotification:) name:DTDownloadDidStartNotification object:nil];
 	}
 	
 	return self;
@@ -78,7 +80,6 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	
 	
 	if (!headOnly && receivedBytes < _totalBytes)
 	{
@@ -349,6 +350,14 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	[writeDict writeToFile:infoPath atomically:YES];
 }
 
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"<%@ URL='%@'>", NSStringFromClass([self class]), self.URL];
+}
+
+
+#pragma mark - NSURLConnection Delegate
+
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
 	receivedData = nil;
@@ -491,8 +500,6 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	receivedData = nil;
 	urlConnection = nil;
 
-	_isLoading = NO;
-
 	[receivedDataFile closeFile];
 	receivedDataFile = nil;
 	
@@ -507,7 +514,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	{
 		[self _completeDownload];
 	}
-	
+
+	_isLoading = NO;
+
 	// send notification
 	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidFinishNotification object:self];
 }
@@ -516,6 +525,25 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 - (void)appWillTerminate:(NSNotification *)notification
 {
 	[self cancel];
+}
+
+- (void)downloadWillStartNotification:(NSNotification *)notification
+{
+	DTDownload *download = [notification object];
+	
+	// ignore my own notifications
+	if (download == self)
+	{
+		return;
+	}
+	
+	if ([download.URL isEqual:self.URL])
+	{
+		NSString *myFolder = self.folderForDownloading;
+		NSString *otherFolder = download.folderForDownloading;
+		
+		NSAssert(![myFolder isEqualToString:otherFolder], @"Trying to start a new download for URL %@ with the same download folder as an existing DTDownload", self.URL);
+	}
 }
 
 #pragma mark Properties

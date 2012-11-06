@@ -23,7 +23,9 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 - (void)_setupCoreDataStack;
 - (DTCachedFile *)_cachedFileForURL:(NSURL *)URL inContext:(NSManagedObjectContext *)context;
+- (NSArray *)_filesThatNeedToBeDownloadedInContext:(NSManagedObjectContext *)context;
 - (NSUInteger)_currentDiskUsageInContext:(NSManagedObjectContext *)context;
+- (void)_resetDownloadStatus;
 - (void)_commitWorkerContext;
 
 @end
@@ -35,12 +37,9 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	NSPersistentStoreCoordinator *_persistentStoreCoordinator;
     
     NSManagedObjectContext *_writerContext;
-    NSManagedObjectContext *_managedObjectContext;
     NSManagedObjectContext *_workerContext;
 	
 	// Internals
-	NSMutableDictionary *_downloads;
-	NSMutableArray *_downloadQueue;
 	NSMutableSet *_activeDownloads;
 	
 	// memory cache for certain types, e.g. images
@@ -53,8 +52,8 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	// completion handling
 	NSMutableDictionary *_completionHandlers;
 	
-	// maintenance
-    dispatch_queue_t _downloadQueueSyncQueue;
+	// timer that frequently writes the MOC
+	NSTimer *saveTimer;
 }
 
 + (DTDownloadCache *)sharedInstance
@@ -73,12 +72,8 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 {
 	self = [super init];
 	{
-        _downloadQueueSyncQueue = dispatch_queue_create("DTDownloadCache Download Queue Sync Queue", 0);
-        
 		[self _setupCoreDataStack];
 		
-		_downloads = [[NSMutableDictionary alloc] init];
-		_downloadQueue = [[NSMutableArray alloc] init];
 		_activeDownloads = [[NSMutableSet alloc] init];
 		
 		_memoryCache = [[NSCache alloc] init];
@@ -91,126 +86,145 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		
 		// preload cached object identifiers to speed up initial access
         [self _preloadCachedFileIDs];
+		
+		// reset status of downloads
+		[self _resetDownloadStatus];
+		
+		saveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(saveTimerTick:) userInfo:nil repeats:YES];
 	}
 	
 	return self;
 }
 
+// should never be called, since this is a singleton
+- (void)dealloc
+{
+	[saveTimer invalidate];
+	[self saveTimerTick:nil];
+}
+
 - (void)_preloadCachedFileIDs
 {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DTCachedFile"];
-	request.fetchLimit = 0;
-	
-	NSError *error;
-	NSArray *results = [_managedObjectContext executeFetchRequest:request error:&error];
-	
-	if (!results)
-	{
-		NSLog(@"error occured fetching %@", [error localizedDescription]);
-	}
-    
-    for (DTCachedFile *cachedFile in results)
-    {
-        // cache the file entity for this URL
-        NSURL *remoteURL = [NSURL URLWithString:cachedFile.remoteURL];
-        [_entityCache setObject:cachedFile.objectID forKey:remoteURL];
-    }
+	[_workerContext performBlockAndWait:^{
+		NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DTCachedFile"];
+		request.fetchLimit = 0;
+		
+		NSError *error;
+		NSArray *results = [_workerContext executeFetchRequest:request error:&error];
+		
+		if (!results)
+		{
+			NSLog(@"error occured fetching %@", [error localizedDescription]);
+		}
+		
+		for (DTCachedFile *cachedFile in results)
+		{
+			// cache the file entity for this URL
+			NSURL *remoteURL = [NSURL URLWithString:cachedFile.remoteURL];
+			[_entityCache setObject:cachedFile.objectID forKey:remoteURL];
+		}
+	}];
 }
 
 #pragma mark Queue Handling
 
-- (void)_enqueueDownloadForURL:(NSURL *)URL option:(DTDownloadCacheOption)option
+// only called from _workerContext
+- (void)_startDownloadForURL:(NSURL *)URL shouldAbortIfNotNewer:(BOOL)shouldAbortIfNotNewer
 {
-	DTDownload *download = [[DTDownload alloc] initWithURL:URL];
-	download.delegate = self;
+	NSLog(@"start download for: %@ should:%d", URL, shouldAbortIfNotNewer);
 	
-	if (option == DTDownloadCacheOptionReturnCacheAndLoadIfChanged)
-	{
-		DTCachedFile *cachedFile = [self _cachedFileForURL:URL inContext:_managedObjectContext];
+		DTDownload *download = [[DTDownload alloc] initWithURL:URL];
+		download.delegate = self;
 		
-		if (cachedFile)
+		if (shouldAbortIfNotNewer)
 		{
-			NSString *cachedETag = cachedFile.entityTagIdentifier;
-			NSDate *lastModifiedDate = cachedFile.lastModifiedDate;
+			DTCachedFile *cachedFile = [self _cachedFileForURL:URL inContext:_workerContext];
 			
-			__weak DTDownloadCache *weakself = self;
-			
-			download.responseHandler = ^(DTDownload *download, NSDictionary *headers) {
-				BOOL shouldCancel = NO;
+			if (cachedFile)
+			{
+				NSString *cachedETag = cachedFile.entityTagIdentifier;
+				NSDate *lastModifiedDate = cachedFile.lastModifiedDate;
 				
-				if (cachedETag)
-				{
-					if ([download.downloadEntityTag isEqualToString:cachedETag])
+				__weak DTDownloadCache *weakself = self;
+				
+				download.responseHandler = ^(DTDownload *download, NSDictionary *headers) {
+					BOOL shouldCancel = NO;
+					
+					if (cachedETag)
 					{
-						shouldCancel = YES;
+						if ([download.downloadEntityTag isEqualToString:cachedETag])
+						{
+							shouldCancel = YES;
+						}
 					}
-				}
-				
-				if (lastModifiedDate)
-				{
-					if ([download.lastModifiedDate isEqualToDate:lastModifiedDate])
+					
+					if (lastModifiedDate)
 					{
-						shouldCancel = YES;
+						if ([download.lastModifiedDate isEqualToDate:lastModifiedDate])
+						{
+							shouldCancel = YES;
+						}
 					}
-				}
-				
-				if (shouldCancel)
-				{
-					[download cancel];
-					[weakself _removeDownloadFromQueue:download];
-				}
-			};
+					
+					if (shouldCancel)
+					{
+						[download cancel];
+						[weakself _removeDownloadFromActiveDownloads:download];
+					}
+				};
+			}
 		}
-	}
-    
-	dispatch_sync(_downloadQueueSyncQueue, ^{
-        [_downloads setObject:download forKey:URL];
-        [_downloadQueue addObject:download];
-    });
+		
+		
+		[_activeDownloads addObject:download];
+		[download startWithResume:YES];
+		
+		NSLog(@"number of active now: %d", [_activeDownloads count]);
 }
 
-- (void)_removeDownloadFromQueue:(DTDownload *)download
+- (void)_removeDownloadFromActiveDownloads:(DTDownload *)download
 {
-    dispatch_sync(_downloadQueueSyncQueue, ^{
+	[_workerContext performBlock:^{
         [_activeDownloads removeObject:download];
-        [_downloads removeObjectForKey:download.URL];
-        [_downloadQueue removeObject:download];
-    });
-	
-	// remove a handler if it exists
-	DTDownloadCacheDataCompletionBlock completion = [_completionHandlers objectForKey:download.URL];
-	
-	if (completion)
-	{
-		[_completionHandlers removeObjectForKey:download.URL];
-	}
+		
+		// remove a handler if it exists
+		DTDownloadCacheDataCompletionBlock completion = [_completionHandlers objectForKey:download.URL];
+		
+		if (completion)
+		{
+			[_completionHandlers removeObjectForKey:download.URL];
+		}
+	}];
 }
 
 - (void)_startNextQueuedDownload
 {
-    dispatch_sync(_downloadQueueSyncQueue, ^{
-        
-        NSUInteger numberLoading = 0;
-        
-        for (DTDownload *nextDownload in [_downloadQueue reverseObjectEnumerator])
-        {
-            if (numberLoading<_maxNumberOfConcurrentDownloads)
-            {
-                if (![nextDownload isLoading])
-                {
-                    [_activeDownloads addObject:nextDownload];
-                    [nextDownload startWithResume:YES];
-                }
-                
-                numberLoading++;
-            }
-        }
-    });
+	[_workerContext performBlockAndWait:^{
+        NSArray *filesToDownload = [self _filesThatNeedToBeDownloadedInContext:_workerContext];
+		
+		NSUInteger activeDownloads = [_activeDownloads count];
+		
+		for (DTCachedFile *oneFile in filesToDownload)
+		{
+			if (activeDownloads < _maxNumberOfConcurrentDownloads)
+			{
+				oneFile.isLoading = [NSNumber numberWithBool:YES];
+				
+				BOOL shouldAbortIfNotNewer = [oneFile.abortDownloadIfNotChanged boolValue];
+				
+				NSURL *URL = [NSURL URLWithString:oneFile.remoteURL];
+				[self _startDownloadForURL:URL shouldAbortIfNotNewer:shouldAbortIfNotNewer];
+
+				activeDownloads++;
+			}
+		}
+    }];
 }
 
+/*
 - (void)_cancelDownloadsOverConcurrencyLimit
 {
-    dispatch_sync(_downloadQueueSyncQueue, ^{
+	[_workerContext performBlock:^{
         NSUInteger numberLoading = 0;
         
         for (DTDownload *nextDownload in [_downloadQueue reverseObjectEnumerator])
@@ -238,9 +252,43 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
         }
         
         NSLog(@"Loading Downloads: %d", numberLoading);
-    });
+    }];
 }
+*/
 
+/*
+- (DTDownload *)_downloadInProgressForURL:(NSURL *)URL
+{
+	DTDownload *download = [_downloads objectForKey:URL];
+	
+	if (download)
+	{
+		return download;
+	}
+	
+	// search active downloads
+	
+	for (DTDownload *oneDownload in _activeDownloads)
+	{
+		if ([oneDownload.URL isEqual:URL])
+		{
+			return oneDownload;
+		}
+	}
+	
+	// search other queued downloads
+	
+	for (DTDownload *oneDownload in _downloadQueue)
+	{
+		if ([oneDownload.URL isEqual:URL])
+		{
+			return oneDownload;
+		}
+	}
+	
+	return nil;
+}
+ */
 
 #pragma mark External Methods
 
@@ -248,67 +296,67 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 - (NSData *)cachedDataForURL:(NSURL *)URL option:(DTDownloadCacheOption)option
 {
     __block NSData *retData = nil;
-    
-    [_managedObjectContext performBlockAndWait:^{
-        DTCachedFile *existingCacheEntry = [self _cachedFileForURL:URL inContext:_managedObjectContext];
+	
+    [_workerContext performBlockAndWait:^{
+        DTCachedFile *cachedFile = [self _cachedFileForURL:URL inContext:_workerContext];
+		
+		if (cachedFile)
+		{
+			retData = cachedFile.fileData;
+		}
+		else
+		{
+			// always create the DTCachedFile for a new request
+			
+			cachedFile = (DTCachedFile *)[NSEntityDescription insertNewObjectForEntityForName:@"DTCachedFile" inManagedObjectContext:_workerContext];
+			
+			cachedFile.remoteURL = [URL absoluteString];
+			cachedFile.expirationDate = [NSDate distantFuture];
+			cachedFile.forceLoad = [NSNumber numberWithBool:YES];
+			cachedFile.isLoading = [NSNumber numberWithBool:NO];
+		}
+		
+		cachedFile.lastAccessDate = [NSDate date];
+		
+		switch (option)
+		{
+			case DTDownloadCacheOptionNeverLoad:
+			{
+				break;
+			}
+				
+			case DTDownloadCacheOptionLoadIfNotCached:
+			{
+				if (!retData)
+				{
+					cachedFile.forceLoad = [NSNumber numberWithBool:YES];
+				}
+			}
+				
+			case DTDownloadCacheOptionReturnCacheAndLoadAlways:
+			{
+				cachedFile.forceLoad = [NSNumber numberWithBool:YES];
+				
+				break;
+			}
+				
+			case DTDownloadCacheOptionReturnCacheAndLoadIfChanged:
+			{
+				cachedFile.forceLoad = [NSNumber numberWithBool:YES];
+				cachedFile.abortDownloadIfNotChanged = [NSNumber numberWithBool:YES];
+				
+				break;
+			}
+		}
+		
+		// save this
+		[self _commitWorkerContext];
         
-        if (existingCacheEntry)
-        {
-            retData = existingCacheEntry.fileData;
-            
-            [_workerContext performBlock:^{
-                // transfer the existing cache file entity to the temp context
-                DTCachedFile *cacheEntry = (DTCachedFile *)[_workerContext objectWithID:existingCacheEntry.objectID];
-                
-                if (option == DTDownloadCacheOptionReturnCacheAndLoadAlways)
-                {
-                    [_workerContext deleteObject:cacheEntry];
-                }
-                else
-                {
-                    cacheEntry.lastAccessDate = [NSDate date];
-                }
-                
-                [self _commitWorkerContext];
-            }];
-        }
-        
-        if (option == DTDownloadCacheOptionNeverLoad)
-        {
-            return; // retData is set
-        }
-        
-        if (retData && option == DTDownloadCacheOptionLoadIfNotCached)
-        {
-            return; // retData is set
-        }
-        
-        // we don't have a cache entry, need to load
-        
-        __block DTDownload *download;
-        
-        dispatch_sync(_downloadQueueSyncQueue, ^{
-            download = [_downloads objectForKey:URL];
-        });
-        
-        if (download)
-        {
-            // already in queue, give it higher prio
-            if (![download isLoading])
-            {
-                dispatch_sync(_downloadQueueSyncQueue, ^{
-                    // move it to end of LIFO queue
-                    [_downloadQueue removeObject:download];
-                    [_downloadQueue addObject:download];
-                });
-            }
-            
-            retData = nil;
-            return; // retData is set
-        }
-        
-        [self _enqueueDownloadForURL:URL option:option];
-        [self _startNextQueuedDownload];
+		
+		if (![_activeDownloads count])
+		{
+			[self _startNextQueuedDownload];
+		}
         
         return; // retData is set
     }];
@@ -318,69 +366,68 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 - (NSUInteger)currentDiskUsage
 {
-	return [self _currentDiskUsageInContext:_managedObjectContext];
+	return [self _currentDiskUsageInContext:_workerContext];
 }
 
 #pragma mark DTDownload
 
 - (void)download:(DTDownload *)download didFailWithError:(NSError *)error
 {
-	[self _removeDownloadFromQueue:download];
+	[self _removeDownloadFromActiveDownloads:download];
 	
 	[self _startNextQueuedDownload];
 }
 
 - (void)download:(DTDownload *)download didFinishWithFile:(NSString *)path
 {
+	NSURL *URL = download.URL;
+	
     [_workerContext performBlock:^{
 		NSData *data = [NSData dataWithContentsOfMappedFile:path];
 		
 		// only add cached file if we actually got data in it
 		if (data)
 		{
-		// check if URL already exists
-		DTCachedFile *cachedFile = [self _cachedFileForURL:download.URL inContext:_workerContext];
-		
-		if (!cachedFile)
-		{
-			// create a new entity
-			cachedFile = (DTCachedFile *)[NSEntityDescription insertNewObjectForEntityForName:@"DTCachedFile" inManagedObjectContext:_workerContext];
-		}
-		
-		cachedFile.lastAccessDate = [NSDate date];
-		cachedFile.expirationDate = [NSDate distantFuture];
-		cachedFile.lastModifiedDate = download.lastModifiedDate;
-		cachedFile.entityTagIdentifier = download.downloadEntityTag;
-		cachedFile.fileData = data;
-		cachedFile.fileSize = [NSNumber numberWithLongLong:download.totalBytes];
-		cachedFile.contentType = download.MIMEType;
-		cachedFile.remoteURL = [download.URL absoluteString];
-		
-		[self _commitWorkerContext];
-        
-        // we transfered the file into the database, so we don't need it any more
-        [[DTAsyncFileDeleter sharedInstance] removeItemAtPath:path];
-        
-        // get reference to completion block if it exists
-        DTDownloadCacheDataCompletionBlock completion = [_completionHandlers objectForKey:download.URL];
-        
-		// completion block and notification
-		dispatch_async(dispatch_get_main_queue(), ^{
-			// execute completion block if there is one registered
-			if (completion)
-			{
-				completion(download.URL, data);
-			}
+			// check if URL already exists
+			DTCachedFile *cachedFile = [self _cachedFileForURL:URL inContext:_workerContext];
 			
-			// send notification
-			[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadCacheDidCacheFileNotification object:download.URL];
-		});
-        
+			NSAssert(cachedFile, @"Problem, there was no file in the queue for a finished download!");
+			
+			cachedFile.lastModifiedDate = download.lastModifiedDate;
+			cachedFile.entityTagIdentifier = download.downloadEntityTag;
+			cachedFile.fileData = data;
+			cachedFile.fileSize = [NSNumber numberWithLongLong:download.totalBytes];
+			cachedFile.contentType = download.MIMEType;
+			cachedFile.remoteURL = [URL absoluteString];
+			
+			// make sure that this is no longer picked up by files needing download
+			cachedFile.forceLoad = [NSNumber numberWithBool:NO];
+			cachedFile.abortDownloadIfNotChanged = [NSNumber numberWithBool:NO];
+			
+			[self _commitWorkerContext];
+			
+			// we transfered the file into the database, so we don't need it any more
+			[[DTAsyncFileDeleter sharedInstance] removeItemAtPath:path];
+			
+			// get reference to completion block if it exists
+			DTDownloadCacheDataCompletionBlock completion = [_completionHandlers objectForKey:URL];
+			
+			// remove from active downloads
+			[self _removeDownloadFromActiveDownloads:download];
+			
+			// completion block and notification
+			dispatch_async(dispatch_get_main_queue(), ^{
+				// execute completion block if there is one registered
+				if (completion)
+				{
+					completion(URL, data);
+				}
+				
+				// send notification
+				[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadCacheDidCacheFileNotification object:URL];
+			});
+			
 		}
-
-		// remove all traces of this download so that something triggered in completion block or notification gets the image right away
-        [self _removeDownloadFromQueue:download];
-
 		
 		[self _startNextQueuedDownload];
     }];
@@ -411,7 +458,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	NSAttributeDescription *fileDataAttribute = [[NSAttributeDescription alloc] init];
 	[fileDataAttribute setName:@"fileData"];
 	[fileDataAttribute setAttributeType:NSBinaryDataAttributeType];
-	[fileDataAttribute setOptional:NO];
+	[fileDataAttribute setOptional:YES];
 	[fileDataAttribute setAllowsExternalBinaryDataStorage:YES];
 	[properties addObject:fileDataAttribute];
 	
@@ -426,7 +473,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	[lastModifiedDateAttribute setAttributeType:NSDateAttributeType];
 	[lastModifiedDateAttribute setOptional:YES];
 	[properties addObject:lastModifiedDateAttribute];
-
+	
 	NSAttributeDescription *expirationDateAttribute = [[NSAttributeDescription alloc] init];
 	[expirationDateAttribute setName:@"expirationDate"];
 	[expirationDateAttribute setAttributeType:NSDateAttributeType];
@@ -436,21 +483,39 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	NSAttributeDescription *contentTypeAttribute = [[NSAttributeDescription alloc] init];
 	[contentTypeAttribute setName:@"contentType"];
 	[contentTypeAttribute setAttributeType:NSStringAttributeType];
-	[contentTypeAttribute setOptional:NO];
+	[contentTypeAttribute setOptional:YES];
 	[properties addObject:contentTypeAttribute];
-
+	
 	NSAttributeDescription *fileSizeAttribute = [[NSAttributeDescription alloc] init];
 	[fileSizeAttribute setName:@"fileSize"];
 	[fileSizeAttribute setAttributeType:NSInteger32AttributeType];
-	[fileSizeAttribute setOptional:NO];
+	[fileSizeAttribute setOptional:YES];
 	[properties addObject:fileSizeAttribute];
+	
+	NSAttributeDescription *forceLoadAttribute = [[NSAttributeDescription alloc] init];
+	[forceLoadAttribute setName:@"forceLoad"];
+	[forceLoadAttribute setAttributeType:NSBooleanAttributeType];
+	[forceLoadAttribute setOptional:YES];
+	[properties addObject:forceLoadAttribute];
+
+	NSAttributeDescription *abortAttribute = [[NSAttributeDescription alloc] init];
+	[abortAttribute setName:@"abortDownloadIfNotChanged"];
+	[abortAttribute setAttributeType:NSBooleanAttributeType];
+	[abortAttribute setOptional:YES];
+	[properties addObject:abortAttribute];
+
+	NSAttributeDescription *loadingAttribute = [[NSAttributeDescription alloc] init];
+	[loadingAttribute setName:@"isLoading"];
+	[loadingAttribute setAttributeType:NSBooleanAttributeType];
+	[loadingAttribute setOptional:NO];
+	[properties addObject:loadingAttribute];
 	
 	NSAttributeDescription *entityTagIdentifierAttribute = [[NSAttributeDescription alloc] init];
 	[entityTagIdentifierAttribute setName:@"entityTagIdentifier"];
 	[entityTagIdentifierAttribute setAttributeType:NSStringAttributeType];
 	[entityTagIdentifierAttribute setOptional:YES];
 	[properties addObject:entityTagIdentifierAttribute];
-
+	
 	// add attributes to entity
 	[entity setProperties:properties];
 	
@@ -495,13 +560,9 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
     _writerContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
 	[_writerContext setPersistentStoreCoordinator:_persistentStoreCoordinator];
     
-	// create main MOC (NOT for main thread!)
-	_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-	_managedObjectContext.parentContext = _writerContext;
-    
     // create worker MOC for background operations
     _workerContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    _workerContext.parentContext = _managedObjectContext;
+    _workerContext.parentContext = _writerContext;
 }
 
 // returned objects can only be used from the same context
@@ -529,7 +590,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	{
 		NSLog(@"error occured fetching %@", [error localizedDescription]);
 	}
-
+	
     DTCachedFile *cachedFile = [results lastObject];
     
     if (cachedFile)
@@ -537,8 +598,29 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
         // cache the file entity for this URL
         [_entityCache setObject:cachedFile.objectID forKey:URL];
     }
-
+	
 	return cachedFile;
+}
+
+- (NSArray *)_filesThatNeedToBeDownloadedInContext:(NSManagedObjectContext *)context
+{
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DTCachedFile"];
+	
+	NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"lastAccessDate" ascending:NO];
+	request.sortDescriptors = [NSArray arrayWithObject:sort];
+
+	request.predicate = [NSPredicate predicateWithFormat:@"forceLoad == YES and isLoading == NO"];
+	request.fetchLimit = _maxNumberOfConcurrentDownloads;
+
+	NSError *error;
+	
+	NSArray *results = [context executeFetchRequest:request error:&error];
+	if (!results)
+	{
+		NSLog(@"Error fetching download files: %@", [error localizedDescription]);
+	}
+	
+	return results;
 }
 
 // only call this from within a worker performBlock
@@ -552,24 +634,6 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 			NSLog(@"Error saving worker context: %@", [error localizedDescription]);
 			return;
 		}
-		
-		[_managedObjectContext performBlock:^{
-			NSError *error = nil;
-			if (![_managedObjectContext save:&error])
-			{
-				NSLog(@"Error saving main context: %@", [error localizedDescription]);
-				return;
-			}
-			
-			[_writerContext performBlock:^{
-				NSError *error = nil;
-				if (![_writerContext save:&error])
-				{
-					NSLog(@"Error saving writer context: %@", [error localizedDescription]);
-					return;
-				}
-			}];
-		}];
 	}
 }
 
@@ -679,6 +743,48 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
     }];
 }
 
+- (void)_resetDownloadStatus
+{
+	[_workerContext performBlockAndWait:^{
+		NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DTCachedFile"];
+		
+		NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"lastAccessDate" ascending:NO];
+		request.sortDescriptors = [NSArray arrayWithObject:sort];
+		
+		request.predicate = [NSPredicate predicateWithFormat:@"isLoading == YES"];
+		
+		NSError *error;
+		
+		NSArray *results = [_workerContext executeFetchRequest:request error:&error];
+		if (!results)
+		{
+			NSLog(@"Error cleaning up download status: %@", [error localizedDescription]);
+		}
+		
+		for (DTCachedFile *oneFile in results)
+		{
+			oneFile.isLoading = [NSNumber numberWithBool:NO];
+		}
+		
+		[self _commitWorkerContext];
+	}];
+}
+
+- (void)saveTimerTick:(NSTimer *)timer
+{
+	[_writerContext performBlock:^{
+		if ([_writerContext hasChanges])
+		{
+			NSError *error = nil;
+			if (![_writerContext save:&error])
+			{
+				NSLog(@"Error saving writer context: %@", [error localizedDescription]);
+				return;
+			}
+		}
+	}];
+}
+
 #pragma mark Completion Blocks
 
 - (void)_registerCompletion:(DTDownloadCacheDataCompletionBlock)completion forURL:(NSURL *)URL
@@ -692,20 +798,8 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 {
 	if (_maxNumberOfConcurrentDownloads != maxNumberOfConcurrentDownloads)
 	{
-		BOOL needsTrim = (maxNumberOfConcurrentDownloads < _maxNumberOfConcurrentDownloads);
-		
 		NSAssert(maxNumberOfConcurrentDownloads>0, @"maximum number of concurrent downloads cannot be zero");
 		_maxNumberOfConcurrentDownloads = maxNumberOfConcurrentDownloads;
-
-		NSLog(@"Concurrent Downloads set to %d", maxNumberOfConcurrentDownloads);
-		
-		// starts/stops enough downloads to match the max number
-		[self _startNextQueuedDownload];
-		
-		if (needsTrim)
-		{
-			[self _cancelDownloadsOverConcurrencyLimit];
-		}
 	}
 }
 
@@ -739,7 +833,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	{
 		return cachedImage;
 	}
-
+	
 	// try file cache
 	NSData *data = [self cachedDataForURL:URL option:option];
 	
