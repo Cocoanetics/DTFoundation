@@ -18,6 +18,9 @@
 @dynamic expirationDate;
 @dynamic contentType;
 @dynamic fileSize;
-@synthesize entityTagIdentifier;
+@dynamic forceLoad;
+@dynamic isLoading;
+@dynamic abortDownloadIfNotChanged;
+@dynamic entityTagIdentifier;
 
 @end
