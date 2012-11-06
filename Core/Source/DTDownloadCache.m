@@ -333,6 +333,11 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 - (void)download:(DTDownload *)download didFinishWithFile:(NSString *)path
 {
     [_workerContext performBlock:^{
+		NSData *data = [NSData dataWithContentsOfMappedFile:path];
+		
+		// only add cached file if we actually got data in it
+		if (data)
+		{
 		// check if URL already exists
 		DTCachedFile *cachedFile = [self _cachedFileForURL:download.URL inContext:_workerContext];
 		
@@ -345,7 +350,6 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		cachedFile.lastAccessDate = [NSDate date];
 		cachedFile.expirationDate = [NSDate distantFuture];
 		cachedFile.lastModifiedDate = download.lastModifiedDate;
-		NSData *data = [NSData dataWithContentsOfMappedFile:path];
 		cachedFile.entityTagIdentifier = download.downloadEntityTag;
 		cachedFile.fileData = data;
 		cachedFile.fileSize = [NSNumber numberWithLongLong:download.totalBytes];
@@ -360,9 +364,6 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
         // get reference to completion block if it exists
         DTDownloadCacheDataCompletionBlock completion = [_completionHandlers objectForKey:download.URL];
         
-        // remove all traces of this download so that something triggered in completion block or notification gets the image right away
-        [self _removeDownloadFromQueue:download];
-        
 		// completion block and notification
 		dispatch_async(dispatch_get_main_queue(), ^{
 			// execute completion block if there is one registered
@@ -375,7 +376,13 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 			[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadCacheDidCacheFileNotification object:download.URL];
 		});
         
-        [self _startNextQueuedDownload];
+		}
+
+		// remove all traces of this download so that something triggered in completion block or notification gets the image right away
+        [self _removeDownloadFromQueue:download];
+
+		
+		[self _startNextQueuedDownload];
     }];
 }
 
