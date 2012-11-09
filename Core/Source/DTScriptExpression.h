@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-@class DTScriptVariable;
+#import "DTScriptVariable.h"
 
 typedef void (^DTScriptExpressionParameterEnumerationBlock) (NSString *, DTScriptVariable *, BOOL *);
 
@@ -32,5 +32,15 @@ typedef void (^DTScriptExpressionParameterEnumerationBlock) (NSString *, DTScrip
 @property (nonatomic, readonly) NSArray *parameters;
 
 - (void)enumerateParametersWithBlock:(DTScriptExpressionParameterEnumerationBlock)block;
+
+/**
+ Accesses the receiver of the expression
+ */
+@property (nonatomic, readonly) DTScriptVariable *receiver;
+
+/**
+ The method selector
+ */
+- (SEL)selector;
 
 @end
