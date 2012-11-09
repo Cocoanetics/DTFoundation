@@ -235,7 +235,12 @@
 
 #pragma mark - Properties
 
-@synthesize parameters = _parameters;
+- (SEL)selector
+{
+	return _selector;
+}
 
+@synthesize parameters = _parameters;
+@synthesize receiver = _receiver;
 
 @end
