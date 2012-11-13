@@ -42,6 +42,7 @@
 #import "NSString+DTURLEncoding.h"
 #import "NSString+DTUTI.h"
 #import "NSURL+DTAppLinks.h"
+#import "NSURL+DTComparing.h"
 #import "NSURL+DTUnshorten.h"
 
 #if TARGET_OS_IPHONE
