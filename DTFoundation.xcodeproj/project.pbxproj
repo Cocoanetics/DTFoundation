@@ -219,6 +219,10 @@
 		A7EE2A0E1582CBFC00BB06DE /* DTActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = A7EE2A0B1582CBFC00BB06DE /* DTActionSheet.h */; };
 		A7EE2A0F1582CBFC00BB06DE /* DTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EE2A0C1582CBFC00BB06DE /* DTActionSheet.m */; };
 		A7EE2A101582CBFC00BB06DE /* DTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EE2A0C1582CBFC00BB06DE /* DTActionSheet.m */; };
+		A7FAA3891652291D006ED151 /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; };
+		A7FAA38A1652291D006ED151 /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; };
+		A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
+		A7FAA38C1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
 		A7FE30641548005700F5DC66 /* NSObject+DTRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FE30631548005700F5DC66 /* NSObject+DTRuntime.h */; };
 		A7FE30651548005700F5DC66 /* NSObject+DTRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FE30631548005700F5DC66 /* NSObject+DTRuntime.h */; };
 		A7FE30681548009A00F5DC66 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */; };
@@ -444,6 +448,8 @@
 		A7EE2A0C1582CBFC00BB06DE /* DTActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTActionSheet.m; sourceTree = "<group>"; };
 		A7F4DFF8147FD08900F4059A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTComparing.h"; sourceTree = "<group>"; };
+		A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTComparing.m"; sourceTree = "<group>"; };
 		A7FE30631548005700F5DC66 /* NSObject+DTRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DTRuntime.h"; sourceTree = "<group>"; };
 		A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DTRuntime.m"; sourceTree = "<group>"; };
 		FA4264F0155D6B5B00E39D79 /* DTSmartPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSmartPagingScrollView.h; sourceTree = "<group>"; };
@@ -772,6 +778,8 @@
 				A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */,
 				A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */,
 				A73B6F8A163169BB002CCCA7 /* NSFileWrapper+DTCopying.m */,
+				A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */,
+				A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -992,6 +1000,7 @@
 				A70D569F162FD60600120A98 /* NSScanner+DTScripting.h in Headers */,
 				FAB1726C16301F0D00B44EDC /* DTFoundationConstants.h in Headers */,
 				A73B6F8C163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */,
+				A7FAA3891652291D006ED151 /* NSURL+DTComparing.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,6 +1022,7 @@
 				E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */,
 				A76E1F5F163A95FC00042DB3 /* DTScrollView.h in Headers */,
 				A7787A5D1644385100AF5830 /* NSView+DTAutoLayout.h in Headers */,
+				A7FAA38A1652291D006ED151 /* NSURL+DTComparing.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1392,6 +1402,7 @@
 				A70D56A2162FD60600120A98 /* NSScanner+DTScripting.m in Sources */,
 				FAB1726F16301F0D00B44EDC /* DTFoundationConstants.m in Sources */,
 				A73B6F8F163169BB002CCCA7 /* NSFileWrapper+DTCopying.m in Sources */,
+				A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1422,6 +1433,7 @@
 				A73B6FA716318EBC002CCCA7 /* NSString+DTFormatNumbers.m in Sources */,
 				A76E1F60163A95FC00042DB3 /* DTScrollView.m in Sources */,
 				A7787A5C1644385100AF5830 /* NSView+DTAutoLayout.m in Sources */,
+				A7FAA38C1652291D006ED151 /* NSURL+DTComparing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
