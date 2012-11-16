@@ -239,6 +239,12 @@ typedef enum
 			{
 				// start reading a new chunk
 				_receivingChunk = [[DTBonjourDataChunk alloc] initForReading];
+                
+                // nothing received yet
+                if ([_delegate respondsToSelector:@selector(connection:willStartReceivingChunk:)])
+                {
+                    [_delegate connection:self willStartReceivingChunk:_receivingChunk];
+                }
 			}
 			
 			// continue reading
@@ -249,9 +255,19 @@ typedef enum
 				[self close];
 				break;
 			}
+            
+            if ([_delegate respondsToSelector:@selector(connection:didReceiveBytes:ofChunk:)])
+            {
+                [_delegate connection:self didReceiveBytes:actuallyRead ofChunk:_receivingChunk];
+            }
 			
 			if ([_receivingChunk isTransmissionComplete])
 			{
+                if ([_delegate respondsToSelector:@selector(connection:didFinishReceivingChunk:)])
+                {
+                    [_delegate connection:self didFinishReceivingChunk:_receivingChunk];
+                }
+                
 				if ([_delegate respondsToSelector:@selector(connection:didReceiveObject:)])
 				{
 					id decodedObject = [_receivingChunk decodedObject];
