@@ -24,11 +24,20 @@ extern NSString * DTBonjourDataConnectionErrorDomain;
 
 @protocol DTBonjourDataConnectionDelegate <NSObject>
 @optional
-- (void)connection:(DTBonjourDataConnection *)connection didReceiveObject:(id)object;
 
+// sending
 - (void)connection:(DTBonjourDataConnection *)connection willStartSendingChunk:(DTBonjourDataChunk *)chunk;
 - (void)connection:(DTBonjourDataConnection *)connection didSendBytes:(NSUInteger)bytesSent ofChunk:(DTBonjourDataChunk *)chunk;
 - (void)connection:(DTBonjourDataConnection *)connection didFinishSendingChunk:(DTBonjourDataChunk *)chunk;
+
+// receiving
+- (void)connection:(DTBonjourDataConnection *)connection willStartReceivingChunk:(DTBonjourDataChunk *)chunk;
+- (void)connection:(DTBonjourDataConnection *)connection didReceiveBytes:(NSUInteger)bytesReceived ofChunk:(DTBonjourDataChunk *)chunk;
+- (void)connection:(DTBonjourDataConnection *)connection didFinishReceivingChunk:(DTBonjourDataChunk *)chunk;
+
+- (void)connection:(DTBonjourDataConnection *)connection didReceiveObject:(id)object;
+
+// connection
 - (void)connectionDidClose:(DTBonjourDataConnection *)connection;
 @end
 
