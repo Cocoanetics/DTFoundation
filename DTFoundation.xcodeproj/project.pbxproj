@@ -57,6 +57,8 @@
 		A7200ACC150917FD00D81719 /* UIImage+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A7200AC9150917FD00D81719 /* UIImage+DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7200ACD150917FD00D81719 /* UIImage+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7200ACA150917FD00D81719 /* UIImage+DTFoundation.m */; };
 		A7200ACE150917FD00D81719 /* UIImage+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A7200ACA150917FD00D81719 /* UIImage+DTFoundation.m */; };
+		A720255F16551B040079003B /* DTBonjourDataChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = A720255E16551B040079003B /* DTBonjourDataChunk.m */; };
+		A720256316552BDA0079003B /* NSScanner+DTBonjour.m in Sources */ = {isa = PBXBuildFile; fileRef = A720256216552BDA0079003B /* NSScanner+DTBonjour.m */; };
 		A72C110514A4946800F4EF69 /* UIView+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A72C110614A4946800F4EF69 /* UIView+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A72C110714A4946800F4EF69 /* UIView+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */; };
@@ -352,6 +354,10 @@
 		A710A5001607556000437D36 /* libDTFoundation_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTFoundation_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7200AC9150917FD00D81719 /* UIImage+DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DTFoundation.h"; sourceTree = "<group>"; };
 		A7200ACA150917FD00D81719 /* UIImage+DTFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DTFoundation.m"; sourceTree = "<group>"; };
+		A720255D16551B040079003B /* DTBonjourDataChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBonjourDataChunk.h; sourceTree = "<group>"; };
+		A720255E16551B040079003B /* DTBonjourDataChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBonjourDataChunk.m; sourceTree = "<group>"; };
+		A720256116552BDA0079003B /* NSScanner+DTBonjour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScanner+DTBonjour.h"; sourceTree = "<group>"; };
+		A720256216552BDA0079003B /* NSScanner+DTBonjour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+DTBonjour.m"; sourceTree = "<group>"; };
 		A72C110314A4946800F4EF69 /* UIView+DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DTFoundation.h"; sourceTree = "<group>"; };
 		A72C110414A4946800F4EF69 /* UIView+DTFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DTFoundation.m"; sourceTree = "<group>"; };
 		A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileWrapper+DTCopying.h"; sourceTree = "<group>"; };
@@ -660,6 +666,10 @@
 				A7787A0616441AB700AF5830 /* DTBonjourDataConnection.m */,
 				A7787A0716441AB700AF5830 /* DTBonjourServer.h */,
 				A7787A0816441AB700AF5830 /* DTBonjourServer.m */,
+				A720255D16551B040079003B /* DTBonjourDataChunk.h */,
+				A720255E16551B040079003B /* DTBonjourDataChunk.m */,
+				A720256116552BDA0079003B /* NSScanner+DTBonjour.h */,
+				A720256216552BDA0079003B /* NSScanner+DTBonjour.m */,
 			);
 			name = DTBonjour;
 			sourceTree = "<group>";
@@ -1443,6 +1453,8 @@
 			files = (
 				A7787A1916441B4500AF5830 /* DTBonjourDataConnection.m in Sources */,
 				A7787A1A16441B4500AF5830 /* DTBonjourServer.m in Sources */,
+				A720255F16551B040079003B /* DTBonjourDataChunk.m in Sources */,
+				A720256316552BDA0079003B /* NSScanner+DTBonjour.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
