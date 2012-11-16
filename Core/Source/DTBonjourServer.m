@@ -16,6 +16,7 @@
 #import <CoreFoundation/CoreFoundation.h>
 
 #import "DTBonjourDataConnection.h"
+#import "DTBonjourDataChunk.h"
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>

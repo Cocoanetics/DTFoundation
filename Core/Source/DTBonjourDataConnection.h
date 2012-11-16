@@ -18,12 +18,17 @@ typedef enum
 	DTBonjourDataConnectionContentTypeJSON,
 } DTBonjourDataConnectionContentType;
 
-@class DTBonjourDataConnection;
+extern NSString * DTBonjourDataConnectionErrorDomain;
+
+@class DTBonjourDataConnection, DTBonjourDataChunk;
 
 @protocol DTBonjourDataConnectionDelegate <NSObject>
 @optional
 - (void)connection:(DTBonjourDataConnection *)connection didReceiveObject:(id)object;
-- (void)connection:(DTBonjourDataConnection *)connection didSendBytes:(NSUInteger)bytesSent ofBufferLength:(NSUInteger)bufferLength;
+
+- (void)connection:(DTBonjourDataConnection *)connection willStartSendingChunk:(DTBonjourDataChunk *)chunk;
+- (void)connection:(DTBonjourDataConnection *)connection didSendBytes:(NSUInteger)bytesSent ofChunk:(DTBonjourDataChunk *)chunk;
+- (void)connection:(DTBonjourDataConnection *)connection didFinishSendingChunk:(DTBonjourDataChunk *)chunk;
 - (void)connectionDidClose:(DTBonjourDataConnection *)connection;
 @end
 

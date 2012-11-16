@@ -7,11 +7,21 @@
 //
 
 #import "DTBonjourDataConnection.h"
+#import "DTBonjourDataChunk.h"
+#import "NSScanner+DTBonjour.h"
+
 #import <Foundation/NSJSONSerialization.h>
 
 NSString * DTBonjourDataConnectionErrorDomain = @"DTBonjourDataConnection";
 
 @interface DTBonjourDataConnection () <NSStreamDelegate>
+
+@end
+
+@interface DTBonjourDataChunk (private)
+
+// make read-only property assignable
+@property (nonatomic, assign) NSUInteger sequenceNumber;
 
 @end
 
@@ -27,13 +37,10 @@ typedef enum
 	NSInputStream *_inputStream;
 	NSOutputStream *_outputStream;
 	
-	NSMutableData *_outputBuffer;
-	NSMutableData *_inputBuffer;
-	
-	DTBonjourDataConnectionExpectedDataType _expectedDataType;
-	long long _expectedDataLength;
-	DTBonjourDataConnectionContentType _expectedContentType;
-	Class _receivingDataClass;
+	NSMutableArray *_outputQueue;
+	DTBonjourDataChunk *_receivingChunk;
+
+	NSUInteger _chunkSequenceNumber;
 	
 	__weak id <DTBonjourDataConnectionDelegate> _delegate;
 }
@@ -56,8 +63,7 @@ typedef enum
 			_inputStream = (__bridge_transfer NSInputStream *)readStream;
 			_outputStream = (__bridge_transfer NSOutputStream *)writeStream;
 			
-			_inputBuffer = [[NSMutableData alloc] init];
-			_outputBuffer = [[NSMutableData alloc] init];
+			_outputQueue = [[NSMutableArray alloc] init];
 		}
 		else
 		{
@@ -81,8 +87,7 @@ typedef enum
 			return nil;
 		}
 		
-		_inputBuffer = [[NSMutableData alloc] init];
-		_outputBuffer = [[NSMutableData alloc] init];
+		_outputQueue = [[NSMutableArray alloc] init];
 	}
 	
 	return self;
@@ -135,24 +140,42 @@ typedef enum
 
 - (void)_startOutput
 {
-	if (![_outputBuffer length])
+	if (![_outputQueue count])
 	{
 		return;
 	}
 	
-	NSUInteger bufferLength = [_outputBuffer length];
+	DTBonjourDataChunk *chunk = _outputQueue[0];
 	
-	NSInteger actuallyWritten = [_outputStream write:[_outputBuffer bytes] maxLength:bufferLength];
-	
-	if (actuallyWritten > 0)
+	if (chunk.numberOfTransferredBytes==0)
 	{
-		[_outputBuffer replaceBytesInRange:NSMakeRange(0, (NSUInteger) actuallyWritten) withBytes:NULL length:0];
+		// nothing sent yet
+		if ([_delegate respondsToSelector:@selector(connection:willStartSendingChunk:)])
+		{
+			[_delegate connection:self willStartSendingChunk:chunk];
+		}
+	}
+	
+	NSUInteger writtenBytes = [chunk writeToOutputStream:_outputStream];
+	
+	if (writtenBytes > 0)
+	{
+		if ([_delegate respondsToSelector:@selector(connection:didSendBytes:ofChunk:)])
+		{
+			[_delegate connection:self didSendBytes:writtenBytes ofChunk:chunk];
+		}
+		
 		// If we didn't write all the bytes we'll continue writing them in response to the next
 		// has-space-available event.
 		
-		if ([_delegate respondsToSelector:@selector(connection:didSendBytes:ofBufferLength:)])
+		if ([chunk isTransmissionComplete])
 		{
-			[_delegate connection:self didSendBytes:actuallyWritten ofBufferLength:bufferLength];
+			[_outputQueue removeObject:chunk];
+			
+			if ([_delegate respondsToSelector:@selector(connection:didFinishSendingChunk:)])
+			{
+				[_delegate connection:self didFinishSendingChunk:chunk];
+			}
 		}
 	}
 	else
@@ -160,150 +183,6 @@ typedef enum
 		// A non-positive result from -write:maxLength: indicates a failure of some form; in this
 		// simple app we respond by simply closing down our connection.
 		[self close];
-	}
-}
-
-- (void)_sendData:(NSData *)data
-{
-	BOOL wasEmpty = ([_outputBuffer length] == 0);
-	
-	[_outputBuffer appendData:data];
-	
-	if (wasEmpty && _outputStream.streamStatus == NSStreamStatusOpen)
-	{
-		[self _startOutput];
-	}
-}
-
-- (void)_startDecoding
-{
-	while ([_inputBuffer length])
-	{
-		
-		if (_expectedDataType == DTBonjourDataConnectionExpectedDataTypeHeader)
-		{
-			// find end of header, \r\n\r\n
-			NSData *headerEnd = [@"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding];
-			
-			NSRange headerEndRange = [_inputBuffer rangeOfData:headerEnd options:0 range:NSMakeRange(0, [_inputBuffer length])];
-			
-			if (headerEndRange.location == NSNotFound)
-			{
-				// we don't have a complete header
-				break;
-			}
-			NSString *string = [[NSString alloc] initWithBytesNoCopy:(void *)[_inputBuffer bytes] length:headerEndRange.location encoding:NSUTF8StringEncoding freeWhenDone:NO];
-			
-			if (!string)
-			{
-				return;
-			}
-			
-			NSScanner *scanner = [NSScanner scannerWithString:string];
-			scanner.charactersToBeSkipped = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-			
-			if (![scanner scanString:@"PUT" intoString:NULL])
-			{
-				return;
-			}
-			
-			if (![scanner scanString:@"Class:" intoString:NULL])
-			{
-				return;
-			}
-			
-			NSString *type;
-			if (![scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] intoString:&type])
-			{
-				return;
-			}
-			
-			_receivingDataClass = NSClassFromString(type);
-			
-			
-			if ([scanner scanString:@"Content-Type:" intoString:NULL])
-			{
-				NSString *contentType;
-				if (![scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceAndNewlineCharacterSet] intoString:&contentType])
-				{
-					return;
-				}
-				
-				if ([contentType isEqualToString:@"application/json"])
-				{
-					_expectedContentType = DTBonjourDataConnectionContentTypeJSON;
-				}
-				else if ([contentType isEqualToString:@"application/octet-stream"])
-				{
-					_expectedContentType = DTBonjourDataConnectionContentTypeNSCoding;
-				}
-				else
-				{
-					NSLog(@"Unknown transport type: %@", contentType);
-					return;
-				}
-			}
-			
-			if (![scanner scanString:@"Content-Length:" intoString:NULL])
-			{
-				return;
-			}
-			
-			long long length;
-			if (![scanner scanLongLong:&length])
-			{
-				return;
-			}
-			
-			_expectedDataLength = length;
-			_expectedDataType = DTBonjourDataConnectionExpectedDataTypeData;
-			
-			NSRange headerRange = NSMakeRange(0, headerEndRange.location + headerEndRange.length);
-			[_inputBuffer replaceBytesInRange:headerRange withBytes:NULL length:0];
-			
-		}
-		
-		if (_expectedDataType == DTBonjourDataConnectionExpectedDataTypeData)
-		{
-			if (_expectedDataLength && [_inputBuffer length] >= _expectedDataLength)
-			{
-				NSRange payloadRange = NSMakeRange(0, _expectedDataLength);
-				NSData *data = [_inputBuffer subdataWithRange:payloadRange];
-				
-				// decode data
-				id object = nil;
-				
-				if (_expectedContentType == DTBonjourDataConnectionContentTypeJSON)
-				{
-					object = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-				}
-				else if (_expectedContentType == DTBonjourDataConnectionContentTypeNSCoding)
-				{
-					object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-				}
-				
-				if (!object)
-				{
-					NSLog(@"Unable to decode object");
-					return;
-				}
-				
-				if ([_delegate respondsToSelector:@selector(connection:didReceiveObject:)])
-				{
-					[_delegate connection:self didReceiveObject:object];
-				}
-				
-				[_inputBuffer replaceBytesInRange:payloadRange withBytes:NULL length:0];
-				_expectedDataType = DTBonjourDataConnectionExpectedDataTypeHeader;
-				
-				NSLog(@"received %@: %@", NSStringFromClass(_receivingDataClass), object);
-			}
-			else
-			{
-				// we don't have sufficient data for decoding this object yet
-				break;
-			}
-		}
 	}
 }
 
@@ -322,83 +201,26 @@ typedef enum
 		return NO;
 	}
 	
-	NSData *archivedData = nil;
-	NSString *contentType = nil;
+	DTBonjourDataChunk *newChunk = [[DTBonjourDataChunk alloc] initWithObject:object encoding:self.sendingContentType error:error];
 	
-	switch (self.sendingContentType )
+	if (!newChunk)
 	{
-		case DTBonjourDataConnectionContentTypeJSON:
-		{
-			// check if our sending encoding type permits this object
-			if (![NSJSONSerialization isValidJSONObject:object])
-			{
-				if (error)
-				{
-					NSString *errorMsg = [NSString stringWithFormat:@"Object %@ is not a valid root object for JSON serialization", object];
-					NSDictionary *userInfo = @{NSLocalizedDescriptionKey:errorMsg};
-					*error = [NSError errorWithDomain:DTBonjourDataConnectionErrorDomain code:1 userInfo:userInfo];
-				}
-				
-				return NO;
-			}
-			
-			archivedData = [NSJSONSerialization dataWithJSONObject:object options:0 error:error];
-			
-			if (!archivedData)
-			{
-				return NO;
-			}
-			
-			contentType = @"application/json";
-			
-			break;
-		}
-			
-		case DTBonjourDataConnectionContentTypeNSCoding:
-		{
-			// check if our sending encoding type permits this object
-			if (![object conformsToProtocol:@protocol(NSCoding)])
-			{
-				if (error)
-				{
-					NSString *errorMsg = [NSString stringWithFormat:@"Object %@ does not conform to NSCoding", object];
-					NSDictionary *userInfo = @{NSLocalizedDescriptionKey:errorMsg};
-					*error = [NSError errorWithDomain:DTBonjourDataConnectionErrorDomain code:1 userInfo:userInfo];
-				}
-				
-				return NO;
-			}
-			
-			archivedData = [NSKeyedArchiver archivedDataWithRootObject:object];
-			contentType = @"application/octet-stream";
-			
-			break;
-		}
-			
-		default:
-		{
-			if (error)
-			{
-				NSString *errorMsg = [NSString stringWithFormat:@"Unknown encoding type %d", self.sendingContentType];
-				NSDictionary *userInfo = @{NSLocalizedDescriptionKey:errorMsg};
-				*error = [NSError errorWithDomain:DTBonjourDataConnectionErrorDomain code:1 userInfo:userInfo];
-			}
-			
-			return NO;
-		}
+		return NO;
 	}
 	
-	NSString *type = NSStringFromClass([object class]);
-	NSString *header = [NSString stringWithFormat:@"PUT\r\nClass: %@\r\nContent-Type: %@\r\nContent-Length:%ld\r\n\r\n", type, contentType, (long)[archivedData length]];
-	NSData *headerData = [header dataUsingEncoding:NSUTF8StringEncoding];
+	newChunk.sequenceNumber = _chunkSequenceNumber;
+
+	BOOL queueWasEmpty = (![_outputQueue count]);
 	
-	[self _sendData:headerData];
-	[self _sendData:archivedData];
+	[_outputQueue addObject:newChunk];
 	
-	NSLog(@"sent %ld + %ld", (long)[headerData length] , (long)[archivedData length]);
+	if (queueWasEmpty && _outputStream.streamStatus == NSStreamStatusOpen)
+	{
+		[self _startOutput];
+	}
+
 	return YES;
 }
-
 
 #pragma mark - NSStream Delegate
 
@@ -408,29 +230,37 @@ typedef enum
 	{
 		case NSStreamEventOpenCompleted:
 		{
-			_expectedDataType = DTBonjourDataConnectionExpectedDataTypeHeader;
-			
 			break;
 		}
 			
 		case NSStreamEventHasBytesAvailable:
 		{
-			uint8_t buffer[2048];
-			NSInteger actuallyRead = [_inputStream read:(uint8_t *)buffer maxLength:sizeof(buffer)];
-			
-			if (actuallyRead > 0)
+			if (!_receivingChunk)
 			{
-				[_inputBuffer appendBytes:buffer length:actuallyRead];
-				
-				[self _startDecoding];
-				
-				// empty buffer
+				// start reading a new chunk
+				_receivingChunk = [[DTBonjourDataChunk alloc] initForReading];
 			}
-			else
+			
+			// continue reading
+			NSInteger actuallyRead = [_receivingChunk readFromInputStream:_inputStream];
+			
+			if (actuallyRead<0)
 			{
-				// A non-positive value from -read:maxLength: indicates either end of file (0) or
-				// an error (-1).  In either case we just wait for the corresponding stream event
-				// to come through.
+				[self close];
+				break;
+			}
+			
+			if ([_receivingChunk isTransmissionComplete])
+			{
+				if ([_delegate respondsToSelector:@selector(connection:didReceiveObject:)])
+				{
+					id decodedObject = [_receivingChunk decodedObject];
+					
+					[_delegate connection:self didReceiveObject:decodedObject];
+				}
+
+				// we're done with this chunk
+				_receivingChunk = nil;
 			}
 			
 			break;
@@ -450,7 +280,7 @@ typedef enum
 			
 		case NSStreamEventHasSpaceAvailable:
 		{
-			if ([_outputBuffer length] != 0)
+			if ([_outputQueue count])
 			{
 				[self _startOutput];
 			}
