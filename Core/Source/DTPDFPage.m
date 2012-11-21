@@ -57,7 +57,7 @@
     CGContextFillRect(context, rect);
     
     // get size of inner cropping rect
-    CGRect mediaRect = [self cropRect];
+    CGRect mediaRect = [self trimRect];
 
     // save the state of the context
     CGContextSaveGState(context);
@@ -91,6 +91,16 @@
     }
     
     return CGRectZero;
+}
+
+- (CGRect)trimRect
+{
+	if (_page)
+	{
+		return CGPDFPageGetBoxRect(_page, kCGPDFTrimBox);
+	}
+	
+	return CGRectZero;
 }
 
 @end
