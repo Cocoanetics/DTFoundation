@@ -33,4 +33,10 @@
  */
 - (CGRect)cropRect;
 
+/**
+ Accessing the trim rect of the receiver
+ @returns The trimming rect
+ */
+- (CGRect)trimRect;
+
 @end
