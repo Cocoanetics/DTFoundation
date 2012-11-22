@@ -15,8 +15,17 @@ CGSize sizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
 	
 	CGFloat smallerZoom = MIN(necessaryZoomWidth, necessaryZoomHeight);
 	
-	CGSize scaledSize = CGSizeMake(roundf(originalSize.width*smallerZoom), roundf(originalSize.height*smallerZoom));
-	return scaledSize;
+	return CGSizeMake(roundf(originalSize.width*smallerZoom), roundf(originalSize.height*smallerZoom));
+}
+
+CGSize sizeThatFillsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
+{
+	CGFloat necessaryZoomWidth = sizeToFit.width / originalSize.width;
+	CGFloat necessaryZoomHeight = sizeToFit.height / originalSize.height;
+	
+	CGFloat largerZoom = MAX(necessaryZoomWidth, necessaryZoomHeight);
+	
+	return CGSizeMake(roundf(originalSize.width*largerZoom), roundf(originalSize.height*largerZoom));
 }
 
 BOOL DTCGSizeMakeWithDictionaryRepresentation(NSDictionary *dict, CGSize *size)
