@@ -12,6 +12,7 @@
 
 CGSize sizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit);
 
+CGSize sizeThatFillsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit);
 
 /**
  Replacement for buggy CGSizeMakeWithDictionaryRepresentation
