@@ -46,11 +46,7 @@
         return;
     }
     
-    CGSize renderSize;
-    renderSize.width = CGBitmapContextGetWidth(context);
-    renderSize.height = CGBitmapContextGetHeight(context);
-    
-    CGRect rect = CGRectMake(0, 0, renderSize.width, renderSize.height);
+    CGRect rect = CGContextGetClipBoundingBox(context);
     
     // PDF might be transparent, assume white paper
     CGContextSetGrayFillColor(context, 1, 1);
