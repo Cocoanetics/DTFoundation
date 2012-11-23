@@ -8,7 +8,6 @@
 
 #import "DTPDFDocument.h"
 #import "DTPDFPage.h"
-#import "DTUtils.h"
 
 @interface DTPDFPage (private)
 
