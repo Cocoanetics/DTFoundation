@@ -25,7 +25,7 @@
  @param error If an error occurs, upon returns contains an NSError object that describes the problem. If you are not interested in possible errors, pass in `NULL`.
  @return A new array that contains the array at path, or `nil` if there is a file error or if the contents of the file are an invalid representation of a array.
  */
-+ (NSArray *)arrayWithContentsOfURL:(NSURL *)url error:(NSError **)error;
++ (NSArray *)arrayWithContentsOfURL:(NSURL *)URL error:(NSError **)error;
 
 
 /** 
