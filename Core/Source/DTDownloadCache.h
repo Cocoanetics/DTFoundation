@@ -20,8 +20,9 @@ enum {
 typedef NSUInteger DTDownloadCacheOption;
 
 
-typedef void (^DTDownloadCacheDataCompletionBlock)(NSURL *, NSData *);
-typedef void (^DTDownloadCacheImageCompletionBlock)(NSURL *, UIImage *);
+// when download succeedes or fails the blocks are called, passing URL. If there was an error then data/image is nil and the NSError holds the reason
+typedef void (^DTDownloadCacheDataCompletionBlock)(NSURL *, NSData *, NSError *);
+typedef void (^DTDownloadCacheImageCompletionBlock)(NSURL *, UIImage *, NSError *);
 
 /**
  A global cache for <DTDownload> instances
@@ -41,6 +42,14 @@ typedef void (^DTDownloadCacheImageCompletionBlock)(NSURL *, UIImage *);
  @returns The cached image or `nil` if none is cached.
  */
 - (NSData *)cachedDataForURL:(NSURL *)URL option:(DTDownloadCacheOption)option;
+
+/**
+ @param URL The URL of the file
+ @param option A loading option to specify wheter the file should be loaded if it is already cached.
+ @param completion The block to be executed when the file data is available.
+ @returns The cached data or `nil` if none is cached.
+ */
+- (NSData *)cachedDataForURL:(NSURL *)URL option:(DTDownloadCacheOption)option completion:(DTDownloadCacheDataCompletionBlock)completion;
 
 /**
  current sum of cached files in Bytes
