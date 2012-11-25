@@ -27,6 +27,8 @@
 		unsigned int delegateSupportsWillDismissWithButtonIndex:1;
 		unsigned int delegateSupportsDidDismissWithButtonIndex:1;
 	} _delegateFlags;
+	
+	BOOL _isDeallocating;
 }
 
 - (id)init 
@@ -51,6 +53,11 @@
 	}
 	
 	return self;
+}
+
+- (void)dealloc
+{
+	_isDeallocating = YES;
 }
 
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(DTActionSheetBlock)block
@@ -150,7 +157,15 @@
 	}
 	else if (delegate == nil)
 	{
-		[super setDelegate:nil];
+		// UIActionSheet dealloc sets delegate to nil
+		if (_isDeallocating)
+		{
+			[super setDelegate:nil];
+		}
+		else
+		{
+			[super setDelegate:self];
+		}
 		_externalDelegate = nil;
 	}
 	else 
