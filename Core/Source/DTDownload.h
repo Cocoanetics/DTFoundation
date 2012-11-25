@@ -14,11 +14,11 @@ extern NSString * const DTDownloadProgressNotification;
 
 @class DTDownload;
 
-// block-based response handler, called after headers were received
-typedef void (^DTDownloadResponseHandler)(DTDownload *, NSDictionary *headers);
+// block-based response handler, called after headers were received. Returning YES via shouldCancel cancels the download
+typedef void (^DTDownloadResponseHandler)(NSDictionary *headers, BOOL *shouldCancel);
 
-// block-based completion handler, called once the download has finished
-typedef void (^DTDownloadCompletionHandler)(DTDownload *);
+// block-based completion handler, called once the download has finished, in case of error path is nil and error is set
+typedef void (^DTDownloadCompletionHandler)(NSString *path, NSError *error);
 
 
 /**
@@ -78,7 +78,7 @@ typedef void (^DTDownloadCompletionHandler)(DTDownload *);
  A Class that represents a download of a file from a remote server. It also supports only getting a HEAD on the given URL and optionally resume an interrupted download
  */
 
-@interface DTDownload : NSObject 
+@interface DTDownload : NSObject
 
 /**
  Returns the URL that is being downloaded by the receiver.
@@ -93,7 +93,7 @@ typedef void (^DTDownloadCompletionHandler)(DTDownload *);
 /**
  Returns the MIME type of the downloading file.
  */
-@property (nonatomic, strong, readonly) NSString *MIMEType;
+@property (nonatomic, strong, readonly) NSString *contentType;
 
 /**
  Returns the MIME type of the downloading file.
@@ -106,7 +106,7 @@ typedef void (^DTDownloadCompletionHandler)(DTDownload *);
 @property (nonatomic, strong, readonly) NSDate *lastModifiedDate;
 
 /**
- Use to set or retrieve the folder where the downloaded file should be copied to. 
+ Use to set or retrieve the folder where the downloaded file should be copied to.
  
  Changing this only has an effect if the download has not yet completed.
  */
@@ -141,7 +141,7 @@ typedef void (^DTDownloadCompletionHandler)(DTDownload *);
  ---------------------------------------------------------------------------------------
  */
 
-/** 
+/**
  Starts or Resumes a download for a given URL.
  
  @param shouldResume Specifies if the download should be resumed if possible
@@ -149,9 +149,9 @@ typedef void (^DTDownloadCompletionHandler)(DTDownload *);
  */
 - (void)startWithResume:(BOOL)shouldResume;
 
-/** 
+/**
  Starts a HEAD request for the given URL. This retrieves the headers and not the body of the document.
-  */
+ */
 - (void)startHEAD;
 
 /**
@@ -160,14 +160,14 @@ typedef void (^DTDownloadCompletionHandler)(DTDownload *);
 - (void)cancel;
 
 /**
- Determins if the download is currently in progress
+ Determines if the download is currently in progress
  */
 - (BOOL)isLoading;
 
 /**
-*  Removes the downloaded file or the incomplete file if the download is currently running.
-*	 Note: Also the download is cancelled if necessary
-*/
+ *  Removes the downloaded file or the incomplete file if the download is currently running.
+ *	 Note: Also the download is cancelled if necessary
+ */
 - (void)cleanup;
 
 
@@ -177,7 +177,7 @@ typedef void (^DTDownloadCompletionHandler)(DTDownload *);
  */
 
 /**
- Sets the block to execute as soon as the HTTP response has been received.
+ Sets the block to execute as soon as the HTTP response has been received and the headers are available.
  */
 @property (nonatomic, copy) DTDownloadResponseHandler responseHandler;
 
