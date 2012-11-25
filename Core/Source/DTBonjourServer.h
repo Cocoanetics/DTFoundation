@@ -10,9 +10,25 @@
 
 @class DTBonjourServer;
 
+/**
+ The delegate protocol by which the DTBonjourServer communicates about events
+ */
 @protocol DTBonjourServerDelegate <NSObject>
 @optional
+
+/**
+ Callend when a new incoming connection was accepted by the server.
+ @param server The server
+ @param connection The connection that was accepted
+ */
 - (void)bonjourServer:(DTBonjourServer *)server didAcceptConnection:(DTBonjourDataConnection *)connection;
+
+/**
+ Called when the server received a new object on a given connection
+ @param server The server
+ @param object The decoded object that was received
+ @param connection The individual connection that it was received on
+ */
 - (void)bonjourServer:(DTBonjourServer *)server didReceiveObject:(id)object onConnection:(DTBonjourDataConnection *)connection;
 @end
 
@@ -25,6 +41,7 @@
 
 /**
  Creates a server instances with the given bonjour type, e.g. "_servicename._tcp"
+ @param bonjourType The full service type string
  */
 - (id)initWithBonjourType:(NSString *)bonjourType;
 
@@ -43,6 +60,7 @@
  Sends the object to all currently connected clients.
  
  Note: any errors will be ignored. If you require finer-grained control then you should iterate over the individual connections.
+ @param object The object that will be encoded and sent to all clients
  */
 - (void)broadcastObject:(id)object;
 

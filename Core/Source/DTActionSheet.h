@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+// the block to execute when an option button is tapped
 typedef void (^DTActionSheetBlock)(void);
 
 /**
