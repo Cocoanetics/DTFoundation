@@ -2,7 +2,7 @@
 //  DTAlertView.m
 //  DTFoundation
 //
-//  Created by Stefan Gugarel on 11/22/12.
+//  Created by Oliver Drobnik on 11/22/12.
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
@@ -14,44 +14,164 @@
 
 @implementation DTAlertView
 {
-	DTAlertViewBlock _userInteraction;
+	id <UIAlertViewDelegate> _externalDelegate;
+	
+	NSMutableDictionary *_actionsPerIndex;
+	
+	BOOL _isDeallocating;
 }
 
-- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... 
+
+// overwrite standard initializer so that we can set our own delegate
+- (id)init
 {
-	self = [super initWithTitle:title message:message delegate:self cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
+	self = [super init];
 	if (self)
 	{
-		// add other button titles via argument list
-		if (otherButtonTitles)
-		{
-			[self addButtonWithTitle:otherButtonTitles];
-			va_list args;
-			va_start(args, otherButtonTitles);
-			NSString * title = nil;
-			while((title = va_arg(args, NSString*))) {
-				[self addButtonWithTitle:title];
-			}
-			va_end(args);
-		}
+		_actionsPerIndex = [[NSMutableDictionary alloc] init];
+		self.delegate = self;
 	}
 	
 	return self;
 }
 
-- (void)showWithUserInteraction:(DTAlertViewBlock)userInteraction
+- (void)dealloc
 {
-	_userInteraction = userInteraction;
-
-	[super show];
+	_isDeallocating = YES;
 }
 
+// designated initializer
+- (id)initWithTitle:(NSString *)title message:(NSString *)message
+{
+	return [self initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+}
+
+- (NSInteger)addButtonWithTitle:(NSString *)title block:(DTAlertViewBlock)block
+{
+	NSInteger retIndex = [self addButtonWithTitle:title];
+	
+	if (block)
+	{
+		NSNumber *key = [NSNumber numberWithInt:retIndex];
+		[_actionsPerIndex setObject:[block copy] forKey:key];
+	}
+	
+	if (self.numberOfButtons>0 && self.cancelButtonIndex==0)
+	{
+		// we already have a cancel button
+	}
+	
+	return retIndex;
+}
+
+- (NSInteger)addCancelButtonWithTitle:(NSString *)title block:(DTAlertViewBlock)block
+{
+	NSInteger retIndex = [self addButtonWithTitle:title block:block];
+	[self setCancelButtonIndex:retIndex];
+	
+	return retIndex;
+}
 
 # pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	_userInteraction(buttonIndex);
+	if ([_externalDelegate respondsToSelector:@selector(alertView:clickedButtonAtIndex:)])
+	{
+		[_externalDelegate alertView:self clickedButtonAtIndex:buttonIndex];
+	}
 }
+
+- (void)alertViewCancel:(UIAlertView *)alertView
+{
+	if ([_externalDelegate respondsToSelector:@selector(alertViewCancel:)])
+	{
+		[_externalDelegate alertViewCancel:self];
+	}
+}
+
+- (void)willPresentAlertView:(UIAlertView *)alertView
+{
+	if ([_externalDelegate respondsToSelector:@selector(willPresentAlertView:)])
+	{
+		[_externalDelegate willPresentAlertView:self];
+	}
+}
+
+- (void)didPresentAlertView:(UIAlertView *)alertView
+{
+	if ([_externalDelegate respondsToSelector:@selector(didPresentAlertView:)])
+	{
+		[_externalDelegate didPresentAlertView:self];
+	}
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+	if ([_externalDelegate respondsToSelector:@selector(alertView:willDismissWithButtonIndex:)])
+	{
+		[_externalDelegate alertView:self willDismissWithButtonIndex:buttonIndex];
+	}
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+	NSNumber *key = [NSNumber numberWithInt:buttonIndex];
+	
+	DTAlertViewBlock block = [_actionsPerIndex objectForKey:key];
+	
+	if (block)
+	{
+		block();
+	}
+	
+	if ([_externalDelegate respondsToSelector:@selector(alertView:didDismissWithButtonIndex:)])
+	{
+		[_externalDelegate alertView:self didDismissWithButtonIndex:buttonIndex];
+	}
+}
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+	if ([_externalDelegate respondsToSelector:@selector(alertViewShouldEnableFirstOtherButton:)])
+	{
+		return [_externalDelegate alertViewShouldEnableFirstOtherButton:self];
+	}
+	
+	return YES;
+}
+
+#pragma mark - Properties
+
+- (id <UIAlertViewDelegate>)delegate
+{
+	return _externalDelegate;
+}
+
+- (void)setDelegate:(id <UIAlertViewDelegate>)delegate
+{
+	if (delegate == self)
+	{
+		[super setDelegate:self];
+	}
+	else if (delegate == nil)
+	{
+		// UIAlertView dealloc sets delegate to nil
+		if (_isDeallocating)
+		{
+			[super setDelegate:nil];
+		}
+		else
+		{
+			[super setDelegate:self];
+			_externalDelegate = nil;
+		}
+	}
+	else
+	{
+		_externalDelegate = delegate;
+	}
+}
+
 
 @end
