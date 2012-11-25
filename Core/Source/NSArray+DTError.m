@@ -15,9 +15,14 @@ MAKE_CATEGORIES_LOADABLE(NSArray_DTError);
 @implementation NSArray (DTError)
 
 
-+ (NSArray *)arrayWithContentsOfURL:(NSURL *)url error:(NSError **)error
++ (NSArray *)arrayWithContentsOfURL:(NSURL *)URL error:(NSError **)error
 {
-	NSData *readData = [NSData dataWithContentsOfURL:url];
+	NSData *readData = [NSData dataWithContentsOfURL:URL options:0 error:error];
+	
+	if (!readData)
+	{
+		return nil;
+	}
 	
 	return [NSArray arrayWithContentsOfData:readData error:error];
 }
@@ -30,19 +35,22 @@ MAKE_CATEGORIES_LOADABLE(NSArray_DTError);
 
 + (NSArray *)arrayWithContentsOfData:(NSData *)data error:(NSError **)error
 {
-	CFStringRef errorString = NULL;
-	
-	NSArray *array = (__bridge_transfer NSArray *)CFPropertyListCreateFromXMLData(kCFAllocatorDefault, (__bridge CFDataRef)data, kCFPropertyListImmutable, (CFStringRef *)&errorString);
+	CFErrorRef parseError = NULL;
+	NSArray *array = (__bridge_transfer NSArray *)CFPropertyListCreateWithData(kCFAllocatorDefault, (__bridge CFDataRef)data, kCFPropertyListImmutable, NULL, (CFErrorRef *)&parseError);
 	
 	if ([array isKindOfClass:[NSArray class]])
 	{
         return array;
 	}
 	
-	if (errorString&&error)
-	{		
-		NSDictionary *userInfo = [NSDictionary dictionaryWithObject:(__bridge NSString *)errorString forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:DTFoundationErrorDomain code:1 userInfo:userInfo];
+	if (parseError)
+	{
+		if (error)
+		{
+			*error = (__bridge NSError *)(parseError);
+		}
+		
+		CFRelease(parseError);
 	}
 	
 	return nil;
