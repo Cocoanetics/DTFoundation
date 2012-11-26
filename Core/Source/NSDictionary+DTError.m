@@ -16,58 +16,14 @@ MAKE_CATEGORIES_LOADABLE(NSDictionary_DTError);
 
 + (NSDictionary *)dictionaryWithContentsOfURL:(NSURL *)URL error:(NSError **)error
 {
-	CFPropertyListRef propertyList;
-	CFStringRef       errorString;
-	CFDataRef         resourceData;
-	SInt32            errorCode;
+	NSData *readData = [NSData dataWithContentsOfURL:URL options:0 error:error];
 	
-	// Read the XML file.
-	CFURLCreateDataAndPropertiesFromResource(
-													  kCFAllocatorDefault,
-													  (__bridge CFURLRef)URL,
-													  &resourceData,            // place to put file data
-													  NULL,
-													  NULL,
-													  &errorCode);
-	
-	// Reconstitute the dictionary using the XML data.
-	propertyList = CFPropertyListCreateFromXMLData( kCFAllocatorDefault,
-												   resourceData,
-												   kCFPropertyListImmutable,
-												   &errorString);
-	
-	
-	NSDictionary *readDictionary = nil;
-	
-	if (resourceData) 
+	if (!readData)
 	{
-		readDictionary = [NSDictionary dictionaryWithDictionary:(__bridge NSDictionary *)propertyList];
-		CFRelease( resourceData );
-	}
-	else 
-	{
-		if (errorString)
-		{
-			if (error)
-			{
-				NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-				NSString *domain = [infoDict objectForKey:(id)kCFBundleIdentifierKey];
-				
-				NSDictionary *userInfo = [NSDictionary dictionaryWithObject:(__bridge NSString *)errorString 
-																	 forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:domain code:1 userInfo:userInfo];
-			}
-			
-			CFRelease(errorString);
-		}
+		return nil;
 	}
 	
-	if (propertyList)
-	{
-		CFRelease(propertyList);
-	}
-	
-	return readDictionary;
+	return [NSDictionary dictionaryWithContentsOfData:readData error:error];
 }
 
 + (NSDictionary *)dictionaryWithContentsOfFile:(NSString *)path error:(NSError **)error
@@ -78,13 +34,9 @@ MAKE_CATEGORIES_LOADABLE(NSDictionary_DTError);
 
 + (NSDictionary *)dictionaryWithContentsOfData:(NSData *)data error:(NSError **)error
 {
-	CFStringRef errorString;
-    
-	// uses toll-free bridging for data into CFDataRef and CFPropertyList into NSDictionary
-	NSDictionary *dictionary =  (__bridge_transfer NSDictionary *)CFPropertyListCreateFromXMLData(kCFAllocatorDefault, (__bridge CFDataRef)data,
-															   kCFPropertyListImmutable,
-															   &errorString);
-    
+	CFErrorRef parseError = NULL;
+	NSDictionary *dictionary = (__bridge_transfer NSDictionary *)CFPropertyListCreateWithData(kCFAllocatorDefault, (__bridge CFDataRef)data, kCFPropertyListImmutable, NULL, (CFErrorRef *)&parseError);
+	
 	// we check if it is the correct type and only return it if it is
 	if ([dictionary isKindOfClass:[NSDictionary class]])
 	{
@@ -92,17 +44,16 @@ MAKE_CATEGORIES_LOADABLE(NSDictionary_DTError);
 	}
 	else
 	{
-		if (errorString)
+		if (parseError)
 		{
 			if (error)
 			{
-				NSDictionary *userInfo = [NSDictionary dictionaryWithObject:(__bridge NSString *)errorString forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:DTFoundationErrorDomain code:1 userInfo:userInfo];
+				*error = (__bridge NSError *)parseError;
 			}
-            
-			CFRelease(errorString);
+			
+			CFRelease(parseError);
 		}
-        
+		
 		return nil;
 	}
 }

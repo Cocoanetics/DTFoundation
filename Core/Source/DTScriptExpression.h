@@ -8,7 +8,7 @@
 
 #import "DTScriptVariable.h"
 
-typedef void (^DTScriptExpressionParameterEnumerationBlock) (NSString *, DTScriptVariable *, BOOL *);
+typedef void (^DTScriptExpressionParameterEnumerationBlock) (NSString *paramName, DTScriptVariable *variable, BOOL *stop);
 
 /**
  Instances of this class represent a single Objective-C script expression
@@ -19,18 +19,25 @@ typedef void (^DTScriptExpressionParameterEnumerationBlock) (NSString *, DTScrip
 
 /**
  Creates a script expression from an `NSString`
- @string A string representing an Object-C command including square brackets.
+ @param string A string representing an Object-C command including square brackets.
  */
 + (DTScriptExpression *)scriptExpressionWithString:(NSString *)string;
 
 /**
  Creates a script expression from an `NSString`
- @string A string representing an Object-C command including square brackets.
+ @param string A string representing an Object-C command including square brackets.
  */
 - (id)initWithString:(NSString *)string;
 
+/**
+ The parameters of the script expression
+ */
 @property (nonatomic, readonly) NSArray *parameters;
 
+/**
+ Enumerates the script parameters and executes the block for each parameter.
+ @param block The block to be executed for each parameter
+ */
 - (void)enumerateParametersWithBlock:(DTScriptExpressionParameterEnumerationBlock)block;
 
 /**
