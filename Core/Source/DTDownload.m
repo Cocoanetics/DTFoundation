@@ -11,6 +11,7 @@
 
 NSString * const DTDownloadDidStartNotification = @"DTDownloadDidStartNotification";
 NSString * const DTDownloadDidFinishNotification = @"DTDownloadDidFinishNotification";
+NSString * const DTDownloadDidCancelNotification = @"DTDownloadDidCancelNotification";
 NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotification";
 
 @interface DTDownload ()
@@ -99,7 +100,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
 	
 	// without this special it would get paused during scrolling of scroll views
-	[urlConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode: NSRunLoopCommonModes];
+	[urlConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 	[urlConnection start];
 	
 	// getting only a HEAD
@@ -250,11 +251,12 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 
 - (void)cancel
 {
-	if (_cancelled) {
+	if (_cancelled)
+    {
 		return;
 	}
 	_cancelled = YES;
-	self.delegate = nil;
+	_delegate = nil;
 	
     // update resume info on disk
     [self _updateDownloadInfo];
@@ -267,7 +269,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	_isLoading = NO;
 	
 	// send notification
-	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidFinishNotification object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidCancelNotification object:self];
 }
 
 - (void)_completeDownload
