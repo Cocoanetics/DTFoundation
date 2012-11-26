@@ -13,9 +13,35 @@
 @interface DTPDFPage () // private
 @end
 
+// C-functions for PDF scanning
 void _applierFunction(const char *key, CGPDFObjectRef value, void *mutableDictionary);
+void _scannerCallback(CGPDFScannerRef inScanner, void *userInfo);
+NSArray *_arrayFromPDFArray(CGPDFArrayRef pdfArray);
 id _objectForPDFObject(CGPDFObjectRef value);
 
+// convert a PDF array into an objC one
+NSArray *_arrayFromPDFArray(CGPDFArrayRef pdfArray)
+{
+    int i = 0;
+    NSMutableArray *tmpArray = [NSMutableArray array];
+    
+    size_t count = CGPDFArrayGetCount(pdfArray);
+    for(i=0; i<count; i++)
+    {
+        CGPDFObjectRef value;
+        if (CGPDFArrayGetObject(pdfArray, i, &value))
+        {
+            id object = _objectForPDFObject(value);
+            
+            if (object)
+            {
+                [tmpArray addObject:object];
+            }
+        }
+    }
+    
+    return tmpArray;
+}
 
 // converts a PDF object into an objc object
 id _objectForPDFObject(CGPDFObjectRef value)
@@ -90,24 +116,7 @@ id _objectForPDFObject(CGPDFObjectRef value)
             CGPDFArrayRef objectArray;
             if (CGPDFObjectGetValue(value, kCGPDFObjectTypeArray, &objectArray))
             {
-                int i = 0;
-                NSMutableArray *tmpArray = [NSMutableArray array];
-                
-                for(i=0; i<CGPDFArrayGetCount(objectArray); i++)
-                {
-                    CGPDFObjectRef value;
-                    if (CGPDFArrayGetObject(objectArray, i, &value))
-                    {
-                        id object = _objectForPDFObject(value);
-                        
-                        if (object)
-                        {
-                            [tmpArray addObject:object];
-                        }
-                    }
-                }
-                
-                return tmpArray;
+                return _arrayFromPDFArray(objectArray);
             }
             
             break;
@@ -197,6 +206,94 @@ void _applierFunction(const char *key, CGPDFObjectRef value, void *mutableDictio
     }
 }
 
+void _scannerCallback(CGPDFScannerRef inScanner, void *userInfo)
+{
+    NSMutableString *tmpString = (__bridge NSMutableString *)userInfo;
+    
+    CGPDFObjectRef pdfObject;
+    
+    bool success = CGPDFScannerPopObject(inScanner, &pdfObject);
+    
+    if(success)
+    {
+        id object = _objectForPDFObject(pdfObject);
+        
+        if ([object isKindOfClass:[NSString class]])
+        {
+            [tmpString appendString:object];
+        }
+        else if ([object isKindOfClass:[NSArray class]])
+        {
+            NSMutableArray *words = [NSMutableArray array];
+            
+            for (id component in object)
+            {
+                // ignore the numbers in the array, those are glyph offsets
+                if ([component isKindOfClass:[NSString class]])
+                {
+                    [words addObject:component];
+                }
+            }
+            
+            [tmpString appendString:[words componentsJoinedByString:@""]];
+        }
+    }
+}
+
+/*
+void _scannerNLCallback(CGPDFScannerRef inScanner, void *userInfo)
+{
+    NSMutableString *tmpString = (__bridge NSMutableString *)userInfo;
+
+    [tmpString appendString:@"\n"];
+}
+
+void _scannerTDCallback(CGPDFScannerRef inScanner, void *userInfo)
+{
+    NSMutableString *tmpString = (__bridge NSMutableString *)userInfo;
+    
+    CGPDFObjectRef pdfObject1;
+     bool success = CGPDFScannerPopObject(inScanner, &pdfObject1);
+
+        CGPDFObjectRef pdfObject2;
+    bool success2 = CGPDFScannerPopObject(inScanner, &pdfObject2);
+
+    
+    
+    id object = _objectForPDFObject(pdfObject1);
+    id object2 = _objectForPDFObject(pdfObject2);
+    
+    NSLog(@"TD %.2f %.2f", [object floatValue], [object2 floatValue]);
+    
+    [tmpString appendString:@"\n"];
+}
+
+void _scannerTMCallback(CGPDFScannerRef inScanner, void *userInfo)
+{
+    NSMutableString *tmpString = (__bridge NSMutableString *)userInfo;
+    
+    CGPDFObjectRef pdfObject1;
+    
+    CGAffineTransform transform;
+    CGPDFScannerPopNumber(inScanner, &transform.a);
+    CGPDFScannerPopNumber(inScanner, &transform.b);
+    CGPDFScannerPopNumber(inScanner, &transform.c);
+    CGPDFScannerPopNumber(inScanner, &transform.d);
+    CGPDFScannerPopNumber(inScanner, &transform.tx);
+    CGPDFScannerPopNumber(inScanner, &transform.ty);
+}
+
+
+void _scannerBTCallback(CGPDFScannerRef inScanner, void *userInfo)
+{
+    NSLog(@"BT");
+}
+
+void _scannerETCallback(CGPDFScannerRef inScanner, void *userInfo)
+{
+    NSLog(@"ET");
+}
+ */
 
 @implementation DTPDFPage
 {
@@ -304,6 +401,47 @@ void _applierFunction(const char *key, CGPDFObjectRef value, void *mutableDictio
     }
     
     return _dictionary;
+}
+
+#pragma mark - Working with Textual Content
+- (NSString *)string
+{
+    CGPDFOperatorTableRef operatorTable = CGPDFOperatorTableCreate();
+    CGPDFOperatorTableSetCallback (operatorTable, "TJ", &_scannerCallback);
+    CGPDFOperatorTableSetCallback (operatorTable, "Tj", &_scannerCallback);
+    
+    /*
+    CGPDFOperatorTableSetCallback (operatorTable, "\'", &_scannerNLCallback);
+    CGPDFOperatorTableSetCallback (operatorTable, "\"", &_scannerNLCallback);
+    CGPDFOperatorTableSetCallback (operatorTable, "T*", &_scannerNLCallback);
+    CGPDFOperatorTableSetCallback (operatorTable, "Tm", &_scannerTMCallback);
+    CGPDFOperatorTableSetCallback (operatorTable, "Td", &_scannerTDCallback);
+    CGPDFOperatorTableSetCallback (operatorTable, "TD", &_scannerTDCallback);
+    CGPDFOperatorTableSetCallback (operatorTable, "BT", &_scannerBTCallback);
+    CGPDFOperatorTableSetCallback (operatorTable, "ET", &_scannerETCallback);
+     */
+    
+    NSMutableString *tmpString = [NSMutableString string];
+    
+    CGPDFContentStreamRef contentStream = CGPDFContentStreamCreateWithPage(_page);
+    CGPDFScannerRef scanner = CGPDFScannerCreate (contentStream, operatorTable, (__bridge void *)tmpString);
+    
+    BOOL success = CGPDFScannerScan (scanner);
+    
+    CGPDFScannerRelease (scanner);
+    
+    CGPDFContentStreamRelease (contentStream);
+    
+    CGPDFOperatorTableRelease(operatorTable);
+    
+    if (success)
+    {
+        return tmpString;
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 @end
