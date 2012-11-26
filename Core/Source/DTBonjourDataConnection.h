@@ -26,18 +26,66 @@ extern NSString * DTBonjourDataConnectionErrorDomain;
 @optional
 
 // sending
+
+/**
+ Called before the connection will start sending a data chunk
+ @param connection The connection
+ @param chunk The chunk
+ */
 - (void)connection:(DTBonjourDataConnection *)connection willStartSendingChunk:(DTBonjourDataChunk *)chunk;
+
+/**
+ Called multiple times while the the connection is sending a data chunk
+ @param connection The connection
+ @param bytesSent The number of bytes sent so far
+ @param chunk The chunk
+ */
 - (void)connection:(DTBonjourDataConnection *)connection didSendBytes:(NSUInteger)bytesSent ofChunk:(DTBonjourDataChunk *)chunk;
+
+/**
+ Called after the connection did finish sending a data chunk
+ @param connection The connection
+ @param chunk The chunk
+ */
 - (void)connection:(DTBonjourDataConnection *)connection didFinishSendingChunk:(DTBonjourDataChunk *)chunk;
 
 // receiving
+
+/**
+ Called before the connection will start receiving a data chunk
+ @param connection The connection
+ @param chunk The chunk
+ */
 - (void)connection:(DTBonjourDataConnection *)connection willStartReceivingChunk:(DTBonjourDataChunk *)chunk;
+
+/**
+ Called multiple times while the the connection is receiving a data chunk
+ @param connection The connection
+ @param bytesReceived The number of bytes received so far
+ @param chunk The chunk
+ */
 - (void)connection:(DTBonjourDataConnection *)connection didReceiveBytes:(NSUInteger)bytesReceived ofChunk:(DTBonjourDataChunk *)chunk;
+
+/**
+ Called after the connection did finish receiving a data chunk
+ @param connection The connection
+ @param chunk The chunk
+ */
 - (void)connection:(DTBonjourDataConnection *)connection didFinishReceivingChunk:(DTBonjourDataChunk *)chunk;
 
+/**
+ Called when the connection did received and decode an object
+ @param connection The connection
+ @param object The decoded object that was received
+ */
 - (void)connection:(DTBonjourDataConnection *)connection didReceiveObject:(id)object;
 
 // connection
+
+/**
+ Called when the connection was closed
+ @param connection The connection
+ */
 - (void)connectionDidClose:(DTBonjourDataConnection *)connection;
 @end
 
@@ -50,11 +98,13 @@ extern NSString * DTBonjourDataConnectionErrorDomain;
 
 /**
  Initializes the receiver from a native Posix file handle representing a socket.
+ @param nativeSocketHandle The native socket handle to create the connection for
  */
 - (id)initWithNativeSocketHandle:(CFSocketNativeHandle)nativeSocketHandle;
 
 /**
  Initialized the receiver from a Bonjour `NSNetService`
+ @param service The `NSNetService` to create the connection for
  */
 - (id)initWithService:(NSNetService *)service;
 

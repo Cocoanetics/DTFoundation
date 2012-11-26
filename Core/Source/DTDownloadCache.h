@@ -20,8 +20,9 @@ enum {
 typedef NSUInteger DTDownloadCacheOption;
 
 
-typedef void (^DTDownloadCacheDataCompletionBlock)(NSURL *, NSData *);
-typedef void (^DTDownloadCacheImageCompletionBlock)(NSURL *, UIImage *);
+// when download succeedes or fails the blocks are called, passing URL. If there was an error then data/image is nil and the NSError holds the reason
+typedef void (^DTDownloadCacheDataCompletionBlock)(NSURL *, NSData *, NSError *);
+typedef void (^DTDownloadCacheImageCompletionBlock)(NSURL *, UIImage *, NSError *);
 
 /**
  A global cache for <DTDownload> instances
@@ -29,11 +30,22 @@ typedef void (^DTDownloadCacheImageCompletionBlock)(NSURL *, UIImage *);
 
 @interface DTDownloadCache : NSObject <DTDownloadDelegate>
 
+/**-------------------------------------------------------------------------------------
+ @name Accessing the Shared Instance
+ ---------------------------------------------------------------------------------------
+ */
+
 /**
  Access the shared cache.
  @returns the shared instance of the download cache.
  */
 + (DTDownloadCache *)sharedInstance;
+
+
+/**-------------------------------------------------------------------------------------
+ @name Downloading Data
+ ---------------------------------------------------------------------------------------
+ */
 
 /**
  @param URL The URL of the file
@@ -41,6 +53,19 @@ typedef void (^DTDownloadCacheImageCompletionBlock)(NSURL *, UIImage *);
  @returns The cached image or `nil` if none is cached.
  */
 - (NSData *)cachedDataForURL:(NSURL *)URL option:(DTDownloadCacheOption)option;
+
+/**
+ @param URL The URL of the file
+ @param option A loading option to specify wheter the file should be loaded if it is already cached.
+ @param completion The block to be executed when the file data is available.
+ @returns The cached data or `nil` if none is cached.
+ */
+- (NSData *)cachedDataForURL:(NSURL *)URL option:(DTDownloadCacheOption)option completion:(DTDownloadCacheDataCompletionBlock)completion;
+
+/**-------------------------------------------------------------------------------------
+ @name Retrieving Information about the Cache
+ ---------------------------------------------------------------------------------------
+ */
 
 /**
  current sum of cached files in Bytes
@@ -63,8 +88,8 @@ typedef void (^DTDownloadCacheImageCompletionBlock)(NSURL *, UIImage *);
 /**
  Specialized methods for dealing with images. An NSCache holds on to UIImage references after they have been retrieved once since that speeds up subsequent drawing.
  */
-@interface DTDownloadCache (Images)
 
+@interface DTDownloadCache (Images)
 
 /**
  Specialized method for retrieving cached images.

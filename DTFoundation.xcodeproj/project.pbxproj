@@ -166,6 +166,10 @@
 		A7BB5519161AE1CA0054606E /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BB5515161AE1CA0054606E /* NSString+DTUTI.m */; };
 		A7BB551A161AE1CA0054606E /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BB5515161AE1CA0054606E /* NSString+DTUTI.m */; };
 		A7BB551C161AE1CA0054606E /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A7BB5515161AE1CA0054606E /* NSString+DTUTI.m */; };
+		A7CD034A16623DAF00CBEB35 /* DTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CD034816623DAF00CBEB35 /* DTAlertView.h */; };
+		A7CD034B16623DAF00CBEB35 /* DTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CD034816623DAF00CBEB35 /* DTAlertView.h */; };
+		A7CD034C16623DAF00CBEB35 /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CD034916623DAF00CBEB35 /* DTAlertView.m */; };
+		A7CD034D16623DAF00CBEB35 /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CD034916623DAF00CBEB35 /* DTAlertView.m */; };
 		A7D0AA25153C1B160020F18B /* NSDictionary+DTError.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D0AA26153C1B160020F18B /* NSDictionary+DTError.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D0AA27153C1B160020F18B /* NSDictionary+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA24153C1B160020F18B /* NSDictionary+DTError.m */; };
@@ -420,6 +424,8 @@
 		A7BB5514161AE1CA0054606E /* NSString+DTUTI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTUTI.h"; sourceTree = "<group>"; };
 		A7BB5515161AE1CA0054606E /* NSString+DTUTI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTUTI.m"; sourceTree = "<group>"; };
 		A7C619EF162D8D84002C0C1A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A7CD034816623DAF00CBEB35 /* DTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAlertView.h; sourceTree = "<group>"; };
+		A7CD034916623DAF00CBEB35 /* DTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAlertView.m; sourceTree = "<group>"; };
 		A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DTError.h"; sourceTree = "<group>"; };
 		A7D0AA24153C1B160020F18B /* NSDictionary+DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DTError.m"; sourceTree = "<group>"; };
 		A7D0AA29153C1FE40020F18B /* NSString+DTURLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTURLEncoding.h"; sourceTree = "<group>"; };
@@ -822,6 +828,8 @@
 		A7D1E65616302EFA0077FA65 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A7CD034816623DAF00CBEB35 /* DTAlertView.h */,
+				A7CD034916623DAF00CBEB35 /* DTAlertView.m */,
 				A7EE2A0B1582CBFC00BB06DE /* DTActionSheet.h */,
 				A7EE2A0C1582CBFC00BB06DE /* DTActionSheet.m */,
 				FA964841162D8294005BF101 /* DTActivityTitleView.h */,
@@ -1011,6 +1019,7 @@
 				FAB1726C16301F0D00B44EDC /* DTFoundationConstants.h in Headers */,
 				A73B6F8C163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */,
 				A7FAA3891652291D006ED151 /* NSURL+DTComparing.h in Headers */,
+				A7CD034B16623DAF00CBEB35 /* DTAlertView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1084,6 +1093,7 @@
 				A70D569E162FD60600120A98 /* NSScanner+DTScripting.h in Headers */,
 				FAB1726B16301F0D00B44EDC /* DTFoundationConstants.h in Headers */,
 				A73B6F8B163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */,
+				A7CD034A16623DAF00CBEB35 /* DTAlertView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1413,6 +1423,7 @@
 				FAB1726F16301F0D00B44EDC /* DTFoundationConstants.m in Sources */,
 				A73B6F8F163169BB002CCCA7 /* NSFileWrapper+DTCopying.m in Sources */,
 				A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */,
+				A7CD034D16623DAF00CBEB35 /* DTAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1493,6 +1504,7 @@
 				A70D56A1162FD60600120A98 /* NSScanner+DTScripting.m in Sources */,
 				FAB1726E16301F0D00B44EDC /* DTFoundationConstants.m in Sources */,
 				A73B6F8E163169BB002CCCA7 /* NSFileWrapper+DTCopying.m in Sources */,
+				A7CD034C16623DAF00CBEB35 /* DTAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1972,16 +1984,22 @@
 		A7F4DFEF147FBAC600F4059A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = x86_64;
 				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
 		A7F4DFF0147FBAC600F4059A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = x86_64;
 				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
