@@ -83,11 +83,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	if (!headOnly && receivedBytes < _totalBytes)
-	{
-		// update resume info on disk
-		[self _updateDownloadInfo];
-	}
+    // cancel connection if still in flight
+    [self cancel];
 }
 
 - (void)startHEAD
@@ -278,6 +275,22 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidCancelNotification object:self];
 }
 
+- (void)cleanup
+{
+	[self cancel];
+	
+	// remove cached file
+	NSFileManager *fileManager = [[NSFileManager alloc] init];
+	[fileManager removeItemAtPath:self.internalDownloadFolder error:nil];
+}
+
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"<%@ URL='%@'>", NSStringFromClass([self class]), self.URL];
+}
+
+#pragma mark - Internal Utilities
+
 - (void)_completeWithError:(NSError *)error
 {
 	_isLoading = NO;
@@ -295,8 +308,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	}
 	
 	// nil the completion handlers in case they captured self
-	self.completionHandler = nil;
-	self.responseHandler = nil;
+	_completionHandler = nil;
+	_responseHandler = nil;
 	
 	// send notification
 	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidFinishNotification object:self];
@@ -363,8 +376,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	}
 	
 	// nil the completion handlers in case they captured self
-	self.completionHandler = nil;
-	self.responseHandler = nil;
+	_completionHandler = nil;
+	_responseHandler = nil;
 	
 	// send notification
 	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidFinishNotification object:self];
@@ -373,7 +386,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 - (void)_updateDownloadInfo
 {
 	// no need to save resume info if we have not received any bytes yet, or download is complete
-	if (receivedBytes==0 || (receivedBytes == _totalBytes))
+	if (receivedBytes==0 || (receivedBytes == _totalBytes) || headOnly)
 	{
 		return;
 	}
@@ -405,12 +418,6 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	
 	[writeDict writeToFile:infoPath atomically:YES];
 }
-
-- (NSString *)description
-{
-	return [NSString stringWithFormat:@"<%@ URL='%@'>", NSStringFromClass([self class]), self.URL];
-}
-
 
 #pragma mark - NSURLConnection Delegate
 
@@ -601,16 +608,6 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 {
 	return _isLoading;
 }
-
-- (void)cleanup
-{
-	[self cancel];
-	
-	// remove cached file
-	NSFileManager *fileManager = [[NSFileManager alloc] init];
-	[fileManager removeItemAtPath:self.internalDownloadFolder error:nil];
-}
-
 
 @synthesize URL = _URL, internalDownloadFolder, downloadEntityTag, folderForDownloading, lastPaketTimestamp, delegate, lastModifiedDate;
 @synthesize contentType = _contentType;
