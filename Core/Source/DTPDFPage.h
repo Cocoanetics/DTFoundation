@@ -39,4 +39,13 @@
  */
 - (CGRect)trimRect;
 
+
+/**
+ Accessing the page dictionary of the receiver
+ 
+ Note: Stream data blobs are omitted for now.
+ @returns the dictionary
+ */
+- (NSDictionary *)dictionary;
+
 @end
