@@ -9,6 +9,7 @@
 // notifications
 extern NSString * const DTDownloadDidStartNotification;
 extern NSString * const DTDownloadDidFinishNotification;
+extern NSString * const DTDownloadDidCancelNotification;
 extern NSString * const DTDownloadProgressNotification;
 
 
