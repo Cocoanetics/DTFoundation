@@ -48,4 +48,16 @@
  */
 - (NSDictionary *)dictionary;
 
+/**-------------------------------------------------------------------------------------
+ @name Working with Textual Content
+ ---------------------------------------------------------------------------------------
+ */
+
+/**
+ Note: Just raw text, not spacially corrected like in PDFDocument on Mac.
+
+ @returns an NSString object representing the text on the page.
+ */
+- (NSString *)string;
+
 @end

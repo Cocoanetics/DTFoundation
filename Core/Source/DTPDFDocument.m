@@ -2,7 +2,7 @@
 //  DTPDFDocument.m
 //  DTFoundation
 //
-//  Created by Stefan Gugarel on 9/24/12.
+//  Created by Oliver Drobnik on 9/24/12.
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
@@ -19,7 +19,7 @@
 {
     CGPDFDocumentRef _pdfDocument;
     NSArray *_pages;
-    NSInteger _numberOfPages;
+    NSUInteger _pageCount;
 }
 
 - (id)initWithURL:(NSURL *)URL
@@ -51,11 +51,11 @@
 	CGDataProviderRef dataProvider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
 	_pdfDocument = CGPDFDocumentCreateWithProvider(dataProvider);
 	
-	_numberOfPages = CGPDFDocumentGetNumberOfPages(_pdfDocument);
+	_pageCount = CGPDFDocumentGetNumberOfPages(_pdfDocument);
 	
 	
 	NSMutableArray *tmpArray = [NSMutableArray array];
-	for (NSInteger index = 1; index <= _numberOfPages; index++)
+	for (NSInteger index = 1; index <= _pageCount; index++)
 	{
 		CGPDFPageRef page = CGPDFDocumentGetPage(_pdfDocument, index);
 		
@@ -68,9 +68,28 @@
     _pages = [NSArray arrayWithArray:tmpArray];
 }
 
-#pragma mark Properties
+#pragma - mark Working with Pages
 
-@synthesize numberOfPages = _numberOfPages;
-@synthesize pages = _pages;
+- (NSUInteger)pageCount
+{
+    return _pageCount;
+}
+
+- (DTPDFPage *)pageAtIndex:(NSUInteger)index
+{
+    return _pages[index];
+}
+
+- (NSUInteger)indexForPage:(DTPDFPage *)page
+{
+    return [_pages indexOfObject:page];
+}
+
+#pragma mark - Determining the Page Class
+
+- (Class)pageClass
+{
+    return [DTPDFPage class];
+}
 
 @end
