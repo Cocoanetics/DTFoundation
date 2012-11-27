@@ -54,6 +54,7 @@
 #else
 	#import "NSImage+DTUtilities.h"
 	#import "NSDocument+DTFoundation.h"
+    #import "NSValue+DTConversion.h"
 	#import "NSView+DTAutoLayout.h"
 	#import "NSWindowController+DTPanelControllerPresenting.h"
 #endif
