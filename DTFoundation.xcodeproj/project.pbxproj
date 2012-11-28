@@ -21,6 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3D7CE53F166613B60028D339 /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7949A3914C963F500A8CCDE /* DTHTMLParser.m */; };
+		3D7CE541166613B60028D339 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D60FF715D3B28B00AEDD1B /* libxml2.dylib */; };
+		3D7CE542166613B60028D339 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A70B4CD01486621B00873A4A /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CD11486621B00873A4A /* DTVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC71486621B00873A4A /* DTVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CD21486621B00873A4A /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
@@ -324,6 +327,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3D7CE543166613B60028D339 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7E383C0160DFEDB00CF72D6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,6 +366,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D7CE547166613B60028D339 /* libDTHTMLParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A70B4CC51486621B00873A4A /* DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFoundation.h; sourceTree = "<group>"; };
 		A70B4CC71486621B00873A4A /* DTVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTVersion.h; sourceTree = "<group>"; };
 		A70B4CC81486621B00873A4A /* DTVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTVersion.m; sourceTree = "<group>"; };
@@ -535,6 +548,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3D7CE540166613B60028D339 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D7CE541166613B60028D339 /* libxml2.dylib in Frameworks */,
+				3D7CE542166613B60028D339 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A70B4CE41486637E00873A4A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -941,6 +963,7 @@
 				A7E383F1160E002200CF72D6 /* libDTDownloadCache.a */,
 				FAE5B92D1610A38200CA0D99 /* PDFDemo.app */,
 				A7787A0D16441B1800AF5830 /* libDTBonjour.a */,
+				3D7CE547166613B60028D339 /* libDTHTMLParser.a */,
 			);
 			name = Products;
 			path = ../..;
@@ -1157,6 +1180,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3D7CE53D166613B60028D339 /* DTHTMLParser (Mac) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D7CE544166613B60028D339 /* Build configuration list for PBXNativeTarget "DTHTMLParser (Mac)" */;
+			buildPhases = (
+				3D7CE53E166613B60028D339 /* Sources */,
+				3D7CE540166613B60028D339 /* Frameworks */,
+				3D7CE543166613B60028D339 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DTHTMLParser (Mac)";
+			productName = DTHTMLParser;
+			productReference = 3D7CE547166613B60028D339 /* libDTHTMLParser.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		A70B4CE61486637E00873A4A /* Static Library */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A70B4CEF1486637E00873A4A /* Build configuration list for PBXNativeTarget "Static Library" */;
@@ -1343,6 +1383,7 @@
 				A7D60FCE15D3B0BC00AEDD1B /* Unit Tests */,
 				A710A4FF1607556000437D36 /* Static Library (Mac) */,
 				A7E383C1160DFEDB00CF72D6 /* DTHTMLParser */,
+				3D7CE53D166613B60028D339 /* DTHTMLParser (Mac) */,
 				A7E383D9160DFF8600CF72D6 /* DTZipArchive */,
 				A7E383F0160E002200CF72D6 /* DTDownloadCache */,
 				FAE5B92C1610A38200CA0D99 /* PDFDemo */,
@@ -1441,6 +1482,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3D7CE53E166613B60028D339 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D7CE53F166613B60028D339 /* DTHTMLParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A70B4CE31486637E00873A4A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1648,6 +1697,48 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		3D7CE545166613B60028D339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DSTROOT = /tmp/DTHTMLParser.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DTHTMLParser;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D7CE546166613B60028D339 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DSTROOT = /tmp/DTHTMLParser.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DTHTMLParser;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		A70B4CF01486637E00873A4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2113,6 +2204,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3D7CE544166613B60028D339 /* Build configuration list for PBXNativeTarget "DTHTMLParser (Mac)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D7CE545166613B60028D339 /* Debug */,
+				3D7CE546166613B60028D339 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A70B4CEF1486637E00873A4A /* Build configuration list for PBXNativeTarget "Static Library" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
