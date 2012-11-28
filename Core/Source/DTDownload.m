@@ -28,31 +28,31 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 @implementation DTDownload
 {
 	NSURL *_URL;
-	NSString *internalDownloadFolder;
-	NSString *downloadEntityTag;
-	NSDate *lastModifiedDate;
-	NSString *downloadEntryIdentifier;
+	NSString *_internalDownloadFolder;
+	NSString *_downloadEntityTag;
+	NSDate *_lastModifiedDate;
+	NSString *_downloadEntryIdentifier;
 	
 	NSString *folderForDownloading;
 	
 	// downloading
-	NSURLConnection *urlConnection;
-	NSMutableData *receivedData;
+	NSURLConnection *_urlConnection;
+	NSMutableData *_receivedData;
 	
-	NSDate *lastPaketTimestamp;
-	float previousSpeed;
+	NSDate *_lastPaketTimestamp;
+	float _previousSpeed;
 	
 	long long receivedBytes;
 	long long _totalBytes;
 	
 	NSString *_contentType;
 	
-	NSString *receivedDataFilePath;
-	NSFileHandle *receivedDataFile;
+	NSString *_receivedDataFilePath;
+	NSFileHandle *_receivedDataFile;
 	
-	__unsafe_unretained id <DTDownloadDelegate> delegate;
+	__unsafe_unretained id <DTDownloadDelegate> _delegate;
 	
-	BOOL headOnly;
+	BOOL _headOnly;
 	
 	BOOL _isLoading;
 	BOOL _cancelled;
@@ -95,14 +95,14 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	[request setHTTPMethod:@"HEAD"];
 	
 	// start downloading
-	urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+	_urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
 	
 	// without this special it would get paused during scrolling of scroll views
-	[urlConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-	[urlConnection start];
+	[_urlConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+	[_urlConnection start];
 	
 	// getting only a HEAD
-	headOnly = YES;
+	_headOnly = YES;
 }
 
 - (void)startWithResume:(BOOL)shouldResume
@@ -122,34 +122,34 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	NSString *fileName = [[_URL path] lastPathComponent];
 	self.internalDownloadFolder = [[self.folderForDownloading stringByAppendingPathComponent:fileName] stringByAppendingPathExtension:@"download"];
 	
-	receivedDataFilePath = [internalDownloadFolder stringByAppendingPathComponent:fileName];
+	_receivedDataFilePath = [_internalDownloadFolder stringByAppendingPathComponent:fileName];
 	
-	if ([[NSFileManager defaultManager] fileExistsAtPath:internalDownloadFolder])
+	if ([[NSFileManager defaultManager] fileExistsAtPath:_internalDownloadFolder])
 	{
 		// there is a paused download
 		
 		// load previous data
 		
-		NSString *infoPath = [internalDownloadFolder stringByAppendingPathComponent:@"Info.plist"];
+		NSString *infoPath = [_internalDownloadFolder stringByAppendingPathComponent:@"Info.plist"];
 		NSDictionary *infoDictionary = [NSDictionary dictionaryWithContentsOfFile:infoPath];
 		NSDictionary *resumeInfo = [infoDictionary objectForKey:@"DownloadEntryResumeInformation"];
 		
 		_totalBytes = [[infoDictionary objectForKey:@"DownloadEntryProgressTotalToLoad"] longLongValue];
 		receivedBytes = [[resumeInfo objectForKey:@"NSURLDownloadBytesReceived"] longLongValue];
-		downloadEntryIdentifier = [infoDictionary objectForKey:@"DownloadEntryIdentifier"];
-		if (!downloadEntryIdentifier)
+		_downloadEntryIdentifier = [infoDictionary objectForKey:@"DownloadEntryIdentifier"];
+		if (!_downloadEntryIdentifier)
 		{
-			downloadEntryIdentifier = [NSString stringWithUUID];
+			_downloadEntryIdentifier = [NSString stringWithUUID];
 		}
 		
-		if ([delegate respondsToSelector:@selector(shouldResumeDownload:)])
+		if ([_delegate respondsToSelector:@selector(shouldResumeDownload:)])
 		{
-			if (!shouldResume || ![delegate shouldResumeDownload:self])
+			if (!shouldResume || ![_delegate shouldResumeDownload:self])
 			{
 				NSError *error = nil;
-				if (![[NSFileManager defaultManager] removeItemAtPath:receivedDataFilePath error:&error])
+				if (![[NSFileManager defaultManager] removeItemAtPath:_receivedDataFilePath error:&error])
 				{
-					NSLog(@"Cannot remove file at path %@, %@", receivedDataFilePath, [error localizedDescription]);
+					NSLog(@"Cannot remove file at path %@, %@", _receivedDataFilePath, [error localizedDescription]);
 					return;
 				}
 				
@@ -159,34 +159,34 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		
 		if (shouldResume)
 		{
-			downloadEntityTag = [resumeInfo objectForKey:@"NSURLDownloadEntityTag"];
+			_downloadEntityTag = [resumeInfo objectForKey:@"NSURLDownloadEntityTag"];
 			
 			
 			// here we assume we should continue download
-			receivedDataFile = [NSFileHandle fileHandleForWritingAtPath:receivedDataFilePath];
-			[receivedDataFile seekToEndOfFile];
+			_receivedDataFile = [NSFileHandle fileHandleForWritingAtPath:_receivedDataFilePath];
+			[_receivedDataFile seekToEndOfFile];
 			
 			// test if remembered length = received data length
 			
-			long long offset = [receivedDataFile offsetInFile];
+			long long offset = [_receivedDataFile offsetInFile];
 			if (receivedBytes != offset)
 			{
 				// inconsistency, reset
 				receivedBytes = 0;
 				_totalBytes = 0;
-				downloadEntityTag = nil;
-				lastModifiedDate = nil;
+				_downloadEntityTag = nil;
+				_lastModifiedDate = nil;
 				
-				[receivedDataFile closeFile];
+				[_receivedDataFile closeFile];
 				
 				NSError *error = nil;
-				if (receivedDataFile && ![[NSFileManager defaultManager] removeItemAtPath:receivedDataFilePath error:&error])
+				if (_receivedDataFile && ![[NSFileManager defaultManager] removeItemAtPath:_receivedDataFilePath error:&error])
 				{
-					NSLog(@"Cannot remove file at path %@, %@", receivedDataFilePath, [error localizedDescription]);
+					NSLog(@"Cannot remove file at path %@, %@", _receivedDataFilePath, [error localizedDescription]);
 					return;
 				}
 				
-				receivedDataFile = nil;
+				_receivedDataFile = nil;
 			}
 			else
 			{
@@ -203,8 +203,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 			// reset
 			receivedBytes = 0;
 			_totalBytes = 0;
-			downloadEntityTag = nil;
-			lastModifiedDate = nil;
+			_downloadEntityTag = nil;
+			_lastModifiedDate = nil;
 		}
 	}
 	else
@@ -212,13 +212,13 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		// create download folder
 		NSError *error = nil;
 		
-		if (![[NSFileManager defaultManager] createDirectoryAtPath:internalDownloadFolder withIntermediateDirectories:YES attributes:nil error:&error])
+		if (![[NSFileManager defaultManager] createDirectoryAtPath:_internalDownloadFolder withIntermediateDirectories:YES attributes:nil error:&error])
 		{
-			NSLog(@"Cannot create download folder %@, %@", internalDownloadFolder, [error localizedDescription]);
+			NSLog(@"Cannot create download folder %@, %@", _internalDownloadFolder, [error localizedDescription]);
 			return;
 		}
 		
-		downloadEntryIdentifier = [NSString stringWithUUID];
+		_downloadEntryIdentifier = [NSString stringWithUUID];
 	}
 	
 	NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:_URL
@@ -235,15 +235,15 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidStartNotification object:self];
 	
 	// start downloading
-	urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+	_urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
 	
 	// without this special it would get paused during scrolling of scroll views
-	[urlConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode: NSRunLoopCommonModes];
-	[urlConnection start];
+	[_urlConnection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode: NSRunLoopCommonModes];
+	[_urlConnection start];
 	
-	if (urlConnection)
+	if (_urlConnection)
 	{
-		receivedData=[NSMutableData data];
+		_receivedData=[NSMutableData data];
 	}
 }
 
@@ -264,10 +264,10 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	// update resume info on disk
 	[self _updateDownloadInfo];
 	
-	[urlConnection cancel];
+	[_urlConnection cancel];
 	
-	receivedData = nil;
-	urlConnection = nil;
+	_receivedData = nil;
+	_urlConnection = nil;
 	
 	_isLoading = NO;
 	
@@ -296,9 +296,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	_isLoading = NO;
 	
 	// notify delegate of error
-	if ([delegate respondsToSelector:@selector(download:didFailWithError:)])
+	if ([_delegate respondsToSelector:@selector(download:didFailWithError:)])
 	{
-		[delegate download:self didFailWithError:error];
+		[_delegate download:self didFailWithError:error];
 	}
 	
 	// call completion handler
@@ -319,12 +319,12 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 {
 	_isLoading = NO;
 	
-	if (headOnly)
+	if (_headOnly)
 	{
 		// only a HEAD request
-		if ([delegate respondsToSelector:@selector(downloadDidFinishHEAD:)])
+		if ([_delegate respondsToSelector:@selector(downloadDidFinishHEAD:)])
 		{
-			[delegate downloadDidFinishHEAD:self];
+			[_delegate downloadDidFinishHEAD:self];
 		}
 	}
 	else
@@ -349,9 +349,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		}
 		
 		// move downloaded file to final location
-		if (![fm moveItemAtPath:receivedDataFilePath toPath:targetPath error:&error])
+		if (![fm moveItemAtPath:_receivedDataFilePath toPath:targetPath error:&error])
 		{
-			NSLog(@"Cannot move item from %@ to %@, %@", receivedDataFilePath, targetPath, [error localizedDescription]);
+			NSLog(@"Cannot move item from %@ to %@, %@", _receivedDataFilePath, targetPath, [error localizedDescription]);
 			return;
 		}
 		
@@ -363,9 +363,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		}
 		
 		// notify delegate
-		if ([delegate respondsToSelector:@selector(download:didFinishWithFile:)])
+		if ([_delegate respondsToSelector:@selector(download:didFinishWithFile:)])
 		{
-			[delegate download:self didFinishWithFile:targetPath];
+			[_delegate download:self didFinishWithFile:targetPath];
 		}
 		
 		// run completion handler
@@ -386,7 +386,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 - (void)_updateDownloadInfo
 {
 	// no need to save resume info if we have not received any bytes yet, or download is complete
-	if (receivedBytes==0 || (receivedBytes == _totalBytes) || headOnly)
+	if (receivedBytes==0 || (receivedBytes == _totalBytes) || _headOnly)
 	{
 		return;
 	}
@@ -395,9 +395,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	
 	[resumeDict setObject:[NSNumber numberWithLongLong:receivedBytes] forKey:@"NSURLDownloadBytesReceived"];
 	
-	if (downloadEntityTag)
+	if (_downloadEntityTag)
 	{
-		[resumeDict setObject:downloadEntityTag forKey:@"NSURLDownloadEntityTag"];
+		[resumeDict setObject:_downloadEntityTag forKey:@"NSURLDownloadEntityTag"];
 	}
 	
 	[resumeDict setObject:[_URL description] forKey:@"DownloadEntryURL"];
@@ -406,15 +406,15 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 										[NSNumber numberWithInt:-999], @"DownloadEntryErrorCodeDictionaryKey",
 										@"NSURLErrorDomain", @"DownloadEntryErrorDomainDictionaryKey",
 										
-										downloadEntryIdentifier, @"DownloadEntryIdentifier",
-										receivedDataFilePath, @"DownloadEntryPath",
+										_downloadEntryIdentifier, @"DownloadEntryIdentifier",
+										_receivedDataFilePath, @"DownloadEntryPath",
 										[NSNumber numberWithLongLong:receivedBytes], @"DownloadEntryProgressBytesSoFar",
 										[NSNumber numberWithLongLong:_totalBytes], @"DownloadEntryProgressTotalToLoad",
 										resumeDict, @"DownloadEntryResumeInformation",
 										[_URL description], @"DownloadEntryURL"
 										, nil];
 	
-	NSString *infoPath = [internalDownloadFolder stringByAppendingPathComponent:@"Info.plist"];
+	NSString *infoPath = [_internalDownloadFolder stringByAppendingPathComponent:@"Info.plist"];
 	
 	[writeDict writeToFile:infoPath atomically:YES];
 }
@@ -423,10 +423,10 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-	receivedData = nil;
-	urlConnection = nil;
+	_receivedData = nil;
+	_urlConnection = nil;
 	
-	[receivedDataFile closeFile];
+	[_receivedDataFile closeFile];
 	
 	// update resume info on disk
 	[self _updateDownloadInfo];
@@ -459,9 +459,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		}
 		
 		NSString * currentEntityTag = [http.allHeaderFields objectForKey:@"Etag"];
-		if (!downloadEntityTag)
+		if (!_downloadEntityTag)
 		{
-			downloadEntityTag = currentEntityTag;
+			_downloadEntityTag = currentEntityTag;
 		}
 		else
 		{
@@ -469,7 +469,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 			if (![self.downloadEntityTag isEqualToString:currentEntityTag])
 			{
 				// file was changed on server restart from beginning
-				[urlConnection cancel];
+				[_urlConnection cancel];
 				
 				// update loading flag to allow resume
 				_isLoading = NO;
@@ -486,7 +486,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 			NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 			[dateFormatter setLocale:locale];
 			
-			lastModifiedDate = [dateFormatter dateFromString:modified];
+			_lastModifiedDate = [dateFormatter dateFromString:modified];
 		}
 		
 		if (_responseHandler)
@@ -502,49 +502,49 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	}
 	else
 	{
-		[urlConnection cancel];
+		[_urlConnection cancel];
 	}
 	
 	// could be redirections, so we set the Length to 0 every time
-	[receivedData setLength:0];
+	[_receivedData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-	if (!receivedDataFile)
+	if (!_receivedDataFile)
 	{
 		// first chunk creates a new file
-		[[NSFileManager defaultManager] createFileAtPath:receivedDataFilePath contents:data attributes:nil];
+		[[NSFileManager defaultManager] createFileAtPath:_receivedDataFilePath contents:data attributes:nil];
 		receivedBytes += [data length];
 		
-		receivedDataFile = [NSFileHandle fileHandleForWritingAtPath:receivedDataFilePath];
-		[receivedDataFile seekToEndOfFile];
+		_receivedDataFile = [NSFileHandle fileHandleForWritingAtPath:_receivedDataFilePath];
+		[_receivedDataFile seekToEndOfFile];
 		
 		return;
 	}
 	
 	// subsequent chunks get added to file
-	[receivedDataFile writeData:data];
+	[_receivedDataFile writeData:data];
 	receivedBytes += [data length];
 	
 	// calculate a transfer speed
 	float downloadSpeed = 0;
 	NSDate *now = [NSDate date];
 	
-	if (lastPaketTimestamp)
+	if (_lastPaketTimestamp)
 	{
 		NSTimeInterval downloadDurationForPaket = [now timeIntervalSinceDate:self.lastPaketTimestamp];
 		float instantSpeed = [data length] / downloadDurationForPaket;
 		
-		downloadSpeed = (previousSpeed * 0.9)+0.1 * instantSpeed;
+		downloadSpeed = (_previousSpeed * 0.9)+0.1 * instantSpeed;
 	}
 	
 	self.lastPaketTimestamp = now;
 	
 	// notify delegate
-	if ([delegate respondsToSelector:@selector(download:downloadedBytes:ofTotalBytes:withSpeed:)])
+	if ([_delegate respondsToSelector:@selector(download:downloadedBytes:ofTotalBytes:withSpeed:)])
 	{
-		[delegate download:self downloadedBytes:receivedBytes ofTotalBytes:_totalBytes withSpeed:downloadSpeed];
+		[_delegate download:self downloadedBytes:receivedBytes ofTotalBytes:_totalBytes withSpeed:downloadSpeed];
 	}
 	
 	// send notification
@@ -557,11 +557,11 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-	receivedData = nil;
-	urlConnection = nil;
+	_receivedData = nil;
+	_urlConnection = nil;
 	
-	[receivedDataFile closeFile];
-	receivedDataFile = nil;
+	[_receivedDataFile closeFile];
+	_receivedDataFile = nil;
 	
 	[self _completeWithSuccess];
 }
@@ -609,12 +609,17 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	return _isLoading;
 }
 
-@synthesize URL = _URL, internalDownloadFolder, downloadEntityTag, folderForDownloading, lastPaketTimestamp, delegate, lastModifiedDate;
+@synthesize URL = _URL;
+@synthesize internalDownloadFolder = _internalDownloadFolder;
+@synthesize downloadEntityTag = _downloadEntityTag;
+@synthesize folderForDownloading = _folderForDownloading;
+@synthesize lastPaketTimestamp = _lastPaketTimestamp;
+@synthesize delegate = _delegate;
+@synthesize lastModifiedDate = _lastModifiedDate;
 @synthesize contentType = _contentType;
 @synthesize totalBytes = _totalBytes;
-@synthesize context;
+@synthesize context = _context;
 @synthesize responseHandler = _responseHandler;
 @synthesize completionHandler = _completionHandler;
-
 
 @end
