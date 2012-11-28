@@ -178,7 +178,7 @@ id _objectForPDFObject(CGPDFObjectRef value)
                 {
                     CGPDFDictionaryApplyFunction(dict, _setDecodedPDFValueForKey, (__bridge void *)streamDict);
                     
-                    tmpDict[@"___STREAMINFO___"] = streamDict;
+                    [tmpDict setObject:streamDict forKey:@"___STREAMINFO___"];
                 }
                 
                 // stream data is encoded, dictionary gives info how to decode it e.g. "FlateDecode"
@@ -190,7 +190,7 @@ id _objectForPDFObject(CGPDFObjectRef value)
                 if (data)
                 {
                     NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-                    tmpDict[@"___STREAMDATA___"] = dataStr;
+                    [tmpDict setObject:dataStr forKey:@"___STREAMDATA___"];
                 }
                 
                 
@@ -229,7 +229,7 @@ void _setDecodedPDFValueForKey(const char *key, CGPDFObjectRef value, void *muta
     
     if (object)
     {
-        dictionary[keyStr] = object;
+        [dictionary setObject:object forKey:keyStr];
     }
 }
 
