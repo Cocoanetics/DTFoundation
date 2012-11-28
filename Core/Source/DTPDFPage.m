@@ -126,13 +126,11 @@
     
     NSMutableString *tmpString = nil;
     
-    NSRect trimRect = [self trimRect];
+    CGRect trimRect = [self trimRect];
     
     DTPDFScanner *scanner = [DTPDFScanner scannerWithCGPDFContentStream:contentStream];
     if ([scanner scanContentStream])
     {
-        NSLog(@"trim: %@", NSStringFromRect(trimRect));
-        
         NSArray *textBoxes = [scanner textBoxes];
         
         if ([textBoxes count])
@@ -141,10 +139,10 @@
             
             for (DTPDFTextBox *oneBox in textBoxes)
             {
-                NSPoint point = NSMakePoint(oneBox.transform.tx, oneBox.transform.ty);
+                CGPoint point = CGPointMake(oneBox.transform.tx, oneBox.transform.ty);
                 
                 // quick and dirty: only add text from text boxes inside trim rect
-                if (!NSPointInRect(point, trimRect))
+				if (!CGRectContainsPoint(trimRect, point))
                 {
                     continue;
                 }

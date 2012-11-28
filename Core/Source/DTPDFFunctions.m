@@ -447,7 +447,7 @@ void _callback_Td(CGPDFScannerRef inScanner, void *mutableArray)
     
     CGPoint point = CGPointMake([object2 floatValue], [object1 floatValue]);
     
-    NSValue *value = [NSValue valueWithPoint:point];
+    NSValue *value = [NSValue valueWithCGPoint:point];
     DTPDFOperator *operator = [[DTPDFOperator alloc] initWithName:@"TD" value:value];
     
     NSMutableArray *array = (__bridge NSMutableArray *)mutableArray;
@@ -491,7 +491,7 @@ void _callback_TD(CGPDFScannerRef inScanner, void *mutableArray)
 
     CGPoint point = CGPointMake([object2 floatValue], [object1 floatValue]);
     
-    NSValue *value = [NSValue valueWithPoint:point];
+    NSValue *value = [NSValue valueWithCGPoint:point];
     DTPDFOperator *operator = [[DTPDFOperator alloc] initWithName:@"TD" value:value];
     
     NSMutableArray *array = (__bridge NSMutableArray *)mutableArray;
