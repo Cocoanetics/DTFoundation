@@ -219,8 +219,8 @@
 {
 	for (NSUInteger i=0; i<[_parameters count]; i++)
 	{
-		NSString *name = _parameterNames[i];
-		DTScriptVariable *variable = _parameters[i];
+		NSString *name = [_parameterNames objectAtIndex:i];
+		DTScriptVariable *variable = [_parameters objectAtIndex:i];
 		
 		BOOL stop = NO;
 

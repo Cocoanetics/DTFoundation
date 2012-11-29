@@ -142,7 +142,7 @@
                 CGPoint point = CGPointMake(oneBox.transform.tx, oneBox.transform.ty);
                 
                 // quick and dirty: only add text from text boxes inside trim rect
-				if (!CGRectContainsPoint(trimRect, point))
+                if (!CGRectContainsPoint(trimRect, point))
                 {
                     continue;
                 }
