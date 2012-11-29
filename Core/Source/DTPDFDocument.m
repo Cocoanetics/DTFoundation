@@ -77,7 +77,7 @@
 
 - (DTPDFPage *)pageAtIndex:(NSUInteger)index
 {
-    return _pages[index];
+    return [_pages objectAtIndex:index];
 }
 
 - (NSUInteger)indexForPage:(DTPDFPage *)page
