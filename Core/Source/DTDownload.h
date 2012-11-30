@@ -71,6 +71,13 @@ typedef void (^DTDownloadCompletionHandler)(NSString *path, NSError *error);
  */
 - (void)download:(DTDownload *)download didFinishWithFile:(NSString *)path;
 
+/**
+ Sent by the download object to the delegate if the download was in progress but got cancelled
+ 
+ @param download A download object.
+ */
+- (void)downloadDidCancel:(DTDownload *)download;
+
 @end
 
 
