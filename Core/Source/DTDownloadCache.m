@@ -270,9 +270,6 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 			cachedFile.expirationDate = [NSDate distantFuture];
 			cachedFile.forceLoad = [NSNumber numberWithBool:YES];
 			cachedFile.isLoading = [NSNumber numberWithBool:NO];
-			
-			NSArray *inserted = [NSArray arrayWithObject:cachedFile];
-			[_workerContext obtainPermanentIDsForObjects:inserted error:NULL];
 		}
 		
 		cachedFile.lastAccessDate = [NSDate date];
