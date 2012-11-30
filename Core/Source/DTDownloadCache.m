@@ -16,6 +16,7 @@
 #import <ImageIO/CGImageSource.h>
 #import "NSString+DTFormatNumbers.h"
 #import "DTAsyncFileDeleter.h"
+#import "DTFoundation.h"
 
 NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFile";
 
@@ -143,9 +144,6 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 			NSString *cachedETag = cachedFile.entityTagIdentifier;
 			NSDate *lastModifiedDate = cachedFile.lastModifiedDate;
 			
-			__weak DTDownloadCache *weakself = self;
-			__weak DTDownload *weakDownload = download;
-			
 			download.responseHandler = ^(NSDictionary *headers, BOOL *shouldCancel) {
 				if (cachedETag)
 				{
@@ -162,11 +160,6 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 						*shouldCancel = YES;
 					}
 				}
-				
-				if (*shouldCancel)
-				{
-					[weakself _removeDownloadFromActiveDownloads:weakDownload];
-				}
 			};
 		}
 	}
@@ -178,7 +171,22 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 - (void)_removeDownloadFromActiveDownloads:(DTDownload *)download
 {
-	[_workerContext performBlock:^{
+	[_workerContext performBlockAndWait:^{
+		DTCachedFile *cachedFile = [self _cachedFileForURL:download.URL inContext:_workerContext];
+		
+		// we need to reset the loading status so that it will get retried next time if necessary
+		if ([cachedFile.isLoading boolValue])
+		{
+			cachedFile.isLoading = [NSNumber numberWithBool:NO];
+		}
+		
+		if ([cachedFile.forceLoad boolValue])
+		{
+			cachedFile.forceLoad = [NSNumber numberWithBool:NO];
+		}
+
+		[self _commitWorkerContext];
+		
         [_activeDownloads removeObject:download];
 		
 		[self _unregisterAllCompletionBlocksForURL:download.URL];
@@ -339,6 +347,15 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	}];
 }
 
+- (void)downloadDidCancel:(DTDownload *)download
+{
+	[_workerContext performBlock:^{
+		[self _removeDownloadFromActiveDownloads:download];
+		
+		[self _startNextQueuedDownload];
+	}];
+}
+
 - (void)download:(DTDownload *)download didFinishWithFile:(NSString *)path
 {
 	NSURL *URL = download.URL;
@@ -354,6 +371,10 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		 // only add cached file if we actually got data in it
 		if (data)
 		{
+			NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfData:data error:NULL];
+			NSLog(@"%@", dictionary);
+			
+			
 			// check if URL already exists
 			DTCachedFile *cachedFile = [self _cachedFileForURL:URL inContext:_workerContext];
 			
@@ -382,7 +403,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 			// excecute all blocks and forward the error
 			for (DTDownloadCacheDataCompletionBlock oneBlock in blocksToExecute)
 			{
-				oneBlock(download.URL, data, nil);
+				oneBlock(URL, data, nil);
 			}
 			
 			// remove from active downloads
@@ -742,12 +763,17 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	[_writerContext performBlock:^{
 		if ([_writerContext hasChanges])
 		{
+			NSLog(@"----write");
 			NSError *error = nil;
 			if (![_writerContext save:&error])
 			{
 				NSLog(@"Error saving writer context: %@", [error localizedDescription]);
 				return;
 			}
+		}
+		else
+		{
+			NSLog(@"no change");
 		}
 	}];
 }

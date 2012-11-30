@@ -33,7 +33,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	NSDate *_lastModifiedDate;
 	NSString *_downloadEntryIdentifier;
 	
-	NSString *folderForDownloading;
+	NSString *_folderForDownloading;
 	
 	// downloading
 	NSURLConnection *_urlConnection;
@@ -255,24 +255,34 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	}
 	
 	_cancelled = YES;
-	_delegate = nil;
+
+	// update resume info on disk if necessary
+	[self _updateDownloadInfo];
+	
+	// only send cancel notification if it was loading
+	if (_isLoading)
+	{
+		_isLoading = NO;
+
+		// cancel the connection
+		[_urlConnection cancel];
+		
+		// send notification
+		[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidCancelNotification object:self];
+		
+		if ([_delegate respondsToSelector:@selector(downloadDidCancel:)])
+		{
+			[_delegate downloadDidCancel:self];
+		}
+	}
 
 	// nil the completion handlers in case they captured self
 	_completionHandler = nil;
 	_responseHandler = nil;
-	
-	// update resume info on disk
-	[self _updateDownloadInfo];
-	
-	[_urlConnection cancel];
-	
+
 	_receivedData = nil;
 	_urlConnection = nil;
-	
-	_isLoading = NO;
-	
-	// send notification
-	[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadDidCancelNotification object:self];
+	_delegate = nil;
 }
 
 - (void)cleanup
@@ -594,14 +604,14 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 #pragma mark Properties
 - (NSString *)folderForDownloading
 {
-	if (!folderForDownloading)
+	if (!_folderForDownloading)
 	{
 		NSString *md5 = [[_URL absoluteString] md5Checksum];
 		
-		self.folderForDownloading = [NSTemporaryDirectory() stringByAppendingPathComponent:md5];
+		_folderForDownloading = [NSTemporaryDirectory() stringByAppendingPathComponent:md5];
 	}
 	
-	return folderForDownloading;
+	return _folderForDownloading;
 }
 
 - (BOOL)isLoading
