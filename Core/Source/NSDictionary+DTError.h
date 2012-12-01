@@ -7,7 +7,7 @@
 //
 
 /**
- A collection of useful additions for `NSDictionary` to deal Property Lists and also to get error handling for malformed data.
+ A collection of useful additions for `NSDictionary` to deal with Property Lists and also to get error handling for malformed data.
  */
 
 @interface NSDictionary (DTError)
