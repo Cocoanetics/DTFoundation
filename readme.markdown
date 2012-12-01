@@ -33,7 +33,6 @@ Other classes simplify working with specialized data
 - DTDownloadCache - A file and image cache using DTDownload for downloading
 - DTExtendedFileAttributes - access and modify extended file attributes
 - DTHTMLParser - a libxml2-based HTML parser
-- DTPDFDocument - simplified wrapper to work with PDF documents
 - DTPieProgressIndicator - pie-shaped progress indicator
 - DTScripting - things to work with Objective-C script
 - DTSmartPagingScrollView - a page-based scroll view
