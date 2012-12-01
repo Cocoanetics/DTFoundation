@@ -281,23 +281,10 @@
 		FAB172AC163024E200B44EDC /* ArraySample.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB172AB163024E200B44EDC /* ArraySample.plist */; };
 		FAB172AF163027C700B44EDC /* NSDictionaryDTErrorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB172AE163027C700B44EDC /* NSDictionaryDTErrorTest.m */; };
 		FAB172B816302FC700B44EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
-		FACE182F1611CF8A00758319 /* libDTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70B4CE71486637E00873A4A /* libDTFoundation.a */; };
 		FACE186F1612035600758319 /* DTPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE5B8D3161092CD00CA0D99 /* DTPDFDocument.m */; };
 		FACE18701612035600758319 /* DTPDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE5B8D6161092E000CA0D99 /* DTPDFPage.m */; };
-		FACE18951612075500758319 /* Bloomingdales-ShoeandHandbag-2012.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FACE18881612074D00758319 /* Bloomingdales-ShoeandHandbag-2012.pdf */; };
-		FACE18961612075500758319 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FACE18891612074D00758319 /* Default-568h@2x.png */; };
-		FACE18971612075500758319 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FACE188A1612074D00758319 /* Default.png */; };
-		FACE18981612075500758319 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FACE188B1612074D00758319 /* Default@2x.png */; };
-		FACE18991612075B00758319 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE188E1612074D00758319 /* AppDelegate.m */; };
-		FACE189A1612075B00758319 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE188F1612074D00758319 /* main.m */; };
-		FACE189B1612075B00758319 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE18911612074D00758319 /* ViewController.m */; };
 		FACE18A41612080300758319 /* DTPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE5B8D3161092CD00CA0D99 /* DTPDFDocument.m */; };
 		FACE18A51612080300758319 /* DTPDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE5B8D6161092E000CA0D99 /* DTPDFPage.m */; };
-		FACE18A61612082A00758319 /* DTPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE189F161207D900758319 /* DTPDFViewController.m */; };
-		FACE18A71612082F00758319 /* DTPDFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FACE189D161207D900758319 /* DTPDFImageView.m */; };
-		FAE5B92F1610A38200CA0D99 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
-		FAE5B9301610A38200CA0D99 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
-		FAE5B9321610A38200CA0D99 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -308,17 +295,10 @@
 			remoteGlobalIDString = A70B4CE61486637E00873A4A;
 			remoteInfo = "Static Library";
 		};
-		FACE182C1611CF8400758319 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A70B4CE61486637E00873A4A;
-			remoteInfo = "Static Library";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A7787A0B16441B1800AF5830 /* CopyFiles */ = {
+		3D7CE543166613B60028D339 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/${PRODUCT_NAME}";
@@ -327,7 +307,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3D7CE543166613B60028D339 /* CopyFiles */ = {
+		A7787A0B16441B1800AF5830 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/${PRODUCT_NAME}";
@@ -524,26 +504,10 @@
 		FAB172AB163024E200B44EDC /* ArraySample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArraySample.plist; sourceTree = "<group>"; };
 		FAB172AD163027C700B44EDC /* NSDictionaryDTErrorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryDTErrorTest.h; sourceTree = "<group>"; };
 		FAB172AE163027C700B44EDC /* NSDictionaryDTErrorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryDTErrorTest.m; sourceTree = "<group>"; };
-		FACE18851612074D00758319 /* PDFDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PDFDemo-Info.plist"; sourceTree = "<group>"; };
-		FACE18861612074D00758319 /* PDFDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PDFDemo-Prefix.pch"; sourceTree = "<group>"; };
-		FACE18881612074D00758319 /* Bloomingdales-ShoeandHandbag-2012.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Bloomingdales-ShoeandHandbag-2012.pdf"; sourceTree = "<group>"; };
-		FACE18891612074D00758319 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		FACE188A1612074D00758319 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		FACE188B1612074D00758319 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		FACE188D1612074D00758319 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		FACE188E1612074D00758319 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FACE188F1612074D00758319 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FACE18901612074D00758319 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FACE18911612074D00758319 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		FACE189C161207D900758319 /* DTPDFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPDFImageView.h; sourceTree = "<group>"; };
-		FACE189D161207D900758319 /* DTPDFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPDFImageView.m; sourceTree = "<group>"; };
-		FACE189E161207D900758319 /* DTPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPDFViewController.h; sourceTree = "<group>"; };
-		FACE189F161207D900758319 /* DTPDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPDFViewController.m; sourceTree = "<group>"; };
 		FAE5B8D2161092CD00CA0D99 /* DTPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPDFDocument.h; sourceTree = "<group>"; };
 		FAE5B8D3161092CD00CA0D99 /* DTPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPDFDocument.m; sourceTree = "<group>"; };
 		FAE5B8D5161092E000CA0D99 /* DTPDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPDFPage.h; sourceTree = "<group>"; };
 		FAE5B8D6161092E000CA0D99 /* DTPDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPDFPage.m; sourceTree = "<group>"; };
-		FAE5B92D1610A38200CA0D99 /* PDFDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -625,17 +589,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7E383F2160E002200CF72D6 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FAE5B92A1610A38200CA0D99 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FACE182F1611CF8A00758319 /* libDTFoundation.a in Frameworks */,
-				FAE5B92F1610A38200CA0D99 /* UIKit.framework in Frameworks */,
-				FAE5B9301610A38200CA0D99 /* Foundation.framework in Frameworks */,
-				FAE5B9321610A38200CA0D99 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,7 +895,6 @@
 		A7F4DF98147FB61500F4059A = {
 			isa = PBXGroup;
 			children = (
-				FACE18731612061F00758319 /* Demo */,
 				A7D60FE415D3B15300AEDD1B /* Test */,
 				A70B4CC41486621B00873A4A /* Core */,
 				A70B4CDA1486626900873A4A /* Documentation */,
@@ -961,7 +913,6 @@
 				A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser.a */,
 				A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */,
 				A7E383F1160E002200CF72D6 /* libDTDownloadCache.a */,
-				FAE5B92D1610A38200CA0D99 /* PDFDemo.app */,
 				A7787A0D16441B1800AF5830 /* libDTBonjour.a */,
 				3D7CE547166613B60028D339 /* libDTHTMLParser.a */,
 			);
@@ -988,52 +939,6 @@
 				A7E8AE0B1665095C00E35234 /* DTPDFTextBox.m */,
 			);
 			name = DTPDF;
-			sourceTree = "<group>";
-		};
-		FACE18731612061F00758319 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				FACE18841612074D00758319 /* PDFDemo */,
-			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
-		FACE18841612074D00758319 /* PDFDemo */ = {
-			isa = PBXGroup;
-			children = (
-				FACE18851612074D00758319 /* PDFDemo-Info.plist */,
-				FACE18861612074D00758319 /* PDFDemo-Prefix.pch */,
-				FACE18871612074D00758319 /* Resources */,
-				FACE188C1612074D00758319 /* Source */,
-			);
-			path = PDFDemo;
-			sourceTree = "<group>";
-		};
-		FACE18871612074D00758319 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				FACE18881612074D00758319 /* Bloomingdales-ShoeandHandbag-2012.pdf */,
-				FACE18891612074D00758319 /* Default-568h@2x.png */,
-				FACE188A1612074D00758319 /* Default.png */,
-				FACE188B1612074D00758319 /* Default@2x.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		FACE188C1612074D00758319 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				FACE188D1612074D00758319 /* AppDelegate.h */,
-				FACE188E1612074D00758319 /* AppDelegate.m */,
-				FACE189C161207D900758319 /* DTPDFImageView.h */,
-				FACE189D161207D900758319 /* DTPDFImageView.m */,
-				FACE189E161207D900758319 /* DTPDFViewController.h */,
-				FACE189F161207D900758319 /* DTPDFViewController.m */,
-				FACE188F1612074D00758319 /* main.m */,
-				FACE18901612074D00758319 /* ViewController.h */,
-				FACE18911612074D00758319 /* ViewController.m */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1338,24 +1243,6 @@
 			productReference = A7E383F1160E002200CF72D6 /* libDTDownloadCache.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		FAE5B92C1610A38200CA0D99 /* PDFDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FAE5B94B1610A38200CA0D99 /* Build configuration list for PBXNativeTarget "PDFDemo" */;
-			buildPhases = (
-				FAE5B9291610A38200CA0D99 /* Sources */,
-				FAE5B92A1610A38200CA0D99 /* Frameworks */,
-				FAE5B92B1610A38200CA0D99 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FACE182D1611CF8400758319 /* PBXTargetDependency */,
-			);
-			name = PDFDemo;
-			productName = PDFDemo;
-			productReference = FAE5B92D1610A38200CA0D99 /* PDFDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1386,7 +1273,6 @@
 				3D7CE53D166613B60028D339 /* DTHTMLParser (Mac) */,
 				A7E383D9160DFF8600CF72D6 /* DTZipArchive */,
 				A7E383F0160E002200CF72D6 /* DTDownloadCache */,
-				FAE5B92C1610A38200CA0D99 /* PDFDemo */,
 				A7787A0C16441B1800AF5830 /* DTBonjour */,
 			);
 		};
@@ -1410,17 +1296,6 @@
 				A7D60FF515D3B1FB00AEDD1B /* processing_instruction.html in Resources */,
 				FAB1724C162FFC5200B44EDC /* DictionarySample.plist in Resources */,
 				FAB172AC163024E200B44EDC /* ArraySample.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FAE5B92B1610A38200CA0D99 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FACE18951612075500758319 /* Bloomingdales-ShoeandHandbag-2012.pdf in Resources */,
-				FACE18961612075500758319 /* Default-568h@2x.png in Resources */,
-				FACE18971612075500758319 /* Default.png in Resources */,
-				FACE18981612075500758319 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1669,18 +1544,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FAE5B9291610A38200CA0D99 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FACE18991612075B00758319 /* AppDelegate.m in Sources */,
-				FACE189A1612075B00758319 /* main.m in Sources */,
-				FACE189B1612075B00758319 /* ViewController.m in Sources */,
-				FACE18A61612082A00758319 /* DTPDFViewController.m in Sources */,
-				FACE18A71612082F00758319 /* DTPDFImageView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1688,11 +1551,6 @@
 			isa = PBXTargetDependency;
 			target = A70B4CE61486637E00873A4A /* Static Library */;
 			targetProxy = FAB17254163003F500B44EDC /* PBXContainerItemProxy */;
-		};
-		FACE182D1611CF8400758319 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A70B4CE61486637E00873A4A /* Static Library */;
-			targetProxy = FACE182C1611CF8400758319 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2162,45 +2020,6 @@
 			};
 			name = Release;
 		};
-		FAE5B94C1610A38200CA0D99 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Demo/PDFDemo/PDFDemo-Prefix.pch";
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				INFOPLIST_FILE = "Demo/PDFDemo/PDFDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		FAE5B94D1610A38200CA0D99 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Demo/PDFDemo/PDFDemo-Prefix.pch";
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				INFOPLIST_FILE = "Demo/PDFDemo/PDFDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2299,15 +2118,6 @@
 			buildConfigurations = (
 				A7F4DFEF147FBAC600F4059A /* Debug */,
 				A7F4DFF0147FBAC600F4059A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FAE5B94B1610A38200CA0D99 /* Build configuration list for PBXNativeTarget "PDFDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FAE5B94C1610A38200CA0D99 /* Debug */,
-				FAE5B94D1610A38200CA0D99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
