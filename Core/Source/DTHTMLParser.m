@@ -45,7 +45,7 @@ void _endDocument(void *context)
 	[myself.delegate parserDidEndDocument:myself];
 }
 
-void _startElement(void *context, const xmlChar *name,const xmlChar **atts)
+void _startElement(void *context, const xmlChar *name, const xmlChar **atts)
 {
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
 	
@@ -60,7 +60,7 @@ void _startElement(void *context, const xmlChar *name,const xmlChar **atts)
 		
 		attributes = [[NSMutableDictionary alloc] init];
 		
-		int i=0;
+		int i = 0;
 		while (1)
 		{
 			char *att = (char *)atts[i++];
