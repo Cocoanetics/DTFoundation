@@ -107,8 +107,8 @@ void _endElement(void *context, const xmlChar *chars)
 	[myself.delegate parser:myself didEndElement:nameStr];
 }
 
-// libxml reports characters with max 1000 at a time
-// also entities are reported separately
+// libxml reports characters in batches of at most 1000 at a time
+// in addition, entities are reported separately
 void _characters(void *context, const xmlChar *chars, int len)
 {
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
@@ -196,7 +196,7 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 		
 		xmlSAX2InitHtmlDefaultSAXHandler(&_handler);
 		
-		// set default handlers, otherwise crash if no delegate set
+		// set default handlers as we would crash otherwise
 		self.delegate = nil;
 	}
 	
