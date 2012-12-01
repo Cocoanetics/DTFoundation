@@ -7,7 +7,7 @@
 //
 
 /**
- A collection of useful additions for `NSArray` to deal Property Lists and also to get error handling for malformed data.
+ A collection of useful additions for `NSArray` to deal with Property Lists and also to get error handling for malformed data.
  */
 
 @interface NSArray (DTError)
