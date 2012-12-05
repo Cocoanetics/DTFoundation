@@ -42,8 +42,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	NSDate *_lastPaketTimestamp;
 	float _previousSpeed;
 	
-	long long receivedBytes;
-	long long _totalBytes;
+	long long _receivedBytes;
+	long long _expectedContentLength;
 	
 	NSString *_contentType;
 	
@@ -134,8 +134,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		NSDictionary *infoDictionary = [NSDictionary dictionaryWithContentsOfFile:infoPath];
 		NSDictionary *resumeInfo = [infoDictionary objectForKey:@"DownloadEntryResumeInformation"];
 		
-		_totalBytes = [[infoDictionary objectForKey:@"DownloadEntryProgressTotalToLoad"] longLongValue];
-		receivedBytes = [[resumeInfo objectForKey:@"NSURLDownloadBytesReceived"] longLongValue];
+		_expectedContentLength = [[infoDictionary objectForKey:@"DownloadEntryProgressTotalToLoad"] longLongValue];
+		_receivedBytes = [[resumeInfo objectForKey:@"NSURLDownloadBytesReceived"] longLongValue];
 		_downloadEntryIdentifier = [infoDictionary objectForKey:@"DownloadEntryIdentifier"];
 		if (!_downloadEntryIdentifier)
 		{
@@ -169,11 +169,11 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 			// test if remembered length = received data length
 			
 			long long offset = [_receivedDataFile offsetInFile];
-			if (receivedBytes != offset)
+			if (_receivedBytes != offset)
 			{
 				// inconsistency, reset
-				receivedBytes = 0;
-				_totalBytes = 0;
+				_receivedBytes = 0;
+				_expectedContentLength = 0;
 				_downloadEntityTag = nil;
 				_lastModifiedDate = nil;
 				
@@ -190,7 +190,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 			}
 			else
 			{
-				if (receivedBytes && receivedBytes == _totalBytes)
+				if (_receivedBytes && _receivedBytes == _expectedContentLength)
 				{
 					// Already done!
 					[self _completeWithSuccess];
@@ -201,8 +201,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		else
 		{
 			// reset
-			receivedBytes = 0;
-			_totalBytes = 0;
+			_receivedBytes = 0;
+			_expectedContentLength = 0;
 			_downloadEntityTag = nil;
 			_lastModifiedDate = nil;
 		}
@@ -226,9 +226,9 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 																	 timeoutInterval:60.0];
 	
 	// set range header
-	if (receivedBytes)
+	if (_receivedBytes)
 	{
-		[request setValue:[NSString stringWithFormat:@"bytes=%lld-", receivedBytes] forHTTPHeaderField:@"Range"];
+		[request setValue:[NSString stringWithFormat:@"bytes=%lld-", _receivedBytes] forHTTPHeaderField:@"Range"];
 	}
 	
 	// send notification
@@ -396,14 +396,14 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 - (void)_updateDownloadInfo
 {
 	// no need to save resume info if we have not received any bytes yet, or download is complete
-	if (receivedBytes==0 || (receivedBytes == _totalBytes) || _headOnly)
+	if (_receivedBytes==0 || (_receivedBytes >= _expectedContentLength) || _headOnly)
 	{
 		return;
 	}
 	
 	NSMutableDictionary *resumeDict = [NSMutableDictionary dictionary];
 	
-	[resumeDict setObject:[NSNumber numberWithLongLong:receivedBytes] forKey:@"NSURLDownloadBytesReceived"];
+	[resumeDict setObject:[NSNumber numberWithLongLong:_receivedBytes] forKey:@"NSURLDownloadBytesReceived"];
 	
 	if (_downloadEntityTag)
 	{
@@ -418,8 +418,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 										
 										_downloadEntryIdentifier, @"DownloadEntryIdentifier",
 										_receivedDataFilePath, @"DownloadEntryPath",
-										[NSNumber numberWithLongLong:receivedBytes], @"DownloadEntryProgressBytesSoFar",
-										[NSNumber numberWithLongLong:_totalBytes], @"DownloadEntryProgressTotalToLoad",
+										[NSNumber numberWithLongLong:_receivedBytes], @"DownloadEntryProgressBytesSoFar",
+										[NSNumber numberWithLongLong:_expectedContentLength], @"DownloadEntryProgressTotalToLoad",
 										resumeDict, @"DownloadEntryResumeInformation",
 										[_URL description], @"DownloadEntryURL"
 										, nil];
@@ -463,9 +463,14 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 			return;
 		}
 		
-		if (_totalBytes<=0)
+		if (_expectedContentLength<=0)
 		{
-			_totalBytes = [response expectedContentLength];
+			_expectedContentLength = [response expectedContentLength];
+			
+			if (_expectedContentLength<0)
+			{
+				NSLog(@"No expected content length for %@", _URL);
+			}
 		}
 		
 		NSString * currentEntityTag = [http.allHeaderFields objectForKey:@"Etag"];
@@ -525,7 +530,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	{
 		// first chunk creates a new file
 		[[NSFileManager defaultManager] createFileAtPath:_receivedDataFilePath contents:data attributes:nil];
-		receivedBytes += [data length];
+		_receivedBytes += [data length];
 		
 		_receivedDataFile = [NSFileHandle fileHandleForWritingAtPath:_receivedDataFilePath];
 		[_receivedDataFile seekToEndOfFile];
@@ -535,7 +540,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	
 	// subsequent chunks get added to file
 	[_receivedDataFile writeData:data];
-	receivedBytes += [data length];
+	_receivedBytes += [data length];
 	
 	// calculate a transfer speed
 	float downloadSpeed = 0;
@@ -551,16 +556,16 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 	
 	self.lastPaketTimestamp = now;
 	
-	// notify delegate
-	if ([_delegate respondsToSelector:@selector(download:downloadedBytes:ofTotalBytes:withSpeed:)])
-	{
-		[_delegate download:self downloadedBytes:receivedBytes ofTotalBytes:_totalBytes withSpeed:downloadSpeed];
-	}
-	
 	// send notification
-	if (_totalBytes)
+	if (_expectedContentLength>0)
 	{
-		NSDictionary *userInfo = @{@"ProgressPercent" : [NSNumber numberWithFloat:(float)receivedBytes / (float)_totalBytes], @"TotalBytes": [NSNumber numberWithLongLong:_totalBytes], @"ReceivedBytes": [NSNumber numberWithLongLong:receivedBytes] };
+		// notify delegate
+		if ([_delegate respondsToSelector:@selector(download:downloadedBytes:ofTotalBytes:withSpeed:)])
+		{
+			[_delegate download:self downloadedBytes:_receivedBytes ofTotalBytes:_expectedContentLength withSpeed:downloadSpeed];
+		}
+
+		NSDictionary *userInfo = @{@"ProgressPercent" : [NSNumber numberWithFloat:(float)_receivedBytes / (float)_expectedContentLength], @"TotalBytes": [NSNumber numberWithLongLong:_expectedContentLength], @"ReceivedBytes": [NSNumber numberWithLongLong:_receivedBytes] };
 		[[NSNotificationCenter defaultCenter] postNotificationName:DTDownloadProgressNotification object:self userInfo:userInfo];
 	}
 }
@@ -627,7 +632,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 @synthesize delegate = _delegate;
 @synthesize lastModifiedDate = _lastModifiedDate;
 @synthesize contentType = _contentType;
-@synthesize totalBytes = _totalBytes;
+@synthesize expectedContentLength = _expectedContentLength;
 @synthesize context = _context;
 @synthesize responseHandler = _responseHandler;
 @synthesize completionHandler = _completionHandler;

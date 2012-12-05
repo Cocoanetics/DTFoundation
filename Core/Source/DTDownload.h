@@ -104,9 +104,11 @@ typedef void (^DTDownloadCompletionHandler)(NSString *path, NSError *error);
 @property (nonatomic, strong, readonly) NSString *contentType;
 
 /**
- Returns the MIME type of the downloading file.
+ Returns the number expected content bytes of the downloading file. 
+ 
+ If the headers did not specify a content length to expect then this value is -1
  */
-@property (nonatomic, assign, readonly) long long totalBytes;
+@property (nonatomic, assign, readonly) long long expectedContentLength;
 
 /**
  Returns the last modified date of the downloading file.

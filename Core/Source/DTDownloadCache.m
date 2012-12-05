@@ -381,9 +381,9 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
     [_workerContext performBlock:^{
 		 NSData *data = [NSData dataWithContentsOfMappedFile:path];
 		 
-		 if ([data length] != download.totalBytes)
+		 if (download.expectedContentLength>0 && [data length] != download.expectedContentLength)
 		 {
-			 NSLog(@"Warning: finished file size %d differs from header size %d", (int)[data length], (int)download.totalBytes);
+			 NSLog(@"Warning: finished file size %d differs from header size %d", (int)[data length], (int)download.expectedContentLength);
 		 }
 		 
 		 // only add cached file if we actually got data in it
@@ -397,7 +397,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 			cachedFile.lastModifiedDate = download.lastModifiedDate;
 			cachedFile.entityTagIdentifier = download.downloadEntityTag;
 			cachedFile.fileData = data;
-			cachedFile.fileSize = [NSNumber numberWithLongLong:download.totalBytes];
+			cachedFile.fileSize = [NSNumber numberWithLongLong:[data length]];
 			cachedFile.contentType = download.contentType;
 			cachedFile.remoteURL = [URL absoluteString];
 			
