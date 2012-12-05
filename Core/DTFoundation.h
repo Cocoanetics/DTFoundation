@@ -41,11 +41,11 @@
 #import "NSString+DTPaths.h"
 #import "NSString+DTURLEncoding.h"
 #import "NSString+DTUTI.h"
-#import "NSURL+DTAppLinks.h"
 #import "NSURL+DTComparing.h"
 #import "NSURL+DTUnshorten.h"
 
 #if TARGET_OS_IPHONE
+	#import "NSURL+DTAppLinks.h"
 	#import "UIApplication+DTNetworkActivity.h"
 	#import "UIImage+DTFoundation.h"
 	#import "UIView+DTFoundation.h"
