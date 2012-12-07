@@ -224,28 +224,8 @@
 		A7E38407160E03A600CF72D6 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41014E825FC00F34B03 /* mztools.c */; };
 		A7E38408160E03A600CF72D6 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41214E825FC00F34B03 /* unzip.c */; };
 		A7E38409160E03A600CF72D6 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41414E825FC00F34B03 /* zip.c */; };
-		A7E8ADB11664BF9400E35234 /* DTPDFScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8ADAF1664BF9400E35234 /* DTPDFScanner.h */; };
-		A7E8ADB21664BF9400E35234 /* DTPDFScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8ADAF1664BF9400E35234 /* DTPDFScanner.h */; };
-		A7E8ADB31664BF9400E35234 /* DTPDFScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8ADB01664BF9400E35234 /* DTPDFScanner.m */; };
-		A7E8ADB41664BF9400E35234 /* DTPDFScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8ADB01664BF9400E35234 /* DTPDFScanner.m */; };
-		A7E8ADB81664C72E00E35234 /* DTPDFFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8ADB61664C72E00E35234 /* DTPDFFunctions.h */; };
-		A7E8ADB91664C72E00E35234 /* DTPDFFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8ADB61664C72E00E35234 /* DTPDFFunctions.h */; };
-		A7E8ADBA1664C72E00E35234 /* DTPDFFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8ADB71664C72E00E35234 /* DTPDFFunctions.m */; };
-		A7E8ADBB1664C72E00E35234 /* DTPDFFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8ADB71664C72E00E35234 /* DTPDFFunctions.m */; };
-		A7E8ADBE1664C98E00E35234 /* NSDictionary+DTPDF.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8ADBC1664C98E00E35234 /* NSDictionary+DTPDF.h */; };
-		A7E8ADBF1664C98E00E35234 /* NSDictionary+DTPDF.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8ADBC1664C98E00E35234 /* NSDictionary+DTPDF.h */; };
-		A7E8ADC01664C98E00E35234 /* NSDictionary+DTPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8ADBD1664C98E00E35234 /* NSDictionary+DTPDF.m */; };
-		A7E8ADC11664C98E00E35234 /* NSDictionary+DTPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8ADBD1664C98E00E35234 /* NSDictionary+DTPDF.m */; };
-		A7E8ADC41664CCD600E35234 /* DTPDFOperator.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8ADC21664CCD600E35234 /* DTPDFOperator.h */; };
-		A7E8ADC51664CCD600E35234 /* DTPDFOperator.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8ADC21664CCD600E35234 /* DTPDFOperator.h */; };
-		A7E8ADC61664CCD600E35234 /* DTPDFOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8ADC31664CCD600E35234 /* DTPDFOperator.m */; };
-		A7E8ADC71664CCD600E35234 /* DTPDFOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8ADC31664CCD600E35234 /* DTPDFOperator.m */; };
 		A7E8AE081664E6C700E35234 /* NSValue+DTConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AE061664E6C700E35234 /* NSValue+DTConversion.m */; };
 		A7E8AE091664E88300E35234 /* NSValue+DTConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8AE051664E6C700E35234 /* NSValue+DTConversion.h */; };
-		A7E8AE0C1665095D00E35234 /* DTPDFTextBox.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8AE0A1665095C00E35234 /* DTPDFTextBox.h */; };
-		A7E8AE0D1665095D00E35234 /* DTPDFTextBox.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E8AE0A1665095C00E35234 /* DTPDFTextBox.h */; };
-		A7E8AE0E1665095D00E35234 /* DTPDFTextBox.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AE0B1665095C00E35234 /* DTPDFTextBox.m */; };
-		A7E8AE0F1665095D00E35234 /* DTPDFTextBox.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E8AE0B1665095C00E35234 /* DTPDFTextBox.m */; };
 		A7EE2A0D1582CBFC00BB06DE /* DTActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = A7EE2A0B1582CBFC00BB06DE /* DTActionSheet.h */; };
 		A7EE2A0E1582CBFC00BB06DE /* DTActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = A7EE2A0B1582CBFC00BB06DE /* DTActionSheet.h */; };
 		A7EE2A0F1582CBFC00BB06DE /* DTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EE2A0C1582CBFC00BB06DE /* DTActionSheet.m */; };
@@ -281,10 +261,6 @@
 		FAB172AC163024E200B44EDC /* ArraySample.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB172AB163024E200B44EDC /* ArraySample.plist */; };
 		FAB172AF163027C700B44EDC /* NSDictionaryDTErrorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB172AE163027C700B44EDC /* NSDictionaryDTErrorTest.m */; };
 		FAB172B816302FC700B44EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
-		FACE186F1612035600758319 /* DTPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE5B8D3161092CD00CA0D99 /* DTPDFDocument.m */; };
-		FACE18701612035600758319 /* DTPDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE5B8D6161092E000CA0D99 /* DTPDFPage.m */; };
-		FACE18A41612080300758319 /* DTPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE5B8D3161092CD00CA0D99 /* DTPDFDocument.m */; };
-		FACE18A51612080300758319 /* DTPDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE5B8D6161092E000CA0D99 /* DTPDFPage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -471,18 +447,8 @@
 		A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTZipArchive.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E383F1160E002200CF72D6 /* libDTDownloadCache.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTDownloadCache.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7E8ADAF1664BF9400E35234 /* DTPDFScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPDFScanner.h; sourceTree = "<group>"; };
-		A7E8ADB01664BF9400E35234 /* DTPDFScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPDFScanner.m; sourceTree = "<group>"; };
-		A7E8ADB61664C72E00E35234 /* DTPDFFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPDFFunctions.h; sourceTree = "<group>"; };
-		A7E8ADB71664C72E00E35234 /* DTPDFFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPDFFunctions.m; sourceTree = "<group>"; };
-		A7E8ADBC1664C98E00E35234 /* NSDictionary+DTPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DTPDF.h"; sourceTree = "<group>"; };
-		A7E8ADBD1664C98E00E35234 /* NSDictionary+DTPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DTPDF.m"; sourceTree = "<group>"; };
-		A7E8ADC21664CCD600E35234 /* DTPDFOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPDFOperator.h; sourceTree = "<group>"; };
-		A7E8ADC31664CCD600E35234 /* DTPDFOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPDFOperator.m; sourceTree = "<group>"; };
 		A7E8AE051664E6C700E35234 /* NSValue+DTConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+DTConversion.h"; sourceTree = "<group>"; };
 		A7E8AE061664E6C700E35234 /* NSValue+DTConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+DTConversion.m"; sourceTree = "<group>"; };
-		A7E8AE0A1665095C00E35234 /* DTPDFTextBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPDFTextBox.h; sourceTree = "<group>"; };
-		A7E8AE0B1665095C00E35234 /* DTPDFTextBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPDFTextBox.m; sourceTree = "<group>"; };
 		A7EE2A0B1582CBFC00BB06DE /* DTActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTActionSheet.h; sourceTree = "<group>"; };
 		A7EE2A0C1582CBFC00BB06DE /* DTActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTActionSheet.m; sourceTree = "<group>"; };
 		A7F4DFF8147FD08900F4059A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -504,10 +470,6 @@
 		FAB172AB163024E200B44EDC /* ArraySample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArraySample.plist; sourceTree = "<group>"; };
 		FAB172AD163027C700B44EDC /* NSDictionaryDTErrorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryDTErrorTest.h; sourceTree = "<group>"; };
 		FAB172AE163027C700B44EDC /* NSDictionaryDTErrorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryDTErrorTest.m; sourceTree = "<group>"; };
-		FAE5B8D2161092CD00CA0D99 /* DTPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPDFDocument.h; sourceTree = "<group>"; };
-		FAE5B8D3161092CD00CA0D99 /* DTPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPDFDocument.m; sourceTree = "<group>"; };
-		FAE5B8D5161092E000CA0D99 /* DTPDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPDFPage.h; sourceTree = "<group>"; };
-		FAE5B8D6161092E000CA0D99 /* DTPDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPDFPage.m; sourceTree = "<group>"; };
 		FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -818,7 +780,6 @@
 				A76E1F62163A95FE00042DB3 /* OS X */,
 				A7556F63162EEF6700A69F63 /* DTScripting */,
 				A7494E4A154190C000BDDB7D /* DTDownloadCache */,
-				FACE18361611DA5F00758319 /* DTPDF */,
 				A7787A0316441A8D00AF5830 /* DTBonjour */,
 				A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */,
 				A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */,
@@ -920,27 +881,6 @@
 			path = ../..;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FACE18361611DA5F00758319 /* DTPDF */ = {
-			isa = PBXGroup;
-			children = (
-				FAE5B8D2161092CD00CA0D99 /* DTPDFDocument.h */,
-				FAE5B8D3161092CD00CA0D99 /* DTPDFDocument.m */,
-				A7E8ADB61664C72E00E35234 /* DTPDFFunctions.h */,
-				A7E8ADB71664C72E00E35234 /* DTPDFFunctions.m */,
-				A7E8ADAF1664BF9400E35234 /* DTPDFScanner.h */,
-				A7E8ADB01664BF9400E35234 /* DTPDFScanner.m */,
-				A7E8ADC21664CCD600E35234 /* DTPDFOperator.h */,
-				A7E8ADC31664CCD600E35234 /* DTPDFOperator.m */,
-				FAE5B8D5161092E000CA0D99 /* DTPDFPage.h */,
-				FAE5B8D6161092E000CA0D99 /* DTPDFPage.m */,
-				A7E8ADBC1664C98E00E35234 /* NSDictionary+DTPDF.h */,
-				A7E8ADBD1664C98E00E35234 /* NSDictionary+DTPDF.m */,
-				A7E8AE0A1665095C00E35234 /* DTPDFTextBox.h */,
-				A7E8AE0B1665095C00E35234 /* DTPDFTextBox.m */,
-			);
-			name = DTPDF;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -994,11 +934,6 @@
 				A73B6F8C163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */,
 				A7FAA3891652291D006ED151 /* NSURL+DTComparing.h in Headers */,
 				A7CD034B16623DAF00CBEB35 /* DTAlertView.h in Headers */,
-				A7E8ADB11664BF9400E35234 /* DTPDFScanner.h in Headers */,
-				A7E8ADB81664C72E00E35234 /* DTPDFFunctions.h in Headers */,
-				A7E8ADBE1664C98E00E35234 /* NSDictionary+DTPDF.h in Headers */,
-				A7E8ADC41664CCD600E35234 /* DTPDFOperator.h in Headers */,
-				A7E8AE0C1665095D00E35234 /* DTPDFTextBox.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1021,12 +956,7 @@
 				A76E1F5F163A95FC00042DB3 /* DTScrollView.h in Headers */,
 				A7787A5D1644385100AF5830 /* NSView+DTAutoLayout.h in Headers */,
 				A7FAA38A1652291D006ED151 /* NSURL+DTComparing.h in Headers */,
-				A7E8ADB21664BF9400E35234 /* DTPDFScanner.h in Headers */,
-				A7E8ADB91664C72E00E35234 /* DTPDFFunctions.h in Headers */,
-				A7E8ADBF1664C98E00E35234 /* NSDictionary+DTPDF.h in Headers */,
-				A7E8ADC51664CCD600E35234 /* DTPDFOperator.h in Headers */,
 				A7E8AE091664E88300E35234 /* NSValue+DTConversion.h in Headers */,
-				A7E8AE0D1665095D00E35234 /* DTPDFTextBox.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1391,8 +1321,6 @@
 				A79231D1157A0B9400C3ACBB /* NSURL+DTUnshorten.m in Sources */,
 				A78DF5C8157BBC5B00E360B5 /* UIView+DTActionHandlers.m in Sources */,
 				A7EE2A101582CBFC00BB06DE /* DTActionSheet.m in Sources */,
-				FACE18A41612080300758319 /* DTPDFDocument.m in Sources */,
-				FACE18A51612080300758319 /* DTPDFPage.m in Sources */,
 				A766136416143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */,
 				A7BB551A161AE1CA0054606E /* NSString+DTUTI.m in Sources */,
 				A79500FB161D680000358BC3 /* NSData+Base64.m in Sources */,
@@ -1405,11 +1333,6 @@
 				A73B6F8F163169BB002CCCA7 /* NSFileWrapper+DTCopying.m in Sources */,
 				A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */,
 				A7CD034D16623DAF00CBEB35 /* DTAlertView.m in Sources */,
-				A7E8ADB31664BF9400E35234 /* DTPDFScanner.m in Sources */,
-				A7E8ADBA1664C72E00E35234 /* DTPDFFunctions.m in Sources */,
-				A7E8ADC01664C98E00E35234 /* NSDictionary+DTPDF.m in Sources */,
-				A7E8ADC61664CCD600E35234 /* DTPDFOperator.m in Sources */,
-				A7E8AE0E1665095D00E35234 /* DTPDFTextBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1419,8 +1342,6 @@
 			files = (
 				A710A50B160755A500437D36 /* NSDictionary+DTError.m in Sources */,
 				FA2A29291609F7330023CDD7 /* DTVersion.m in Sources */,
-				FACE186F1612035600758319 /* DTPDFDocument.m in Sources */,
-				FACE18701612035600758319 /* DTPDFPage.m in Sources */,
 				A766136616143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */,
 				A76613E5161444FD00DF6C2B /* NSString+DTUtilities.m in Sources */,
 				A7437DE216147A450091C1A2 /* NSString+DTPaths.m in Sources */,
@@ -1441,12 +1362,7 @@
 				A76E1F60163A95FC00042DB3 /* DTScrollView.m in Sources */,
 				A7787A5C1644385100AF5830 /* NSView+DTAutoLayout.m in Sources */,
 				A7FAA38C1652291D006ED151 /* NSURL+DTComparing.m in Sources */,
-				A7E8ADB41664BF9400E35234 /* DTPDFScanner.m in Sources */,
-				A7E8ADBB1664C72E00E35234 /* DTPDFFunctions.m in Sources */,
-				A7E8ADC11664C98E00E35234 /* NSDictionary+DTPDF.m in Sources */,
-				A7E8ADC71664CCD600E35234 /* DTPDFOperator.m in Sources */,
 				A7E8AE081664E6C700E35234 /* NSValue+DTConversion.m in Sources */,
-				A7E8AE0F1665095D00E35234 /* DTPDFTextBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
