@@ -96,7 +96,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		// reset status of downloads
 		[self _resetDownloadStatus];
 		
-		_saveTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(_saveTimerTick:) userInfo:nil repeats:YES];
+		_saveTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(_saveTimerTick:) userInfo:nil repeats:YES];
 
 		_maintenanceTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(_maintenanceTimerTick:) userInfo:nil repeats:YES];
 		
@@ -148,10 +148,11 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 #pragma mark Queue Handling
 
 // only called from _workerContext
-- (void)_startDownloadForURL:(NSURL *)URL shouldAbortIfNotNewer:(BOOL)shouldAbortIfNotNewer
+- (void)_startDownloadForURL:(NSURL *)URL shouldAbortIfNotNewer:(BOOL)shouldAbortIfNotNewer context:(id)context
 {
 	DTDownload *download = [[DTDownload alloc] initWithURL:URL];
 	download.delegate = self;
+    download.context = context;
 	
 	if (shouldAbortIfNotNewer)
 	{
@@ -189,7 +190,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 - (void)_removeDownloadFromActiveDownloads:(DTDownload *)download
 {
-	[_workerContext performBlockAndWait:^{
+	[_workerContext performBlock:^{
 		DTCachedFile *cachedFile = [self _cachedFileForURL:download.URL inContext:_workerContext];
 		
 		// we need to reset the loading status so that it will get retried next time if necessary
@@ -213,10 +214,16 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 - (void)_startNextQueuedDownload
 {
-	[_workerContext performBlockAndWait:^{
+	[_workerContext performBlock:^{
+        NSUInteger activeDownloads = [_activeDownloads count];
+        
+        // early exit if the queue is full
+        if (activeDownloads>=_maxNumberOfConcurrentDownloads)
+        {
+            return;
+        }
+        
         NSArray *filesToDownload = [self _filesThatNeedToBeDownloadedInContext:_workerContext];
-		
-		NSUInteger activeDownloads = [_activeDownloads count];
 		
 		for (DTCachedFile *oneFile in filesToDownload)
 		{
@@ -227,7 +234,8 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 				BOOL shouldAbortIfNotNewer = [oneFile.abortDownloadIfNotChanged boolValue];
 				
 				NSURL *URL = [NSURL URLWithString:oneFile.remoteURL];
-				[self _startDownloadForURL:URL shouldAbortIfNotNewer:shouldAbortIfNotNewer];
+                id context = [oneFile objectID];
+				[self _startDownloadForURL:URL shouldAbortIfNotNewer:shouldAbortIfNotNewer context:context];
 				
 				activeDownloads++;
 			}
@@ -239,6 +247,8 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 - (NSData *)cachedDataForURL:(NSURL *)URL option:(DTDownloadCacheOption)option completion:(DTDownloadCacheDataCompletionBlock)completion;
 {
+    NSAssert(![URL isFileURL], @"URL may not be a file URL in DTDownloadCache");
+    
     __block NSData *retData = nil;
 	
     [_workerContext performBlockAndWait:^{
@@ -324,10 +334,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		[self _commitWorkerContext];
         
 		
-		if (![_activeDownloads count])
-		{
-			[self _startNextQueuedDownload];
-		}
+        [self _startNextQueuedDownload];
         
         return; // retData is set
     }];
@@ -389,8 +396,15 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		 // only add cached file if we actually got data in it
 		if (data)
 		{
-			// check if URL already exists
-			DTCachedFile *cachedFile = [self _cachedFileForURL:URL inContext:_workerContext];
+            // get the cached file entity for this download via the managed object id which is in the download context
+            DTCachedFile *cachedFile = (DTCachedFile *)[_workerContext objectWithID:download.context];
+            
+            if (!cachedFile)
+            {
+                NSLog(@"Warning, did not find DTCachedFile for download");
+                
+                cachedFile = [self _cachedFileForURL:URL inContext:_workerContext];
+            }
 			
 			NSAssert(cachedFile, @"Problem, there was no file in the queue for a finished download!");
 			

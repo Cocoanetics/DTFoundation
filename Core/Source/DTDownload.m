@@ -66,6 +66,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 
 - (id)initWithURL:(NSURL *)URL
 {
+    NSAssert(![URL isFileURL], @"File URL is illegal parameter for DTDownload");
+    
 	self = [super init];
 	if (self)
 	{

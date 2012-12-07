@@ -25,7 +25,9 @@ typedef void (^DTDownloadCacheDataCompletionBlock)(NSURL *, NSData *, NSError *)
 typedef void (^DTDownloadCacheImageCompletionBlock)(NSURL *, UIImage *, NSError *);
 
 /**
- A global cache for <DTDownload> instances
+ A global cache for <DTDownload> instances.
+ 
+ Note: all URL parameters may only be remote URLs e.g. http: or https.
  */
 
 @interface DTDownloadCache : NSObject <DTDownloadDelegate>
