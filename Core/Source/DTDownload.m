@@ -91,9 +91,7 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 
 - (void)startHEAD
 {
-	NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:_URL
-																		  cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-																	 timeoutInterval:60.0];
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_URL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60.0];
 	[request setHTTPMethod:@"HEAD"];
 	
 	// start downloading
@@ -134,30 +132,39 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		
 		NSString *infoPath = [_internalDownloadFolder stringByAppendingPathComponent:@"Info.plist"];
 		NSDictionary *infoDictionary = [NSDictionary dictionaryWithContentsOfFile:infoPath];
-		NSDictionary *resumeInfo = [infoDictionary objectForKey:@"DownloadEntryResumeInformation"];
-		
-		_expectedContentLength = [[infoDictionary objectForKey:@"DownloadEntryProgressTotalToLoad"] longLongValue];
-		_receivedBytes = [[resumeInfo objectForKey:@"NSURLDownloadBytesReceived"] longLongValue];
-		_downloadEntryIdentifier = [infoDictionary objectForKey:@"DownloadEntryIdentifier"];
-		if (!_downloadEntryIdentifier)
-		{
-			_downloadEntryIdentifier = [NSString stringWithUUID];
-		}
-		
-		if ([_delegate respondsToSelector:@selector(shouldResumeDownload:)])
-		{
-			if (!shouldResume || ![_delegate shouldResumeDownload:self])
-			{
-				NSError *error = nil;
-				if (![[NSFileManager defaultManager] removeItemAtPath:_receivedDataFilePath error:&error])
-				{
-					NSLog(@"Cannot remove file at path %@, %@", _receivedDataFilePath, [error localizedDescription]);
-					return;
-				}
-				
-				shouldResume = NO;
-			}
-		}
+        NSDictionary *resumeInfo = [infoDictionary objectForKey:@"DownloadEntryResumeInformation"];
+ 
+        // we can only resume if there is a download info dictionary
+        
+        if (resumeInfo)
+        {
+            _expectedContentLength = [[infoDictionary objectForKey:@"DownloadEntryProgressTotalToLoad"] longLongValue];
+            _receivedBytes = [[resumeInfo objectForKey:@"NSURLDownloadBytesReceived"] longLongValue];
+            _downloadEntryIdentifier = [infoDictionary objectForKey:@"DownloadEntryIdentifier"];
+            if (!_downloadEntryIdentifier)
+            {
+                _downloadEntryIdentifier = [NSString stringWithUUID];
+            }
+            
+            if ([_delegate respondsToSelector:@selector(shouldResumeDownload:)])
+            {
+                if (!shouldResume || ![_delegate shouldResumeDownload:self])
+                {
+                    NSError *error = nil;
+                    if (![[NSFileManager defaultManager] removeItemAtPath:_receivedDataFilePath error:&error])
+                    {
+                        NSLog(@"Cannot remove file at path %@, %@", _receivedDataFilePath, [error localizedDescription]);
+                        return;
+                    }
+                    
+                    shouldResume = NO;
+                }
+            }
+        }
+        else
+        {
+            shouldResume = NO;
+        }
 		
 		if (shouldResume)
 		{
@@ -192,7 +199,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 			}
 			else
 			{
-				if (_receivedBytes && _receivedBytes == _expectedContentLength)
+                // if we have an expected content length and the received bytes equal that then we are already done!
+				if (_expectedContentLength>=0 && _receivedBytes && _receivedBytes >= _expectedContentLength)
 				{
 					// Already done!
 					[self _completeWithSuccess];
@@ -223,10 +231,11 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		_downloadEntryIdentifier = [NSString stringWithUUID];
 	}
 	
-	NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:_URL
-																		  cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-																	 timeoutInterval:60.0];
+	NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:_URL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60.0];
 	
+    // activate pipelining
+    [request setHTTPShouldUsePipelining:YES];
+    
 	// set range header
 	if (_receivedBytes)
 	{
@@ -464,16 +473,8 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 			[self connection:connection didFailWithError:error];
 			return;
 		}
-		
-		if (_expectedContentLength<=0)
-		{
-			_expectedContentLength = [response expectedContentLength];
-			
-			if (_expectedContentLength<0)
-			{
-				NSLog(@"No expected content length for %@", _URL);
-			}
-		}
+
+        _expectedContentLength = [response expectedContentLength];
 		
 		NSString * currentEntityTag = [http.allHeaderFields objectForKey:@"Etag"];
 		if (!_downloadEntityTag)
@@ -536,13 +537,13 @@ NSString * const DTDownloadProgressNotification = @"DTDownloadProgressNotificati
 		
 		_receivedDataFile = [NSFileHandle fileHandleForWritingAtPath:_receivedDataFilePath];
 		[_receivedDataFile seekToEndOfFile];
-		
-		return;
 	}
-	
-	// subsequent chunks get added to file
-	[_receivedDataFile writeData:data];
-	_receivedBytes += [data length];
+    else
+    {
+        // subsequent chunks get added to file
+        [_receivedDataFile writeData:data];
+        _receivedBytes += [data length];
+    }
 	
 	// calculate a transfer speed
 	float downloadSpeed = 0;

@@ -148,6 +148,22 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 #pragma mark Queue Handling
 
 // only called from _workerContext
+- (BOOL)_hasActiveDownloadForURL:(NSURL *)URL
+{
+    BOOL ret = NO;
+    for (DTDownload *oneDownload in _activeDownloads)
+    {
+        if ([oneDownload.URL isEqualToURL:URL])
+        {
+            ret = YES;
+            break;
+        }
+    }
+    
+    return ret;
+}
+
+// only called from _workerContext
 - (void)_startDownloadForURL:(NSURL *)URL shouldAbortIfNotNewer:(BOOL)shouldAbortIfNotNewer context:(id)context
 {
 	DTDownload *download = [[DTDownload alloc] initWithURL:URL];
@@ -229,11 +245,21 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		{
 			if (activeDownloads < _maxNumberOfConcurrentDownloads)
 			{
+				NSURL *URL = [NSURL URLWithString:oneFile.remoteURL];
+
+                if ([self _hasActiveDownloadForURL:URL])
+                {
+                    // skip files that look like they need downloading, but already have active DL
+                    continue;
+                }
+                
 				oneFile.isLoading = [NSNumber numberWithBool:YES];
+				oneFile.forceLoad = [NSNumber numberWithBool:NO];
+                
+                [self _commitWorkerContext];
 				
 				BOOL shouldAbortIfNotNewer = [oneFile.abortDownloadIfNotChanged boolValue];
 				
-				NSURL *URL = [NSURL URLWithString:oneFile.remoteURL];
                 id context = [oneFile objectID];
 				[self _startDownloadForURL:URL shouldAbortIfNotNewer:shouldAbortIfNotNewer context:context];
 				
@@ -428,6 +454,8 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 			NSString *key = [download.URL absoluteString];
 			NSArray *blocksToExecute = _completionHandlers[key];
 			
+            NSLog(@"%d completion blocks for %@", [blocksToExecute count], cachedFile.remoteURL);
+            
 			// excecute all blocks and forward the error
 			for (DTDownloadCacheDataCompletionBlock oneBlock in blocksToExecute)
 			{
@@ -543,19 +571,12 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 
 - (void)_setupCoreDataStack
 {
-	// setup managed object model
-	
-	/*
-     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"DTDownloadCache" withExtension:@"momd"];
-     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-	 */
-	
-	// in code
+	// setup managed object model in code
     _managedObjectModel = [self _model];
 	
 	// setup persistent store coordinator
 	NSURL *storeURL = [NSURL fileURLWithPath:[[NSString cachesPath] stringByAppendingPathComponent:@"DTDownload.cache"]];
-	
+    
 	NSError *error = nil;
 	_persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_managedObjectModel];
 	
@@ -928,7 +949,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	{
 		return cachedImage;
 	}
-	
+    
 	// create a special wrapper completion handler
 	DTDownloadCacheDataCompletionBlock internalBlock = NULL;
 	
