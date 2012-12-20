@@ -121,6 +121,11 @@
 
 - (BOOL)_parseValueWithTag:(NSUInteger)tag dataRange:(NSRange)dataRange
 {
+    if (!dataRange.length)
+    {
+        return NO;
+    }
+    
 	switch (tag) 
 	{
 		case DTASN1TypeBoolean:
@@ -172,6 +177,8 @@
 					// send number as data if supported, too long for 32 bit
 					sendAsData = YES;
 				}
+                
+                free(buffer);
 			}
 			else 
 			{
@@ -208,7 +215,7 @@
 				return NO;
 			}
 				
-			NSData *data = [NSData dataWithBytesNoCopy:buffer+1 length:dataRange.length-1 freeWhenDone:NO];
+			NSData *data = [NSData dataWithBytesNoCopy:buffer+1 length:dataRange.length-1 freeWhenDone:YES];
 				[_delegate parser:self foundData:data];
 			}
 			
@@ -300,7 +307,7 @@
 				char *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
-				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSASCIIStringEncoding freeWhenDone:NO];
+				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSASCIIStringEncoding freeWhenDone:YES];
 				
 				[_delegate parser:self foundString:string];
 			}
@@ -315,7 +322,7 @@
 				char *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
-				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSASCIIStringEncoding freeWhenDone:NO];
+				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSASCIIStringEncoding freeWhenDone:YES];
 				
 				// has to end with Z
 				NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

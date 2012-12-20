@@ -296,7 +296,7 @@ char *NewDTBase64Encode(
 //
 - (NSString *)base64EncodedString
 {
-	size_t outputLength;
+	size_t outputLength = 0;
 	char *outputBuffer =
 	NewDTBase64Encode([self bytes], [self length], true, &outputLength);
     
