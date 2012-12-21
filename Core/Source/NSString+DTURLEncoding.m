@@ -8,9 +8,6 @@
 
 #import "NSString+DTURLEncoding.h"
 
-// force this category to be loaded by linker
-MAKE_CATEGORIES_LOADABLE(NSString_DTURLEncoding);
-
 @implementation NSString (DTURLEncoding)
 
 - (NSString *)stringByURLEncoding

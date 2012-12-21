@@ -8,9 +8,6 @@
 
 #import "NSString+DTFormatNumbers.h"
 
-// force this category to be loaded by linker
-MAKE_CATEGORIES_LOADABLE(NSString_DTFormatNumbers);
-
 @implementation NSString (DTFormatNumbers)
 
 + (NSString *)stringByFormattingBytes:(long long)bytes

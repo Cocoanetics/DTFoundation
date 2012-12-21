@@ -27,7 +27,6 @@
 		A70B4CD01486621B00873A4A /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CD11486621B00873A4A /* DTVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC71486621B00873A4A /* DTVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CD21486621B00873A4A /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
-		A70B4CD31486621B00873A4A /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC91486621B00873A4A /* LoadableCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CD41486621B00873A4A /* NSString+DTFormatNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CD51486621B00873A4A /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
 		A70B4CD61486621B00873A4A /* NSURL+DTAppLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCC1486621B00873A4A /* NSURL+DTAppLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,7 +38,6 @@
 		A70B4CF2148663A800873A4A /* DTVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC71486621B00873A4A /* DTVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CF3148663A800873A4A /* NSString+DTFormatNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CF4148663A800873A4A /* NSURL+DTAppLinks.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCC1486621B00873A4A /* NSURL+DTAppLinks.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A70B4CF6148663A800873A4A /* LoadableCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC91486621B00873A4A /* LoadableCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CF7148663AF00873A4A /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70D5695162FD30700120A98 /* DTScriptVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D5693162FD30700120A98 /* DTScriptVariable.h */; };
 		A70D5696162FD30700120A98 /* DTScriptVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D5693162FD30700120A98 /* DTScriptVariable.h */; };
@@ -335,7 +333,6 @@
 		A70B4CC51486621B00873A4A /* DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFoundation.h; sourceTree = "<group>"; };
 		A70B4CC71486621B00873A4A /* DTVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTVersion.h; sourceTree = "<group>"; };
 		A70B4CC81486621B00873A4A /* DTVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTVersion.m; sourceTree = "<group>"; };
-		A70B4CC91486621B00873A4A /* LoadableCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadableCategory.h; sourceTree = "<group>"; };
 		A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTFormatNumbers.h"; sourceTree = "<group>"; };
 		A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTFormatNumbers.m"; sourceTree = "<group>"; };
 		A70B4CCC1486621B00873A4A /* NSURL+DTAppLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTAppLinks.h"; sourceTree = "<group>"; };
@@ -593,7 +590,6 @@
 				A7D0AA69153C39540020F18B /* Categories */,
 				A7D0AA68153C39490020F18B /* Utility Functions */,
 				A77DD3D014E81A0B00F34B03 /* Externals */,
-				A70B4CC91486621B00873A4A /* LoadableCategory.h */,
 				FAB1726916301F0D00B44EDC /* DTFoundationConstants.h */,
 				FAB1726A16301F0D00B44EDC /* DTFoundationConstants.m */,
 			);
@@ -910,7 +906,6 @@
 				A70B4CF2148663A800873A4A /* DTVersion.h in Headers */,
 				A70B4CF3148663A800873A4A /* NSString+DTFormatNumbers.h in Headers */,
 				A70B4CF4148663A800873A4A /* NSURL+DTAppLinks.h in Headers */,
-				A70B4CF6148663A800873A4A /* LoadableCategory.h in Headers */,
 				A70B4CF7148663AF00873A4A /* DTFoundation.h in Headers */,
 				A72C110614A4946800F4EF69 /* UIView+DTFoundation.h in Headers */,
 				A7949A3B14C963F500A8CCDE /* DTHTMLParser.h in Headers */,
@@ -985,7 +980,6 @@
 			files = (
 				A70B4CD01486621B00873A4A /* DTFoundation.h in Headers */,
 				A70B4CD11486621B00873A4A /* DTVersion.h in Headers */,
-				A70B4CD31486621B00873A4A /* LoadableCategory.h in Headers */,
 				A70B4CD41486621B00873A4A /* NSString+DTFormatNumbers.h in Headers */,
 				A70B4CD61486621B00873A4A /* NSURL+DTAppLinks.h in Headers */,
 				A70B4CE2148662B000873A4A /* DTFoundation-Prefix.pch in Headers */,

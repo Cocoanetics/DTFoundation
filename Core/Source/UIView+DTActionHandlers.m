@@ -10,9 +10,6 @@
 
 #import <objc/runtime.h>
 
-// force this category to be loaded by linker
-MAKE_CATEGORIES_LOADABLE(UIView_DTActionHandlers);
-
 static char kDTActionHandlerTapBlockKey;
 static char kDTActionHandlerTapGestureKey;
 static char kDTActionHandlerLongPressBlockKey;

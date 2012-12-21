@@ -8,9 +8,6 @@
 
 #import "UIWebView+DTFoundation.h"
 
-// force this category to be loaded by linker
-MAKE_CATEGORIES_LOADABLE(UIWebView_DTFoundation);
-
 @implementation UIWebView (DTFoundation)
 
 - (NSString *)documentTitle

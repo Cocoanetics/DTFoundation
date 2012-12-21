@@ -8,11 +8,6 @@
 
 #import "UIImage+DTFoundation.h"
 
-// force this category to be loaded by linker
-MAKE_CATEGORIES_LOADABLE(UIImage_DTFoundation);
-
-
-
 @implementation UIImage (DTFoundation)
 
 #pragma mark Loading

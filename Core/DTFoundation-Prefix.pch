@@ -9,14 +9,12 @@
 
 #if TARGET_OS_IPHONE
 	#import <UIKit/UIKit.h>
-    #import <MobileCoreServices/MobileCoreServices.h>
 #else
 	#import <AppKit/AppKit.h>
 	#import <Cocoa/Cocoa.h>
 #endif
 
 	#import <Foundation/Foundation.h>
-	#import "LoadableCategory.h"
 
 	// DTDownloadCache
 	#import <CoreData/CoreData.h>

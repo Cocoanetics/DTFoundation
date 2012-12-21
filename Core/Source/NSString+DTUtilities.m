@@ -10,9 +10,6 @@
 
 #import <CommonCrypto/CommonDigest.h>
 
-// force this category to be loaded by linker
-MAKE_CATEGORIES_LOADABLE(NSString_DTUtilites);
-
 @implementation NSString (DTUtilities)
 
 + (NSString *)stringWithUUID

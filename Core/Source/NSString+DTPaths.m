@@ -8,9 +8,6 @@
 
 #import "NSString+DTPaths.h"
 
-// force this category to be loaded by linker
-MAKE_CATEGORIES_LOADABLE(NSString_DTPaths);
-
 @implementation NSString (DTPaths)
 
 #pragma mark Standard Paths

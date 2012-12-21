@@ -8,9 +8,6 @@
 
 #import "UIApplication+DTNetworkActivity.h"
 
-// force this category to be loaded by linker
-MAKE_CATEGORIES_LOADABLE(UIApplication_DTNetworkActivity);
-
 static NSUInteger __internalOperationCount = 0;
 
 @implementation UIApplication (DTNetworkActivity)

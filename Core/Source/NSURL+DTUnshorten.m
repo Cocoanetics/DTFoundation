@@ -8,9 +8,6 @@
 
 #import "NSURL+DTUnshorten.h"
 
-// force this category to be loaded by linker
-MAKE_CATEGORIES_LOADABLE(NSURL_DTUnshorten);
-
 @implementation NSURL (DTUnshorten)
 
 - (void)unshortenWithCompletion:(NSURLUnshortenCompletionHandler)completion

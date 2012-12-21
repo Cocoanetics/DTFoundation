@@ -9,10 +9,6 @@
 #import "UIView+DTFoundation.h"
 #import <QuartzCore/QuartzCore.h>
 
-
-// force this category to be loaded by linker
-MAKE_CATEGORIES_LOADABLE(UIView_DTFoundation);
-
 NSString *shadowContext = @"Shadow";
 
 @implementation UIView (DTFoundation)
