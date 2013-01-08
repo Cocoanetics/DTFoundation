@@ -6,7 +6,6 @@
 // this prevents problems if you include DTFoundation.h in your PCH file but are missing these other system frameworks
 #if TARGET_OS_IPHONE
 	#import <UIKit/UIKit.h>
-	#import <MobileCoreServices/MobileCoreServices.h>
 #else
 	#import <AppKit/AppKit.h>
 	#import <Cocoa/Cocoa.h>
