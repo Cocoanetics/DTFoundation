@@ -7,7 +7,10 @@
 //
 
 #import "NSString+DTUTI.h"
+
+#if TARGET_OS_IPHONE
 #import <MobileCoreServices/MobileCoreServices.h>
+#endif
 
 @implementation NSString (DTUTI)
 
@@ -44,6 +47,13 @@
 - (BOOL)isMovieFileName
 {
 	NSString *extension = [self pathExtension];
+    
+    // without extension we cannot know
+    if (![extension length])
+    {
+        return NO;
+    }
+
 	NSString *uti = [NSString universalTypeIdentifierForFileExtension:extension];
 
 	return [uti conformsToUniversalTypeIdentifier:@"public.movie"];
@@ -52,6 +62,13 @@
 - (BOOL)isAudioFileName
 {
 	NSString *extension = [self pathExtension];
+    
+    // without extension we cannot know
+    if (![extension length])
+    {
+        return NO;
+    }
+
 	NSString *uti = [NSString universalTypeIdentifierForFileExtension:extension];
 	
 	return [uti conformsToUniversalTypeIdentifier:@"public.audio"];
@@ -60,6 +77,13 @@
 - (BOOL)isImageFileName
 {
 	NSString *extension = [self pathExtension];
+
+    // without extension we cannot know
+    if (![extension length])
+    {
+        return NO;
+    }
+    
 	NSString *uti = [NSString universalTypeIdentifierForFileExtension:extension];
 	
 	return [uti conformsToUniversalTypeIdentifier:@"public.image"];
@@ -68,6 +92,13 @@
 - (BOOL)isHTMLFileName
 {
 	NSString *extension = [self pathExtension];
+    
+    // without extension we cannot know
+    if (![extension length])
+    {
+        return NO;
+    }
+
 	NSString *uti = [NSString universalTypeIdentifierForFileExtension:extension];
 	
 	return [uti conformsToUniversalTypeIdentifier:@"public.html"];
