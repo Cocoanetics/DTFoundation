@@ -31,7 +31,7 @@ typedef void (^DTDownloadCompletionHandler)(NSString *path, NSError *error);
 @optional
 
 /**
- Sent by the download object to the delegate to inquire if a download that can be resumed should continue. Return `NO` if the download should start from the beginning.
+ Sent by the download object to the delegate to inquire if a download that can be resumed should continue. Return `NO` if the download should startNext from the beginning.
  
  @param download A download object.
  */
@@ -115,12 +115,6 @@ typedef void (^DTDownloadCompletionHandler)(NSString *path, NSError *error);
  */
 @property (nonatomic, strong, readonly) NSDate *lastModifiedDate;
 
-/**
- Use to set or retrieve the folder where the downloaded file should be copied to.
- 
- Changing this only has an effect if the download has not yet completed.
- */
-@property (nonatomic, strong) NSString *folderForDownloading;
 
 /**
  Use to set or retrieve an object that provides a context for the download.
@@ -146,6 +140,36 @@ typedef void (^DTDownloadCompletionHandler)(NSString *path, NSError *error);
  */
 - (id)initWithURL:(NSURL *)url;
 
+
+/** Creates a download for a given URL and stores the result to the destination path
+	with the filename that provided by the webserver. The the webserver does provide a filename then the
+	last path component of the URL is used.
+
+ @param url A remote URL
+ @param destinationPath where the downloaded file should be stored
+ @returns An initialized download object
+ */
+- (id)initWithURL:(NSURL *)url withDestinationPath:(NSString *)destinationPath;
+
+
+/** Creates a download for a given URL and stores the result to the file
+
+ @param url A remote URL
+ @param destinationPath where the downloaded file should be stored
+ @returns An initialized download object
+ */
+- (id)initWithURL:(NSURL *)url withDestinationFile:(NSString *)destinationFile;
+
+/**
+* Creates a download for a given URL at the given path
+* If a previous uncompleted download at the destination location exists then the download is tried to resumed,
+* otherwise a new full download is performed.
+*
+* @return a new DTDownload instance
+*/
++ (DTDownload *)downloadForURL:(NSURL *)URL atPath:(NSString *)path;
+
+
 /**-------------------------------------------------------------------------------------
  @name Starting the Download
  ---------------------------------------------------------------------------------------
@@ -157,7 +181,7 @@ typedef void (^DTDownloadCompletionHandler)(NSString *path, NSError *error);
  @param shouldResume Specifies if the download should be resumed if possible
  @returns An initialized download object
  */
-- (void)startWithResume:(BOOL)shouldResume;
+- (void)start;
 
 /**
  Starts a HEAD request for the given URL. This retrieves the headers and not the body of the document.
@@ -165,14 +189,14 @@ typedef void (^DTDownloadCompletionHandler)(NSString *path, NSError *error);
 - (void)startHEAD;
 
 /**
- Cancels a download in progress
+ Stops a download in progress
  */
-- (void)cancel;
+- (void)stop;
 
 /**
  Determines if the download is currently in progress
  */
-- (BOOL)isLoading;
+- (BOOL)isRunning;
 
 /**
  *  Removes the downloaded file or the incomplete file if the download is currently running.
@@ -180,6 +204,10 @@ typedef void (^DTDownloadCompletionHandler)(NSString *path, NSError *error);
  */
 - (void)cleanup;
 
+/**
+* @return YES if the download can be resumed, otherwise no
+*/
+- (BOOL)canResume;
 
 /**-------------------------------------------------------------------------------------
  @name Block Handlers
@@ -196,5 +224,8 @@ typedef void (^DTDownloadCompletionHandler)(NSString *path, NSError *error);
  Sets the block to execute as soon as the download has completed.
  */
 @property (nonatomic, copy) DTDownloadCompletionHandler completionHandler;
+
+
+
 
 @end

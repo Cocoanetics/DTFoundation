@@ -21,6 +21,14 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		355B21770218A1225B772748 /* DTDownloadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B2BFB1606330CE10DB473 /* DTDownloadTest.m */; };
+		355B24E930AD6722A4884187 /* DTDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B29B0834EFCD794F88D59 /* DTDownloadItem.m */; };
+		355B25F13216DAE7615A0FF9 /* Test1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 355B2FEE4E409CF775D42DF8 /* Test1.txt */; };
+		355B26D59FA70205222A2623 /* DTDownloadItem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 355B27678F2AE3BDCD6E2CAB /* DTDownloadItem.h */; };
+		355B2977007E74560056014C /* Test in Resources */ = {isa = PBXBuildFile; fileRef = 355B2DB7EE9601442D73B37C /* Test */; };
+		355B2A180352DDB2E408C4AC /* DTDownloadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B21055498CFF0F875C7AF /* DTDownloadQueue.m */; };
+		355B2E6152541B8F60C8044A /* DTDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B29B0834EFCD794F88D59 /* DTDownloadItem.m */; };
+		355B2FF5CD630AB238BCA7D7 /* DTDownloadQueue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 355B2C2AEA15A2098B76B3A8 /* DTDownloadQueue.h */; };
 		3D7CE53F166613B60028D339 /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A7949A3914C963F500A8CCDE /* DTHTMLParser.m */; };
 		3D7CE541166613B60028D339 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D60FF715D3B28B00AEDD1B /* libxml2.dylib */; };
 		3D7CE542166613B60028D339 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
@@ -167,6 +175,8 @@
 		A7BB5516161AE1CA0054606E /* NSString+DTUTI.h in Headers */ = {isa = PBXBuildFile; fileRef = A7BB5514161AE1CA0054606E /* NSString+DTUTI.h */; };
 		A7BB5517161AE1CA0054606E /* NSString+DTUTI.h in Headers */ = {isa = PBXBuildFile; fileRef = A7BB5514161AE1CA0054606E /* NSString+DTUTI.h */; };
 		A7BB5518161AE1CA0054606E /* NSString+DTUTI.h in Headers */ = {isa = PBXBuildFile; fileRef = A7BB5514161AE1CA0054606E /* NSString+DTUTI.h */; };
+		A7C62FCF169DD8CB005D20BE /* Test1.txt.download in Resources */ = {isa = PBXBuildFile; fileRef = A7C62FCE169DD8CB005D20BE /* Test1.txt.download */; };
+		A7C62FD3169DD97E005D20BE /* Test2.txt.download in Resources */ = {isa = PBXBuildFile; fileRef = A7C62FD2169DD97E005D20BE /* Test2.txt.download */; };
 		A7CD034A16623DAF00CBEB35 /* DTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CD034816623DAF00CBEB35 /* DTAlertView.h */; };
 		A7CD034B16623DAF00CBEB35 /* DTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CD034816623DAF00CBEB35 /* DTAlertView.h */; };
 		A7CD034C16623DAF00CBEB35 /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CD034916623DAF00CBEB35 /* DTAlertView.m */; };
@@ -323,12 +333,22 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				355B2FF5CD630AB238BCA7D7 /* DTDownloadQueue.h in CopyFiles */,
+				355B26D59FA70205222A2623 /* DTDownloadItem.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		355B21055498CFF0F875C7AF /* DTDownloadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownloadQueue.m; sourceTree = "<group>"; };
+		355B2551FFF7BE1F6C57972B /* DTDownloadTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownloadTest.h; sourceTree = "<group>"; };
+		355B27678F2AE3BDCD6E2CAB /* DTDownloadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownloadItem.h; sourceTree = "<group>"; };
+		355B29B0834EFCD794F88D59 /* DTDownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownloadItem.m; sourceTree = "<group>"; };
+		355B2BFB1606330CE10DB473 /* DTDownloadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownloadTest.m; sourceTree = "<group>"; };
+		355B2C2AEA15A2098B76B3A8 /* DTDownloadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownloadQueue.h; sourceTree = "<group>"; };
+		355B2DB7EE9601442D73B37C /* Test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test; sourceTree = "<group>"; };
+		355B2FEE4E409CF775D42DF8 /* Test1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Test1.txt; path = DTDownload/Test1.txt.download/Test1.txt; sourceTree = "<group>"; };
 		3D7CE547166613B60028D339 /* libDTHTMLParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A70B4CC51486621B00873A4A /* DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFoundation.h; sourceTree = "<group>"; };
 		A70B4CC71486621B00873A4A /* DTVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTVersion.h; sourceTree = "<group>"; };
@@ -422,6 +442,8 @@
 		A7BB5514161AE1CA0054606E /* NSString+DTUTI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTUTI.h"; sourceTree = "<group>"; };
 		A7BB5515161AE1CA0054606E /* NSString+DTUTI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTUTI.m"; sourceTree = "<group>"; };
 		A7C619EF162D8D84002C0C1A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A7C62FCE169DD8CB005D20BE /* Test1.txt.download */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Test1.txt.download; path = DTDownload/Test1.txt.download; sourceTree = "<group>"; };
+		A7C62FD2169DD97E005D20BE /* Test2.txt.download */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Test2.txt.download; path = DTDownload/Test2.txt.download; sourceTree = "<group>"; };
 		A7CD034816623DAF00CBEB35 /* DTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAlertView.h; sourceTree = "<group>"; };
 		A7CD034916623DAF00CBEB35 /* DTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAlertView.m; sourceTree = "<group>"; };
 		A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DTError.h"; sourceTree = "<group>"; };
@@ -624,6 +646,10 @@
 				A7494DFA15418B3100BDDB7D /* DTDownloadCache.m */,
 				A7494E51154190F500BDDB7D /* DTCachedFile.h */,
 				A7494E52154190F500BDDB7D /* DTCachedFile.m */,
+				355B21055498CFF0F875C7AF /* DTDownloadQueue.m */,
+				355B2C2AEA15A2098B76B3A8 /* DTDownloadQueue.h */,
+				355B29B0834EFCD794F88D59 /* DTDownloadItem.m */,
+				355B27678F2AE3BDCD6E2CAB /* DTDownloadItem.h */,
 			);
 			name = DTDownloadCache;
 			sourceTree = "<group>";
@@ -852,6 +878,8 @@
 				FAB17248162FFA6800B44EDC /* NSArrayDTErrorTest.m */,
 				FAB172AD163027C700B44EDC /* NSDictionaryDTErrorTest.h */,
 				FAB172AE163027C700B44EDC /* NSDictionaryDTErrorTest.m */,
+				355B2BFB1606330CE10DB473 /* DTDownloadTest.m */,
+				355B2551FFF7BE1F6C57972B /* DTDownloadTest.h */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -863,6 +891,10 @@
 				A7D60FF315D3B1FB00AEDD1B /* processing_instruction.html */,
 				FAB172AB163024E200B44EDC /* ArraySample.plist */,
 				FAB1724B162FFC5200B44EDC /* DictionarySample.plist */,
+				A7C62FCE169DD8CB005D20BE /* Test1.txt.download */,
+				A7C62FD2169DD97E005D20BE /* Test2.txt.download */,
+				355B2FEE4E409CF775D42DF8 /* Test1.txt */,
+				355B2DB7EE9601442D73B37C /* Test */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1257,6 +1289,10 @@
 				A7D60FF515D3B1FB00AEDD1B /* processing_instruction.html in Resources */,
 				FAB1724C162FFC5200B44EDC /* DictionarySample.plist in Resources */,
 				FAB172AC163024E200B44EDC /* ArraySample.plist in Resources */,
+				A7C62FCF169DD8CB005D20BE /* Test1.txt.download in Resources */,
+				A7C62FD3169DD97E005D20BE /* Test2.txt.download in Resources */,
+				355B25F13216DAE7615A0FF9 /* Test1.txt in Resources */,
+				355B2977007E74560056014C /* Test in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1464,6 +1500,8 @@
 				FAB17249162FFA6800B44EDC /* NSArrayDTErrorTest.m in Sources */,
 				FAB172AF163027C700B44EDC /* NSDictionaryDTErrorTest.m in Sources */,
 				A70D56A6162FDECF00120A98 /* DTScriptingTest.m in Sources */,
+				355B21770218A1225B772748 /* DTDownloadTest.m in Sources */,
+				355B2E6152541B8F60C8044A /* DTDownloadItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1494,6 +1532,8 @@
 				A7E383FD160E004100CF72D6 /* DTDownloadCache.m in Sources */,
 				A7E383FE160E004400CF72D6 /* DTDownload.m in Sources */,
 				A7E383FF160E004600CF72D6 /* DTCachedFile.m in Sources */,
+				355B2A180352DDB2E408C4AC /* DTDownloadQueue.m in Sources */,
+				355B24E930AD6722A4884187 /* DTDownloadItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1645,6 +1685,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1671,6 +1712,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
