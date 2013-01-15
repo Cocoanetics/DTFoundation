@@ -646,10 +646,10 @@
 				A7494DFA15418B3100BDDB7D /* DTDownloadCache.m */,
 				A7494E51154190F500BDDB7D /* DTCachedFile.h */,
 				A7494E52154190F500BDDB7D /* DTCachedFile.m */,
-				355B21055498CFF0F875C7AF /* DTDownloadQueue.m */,
 				355B2C2AEA15A2098B76B3A8 /* DTDownloadQueue.h */,
-				355B29B0834EFCD794F88D59 /* DTDownloadItem.m */,
+				355B21055498CFF0F875C7AF /* DTDownloadQueue.m */,
 				355B27678F2AE3BDCD6E2CAB /* DTDownloadItem.h */,
+				355B29B0834EFCD794F88D59 /* DTDownloadItem.m */,
 			);
 			name = DTDownloadCache;
 			sourceTree = "<group>";

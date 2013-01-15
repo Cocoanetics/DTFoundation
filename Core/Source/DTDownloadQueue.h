@@ -1,9 +1,10 @@
 //
-// Created by rene on 20.12.12.
+//  DTDownloadQueue.h
+//  DTFoundation
 //
-// To change the template use AppCode | Preferences | File Templates.
+//  Created by René Pirringer on 1/8/13.
+//  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
-
 
 #import <Foundation/Foundation.h>
 #import "DTDownload.h"
@@ -32,9 +33,6 @@ typedef void (^DTDownloadQueueCompletionBlock)(DTDownloadItem *, NSError *);
 typedef void (^DTDownloadQueueProgressBlock)(DTDownloadItem *, long long int, long long int, float);
 
 
-
-
-
 /**
  A global queue for <DTDownload> instances.
 
@@ -54,12 +52,22 @@ typedef void (^DTDownloadQueueProgressBlock)(DTDownloadItem *, long long int, lo
  */
 + (DTDownloadQueue *)sharedInstance;
 
-
+/**
+ The number of parallel downloads that the queue can have
+ */
 @property (nonatomic, assign) NSInteger numberOfParallelDownloads;
 
-
+/**
+ Starts downloading a given download item.
+ @param completion The completion block to execute after the download is finished, either with a file or error.
+ @param progress The block of code to execute for each step in the download progress
+ */
 - (void)downloadItem:(DTDownloadItem *)downloadItem completion:(DTDownloadQueueCompletionBlock)completion progress:(DTDownloadQueueProgressBlock)progress;
-- (void)cancelDownloadItem:(DTDownloadItem *)downloadItem;
 
+/**
+ Cancels a download item
+ @param downloadItem The download item to cancel
+ */
+- (void)cancelDownloadItem:(DTDownloadItem *)downloadItem;
 
 @end

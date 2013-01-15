@@ -1,9 +1,10 @@
 //
-// Created by rene on 08.01.13.
+//  DTDownloadItem.m
+//  DTFoundation
 //
-// To change the template use AppCode | Preferences | File Templates.
+//  Created by René Pirringer on 1/8/13.
+//  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
-
 
 #import "DTDownloadItem.h"
 

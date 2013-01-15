@@ -521,7 +521,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	[properties addObject:abortAttribute];
 	
 	NSAttributeDescription *loadingAttribute = [[NSAttributeDescription alloc] init];
-	[loadingAttribute setName:@"isRunning"];
+	[loadingAttribute setName:@"isLoading"];
 	[loadingAttribute setAttributeType:NSBooleanAttributeType];
 	[loadingAttribute setOptional:NO];
 	[properties addObject:loadingAttribute];
@@ -626,7 +626,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"lastAccessDate" ascending:NO];
 	request.sortDescriptors = [NSArray arrayWithObject:sort];
 	
-	request.predicate = [NSPredicate predicateWithFormat:@"forceLoad == YES and isRunning == NO"];
+	request.predicate = [NSPredicate predicateWithFormat:@"forceLoad == YES and isLoading == NO"];
 	request.fetchLimit = _maxNumberOfConcurrentDownloads;
 	
 	NSError *error;
@@ -738,7 +738,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DTCachedFile"];
 	[request setFetchBatchSize:0];
 	
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"forceLoad == NO and isRunning == NO"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"forceLoad == NO and isLoading == NO"];
 	request.predicate = predicate;
 	
 	NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"lastAccessDate" ascending:NO];
@@ -818,7 +818,7 @@ NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFil
 		NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"lastAccessDate" ascending:NO];
 		request.sortDescriptors = [NSArray arrayWithObject:sort];
 		
-		request.predicate = [NSPredicate predicateWithFormat:@"isRunning == YES"];
+		request.predicate = [NSPredicate predicateWithFormat:@"isLoading == YES"];
 		
 		NSError *error;
 		

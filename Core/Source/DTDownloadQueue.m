@@ -1,13 +1,13 @@
 //
-// Created by rene on 20.12.12.
+//  DTDownloadQueue.m
+//  DTFoundation
 //
-// To change the template use AppCode | Preferences | File Templates.
+//  Created by René Pirringer on 1/8/13.
+//  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
-
 
 #import "DTDownloadQueue.h"
 #import "DTDownloadItem.h"
-
 
 #pragma - DTDownloadTask declaration
 
@@ -24,7 +24,6 @@ typedef enum {
 @property (nonatomic, strong) DTDownloadQueueCompletionBlock completion;
 @property (nonatomic, strong) DTDownloadQueueProgressBlock progress;
 @property (nonatomic, assign) DTDownloadTaskStatus status;
-
 
 @property(nonatomic, strong) DTDownload *download;
 
@@ -74,19 +73,14 @@ typedef enum {
 @end
 
 
-@interface DTDownloadQueue ()
+@interface DTDownloadQueue () <DTDownloadDelegate>
+
 @property(nonatomic, strong) NSMutableArray *queue;
-
-
 
 @end
 
+
 @implementation DTDownloadQueue
-{
-
-}
-@synthesize queue = _queue;
-
 
 + (DTDownloadQueue *)sharedInstance
 {
@@ -256,5 +250,8 @@ typedef enum {
 	}
 }
 
+#pragma mark - Properties
+
+@synthesize queue = _queue;
 
 @end

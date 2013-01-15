@@ -133,8 +133,8 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 			NSString *bundlePath = [path stringByAppendingPathComponent:file];
 			NSString *infoFile = [bundlePath stringByAppendingPathComponent:@"Info.plist"];
 			NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:infoFile];
-			NSString *infoFileURL = [dictionary objectForKey:DownloadEntryURL];
-			if ([infoFileURL isEqualToString:[URL description]])
+			NSString *infoFileURL = [NSURL URLWithString:[dictionary objectForKey:DownloadEntryURL]];
+			if ([infoFileURL isEqualToString:[URL absoluteString]])
 			{
 				return [[DTDownload alloc] initWithDictionary:dictionary atBundlePath:bundlePath];
 			}
@@ -355,7 +355,7 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 	{
 		[resumeDictionary setObject:_downloadEntityTag forKey:NSURLDownloadEntityTag];
 	}
-	[resumeDictionary setObject:[_URL description] forKey:DownloadEntryURL];
+	[resumeDictionary setObject:[_URL absoluteString] forKey:DownloadEntryURL];
 	NSDictionary *infoDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
 					[NSNumber numberWithInt:-999], DownloadEntryErrorCodeDictionaryKey,
 					NSURLErrorDomain, DownloadEntryErrorDomainDictionaryKey,
@@ -363,7 +363,7 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 					[NSNumber numberWithLongLong:_receivedBytes], DownloadEntryProgressBytesSoFar,
 					[NSNumber numberWithLongLong:_expectedContentLength], DownloadEntryProgressTotalToLoad,
 					resumeDictionary, DownloadEntryResumeInformation,
-					[_URL description], DownloadEntryURL
+					[_URL absoluteString], DownloadEntryURL
 					, nil];
 
 	return infoDictionary;
