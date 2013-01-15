@@ -14,24 +14,22 @@
 
 
 /**
-* This block is called when the download is finished.
-*
-* @param the downloadable item
-* @param the data that was downloaded. In case of an error this is nil
-* @param if an error occurs then the error object is set an the previous data parameter is nil
-*/
-typedef void (^DTDownloadQueueCompletionBlock)(DTDownloadItem *, NSError *);
+ This block is called when the download is finished.
+
+ @param downloadItem the downloadable item
+ @param error if an error occurs then the error object is set an the previous data parameter is nil
+ */
+typedef void (^DTDownloadQueueCompletionBlock)(DTDownloadItem *downloadItem, NSError *error);
 
 /**
-* This block is called when the download is started an data is received
-*
-* @param the downloadable item
-* @param the downloaded bytes that were already downloaded
-* @param the total size of the download
-* @param the speed of the download
-*/
-typedef void (^DTDownloadQueueProgressBlock)(DTDownloadItem *, long long int, long long int, float);
+ This block is called when the download is started an data is received
 
+ @param downloadItem the downloadable item
+ @param downloadedBytes the downloaded bytes that were already downloaded
+ @param totalBytes the total size of the download
+ @param speed the speed of the download
+ */
+typedef void (^DTDownloadQueueProgressBlock)(DTDownloadItem *downloadItem, long long int downloadedBytes, long long int totalBytes, float speed);
 
 /**
  A global queue for <DTDownload> instances.
