@@ -37,7 +37,7 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'DTDownload' do |ss|
-    spec.ios.deployment_target = '5.0' # needs CoreData external file storage
+    spec.ios.deployment_target = '5.0'
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTDownload/*.{h,m}'
     ss.frameworks = ['CoreData']
