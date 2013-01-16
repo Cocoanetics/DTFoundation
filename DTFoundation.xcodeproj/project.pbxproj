@@ -66,6 +66,9 @@
 		A7239FF316A6BEE50071E902 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FF016A6BEE50071E902 /* DTAsyncFileDeleter.m */; };
 		A7239FF416A6BEE50071E902 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FF016A6BEE50071E902 /* DTAsyncFileDeleter.m */; };
 		A7239FF516A6C1BC0071E902 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */; };
+		A7239FFA16A6CEEA0071E902 /* libDTDownload.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383F1160E002200CF72D6 /* libDTDownload.a */; };
+		A7239FFB16A6CEEF0071E902 /* libDTHTMLParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser.a */; };
+		A7239FFD16A6CF0B0071E902 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7239FFC16A6CF0B0071E902 /* CoreData.framework */; };
 		A73B6F8B163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
 		A73B6F8C163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
 		A73B6F8D163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
@@ -256,6 +259,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A7239FF616A6CEDA0071E902 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7E383F0160E002200CF72D6;
+			remoteInfo = DTDownload;
+		};
+		A7239FF816A6CEDD0071E902 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7E383C1160DFEDB00CF72D6;
+			remoteInfo = DTHTMLParser;
+		};
 		FAB17254163003F500B44EDC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
@@ -367,6 +384,7 @@
 		A7239FE716A6A98C0071E902 /* NSScanner+DTBonjour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+DTBonjour.m"; sourceTree = "<group>"; };
 		A7239FEF16A6BEE50071E902 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A7239FF016A6BEE50071E902 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
+		A7239FFC16A6CF0B0071E902 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileWrapper+DTCopying.h"; sourceTree = "<group>"; };
 		A73B6F8A163169BB002CCCA7 /* NSFileWrapper+DTCopying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileWrapper+DTCopying.m"; sourceTree = "<group>"; };
 		A73D5BA9155271FD0024BDB7 /* NSArray+DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DTError.h"; sourceTree = "<group>"; };
@@ -463,7 +481,7 @@
 		A7D8628014EBF65C001436AF /* NSString+DTPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTPaths.m"; sourceTree = "<group>"; };
 		A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTZipArchive.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7E383F1160E002200CF72D6 /* libDTDownloadCache.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libDTDownloadCache.a; path = libDTDownload.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7E383F1160E002200CF72D6 /* libDTDownload.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTDownload.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7F4DFF8147FD08900F4059A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTComparing.h"; sourceTree = "<group>"; };
@@ -535,6 +553,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7239FFD16A6CF0B0071E902 /* CoreData.framework in Frameworks */,
+				A7239FFB16A6CEEF0071E902 /* libDTHTMLParser.a in Frameworks */,
+				A7239FFA16A6CEEA0071E902 /* libDTDownload.a in Frameworks */,
 				FAB172B816302FC700B44EDC /* UIKit.framework in Frameworks */,
 				FAB1725F1630051900B44EDC /* libDTFoundation.a in Frameworks */,
 				FAB1725E163004FF00B44EDC /* QuartzCore.framework in Frameworks */,
@@ -888,6 +909,7 @@
 		A7F4DF98147FB61500F4059A = {
 			isa = PBXGroup;
 			children = (
+				A7239FFC16A6CF0B0071E902 /* CoreData.framework */,
 				A7D60FE415D3B15300AEDD1B /* Test */,
 				A70B4CC41486621B00873A4A /* Core */,
 				A70B4CDA1486626900873A4A /* Documentation */,
@@ -905,7 +927,7 @@
 				A710A5001607556000437D36 /* libDTFoundation_Mac.a */,
 				A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser.a */,
 				A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */,
-				A7E383F1160E002200CF72D6 /* libDTDownloadCache.a */,
+				A7E383F1160E002200CF72D6 /* libDTDownload.a */,
 				A7787A0D16441B1800AF5830 /* libDTBonjour.a */,
 				3D7CE547166613B60028D339 /* libDTHTMLParser.a */,
 				A78220BA168060CA005B602D /* libDTUTI.a */,
@@ -1152,6 +1174,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				A7239FF916A6CEDD0071E902 /* PBXTargetDependency */,
+				A7239FF716A6CEDA0071E902 /* PBXTargetDependency */,
 				FAB17255163003F500B44EDC /* PBXTargetDependency */,
 			);
 			name = "Unit Tests";
@@ -1207,7 +1231,7 @@
 			);
 			name = DTDownload;
 			productName = DTDownloadCache;
-			productReference = A7E383F1160E002200CF72D6 /* libDTDownloadCache.a */;
+			productReference = A7E383F1160E002200CF72D6 /* libDTDownload.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -1512,6 +1536,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A7239FF716A6CEDA0071E902 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7E383F0160E002200CF72D6 /* DTDownload */;
+			targetProxy = A7239FF616A6CEDA0071E902 /* PBXContainerItemProxy */;
+		};
+		A7239FF916A6CEDD0071E902 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7E383C1160DFEDB00CF72D6 /* DTHTMLParser */;
+			targetProxy = A7239FF816A6CEDD0071E902 /* PBXContainerItemProxy */;
+		};
 		FAB17255163003F500B44EDC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A70B4CE61486637E00873A4A /* Static Library */;
