@@ -25,7 +25,6 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 
 @interface DTDownload () <NSURLConnectionDelegate>
 
-@property(nonatomic, retain) NSString *downloadBundlePath;
 @property(nonatomic, retain) NSDate *lastPacketTimestamp;
 
 - (void)storeDownloadInfo;
@@ -39,7 +38,6 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 @implementation DTDownload
 {
 	NSURL *_URL;
-	NSString *_downloadBundlePath;
 	NSString *_downloadEntityTag;
 	NSDate *_lastModifiedDate;
 
@@ -133,7 +131,7 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 			NSString *bundlePath = [path stringByAppendingPathComponent:file];
 			NSString *infoFile = [bundlePath stringByAppendingPathComponent:@"Info.plist"];
 			NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:infoFile];
-			NSString *infoFileURL = [NSURL URLWithString:[dictionary objectForKey:DownloadEntryURL]];
+			NSString *infoFileURL = [dictionary objectForKey:DownloadEntryURL];
 			if ([infoFileURL isEqualToString:[URL absoluteString]])
 			{
 				return [[DTDownload alloc] initWithDictionary:dictionary atBundlePath:bundlePath];
@@ -182,10 +180,7 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 	}
 
 
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_URL
-																												 cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-																										 timeoutInterval:60.0];
-
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_URL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60.0];
 
 	if (_receivedBytes && _receivedBytes == _expectedContentLength)
 	{
@@ -194,7 +189,8 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 		return;
 	}
 
-	if (_resumeFileOffset) {
+	if (_resumeFileOffset)
+    {
 		[request setValue:[NSString stringWithFormat:@"bytes=%lld-", _resumeFileOffset] forHTTPHeaderField:@"Range"];
 	}
 
@@ -251,8 +247,8 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 	// remove cached file
 	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	[fileManager removeItemAtPath:_destinationBundleFilePath error:nil];
-	[fileManager removeItemAtPath:[self.downloadBundlePath stringByAppendingPathComponent:@"Info.plist"] error:nil];
-	[fileManager removeItemAtPath:self.downloadBundlePath error:nil];
+	[fileManager removeItemAtPath:[[self downloadBundlePath] stringByAppendingPathComponent:@"Info.plist"] error:nil];
+	[fileManager removeItemAtPath:[self downloadBundlePath] error:nil];
 
 }
 
@@ -377,7 +373,7 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 		return;
 	}
 
-	NSString *infoPath = [self.downloadBundlePath stringByAppendingPathComponent:@"Info.plist"];
+	NSString *infoPath = [[self downloadBundlePath] stringByAppendingPathComponent:@"Info.plist"];
 	[[self infoDictionary] writeToFile:infoPath atomically:YES];
 }
 
@@ -467,7 +463,11 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 			}
 		}
 
-		_destinationBundleFilePath = [self createBundleFilePathForFilename:[self filenameFromHeader:http.allHeaderFields]];
+        // if _destinationBundleFilePath is not nil this means that it is a resumable download
+        NSLog(@"_destinationBundleFilePath %@", _destinationBundleFilePath);
+        if (!_destinationBundleFilePath) {
+            _destinationBundleFilePath = [self createBundleFilePathForFilename:[self filenameFromHeader:http.allHeaderFields]];
+        }
 		NSLog(@"store result in %@", _destinationBundleFilePath);
 
 	}
@@ -494,23 +494,23 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 		folderForDownloading = NSTemporaryDirectory();
 	}
 
-	NSString *fullFileName = [self uniqueFileNameForFile:fileName atDestinationPath:folderForDownloading];
+    NSString * fullFileName = [self uniqueFileNameForFile:fileName atDestinationPath:folderForDownloading];
 
-	self.downloadBundlePath = [folderForDownloading stringByAppendingPathComponent:[fullFileName stringByAppendingPathExtension:@"download"]];
+	NSString *downloadBundlePath = [folderForDownloading stringByAppendingPathComponent:[fullFileName stringByAppendingPathExtension:@"download"]];
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 
 	if (![fileManager fileExistsAtPath:self.downloadBundlePath])
 	{
 		NSError *error;
-		if (![fileManager createDirectoryAtPath:_downloadBundlePath withIntermediateDirectories:YES attributes:nil error:&error])
+		if (![fileManager createDirectoryAtPath:downloadBundlePath withIntermediateDirectories:YES attributes:nil error:&error])
 		{
-			NSLog(@"Cannot create download folder %@, %@", _downloadBundlePath, [error localizedDescription]);
+			NSLog(@"Cannot create download folder %@, %@", downloadBundlePath, [error localizedDescription]);
 			[self _completeWithError:error];
 			return nil;
 		}
 
 	}
-	return [_downloadBundlePath stringByAppendingPathComponent:fullFileName];
+	return [downloadBundlePath stringByAppendingPathComponent:fullFileName];
 }
 
 
@@ -657,9 +657,12 @@ static NSString *const NSURLDownloadEntityTag = @"NSURLDownloadEntityTag";
 	return _resumeFileOffset > 0;
 }
 
+- (NSString *)downloadBundlePath {
+    return [_destinationBundleFilePath stringByDeletingLastPathComponent];
+}
+
 
 @synthesize URL = _URL;
-@synthesize downloadBundlePath = _downloadBundlePath;
 @synthesize downloadEntityTag = _downloadEntityTag;
 //@synthesize folderForDownloading = _folderForDownloading;
 @synthesize lastPacketTimestamp = _lastPacketTimestamp;
