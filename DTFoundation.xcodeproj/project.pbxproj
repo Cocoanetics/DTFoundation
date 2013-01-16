@@ -22,13 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		355B21770218A1225B772748 /* DTDownloadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B2BFB1606330CE10DB473 /* DTDownloadTest.m */; };
-		355B24E930AD6722A4884187 /* DTDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B29B0834EFCD794F88D59 /* DTDownloadItem.m */; };
 		355B25F13216DAE7615A0FF9 /* Test1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 355B2FEE4E409CF775D42DF8 /* Test1.txt */; };
-		355B26D59FA70205222A2623 /* DTDownloadItem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 355B27678F2AE3BDCD6E2CAB /* DTDownloadItem.h */; };
 		355B2977007E74560056014C /* Test in Resources */ = {isa = PBXBuildFile; fileRef = 355B2DB7EE9601442D73B37C /* Test */; };
-		355B2A180352DDB2E408C4AC /* DTDownloadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B21055498CFF0F875C7AF /* DTDownloadQueue.m */; };
-		355B2E6152541B8F60C8044A /* DTDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B29B0834EFCD794F88D59 /* DTDownloadItem.m */; };
-		355B2FF5CD630AB238BCA7D7 /* DTDownloadQueue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 355B2C2AEA15A2098B76B3A8 /* DTDownloadQueue.h */; };
 		3D7CE541166613B60028D339 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D60FF715D3B28B00AEDD1B /* libxml2.dylib */; };
 		3D7CE542166613B60028D339 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A70B4CD01486621B00873A4A /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -58,8 +53,14 @@
 		A70D56A6162FDECF00120A98 /* DTScriptingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D56A5162FDECF00120A98 /* DTScriptingTest.m */; };
 		A710A5011607556000437D36 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A710A4D2160752D300437D36 /* Cocoa.framework */; };
 		A710A50B160755A500437D36 /* NSDictionary+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA24153C1B160020F18B /* NSDictionary+DTError.m */; };
-		A720255F16551B040079003B /* DTBonjourDataChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = A720255E16551B040079003B /* DTBonjourDataChunk.m */; };
-		A720256316552BDA0079003B /* NSScanner+DTBonjour.m in Sources */ = {isa = PBXBuildFile; fileRef = A720256216552BDA0079003B /* NSScanner+DTBonjour.m */; };
+		A7239FDB16A6A8F80071E902 /* DTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FD416A6A8F80071E902 /* DTDownload.m */; };
+		A7239FDC16A6A8F80071E902 /* DTDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FD616A6A8F80071E902 /* DTDownloadCache.m */; };
+		A7239FDD16A6A8F80071E902 /* DTDownloadItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FD816A6A8F80071E902 /* DTDownloadItem.m */; };
+		A7239FDE16A6A8F80071E902 /* DTDownloadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FDA16A6A8F80071E902 /* DTDownloadQueue.m */; };
+		A7239FE816A6A98C0071E902 /* DTBonjourDataChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FE116A6A98C0071E902 /* DTBonjourDataChunk.m */; };
+		A7239FE916A6A98C0071E902 /* DTBonjourDataConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FE316A6A98C0071E902 /* DTBonjourDataConnection.m */; };
+		A7239FEA16A6A98C0071E902 /* DTBonjourServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FE516A6A98C0071E902 /* DTBonjourServer.m */; };
+		A7239FEB16A6A98C0071E902 /* NSScanner+DTBonjour.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FE716A6A98C0071E902 /* NSScanner+DTBonjour.m */; };
 		A73B6F8B163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
 		A73B6F8C163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
 		A73B6F8D163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
@@ -73,11 +74,6 @@
 		A73D5BAE155271FD0024BDB7 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
 		A7437DE216147A450091C1A2 /* NSString+DTPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D8628014EBF65C001436AF /* NSString+DTPaths.m */; };
 		A7444D2C162C011C00DD3692 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
-		A747797215F78D630026ABA8 /* DTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA43153C22B00020F18B /* DTDownload.m */; };
-		A7494DFB15418B3100BDDB7D /* DTDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A7494DF915418B3100BDDB7D /* DTDownloadCache.h */; };
-		A7494DFC15418B3100BDDB7D /* DTDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A7494DF915418B3100BDDB7D /* DTDownloadCache.h */; };
-		A7494E53154190F500BDDB7D /* DTCachedFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A7494E51154190F500BDDB7D /* DTCachedFile.h */; };
-		A7494E54154190F500BDDB7D /* DTCachedFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A7494E51154190F500BDDB7D /* DTCachedFile.h */; };
 		A7556F66162EEF9200A69F63 /* DTScriptExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A7556F64162EEF9200A69F63 /* DTScriptExpression.h */; };
 		A7556F67162EEF9200A69F63 /* DTScriptExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A7556F64162EEF9200A69F63 /* DTScriptExpression.h */; };
 		A7556F68162EEF9200A69F63 /* DTScriptExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A7556F64162EEF9200A69F63 /* DTScriptExpression.h */; };
@@ -156,8 +152,6 @@
 		A76DB4F716A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4ED16A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m */; };
 		A76DB4FB16A5E5950010CD85 /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */; };
 		A7787A0E16441B1800AF5830 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
-		A7787A1916441B4500AF5830 /* DTBonjourDataConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = A7787A0616441AB700AF5830 /* DTBonjourDataConnection.m */; };
-		A7787A1A16441B4500AF5830 /* DTBonjourServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7787A0816441AB700AF5830 /* DTBonjourServer.m */; };
 		A77DD39E14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD39F14E648AD00F34B03 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD3A014E648AD00F34B03 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */; };
@@ -202,8 +196,6 @@
 		A7D0AA2C153C1FE40020F18B /* NSString+DTURLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA29153C1FE40020F18B /* NSString+DTURLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D0AA2D153C1FE40020F18B /* NSString+DTURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA2A153C1FE40020F18B /* NSString+DTURLEncoding.m */; };
 		A7D0AA2E153C1FE40020F18B /* NSString+DTURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA2A153C1FE40020F18B /* NSString+DTURLEncoding.m */; };
-		A7D0AA44153C22B00020F18B /* DTDownload.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA42153C22B00020F18B /* DTDownload.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7D0AA45153C22B00020F18B /* DTDownload.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA42153C22B00020F18B /* DTDownload.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D0AA4A153C233E0020F18B /* NSString+DTUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA48153C233E0020F18B /* NSString+DTUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D0AA4B153C233E0020F18B /* NSString+DTUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA48153C233E0020F18B /* NSString+DTUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D0AA4C153C233E0020F18B /* NSString+DTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA49153C233E0020F18B /* NSString+DTUtilities.m */; };
@@ -231,9 +223,6 @@
 		A7E383C3160DFEDB00CF72D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A7E383DB160DFF8600CF72D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A7E383F2160E002200CF72D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
-		A7E383FD160E004100CF72D6 /* DTDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A7494DFA15418B3100BDDB7D /* DTDownloadCache.m */; };
-		A7E383FE160E004400CF72D6 /* DTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA43153C22B00020F18B /* DTDownload.m */; };
-		A7E383FF160E004600CF72D6 /* DTCachedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A7494E52154190F500BDDB7D /* DTCachedFile.m */; };
 		A7E38406160E039D00CF72D6 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD40E14E825FC00F34B03 /* ioapi.c */; };
 		A7E38407160E03A600CF72D6 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41014E825FC00F34B03 /* mztools.c */; };
 		A7E38408160E03A600CF72D6 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41214E825FC00F34B03 /* unzip.c */; };
@@ -327,20 +316,14 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				355B2FF5CD630AB238BCA7D7 /* DTDownloadQueue.h in CopyFiles */,
-				355B26D59FA70205222A2623 /* DTDownloadItem.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		355B21055498CFF0F875C7AF /* DTDownloadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownloadQueue.m; sourceTree = "<group>"; };
 		355B2551FFF7BE1F6C57972B /* DTDownloadTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownloadTest.h; sourceTree = "<group>"; };
-		355B27678F2AE3BDCD6E2CAB /* DTDownloadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownloadItem.h; sourceTree = "<group>"; };
-		355B29B0834EFCD794F88D59 /* DTDownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownloadItem.m; sourceTree = "<group>"; };
 		355B2BFB1606330CE10DB473 /* DTDownloadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownloadTest.m; sourceTree = "<group>"; };
-		355B2C2AEA15A2098B76B3A8 /* DTDownloadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownloadQueue.h; sourceTree = "<group>"; };
 		355B2DB7EE9601442D73B37C /* Test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test; sourceTree = "<group>"; };
 		355B2FEE4E409CF775D42DF8 /* Test1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Test1.txt; path = DTDownload/Test1.txt.download/Test1.txt; sourceTree = "<group>"; };
 		3D7CE547166613B60028D339 /* libDTHTMLParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -365,18 +348,26 @@
 		A710A4D6160752D300437D36 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A710A4D7160752D300437D36 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A710A5001607556000437D36 /* libDTFoundation_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTFoundation_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A720255D16551B040079003B /* DTBonjourDataChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBonjourDataChunk.h; sourceTree = "<group>"; };
-		A720255E16551B040079003B /* DTBonjourDataChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBonjourDataChunk.m; sourceTree = "<group>"; };
-		A720256116552BDA0079003B /* NSScanner+DTBonjour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScanner+DTBonjour.h"; sourceTree = "<group>"; };
-		A720256216552BDA0079003B /* NSScanner+DTBonjour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+DTBonjour.m"; sourceTree = "<group>"; };
+		A7239FD316A6A8F80071E902 /* DTDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownload.h; sourceTree = "<group>"; };
+		A7239FD416A6A8F80071E902 /* DTDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownload.m; sourceTree = "<group>"; };
+		A7239FD516A6A8F80071E902 /* DTDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownloadCache.h; sourceTree = "<group>"; };
+		A7239FD616A6A8F80071E902 /* DTDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownloadCache.m; sourceTree = "<group>"; };
+		A7239FD716A6A8F80071E902 /* DTDownloadItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownloadItem.h; sourceTree = "<group>"; };
+		A7239FD816A6A8F80071E902 /* DTDownloadItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownloadItem.m; sourceTree = "<group>"; };
+		A7239FD916A6A8F80071E902 /* DTDownloadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownloadQueue.h; sourceTree = "<group>"; };
+		A7239FDA16A6A8F80071E902 /* DTDownloadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownloadQueue.m; sourceTree = "<group>"; };
+		A7239FE016A6A98C0071E902 /* DTBonjourDataChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBonjourDataChunk.h; sourceTree = "<group>"; };
+		A7239FE116A6A98C0071E902 /* DTBonjourDataChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBonjourDataChunk.m; sourceTree = "<group>"; };
+		A7239FE216A6A98C0071E902 /* DTBonjourDataConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBonjourDataConnection.h; sourceTree = "<group>"; };
+		A7239FE316A6A98C0071E902 /* DTBonjourDataConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBonjourDataConnection.m; sourceTree = "<group>"; };
+		A7239FE416A6A98C0071E902 /* DTBonjourServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBonjourServer.h; sourceTree = "<group>"; };
+		A7239FE516A6A98C0071E902 /* DTBonjourServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBonjourServer.m; sourceTree = "<group>"; };
+		A7239FE616A6A98C0071E902 /* NSScanner+DTBonjour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScanner+DTBonjour.h"; sourceTree = "<group>"; };
+		A7239FE716A6A98C0071E902 /* NSScanner+DTBonjour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+DTBonjour.m"; sourceTree = "<group>"; };
 		A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileWrapper+DTCopying.h"; sourceTree = "<group>"; };
 		A73B6F8A163169BB002CCCA7 /* NSFileWrapper+DTCopying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileWrapper+DTCopying.m"; sourceTree = "<group>"; };
 		A73D5BA9155271FD0024BDB7 /* NSArray+DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DTError.h"; sourceTree = "<group>"; };
 		A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DTError.m"; sourceTree = "<group>"; };
-		A7494DF915418B3100BDDB7D /* DTDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownloadCache.h; sourceTree = "<group>"; };
-		A7494DFA15418B3100BDDB7D /* DTDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownloadCache.m; sourceTree = "<group>"; };
-		A7494E51154190F500BDDB7D /* DTCachedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCachedFile.h; sourceTree = "<group>"; };
-		A7494E52154190F500BDDB7D /* DTCachedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCachedFile.m; sourceTree = "<group>"; };
 		A7556F64162EEF9200A69F63 /* DTScriptExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTScriptExpression.h; sourceTree = "<group>"; };
 		A7556F65162EEF9200A69F63 /* DTScriptExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTScriptExpression.m; sourceTree = "<group>"; };
 		A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTASN1Parser.h; sourceTree = "<group>"; };
@@ -423,10 +414,6 @@
 		A76DB4ED16A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindowController+DTPanelControllerPresenting.m"; sourceTree = "<group>"; };
 		A76DB4F916A5E5950010CD85 /* NSString+DTUTI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTUTI.h"; sourceTree = "<group>"; };
 		A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTUTI.m"; sourceTree = "<group>"; };
-		A7787A0516441AB700AF5830 /* DTBonjourDataConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTBonjourDataConnection.h; sourceTree = "<group>"; };
-		A7787A0616441AB700AF5830 /* DTBonjourDataConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTBonjourDataConnection.m; sourceTree = "<group>"; };
-		A7787A0716441AB700AF5830 /* DTBonjourServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTBonjourServer.h; sourceTree = "<group>"; };
-		A7787A0816441AB700AF5830 /* DTBonjourServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTBonjourServer.m; sourceTree = "<group>"; };
 		A7787A0D16441B1800AF5830 /* libDTBonjour.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTBonjour.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A77DD39D14E648AD00F34B03 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
@@ -454,8 +441,6 @@
 		A7D0AA24153C1B160020F18B /* NSDictionary+DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DTError.m"; sourceTree = "<group>"; };
 		A7D0AA29153C1FE40020F18B /* NSString+DTURLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTURLEncoding.h"; sourceTree = "<group>"; };
 		A7D0AA2A153C1FE40020F18B /* NSString+DTURLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTURLEncoding.m"; sourceTree = "<group>"; };
-		A7D0AA42153C22B00020F18B /* DTDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDownload.h; sourceTree = "<group>"; };
-		A7D0AA43153C22B00020F18B /* DTDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDownload.m; sourceTree = "<group>"; };
 		A7D0AA48153C233E0020F18B /* NSString+DTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTUtilities.h"; sourceTree = "<group>"; };
 		A7D0AA49153C233E0020F18B /* NSString+DTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTUtilities.m"; sourceTree = "<group>"; };
 		A7D0AA6B153C39920020F18B /* DTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTUtils.h; sourceTree = "<group>"; };
@@ -602,6 +587,8 @@
 		A70B4CC61486621B00873A4A /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A7239FDF16A6A98C0071E902 /* DTBonjour */,
+				A7239FD216A6A8F80071E902 /* DTDownload */,
 				A76DB48816A5E1D20010CD85 /* DTHTMLParser */,
 				A76DB4F816A5E5940010CD85 /* DTUTI */,
 				A76DB4BC16A5E4760010CD85 /* DTZipArchive */,
@@ -636,21 +623,34 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		A7494E4A154190C000BDDB7D /* DTDownloadCache */ = {
+		A7239FD216A6A8F80071E902 /* DTDownload */ = {
 			isa = PBXGroup;
 			children = (
-				A7D0AA42153C22B00020F18B /* DTDownload.h */,
-				A7D0AA43153C22B00020F18B /* DTDownload.m */,
-				A7494DF915418B3100BDDB7D /* DTDownloadCache.h */,
-				A7494DFA15418B3100BDDB7D /* DTDownloadCache.m */,
-				A7494E51154190F500BDDB7D /* DTCachedFile.h */,
-				A7494E52154190F500BDDB7D /* DTCachedFile.m */,
-				355B2C2AEA15A2098B76B3A8 /* DTDownloadQueue.h */,
-				355B21055498CFF0F875C7AF /* DTDownloadQueue.m */,
-				355B27678F2AE3BDCD6E2CAB /* DTDownloadItem.h */,
-				355B29B0834EFCD794F88D59 /* DTDownloadItem.m */,
+				A7239FD316A6A8F80071E902 /* DTDownload.h */,
+				A7239FD416A6A8F80071E902 /* DTDownload.m */,
+				A7239FD516A6A8F80071E902 /* DTDownloadCache.h */,
+				A7239FD616A6A8F80071E902 /* DTDownloadCache.m */,
+				A7239FD716A6A8F80071E902 /* DTDownloadItem.h */,
+				A7239FD816A6A8F80071E902 /* DTDownloadItem.m */,
+				A7239FD916A6A8F80071E902 /* DTDownloadQueue.h */,
+				A7239FDA16A6A8F80071E902 /* DTDownloadQueue.m */,
 			);
-			name = DTDownloadCache;
+			path = DTDownload;
+			sourceTree = "<group>";
+		};
+		A7239FDF16A6A98C0071E902 /* DTBonjour */ = {
+			isa = PBXGroup;
+			children = (
+				A7239FE016A6A98C0071E902 /* DTBonjourDataChunk.h */,
+				A7239FE116A6A98C0071E902 /* DTBonjourDataChunk.m */,
+				A7239FE216A6A98C0071E902 /* DTBonjourDataConnection.h */,
+				A7239FE316A6A98C0071E902 /* DTBonjourDataConnection.m */,
+				A7239FE416A6A98C0071E902 /* DTBonjourServer.h */,
+				A7239FE516A6A98C0071E902 /* DTBonjourServer.m */,
+				A7239FE616A6A98C0071E902 /* NSScanner+DTBonjour.h */,
+				A7239FE716A6A98C0071E902 /* NSScanner+DTBonjour.m */,
+			);
+			path = DTBonjour;
 			sourceTree = "<group>";
 		};
 		A7556F63162EEF6700A69F63 /* DTScripting */ = {
@@ -741,21 +741,6 @@
 			path = DTUTI;
 			sourceTree = "<group>";
 		};
-		A7787A0316441A8D00AF5830 /* DTBonjour */ = {
-			isa = PBXGroup;
-			children = (
-				A7787A0516441AB700AF5830 /* DTBonjourDataConnection.h */,
-				A7787A0616441AB700AF5830 /* DTBonjourDataConnection.m */,
-				A7787A0716441AB700AF5830 /* DTBonjourServer.h */,
-				A7787A0816441AB700AF5830 /* DTBonjourServer.m */,
-				A720255D16551B040079003B /* DTBonjourDataChunk.h */,
-				A720255E16551B040079003B /* DTBonjourDataChunk.m */,
-				A720256116552BDA0079003B /* NSScanner+DTBonjour.h */,
-				A720256216552BDA0079003B /* NSScanner+DTBonjour.m */,
-			);
-			name = DTBonjour;
-			sourceTree = "<group>";
-		};
 		A77DD3D014E81A0B00F34B03 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,8 +827,6 @@
 			isa = PBXGroup;
 			children = (
 				A7556F63162EEF6700A69F63 /* DTScripting */,
-				A7494E4A154190C000BDDB7D /* DTDownloadCache */,
-				A7787A0316441A8D00AF5830 /* DTBonjour */,
 				A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */,
 				A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */,
 				A77DD39C14E648AD00F34B03 /* DTAsyncFileDeleter.h */,
@@ -951,11 +934,8 @@
 				A7D6F2E615063448001CACDD /* DTExtendedFileAttributes.h in Headers */,
 				A7D0AA26153C1B160020F18B /* NSDictionary+DTError.h in Headers */,
 				A7D0AA2C153C1FE40020F18B /* NSString+DTURLEncoding.h in Headers */,
-				A7D0AA45153C22B00020F18B /* DTDownload.h in Headers */,
 				A7D0AA4B153C233E0020F18B /* NSString+DTUtilities.h in Headers */,
 				A7D0AA6E153C39920020F18B /* DTUtils.h in Headers */,
-				A7494DFC15418B3100BDDB7D /* DTDownloadCache.h in Headers */,
-				A7494E54154190F500BDDB7D /* DTCachedFile.h in Headers */,
 				A7FE30651548005700F5DC66 /* NSObject+DTRuntime.h in Headers */,
 				A73D5BAC155271FD0024BDB7 /* NSArray+DTError.h in Headers */,
 				A79231CF157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */,
@@ -1024,11 +1004,8 @@
 				A7D6F2E515063448001CACDD /* DTExtendedFileAttributes.h in Headers */,
 				A7D0AA25153C1B160020F18B /* NSDictionary+DTError.h in Headers */,
 				A7D0AA2B153C1FE40020F18B /* NSString+DTURLEncoding.h in Headers */,
-				A7D0AA44153C22B00020F18B /* DTDownload.h in Headers */,
 				A7D0AA4A153C233E0020F18B /* NSString+DTUtilities.h in Headers */,
 				A7D0AA6D153C39920020F18B /* DTUtils.h in Headers */,
-				A7494DFB15418B3100BDDB7D /* DTDownloadCache.h in Headers */,
-				A7494E53154190F500BDDB7D /* DTCachedFile.h in Headers */,
 				A7FE30641548005700F5DC66 /* NSObject+DTRuntime.h in Headers */,
 				A73D5BAB155271FD0024BDB7 /* NSArray+DTError.h in Headers */,
 				A79231CE157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */,
@@ -1215,9 +1192,9 @@
 			productReference = A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		A7E383F0160E002200CF72D6 /* DTDownloadCache */ = {
+		A7E383F0160E002200CF72D6 /* DTDownload */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7E383FA160E002200CF72D6 /* Build configuration list for PBXNativeTarget "DTDownloadCache" */;
+			buildConfigurationList = A7E383FA160E002200CF72D6 /* Build configuration list for PBXNativeTarget "DTDownload" */;
 			buildPhases = (
 				A7E383ED160E002200CF72D6 /* Sources */,
 				A7E383EE160E002200CF72D6 /* Frameworks */,
@@ -1227,7 +1204,7 @@
 			);
 			dependencies = (
 			);
-			name = DTDownloadCache;
+			name = DTDownload;
 			productName = DTDownloadCache;
 			productReference = A7E383F1160E002200CF72D6 /* libDTDownloadCache.a */;
 			productType = "com.apple.product-type.library.static";
@@ -1261,7 +1238,7 @@
 				A7E383C1160DFEDB00CF72D6 /* DTHTMLParser */,
 				3D7CE53D166613B60028D339 /* DTHTMLParser (Mac) */,
 				A7E383D9160DFF8600CF72D6 /* DTZipArchive */,
-				A7E383F0160E002200CF72D6 /* DTDownloadCache */,
+				A7E383F0160E002200CF72D6 /* DTDownload */,
 				A7787A0C16441B1800AF5830 /* DTBonjour */,
 				A78220B9168060CA005B602D /* DTUTI */,
 			);
@@ -1432,10 +1409,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7787A1916441B4500AF5830 /* DTBonjourDataConnection.m in Sources */,
-				A7787A1A16441B4500AF5830 /* DTBonjourServer.m in Sources */,
-				A720255F16551B040079003B /* DTBonjourDataChunk.m in Sources */,
-				A720256316552BDA0079003B /* NSScanner+DTBonjour.m in Sources */,
+				A7239FE816A6A98C0071E902 /* DTBonjourDataChunk.m in Sources */,
+				A7239FE916A6A98C0071E902 /* DTBonjourDataConnection.m in Sources */,
+				A7239FEA16A6A98C0071E902 /* DTBonjourServer.m in Sources */,
+				A7239FEB16A6A98C0071E902 /* NSScanner+DTBonjour.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1492,12 +1469,10 @@
 			files = (
 				A7D60FEC15D3B16900AEDD1B /* DTVersionTest.m in Sources */,
 				A7D60FEF15D3B18A00AEDD1B /* DTHTMLParserTest.m in Sources */,
-				A747797215F78D630026ABA8 /* DTDownload.m in Sources */,
 				FAB17249162FFA6800B44EDC /* NSArrayDTErrorTest.m in Sources */,
 				FAB172AF163027C700B44EDC /* NSDictionaryDTErrorTest.m in Sources */,
 				A70D56A6162FDECF00120A98 /* DTScriptingTest.m in Sources */,
 				355B21770218A1225B772748 /* DTDownloadTest.m in Sources */,
-				355B2E6152541B8F60C8044A /* DTDownloadItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1525,11 +1500,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7E383FD160E004100CF72D6 /* DTDownloadCache.m in Sources */,
-				A7E383FE160E004400CF72D6 /* DTDownload.m in Sources */,
-				A7E383FF160E004600CF72D6 /* DTCachedFile.m in Sources */,
-				355B2A180352DDB2E408C4AC /* DTDownloadQueue.m in Sources */,
-				355B24E930AD6722A4884187 /* DTDownloadItem.m in Sources */,
+				A7239FDB16A6A8F80071E902 /* DTDownload.m in Sources */,
+				A7239FDC16A6A8F80071E902 /* DTDownloadCache.m in Sources */,
+				A7239FDD16A6A8F80071E902 /* DTDownloadItem.m in Sources */,
+				A7239FDE16A6A8F80071E902 /* DTDownloadQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2142,7 +2116,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7E383FA160E002200CF72D6 /* Build configuration list for PBXNativeTarget "DTDownloadCache" */ = {
+		A7E383FA160E002200CF72D6 /* Build configuration list for PBXNativeTarget "DTDownload" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A7E383FB160E002200CF72D6 /* Debug */,
