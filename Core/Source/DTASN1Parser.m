@@ -348,7 +348,7 @@
 			
 		default:
 		{
-			NSString *msg = [NSString stringWithFormat:@"Tag of type %d not implemented", tag];
+			NSString *msg = [NSString stringWithFormat:@"Tag of type %ld not implemented", (unsigned long)tag];
 			[self _parseErrorEncountered:msg];
 			return NO;
 		}
@@ -380,7 +380,7 @@
 		BOOL isContext = tagByte & 128;
 		
 		//NSUInteger tagClass = tagByte >> 6;
-		NSUInteger tagType = tagByte & 31;
+		DTASN1Type tagType = tagByte & 31;
 		BOOL tagConstructed = (tagByte >> 5) & 1;
 		
 		if (tagType == 0x1f)
