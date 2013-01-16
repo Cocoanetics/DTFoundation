@@ -16,7 +16,6 @@
 #import <ImageIO/CGImageSource.h>
 #import "NSString+DTFormatNumbers.h"
 #import "DTAsyncFileDeleter.h"
-#import "DTFoundation.h"
 
 NSString *DTDownloadCacheDidCacheFileNotification = @"DTDownloadCacheDidCacheFile";
 
