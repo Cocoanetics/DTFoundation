@@ -13,9 +13,8 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
 
   spec.subspec 'Core' do |ss|
-    ss.source_files = 'Core/Source/*.{h,m}'
-    ss.ios.source_files = 'Core/Source/iOS/*.{h,m}'
-    ss.osx.source_files = 'Core/Source/OSX/*.{h,m}'
+    ss.ios.source_files = 'Core/Source/*.{h,m}', 'Core/Source/iOS/*.{h,m}'
+    ss.osx.source_files = 'Core/Source/*.{h,m}', 'Core/Source/OSX/*.{h,m}'
   end
 
   spec.subspec 'DTHMLParser' do |ss|
