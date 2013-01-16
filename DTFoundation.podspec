@@ -35,8 +35,10 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'DTDownload' do |ss|
+    ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTDownload/*.{h,m}'
     ss.frameworks = ['CoreData']
+    ss.platform = :ios
   end
 
   spec.subspec 'DTBonjour' do |ss|
