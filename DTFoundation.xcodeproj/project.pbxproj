@@ -65,6 +65,7 @@
 		A7239FF216A6BEE50071E902 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A7239FEF16A6BEE50071E902 /* DTAsyncFileDeleter.h */; };
 		A7239FF316A6BEE50071E902 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FF016A6BEE50071E902 /* DTAsyncFileDeleter.m */; };
 		A7239FF416A6BEE50071E902 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7239FF016A6BEE50071E902 /* DTAsyncFileDeleter.m */; };
+		A7239FF516A6C1BC0071E902 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */; };
 		A73B6F8B163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
 		A73B6F8C163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
 		A73B6F8D163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
@@ -1402,6 +1403,7 @@
 				A76DB4F316A5E5590010CD85 /* NSValue+DTConversion.m in Sources */,
 				A76DB4F516A5E5590010CD85 /* NSView+DTAutoLayout.m in Sources */,
 				A76DB4F716A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m in Sources */,
+				A7239FF516A6C1BC0071E902 /* DTASN1Parser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
