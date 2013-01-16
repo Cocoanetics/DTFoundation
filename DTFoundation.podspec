@@ -18,11 +18,10 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'DTHMLParser' do |ss|
+    ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTHTMLParser/*.{h,m}'
     ss.library = 'xml2'
     ss.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
-
-    ss.dependency 'DTFoundation/Core'
   end
 
   spec.subspec 'DTZipArchive' do |ss|
@@ -35,18 +34,17 @@ Pod::Spec.new do |spec|
     end
   end
 
-  spec.subspec 'DTDownloadChache' do |ss|
-    ss.platform = :ios
-    ss.source_files = 'DTDownloadChache/DTHMLParser/*.{h,m}'
+  spec.subspec 'DTDownload' do |ss|
+    ss.source_files = 'Core/Source/DTDownload/*.{h,m}'
     ss.frameworks = ['CoreData']
   end
 
   spec.subspec 'DTBonjour' do |ss|
-    ss.platform = :ios
-    ss.source_files = 'DTBonjour/DTHMLParser/*.{h,m}'
+    ss.source_files = 'Core/Source/DTBonjour/*.{h,m}'
   end
 
   spec.subspec 'DTUTI' do |ss|
+    ss.ios.frameworks = ['MobileCoreServices']
     ss.source_files = 'Core/Source/DTUTI/*.{h,m}'
   end
 end
