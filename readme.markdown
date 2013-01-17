@@ -28,8 +28,6 @@ Other classes simplify working with specialized data
 - DTActionSheet - block-based additions for UIActionSheet
 - DTASN1Parser - a parser for ASN.1-encoded data (eg. Certificates)
 - DTAsyncFileDeleter - asynchronous non-blocking file/folder deletion
-- DTBonjour - communicating over WiFi and Bonjour
-- DTDownload - asynchronous file download with optional resume, download queuing and caching
 - DTExtendedFileAttributes - access and modify extended file attributes
 - DTHTMLParser - a libxml2-based HTML parser
 - DTPieProgressIndicator - pie-shaped progress indicator
