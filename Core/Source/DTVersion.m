@@ -53,7 +53,7 @@
 																																					 error:&error];
 
 	NSTextCheckingResult *match = [regex firstMatchInString:versionString
-	                                                options:NSRegularExpressionCaseInsensitive
+	                                                options:0
 	                                                  range:NSMakeRange(0, [versionString length])];
 	
 	if (!match)
