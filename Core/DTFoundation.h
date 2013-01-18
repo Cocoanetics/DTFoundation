@@ -16,16 +16,15 @@
 
 // Classes
 #import "DTASN1Parser.h"
-#import "DTAsyncFileDeleter.h"
-#import "DTDownload.h"
 #import "DTExtendedFileAttributes.h"
 #import "DTHTMLParser.h"
 #import "DTVersion.h"
 #import "DTZipArchive.h"
 
 #if TARGET_OS_IPHONE
-	#import "DTPieProgressIndicator.h"
 	#import "DTActionSheet.h"
+    #import "DTAsyncFileDeleter.h"
+    #import "DTPieProgressIndicator.h"
 #endif
 
 // Categories
