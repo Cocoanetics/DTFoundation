@@ -214,6 +214,8 @@
 		A7E38407160E03A600CF72D6 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41014E825FC00F34B03 /* mztools.c */; };
 		A7E38408160E03A600CF72D6 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41214E825FC00F34B03 /* unzip.c */; };
 		A7E38409160E03A600CF72D6 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41414E825FC00F34B03 /* zip.c */; };
+		A7E889A616A9B190009EF0DF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E889A516A9B190009EF0DF /* Cocoa.framework */; };
+		A7E889B416A9B1C4009EF0DF /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */; };
 		A7FAA3891652291D006ED151 /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; };
 		A7FAA38A1652291D006ED151 /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; };
 		A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
@@ -412,6 +414,11 @@
 		A7D8628014EBF65C001436AF /* NSString+DTPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTPaths.m"; sourceTree = "<group>"; };
 		A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTZipArchive.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7E889A416A9B190009EF0DF /* libDTUTI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTUTI.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7E889A516A9B190009EF0DF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		A7E889A816A9B190009EF0DF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		A7E889A916A9B190009EF0DF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A7E889AA16A9B190009EF0DF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A7F4DFF8147FD08900F4059A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTComparing.h"; sourceTree = "<group>"; };
@@ -501,6 +508,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7E383DB160DFF8600CF72D6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7E889A116A9B190009EF0DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7E889A616A9B190009EF0DF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +685,8 @@
 				FAB1725D163004FF00B44EDC /* QuartzCore.framework */,
 				A7D60FD015D3B0BC00AEDD1B /* SenTestingKit.framework */,
 				A7F4DFF8147FD08900F4059A /* UIKit.framework */,
+				A7E889A516A9B190009EF0DF /* Cocoa.framework */,
+				A7E889A716A9B190009EF0DF /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -769,6 +786,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		A7E889A716A9B190009EF0DF /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7E889A816A9B190009EF0DF /* AppKit.framework */,
+				A7E889A916A9B190009EF0DF /* CoreData.framework */,
+				A7E889AA16A9B190009EF0DF /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
 		A7F4DF98147FB61500F4059A = {
 			isa = PBXGroup;
 			children = (
@@ -791,6 +818,7 @@
 				A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */,
 				3D7CE547166613B60028D339 /* libDTHTMLParser.a */,
 				A78220BA168060CA005B602D /* libDTUTI.a */,
+				A7E889A416A9B190009EF0DF /* libDTUTI.a */,
 			);
 			name = Products;
 			path = ../..;
@@ -914,6 +942,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A7E889A216A9B190009EF0DF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -968,9 +1003,9 @@
 			productReference = A710A5001607556000437D36 /* libDTFoundation_Mac.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		A78220B9168060CA005B602D /* DTUTI */ = {
+		A78220B9168060CA005B602D /* DTUTI (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A78220C5168060CA005B602D /* Build configuration list for PBXNativeTarget "DTUTI" */;
+			buildConfigurationList = A78220C5168060CA005B602D /* Build configuration list for PBXNativeTarget "DTUTI (iOS)" */;
 			buildPhases = (
 				A78220B6168060CA005B602D /* Sources */,
 				A78220B7168060CA005B602D /* Frameworks */,
@@ -980,7 +1015,7 @@
 			);
 			dependencies = (
 			);
-			name = DTUTI;
+			name = "DTUTI (iOS)";
 			productName = DTUTI;
 			productReference = A78220BA168060CA005B602D /* libDTUTI.a */;
 			productType = "com.apple.product-type.library.static";
@@ -1059,6 +1094,23 @@
 			productReference = A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		A7E889A316A9B190009EF0DF /* DTUTI (Mac) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7E889B116A9B190009EF0DF /* Build configuration list for PBXNativeTarget "DTUTI (Mac)" */;
+			buildPhases = (
+				A7E889A016A9B190009EF0DF /* Sources */,
+				A7E889A116A9B190009EF0DF /* Frameworks */,
+				A7E889A216A9B190009EF0DF /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DTUTI (Mac)";
+			productName = DTUTI;
+			productReference = A7E889A416A9B190009EF0DF /* libDTUTI.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1088,7 +1140,8 @@
 				A7E383C1160DFEDB00CF72D6 /* DTHTMLParser */,
 				3D7CE53D166613B60028D339 /* DTHTMLParser (Mac) */,
 				A7E383D9160DFF8600CF72D6 /* DTZipArchive */,
-				A78220B9168060CA005B602D /* DTUTI */,
+				A78220B9168060CA005B602D /* DTUTI (iOS) */,
+				A7E889A316A9B190009EF0DF /* DTUTI (Mac) */,
 			);
 		};
 /* End PBXProject section */
@@ -1329,6 +1382,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A7E889A016A9B190009EF0DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7E889B416A9B1C4009EF0DF /* NSString+DTUTI.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1471,11 +1532,6 @@
 		A78220C3168060CA005B602D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-					"$(ARCHS_STANDARD_64_BIT)",
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1486,20 +1542,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DTUTI;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 			};
 			name = Debug;
 		};
 		A78220C4168060CA005B602D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-					"$(ARCHS_STANDARD_64_BIT)",
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1509,9 +1559,8 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DTUTI;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 			};
 			name = Release;
 		};
@@ -1695,6 +1744,52 @@
 			};
 			name = Release;
 		};
+		A7E889B216A9B190009EF0DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode46-DP4.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = DTUTI;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A7E889B316A9B190009EF0DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode46-DP4.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = DTUTI;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		A7F4DFB0147FB61500F4059A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1809,7 +1904,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A78220C5168060CA005B602D /* Build configuration list for PBXNativeTarget "DTUTI" */ = {
+		A78220C5168060CA005B602D /* Build configuration list for PBXNativeTarget "DTUTI (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A78220C3168060CA005B602D /* Debug */,
@@ -1853,6 +1948,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A7E889B116A9B190009EF0DF /* Build configuration list for PBXNativeTarget "DTUTI (Mac)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7E889B216A9B190009EF0DF /* Debug */,
+				A7E889B316A9B190009EF0DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		A7F4DF9D147FB61500F4059A /* Build configuration list for PBXProject "DTFoundation" */ = {
 			isa = XCConfigurationList;
