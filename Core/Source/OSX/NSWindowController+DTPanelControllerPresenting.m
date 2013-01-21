@@ -39,10 +39,12 @@ static char DTPresentedViewControllerKey;
 		return;
 	}
 
-	// slide out
-	[NSApp endSheet:windowController.window];
-	[windowController.window close];
-	
+    // force it onto next run loop to prevent sendAction exception
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [NSApp endSheet:windowController.window];
+        [windowController.window close];
+    });
+
 	// free the panel view controller
 	objc_setAssociatedObject(self, &DTPresentedViewControllerKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
