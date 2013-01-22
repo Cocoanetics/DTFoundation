@@ -13,7 +13,7 @@
 - (void)addLayoutConstraintWithWidthGreaterOrEqualThan:(CGFloat)width
 {
 	NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:width];
-    constraint.priority = NSLayoutPriorityDragThatCannotResizeWindow;
+    constraint.priority = NSLayoutPriorityDragThatCanResizeWindow;
 	[self addConstraint:constraint];
 }
 
