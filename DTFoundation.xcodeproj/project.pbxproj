@@ -224,8 +224,21 @@
 		A7FE30651548005700F5DC66 /* NSObject+DTRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FE30631548005700F5DC66 /* NSObject+DTRuntime.h */; };
 		A7FE30681548009A00F5DC66 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */; };
 		A7FE30691548009A00F5DC66 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */; };
+		C0494033163C863A470098D8 /* DTZipArchiveNode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494CD06FFAB6AEAC8ADAD4 /* DTZipArchiveNode.h */; };
+		C04941BC829C1022DF240F4C /* DTZipArchiveNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */; };
+		C049420F39CD4294FCE0F549 /* DTZipArchiveGZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C04943358446F1A9BA86F458 /* DTZipArchiveGZip.h */; };
+		C0494290FB896194C0CCF183 /* DTZipArchiveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */; };
+		C0494413BF6B7DE719726BB7 /* gzip_sample.txt.gz in Resources */ = {isa = PBXBuildFile; fileRef = C0494136CFE5018E95613EA7 /* gzip_sample.txt.gz */; };
+		C04944C8AB4B5D3AAA0C33F6 /* CompanyStore-February-2013.zip in Resources */ = {isa = PBXBuildFile; fileRef = C0494B718B57533FAB432319 /* CompanyStore-February-2013.zip */; };
+		C04946681218C94801D2AB78 /* DTZipArchivePKZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */; };
+		C04947611C8CC4CC53CCCCC7 /* sample.zip in Resources */ = {isa = PBXBuildFile; fileRef = C0494767B5C59AFA489E561D /* sample.zip */; };
+		C04948B5DABE59E8CC2340AF /* DTZipArchiveGZip.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494E1FBE9D6D4FB042F2A3 /* DTZipArchiveGZip.m */; };
+		C0494D3AF5B2B0774E6136BF /* gzip_sample.txt.original in Resources */ = {isa = PBXBuildFile; fileRef = C04942C8BD89694FA3602A10 /* gzip_sample.txt.original */; };
+		C0494DA5BB16F9A0E8533152 /* DTZipArchivePKZip.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494776E02407791E96C641 /* DTZipArchivePKZip.m */; };
 		E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA2A29291609F7330023CDD7 /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
+		FAA6841C16AD4E350092FD00 /* libDTZipArchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */; };
+		FAA6842116AD50760092FD00 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA6842016AD50760092FD00 /* libz.1.1.3.dylib */; };
 		FAB17249162FFA6800B44EDC /* NSArrayDTErrorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB17248162FFA6800B44EDC /* NSArrayDTErrorTest.m */; };
 		FAB1724C162FFC5200B44EDC /* DictionarySample.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB1724B162FFC5200B44EDC /* DictionarySample.plist */; };
 		FAB1724D162FFF5300B44EDC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C619EF162D8D84002C0C1A /* MobileCoreServices.framework */; };
@@ -250,6 +263,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A7E383C1160DFEDB00CF72D6;
 			remoteInfo = DTHTMLParser;
+		};
+		FAA6841916AD4E300092FD00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7E383D9160DFF8600CF72D6;
+			remoteInfo = DTZipArchive;
 		};
 		FAB17254163003F500B44EDC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -294,6 +314,9 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				C0494033163C863A470098D8 /* DTZipArchiveNode.h in CopyFiles */,
+				C04946681218C94801D2AB78 /* DTZipArchivePKZip.h in CopyFiles */,
+				C049420F39CD4294FCE0F549 /* DTZipArchiveGZip.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +448,19 @@
 		A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTComparing.m"; sourceTree = "<group>"; };
 		A7FE30631548005700F5DC66 /* NSObject+DTRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DTRuntime.h"; sourceTree = "<group>"; };
 		A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DTRuntime.m"; sourceTree = "<group>"; };
+		C0494136CFE5018E95613EA7 /* gzip_sample.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = gzip_sample.txt.gz; sourceTree = "<group>"; };
+		C04942C8BD89694FA3602A10 /* gzip_sample.txt.original */ = {isa = PBXFileReference; lastKnownFileType = file.original; path = gzip_sample.txt.original; sourceTree = "<group>"; };
+		C04943358446F1A9BA86F458 /* DTZipArchiveGZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchiveGZip.h; sourceTree = "<group>"; };
+		C0494767B5C59AFA489E561D /* sample.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sample.zip; sourceTree = "<group>"; };
+		C0494776E02407791E96C641 /* DTZipArchivePKZip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchivePKZip.m; sourceTree = "<group>"; };
+		C04947C63C389A913634F6A8 /* DTZipArchiveTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchiveTest.h; sourceTree = "<group>"; };
+		C0494B718B57533FAB432319 /* CompanyStore-February-2013.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "CompanyStore-February-2013.zip"; sourceTree = "<group>"; };
+		C0494CD06FFAB6AEAC8ADAD4 /* DTZipArchiveNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchiveNode.h; sourceTree = "<group>"; };
+		C0494E1FBE9D6D4FB042F2A3 /* DTZipArchiveGZip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveGZip.m; sourceTree = "<group>"; };
+		C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveTest.m; sourceTree = "<group>"; };
+		C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchivePKZip.h; sourceTree = "<group>"; };
+		C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveNode.m; sourceTree = "<group>"; };
+		FAA6842016AD50760092FD00 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		FAB17247162FFA6800B44EDC /* NSArrayDTErrorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayDTErrorTest.h; sourceTree = "<group>"; };
 		FAB17248162FFA6800B44EDC /* NSArrayDTErrorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayDTErrorTest.m; sourceTree = "<group>"; };
 		FAB1724B162FFC5200B44EDC /* DictionarySample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DictionarySample.plist; sourceTree = "<group>"; };
@@ -481,6 +517,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA6842116AD50760092FD00 /* libz.1.1.3.dylib in Frameworks */,
+				FAA6841C16AD4E350092FD00 /* libDTZipArchive.a in Frameworks */,
 				A7239FFD16A6CF0B0071E902 /* CoreData.framework in Frameworks */,
 				A7239FFB16A6CEEF0071E902 /* libDTHTMLParser.a in Frameworks */,
 				FAB172B816302FC700B44EDC /* UIKit.framework in Frameworks */,
@@ -637,6 +675,12 @@
 			children = (
 				A76DB4BD16A5E4770010CD85 /* DTZipArchive.h */,
 				A76DB4BE16A5E4770010CD85 /* DTZipArchive.m */,
+				C0494CD06FFAB6AEAC8ADAD4 /* DTZipArchiveNode.h */,
+				C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */,
+				C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */,
+				C0494776E02407791E96C641 /* DTZipArchivePKZip.m */,
+				C04943358446F1A9BA86F458 /* DTZipArchiveGZip.h */,
+				C0494E1FBE9D6D4FB042F2A3 /* DTZipArchiveGZip.m */,
 			);
 			path = DTZipArchive;
 			sourceTree = "<group>";
@@ -678,6 +722,7 @@
 			isa = PBXGroup;
 			children = (
 				A7D60FF715D3B28B00AEDD1B /* libxml2.dylib */,
+				FAA6842016AD50760092FD00 /* libz.1.1.3.dylib */,
 				A7239FFC16A6CF0B0071E902 /* CoreData.framework */,
 				FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */,
 				A7F4DFFA147FD08F00F4059A /* Foundation.framework */,
@@ -771,6 +816,8 @@
 				FAB17248162FFA6800B44EDC /* NSArrayDTErrorTest.m */,
 				FAB172AD163027C700B44EDC /* NSDictionaryDTErrorTest.h */,
 				FAB172AE163027C700B44EDC /* NSDictionaryDTErrorTest.m */,
+				C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */,
+				C04947C63C389A913634F6A8 /* DTZipArchiveTest.h */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -782,6 +829,10 @@
 				A7D60FF315D3B1FB00AEDD1B /* processing_instruction.html */,
 				FAB172AB163024E200B44EDC /* ArraySample.plist */,
 				FAB1724B162FFC5200B44EDC /* DictionarySample.plist */,
+				C0494767B5C59AFA489E561D /* sample.zip */,
+				C0494B718B57533FAB432319 /* CompanyStore-February-2013.zip */,
+				C0494136CFE5018E95613EA7 /* gzip_sample.txt.gz */,
+				C04942C8BD89694FA3602A10 /* gzip_sample.txt.original */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1052,6 +1103,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FAA6841A16AD4E300092FD00 /* PBXTargetDependency */,
 				A7239FF916A6CEDD0071E902 /* PBXTargetDependency */,
 				FAB17255163003F500B44EDC /* PBXTargetDependency */,
 			);
@@ -1164,6 +1216,10 @@
 				A7D60FF515D3B1FB00AEDD1B /* processing_instruction.html in Resources */,
 				FAB1724C162FFC5200B44EDC /* DictionarySample.plist in Resources */,
 				FAB172AC163024E200B44EDC /* ArraySample.plist in Resources */,
+				C04947611C8CC4CC53CCCCC7 /* sample.zip in Resources */,
+				C04944C8AB4B5D3AAA0C33F6 /* CompanyStore-February-2013.zip in Resources */,
+				C0494413BF6B7DE719726BB7 /* gzip_sample.txt.gz in Resources */,
+				C0494D3AF5B2B0774E6136BF /* gzip_sample.txt.original in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1359,6 +1415,7 @@
 				FAB17249162FFA6800B44EDC /* NSArrayDTErrorTest.m in Sources */,
 				FAB172AF163027C700B44EDC /* NSDictionaryDTErrorTest.m in Sources */,
 				A70D56A6162FDECF00120A98 /* DTScriptingTest.m in Sources */,
+				C0494290FB896194C0CCF183 /* DTZipArchiveTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1379,6 +1436,9 @@
 				A7E38408160E03A600CF72D6 /* unzip.c in Sources */,
 				A7E38409160E03A600CF72D6 /* zip.c in Sources */,
 				A76DB4BF16A5E4770010CD85 /* DTZipArchive.m in Sources */,
+				C04941BC829C1022DF240F4C /* DTZipArchiveNode.m in Sources */,
+				C0494DA5BB16F9A0E8533152 /* DTZipArchivePKZip.m in Sources */,
+				C04948B5DABE59E8CC2340AF /* DTZipArchiveGZip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1397,6 +1457,11 @@
 			isa = PBXTargetDependency;
 			target = A7E383C1160DFEDB00CF72D6 /* DTHTMLParser */;
 			targetProxy = A7239FF816A6CEDD0071E902 /* PBXContainerItemProxy */;
+		};
+		FAA6841A16AD4E300092FD00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7E383D9160DFF8600CF72D6 /* DTZipArchive */;
+			targetProxy = FAA6841916AD4E300092FD00 /* PBXContainerItemProxy */;
 		};
 		FAB17255163003F500B44EDC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1640,7 +1705,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = UnitTests;
-				TEST_AFTER_BUILD = YES;
+				TEST_AFTER_BUILD = NO;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1956,6 +2021,7 @@
 				A7E889B316A9B190009EF0DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A7F4DF9D147FB61500F4059A /* Build configuration list for PBXProject "DTFoundation" */ = {
 			isa = XCConfigurationList;
