@@ -52,21 +52,33 @@
             case 4:
             {
                 STAssertTrue([fileName isEqualToString:@"zipFiles/text/Andere/Franz.txt"], @"node uncompressed is not as expected");
+                NSString *originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Franz.txt"];
+                [self _compareOriginalFile:originalFilePath withUncompressedFileData:data uncompressedFileName:fileName];
+                
                 break;
             }
             case 5:
             {
                 STAssertTrue([fileName isEqualToString:@"zipFiles/text/Oliver.txt"], @"node uncompressed is not as expected");
+                NSString *originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Oliver.txt"];
+                [self _compareOriginalFile:originalFilePath withUncompressedFileData:data uncompressedFileName:fileName];
+                
                 break;
             }
             case 6:
             {
                 STAssertTrue([fileName isEqualToString:@"zipFiles/text/Rene"], @"node uncompressed is not as expected");
+                NSString *originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Rene"];
+                [self _compareOriginalFile:originalFilePath withUncompressedFileData:data uncompressedFileName:fileName];
+                
                 break;
             }
             case 7:
             {
                 STAssertTrue([fileName isEqualToString:@"zipFiles/text/Stefan.txt"], @"node uncompressed is not as expected");
+                NSString *originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Stefan.txt"];
+                [self _compareOriginalFile:originalFilePath withUncompressedFileData:data uncompressedFileName:fileName];
+                
                 break;
             }
             case 8:
@@ -148,39 +160,64 @@
         NSFileManager *fileManager = [NSFileManager defaultManager];
 
 
-        NSString *filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
+        NSString *unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
 
-        filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/plist/"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
+        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/plist/"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
 
-        filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
+        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
 
-        filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Andere/"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
+        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Andere/"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
 
-        filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Andere/Franz.txt"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
+        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Andere/Franz.txt"];
+        NSString *originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Franz.txt"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+        [self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
 
-        filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Oliver.txt"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
+        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Oliver.txt"];
+        originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Oliver.txt"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+        [self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
 
-        filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Rene"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected");
+        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Rene"];
+        originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Rene"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected");
+        [self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
 
-        filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Stefan.txt"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
+        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Stefan.txt"];
+        originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Stefan.txt"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+        [self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
 
-        filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/test/"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
+        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/test/"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
 
-        filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/UnitTests-Info.plist"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
+        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/UnitTests-Info.plist"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
 
-        filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/UnitTests-Prefix.pch"];
-        STAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
+        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/UnitTests-Prefix.pch"];
+        STAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+
     }];
+}
+
+
+- (void)_compareOriginalFile:(NSString *)originalFilePath withUncompressedFileData:(NSData *)uncompressedFileData uncompressedFileName:(NSString *)uncompressedFileName
+{
+    NSData *originalFileData = [NSData dataWithContentsOfFile:originalFilePath];
+    
+    STAssertTrue([originalFileData isEqualToData:uncompressedFileData], @"Uncompressed file: %@ does not match original file: %@", uncompressedFileName, originalFilePath);
+}
+
+- (void)_compareOriginalFile:(NSString *)originalFilePath withUncompressedFile:(NSString *)uncompressedFilePath
+{
+    NSData *originalFileData = [NSData dataWithContentsOfFile:originalFilePath];
+    NSData *uncompressedFileData = [NSData dataWithContentsOfFile:uncompressedFilePath];
+
+    STAssertTrue([originalFileData isEqualToData:uncompressedFileData], @"Uncompressed file: %@ does not match original file: %@", uncompressedFilePath, originalFilePath);
 }
 
 /**

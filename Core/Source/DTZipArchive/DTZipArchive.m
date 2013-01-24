@@ -56,7 +56,7 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 
 @end
 
-@implementation DTZipArchive(Uncompress)
+@implementation DTZipArchive(Uncompressing)
 
 /**
  Abstract method -> should be never called here directly
