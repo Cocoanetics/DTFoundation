@@ -131,7 +131,7 @@
         if (completion)
         {
             NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Invalid target path"};
-            error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:5 userInfo:userInfo];
+            error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:1 userInfo:userInfo];
 
             completion(error);
         }
@@ -182,7 +182,7 @@
             if (completion)
             {
                 NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to go to first file in zip archive"};
-                error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:6 userInfo:userInfo];
+                error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:3 userInfo:userInfo];
             }
 
             return;
@@ -202,7 +202,7 @@
             if (![fileManager createFileAtPath:filePath contents:nil attributes:nil])
             {
                 NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unzip file cannot be created"};
-                error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
+                error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:2 userInfo:userInfo];
 
                 return;
             }
