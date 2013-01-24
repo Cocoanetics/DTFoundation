@@ -54,6 +54,10 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
     [NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
 }
 
+#pragma mark - Properties
+
+@synthesize path;
+
 @end
 
 @implementation DTZipArchive(Uncompressing)
