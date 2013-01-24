@@ -201,41 +201,37 @@
  */
 - (void)uncompressToPath:(NSString *)targetPath completion:(DTZipArchiveUncompressionCompletionBlock)completion
 {
-
+    
     __block NSError *error = nil;
-
+    
     BOOL isDirectory = NO;
     if (![[NSFileManager defaultManager] fileExistsAtPath:targetPath isDirectory:&isDirectory] || !isDirectory)
     {
         if (completion)
         {
-
+            
             NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Invalid target path"};
             error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:1 userInfo:userInfo];
-
+            
             completion(error);
         }
-
+        
         return;
     }
-
+    
     __block long long numberOfFilesUncompressed = 0;
     __block long long numberOfItemsUncompressed = 0;
     __block long long sizeUncompressed = 0;
-
+    
     // creating queue and group for uncompression
     dispatch_queue_t uncompressingQueue = dispatch_queue_create("DTZipArchiveUncompressionQueue", 0);
     dispatch_group_t uncompressingGroup = dispatch_group_create();
-
-    // creating queue and group for file writing (files and directories)
-    dispatch_queue_t fileWriteQueue = dispatch_queue_create("DTZipArchiveFileQueue", 0);
-    dispatch_group_t fileWriteGroup = dispatch_group_create();
-
+    
     dispatch_group_async(uncompressingGroup, uncompressingQueue, ^{
-
+        
         // open the file for unzipping
         unzFile _unzFile = unzOpen((const char *) [path UTF8String]);
-
+        
         // return if failed
         if (!_unzFile)
         {
@@ -243,51 +239,51 @@
             {
                 [self _createError:@"Unable to open file for unzipping" withCode:4 andFireCompletion:completion];
             }
-
+            
             return;
         }
-
+        
         if (unzGoToFirstFile(_unzFile) != UNZ_OK)
         {
-
+            
             if (completion)
             {
                 [self _createError:@"Unable to go to first file in zip archive" withCode:3 andFireCompletion:completion];
             }
-
+            
             return;
         }
-
+        
         NSFileManager *fileManager = [[NSFileManager alloc] init];
-
+        
         // iterate through all files
         for (DTZipArchiveNode *node in _nodes)
         {
-
+            
             if (unzOpenCurrentFile(_unzFile) != UNZ_OK)
             {
-
+                
                 NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to open zip file"};
                 error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:5 userInfo:userInfo];
-
+                
                 return;
             }
-
+            
             // increase size of all files (uncompressed) -> to calculate progress
             sizeUncompressed += node.fileSize;
             float sizeInPercentUncompressed = (float) sizeUncompressed / _totalSize;
-
+            
             // increase number of files -> to calculate progress
             numberOfItemsUncompressed++;
             float itemsInPercentUncompressed = (float) numberOfItemsUncompressed / _totalNumberOfItems;
-
+            
             // percent are calculated like in finder
             // we always use the highest percent value (from size or items)
             float percent = MAX(sizeInPercentUncompressed, itemsInPercentUncompressed);
-
+            
             // append uncompress blocks to file
             __block NSString *filePath = [targetPath stringByAppendingPathComponent:node.name];
-
+            
             if (node.isDirectory)
             {
                 if (![fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:&error])
@@ -300,81 +296,70 @@
                 // For files
                 // increase number of files -> to calculate progress
                 numberOfFilesUncompressed++;
-
-                unsigned char buffer[BUFFER_SIZE] = {0};
-
+                
+                // create file handle
+                NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+                NSFileHandle *_destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:&error];
+                if(!_destinationFileHandle)
+                {
+                    // if we have no file create it first
+                    if (![fileManager createFileAtPath:filePath contents:nil attributes:nil])
+                    {
+                        NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unzip file cannot be created"};
+                        error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:2 userInfo:userInfo];
+                        
+                        return;
+                    }
+                    
+                    _destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:&error];
+                    if (!_destinationFileHandle)
+                    {
+                        return;
+                    }
+                }
+                
                 int readBytes;
+                unsigned char buffer[BUFFER_SIZE] = {0};
                 while ((readBytes = unzReadCurrentFile(_unzFile, buffer, BUFFER_SIZE)) > 0)
                 {
-                    __block NSData *fileData = [[NSData alloc] initWithBytes:buffer length:(uint) readBytes];
-
-                    dispatch_group_async(fileWriteGroup, fileWriteQueue, ^{
-
-                        NSURL *fileURL = [NSURL fileURLWithPath:filePath];
-
-                        // create file handle
-                        NSFileHandle *_destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:&error];
-                        if(!_destinationFileHandle)
-                        {
-                            // if we have no file create it first
-                            if (![fileManager createFileAtPath:filePath contents:nil attributes:nil])
-                            {
-                                NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unzip file cannot be created"};
-                                error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:2 userInfo:userInfo];
-
-                                return;
-                            }
-
-                            _destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:&error];
-                            if (!_destinationFileHandle)
-                            {
-                                return;
-                            }
-                        }
-
-                        if ([fileData length])
-                        {
-                            // append data to the file handle
-                            [_destinationFileHandle writeData:fileData];
-                        }
-
-                        [_destinationFileHandle closeFile];
-                    });
-
+                    NSData *fileData = [[NSData alloc] initWithBytes:buffer length:(uint) readBytes];
+                    
+                    if ([fileData length])
+                    {
+                        // append data to the file handle
+                        [_destinationFileHandle writeData:fileData];
+                    }  
                 }
-
+                
+                [_destinationFileHandle closeFile];
+                
+                // create progress notification
                 NSDictionary *userInfo = @{@"ProgressPercent" : [NSNumber numberWithFloat:percent],
-                        @"TotalNumberOfItems" : [NSNumber numberWithLongLong:_totalNumberOfItems],
-                        @"NumberOfItemsUncompressed" : [NSNumber numberWithLongLong:numberOfItemsUncompressed],
-                        @"TotalNumberOfFiles" : [NSNumber numberWithLongLong:_totalNumberOfFiles],
-                        @"NumberOfFilesUncompressed" : [NSNumber numberWithLongLong:numberOfFilesUncompressed],
-                        @"TotalSize" : [NSNumber numberWithLongLong:_totalSize],
-                        @"SizeUncompressed" : [NSNumber numberWithLongLong:sizeUncompressed],
-                        @"SourcePath": path,
-                        @"TargetPath" : filePath};
-
-
+                @"TotalNumberOfItems" : [NSNumber numberWithLongLong:_totalNumberOfItems],
+                @"NumberOfItemsUncompressed" : [NSNumber numberWithLongLong:numberOfItemsUncompressed],
+                @"TotalNumberOfFiles" : [NSNumber numberWithLongLong:_totalNumberOfFiles],
+                @"NumberOfFilesUncompressed" : [NSNumber numberWithLongLong:numberOfFilesUncompressed],
+                @"TotalSize" : [NSNumber numberWithLongLong:_totalSize],
+                @"SizeUncompressed" : [NSNumber numberWithLongLong:sizeUncompressed]};
+                
                 [[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
-
+                
             }
-
+            
             unzCloseCurrentFile(_unzFile);
-
+            
             unzGoToNextFile(_unzFile);
         }
     });
-
+    
     // wait for completion of uncompression and writing all files in Zip
     dispatch_group_wait(uncompressingGroup, DISPATCH_TIME_FOREVER);
-    dispatch_group_wait(fileWriteGroup, DISPATCH_TIME_FOREVER);
-
+    
 #if !OS_OBJECT_USING_OBJC
     dispatch_release(uncompressingQueue);
     dispatch_release(uncompressingGroup);
-    dispatch_release(fileWriteQueue);
-    dispatch_release(fileWriteGroup);
 #endif
-
+    
     if (completion)
     {
         completion(nil);

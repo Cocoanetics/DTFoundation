@@ -51,6 +51,8 @@ extern NSString * const DTZipArchiveErrorDomain;
     NSString *path;
 }
 
+@property (nonatomic, strong) NSString *path;
+
 /**-------------------------------------------------------------------------------------
  @name Creating A Zip Archive
  ---------------------------------------------------------------------------------------

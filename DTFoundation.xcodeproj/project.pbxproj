@@ -243,6 +243,7 @@
 		FA2A29291609F7330023CDD7 /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
 		FAA6841C16AD4E350092FD00 /* libDTZipArchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */; };
 		FAA6842116AD50760092FD00 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA6842016AD50760092FD00 /* libz.1.1.3.dylib */; };
+		FAAC041416B1421F00EB1C7F /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAC041316B1421F00EB1C7F /* screenshot.png */; };
 		FAB17249162FFA6800B44EDC /* NSArrayDTErrorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB17248162FFA6800B44EDC /* NSArrayDTErrorTest.m */; };
 		FAB1724C162FFC5200B44EDC /* DictionarySample.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB1724B162FFC5200B44EDC /* DictionarySample.plist */; };
 		FAB1724D162FFF5300B44EDC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7C619EF162D8D84002C0C1A /* MobileCoreServices.framework */; };
@@ -462,7 +463,6 @@
 		C04947C63C389A913634F6A8 /* DTZipArchiveTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchiveTest.h; sourceTree = "<group>"; };
 		C0494AE4697BA3400CC67BB8 /* Stefan.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stefan.txt; sourceTree = "<group>"; };
 		C0494CD06FFAB6AEAC8ADAD4 /* DTZipArchiveNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchiveNode.h; sourceTree = "<group>"; };
-		C0494CD45D04C78CC62BDEA0 /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		C0494D374C86170585303054 /* Rene */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Rene; sourceTree = "<group>"; };
 		C0494DD0964249B5EA38129F /* Franz.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Franz.txt; sourceTree = "<group>"; };
 		C0494E1FBE9D6D4FB042F2A3 /* DTZipArchiveGZip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveGZip.m; sourceTree = "<group>"; };
@@ -470,6 +470,7 @@
 		C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchivePKZip.h; sourceTree = "<group>"; };
 		C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveNode.m; sourceTree = "<group>"; };
 		FAA6842016AD50760092FD00 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		FAAC041316B1421F00EB1C7F /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screenshot.png; path = Test/Resources/screenshot.png; sourceTree = SOURCE_ROOT; };
 		FAB17247162FFA6800B44EDC /* NSArrayDTErrorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayDTErrorTest.h; sourceTree = "<group>"; };
 		FAB17248162FFA6800B44EDC /* NSArrayDTErrorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayDTErrorTest.m; sourceTree = "<group>"; };
 		FAB1724B162FFC5200B44EDC /* DictionarySample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DictionarySample.plist; sourceTree = "<group>"; };
@@ -887,12 +888,12 @@
 		C04949EA663FC46EA5E3F0B6 /* zipContent */ = {
 			isa = PBXGroup;
 			children = (
+				FAAC041316B1421F00EB1C7F /* screenshot.png */,
 				C0494DD0964249B5EA38129F /* Franz.txt */,
 				C04946D87B7849C348B77475 /* Oliver.txt */,
 				C0494D374C86170585303054 /* Rene */,
 				C0494AE4697BA3400CC67BB8 /* Stefan.txt */,
 				C04945A5A98C7DDBA43FB17E /* UnitTests-Info.plist */,
-				C0494CD45D04C78CC62BDEA0 /* UnitTests-Prefix.pch */,
 			);
 			path = zipContent;
 			sourceTree = "<group>";
@@ -1246,6 +1247,7 @@
 				C0494E3EAE5FD2F61970FE00 /* Rene in Resources */,
 				C0494CD3BEA39889ED032BCA /* Stefan.txt in Resources */,
 				C049484A38165B3D0380CA15 /* UnitTests-Info.plist in Resources */,
+				FAAC041416B1421F00EB1C7F /* screenshot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
