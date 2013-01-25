@@ -12,6 +12,16 @@
 
 - (NSString *)_inflatedFileName;
 
+/**
+ Path of zip file
+ */
+@property (nonatomic, copy, readwrite) NSString *path;
+
+/**
+ All files and directories in zip archive
+ */
+@property (nonatomic, strong, readwrite) NSArray *listOfEntries;
+
 @end
 
 @implementation DTZipArchiveGZip
@@ -20,15 +30,24 @@
      Data field for the zip archive
     */
     NSData *_data;
+
+    NSString *_path;
+
+    NSArray *_listOfEntries;
 }
 
 
 - (id)initWithFileAtPath:(NSString *)sourcePath
 {
-    path = sourcePath;
+    self = [super init];
+    
+    if (self)
+    {
+        _path = sourcePath;
 
-    _data = [[NSData alloc] initWithContentsOfFile:sourcePath options:NSDataReadingMapped error:NULL];
-
+        _data = [[NSData alloc] initWithContentsOfFile:sourcePath options:NSDataReadingMapped error:NULL];
+    }
+    
     return self;
 }
 
@@ -37,7 +56,7 @@
 
 - (NSString *)_inflatedFileName
 {
-    NSString *fileName = [path lastPathComponent];
+    NSString *fileName = [self.path lastPathComponent];
     NSString *extension = [fileName pathExtension];
 
     // man page mentions suffixes .gz, -gz, .z, -z, _z or .Z
@@ -238,18 +257,24 @@
 
                 [_destinationFileHandle writeData:decompressedBlock];
 
-                // prepare progress notification
-                NSDictionary *userInfo =  @{@"ProgressPercent" : [NSNumber numberWithFloat:percent]};
-                [[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
+                dispatch_async(dispatch_get_main_queue(), ^{
+
+                    // prepare progress notification
+                    NSDictionary *userInfo =  @{@"ProgressPercent" : [NSNumber numberWithFloat:percent]};
+                    [[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
+                });
 
             });
 
 
             if (status == Z_STREAM_END)
             {
-                // prepare progress notification -> 100%
-                NSDictionary *userInfo =  @{@"ProgressPercent" : [NSNumber numberWithFloat:100.0f]};
-                [[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
+                dispatch_async(dispatch_get_main_queue(), ^{
+
+                    // prepare progress notification -> 100%
+                    NSDictionary *userInfo =  @{@"ProgressPercent" : [NSNumber numberWithFloat:100.0f]};
+                    [[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
+                });
 
                 done = YES;
             }
@@ -282,5 +307,10 @@
         completion(nil);
     }
 }
+
+#pragma mark - Properties
+
+@synthesize path = _path;
+@synthesize listOfEntries = _listOfEntries;
 
 @end

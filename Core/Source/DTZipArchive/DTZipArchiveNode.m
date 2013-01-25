@@ -17,6 +17,20 @@
     BOOL _directory;
 }
 
+- (NSString *)description
+{
+    if (self.isDirectory)
+    {
+        return [NSString stringWithFormat:@"<%@ name='%@' directory='YES'>", NSStringFromClass([self class]), self.name];
+    }
+    else
+    {
+        return [NSString stringWithFormat:@"<%@ name='%@'>", NSStringFromClass([self class]), self.name];
+    }
+}
+
+#pragma mark - Properties
+
 @synthesize name = _name;
 @synthesize fileSize = _fileSize;
 @synthesize directory = _directory;

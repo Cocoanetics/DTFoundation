@@ -10,4 +10,5 @@
 #import "DTZipArchive.h"
 
 @interface DTZipArchivePKZip : DTZipArchive
+
 @end

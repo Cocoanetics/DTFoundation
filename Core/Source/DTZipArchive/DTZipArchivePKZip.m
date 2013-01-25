@@ -15,6 +15,16 @@
 
 - (void)_createError:(NSString *)errorText withCode:(NSUInteger)code andFireCompletion:(DTZipArchiveUncompressionCompletionBlock)completion;
 
+/**
+ Path of zip file
+ */
+@property (nonatomic, copy, readwrite) NSString *path;
+
+/**
+ All files and directories in zip archive
+ */
+@property (nonatomic, strong, readwrite) NSArray *listOfEntries;
+
 @end
 
 @implementation DTZipArchivePKZip
@@ -34,20 +44,21 @@
      */
     long long _totalNumberOfItems;
 
-    /**
-     Holds list of files and folders to extract
-     */
-    NSMutableArray *_nodes;
+    NSString *_path;
 
+    NSArray *_listOfEntries;
 }
 
 - (id)initWithFileAtPath:(NSString *)sourcePath
 {
-    _nodes = [[NSMutableArray alloc] init];
-
-    path = sourcePath;
-
-    [self _buildIndex];
+    self = [super init];
+    
+    if (self)
+    {
+        self.path = sourcePath;
+        
+        [self _buildIndex];
+    }
 
     return self;
 }
@@ -59,9 +70,10 @@
  */
 - (void)_buildIndex
 {
-
+    NSMutableArray *tmpArray = [NSMutableArray array];
+    
     // open the file for unzipping
-    unzFile _unzFile = unzOpen((const char *)[path UTF8String]);
+    unzFile _unzFile = unzOpen((const char *)[self.path UTF8String]);
 
     // return if failed
     if (!_unzFile)
@@ -145,17 +157,18 @@
 
         DTZipArchiveNode *file = [[DTZipArchiveNode alloc] init];
 
-        if ([fileName hasSuffix:@"/"] || [fileName hasSuffix:@"\\"])
+        // change to only use forward slashes
+        fileName = [fileName stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
+        
+        if ([fileName hasSuffix:@"/"])
         {
             file.directory = YES;
+            fileName = [fileName substringToIndex:[fileName length]-1];
         }
         else
         {
             file.directory = NO;
         }
-
-        // change to only use forward slashes
-        fileName = [fileName stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
 
         // save file name and size
         file.name = fileName;
@@ -170,12 +183,17 @@
         }
 
         // add to list of nodes
-        [_nodes addObject:file];
+        [tmpArray addObject:file];
 
         // close the current file
         unzCloseCurrentFile(_unzFile);
     }
     while (!shouldStop && unzGoToNextFile(_unzFile )==UNZ_OK);
+    
+    if ([tmpArray count])
+    {
+        self.listOfEntries = tmpArray;
+    }
 }
 
 
@@ -230,7 +248,7 @@
     dispatch_group_async(uncompressingGroup, uncompressingQueue, ^{
         
         // open the file for unzipping
-        unzFile _unzFile = unzOpen((const char *) [path UTF8String]);
+        unzFile _unzFile = unzOpen((const char *) [_path UTF8String]);
         
         // return if failed
         if (!_unzFile)
@@ -257,7 +275,7 @@
         NSFileManager *fileManager = [[NSFileManager alloc] init];
         
         // iterate through all files
-        for (DTZipArchiveNode *node in _nodes)
+        for (DTZipArchiveNode *node in _listOfEntries)
         {
             
             if (unzOpenCurrentFile(_unzFile) != UNZ_OK)
@@ -332,18 +350,19 @@
                 }
                 
                 [_destinationFileHandle closeFile];
-                
-                // create progress notification
-                NSDictionary *userInfo = @{@"ProgressPercent" : [NSNumber numberWithFloat:percent],
-                @"TotalNumberOfItems" : [NSNumber numberWithLongLong:_totalNumberOfItems],
-                @"NumberOfItemsUncompressed" : [NSNumber numberWithLongLong:numberOfItemsUncompressed],
-                @"TotalNumberOfFiles" : [NSNumber numberWithLongLong:_totalNumberOfFiles],
-                @"NumberOfFilesUncompressed" : [NSNumber numberWithLongLong:numberOfFilesUncompressed],
-                @"TotalSize" : [NSNumber numberWithLongLong:_totalSize],
-                @"SizeUncompressed" : [NSNumber numberWithLongLong:sizeUncompressed]};
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
-                
+
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    // create progress notification
+                    NSDictionary *userInfo = @{@"ProgressPercent" : [NSNumber numberWithFloat:percent],
+                            @"TotalNumberOfItems" : [NSNumber numberWithLongLong:_totalNumberOfItems],
+                            @"NumberOfItemsUncompressed" : [NSNumber numberWithLongLong:numberOfItemsUncompressed],
+                            @"TotalNumberOfFiles" : [NSNumber numberWithLongLong:_totalNumberOfFiles],
+                            @"NumberOfFilesUncompressed" : [NSNumber numberWithLongLong:numberOfFilesUncompressed],
+                            @"TotalSize" : [NSNumber numberWithLongLong:_totalSize],
+                            @"SizeUncompressed" : [NSNumber numberWithLongLong:sizeUncompressed]};
+
+                    [[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
+                });
             }
             
             unzCloseCurrentFile(_unzFile);
@@ -373,7 +392,7 @@
     unsigned char buffer[BUFFER_SIZE] = {0};
 
     // open the file for unzipping
-    unzFile _unzFile = unzOpen((const char *)[path UTF8String]);
+    unzFile _unzFile = unzOpen((const char *)[_path UTF8String]);
 
     // return if failed
     if (!_unzFile)
@@ -400,7 +419,7 @@
     BOOL shouldStop = NO;
 
     // iterate through all files
-    for (DTZipArchiveNode *node in _nodes)
+    for (DTZipArchiveNode *node in _listOfEntries)
     {
 		unz_file_info zipInfo ={0};
         
@@ -449,5 +468,11 @@
         }
     }
 }
+
+#pragma mark - Properties
+
+@synthesize path = _path;
+@synthesize listOfEntries = _listOfEntries;
+
 
 @end
