@@ -42,14 +42,17 @@ extern NSString * const DTZipArchiveErrorDomain;
  */
 
 @interface DTZipArchive : NSObject
-{
 
-    @protected
-    /**
-     Source path of zip archive
-    */
-    NSString *path;
-}
+
+/**
+ Path of zip file
+*/
+@property (nonatomic, copy, readonly) NSString *path;
+
+/**
+ All files and directories in zip archive
+ */
+@property (nonatomic, strong, readonly) NSArray *listOfEntries;
 
 /**-------------------------------------------------------------------------------------
  @name Creating A Zip Archive
@@ -63,7 +66,7 @@ extern NSString * const DTZipArchiveErrorDomain;
  @param path A Path to a compressed file
  @returns An instance of DTZipArchive or `nil` if an error occured
  */
-- (id)initWithFileAtPath:(NSString *)path;
++ (DTZipArchive *)archiveAtPath:(NSString *)path;
 
 /** Enumerates through the files contained in the archive.
  

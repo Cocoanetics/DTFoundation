@@ -13,37 +13,60 @@
 NSString * const DTZipArchiveProgressNotification = @"DTZipArchiveProgressNotification";
 NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 
+@interface DTZipArchive ()
+
+/**
+ Private dedicated initializer
+ */
+- (id)initWithFileAtPath:(NSString *)path;
+
+@end
+
 
 @implementation DTZipArchive
-
-- (id)initWithFileAtPath:(NSString *)sourcePath
 {
+    NSString *_path;
 
-    NSData *sourceData = [[NSData alloc] initWithContentsOfFile:sourcePath options:NSDataReadingMapped error:NULL];
+    NSArray *_listOfEntries;
+}
 
-    if (!sourceData)
++ (DTZipArchive *)archiveAtPath:(NSString *)path;
+{
+    // detect archive type
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path options:NSDataReadingMapped error:NULL];
+
+    if (!data)
     {
         return nil;
     }
 
     // detect file format
-    const char *bytes = [sourceData bytes];
+    const char *bytes = [data bytes];
 
     // Create class cluster for PKZip or GZip depending on first bytes
     if (bytes[0]=='P' && bytes[1]=='K')
     {
-        self = [[DTZipArchivePKZip alloc] initWithFileAtPath:sourcePath];
+        return [[DTZipArchivePKZip alloc] initWithFileAtPath:path];
     }
     else
     {
-        self = [[DTZipArchiveGZip alloc] initWithFileAtPath:sourcePath];
+        return [[DTZipArchiveGZip alloc] initWithFileAtPath:path];
     }
-
-	return self;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<%@ path='%@'>", NSStringFromClass([self class]), self.path];
+}
 
 #pragma mark - Abstract Methods
+
+- (id)initWithFileAtPath:(NSString *)path
+{
+    [NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+
+    return self;
+}
 
 /**
  Abstract method -> should be never called here directly
@@ -54,9 +77,14 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
     [NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
 }
 
+#pragma mark - Properties
+
+@synthesize path;
+@synthesize listOfEntries = _listOfEntries;
+
 @end
 
-@implementation DTZipArchive(Uncompress)
+@implementation DTZipArchive(Uncompressing)
 
 /**
  Abstract method -> should be never called here directly
