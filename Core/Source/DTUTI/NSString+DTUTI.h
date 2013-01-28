@@ -42,6 +42,13 @@
 + (NSString *)universalTypeIdentifierForFileExtension:(NSString *)extension;
 
 /**
+ Get the prefered file extension for a given UTI.
+ @param The UTI
+ @returns The File Extension
+ */
++ (NSString *)fileExtensionForUniversalTypeIdentifier:(NSString *)UTI;
+
+/**
  Tests if the receiver conforms to a given UTI.
  @param conformingUTI the UTI that is tested against
  @return `YES` if the receiver conforms

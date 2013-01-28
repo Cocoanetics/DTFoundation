@@ -39,6 +39,11 @@
 	return (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,(__bridge CFStringRef)extension , NULL);
 }
 
++ (NSString *)fileExtensionForUniversalTypeIdentifier:(NSString *)UTI
+{
+	return (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)(UTI), kUTTagClassFilenameExtension);
+}
+
 - (BOOL)conformsToUniversalTypeIdentifier:(NSString *)conformingUTI
 {
 	return UTTypeConformsTo((__bridge CFStringRef)(self), (__bridge CFStringRef)conformingUTI);
