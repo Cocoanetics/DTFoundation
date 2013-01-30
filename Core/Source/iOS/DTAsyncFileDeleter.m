@@ -19,12 +19,6 @@ static dispatch_queue_t _renameQueue;
 static DTAsyncFileDeleter *_sharedInstance;
 
 
-// private utilites
-@interface DTAsyncFileDeleter ()
-- (BOOL)_supportsTaskCompletion;
-@end
-
-
 @implementation DTAsyncFileDeleter
 
 + (DTAsyncFileDeleter *)sharedInstance
@@ -78,7 +72,7 @@ static DTAsyncFileDeleter *_sharedInstance;
 					backgroundTaskID = UIBackgroundTaskInvalid;
 				};
 				
-				if ([self _supportsTaskCompletion])
+				if ([[UIDevice currentDevice] isMultitaskingSupported])
 				{
 					// according to docs this is safe to be called from background threads
 					backgroundTaskID = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:completionBlock];
@@ -102,26 +96,6 @@ static DTAsyncFileDeleter *_sharedInstance;
 	NSAssert([URL isFileURL], @"Parameter URL must be a file URL");
 	
 	[self removeItemAtPath:[URL path]];
-}
-
-#pragma mark Utilities
-- (BOOL)_supportsTaskCompletion
-{
-	UIDevice *device = [UIDevice currentDevice];
-	
-	if ([device respondsToSelector:@selector(isMultitaskingSupported)])
-	{
-		if (device.multitaskingSupported)
-		{
-			return YES;
-		}
-		else
-		{
-			return NO;
-		}
-	}
-	
-	return NO;
 }
 
 @end
