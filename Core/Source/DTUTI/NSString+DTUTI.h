@@ -43,7 +43,7 @@
 
 /**
  Get the prefered file extension for a given UTI.
- @param The UTI
+ @param UTI he UTI
  @returns The File Extension
  */
 + (NSString *)fileExtensionForUniversalTypeIdentifier:(NSString *)UTI;
