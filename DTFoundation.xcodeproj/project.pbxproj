@@ -216,6 +216,10 @@
 		A7E38409160E03A600CF72D6 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41414E825FC00F34B03 /* zip.c */; };
 		A7E889A616A9B190009EF0DF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E889A516A9B190009EF0DF /* Cocoa.framework */; };
 		A7E889B416A9B1C4009EF0DF /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */; };
+		A7E88ED216BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */; };
+		A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */; };
+		A7E88ED416BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */; };
+		A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */; };
 		A7FAA3891652291D006ED151 /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; };
 		A7FAA38A1652291D006ED151 /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; };
 		A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
@@ -447,6 +451,8 @@
 		A7E889A816A9B190009EF0DF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A7E889A916A9B190009EF0DF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A7E889AA16A9B190009EF0DF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCustomColoredAccessory.h; sourceTree = "<group>"; };
+		A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCustomColoredAccessory.m; sourceTree = "<group>"; };
 		A7F4DFF8147FD08900F4059A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTComparing.h"; sourceTree = "<group>"; };
@@ -641,6 +647,8 @@
 				A76DB49416A5E37F0010CD85 /* DTAlertView.m */,
 				A7239FEF16A6BEE50071E902 /* DTAsyncFileDeleter.h */,
 				A7239FF016A6BEE50071E902 /* DTAsyncFileDeleter.m */,
+				A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */,
+				A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */,
 				A76DB49516A5E37F0010CD85 /* DTPieProgressIndicator.h */,
 				A76DB49616A5E37F0010CD85 /* DTPieProgressIndicator.m */,
 				A76DB49716A5E37F0010CD85 /* DTSmartPagingScrollView.h */,
@@ -944,6 +952,7 @@
 				A76DB4DD16A5E5100010CD85 /* UIView+DTFoundation.h in Headers */,
 				A76DB4E116A5E5100010CD85 /* UIWebView+DTFoundation.h in Headers */,
 				A7239FF216A6BEE50071E902 /* DTAsyncFileDeleter.h in Headers */,
+				A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,6 +1022,7 @@
 				A7D0AA4A153C233E0020F18B /* NSString+DTUtilities.h in Headers */,
 				A7D0AA6D153C39920020F18B /* DTUtils.h in Headers */,
 				A73D5BAB155271FD0024BDB7 /* NSArray+DTError.h in Headers */,
+				A7E88ED216BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,7 +1314,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"DTFoundation\" \\\n--project-company \"Cocoanetics\" \\\n--company-id \"com.cocoanetics\" \\\n--docset-atom-filename \"DTFoundation.atom\" \\\n--docset-feed-url \"http://cocoanetics.github.com/DTFoundation/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"http://cocoanetics.github.com/DTFoundation/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"http://cocoanetics.github.com/DTFoundation/\" \\\n--output \"~/help/DTFoundation\" \\\n--publish-docset \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--ignore \"*.m\" \\\n--ignore \"LoadableCategory.h\" \\\n--index-desc \"${PROJECT_DIR}/readme.markdown\" \\\n\"${PROJECT_DIR}/Core/Source\"";
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"DTFoundation\" \\\n--project-company \"Cocoanetics\" \\\n--company-id \"com.cocoanetics\" \\\n--docset-atom-filename \"DTFoundation.atom\" \\\n--docset-feed-url \"http://cocoanetics.github.com/DTFoundation/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"http://cocoanetics.github.com/DTFoundation/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"http://cocoanetics.github.com/DTFoundation/\" \\\n--output \"~/help/DTFoundation\" \\\n--publish-docset \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--ignore \"*.m\" \\\n--ignore \"LoadableCategory.h\" \\\n--ignore \"DTZipArchiveGZip.h\" \\\n--ignore \"DTZipArchivePKZip.h\" \\\n--index-desc \"${PROJECT_DIR}/readme.markdown\" \\\n\"${PROJECT_DIR}/Core/Source\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1354,6 +1364,7 @@
 				A76DB4DF16A5E5100010CD85 /* UIView+DTFoundation.m in Sources */,
 				A76DB4E316A5E5100010CD85 /* UIWebView+DTFoundation.m in Sources */,
 				A7239FF416A6BEE50071E902 /* DTAsyncFileDeleter.m in Sources */,
+				A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1431,6 +1442,7 @@
 				A76DB4DE16A5E5100010CD85 /* UIView+DTFoundation.m in Sources */,
 				A76DB4E216A5E5100010CD85 /* UIWebView+DTFoundation.m in Sources */,
 				A7239FF316A6BEE50071E902 /* DTAsyncFileDeleter.m in Sources */,
+				A7E88ED416BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

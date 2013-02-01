@@ -24,6 +24,7 @@
 #if TARGET_OS_IPHONE
 	#import "DTActionSheet.h"
     #import "DTAsyncFileDeleter.h"
+    #import "DTCustomColoredAccessory.h"
     #import "DTPieProgressIndicator.h"
 #endif
 
