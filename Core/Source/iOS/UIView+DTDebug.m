@@ -11,7 +11,7 @@
 
 @implementation UIView (DTDebug)
 
-- (BOOL)isMainThread
+- (BOOL)_isMainThread
 {
     return [NSThread mainThread];
 }
@@ -23,7 +23,7 @@
 
 - (void)_setNeedsLayout_MainQueueCheck
 {
-    if (![self isMainThread])
+    if (![self _isMainThread])
     {
         [self methodCalledNotFromMainQueue:NSStringFromSelector(_cmd)];
     }
@@ -34,7 +34,7 @@
 
 - (void)_setNeedsDisplay_MainQueueCheck
 {
-    if (![self isMainThread])
+    if (![self _isMainThread])
     {
         [self methodCalledNotFromMainQueue:NSStringFromSelector(_cmd)];
     }
@@ -45,7 +45,7 @@
 
 - (void)_setNeedsDisplayInRect_MainQueueCheck:(CGRect)rect
 {
-    if (![self isMainThread])
+    if (![self _isMainThread])
     {
         [self methodCalledNotFromMainQueue:NSStringFromSelector(_cmd)];
     }
