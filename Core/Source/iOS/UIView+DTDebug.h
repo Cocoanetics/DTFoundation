@@ -15,7 +15,7 @@
 @interface UIView (DTDebug)
 
 /**
- Toggles on/off main queue checking on several methods of UIView.
+ Toggles on/off main thread checking on several methods of UIView.
  
  Currently the following methods are swizzeled and checked:
  
@@ -25,13 +25,13 @@
  
  Those are triggered by a variety of methods in UIView, e.g. setBackgroundColor and thus it is not necessary to swizzle all of them.
  */
-+ (void)toggleViewMainQueueChecking;
++ (void)toggleViewMainThreadChecking;
 
 /**
  Method that gets called if one of the important methods of UIView is not being called on a main queue. 
  
- Toggle this on/off with <toggleViewMainQueueChecking>. Break on -[UIView methodCalledNotFromMainQueue:] to catch it in debugger.
+ Toggle this on/off with <toggleViewMainThreadChecking>. Break on -[UIView methodCalledNotFromMainThread:] to catch it in debugger.
  */
-- (void)methodCalledNotFromMainQueue:(NSString *)methodName;
+- (void)methodCalledNotFromMainThread:(NSString *)methodName;
 
 @end
