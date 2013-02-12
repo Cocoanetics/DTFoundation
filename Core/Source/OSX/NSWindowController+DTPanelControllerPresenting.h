@@ -7,7 +7,9 @@
 //
 
 /**
- Enhancement for `NSWindowController` to present a sheet modally, similar to iOS
+ Enhancement for `NSWindowController` to present a sheet modally, similar to iOS.
+ 
+ To use create a `NSWindowController` subclass with NIB and replace the root `NSWindow` with an `NSPanel`. Then from any `NSWindowController` you call presentModalPanelController: with the panel controller instance as parameter.
 */
 @interface NSWindowController (DTPanelControllerPresenting)
 
