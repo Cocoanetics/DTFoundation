@@ -146,6 +146,13 @@
 		A76DB4F616A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DB4EC16A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.h */; };
 		A76DB4F716A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4ED16A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m */; };
 		A76DB4FB16A5E5950010CD85 /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */; };
+		A777830F16CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */; };
+		A777831016CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */; };
+		A777831116CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */; };
+		A777831216CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */; };
+		A777831316CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */; };
+		A777831416CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */; };
+		A777831516CA49C80048BED1 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */; };
 		A77DD41614E825FC00F34B03 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40D14E825FC00F34B03 /* crypt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD41714E825FC00F34B03 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40D14E825FC00F34B03 /* crypt.h */; };
 		A77DD41A14E825FC00F34B03 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40F14E825FC00F34B03 /* ioapi.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -407,6 +414,8 @@
 		A76DB4ED16A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindowController+DTPanelControllerPresenting.m"; sourceTree = "<group>"; };
 		A76DB4F916A5E5950010CD85 /* NSString+DTUTI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTUTI.h"; sourceTree = "<group>"; };
 		A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTUTI.m"; sourceTree = "<group>"; };
+		A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTObjectBlockExecutor.h; sourceTree = "<group>"; };
+		A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTObjectBlockExecutor.m; sourceTree = "<group>"; };
 		A77DD40D14E825FC00F34B03 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		A77DD40E14E825FC00F34B03 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		A77DD40F14E825FC00F34B03 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -814,6 +823,8 @@
 				A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */,
 				A70B4CC71486621B00873A4A /* DTVersion.h */,
 				A70B4CC81486621B00873A4A /* DTVersion.m */,
+				A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */,
+				A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -962,6 +973,7 @@
 				A7239FF216A6BEE50071E902 /* DTAsyncFileDeleter.h in Headers */,
 				FA8D11E016C4FC5B006CBAB4 /* UIView+DTDebug.h in Headers */,
 				A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
+				A777831016CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +997,7 @@
 				A76DB4F216A5E5590010CD85 /* NSValue+DTConversion.h in Headers */,
 				A76DB4F416A5E5590010CD85 /* NSView+DTAutoLayout.h in Headers */,
 				A76DB4F616A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.h in Headers */,
+				A777831116CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1033,6 +1046,7 @@
 				A73D5BAB155271FD0024BDB7 /* NSArray+DTError.h in Headers */,
 				FA8D11DF16C4FC5B006CBAB4 /* UIView+DTDebug.h in Headers */,
 				A7E88ED216BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
+				A777830F16CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1376,6 +1390,7 @@
 				A7239FF416A6BEE50071E902 /* DTAsyncFileDeleter.m in Sources */,
 				FA8D11E216C4FC5B006CBAB4 /* UIView+DTDebug.m in Sources */,
 				A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
+				A777831316CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1406,6 +1421,8 @@
 				A76DB4F516A5E5590010CD85 /* NSView+DTAutoLayout.m in Sources */,
 				A76DB4F716A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m in Sources */,
 				A7239FF516A6C1BC0071E902 /* DTASN1Parser.m in Sources */,
+				A777831416CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */,
+				A777831516CA49C80048BED1 /* NSObject+DTRuntime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,6 +1472,7 @@
 				A7239FF316A6BEE50071E902 /* DTAsyncFileDeleter.m in Sources */,
 				FA8D11E116C4FC5B006CBAB4 /* UIView+DTDebug.m in Sources */,
 				A7E88ED416BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
+				A777831216CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

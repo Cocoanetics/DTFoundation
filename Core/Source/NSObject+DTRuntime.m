@@ -7,8 +7,35 @@
 //
 
 #import <objc/runtime.h>
+#import "DTObjectBlockExecutor.h"
 
 @implementation NSObject (DTRuntime)
+
+static char DTRuntimeDeallocBlocks;
+
+#pragma mark - Blocks
+
+- (void)addDeallocBlock:(void(^)())block
+{
+    // don't accept NULL block
+    NSParameterAssert(block);
+    
+    NSMutableArray *deallocBlocks = objc_getAssociatedObject(self, &DTRuntimeDeallocBlocks);
+
+    // add array of dealloc blocks if not existing yet
+    if (!deallocBlocks)
+    {
+        deallocBlocks = [[NSMutableArray alloc] init];
+        
+        objc_setAssociatedObject(self, &DTRuntimeDeallocBlocks, deallocBlocks, OBJC_ASSOCIATION_RETAIN);
+    }
+    
+    DTObjectBlockExecutor *executor = [DTObjectBlockExecutor blockExecutorWithDeallocBlock:block];
+    
+    [deallocBlocks addObject:executor];
+}
+
+#pragma mark - Method Swizzling
 
 + (void)swizzleMethod:(SEL)selector withMethod:(SEL)otherSelector
 {
