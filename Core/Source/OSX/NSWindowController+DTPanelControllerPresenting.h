@@ -24,13 +24,15 @@
 @property (nonatomic, readonly, strong) NSWindowController *modalPanelController;
 
 /**
- Presents the panel modally
+ Presents the panel modally, the panel controller is being retained.
  @param panelController A window controller for the sheet, usually an NSWindowController with an NSPanel as window.
  */
 - (void)presentModalPanelController:(NSWindowController *)panelController;
 
 /**
- Dismisses a currently presented modal panel.
+ Dismisses a currently presented modal panel. The panel controller is being released after the out animation has finished.
+ 
+ You can presentModalPanelController: another panel controller right after dismissing one.
  */
 - (void)dismissModalPanelController;
 
