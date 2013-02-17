@@ -44,5 +44,11 @@ BOOL DTCGRectMakeWithDictionaryRepresentation(NSDictionary *dict, CGRect *rect);
  */
 NSDictionary *DTCGRectCreateDictionaryRepresentation(CGRect rect);
 
+/**
+ Convenience method to find the center of a CGRect. Uses CGRectGetMidX and CGRectGetMidY.
+ @returns The point which is the center of rect.
+ */
+CGPoint CGRectCenter(CGRect rect);
+
 
 

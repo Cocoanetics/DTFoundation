@@ -1,6 +1,6 @@
 //
-//  CGUtils.m
-//  iCatalog
+//  DTUtils.m
+//  DTFoundation
 //
 //  Created by Oliver Drobnik on 7/18/10.
 //  Copyright 2010 Drobnik.com. All rights reserved.
@@ -87,4 +87,9 @@ NSDictionary *DTCGRectCreateDictionaryRepresentation(CGRect rect)
 	NSNumber *yNumber = [NSNumber numberWithFloat:rect.origin.y];
 	
 	return [NSDictionary dictionaryWithObjectsAndKeys:widthNumber, @"Width", heightNumber, @"Height", xNumber, @"X", yNumber, @"Y", nil];
+}
+
+CGPoint CGRectCenter(CGRect rect)
+{
+	return (CGPoint){ CGRectGetMidX(rect), CGRectGetMidY(rect) };
 }
