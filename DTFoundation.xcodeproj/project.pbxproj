@@ -56,6 +56,10 @@
 		A7239FF516A6C1BC0071E902 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */; };
 		A7239FFB16A6CEEF0071E902 /* libDTHTMLParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser.a */; };
 		A7239FFD16A6CF0B0071E902 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7239FFC16A6CF0B0071E902 /* CoreData.framework */; };
+		A730BCCE16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */ = {isa = PBXBuildFile; fileRef = A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */; };
+		A730BCCF16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */ = {isa = PBXBuildFile; fileRef = A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */; };
+		A730BCD016D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */ = {isa = PBXBuildFile; fileRef = A730BCCD16D2892E003B849F /* DTTiledLayerWithoutFade.m */; };
+		A730BCD116D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */ = {isa = PBXBuildFile; fileRef = A730BCCD16D2892E003B849F /* DTTiledLayerWithoutFade.m */; };
 		A73B6F8B163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A73B6F8C163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
 		A73B6F8D163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */; };
@@ -364,6 +368,8 @@
 		A7239FEF16A6BEE50071E902 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A7239FF016A6BEE50071E902 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
 		A7239FFC16A6CF0B0071E902 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTTiledLayerWithoutFade.h; sourceTree = "<group>"; };
+		A730BCCD16D2892E003B849F /* DTTiledLayerWithoutFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTTiledLayerWithoutFade.m; sourceTree = "<group>"; };
 		A73B6F89163169BB002CCCA7 /* NSFileWrapper+DTCopying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileWrapper+DTCopying.h"; sourceTree = "<group>"; };
 		A73B6F8A163169BB002CCCA7 /* NSFileWrapper+DTCopying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileWrapper+DTCopying.m"; sourceTree = "<group>"; };
 		A73D5BA9155271FD0024BDB7 /* NSArray+DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DTError.h"; sourceTree = "<group>"; };
@@ -654,6 +660,8 @@
 		A76DB48E16A5E37F0010CD85 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */,
+				A730BCCD16D2892E003B849F /* DTTiledLayerWithoutFade.m */,
 				A76DB48F16A5E37F0010CD85 /* DTActionSheet.h */,
 				A76DB49016A5E37F0010CD85 /* DTActionSheet.m */,
 				A76DB49116A5E37F0010CD85 /* DTActivityTitleView.h */,
@@ -974,6 +982,7 @@
 				FA8D11E016C4FC5B006CBAB4 /* UIView+DTDebug.h in Headers */,
 				A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
 				A777831016CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
+				A730BCCF16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,6 +1056,7 @@
 				FA8D11DF16C4FC5B006CBAB4 /* UIView+DTDebug.h in Headers */,
 				A7E88ED216BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
 				A777830F16CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
+				A730BCCE16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1391,6 +1401,7 @@
 				FA8D11E216C4FC5B006CBAB4 /* UIView+DTDebug.m in Sources */,
 				A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
 				A777831316CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */,
+				A730BCD116D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1473,6 +1484,7 @@
 				FA8D11E116C4FC5B006CBAB4 /* UIView+DTDebug.m in Sources */,
 				A7E88ED416BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
 				A777831216CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */,
+				A730BCD016D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
