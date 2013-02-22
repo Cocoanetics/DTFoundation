@@ -54,19 +54,6 @@
 - (void)layoutSubviews
 {
 	[super layoutSubviews];
-	
-	CGFloat gap = 5.0;
-	CGFloat height = self.activityIndicator.frame.size.height;
-	CGSize neededSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font];
-	
-	if (height < neededSize.height)
-    {
-		height = neededSize.height;
-	}
-	
-	CGRect titleRect = CGRectMake(self.activityIndicator.frame.size.width+gap, 0, neededSize.width, height);
-	self.titleLabel.frame = titleRect;
-	self.bounds = CGRectMake(0, 0, self.activityIndicator.frame.size.width+neededSize.width+gap, height);
 }
 
 #pragma mark - Properties
@@ -93,6 +80,18 @@
 - (void)setTitle:(NSString *)title
 {
 	self.titleLabel.text = title;
+	CGFloat gap = 5.0;
+	CGFloat height = self.activityIndicator.frame.size.height;
+	CGSize neededSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font];
+
+	if (height < neededSize.height)
+    {
+		height = neededSize.height;
+	}
+
+	CGRect titleRect = CGRectMake(self.activityIndicator.frame.size.width+gap, 0, neededSize.width, height);
+	self.titleLabel.frame = titleRect;
+	self.bounds  = CGRectMake(0, 0, self.activityIndicator.frame.size.width+neededSize.width+gap, height);
 	[self setNeedsLayout];
 }
 
