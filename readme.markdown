@@ -45,7 +45,7 @@ It is open source and covered by a standard BSD license. That means you have to 
 Documentation
 -------------
 
-Documentation can be [browsed online](http://cocoanetics.github.com/DTFoundation) or installed in your Xcode Organizer via the [Atom Feed URL](http://cocoanetics.github.com/DTFoundation/DTFoundation.atom).
+Documentation can be [browsed online](https://docs.cocoanetics.com/DTFoundation) or installed in your Xcode Organizer via the [Atom Feed URL](https://docs.cocoanetics.com/DTFoundation/DTFoundation.atom).
 
 Usage
 -----
