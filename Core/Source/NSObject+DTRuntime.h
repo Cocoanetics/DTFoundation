@@ -19,6 +19,7 @@
 
 /**
  Adds a block to be executed as soon as the receiver's memory is deallocated
+ @param block The block to execute when the receiver is being deallocated
  */
 - (void)addDeallocBlock:(void(^)())block;
 

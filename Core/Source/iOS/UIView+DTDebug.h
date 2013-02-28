@@ -6,13 +6,15 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 /**
  Methods useful for debugging problems with UIView instances.
  */
 
 @interface UIView (DTDebug)
+
+/**
+ @name Main Thread Checking
+ */
 
 /**
  Toggles on/off main thread checking on several methods of UIView.
@@ -31,6 +33,7 @@
  Method that gets called if one of the important methods of UIView is not being called on a main queue. 
  
  Toggle this on/off with <toggleViewMainThreadChecking>. Break on -[UIView methodCalledNotFromMainThread:] to catch it in debugger.
+ @param methodName Symbolic name of the method being called
  */
 - (void)methodCalledNotFromMainThread:(NSString *)methodName;
 
