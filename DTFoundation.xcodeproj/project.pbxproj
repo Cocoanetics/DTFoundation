@@ -48,6 +48,18 @@
 		A70D56A2162FD60600120A98 /* NSScanner+DTScripting.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D569D162FD60600120A98 /* NSScanner+DTScripting.m */; };
 		A70D56A3162FD60600120A98 /* NSScanner+DTScripting.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D569D162FD60600120A98 /* NSScanner+DTScripting.m */; };
 		A70D56A6162FDECF00120A98 /* DTScriptingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D56A5162FDECF00120A98 /* DTScriptingTest.m */; };
+		A70ECD6016E09705004E9623 /* DTStripedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD5E16E09705004E9623 /* DTStripedLayer.h */; };
+		A70ECD6116E09705004E9623 /* DTStripedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD5E16E09705004E9623 /* DTStripedLayer.h */; };
+		A70ECD6216E09705004E9623 /* DTStripedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD5F16E09705004E9623 /* DTStripedLayer.m */; };
+		A70ECD6316E09705004E9623 /* DTStripedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD5F16E09705004E9623 /* DTStripedLayer.m */; };
+		A70ECD6616E0A06E004E9623 /* DTStripedLayerTile.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */; };
+		A70ECD6716E0A06E004E9623 /* DTStripedLayerTile.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */; };
+		A70ECD6816E0A06E004E9623 /* DTStripedLayerTile.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD6516E0A06E004E9623 /* DTStripedLayerTile.m */; };
+		A70ECD6916E0A06E004E9623 /* DTStripedLayerTile.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD6516E0A06E004E9623 /* DTStripedLayerTile.m */; };
+		A70ECD6C16E0A389004E9623 /* UIColor+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6A16E0A388004E9623 /* UIColor+DTDebug.h */; };
+		A70ECD6D16E0A389004E9623 /* UIColor+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6A16E0A388004E9623 /* UIColor+DTDebug.h */; };
+		A70ECD6E16E0A389004E9623 /* UIColor+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD6B16E0A389004E9623 /* UIColor+DTDebug.m */; };
+		A70ECD6F16E0A389004E9623 /* UIColor+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD6B16E0A389004E9623 /* UIColor+DTDebug.m */; };
 		A710A50B160755A500437D36 /* NSDictionary+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA24153C1B160020F18B /* NSDictionary+DTError.m */; };
 		A7239FF116A6BEE50071E902 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A7239FEF16A6BEE50071E902 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7239FF216A6BEE50071E902 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A7239FEF16A6BEE50071E902 /* DTAsyncFileDeleter.h */; };
@@ -364,6 +376,12 @@
 		A70D569D162FD60600120A98 /* NSScanner+DTScripting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+DTScripting.m"; sourceTree = "<group>"; };
 		A70D56A4162FDECF00120A98 /* DTScriptingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTScriptingTest.h; sourceTree = "<group>"; };
 		A70D56A5162FDECF00120A98 /* DTScriptingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTScriptingTest.m; sourceTree = "<group>"; };
+		A70ECD5E16E09705004E9623 /* DTStripedLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTStripedLayer.h; sourceTree = "<group>"; };
+		A70ECD5F16E09705004E9623 /* DTStripedLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayer.m; sourceTree = "<group>"; };
+		A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTStripedLayerTile.h; sourceTree = "<group>"; };
+		A70ECD6516E0A06E004E9623 /* DTStripedLayerTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayerTile.m; sourceTree = "<group>"; };
+		A70ECD6A16E0A388004E9623 /* UIColor+DTDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DTDebug.h"; sourceTree = "<group>"; };
+		A70ECD6B16E0A389004E9623 /* UIColor+DTDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DTDebug.m"; sourceTree = "<group>"; };
 		A710A5001607556000437D36 /* libDTFoundation_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTFoundation_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7239FEF16A6BEE50071E902 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A7239FF016A6BEE50071E902 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
@@ -684,6 +702,8 @@
 				A76DB4C416A5E50E0010CD85 /* UIImage+DTFoundation.h */,
 				A76DB4C516A5E50E0010CD85 /* UIImage+DTFoundation.m */,
 				A76DB4C616A5E50E0010CD85 /* UIView+DTActionHandlers.h */,
+				A70ECD6A16E0A388004E9623 /* UIColor+DTDebug.h */,
+				A70ECD6B16E0A389004E9623 /* UIColor+DTDebug.m */,
 				A76DB4C716A5E50F0010CD85 /* UIView+DTActionHandlers.m */,
 				FA8D11DD16C4FC5B006CBAB4 /* UIView+DTDebug.h */,
 				FA8D11DE16C4FC5B006CBAB4 /* UIView+DTDebug.m */,
@@ -691,6 +711,10 @@
 				A76DB4C916A5E50F0010CD85 /* UIView+DTFoundation.m */,
 				A76DB4CA16A5E50F0010CD85 /* UIWebView+DTFoundation.h */,
 				A76DB4CB16A5E5100010CD85 /* UIWebView+DTFoundation.m */,
+				A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */,
+				A70ECD6516E0A06E004E9623 /* DTStripedLayerTile.m */,
+				A70ECD5E16E09705004E9623 /* DTStripedLayer.h */,
+				A70ECD5F16E09705004E9623 /* DTStripedLayer.m */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -985,6 +1009,9 @@
 				A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
 				A777831016CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
 				A730BCCF16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */,
+				A70ECD6116E09705004E9623 /* DTStripedLayer.h in Headers */,
+				A70ECD6716E0A06E004E9623 /* DTStripedLayerTile.h in Headers */,
+				A70ECD6D16E0A389004E9623 /* UIColor+DTDebug.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1059,6 +1086,9 @@
 				A7E88ED216BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
 				A777830F16CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
 				A730BCCE16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */,
+				A70ECD6016E09705004E9623 /* DTStripedLayer.h in Headers */,
+				A70ECD6616E0A06E004E9623 /* DTStripedLayerTile.h in Headers */,
+				A70ECD6C16E0A389004E9623 /* UIColor+DTDebug.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1404,6 +1434,9 @@
 				A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
 				A777831316CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */,
 				A730BCD116D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */,
+				A70ECD6316E09705004E9623 /* DTStripedLayer.m in Sources */,
+				A70ECD6916E0A06E004E9623 /* DTStripedLayerTile.m in Sources */,
+				A70ECD6F16E0A389004E9623 /* UIColor+DTDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1487,6 +1520,9 @@
 				A7E88ED416BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
 				A777831216CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */,
 				A730BCD016D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */,
+				A70ECD6216E09705004E9623 /* DTStripedLayer.m in Sources */,
+				A70ECD6816E0A06E004E9623 /* DTStripedLayerTile.m in Sources */,
+				A70ECD6E16E0A389004E9623 /* UIColor+DTDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
