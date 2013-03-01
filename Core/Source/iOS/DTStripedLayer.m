@@ -20,11 +20,13 @@
 {
     BOOL _isObservingSuperlayerBounds;
     NSCache *_tileCache;
+    NSMutableSet *_tilesWithDrawingInQueue;
     
     CGFloat _stripeHeight;
-    CGFloat _currentWidth;
+    CGSize _contentSize;
     
     NSMutableSet *_visibleTileKeys;
+    NSOperationQueue *_tileCreationQueue;
     
     id _tileDelegate;
 }
@@ -37,6 +39,11 @@
     {
         _stripeHeight = 512.0f;
         _visibleTileKeys = [[NSMutableSet alloc] init];
+        _tileCreationQueue = [[NSOperationQueue alloc] init];
+        _tilesWithDrawingInQueue = [[NSMutableSet alloc] init];
+        
+        self.borderWidth = 3;
+        self.borderColor = [UIColor blueColor].CGColor;
     }
     
     return self;
@@ -44,27 +51,53 @@
 
 - (void)setBounds:(CGRect)bounds
 {
-    [super setBounds:bounds];
+    if (!CGRectEqualToRect(self.bounds, bounds))
+    {
+        [CATransaction begin];
+        [CATransaction setDisableActions:YES];
+        
+        [super setBounds:bounds];
+        
+        NSLog(@"setbounds: %@ %@", NSStringFromCGRect(bounds), _tileDelegate);
+        
+        // store for frequent use
+        _contentSize = bounds.size;
+        
+        [self setNeedsLayout];
+        [CATransaction commit];
+    }
+}
 
-    // store the width for frequent use
-    _currentWidth = bounds.size.width;
-    
-    [self setNeedsLayout];
+- (void)setFrame:(CGRect)frame
+{
+    if (!CGRectEqualToRect(self.frame, frame))
+    {
+        [CATransaction begin];
+        [CATransaction setDisableActions:YES];
+        
+        [super setFrame:frame];
+        
+        NSLog(@"setFrame: %@ %@", NSStringFromCGRect(frame), _tileDelegate);
+        
+        // store for frequent use
+        _contentSize = frame.size;
+        
+        [self setNeedsLayout];
+            [CATransaction commit];
+    }
 }
 
 - (NSRange)_rangeOfVisibleStripesInBounds:(CGRect)bounds
 {
     NSUInteger firstIndex = floorf(MAX(0, CGRectGetMinY(bounds))/_stripeHeight);
-    NSUInteger lastIndex = floorf(MIN(CGRectGetMaxY(bounds), CGRectGetMaxY(self.bounds))/_stripeHeight);
+    NSUInteger lastIndex = floorf(MIN(_contentSize.height, CGRectGetMaxY(bounds))/_stripeHeight);
     
-    NSRange range = NSMakeRange(firstIndex, lastIndex - firstIndex + 1);
-    
-    return range;
+    return NSMakeRange(firstIndex, lastIndex - firstIndex + 1);
 }
 
 - (CGRect)_frameOfStripeAtIndex:(NSUInteger)index
 {
-    CGRect frame = CGRectMake(0, index*_stripeHeight, _currentWidth, _stripeHeight);
+    CGRect frame = CGRectMake(0, index*_stripeHeight, _contentSize.width, _stripeHeight);
     
     // need to crop by total bounds, last item not full height
     frame = CGRectIntersection(self.bounds, frame);
@@ -72,23 +105,73 @@
     return frame;
 }
 
+
+- (void)_finishedDrawingForTile:(DTStripedLayerTile *)tile withResult:(UIImage *)image
+{
+    @synchronized(self)
+    {
+        // iOS 5 requires this on main queue, iOS 6 doesn't care
+        dispatch_async(dispatch_get_main_queue(), ^{
+            tile.contents = (__bridge id)(image.CGImage);
+            
+            // remove from queue
+            [_tilesWithDrawingInQueue removeObject:tile];
+        });
+    }
+}
+
+- (void)_cancelDrawingForTile:(DTStripedLayerTile *)tile
+{
+    @synchronized(self)
+    {
+        
+        
+        
+    }
+}
+
+
+- (void)_enqueueDrawingForTile:(DTStripedLayerTile *)tile
+{
+    @synchronized(self)
+    {
+        if ([_tilesWithDrawingInQueue containsObject:tile])
+        {
+            // image is already being created
+            return;
+        }
+    }
+    
+    [_tileCreationQueue addOperationWithBlock:^{
+        UIGraphicsBeginImageContextWithOptions(tile.bounds.size, YES, 0);
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        
+        // shift the context such that its clip rect matches the tile bounds
+        CGContextTranslateCTM(ctx, tile.bounds.origin.x, -tile.bounds.origin.y);
+        
+        // draw the tile
+        [_tileDelegate drawLayer:tile inContext:ctx];
+        
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        [self _finishedDrawingForTile:tile withResult:image];
+    }];
+}
+
 - (void)layoutSublayers
 {
-    if (!_isObservingSuperlayerBounds)
-    {
-        // observe superlayer bounds
-        [self.superlayer addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew context:NULL];
-        
-        _isObservingSuperlayerBounds = YES;
-    }
+    [super layoutSublayers];
+    
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
     
     CGRect visibleBounds = [self convertRect:self.superlayer.bounds fromLayer:self.superlayer];
     NSRange visibleStripeRange = [self _rangeOfVisibleStripesInBounds:visibleBounds];
     
-    // remove invisible tiles
+    _contentSize = self.frame.size;
     
-    [CATransaction begin];
-    [CATransaction setDisableActions:YES];
+    // remove invisible tiles
     
     NSMutableSet *indexesAlreadyPresent = [NSMutableSet set];
     
@@ -100,7 +183,7 @@
             continue;
         }
         
-        if (oneSubLayer.bounds.size.width != _currentWidth || !NSLocationInRange(oneSubLayer.index, visibleStripeRange))
+        if (oneSubLayer.bounds.size.width != _contentSize.width || !NSLocationInRange(oneSubLayer.index, visibleStripeRange))
         {
             [oneSubLayer removeFromSuperlayer];
         }
@@ -111,14 +194,22 @@
             
             if (CGRectEqualToRect(tileFrame, oneSubLayer.frame))
             {
-                // store in set so that we know that we already have that
-                NSNumber *indexNumber = [NSNumber numberWithUnsignedInteger:oneSubLayer.index];
-                [indexesAlreadyPresent addObject:indexNumber];
             }
             else
             {
-                [oneSubLayer removeFromSuperlayer];
+                NSLog(@"layer frame differs! %@ <-> %@", NSStringFromCGRect(oneSubLayer.frame), NSStringFromCGRect(tileFrame));
+                
+                oneSubLayer.anchorPoint = CGPointZero;
+                oneSubLayer.bounds = tileFrame;
+                oneSubLayer.position = tileFrame.origin;
+                oneSubLayer.frame = tileFrame;
+                
+                [self _enqueueDrawingForTile:oneSubLayer];
             }
+            
+            // store in set so that we know that we already have that
+            NSNumber *indexNumber = [NSNumber numberWithUnsignedInteger:oneSubLayer.index];
+            [indexesAlreadyPresent addObject:indexNumber];
         }
     }
     
@@ -134,7 +225,7 @@
             continue;
         }
         
-        NSString *tileKey = [NSString stringWithFormat:@"%f-%ld", _currentWidth, (unsigned long)index];
+        NSString *tileKey = [NSString stringWithFormat:@"%f-%ld", _contentSize.width, (unsigned long)index];
         
         DTStripedLayerTile *cachedTile = [self.tileCache objectForKey:tileKey];
         
@@ -142,13 +233,13 @@
         
         if (cachedTile)
         {
-            cachedTile.anchorPoint = CGPointZero;
-            cachedTile.bounds = tileFrame;
-            cachedTile.position = tileFrame.origin;
-            cachedTile.frame = tileFrame;
-            
             [self insertSublayer:cachedTile atIndex:0];
-            [cachedTile setNeedsDisplay];
+            //            [cachedTile setNeedsDisplay];
+            
+            if (!cachedTile.contents)
+            {
+                [self _enqueueDrawingForTile:cachedTile];
+            }
             
             NSLog(@"cached %@", cachedTile);
         }
@@ -167,17 +258,30 @@
             
             newTile.needsDisplayOnBoundsChange = YES;
             [self insertSublayer:newTile atIndex:0];
-            newTile.delegate = self;
-            [newTile setNeedsDisplay];
+            
+            [self _enqueueDrawingForTile:newTile];
+            //            newTile.delegate = self;
+            //            [newTile setNeedsDisplay];
+            
+            newTile.borderColor = [UIColor redColor].CGColor;
+            newTile.borderWidth = 3;
+            
+            NSLog(@"new %@", newTile);
             
             // cost in cache is number of pixels
-           [self.tileCache setObject:newTile forKey:tileKey cost:tileFrame.size.width * tileFrame.size.height];
+            [self.tileCache setObject:newTile forKey:tileKey cost:tileFrame.size.width * tileFrame.size.height];
         }
     }
-
-    [CATransaction commit];
     
-    [super layoutSublayers];
+    if (!_isObservingSuperlayerBounds)
+    {
+        // observe superlayer bounds
+        [self.superlayer addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew context:NULL];
+        
+        _isObservingSuperlayerBounds = YES;
+    }
+    
+    [CATransaction commit];
 }
 
 - (void)removeFromSuperlayer
@@ -199,7 +303,7 @@
 
 - (void)setDelegate:(id)delegate
 {
-    [super setDelegate:delegate];
+    // [super setDelegate:delegate];
     
     _tileDelegate = delegate;
 }
@@ -241,7 +345,10 @@
 {
     for (DTStripedLayerTile *oneTile in [self _visibleTiles])
     {
-        [oneTile setNeedsDisplay];
+        //oneTile.contents = nil;
+        
+        [self _enqueueDrawingForTile:oneTile];
+        //        [oneTile setNeedsDisplay];
     }
 }
 
@@ -252,14 +359,22 @@
         // only inform tiles that are affected by this rect
         if (CGRectIntersectsRect(rect, oneTile.frame))
         {
-            [oneTile setNeedsDisplayInRect:rect];
+            [self _enqueueDrawingForTile:oneTile];
+            //          [oneTile setNeedsDisplayInRect:rect];
         }
     }
 }
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx
 {
+    //  NSLog(@"draw %@", layer);
+    
     [_tileDelegate drawLayer:layer inContext:ctx];
+    
+    CGRect clipRect = CGContextGetClipBoundingBox(ctx);
+    
+    CGContextSetRGBStrokeColor(ctx, 1, 0, 0, 0.5);
+    CGContextStrokeRect(ctx, clipRect);
 }
 
 #pragma mark - Properties
