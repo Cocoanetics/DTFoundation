@@ -14,6 +14,7 @@
 
 /**
  Convenience method to create a block executor with a deallocation block
+ @param block The block to execute when the created receiver is being deallocated
  */
 + (id)blockExecutorWithDeallocBlock:(void(^)())block;
 
