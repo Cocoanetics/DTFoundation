@@ -8,7 +8,6 @@ At a Glance
 Contained are several category methods
 
 - NSArray+DTError - parsing array property lists with error reporting
-- NSData+Base64 - Matt Gallagher's base64 methods
 - NSData+DTCrypto - Cryptography methods for NSData
 - NSDictionary+DTError - parsing dictionary property lists with error reporting
 - NSMutableArray+DTMoving - moving multiple array elements to a new location
@@ -28,6 +27,7 @@ Other classes simplify working with specialized data
 - DTActionSheet - block-based additions for UIActionSheet
 - DTASN1Parser - a parser for ASN.1-encoded data (eg. Certificates)
 - DTAsyncFileDeleter - asynchronous non-blocking file/folder deletion
+- DTBase64Coding - Matt Gallagher's base64 methods in a class instead of a category
 - DTCustomColoredAccessory - a customizable accessory view for UITableView
 - DTExtendedFileAttributes - access and modify extended file attributes
 - DTHTMLParser - a libxml2-based HTML parser
