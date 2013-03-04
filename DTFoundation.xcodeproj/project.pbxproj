@@ -267,6 +267,7 @@
 		C0494DA5BB16F9A0E8533152 /* DTZipArchivePKZip.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494776E02407791E96C641 /* DTZipArchivePKZip.m */; };
 		C0494E3EAE5FD2F61970FE00 /* Rene in Resources */ = {isa = PBXBuildFile; fileRef = C0494D374C86170585303054 /* Rene */; };
 		E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA08F96016E4EEAF00BDF822 /* DTZipArchiveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */; };
 		FA2A29291609F7330023CDD7 /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
 		FA8D11DF16C4FC5B006CBAB4 /* UIView+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = FA8D11DD16C4FC5B006CBAB4 /* UIView+DTDebug.h */; };
 		FA8D11E016C4FC5B006CBAB4 /* UIView+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = FA8D11DD16C4FC5B006CBAB4 /* UIView+DTDebug.h */; };
@@ -1540,6 +1541,7 @@
 				FAB172AF163027C700B44EDC /* NSDictionaryDTErrorTest.m in Sources */,
 				A70D56A6162FDECF00120A98 /* DTScriptingTest.m in Sources */,
 				A77D5C0216E4B1D300A45C28 /* DTBase64CodingTest.m in Sources */,
+				FA08F96016E4EEAF00BDF822 /* DTZipArchiveTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

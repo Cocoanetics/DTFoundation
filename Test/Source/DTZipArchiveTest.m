@@ -20,7 +20,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
 
-    DTZipArchive *zipArchive = [[DTZipArchive alloc] initWithFileAtPath:sampleZipPath];
+    DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
     __block NSUInteger iteration = 0;
 
@@ -31,12 +31,12 @@
         {
             case 0:
             {
-                STAssertTrue([fileName isEqualToString:@"zipFiles/"], @"node uncompressed is not as expected");
+                STAssertTrue([fileName isEqualToString:@"zipFiles"], @"node uncompressed is not as expected");
                 break;
             }
             case 1:
             {
-                STAssertTrue([fileName isEqualToString:@"zipFiles/plist/"], @"node uncompressed is not as expected");
+                STAssertTrue([fileName isEqualToString:@"zipFiles/plist"], @"node uncompressed is not as expected");
                 break;
             }
             case 2:
@@ -54,12 +54,12 @@
             }
             case 6:
             {
-                STAssertTrue([fileName isEqualToString:@"zipFiles/text/"], @"node uncompressed is not as expected");
+                STAssertTrue([fileName isEqualToString:@"zipFiles/text"], @"node uncompressed is not as expected");
                 break;
             }
             case 7:
             {
-                STAssertTrue([fileName isEqualToString:@"zipFiles/text/Andere/"], @"node uncompressed is not as expected");
+                STAssertTrue([fileName isEqualToString:@"zipFiles/text/Andere"], @"node uncompressed is not as expected");
                 break;
             }
             case 8:
@@ -96,7 +96,7 @@
             }
             case 12:
             {
-                STAssertTrue([fileName isEqualToString:@"zipFiles/text/test/"], @"node uncompressed is not as expected");
+                STAssertTrue([fileName isEqualToString:@"zipFiles/text/test"], @"node uncompressed is not as expected");
                 break;
             }
             case 13:
@@ -128,7 +128,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
 
-    DTZipArchive *zipArchive = [[DTZipArchive alloc] initWithFileAtPath:sampleZipPath];
+    DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
     __block NSUInteger iteration = 0;
 
@@ -138,7 +138,7 @@
         {
             case 0:
             {
-                STAssertTrue([fileName isEqualToString:@"zipFiles/"], @"node uncompressed is not as expected");
+                STAssertTrue([fileName isEqualToString:@"zipFiles"], @"node uncompressed is not as expected");
 
                 // explicit stop -> no other iterations have to follow!
                 NSLog(@"Now stopping uncompressing with DTZipArchive");
@@ -163,7 +163,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
 
-    DTZipArchive *zipArchive = [[DTZipArchive alloc] initWithFileAtPath:sampleZipPath];
+    DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
     [zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
 
@@ -259,7 +259,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
 
-    DTZipArchive *zipArchive = [[DTZipArchive alloc] initWithFileAtPath:sampleZipPath];
+    DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
 
 
@@ -280,7 +280,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
 
-    DTZipArchive *zipArchive = [[DTZipArchive alloc] initWithFileAtPath:sampleZipPath];
+    DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
     [zipArchive enumerateUncompressedFilesAsDataUsingBlock:^(NSString *fileName, NSData *data, BOOL *stop) {
 
@@ -299,7 +299,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
 
-    DTZipArchive *zipArchive = [[DTZipArchive alloc] initWithFileAtPath:sampleZipPath];
+    DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
     [zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
 
@@ -326,7 +326,7 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
 
-    DTZipArchive *zipArchive = [[DTZipArchive alloc] initWithFileAtPath:sampleZipPath];
+    DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
     [zipArchive uncompressToPath:@"ILLEGAL PATH!!!" completion:^(NSError *error) {
 
