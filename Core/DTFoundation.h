@@ -16,6 +16,7 @@
 
 // Classes
 #import "DTASN1Parser.h"
+#import "DTBase64Coding.h"
 #import "DTExtendedFileAttributes.h"
 #import "DTHTMLParser.h"
 #import "DTVersion.h"
@@ -30,7 +31,6 @@
 
 // Categories
 #import "NSArray+DTError.h"
-#import "NSData+Base64.h"
 #import "NSData+DTCrypto.h"
 #import "NSDictionary+DTError.h"
 #import "NSMutableArray+DTMoving.h"

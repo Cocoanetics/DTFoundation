@@ -169,6 +169,13 @@
 		A777831316CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */; };
 		A777831416CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */; };
 		A777831516CA49C80048BED1 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */; };
+		A77D5BFA16E4961A00A45C28 /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; };
+		A77D5BFB16E4961A00A45C28 /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; };
+		A77D5BFC16E4961A00A45C28 /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; };
+		A77D5BFD16E4961A00A45C28 /* DTBase64Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */; };
+		A77D5BFE16E4961A00A45C28 /* DTBase64Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */; };
+		A77D5BFF16E4961A00A45C28 /* DTBase64Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */; };
+		A77D5C0216E4B1D300A45C28 /* DTBase64CodingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A77D5C0116E4B1D300A45C28 /* DTBase64CodingTest.m */; };
 		A77DD41614E825FC00F34B03 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40D14E825FC00F34B03 /* crypt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77DD41714E825FC00F34B03 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40D14E825FC00F34B03 /* crypt.h */; };
 		A77DD41A14E825FC00F34B03 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DD40F14E825FC00F34B03 /* ioapi.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -185,12 +192,6 @@
 		A79231D0157A0B9400C3ACBB /* NSURL+DTUnshorten.m in Sources */ = {isa = PBXBuildFile; fileRef = A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */; };
 		A79231D1157A0B9400C3ACBB /* NSURL+DTUnshorten.m in Sources */ = {isa = PBXBuildFile; fileRef = A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */; };
 		A792968F1619F0FA00D5C979 /* DTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA6C153C39920020F18B /* DTUtils.m */; };
-		A79500F7161D680000358BC3 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = A79500F3161D680000358BC3 /* NSData+Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A79500F8161D680000358BC3 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = A79500F3161D680000358BC3 /* NSData+Base64.h */; };
-		A79500F9161D680000358BC3 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = A79500F3161D680000358BC3 /* NSData+Base64.h */; };
-		A79500FA161D680000358BC3 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F4161D680000358BC3 /* NSData+Base64.m */; };
-		A79500FB161D680000358BC3 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F4161D680000358BC3 /* NSData+Base64.m */; };
-		A79500FC161D680000358BC3 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F4161D680000358BC3 /* NSData+Base64.m */; };
 		A79500FD161D680000358BC3 /* NSData+DTCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = A79500F5161D680000358BC3 /* NSData+DTCrypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A79500FE161D680000358BC3 /* NSData+DTCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = A79500F5161D680000358BC3 /* NSData+DTCrypto.h */; };
 		A79500FF161D680000358BC3 /* NSData+DTCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = A79500F5161D680000358BC3 /* NSData+DTCrypto.h */; };
@@ -254,7 +255,6 @@
 		C0494033163C863A470098D8 /* DTZipArchiveNode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494CD06FFAB6AEAC8ADAD4 /* DTZipArchiveNode.h */; };
 		C04941BC829C1022DF240F4C /* DTZipArchiveNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */; };
 		C049420F39CD4294FCE0F549 /* DTZipArchiveGZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C04943358446F1A9BA86F458 /* DTZipArchiveGZip.h */; };
-		C0494290FB896194C0CCF183 /* DTZipArchiveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */; };
 		C0494413BF6B7DE719726BB7 /* gzip_sample.txt.gz in Resources */ = {isa = PBXBuildFile; fileRef = C0494136CFE5018E95613EA7 /* gzip_sample.txt.gz */; };
 		C04946681218C94801D2AB78 /* DTZipArchivePKZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */; };
 		C04947611C8CC4CC53CCCCC7 /* sample.zip in Resources */ = {isa = PBXBuildFile; fileRef = C0494767B5C59AFA489E561D /* sample.zip */; };
@@ -440,6 +440,10 @@
 		A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTUTI.m"; sourceTree = "<group>"; };
 		A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTObjectBlockExecutor.h; sourceTree = "<group>"; };
 		A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTObjectBlockExecutor.m; sourceTree = "<group>"; };
+		A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBase64Coding.h; sourceTree = "<group>"; };
+		A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBase64Coding.m; sourceTree = "<group>"; };
+		A77D5C0016E4B1D300A45C28 /* DTBase64CodingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBase64CodingTest.h; sourceTree = "<group>"; };
+		A77D5C0116E4B1D300A45C28 /* DTBase64CodingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBase64CodingTest.m; sourceTree = "<group>"; };
 		A77DD40D14E825FC00F34B03 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		A77DD40E14E825FC00F34B03 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		A77DD40F14E825FC00F34B03 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -453,8 +457,6 @@
 		A7859D3D16DF8D180076F2DB /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		A79231CC157A0B9400C3ACBB /* NSURL+DTUnshorten.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTUnshorten.h"; sourceTree = "<group>"; };
 		A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTUnshorten.m"; sourceTree = "<group>"; };
-		A79500F3161D680000358BC3 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		A79500F4161D680000358BC3 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		A79500F5161D680000358BC3 /* NSData+DTCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DTCrypto.h"; sourceTree = "<group>"; };
 		A79500F6161D680000358BC3 /* NSData+DTCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DTCrypto.m"; sourceTree = "<group>"; };
 		A7BAD10E1483F934000E2B6A /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -818,8 +820,6 @@
 			children = (
 				A73D5BA9155271FD0024BDB7 /* NSArray+DTError.h */,
 				A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */,
-				A79500F3161D680000358BC3 /* NSData+Base64.h */,
-				A79500F4161D680000358BC3 /* NSData+Base64.m */,
 				A79500F5161D680000358BC3 /* NSData+DTCrypto.h */,
 				A79500F6161D680000358BC3 /* NSData+DTCrypto.m */,
 				A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */,
@@ -858,6 +858,8 @@
 				A70B4CC81486621B00873A4A /* DTVersion.m */,
 				A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */,
 				A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */,
+				A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */,
+				A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -888,6 +890,8 @@
 				FAB172AE163027C700B44EDC /* NSDictionaryDTErrorTest.m */,
 				C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */,
 				C04947C63C389A913634F6A8 /* DTZipArchiveTest.h */,
+				A77D5C0016E4B1D300A45C28 /* DTBase64CodingTest.h */,
+				A77D5C0116E4B1D300A45C28 /* DTBase64CodingTest.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -985,7 +989,6 @@
 				A73D5BAC155271FD0024BDB7 /* NSArray+DTError.h in Headers */,
 				A79231CF157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */,
 				A766136116143F8A00DF6C2B /* NSMutableArray+DTMoving.h in Headers */,
-				A79500F8161D680000358BC3 /* NSData+Base64.h in Headers */,
 				A79500FE161D680000358BC3 /* NSData+DTCrypto.h in Headers */,
 				A7556F67162EEF9200A69F63 /* DTScriptExpression.h in Headers */,
 				A70D5696162FD30700120A98 /* DTScriptVariable.h in Headers */,
@@ -1012,6 +1015,7 @@
 				A70ECD6116E09705004E9623 /* DTStripedLayer.h in Headers */,
 				A70ECD6716E0A06E004E9623 /* DTStripedLayerTile.h in Headers */,
 				A70ECD6D16E0A389004E9623 /* UIColor+DTDebug.h in Headers */,
+				A77D5BFB16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,7 +1024,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A766136216143F8A00DF6C2B /* NSMutableArray+DTMoving.h in Headers */,
-				A79500F9161D680000358BC3 /* NSData+Base64.h in Headers */,
 				A79500FF161D680000358BC3 /* NSData+DTCrypto.h in Headers */,
 				A7556F68162EEF9200A69F63 /* DTScriptExpression.h in Headers */,
 				A70D5697162FD30700120A98 /* DTScriptVariable.h in Headers */,
@@ -1036,6 +1039,7 @@
 				A76DB4F416A5E5590010CD85 /* NSView+DTAutoLayout.h in Headers */,
 				A76DB4F616A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.h in Headers */,
 				A777831116CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
+				A77D5BFC16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1051,7 +1055,6 @@
 				A7FE30641548005700F5DC66 /* NSObject+DTRuntime.h in Headers */,
 				A79231CE157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */,
 				A766136016143F8A00DF6C2B /* NSMutableArray+DTMoving.h in Headers */,
-				A79500F7161D680000358BC3 /* NSData+Base64.h in Headers */,
 				A79500FD161D680000358BC3 /* NSData+DTCrypto.h in Headers */,
 				A7556F66162EEF9200A69F63 /* DTScriptExpression.h in Headers */,
 				A70D5695162FD30700120A98 /* DTScriptVariable.h in Headers */,
@@ -1089,6 +1092,7 @@
 				A70ECD6016E09705004E9623 /* DTStripedLayer.h in Headers */,
 				A70ECD6616E0A06E004E9623 /* DTStripedLayerTile.h in Headers */,
 				A70ECD6C16E0A389004E9623 /* UIColor+DTDebug.h in Headers */,
+				A77D5BFA16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1410,7 +1414,6 @@
 				A73D5BAE155271FD0024BDB7 /* NSArray+DTError.m in Sources */,
 				A79231D1157A0B9400C3ACBB /* NSURL+DTUnshorten.m in Sources */,
 				A766136416143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */,
-				A79500FB161D680000358BC3 /* NSData+Base64.m in Sources */,
 				A7950101161D680000358BC3 /* NSData+DTCrypto.m in Sources */,
 				A7556F6A162EEF9200A69F63 /* DTScriptExpression.m in Sources */,
 				A70D5699162FD30700120A98 /* DTScriptVariable.m in Sources */,
@@ -1437,6 +1440,7 @@
 				A70ECD6316E09705004E9623 /* DTStripedLayer.m in Sources */,
 				A70ECD6916E0A06E004E9623 /* DTStripedLayerTile.m in Sources */,
 				A70ECD6F16E0A389004E9623 /* UIColor+DTDebug.m in Sources */,
+				A77D5BFE16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1450,7 +1454,6 @@
 				A76613E5161444FD00DF6C2B /* NSString+DTUtilities.m in Sources */,
 				A7437DE216147A450091C1A2 /* NSString+DTPaths.m in Sources */,
 				A792968F1619F0FA00D5C979 /* DTUtils.m in Sources */,
-				A79500FC161D680000358BC3 /* NSData+Base64.m in Sources */,
 				A7950102161D680000358BC3 /* NSData+DTCrypto.m in Sources */,
 				A7444D2C162C011C00DD3692 /* NSArray+DTError.m in Sources */,
 				A7556F6B162EEF9200A69F63 /* DTScriptExpression.m in Sources */,
@@ -1469,6 +1472,7 @@
 				A7239FF516A6C1BC0071E902 /* DTASN1Parser.m in Sources */,
 				A777831416CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */,
 				A777831516CA49C80048BED1 /* NSObject+DTRuntime.m in Sources */,
+				A77D5BFF16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1497,7 +1501,6 @@
 				A73D5BAD155271FD0024BDB7 /* NSArray+DTError.m in Sources */,
 				A79231D0157A0B9400C3ACBB /* NSURL+DTUnshorten.m in Sources */,
 				A766136316143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */,
-				A79500FA161D680000358BC3 /* NSData+Base64.m in Sources */,
 				A7950100161D680000358BC3 /* NSData+DTCrypto.m in Sources */,
 				A7556F69162EEF9200A69F63 /* DTScriptExpression.m in Sources */,
 				A70D5698162FD30700120A98 /* DTScriptVariable.m in Sources */,
@@ -1523,6 +1526,7 @@
 				A70ECD6216E09705004E9623 /* DTStripedLayer.m in Sources */,
 				A70ECD6816E0A06E004E9623 /* DTStripedLayerTile.m in Sources */,
 				A70ECD6E16E0A389004E9623 /* UIColor+DTDebug.m in Sources */,
+				A77D5BFD16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1535,7 +1539,7 @@
 				FAB17249162FFA6800B44EDC /* NSArrayDTErrorTest.m in Sources */,
 				FAB172AF163027C700B44EDC /* NSDictionaryDTErrorTest.m in Sources */,
 				A70D56A6162FDECF00120A98 /* DTScriptingTest.m in Sources */,
-				C0494290FB896194C0CCF183 /* DTZipArchiveTest.m in Sources */,
+				A77D5C0216E4B1D300A45C28 /* DTBase64CodingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

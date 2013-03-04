@@ -1,6 +1,8 @@
 //
-//  NSData+Base64.m
-//  base64
+//  DTBase64Coding.m
+//  DTFoundation
+//
+//  Original code from NSData+Base64.m
 //
 //  Created by Matt Gallagher on 2009/06/03.
 //  Copyright 2009 Matt Gallagher. All rights reserved.
@@ -19,15 +21,19 @@
 //     misrepresented as being the original software.
 //  3. This notice may not be removed or altered from any source
 //     distribution.
-//
 
-#import "NSData+Base64.h"
+
+#import "DTBase64Coding.h"
+
+
+// Function Prototypes
+void *DT__NewBase64Decode(const char *inputBuffer, size_t length, size_t *outputLength);
+char *DT__NewBase64Encode(const void *buffer, size_t length, bool separateLines, size_t *outputLength);
 
 //
 // Mapping from 6 bit pattern to ASCII character.
 //
-static unsigned char base64EncodeLookup[65] =
-"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+static unsigned char base64EncodeLookup[65] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 //
 // Definition for "masked-out" areas of the base64DecodeLookup mapping
@@ -76,10 +82,7 @@ static unsigned char base64DecodeLookup[256] =
 // returns the decoded buffer. Must be free'd by caller. Length is given by
 //	outputLength.
 //
-void *NewDTBase64Decode(
-                        const char *inputBuffer,
-                        size_t length,
-                        size_t *outputLength)
+void *DT__NewBase64Decode ( const char *inputBuffer, size_t length, size_t *outputLength)
 {
 	if ((long)length == -1)
 	{
@@ -151,11 +154,7 @@ void *NewDTBase64Decode(
 // returns the encoded buffer. Must be free'd by caller. Length is given by
 //	outputLength.
 //
-char *NewDTBase64Encode(
-                        const void *buffer,
-                        size_t length,
-                        bool separateLines,
-                        size_t *outputLength)
+char *DT__NewBase64Encode(const void *buffer, size_t length, bool separateLines, size_t *outputLength)
 {
 	const unsigned char *inputBuffer = (const unsigned char *)buffer;
 	
@@ -262,49 +261,34 @@ char *NewDTBase64Encode(
 	return outputBuffer;
 }
 
-@implementation NSData (DTBase64)
+@implementation DTBase64Coding
 
-//
-// dataFromBase64String:
-//
-// Creates an NSData object containing the base64 decoded representation of
-// the base64 string 'aString'
-//
-// Parameters:
-//    aString - the base64 string to decode
-//
-// returns the autoreleased NSData representation of the base64 string
-//
-+ (NSData *)dataFromBase64String:(NSString *)aString
+// this is abstract and not meant to be actually used
+- (id)init
 {
-	NSData *data = [aString dataUsingEncoding:NSASCIIStringEncoding];
-	size_t outputLength;
-	void *outputBuffer = NewDTBase64Decode([data bytes], [data length], &outputLength);
-	NSData *result = [NSData dataWithBytes:outputBuffer length:outputLength];
+    [NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+
+    return nil;
+}
+
+#pragma mark - Encoding and Decoding
+
++ (NSString *)stringByEncodingData:(NSData *)data
+{
+    size_t outputLength = 0;
+	char *outputBuffer = DT__NewBase64Encode([data bytes], [data length], true, &outputLength);
+    
+	NSString *result = [[NSString alloc] initWithBytes:outputBuffer length:outputLength encoding:NSASCIIStringEncoding];
 	free(outputBuffer);
 	return result;
 }
 
-//
-// base64EncodedString
-//
-// Creates an NSString object that contains the base 64 encoding of the
-// receiver's data. Lines are broken at 64 characters long.
-//
-// returns an autoreleased NSString being the base 64 representation of the
-//	receiver.
-//
-- (NSString *)base64EncodedString
++ (NSData *)dataByDecodingString:(NSString *)string
 {
-	size_t outputLength = 0;
-	char *outputBuffer =
-	NewDTBase64Encode([self bytes], [self length], true, &outputLength);
-    
-	NSString *result =
-	[[NSString alloc]
-     initWithBytes:outputBuffer
-     length:outputLength
-     encoding:NSASCIIStringEncoding];
+   	NSData *data = [string dataUsingEncoding:NSASCIIStringEncoding];
+	size_t outputLength;
+	void *outputBuffer = DT__NewBase64Decode([data bytes], [data length], &outputLength);
+	NSData *result = [NSData dataWithBytes:outputBuffer length:outputLength];
 	free(outputBuffer);
 	return result;
 }
