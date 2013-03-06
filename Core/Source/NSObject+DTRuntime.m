@@ -54,7 +54,7 @@ static char DTRuntimeDeallocBlocks;
     IMP myIMP = imp_implementationWithBlock(impBlockForIMP);
     
     SEL selector = NSSelectorFromString(selectorName);
-    return class_addMethod([self class], selector, myIMP, "v@:");
+    return class_addMethod(self, selector, myIMP, "v@:");
 }
 
 #pragma mark - Method Swizzling
