@@ -27,8 +27,8 @@
  Adds a new instance method to a class. All instances of this class will have this method.
  
  The block captures `self` in the calling context. To allow access to the instance from within the block it is passed as parameter to the block.
- @param name The name of the method.
- @param The block to execute for the instance method, a pointer to the instance is passed as the only parameter.
+ @param selectorName name The name of the method.
+ @param block The block to execute for the instance method, a pointer to the instance is passed as the only parameter.
  @returns `YES` if the operation was successful
  */
 + (BOOL)addInstanceMethodWithSelectorName:(NSString *)selectorName block:(void(^)(id))block;
