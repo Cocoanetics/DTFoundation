@@ -23,6 +23,15 @@
  */
 - (void)addDeallocBlock:(void(^)())block;
 
+/**
+ Adds a new instance method to a class. All instances of this class will have this method.
+ 
+ @param name The name of the method.
+ @param The block to execute for the instance method, a pointer to the instance is passed as the only parameter.
+ @returns `YES` if the operation was successful
+ */
++ (BOOL)addInstanceMethodWithSelectorName:(NSString *)selectorName block:(void(^)(id))block;
+
 /**-------------------------------------------------------------------------------------
  @name Method Swizzling
  ---------------------------------------------------------------------------------------
