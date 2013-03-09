@@ -26,6 +26,8 @@
 		unsigned int delegateSupportsDocumentEnd:1;
 		unsigned int delegateSupportsContainerStart:1;
 		unsigned int delegateSupportsContainerEnd:1;
+		unsigned int delegateSupportsContextStart:1;
+		unsigned int delegateSupportsContextEnd:1;
 		unsigned int delegateSupportsString:1;
 		unsigned int delegateSupportsInteger:1;
 		unsigned int delegateSupportsData:1;
@@ -385,11 +387,11 @@
 		//		BOOL isSeq = tagByte & 32;
 		//		BOOL isContext = tagByte & 128;
 		
-		//NSUInteger tagClass = tagByte >> 6;
+		NSUInteger tagClass = tagByte >> 6;
 		DTASN1Type tagType = tagByte & 31;
 		BOOL tagConstructed = (tagByte >> 5) & 1;
 		
-		if (tagType == 0x1f)
+		if (tagType == DTASN1TypeUsesLongForm)
 		{
 			[self _parseErrorEncountered:@"Long form not implemented"];
 			return NO;
@@ -410,9 +412,32 @@
 		// make range
 		NSRange subRange = NSMakeRange(location, length);
 		
+		if (NSMaxRange(subRange) > NSMaxRange(range))
+		{
+			return NO;
+		}
+		
+		if (tagClass == 2)
+		{
+			if (_delegateFlags.delegateSupportsContextStart)
+			{
+				[_delegate parser:self didStartContextWithTag:tagType];
+			}
+			
+			if (!tagConstructed)
+			{
+				tagType = DTASN1TypeOctetString;
+			}
+		}
+		
 		if (tagConstructed)
 		{
 			// constructed element
+			if (subRange.length == 0)
+			{
+				return NO;
+			}
+			
 			
 			if (_delegateFlags.delegateSupportsContainerStart)
 			{
@@ -435,6 +460,14 @@
 			if (![self _parseValueWithTag:tagType dataRange:subRange])
 			{
 				_abortParsing = YES;
+			}
+		}
+		
+		if (tagClass == 2)
+		{
+			if (_delegateFlags.delegateSupportsContextStart)
+			{
+				[_delegate parser:self didEndContextWithTag:tagType];
 			}
 		}
 		
@@ -509,6 +542,16 @@
 	if ([_delegate respondsToSelector:@selector(parser:didEndContainerWithType:)])
 	{
 		_delegateFlags.delegateSupportsContainerEnd= YES;
+	}
+	
+	if ([_delegate respondsToSelector:@selector(parser:didStartContextWithTag:)])
+	{
+		_delegateFlags.delegateSupportsContextStart = YES;
+	}
+	
+	if ([_delegate respondsToSelector:@selector(parser:didEndContextWithTag:)])
+	{
+		_delegateFlags.delegateSupportsContextEnd = YES;
 	}
 	
 	if ([_delegate respondsToSelector:@selector(parser:parseErrorOccurred:)])

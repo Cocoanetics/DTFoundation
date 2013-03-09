@@ -36,6 +36,7 @@ typedef enum
 	DTASN1TypeGeneralString = 0x1b,
 	DTASN1TypeUniversalString = 0x1c,
 	DTASN1TypeBitmapString = 0x1e,
+	DTASN1TypeUsesLongForm = 0x1f
 } DTASN1Type;
 
 
@@ -76,6 +77,22 @@ typedef enum
  @param type A string that is the name of an element (in its end tag).
  */
 - (void)parser:(DTASN1Parser *)parser didEndContainerWithType:(DTASN1Type)type;
+
+/**
+ Sent by a parser object to its delegate when it encounters the beginning of a context-specific tag.
+ 
+ @param parser A parser object.
+ @param tag The tag value for the context that contains the subsequent elements.
+ */
+- (void)parser:(DTASN1Parser *)parser didStartContextWithTag:(NSUInteger)tag;
+
+/**
+ Sent by a parser object to its delegate when it encounters the end of a constructed element.
+ 
+ @param parser A parser object.
+ @param tag The tag value for the context that contained the previous elements.
+ */
+- (void)parser:(DTASN1Parser *)parser didEndContextWithTag:(NSUInteger)tag;
 
 /**
  Sent by a parser object to its delegate when it encounters a fatal error.
