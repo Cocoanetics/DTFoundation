@@ -30,6 +30,12 @@
 
 - (NSString *)description
 {
+	return _data.description;
+}
+
+
+- (NSString *)stringWithBits
+{
 	unsigned char *b = (unsigned char*) [_data bytes];
 	int size = (int)[_data length];
 	unsigned char byte;
