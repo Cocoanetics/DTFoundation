@@ -23,6 +23,11 @@
 - (BOOL)valueOfBitAtIndex:(NSUInteger)index;
 
 /**
+ Creates a string with bits concatenated.
+ */
+- (NSString *)stringWithBits;
+
+/**
  The number of bits at the end of the data chunk that are not used
  */
 @property (nonatomic, assign) NSUInteger unusedBits;
