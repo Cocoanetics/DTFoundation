@@ -176,6 +176,12 @@
 		A779A38816EB850D001BD056 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A38316EB850D001BD056 /* DTASN1Serialization.m */; };
 		A779A38916EB850D001BD056 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A38316EB850D001BD056 /* DTASN1Serialization.m */; };
 		A779A38C16EB8BFB001BD056 /* DTASN1SerializationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A38B16EB8BFB001BD056 /* DTASN1SerializationTest.m */; };
+		A779A39F16EC816A001BD056 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A39D16EC8169001BD056 /* DTASN1BitString.h */; };
+		A779A3A016EC816A001BD056 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A39D16EC8169001BD056 /* DTASN1BitString.h */; };
+		A779A3A116EC816A001BD056 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A39D16EC8169001BD056 /* DTASN1BitString.h */; };
+		A779A3A216EC816A001BD056 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A39E16EC8169001BD056 /* DTASN1BitString.m */; };
+		A779A3A316EC816A001BD056 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A39E16EC8169001BD056 /* DTASN1BitString.m */; };
+		A779A3A416EC816A001BD056 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A39E16EC8169001BD056 /* DTASN1BitString.m */; };
 		A77D5BFA16E4961A00A45C28 /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; };
 		A77D5BFB16E4961A00A45C28 /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; };
 		A77D5BFC16E4961A00A45C28 /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; };
@@ -452,6 +458,8 @@
 		A779A38316EB850D001BD056 /* DTASN1Serialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTASN1Serialization.m; sourceTree = "<group>"; };
 		A779A38A16EB8BFB001BD056 /* DTASN1SerializationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTASN1SerializationTest.h; sourceTree = "<group>"; };
 		A779A38B16EB8BFB001BD056 /* DTASN1SerializationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTASN1SerializationTest.m; sourceTree = "<group>"; };
+		A779A39D16EC8169001BD056 /* DTASN1BitString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTASN1BitString.h; sourceTree = "<group>"; };
+		A779A39E16EC8169001BD056 /* DTASN1BitString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTASN1BitString.m; sourceTree = "<group>"; };
 		A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBase64Coding.h; sourceTree = "<group>"; };
 		A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBase64Coding.m; sourceTree = "<group>"; };
 		A77D5C0016E4B1D300A45C28 /* DTBase64CodingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBase64CodingTest.h; sourceTree = "<group>"; };
@@ -862,6 +870,8 @@
 			isa = PBXGroup;
 			children = (
 				A7556F63162EEF6700A69F63 /* DTScripting */,
+				A779A39D16EC8169001BD056 /* DTASN1BitString.h */,
+				A779A39E16EC8169001BD056 /* DTASN1BitString.m */,
 				A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */,
 				A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */,
 				A779A38216EB850D001BD056 /* DTASN1Serialization.h */,
@@ -1033,6 +1043,7 @@
 				A70ECD6D16E0A389004E9623 /* UIColor+DTDebug.h in Headers */,
 				A77D5BFB16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 				A779A38516EB850D001BD056 /* DTASN1Serialization.h in Headers */,
+				A779A3A016EC816A001BD056 /* DTASN1BitString.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1058,6 +1069,7 @@
 				A777831116CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
 				A77D5BFC16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 				A779A38616EB850D001BD056 /* DTASN1Serialization.h in Headers */,
+				A779A3A116EC816A001BD056 /* DTASN1BitString.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1112,6 +1124,7 @@
 				A70ECD6C16E0A389004E9623 /* UIColor+DTDebug.h in Headers */,
 				A77D5BFA16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 				A779A38416EB850D001BD056 /* DTASN1Serialization.h in Headers */,
+				A779A39F16EC816A001BD056 /* DTASN1BitString.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1461,6 +1474,7 @@
 				A70ECD6F16E0A389004E9623 /* UIColor+DTDebug.m in Sources */,
 				A77D5BFE16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A779A38816EB850D001BD056 /* DTASN1Serialization.m in Sources */,
+				A779A3A316EC816A001BD056 /* DTASN1BitString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1494,6 +1508,7 @@
 				A777831516CA49C80048BED1 /* NSObject+DTRuntime.m in Sources */,
 				A77D5BFF16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A779A38916EB850D001BD056 /* DTASN1Serialization.m in Sources */,
+				A779A3A416EC816A001BD056 /* DTASN1BitString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1549,6 +1564,7 @@
 				A70ECD6E16E0A389004E9623 /* UIColor+DTDebug.m in Sources */,
 				A77D5BFD16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A779A38716EB850D001BD056 /* DTASN1Serialization.m in Sources */,
+				A779A3A216EC816A001BD056 /* DTASN1BitString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,20 @@
 	NSData *data = [DTBase64Coding dataByDecodingString:string];
 	
 	id object = [DTASN1Serialization objectWithData:data];
-	NSLog(@"%@", object);
+	
+	STAssertNotNil(object, @"Should be able to decode as array");
+	STAssertTrue([object isKindOfClass:[NSArray class]], @"Decoded object should be an array");
+}
+
+- (void)testBitString
+{
+	NSString *string = @"AwIFoA==";
+	NSData *data = [DTBase64Coding dataByDecodingString:string];
+
+	id object = [DTASN1Serialization objectWithData:data];
+	
+	NSString *asString = [object description];
+	STAssertTrue([@"101" isEqualToString:asString], @"Result should be 101");
 }
 
 @end

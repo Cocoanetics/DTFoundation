@@ -139,10 +139,14 @@
 	[self _addObjectToCurrentContainer:data];
 }
 
+- (void)parser:(DTASN1Parser *)parser foundBitString:(DTASN1BitString *)bitString
+{
+	[self _addObjectToCurrentContainer:bitString];
+}
+
 - (void)parser:(DTASN1Parser *)parser foundNumber:(NSNumber *)number
 {
 	[self _addObjectToCurrentContainer:number];
 }
-
 
 @end

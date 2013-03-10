@@ -7,6 +7,7 @@
 //
 
 #import "DTASN1Parser.h"
+#import "DTASN1BitString.h"
 
 @implementation DTASN1Parser
 {
@@ -31,6 +32,7 @@
 		unsigned int delegateSupportsString:1;
 		unsigned int delegateSupportsInteger:1;
 		unsigned int delegateSupportsData:1;
+		unsigned int delegateSupportsBitString:1;
 		unsigned int delegateSupportsNumber:1;
 		unsigned int delegateSupportsNull:1;
 		unsigned int delegateSupportsError:1;
@@ -212,7 +214,7 @@
 			
 		case DTASN1TypeBitString:
 		{
-			if (_delegateFlags.delegateSupportsData)
+			if (_delegateFlags.delegateSupportsBitString)
 			{
 				char *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
@@ -220,15 +222,10 @@
 				// primitive encoding
 				NSUInteger unusedBits = buffer[0];
 				
-				if (unusedBits>0)
-				{
-					[self _parseErrorEncountered:@"Encountered bit string with unused bits > 0, not implemented"];
-					free(buffer);
-					return NO;
-				}
-				
 				NSData *data = [NSData dataWithBytes:buffer+1 length:dataRange.length-1];
-				[_delegate parser:self foundData:data];
+				DTASN1BitString *bitstring = [[DTASN1BitString alloc] initWithData:data unusedBits:unusedBits];
+				
+				[_delegate parser:self foundBitString:bitstring];
 				
 				free(buffer);
 			}
@@ -577,6 +574,11 @@
 	if ([_delegate respondsToSelector:@selector(parser:foundData:)])
 	{
 		_delegateFlags.delegateSupportsData = YES;
+	}
+	
+	if ([_delegate respondsToSelector:@selector(parser:foundBitString:)])
+	{
+		_delegateFlags.delegateSupportsBitString = YES;
 	}
 	
 	if ([_delegate respondsToSelector:@selector(parser:foundNumber:)])

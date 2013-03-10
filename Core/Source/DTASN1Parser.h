@@ -40,7 +40,7 @@ typedef enum
 } DTASN1Type;
 
 
-@class DTASN1Parser;
+@class DTASN1Parser, DTASN1BitString;
 
 /** The DTASN1ParserDelegate protocol defines the optional methods implemented by delegates of DTASN1Parser objects. 
  */
@@ -140,14 +140,22 @@ typedef enum
 - (void)parser:(DTASN1Parser *)parser foundString:(NSString *)string;
 
 /**
- Sent by a parser object to provide its delegate with the data encoded in the current element.
+ Sent by a parser object to provide its delegate with the octet string encoded in the current element.
  
- Both bit strings and octet strings are provided via this method. Also Integer data that is longer than 32 bits is provided this way.
+ Integer data that is longer than 32 bits is also provided this way.
  
  @param parser A parser object.
  @param data A data object representing the contents of the current element.
  */
 - (void)parser:(DTASN1Parser *)parser foundData:(NSData *)data;
+
+/**
+ Sent by a parser object to provide its delegate with the bit string encoded in the current element.
+ 
+ @param parser A parser object.
+ @param bitString A bit string object representing the contents of the current element.
+ */
+- (void)parser:(DTASN1Parser *)parser foundBitString:(DTASN1BitString *)bitString;
 
 /**
  Sent by a parser object to provide its delegate with number values encoded in the current element.
