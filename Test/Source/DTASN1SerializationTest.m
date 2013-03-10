@@ -35,4 +35,16 @@
 	STAssertTrue([@"101" isEqualToString:asString], @"Result should be 101");
 }
 
+// a sequence with no contents should still be returned as array
+- (void)testDecodingEmptySequence
+{
+	NSString *string = @"MAA=";
+	NSData *data = [DTBase64Coding dataByDecodingString:string];
+	
+	id object = [DTASN1Serialization objectWithData:data];
+	
+	STAssertNotNil(object, @"Should be able to decode as array");
+	STAssertTrue([object isKindOfClass:[NSArray class]], @"Decoded object should be an array");
+}
+
 @end
