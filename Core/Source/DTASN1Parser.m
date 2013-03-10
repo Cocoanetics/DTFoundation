@@ -381,9 +381,6 @@
 		[_data getBytes:&tagByte range:NSMakeRange(location, 1)];
 		location++;
 		
-		//		BOOL isSeq = tagByte & 32;
-		//		BOOL isContext = tagByte & 128;
-		
 		NSUInteger tagClass = tagByte >> 6;
 		DTASN1Type tagType = tagByte & 31;
 		BOOL tagConstructed = (tagByte >> 5) & 1;
@@ -429,21 +426,18 @@
 		
 		if (tagConstructed)
 		{
-			// constructed element
-			if (subRange.length == 0)
-			{
-				return NO;
-			}
-			
-			
 			if (_delegateFlags.delegateSupportsContainerStart)
 			{
 				[_delegate parser:self didStartContainerWithType:tagType];
 			}
 			
-			if (![self _parseRange:subRange])
+			// allow for sequence without content
+			if (subRange.length > 0)
 			{
-				_abortParsing = YES;
+				if (![self _parseRange:subRange])
+				{
+					_abortParsing = YES;
+				}
 			}
 			
 			if (_delegateFlags.delegateSupportsContainerEnd)
