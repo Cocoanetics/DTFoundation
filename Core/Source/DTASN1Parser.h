@@ -36,10 +36,11 @@ typedef enum
 	DTASN1TypeGeneralString = 0x1b,
 	DTASN1TypeUniversalString = 0x1c,
 	DTASN1TypeBitmapString = 0x1e,
+	DTASN1TypeUsesLongForm = 0x1f
 } DTASN1Type;
 
 
-@class DTASN1Parser;
+@class DTASN1Parser, DTASN1BitString;
 
 /** The DTASN1ParserDelegate protocol defines the optional methods implemented by delegates of DTASN1Parser objects. 
  */
@@ -76,6 +77,22 @@ typedef enum
  @param type A string that is the name of an element (in its end tag).
  */
 - (void)parser:(DTASN1Parser *)parser didEndContainerWithType:(DTASN1Type)type;
+
+/**
+ Sent by a parser object to its delegate when it encounters the beginning of a context-specific tag.
+ 
+ @param parser A parser object.
+ @param tag The tag value for the context that contains the subsequent elements.
+ */
+- (void)parser:(DTASN1Parser *)parser didStartContextWithTag:(NSUInteger)tag;
+
+/**
+ Sent by a parser object to its delegate when it encounters the end of a constructed element.
+ 
+ @param parser A parser object.
+ @param tag The tag value for the context that contained the previous elements.
+ */
+- (void)parser:(DTASN1Parser *)parser didEndContextWithTag:(NSUInteger)tag;
 
 /**
  Sent by a parser object to its delegate when it encounters a fatal error.
@@ -123,14 +140,22 @@ typedef enum
 - (void)parser:(DTASN1Parser *)parser foundString:(NSString *)string;
 
 /**
- Sent by a parser object to provide its delegate with the data encoded in the current element.
+ Sent by a parser object to provide its delegate with the octet string encoded in the current element.
  
- Both bit strings and octet strings are provided via this method. Also Integer data that is longer than 32 bits is provided this way.
+ Integer data that is longer than 32 bits is also provided this way.
  
  @param parser A parser object.
  @param data A data object representing the contents of the current element.
  */
 - (void)parser:(DTASN1Parser *)parser foundData:(NSData *)data;
+
+/**
+ Sent by a parser object to provide its delegate with the bit string encoded in the current element.
+ 
+ @param parser A parser object.
+ @param bitString A bit string object representing the contents of the current element.
+ */
+- (void)parser:(DTASN1Parser *)parser foundBitString:(DTASN1BitString *)bitString;
 
 /**
  Sent by a parser object to provide its delegate with number values encoded in the current element.
