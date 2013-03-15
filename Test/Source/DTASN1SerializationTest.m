@@ -36,6 +36,16 @@
 	STAssertTrue([@"101" isEqualToString:asString], @"Result should be 101");
 }
 
+- (void)testUTF8String
+{
+	NSString *string = @"DApTb21lLVN0YXRl";
+	NSData *data = [DTBase64Coding dataByDecodingString:string];
+    
+	NSString *decodedString = [DTASN1Serialization objectWithData:data];
+	
+	STAssertTrue([@"Some-State" isEqualToString:decodedString], @"Result is not 'Some-State'");
+}
+
 // a sequence with no contents should still be returned as array
 - (void)testDecodingEmptySequence
 {
@@ -58,7 +68,7 @@
 	STAssertNotNil(object, @"Should be able to decode certificate");
     
     STAssertTrue([object isKindOfClass:[NSArray class]], @"Certficate should be decoded as NSArray");
-    STAssertEquals([object count], 3, @"Certificate should have 3 sections");
+    STAssertEquals([object count], (NSUInteger)3, @"Certificate should have 3 sections");
 }
 
 @end

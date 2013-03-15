@@ -691,6 +691,36 @@
 			name = DTScripting;
 			sourceTree = "<group>";
 		};
+		A7640E3F16F32259003A7B43 /* DTASN1 */ = {
+			isa = PBXGroup;
+			children = (
+				A7640E3D16F32139003A7B43 /* SelfSigned.der */,
+			);
+			name = DTASN1;
+			sourceTree = "<group>";
+		};
+		A7640E4016F3226B003A7B43 /* DTASN1 */ = {
+			isa = PBXGroup;
+			children = (
+				A779A38A16EB8BFB001BD056 /* DTASN1SerializationTest.h */,
+				A779A38B16EB8BFB001BD056 /* DTASN1SerializationTest.m */,
+			);
+			name = DTASN1;
+			sourceTree = "<group>";
+		};
+		A7640E4116F32294003A7B43 /* DTASN1 */ = {
+			isa = PBXGroup;
+			children = (
+				A779A39D16EC8169001BD056 /* DTASN1BitString.h */,
+				A779A39E16EC8169001BD056 /* DTASN1BitString.m */,
+				A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */,
+				A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */,
+				A779A38216EB850D001BD056 /* DTASN1Serialization.h */,
+				A779A38316EB850D001BD056 /* DTASN1Serialization.m */,
+			);
+			name = DTASN1;
+			sourceTree = "<group>";
+		};
 		A76DB48816A5E1D20010CD85 /* DTHTMLParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -871,13 +901,8 @@
 		A7D0AA6A153C395C0020F18B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A7640E4116F32294003A7B43 /* DTASN1 */,
 				A7556F63162EEF6700A69F63 /* DTScripting */,
-				A779A39D16EC8169001BD056 /* DTASN1BitString.h */,
-				A779A39E16EC8169001BD056 /* DTASN1BitString.m */,
-				A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */,
-				A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */,
-				A779A38216EB850D001BD056 /* DTASN1Serialization.h */,
-				A779A38316EB850D001BD056 /* DTASN1Serialization.m */,
 				A7D6F2E315063448001CACDD /* DTExtendedFileAttributes.h */,
 				A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */,
 				A70B4CC71486621B00873A4A /* DTVersion.h */,
@@ -904,6 +929,7 @@
 		A7D60FE515D3B15300AEDD1B /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A7640E4016F3226B003A7B43 /* DTASN1 */,
 				A7D60FE815D3B15300AEDD1B /* DTVersionTest.h */,
 				A7D60FE915D3B15300AEDD1B /* DTVersionTest.m */,
 				A7D60FED15D3B18A00AEDD1B /* DTHTMLParserTest.h */,
@@ -918,8 +944,6 @@
 				C04947C63C389A913634F6A8 /* DTZipArchiveTest.h */,
 				A77D5C0016E4B1D300A45C28 /* DTBase64CodingTest.h */,
 				A77D5C0116E4B1D300A45C28 /* DTBase64CodingTest.m */,
-				A779A38A16EB8BFB001BD056 /* DTASN1SerializationTest.h */,
-				A779A38B16EB8BFB001BD056 /* DTASN1SerializationTest.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -927,7 +951,7 @@
 		A7D60FF115D3B1E300AEDD1B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A7640E3D16F32139003A7B43 /* SelfSigned.der */,
+				A7640E3F16F32259003A7B43 /* DTASN1 */,
 				A7D60FF215D3B1FB00AEDD1B /* html_doctype.html */,
 				A7D60FF315D3B1FB00AEDD1B /* processing_instruction.html */,
 				FAB172AB163024E200B44EDC /* ArraySample.plist */,
