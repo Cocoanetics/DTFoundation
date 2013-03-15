@@ -312,19 +312,20 @@
 		case DTASN1TypeTeletexString:
 		case DTASN1TypeGraphicString:
 		case DTASN1TypePrintableString:
+        case DTASN1TypeUTF8String:
 		{
 			if (_delegateFlags.delegateSupportsString)
 			{
 				char *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
-				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSASCIIStringEncoding freeWhenDone:YES];
+				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSUTF8StringEncoding freeWhenDone:YES];
 				
 				[_delegate parser:self foundString:string];
 			}
 			break;
 		}
-			
+            
 		case DTASN1TypeUTCTime:
 		case DTASN1TypeGeneralizedTime:
 		{
