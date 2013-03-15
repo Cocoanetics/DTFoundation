@@ -95,6 +95,7 @@
 		A760F52D14F24B9F00AD1B0E /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A760F52E14F24B9F00AD1B0E /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */; };
 		A760F52F14F24B9F00AD1B0E /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */; };
+		A7640E3E16F32139003A7B43 /* SelfSigned.der in Resources */ = {isa = PBXBuildFile; fileRef = A7640E3D16F32139003A7B43 /* SelfSigned.der */; };
 		A766136016143F8A00DF6C2B /* NSMutableArray+DTMoving.h in Headers */ = {isa = PBXBuildFile; fileRef = A766135E16143F8A00DF6C2B /* NSMutableArray+DTMoving.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A766136116143F8A00DF6C2B /* NSMutableArray+DTMoving.h in Headers */ = {isa = PBXBuildFile; fileRef = A766135E16143F8A00DF6C2B /* NSMutableArray+DTMoving.h */; };
 		A766136216143F8A00DF6C2B /* NSMutableArray+DTMoving.h in Headers */ = {isa = PBXBuildFile; fileRef = A766135E16143F8A00DF6C2B /* NSMutableArray+DTMoving.h */; };
@@ -410,6 +411,7 @@
 		A7556F65162EEF9200A69F63 /* DTScriptExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTScriptExpression.m; sourceTree = "<group>"; };
 		A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTASN1Parser.h; sourceTree = "<group>"; };
 		A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTASN1Parser.m; sourceTree = "<group>"; };
+		A7640E3D16F32139003A7B43 /* SelfSigned.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelfSigned.der; sourceTree = "<group>"; };
 		A766135E16143F8A00DF6C2B /* NSMutableArray+DTMoving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+DTMoving.h"; sourceTree = "<group>"; };
 		A766135F16143F8A00DF6C2B /* NSMutableArray+DTMoving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+DTMoving.m"; sourceTree = "<group>"; };
 		A76DB48916A5E1D20010CD85 /* DTHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTHTMLParser.h; sourceTree = "<group>"; };
@@ -925,6 +927,7 @@
 		A7D60FF115D3B1E300AEDD1B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A7640E3D16F32139003A7B43 /* SelfSigned.der */,
 				A7D60FF215D3B1FB00AEDD1B /* html_doctype.html */,
 				A7D60FF315D3B1FB00AEDD1B /* processing_instruction.html */,
 				FAB172AB163024E200B44EDC /* ArraySample.plist */,
@@ -1360,6 +1363,7 @@
 				C0494CD3BEA39889ED032BCA /* Stefan.txt in Resources */,
 				C049484A38165B3D0380CA15 /* UnitTests-Info.plist in Resources */,
 				FAAC041416B1421F00EB1C7F /* screenshot.png in Resources */,
+				A7640E3E16F32139003A7B43 /* SelfSigned.der in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

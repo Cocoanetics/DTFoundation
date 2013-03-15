@@ -10,6 +10,7 @@
 
 #import "DTASN1Serialization.h"
 #import "DTBase64Coding.h"
+#import "DTASN1BitString.h"
 
 @implementation DTASN1SerializationTest
 
@@ -29,9 +30,9 @@
 	NSString *string = @"AwIFoA==";
 	NSData *data = [DTBase64Coding dataByDecodingString:string];
 
-	id object = [DTASN1Serialization objectWithData:data];
+	DTASN1BitString *bitString = [DTASN1Serialization objectWithData:data];
 	
-	NSString *asString = [object description];
+	NSString *asString = [bitString stringWithBits];
 	STAssertTrue([@"101" isEqualToString:asString], @"Result should be 101");
 }
 
@@ -45,6 +46,16 @@
 	
 	STAssertNotNil(object, @"Should be able to decode as array");
 	STAssertTrue([object isKindOfClass:[NSArray class]], @"Decoded object should be an array");
+}
+
+- (void)testCertificateDecoding
+{
+    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"SelfSigned" ofType:@"der"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    id object = [DTASN1Serialization objectWithData:data];
+    
+	STAssertNotNil(object, @"Should be able to decode certificate");
 }
 
 @end
