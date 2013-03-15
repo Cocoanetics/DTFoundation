@@ -56,6 +56,9 @@
     id object = [DTASN1Serialization objectWithData:data];
     
 	STAssertNotNil(object, @"Should be able to decode certificate");
+    
+    STAssertTrue([object isKindOfClass:[NSArray class]], @"Certficate should be decoded as NSArray");
+    STAssertEquals([object count], 3, @"Certificate should have 3 sections");
 }
 
 @end
