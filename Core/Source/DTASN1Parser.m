@@ -313,6 +313,7 @@
 		case DTASN1TypeGraphicString:
 		case DTASN1TypePrintableString:
         case DTASN1TypeUTF8String:
+        case DTASN1TypeIA5String:
 		{
 			if (_delegateFlags.delegateSupportsString)
 			{
