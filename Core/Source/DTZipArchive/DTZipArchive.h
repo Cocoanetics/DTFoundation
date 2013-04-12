@@ -10,6 +10,8 @@
 #include "zip.h"
 #include "unzip.h"
 
+@class DTZipArchiveNode;
+
 /**
  Buffer size when unzipping in blocks
  */
@@ -24,6 +26,12 @@ typedef void (^DTZipArchiveEnumerationResultsBlock)(NSString *fileName, NSData *
  Completion block for uncompressToPath:withCompletion:
  */
 typedef void (^DTZipArchiveUncompressionCompletionBlock)(NSError *error);
+
+/**
+ Completion block when uncompressing a single file
+ */
+typedef void (^DTZipArchiveUncompressFileCompletionBlock)(NSData *data, NSError *error);
+
 
 /**
  Notification for the progress of the uncompressing process
@@ -42,6 +50,9 @@ extern NSString * const DTZipArchiveErrorDomain;
  */
 
 @interface DTZipArchive : NSObject
+{
+	NSArray *_listOfEntries;
+}
 
 
 /**
@@ -76,6 +87,11 @@ extern NSString * const DTZipArchiveErrorDomain;
  */
 - (void)enumerateUncompressedFilesAsDataUsingBlock:(DTZipArchiveEnumerationResultsBlock)enumerationBlock;
 
+/**
+ Creates a file tree with all given DTZipArchiveNodes starting with files and folders on root level
+ */
+- (NSArray *)createFileTree;
+
 @end
 
 /**
@@ -90,5 +106,13 @@ extern NSString * const DTZipArchiveErrorDomain;
  @param completion block that executes when uncompressing is finished. Error is `nil` if successful.
  */
 - (void)uncompressToPath:(NSString *)targetPath completion:(DTZipArchiveUncompressionCompletionBlock)completion;
+
+/**
+ Uncompress one single file with completion block
+
+ @param node from the listOfEntries property of DTZipArchiveNodes
+ @param completion block that is called when the unzipping of this file is done
+ */
+- (void)uncompressZipArchiveNode:(DTZipArchiveNode *)node toDataWithCompletion:(DTZipArchiveUncompressFileCompletionBlock)completion;
 
 @end

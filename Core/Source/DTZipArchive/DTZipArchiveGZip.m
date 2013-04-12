@@ -32,8 +32,6 @@
     NSData *_data;
 
     NSString *_path;
-
-    NSArray *_listOfEntries;
 }
 
 
@@ -311,6 +309,5 @@
 #pragma mark - Properties
 
 @synthesize path = _path;
-@synthesize listOfEntries = _listOfEntries;
 
 @end

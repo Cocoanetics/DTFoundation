@@ -8,6 +8,8 @@
 
 #import "DTZipArchiveTest.h"
 #import "DTFoundation.h"
+#import "DTZipArchivePKZip.h"
+#import "DTZipArchiveNode.h"
 
 @implementation DTZipArchiveTest
 
@@ -259,16 +261,105 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
 
+	// create zip archive
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
-
-
-
-    //BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:@"ILLEGAL PATH!!!"];
 
     [zipArchive uncompressToPath:@"ILLEGAL PATH!!!" completion:^(NSError *error) {
 
         STAssertNotNil(error, @"No error with illegal path");
     }];
+}
+
+
+/**
+ Tests uncompressing of one single file from PKZip
+ */
+- (void)testUncompressingSingleFileFromPKZipWithSuccess
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+
+	// create zip archive
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+
+	// choose file as node
+	DTZipArchiveNode *franzTxtNode = zipArchive.listOfEntries[8];
+
+	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+	[zipArchive uncompressZipArchiveNode:franzTxtNode toDataWithCompletion:^(NSData *data, NSError *error) {
+
+		STAssertNil(error, @"Error occured when uncompressing one single file: %@", [error localizedDescription]);
+
+		// TODO compare data
+		dispatch_semaphore_signal(semaphore);
+
+	}];
+
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(semaphore);
+}
+
+/**
+ Do uncompressing single file test with directory -> ILLEGAL -> Error should be raised
+ */
+- (void)testUncompressingDirectoryFromPKZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+
+	// create zip archive
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+
+	// choose directory node
+	DTZipArchiveNode *rootDirectoryNode = zipArchive.listOfEntries[0];
+
+	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+	[zipArchive uncompressZipArchiveNode:rootDirectoryNode toDataWithCompletion:^(NSData *data, NSError *error) {
+
+		STAssertNotNil(error, @"No error raised when uncompressing directory", nil);
+		STAssertTrueNoThrow(error.code == 6, @"Wrong error raised. Error should be 6: %@", [error localizedDescription]);
+
+		dispatch_semaphore_signal(semaphore);
+	}];
+
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(semaphore);
+}
+
+/**
+ Do uncompressing with illegal manually create node -> Error should be raised
+ */
+- (void)testUncompressingWrongNodeFromPKZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+
+	// create zip archive
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+
+	// create illegal node manually
+	DTZipArchiveNode *wrongNode = [[DTZipArchiveNode alloc] init];
+	wrongNode.name = @"FALSCHER NAME!!!";
+	wrongNode.directory = NO;
+
+
+	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+	[zipArchive uncompressZipArchiveNode:wrongNode toDataWithCompletion:^(NSData *data, NSError *error) {
+
+		STAssertNotNil(error, @"No error raised when uncompressing wrong node", nil);
+		STAssertTrueNoThrow(error.code == 7, @"Wrong error raised. Error should be 7: %@", [error localizedDescription]);
+
+		dispatch_semaphore_signal(semaphore);
+	}];
+
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(semaphore);
 }
 
 /**
@@ -345,6 +436,21 @@
     STAssertThrowsSpecificNamed([zipArchive enumerateUncompressedFilesAsDataUsingBlock:^(NSString *fileName, NSData *data, BOOL *stop) {
 
     }] , NSException, @"DTAbstractClassException", @"Calling this method on [[DTZipArchive alloc] init] object should cause exception");
+
+}
+
+
+- (void)testFileTreeCreation
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+
+	// create zip archive
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+
+	NSArray *fileTree = [zipArchive createFileTree];
+
 
 }
 

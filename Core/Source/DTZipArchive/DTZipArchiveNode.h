@@ -29,4 +29,9 @@
  */
 @property (nonatomic, assign, getter=isDirectory) BOOL directory;
 
+/**
+ Child nodes of node
+ */
+@property (nonatomic, strong) NSMutableArray *children;
+
 @end

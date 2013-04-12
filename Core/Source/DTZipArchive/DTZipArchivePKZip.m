@@ -45,8 +45,6 @@
     long long _totalNumberOfItems;
 
     NSString *_path;
-
-    NSArray *_listOfEntries;
 }
 
 - (id)initWithFileAtPath:(NSString *)sourcePath
@@ -192,7 +190,7 @@
     
     if ([tmpArray count])
     {
-        self.listOfEntries = tmpArray;
+        _listOfEntries = tmpArray;
     }
 }
 
@@ -386,6 +384,57 @@
 }
 
 
+- (void)uncompressZipArchiveNode:(DTZipArchiveNode *)node toDataWithCompletion:(DTZipArchiveUncompressFileCompletionBlock)completion
+{
+
+	// creating queue and group for uncompression
+	dispatch_queue_t uncompressingQueue = dispatch_queue_create("DTZipArchiveUncompressionQueue", DISPATCH_QUEUE_SERIAL);
+
+	dispatch_async(uncompressingQueue, ^{
+
+
+		if (node.isDirectory)
+		{
+			NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Zip Archive node is a directory"};
+			NSError *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:6 userInfo:userInfo];
+			completion(nil, error);
+			return;
+		}
+
+		// select given file in PKZip
+		unzFile _unzFile = unzOpen([_path UTF8String]);
+
+		if (unzLocateFile(_unzFile, [node.name UTF8String], 1) != UNZ_OK)
+		{
+			NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Given single file cannot be found to unzip"};
+			NSError *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
+			completion(nil, error);
+			return;
+		}
+
+		if (unzOpenCurrentFile(_unzFile) != UNZ_OK)
+		{
+
+			NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to open zip file"};
+			NSError *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:5 userInfo:userInfo];
+			completion(nil, error);
+			return;
+		}
+
+		int readBytes;
+		unsigned char buffer[BUFFER_SIZE] = {0};
+		NSMutableData *fileData = [[NSMutableData alloc] init];
+		while ((readBytes = unzReadCurrentFile(_unzFile, buffer, BUFFER_SIZE)) > 0)
+		{
+			[fileData appendBytes:buffer length:(uint)readBytes];
+		}
+
+		unzCloseCurrentFile(_unzFile);
+
+		completion([fileData copy], nil);
+	});
+}
+
 // adapted from: http://code.google.com/p/ziparchive
 - (void)enumerateUncompressedFilesAsDataUsingBlock:(DTZipArchiveEnumerationResultsBlock)enumerationBlock
 {
@@ -472,7 +521,7 @@
 #pragma mark - Properties
 
 @synthesize path = _path;
-@synthesize listOfEntries = _listOfEntries;
+//@synthesize listOfEntries = _listOfEntries;
 
 
 @end

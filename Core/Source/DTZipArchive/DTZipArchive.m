@@ -6,9 +6,11 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "DTZipArchive.h"
 #import "DTZipArchiveGZip.h"
 #import "DTZipArchivePKZip.h"
+#import "DTZipArchiveNode.h"
 
 NSString * const DTZipArchiveProgressNotification = @"DTZipArchiveProgressNotification";
 NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
@@ -27,7 +29,7 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 {
     NSString *_path;
 
-    NSArray *_listOfEntries;
+	NSArray *_fileTree;
 }
 
 + (DTZipArchive *)archiveAtPath:(NSString *)path;
@@ -75,6 +77,55 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 - (void)enumerateUncompressedFilesAsDataUsingBlock:(DTZipArchiveEnumerationResultsBlock)enumerationBlock
 {
     [NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+}
+
+#pragma mark - FileTree
+
+- (NSArray *)createFileTree
+{
+	if (!_fileTree)
+	{
+		NSMutableArray *temporaryfileTree = [[NSMutableArray alloc] init];
+
+		// dictionary for fast finding of directory nodes
+		NSMutableDictionary *nodeDictionary = [[NSMutableDictionary alloc] init];
+
+		for (DTZipArchiveNode *node in _listOfEntries)
+		{
+			NSRange slashOccurence = [node.name rangeOfString:@"/"];
+			if (slashOccurence.location == NSNotFound)
+			{
+				// entry on root level
+				[temporaryfileTree addObject:node];
+
+				// when it is a root directory add it also NSDictionary for fast finding
+				if (node.isDirectory)
+				{
+					nodeDictionary[node.name] = node;
+				}
+			}
+			else
+			{
+				// entry under root level
+
+				// delete last path extension to know parent node
+				NSString *parentPath = [node.name stringByDeletingLastPathComponent];
+				DTZipArchiveNode *parentNode = nodeDictionary[parentPath];
+
+				// we add only directories to dictionary
+				if (node.isDirectory)
+				{
+					nodeDictionary[node.name] = node;
+				}
+
+				[parentNode.children addObject:node];
+			}
+		}
+
+		_fileTree = [temporaryfileTree copy];
+	}
+
+	return _fileTree;
 }
 
 #pragma mark - Properties
