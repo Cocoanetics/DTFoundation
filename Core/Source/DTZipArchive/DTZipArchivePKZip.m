@@ -383,6 +383,44 @@
     }
 }
 
+- (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error
+{
+	if (node.isDirectory)
+	{
+		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Zip Archive node is a directory"};
+		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:6 userInfo:userInfo];
+		return nil;
+	}
+	
+	// select given file in PKZip
+	unzFile _unzFile = unzOpen([_path UTF8String]);
+	
+	if (unzLocateFile(_unzFile, [node.name UTF8String], 1) != UNZ_OK)
+	{
+		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Given single file cannot be found to unzip"};
+		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
+		return nil;
+	}
+	
+	if (unzOpenCurrentFile(_unzFile) != UNZ_OK)
+	{
+		
+		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to open zip file"};
+		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:5 userInfo:userInfo];
+		return nil;
+	}
+	
+	int readBytes;
+	unsigned char buffer[BUFFER_SIZE] = {0};
+	NSMutableData *fileData = [[NSMutableData alloc] init];
+	while ((readBytes = unzReadCurrentFile(_unzFile, buffer, BUFFER_SIZE)) > 0)
+	{
+		[fileData appendBytes:buffer length:(uint)readBytes];
+	}
+	
+	unzCloseCurrentFile(_unzFile);
+	return [fileData copy];
+}
 
 - (void)uncompressZipArchiveNode:(DTZipArchiveNode *)node toDataWithCompletion:(DTZipArchiveUncompressFileCompletionBlock)completion
 {
@@ -392,46 +430,13 @@
 
 	dispatch_async(uncompressingQueue, ^{
 
+		NSError *error = nil;
+		NSData *data = [self uncompressZipArchiveNode:node withError:&error];
 
-		if (node.isDirectory)
+		if (completion)
 		{
-			NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Zip Archive node is a directory"};
-			NSError *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:6 userInfo:userInfo];
-			completion(nil, error);
-			return;
+			completion(data, error);
 		}
-
-		// select given file in PKZip
-		unzFile _unzFile = unzOpen([_path UTF8String]);
-
-		if (unzLocateFile(_unzFile, [node.name UTF8String], 1) != UNZ_OK)
-		{
-			NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Given single file cannot be found to unzip"};
-			NSError *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
-			completion(nil, error);
-			return;
-		}
-
-		if (unzOpenCurrentFile(_unzFile) != UNZ_OK)
-		{
-
-			NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to open zip file"};
-			NSError *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:5 userInfo:userInfo];
-			completion(nil, error);
-			return;
-		}
-
-		int readBytes;
-		unsigned char buffer[BUFFER_SIZE] = {0};
-		NSMutableData *fileData = [[NSMutableData alloc] init];
-		while ((readBytes = unzReadCurrentFile(_unzFile, buffer, BUFFER_SIZE)) > 0)
-		{
-			[fileData appendBytes:buffer length:(uint)readBytes];
-		}
-
-		unzCloseCurrentFile(_unzFile);
-
-		completion([fileData copy], nil);
 	});
 }
 
@@ -521,7 +526,5 @@
 #pragma mark - Properties
 
 @synthesize path = _path;
-//@synthesize listOfEntries = _listOfEntries;
-
 
 @end

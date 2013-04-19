@@ -138,12 +138,24 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 @implementation DTZipArchive(Uncompressing)
 
 /**
- Abstract method -> should be never called here directly
+ Abstract methods -> should be never called here directly
  But have to be implemented in SubClass
  */
 - (void)uncompressToPath:(NSString *)targetPath completion:(DTZipArchiveUncompressionCompletionBlock)completion
 {
     [NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+}
+
+- (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error
+{
+	[NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+	
+	return nil;
+}
+
+- (void)uncompressZipArchiveNode:(DTZipArchiveNode *)node toDataWithCompletion:(DTZipArchiveUncompressFileCompletionBlock)completion
+{
+	[NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
 }
 
 @end

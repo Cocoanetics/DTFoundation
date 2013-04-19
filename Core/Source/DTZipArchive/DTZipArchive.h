@@ -108,7 +108,15 @@ extern NSString * const DTZipArchiveErrorDomain;
 - (void)uncompressToPath:(NSString *)targetPath completion:(DTZipArchiveUncompressionCompletionBlock)completion;
 
 /**
- Uncompress one single file with completion block
+ Synchronous uncompressing the receiver and returning file as NSData
+ 
+ @param targetPath path where the zip archive is being uncompressed
+ @return data of uncompressed file. If nil error has occured.
+ */
+- (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error;
+
+/**
+ Asynchronous uncompressing of single file with completion block
 
  @param node from the listOfEntries property of DTZipArchiveNodes
  @param completion block that is called when the unzipping of this file is done
