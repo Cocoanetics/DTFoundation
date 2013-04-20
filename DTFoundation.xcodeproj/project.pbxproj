@@ -246,6 +246,18 @@
 		A7D8628214EBF65C001436AF /* NSString+DTPaths.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D8627F14EBF65C001436AF /* NSString+DTPaths.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D8628314EBF65C001436AF /* NSString+DTPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D8628014EBF65C001436AF /* NSString+DTPaths.m */; };
 		A7D8628414EBF65C001436AF /* NSString+DTPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D8628014EBF65C001436AF /* NSString+DTPaths.m */; };
+		A7D8C7B11723174600025675 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD40E14E825FC00F34B03 /* ioapi.c */; };
+		A7D8C7B21723174600025675 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41014E825FC00F34B03 /* mztools.c */; };
+		A7D8C7B31723174600025675 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41214E825FC00F34B03 /* unzip.c */; };
+		A7D8C7B41723174600025675 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41414E825FC00F34B03 /* zip.c */; };
+		A7D8C7B51723174600025675 /* DTZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4BE16A5E4770010CD85 /* DTZipArchive.m */; };
+		A7D8C7B61723174600025675 /* DTZipArchiveNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */; };
+		A7D8C7B71723174600025675 /* DTZipArchivePKZip.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494776E02407791E96C641 /* DTZipArchivePKZip.m */; };
+		A7D8C7B81723174600025675 /* DTZipArchiveGZip.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494E1FBE9D6D4FB042F2A3 /* DTZipArchiveGZip.m */; };
+		A7D8C7BA1723174600025675 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
+		A7D8C7BC1723174600025675 /* DTZipArchiveNode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494CD06FFAB6AEAC8ADAD4 /* DTZipArchiveNode.h */; };
+		A7D8C7BD1723174600025675 /* DTZipArchivePKZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */; };
+		A7D8C7BE1723174600025675 /* DTZipArchiveGZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C04943358446F1A9BA86F458 /* DTZipArchiveGZip.h */; };
 		A7E383C3160DFEDB00CF72D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A7E383DB160DFF8600CF72D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A7E38406160E039D00CF72D6 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD40E14E825FC00F34B03 /* ioapi.c */; };
@@ -347,6 +359,18 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7D8C7BB1723174600025675 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				A7D8C7BC1723174600025675 /* DTZipArchiveNode.h in CopyFiles */,
+				A7D8C7BD1723174600025675 /* DTZipArchivePKZip.h in CopyFiles */,
+				A7D8C7BE1723174600025675 /* DTZipArchiveGZip.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +530,7 @@
 		A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTExtendedFileAttributes.m; sourceTree = "<group>"; };
 		A7D8627F14EBF65C001436AF /* NSString+DTPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTPaths.h"; sourceTree = "<group>"; };
 		A7D8628014EBF65C001436AF /* NSString+DTPaths.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTPaths.m"; sourceTree = "<group>"; };
+		A7D8C7C21723174600025675 /* libDTZipArchive_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTZipArchive_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E383DA160DFF8600CF72D6 /* libDTZipArchive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTZipArchive.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E889A416A9B190009EF0DF /* libDTUTI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTUTI.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -609,6 +634,14 @@
 				FAB1724D162FFF5300B44EDC /* MobileCoreServices.framework in Frameworks */,
 				A7D60FD115D3B0BC00AEDD1B /* SenTestingKit.framework in Frameworks */,
 				A7D60FD315D3B0BC00AEDD1B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7D8C7B91723174600025675 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7D8C7BA1723174600025675 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,6 +1031,7 @@
 				3D7CE547166613B60028D339 /* libDTHTMLParser.a */,
 				A78220BA168060CA005B602D /* libDTUTI.a */,
 				A7E889A416A9B190009EF0DF /* libDTUTI.a */,
+				A7D8C7C21723174600025675 /* libDTZipArchive_Mac.a */,
 			);
 			name = Products;
 			path = ../..;
@@ -1274,6 +1308,23 @@
 			productReference = A7D60FCF15D3B0BC00AEDD1B /* UnitTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		A7D8C7AF1723174600025675 /* DTZipArchive (Mac) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7D8C7BF1723174600025675 /* Build configuration list for PBXNativeTarget "DTZipArchive (Mac)" */;
+			buildPhases = (
+				A7D8C7B01723174600025675 /* Sources */,
+				A7D8C7B91723174600025675 /* Frameworks */,
+				A7D8C7BB1723174600025675 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DTZipArchive (Mac)";
+			productName = DTZipArchive;
+			productReference = A7D8C7C21723174600025675 /* libDTZipArchive_Mac.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		A7E383C1160DFEDB00CF72D6 /* DTHTMLParser */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7E383CD160DFEDB00CF72D6 /* Build configuration list for PBXNativeTarget "DTHTMLParser" */;
@@ -1354,6 +1405,7 @@
 				A7E383C1160DFEDB00CF72D6 /* DTHTMLParser */,
 				3D7CE53D166613B60028D339 /* DTHTMLParser (Mac) */,
 				A7E383D9160DFF8600CF72D6 /* DTZipArchive */,
+				A7D8C7AF1723174600025675 /* DTZipArchive (Mac) */,
 				A78220B9168060CA005B602D /* DTUTI (iOS) */,
 				A7E889A316A9B190009EF0DF /* DTUTI (Mac) */,
 			);
@@ -1608,6 +1660,21 @@
 				A77D5C0216E4B1D300A45C28 /* DTBase64CodingTest.m in Sources */,
 				FA08F96016E4EEAF00BDF822 /* DTZipArchiveTest.m in Sources */,
 				A779A38C16EB8BFB001BD056 /* DTASN1SerializationTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7D8C7B01723174600025675 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7D8C7B11723174600025675 /* ioapi.c in Sources */,
+				A7D8C7B21723174600025675 /* mztools.c in Sources */,
+				A7D8C7B31723174600025675 /* unzip.c in Sources */,
+				A7D8C7B41723174600025675 /* zip.c in Sources */,
+				A7D8C7B51723174600025675 /* DTZipArchive.m in Sources */,
+				A7D8C7B61723174600025675 /* DTZipArchiveNode.m in Sources */,
+				A7D8C7B71723174600025675 /* DTZipArchivePKZip.m in Sources */,
+				A7D8C7B81723174600025675 /* DTZipArchiveGZip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1917,6 +1984,44 @@
 			};
 			name = Release;
 		};
+		A7D8C7C01723174600025675 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DSTROOT = /tmp/DTZipArchive.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				PRODUCT_NAME = DTZipArchive_Mac;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Debug;
+		};
+		A7D8C7C11723174600025675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DSTROOT = /tmp/DTZipArchive.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				PRODUCT_NAME = DTZipArchive_Mac;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Release;
+		};
 		A7E383CB160DFEDB00CF72D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2158,6 +2263,15 @@
 			buildConfigurations = (
 				A7D60FDF15D3B0BC00AEDD1B /* Debug */,
 				A7D60FE015D3B0BC00AEDD1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7D8C7BF1723174600025675 /* Build configuration list for PBXNativeTarget "DTZipArchive (Mac)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7D8C7C01723174600025675 /* Debug */,
+				A7D8C7C11723174600025675 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
