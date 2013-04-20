@@ -295,7 +295,7 @@
     dispatch_group_wait(uncompressingGroup, DISPATCH_TIME_FOREVER);
     dispatch_group_wait(fileWriteGroup, DISPATCH_TIME_FOREVER);
 
-#if !OS_OBJECT_USING_OBJC
+#if !OS_OBJECT_USE_OBJC
     dispatch_release(uncompressingQueue);
     dispatch_release(uncompressingGroup);
     dispatch_release(fileWriteQueue);

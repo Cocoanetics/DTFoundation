@@ -373,8 +373,8 @@
     
     // wait for completion of uncompression and writing all files in Zip
     dispatch_group_wait(uncompressingGroup, DISPATCH_TIME_FOREVER);
-    
-#if !OS_OBJECT_USING_OBJC
+   
+#if !OS_OBJECT_USE_OBJC
     dispatch_release(uncompressingQueue);
     dispatch_release(uncompressingGroup);
 #endif
