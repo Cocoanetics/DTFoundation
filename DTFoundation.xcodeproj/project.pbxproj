@@ -437,8 +437,8 @@
 		A710A5001607556000437D36 /* libDTFoundation_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTFoundation_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72121D4173BFF89003C6F0A /* DTReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTReachability.h; sourceTree = "<group>"; };
 		A72121D5173BFF89003C6F0A /* DTReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTReachability.m; sourceTree = "<group>"; };
-		A72121DA173BFFB1003C6F0A /* libDTReachability (iOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libDTReachability (iOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A72121EA173BFFED003C6F0A /* libDTReachability (Mac).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libDTReachability (Mac).a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A72121DA173BFFB1003C6F0A /* libDTReachability_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTReachability_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A72121EA173BFFED003C6F0A /* libDTReachability_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTReachability_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72121FC173C022D003C6F0A /* Change Log-template.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Change Log-template.markdown"; sourceTree = "<group>"; };
 		A7239FEF16A6BEE50071E902 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A7239FF016A6BEE50071E902 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
@@ -1077,8 +1077,8 @@
 				A78220BA168060CA005B602D /* libDTUTI.a */,
 				A7E889A416A9B190009EF0DF /* libDTUTI.a */,
 				A7D8C7C21723174600025675 /* libDTZipArchive_Mac.a */,
-				A72121DA173BFFB1003C6F0A /* libDTReachability (iOS).a */,
-				A72121EA173BFFED003C6F0A /* libDTReachability (Mac).a */,
+				A72121DA173BFFB1003C6F0A /* libDTReachability_iOS.a */,
+				A72121EA173BFFED003C6F0A /* libDTReachability_Mac.a */,
 			);
 			name = Products;
 			path = ../..;
@@ -1318,7 +1318,7 @@
 			);
 			name = "DTReachability (iOS)";
 			productName = DTReachability;
-			productReference = A72121DA173BFFB1003C6F0A /* libDTReachability (iOS).a */;
+			productReference = A72121DA173BFFB1003C6F0A /* libDTReachability_iOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		A72121E9173BFFED003C6F0A /* DTReachability (Mac) */ = {
@@ -1335,7 +1335,7 @@
 			);
 			name = "DTReachability (Mac)";
 			productName = DTReachability;
-			productReference = A72121EA173BFFED003C6F0A /* libDTReachability (Mac).a */;
+			productReference = A72121EA173BFFED003C6F0A /* libDTReachability_Mac.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		A78220B9168060CA005B602D /* DTUTI (iOS) */ = {
@@ -1967,7 +1967,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DTReachability_iOS;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1983,7 +1983,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DTReachability_iOS;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -2005,7 +2005,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DTReachability_Mac;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -2027,7 +2027,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DTReachability_Mac;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -2430,6 +2430,7 @@
 				A72121E5173BFFB1003C6F0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A72121F2173BFFED003C6F0A /* Build configuration list for PBXNativeTarget "DTReachability (Mac)" */ = {
 			isa = XCConfigurationList;
@@ -2438,6 +2439,7 @@
 				A72121F4173BFFED003C6F0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A78220C5168060CA005B602D /* Build configuration list for PBXNativeTarget "DTUTI (iOS)" */ = {
 			isa = XCConfigurationList;
