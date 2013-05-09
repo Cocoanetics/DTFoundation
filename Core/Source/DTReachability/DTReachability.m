@@ -23,7 +23,6 @@ static SCNetworkConnectionFlags _connectionFlags = 0;
     _observers = [[NSMutableSet alloc] init];
 }
 
-
 + (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkConnectionFlags connectionFlags))observer
 {
     @synchronized(self)
