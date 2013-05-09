@@ -439,6 +439,7 @@
 		A72121D5173BFF89003C6F0A /* DTReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTReachability.m; sourceTree = "<group>"; };
 		A72121DA173BFFB1003C6F0A /* libDTReachability (iOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libDTReachability (iOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72121EA173BFFED003C6F0A /* libDTReachability (Mac).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libDTReachability (Mac).a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A72121FC173C022D003C6F0A /* Change Log-template.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Change Log-template.markdown"; sourceTree = "<group>"; };
 		A7239FEF16A6BEE50071E902 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A7239FF016A6BEE50071E902 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
 		A7239FFC16A6CF0B0071E902 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -738,6 +739,7 @@
 		A70B4CDA1486626900873A4A /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
+				A72121FC173C022D003C6F0A /* Change Log-template.markdown */,
 				A70B4CDB1486628A00873A4A /* LICENSE */,
 				A70B4CDC1486628A00873A4A /* readme.markdown */,
 			);
