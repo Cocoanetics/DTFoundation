@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.1.0'
+  spec.version      = '1.3.0'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@drobnik.com" }
@@ -33,6 +33,13 @@ Pod::Spec.new do |spec|
     ss.source_files = 'Core/Source/DTHTMLParser/*.{h,m}'
     ss.library = 'xml2'
     ss.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
+  end
+
+  spec.subspec 'DTReachability' do |ss|
+    ss.ios.deployment_target = '4.3'
+    ss.osx.deployment_target = '10.6'
+    ss.framework = 'SystemConfiguration'
+    ss.source_files = 'Core/Source/DTReachability/*.{h,m}'
   end
 
   spec.subspec 'DTZipArchive' do |ss|
