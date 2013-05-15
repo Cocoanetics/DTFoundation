@@ -11,11 +11,11 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-@interface DTSidePanelController ()
+@interface DTSidePanelController () <UIGestureRecognizerDelegate>
 
 @end
 
-@implementation DTSidePanelController
+@implementation DTSidePanelController 
 {
 	UIView *_centerBaseView;
 	UIView *_leftBaseView;
@@ -33,6 +33,9 @@
 	
 	DTSidePanelControllerPanel _panelToPresentAfterLayout;  // the panel presentation to restore after subview layouting
 	BOOL _panelIsMoving;  // if the panel is being dragged or being animated
+	
+	UITapGestureRecognizer *_tapToCloseGesture;
+	UIPanGestureRecognizer *_centerPanelPanGesture;
 }
 
 
@@ -96,6 +99,50 @@
 	{
 		_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	}
+}
+
+- (void)_installTapToCloseGesture
+{
+	if (!_tapToCloseGesture)
+	{
+		_tapToCloseGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToClose:)];
+		_tapToCloseGesture.numberOfTapsRequired = 1;
+		_tapToCloseGesture.numberOfTouchesRequired = 1;
+		_tapToCloseGesture.delegate = self;
+	}
+	
+	[self.view addGestureRecognizer:_tapToCloseGesture];
+
+	_centerBaseView.userInteractionEnabled = NO;
+	_leftBaseView.userInteractionEnabled = YES;
+	_rightBaseView.userInteractionEnabled = YES;
+}
+
+- (void)_removeTapToCloseGesture
+{
+	[self.view removeGestureRecognizer:_tapToCloseGesture];
+	
+	_centerBaseView.userInteractionEnabled = YES;
+	_leftBaseView.userInteractionEnabled = NO;
+	_rightBaseView.userInteractionEnabled = NO;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+	CGPoint location = [touch locationInView:_centerBaseView];
+	BOOL locationIsInCenterPanel = CGRectContainsPoint(_centerBaseView.bounds, location);
+	
+	if (gestureRecognizer == _centerPanelPanGesture)
+	{
+		return locationIsInCenterPanel;
+	}
+	
+	if (gestureRecognizer ==_tapToCloseGesture)
+	{
+		return locationIsInCenterPanel;
+	}
+	
+	return NO;
 }
 
 #pragma mark - Calculations
@@ -223,6 +270,18 @@
 
 #pragma mark - Animations
 
+- (void)_updateTapToCloseGesture
+{
+	if (self.presentedPanel == DTSidePanelControllerPanelCenter)
+	{
+		[self _removeTapToCloseGesture];
+	}
+	else
+	{
+		[self _installTapToCloseGesture];
+	}
+}
+
 - (void)_animateCenterPanelToPosition:(CGPoint)position duration:(NSTimeInterval)duration
 {
 	_panelIsMoving = YES;
@@ -231,6 +290,8 @@
 		_centerBaseView.center = position;
 	} completion:^(BOOL finished) {
 		_panelIsMoving = NO;
+		
+		[self _updateTapToCloseGesture];
 	}];
 }
 
@@ -361,6 +422,11 @@
 }
 
 #pragma mark - Actions
+
+- (void)tapToClose:(UITapGestureRecognizer *)gesture
+{
+	[self presentPanel:DTSidePanelControllerPanelCenter animated:YES];
+}
 
 - (void)handlePan:(UIPanGestureRecognizer *)gesture
 {
@@ -556,8 +622,9 @@
 		
 		[_centerBaseView addShadowWithColor:[UIColor blackColor] alpha:1 radius:6 offset:CGSizeZero];
 		
-		UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-		[_centerBaseView addGestureRecognizer:panGesture];
+		_centerPanelPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+		_centerPanelPanGesture.delegate = self;
+		[self.view addGestureRecognizer:_centerPanelPanGesture];
 	}
 	
 	[self _sortPanels];
@@ -586,6 +653,7 @@
 	if (!_leftBaseView)
 	{
 		_leftBaseView = [[UIView alloc] initWithFrame:[self _leftPanelFrame]];
+		_leftBaseView.userInteractionEnabled = NO;
 		[self.view addSubview:_leftBaseView];
 	}
 	
@@ -616,6 +684,7 @@
 	if (!_rightBaseView)
 	{
 		_rightBaseView = [[UIView alloc] initWithFrame:[self _rightPanelFrame]];
+		_rightBaseView.userInteractionEnabled = NO;
 		[self.view addSubview:_rightBaseView];
 	}
 	

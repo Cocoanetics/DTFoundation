@@ -68,11 +68,13 @@
 		A70D74E91743AFC400E6E626 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A70D74C71743AF7300E6E626 /* Default-568h@2x.png */; };
 		A70D74EA1743AFC400E6E626 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A70D74C81743AF7300E6E626 /* Default.png */; };
 		A70D74EB1743AFC400E6E626 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A70D74C91743AF7300E6E626 /* Default@2x.png */; };
-		A70D74EC1743AFC900E6E626 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74C31743AF6900E6E626 /* AppDelegate.m */; };
-		A70D74ED1743AFC900E6E626 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74C41743AF6900E6E626 /* main.m */; };
-		A70D74EE1743AFC900E6E626 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74C61743AF6900E6E626 /* TableViewController.m */; };
 		A70D74F11743AFDF00E6E626 /* libDTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70B4CE71486637E00873A4A /* libDTFoundation.a */; };
 		A70D74F21743B01E00E6E626 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB1725D163004FF00B44EDC /* QuartzCore.framework */; };
+		A70D74F61743C82800E6E626 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74F41743C82800E6E626 /* DemoViewController.m */; };
+		A70D74F91743C8B200E6E626 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A70D74F81743C8B200E6E626 /* DemoViewController.xib */; };
+		A70D74FF1743C90A00E6E626 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74FB1743C90A00E6E626 /* AppDelegate.m */; };
+		A70D75001743C90A00E6E626 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74FC1743C90A00E6E626 /* main.m */; };
+		A70D75011743C90A00E6E626 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74FE1743C90A00E6E626 /* TableViewController.m */; };
 		A70ECD6016E09705004E9623 /* DTStripedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD5E16E09705004E9623 /* DTStripedLayer.h */; };
 		A70ECD6116E09705004E9623 /* DTStripedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD5E16E09705004E9623 /* DTStripedLayer.h */; };
 		A70ECD6216E09705004E9623 /* DTStripedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD5F16E09705004E9623 /* DTStripedLayer.m */; };
@@ -466,17 +468,20 @@
 		A70D74AB1743AE4D00E6E626 /* DTSideTabItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSideTabItem.h; sourceTree = "<group>"; };
 		A70D74AC1743AE4D00E6E626 /* DTSideTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSideTabController.h; sourceTree = "<group>"; };
 		A70D74AD1743AE4D00E6E626 /* DTSideTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSideTabController.m; sourceTree = "<group>"; };
-		A70D74C21743AF6900E6E626 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../../../../../Desktop/DTSidePanelController/Demo/Source/AppDelegate.h; sourceTree = "<group>"; };
-		A70D74C31743AF6900E6E626 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../../../../../Desktop/DTSidePanelController/Demo/Source/AppDelegate.m; sourceTree = "<group>"; };
-		A70D74C41743AF6900E6E626 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../../../../../Desktop/DTSidePanelController/Demo/Source/main.m; sourceTree = "<group>"; };
-		A70D74C51743AF6900E6E626 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableViewController.h; path = ../../../../../../Desktop/DTSidePanelController/Demo/Source/TableViewController.h; sourceTree = "<group>"; };
-		A70D74C61743AF6900E6E626 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TableViewController.m; path = ../../../../../../Desktop/DTSidePanelController/Demo/Source/TableViewController.m; sourceTree = "<group>"; };
 		A70D74C71743AF7300E6E626 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A70D74C81743AF7300E6E626 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A70D74C91743AF7300E6E626 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A70D74CA1743AF7E00E6E626 /* DTSidePanels-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DTSidePanels-Info.plist"; sourceTree = "<group>"; };
 		A70D74CB1743AF7E00E6E626 /* DTSidePanels-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DTSidePanels-Prefix.pch"; sourceTree = "<group>"; };
 		A70D74D01743AFBC00E6E626 /* DTSidePanels Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DTSidePanels Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70D74F31743C82800E6E626 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		A70D74F41743C82800E6E626 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		A70D74F81743C8B200E6E626 /* DemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoViewController.xib; sourceTree = "<group>"; };
+		A70D74FA1743C90A00E6E626 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A70D74FB1743C90A00E6E626 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A70D74FC1743C90A00E6E626 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A70D74FD1743C90A00E6E626 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		A70D74FE1743C90A00E6E626 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		A70ECD5E16E09705004E9623 /* DTStripedLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTStripedLayer.h; sourceTree = "<group>"; };
 		A70ECD5F16E09705004E9623 /* DTStripedLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayer.m; sourceTree = "<group>"; };
 		A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTStripedLayerTile.h; sourceTree = "<group>"; };
@@ -846,6 +851,7 @@
 		A70D74C01743AF5400E6E626 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A70D74F81743C8B200E6E626 /* DemoViewController.xib */,
 				A70D74C71743AF7300E6E626 /* Default-568h@2x.png */,
 				A70D74C81743AF7300E6E626 /* Default.png */,
 				A70D74C91743AF7300E6E626 /* Default@2x.png */,
@@ -856,11 +862,13 @@
 		A70D74C11743AF5400E6E626 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A70D74C21743AF6900E6E626 /* AppDelegate.h */,
-				A70D74C31743AF6900E6E626 /* AppDelegate.m */,
-				A70D74C41743AF6900E6E626 /* main.m */,
-				A70D74C51743AF6900E6E626 /* TableViewController.h */,
-				A70D74C61743AF6900E6E626 /* TableViewController.m */,
+				A70D74FA1743C90A00E6E626 /* AppDelegate.h */,
+				A70D74FB1743C90A00E6E626 /* AppDelegate.m */,
+				A70D74FC1743C90A00E6E626 /* main.m */,
+				A70D74FD1743C90A00E6E626 /* TableViewController.h */,
+				A70D74FE1743C90A00E6E626 /* TableViewController.m */,
+				A70D74F31743C82800E6E626 /* DemoViewController.h */,
+				A70D74F41743C82800E6E626 /* DemoViewController.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -1659,6 +1667,7 @@
 				A70D74E91743AFC400E6E626 /* Default-568h@2x.png in Resources */,
 				A70D74EA1743AFC400E6E626 /* Default.png in Resources */,
 				A70D74EB1743AFC400E6E626 /* Default@2x.png in Resources */,
+				A70D74F91743C8B200E6E626 /* DemoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1813,9 +1822,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A70D74EC1743AFC900E6E626 /* AppDelegate.m in Sources */,
-				A70D74ED1743AFC900E6E626 /* main.m in Sources */,
-				A70D74EE1743AFC900E6E626 /* TableViewController.m in Sources */,
+				A70D74F61743C82800E6E626 /* DemoViewController.m in Sources */,
+				A70D74FF1743C90A00E6E626 /* AppDelegate.m in Sources */,
+				A70D75001743C90A00E6E626 /* main.m in Sources */,
+				A70D75011743C90A00E6E626 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
