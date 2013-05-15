@@ -46,6 +46,22 @@
 		A70D56A2162FD60600120A98 /* NSScanner+DTScripting.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D569D162FD60600120A98 /* NSScanner+DTScripting.m */; };
 		A70D56A3162FD60600120A98 /* NSScanner+DTScripting.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D569D162FD60600120A98 /* NSScanner+DTScripting.m */; };
 		A70D56A6162FDECF00120A98 /* DTScriptingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D56A5162FDECF00120A98 /* DTScriptingTest.m */; };
+		A70D74AE1743AE4D00E6E626 /* DTSidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74A61743AE4D00E6E626 /* DTSidePanelController.m */; };
+		A70D74AF1743AE4D00E6E626 /* DTSidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74A61743AE4D00E6E626 /* DTSidePanelController.m */; };
+		A70D74B01743AE4D00E6E626 /* DTSidePanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D74A71743AE4D00E6E626 /* DTSidePanelController.h */; };
+		A70D74B11743AE4D00E6E626 /* DTSidePanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D74A71743AE4D00E6E626 /* DTSidePanelController.h */; };
+		A70D74B21743AE4D00E6E626 /* UIViewController+DTSideTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74A81743AE4D00E6E626 /* UIViewController+DTSideTabController.m */; };
+		A70D74B31743AE4D00E6E626 /* UIViewController+DTSideTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74A81743AE4D00E6E626 /* UIViewController+DTSideTabController.m */; };
+		A70D74B41743AE4D00E6E626 /* UIViewController+DTSideTabController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D74A91743AE4D00E6E626 /* UIViewController+DTSideTabController.h */; };
+		A70D74B51743AE4D00E6E626 /* UIViewController+DTSideTabController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D74A91743AE4D00E6E626 /* UIViewController+DTSideTabController.h */; };
+		A70D74B61743AE4D00E6E626 /* DTSideTabItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74AA1743AE4D00E6E626 /* DTSideTabItem.m */; };
+		A70D74B71743AE4D00E6E626 /* DTSideTabItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74AA1743AE4D00E6E626 /* DTSideTabItem.m */; };
+		A70D74B81743AE4D00E6E626 /* DTSideTabItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D74AB1743AE4D00E6E626 /* DTSideTabItem.h */; };
+		A70D74B91743AE4D00E6E626 /* DTSideTabItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D74AB1743AE4D00E6E626 /* DTSideTabItem.h */; };
+		A70D74BA1743AE4D00E6E626 /* DTSideTabController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D74AC1743AE4D00E6E626 /* DTSideTabController.h */; };
+		A70D74BB1743AE4D00E6E626 /* DTSideTabController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D74AC1743AE4D00E6E626 /* DTSideTabController.h */; };
+		A70D74BC1743AE4D00E6E626 /* DTSideTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74AD1743AE4D00E6E626 /* DTSideTabController.m */; };
+		A70D74BD1743AE4D00E6E626 /* DTSideTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74AD1743AE4D00E6E626 /* DTSideTabController.m */; };
 		A70ECD6016E09705004E9623 /* DTStripedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD5E16E09705004E9623 /* DTStripedLayer.h */; };
 		A70ECD6116E09705004E9623 /* DTStripedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD5E16E09705004E9623 /* DTStripedLayer.h */; };
 		A70ECD6216E09705004E9623 /* DTStripedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD5F16E09705004E9623 /* DTStripedLayer.m */; };
@@ -424,6 +440,14 @@
 		A70D569D162FD60600120A98 /* NSScanner+DTScripting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScanner+DTScripting.m"; sourceTree = "<group>"; };
 		A70D56A4162FDECF00120A98 /* DTScriptingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTScriptingTest.h; sourceTree = "<group>"; };
 		A70D56A5162FDECF00120A98 /* DTScriptingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTScriptingTest.m; sourceTree = "<group>"; };
+		A70D74A61743AE4D00E6E626 /* DTSidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSidePanelController.m; sourceTree = "<group>"; };
+		A70D74A71743AE4D00E6E626 /* DTSidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSidePanelController.h; sourceTree = "<group>"; };
+		A70D74A81743AE4D00E6E626 /* UIViewController+DTSideTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DTSideTabController.m"; sourceTree = "<group>"; };
+		A70D74A91743AE4D00E6E626 /* UIViewController+DTSideTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DTSideTabController.h"; sourceTree = "<group>"; };
+		A70D74AA1743AE4D00E6E626 /* DTSideTabItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSideTabItem.m; sourceTree = "<group>"; };
+		A70D74AB1743AE4D00E6E626 /* DTSideTabItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSideTabItem.h; sourceTree = "<group>"; };
+		A70D74AC1743AE4D00E6E626 /* DTSideTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSideTabController.h; sourceTree = "<group>"; };
+		A70D74AD1743AE4D00E6E626 /* DTSideTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSideTabController.m; sourceTree = "<group>"; };
 		A70ECD5E16E09705004E9623 /* DTStripedLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTStripedLayer.h; sourceTree = "<group>"; };
 		A70ECD5F16E09705004E9623 /* DTStripedLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayer.m; sourceTree = "<group>"; };
 		A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTStripedLayerTile.h; sourceTree = "<group>"; };
@@ -744,6 +768,21 @@
 			path = Documentation;
 			sourceTree = "<group>";
 		};
+		A70D74A51743AE3100E6E626 /* DTSidePanels */ = {
+			isa = PBXGroup;
+			children = (
+				A70D74A61743AE4D00E6E626 /* DTSidePanelController.m */,
+				A70D74A71743AE4D00E6E626 /* DTSidePanelController.h */,
+				A70D74A81743AE4D00E6E626 /* UIViewController+DTSideTabController.m */,
+				A70D74A91743AE4D00E6E626 /* UIViewController+DTSideTabController.h */,
+				A70D74AA1743AE4D00E6E626 /* DTSideTabItem.m */,
+				A70D74AB1743AE4D00E6E626 /* DTSideTabItem.h */,
+				A70D74AC1743AE4D00E6E626 /* DTSideTabController.h */,
+				A70D74AD1743AE4D00E6E626 /* DTSideTabController.m */,
+			);
+			name = DTSidePanels;
+			sourceTree = "<group>";
+		};
 		A72121D3173BFF89003C6F0A /* DTReachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -808,6 +847,7 @@
 		A76DB48E16A5E37F0010CD85 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A70D74A51743AE3100E6E626 /* DTSidePanels */,
 				A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */,
 				A730BCCD16D2892E003B849F /* DTTiledLayerWithoutFade.m */,
 				A76DB48F16A5E37F0010CD85 /* DTActionSheet.h */,
@@ -1150,6 +1190,10 @@
 				A77D5BFB16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 				A779A38516EB850D001BD056 /* DTASN1Serialization.h in Headers */,
 				A779A3A016EC816A001BD056 /* DTASN1BitString.h in Headers */,
+				A70D74B11743AE4D00E6E626 /* DTSidePanelController.h in Headers */,
+				A70D74B51743AE4D00E6E626 /* UIViewController+DTSideTabController.h in Headers */,
+				A70D74B91743AE4D00E6E626 /* DTSideTabItem.h in Headers */,
+				A70D74BB1743AE4D00E6E626 /* DTSideTabController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1238,6 +1282,10 @@
 				A77D5BFA16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 				A779A38416EB850D001BD056 /* DTASN1Serialization.h in Headers */,
 				A779A39F16EC816A001BD056 /* DTASN1BitString.h in Headers */,
+				A70D74B01743AE4D00E6E626 /* DTSidePanelController.h in Headers */,
+				A70D74B41743AE4D00E6E626 /* UIViewController+DTSideTabController.h in Headers */,
+				A70D74B81743AE4D00E6E626 /* DTSideTabItem.h in Headers */,
+				A70D74BA1743AE4D00E6E626 /* DTSideTabController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1641,6 +1689,10 @@
 				A77D5BFE16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A779A38816EB850D001BD056 /* DTASN1Serialization.m in Sources */,
 				A779A3A316EC816A001BD056 /* DTASN1BitString.m in Sources */,
+				A70D74AF1743AE4D00E6E626 /* DTSidePanelController.m in Sources */,
+				A70D74B31743AE4D00E6E626 /* UIViewController+DTSideTabController.m in Sources */,
+				A70D74B71743AE4D00E6E626 /* DTSideTabItem.m in Sources */,
+				A70D74BD1743AE4D00E6E626 /* DTSideTabController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1747,6 +1799,10 @@
 				A77D5BFD16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A779A38716EB850D001BD056 /* DTASN1Serialization.m in Sources */,
 				A779A3A216EC816A001BD056 /* DTASN1BitString.m in Sources */,
+				A70D74AE1743AE4D00E6E626 /* DTSidePanelController.m in Sources */,
+				A70D74B21743AE4D00E6E626 /* UIViewController+DTSideTabController.m in Sources */,
+				A70D74B61743AE4D00E6E626 /* DTSideTabItem.m in Sources */,
+				A70D74BC1743AE4D00E6E626 /* DTSideTabController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
