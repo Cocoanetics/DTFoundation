@@ -45,7 +45,7 @@ typedef enum
 
 /**
  Sets the display width for the given panel. The center panel is center-aligned, the left panel is left-aligned and the right panel is right-aligned. The center panel is always full width.
- @param width The width to set
+ @param width The width to set, or 0 to have the panel resize automatically
  @param panel The panel to set it for
  @param animated Whether the change should be animated
  */
