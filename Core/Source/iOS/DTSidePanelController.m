@@ -7,6 +7,7 @@
 //
 
 #import "DTSidePanelController.h"
+#import "UIView+DTFoundation.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -20,12 +21,18 @@
 	UIView *_leftBaseView;
 	UIView *_rightBaseView;
 	
+	CGFloat _leftPanelWidth;
+	CGFloat _rightPanelWidth;
+	
 	CGFloat _minimumVisibleCenterWidth;
 	CGPoint _lastTranslation;
 	
 	NSTimeInterval _lastMoveTimestamp;
 	CGFloat _minimumAnimationMomentum;
 	CGFloat _maximumAnimationMomentum;
+	
+	DTSidePanelControllerPanel _panelToPresentAfterLayout;  // the panel presentation to restore after subview layouting
+	BOOL _panelIsMoving;  // if the panel is being dragged or being animated
 }
 
 
@@ -114,8 +121,7 @@
 	
 	if (_rightPanelController)
 	{
-		minCenterX -= _centerBaseView.bounds.size.width;
-		minCenterX += _minimumVisibleCenterWidth;
+		minCenterX -= [self _usedRightPanelWidth];
 	}
 	
 	return minCenterX;
@@ -127,8 +133,7 @@
 	
 	if (_leftPanelController)
 	{
-		maxCenterX += _centerBaseView.bounds.size.width;
-		maxCenterX -= _minimumVisibleCenterWidth;
+		maxCenterX += [self _usedLeftPanelWidth];
 	}
 	
 	return maxCenterX;
@@ -149,7 +154,65 @@
 	return CGPointMake(self.view.bounds.size.width/2.0f, self.view.bounds.size.height/2.0f);
 }
 
+- (CGFloat)_usedLeftPanelWidth
+{
+	CGFloat usedWidth = _leftPanelWidth;
+	CGFloat maxWidth = self.view.bounds.size.width - _minimumVisibleCenterWidth;
+	
+	if (usedWidth==0)
+	{
+		usedWidth = maxWidth;
+	}
+	else
+	{
+		usedWidth = MIN(maxWidth, usedWidth);
+	}
+	
+	return usedWidth;
+}
+
+- (CGRect)_leftPanelFrame
+{
+	return CGRectMake(0, 0, [self _usedLeftPanelWidth], self.view.bounds.size.height);
+}
+
+- (CGFloat)_usedRightPanelWidth
+{
+	CGFloat usedWidth = _rightPanelWidth;
+	CGFloat maxWidth = self.view.bounds.size.width - _minimumVisibleCenterWidth;
+	
+	if (usedWidth==0)
+	{
+		usedWidth = maxWidth;
+	}
+	else
+	{
+		usedWidth = MIN(maxWidth, usedWidth);
+	}
+	
+	return usedWidth;
+}
+
+- (CGRect)_rightPanelFrame
+{
+	CGFloat usedWidth = [self _usedRightPanelWidth];
+
+	return CGRectMake(self.view.bounds.size.width - usedWidth, 0, usedWidth, self.view.bounds.size.height);
+}
+
 #pragma mark - Animations
+
+- (void)_animateCenterPanelToPosition:(CGPoint)position duration:(NSTimeInterval)duration
+{
+	_panelIsMoving = YES;
+	
+	[UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
+		_centerBaseView.center = position;
+	} completion:^(BOOL finished) {
+		_panelIsMoving = NO;
+	}];
+}
+
 
 - (void)_animateCenterPanelToPosition:(CGPoint)position withMomentum:(CGPoint)momentum
 {
@@ -165,11 +228,9 @@
 	// limit
 	distanceMomentum = MIN(MAX(distanceMomentum, _minimumAnimationMomentum), _maximumAnimationMomentum);
 	
-	CGFloat durationForAnimation = distanceToTravel / distanceMomentum;
+	CGFloat duration = distanceToTravel / distanceMomentum;
 	
-	[UIView animateWithDuration:durationForAnimation delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
-		_centerBaseView.center = position;
-	} completion:NULL];
+	[self _animateCenterPanelToPosition:position duration:duration];
 }
 
 - (void)_animateCenterPanelToClosedPosition
@@ -256,12 +317,26 @@
 
 #pragma mark - Rotation
 
+- (void)viewWillLayoutSubviews
+{
+	[super viewWillLayoutSubviews];
+	
+	if (!_panelIsMoving)
+	{
+		_panelToPresentAfterLayout = self.presentedPanel;
+	}
+}
+
 - (void)viewDidLayoutSubviews
 {
-	NSLog(@"did layout");
 	[super viewDidLayoutSubviews];
 	
-	[self presentPanel:self.presentedPanel animated:NO];
+	if (!_panelIsMoving)
+	{
+		[self presentPanel:_panelToPresentAfterLayout animated:NO];
+	}
+	
+	[_centerBaseView updateShadowPathToBounds:_centerBaseView.bounds withDuration:0.3];
 }
 
 #pragma mark - Actions
@@ -272,7 +347,7 @@
 	{
 		case UIGestureRecognizerStateBegan:
 		{
-			
+			_panelIsMoving = YES;
 			break;
 		}
 			
@@ -304,6 +379,8 @@
 		case UIGestureRecognizerStateCancelled:
 		case UIGestureRecognizerStateEnded:
 		{
+			_panelIsMoving = NO;
+			
 			NSTimeInterval timestamp = [NSDate timeIntervalSinceReferenceDate];
 			NSTimeInterval secondsSinceLastMovement = timestamp - _lastMoveTimestamp;
 			
@@ -334,6 +411,8 @@
 - (void)presentPanel:(DTSidePanelControllerPanel)panel animated:(BOOL)animated
 {
 	CGPoint targetPosition;
+	
+	_panelToPresentAfterLayout = panel;
 
 	switch (panel)
 	{
@@ -375,7 +454,7 @@
 	if (animated)
 	{
 		// uses minimum momentum for animation
-		[self _animateCenterPanelToPosition:targetPosition withMomentum:CGPointZero];
+		[self _animateCenterPanelToPosition:targetPosition duration:0.25];
 	}
 	else
 	{
@@ -392,10 +471,43 @@
 	
 	if ([self _rightPanelVisibleWidth]>0)
 	{
-		return DTSidePanelControllerPanelLeft;
+		return DTSidePanelControllerPanelRight;
 	}
 	
 	return DTSidePanelControllerPanelCenter;
+}
+
+- (void)setWidth:(CGFloat)width forPanel:(DTSidePanelControllerPanel)panel animated:(BOOL)animated
+{
+	NSParameterAssert(panel != DTSidePanelControllerPanelCenter);
+	
+	switch (panel)
+	{
+		case DTSidePanelControllerPanelLeft:
+		{
+			_leftPanelWidth = width;
+			break;
+		}
+			
+		case DTSidePanelControllerPanelRight:
+		{
+			_rightPanelWidth = width;
+			break;
+		}
+			
+		case DTSidePanelControllerPanelCenter:
+		{
+			NSLog(@"Setting width for center panel not supported");
+			break;
+		}
+	}
+	
+	CGFloat duration = animated?0.3:0;
+	
+	[UIView animateWithDuration:duration animations:^{
+		_leftBaseView.frame = [self _leftPanelFrame];
+		_rightBaseView.frame = [self _rightPanelFrame];
+	}];
 }
 
 #pragma mark - Properties
@@ -419,11 +531,7 @@
 		_centerBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		[self.view addSubview:_centerBaseView];
 		
-		_centerBaseView.layer.shadowColor = [UIColor blackColor].CGColor;
-		_centerBaseView.layer.shadowRadius = 5.0;
-		_centerBaseView.layer.masksToBounds = NO;
-		_centerBaseView.layer.shadowOffset = CGSizeMake(0, 0);
-		_centerBaseView.layer.shadowOpacity = 0.5;
+		[_centerBaseView addShadowWithColor:[UIColor blackColor] alpha:1 radius:6 offset:CGSizeZero];
 		
 		UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 		[_centerBaseView addGestureRecognizer:panGesture];
@@ -454,11 +562,17 @@
 	
 	if (!_leftBaseView)
 	{
-		CGRect frame = self.view.bounds;
-		frame.size.width -= _minimumVisibleCenterWidth;
-		
-		_leftBaseView = [[UIView alloc] initWithFrame:frame];
-		_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		_leftBaseView = [[UIView alloc] initWithFrame:[self _leftPanelFrame]];
+
+		if (_leftPanelWidth)
+		{
+			_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
+		}
+		else
+		{
+			_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		}
+
 		[self.view addSubview:_leftBaseView];
 	}
 	
@@ -487,12 +601,17 @@
 	
 	if (!_rightBaseView)
 	{
-		CGRect frame = self.view.bounds;
-		frame.size.width -= _minimumVisibleCenterWidth;
-		frame.origin.x += _minimumVisibleCenterWidth;
+		_rightBaseView = [[UIView alloc] initWithFrame:[self _rightPanelFrame]];
 		
-		_rightBaseView = [[UIView alloc] initWithFrame:frame];
-		_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		if (_rightPanelWidth)
+		{
+			_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin;
+		}
+		else
+		{
+			_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		}
+		
 		[self.view addSubview:_rightBaseView];
 	}
 	

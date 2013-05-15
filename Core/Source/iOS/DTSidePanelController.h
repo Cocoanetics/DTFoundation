@@ -42,9 +42,12 @@ typedef enum
  */
 
 /**
- Sets the display width for the given panel. The center panel is center-aligned, the left panel is left-aligned and the right panel is right-aligned
+ Sets the display width for the given panel. The center panel is center-aligned, the left panel is left-aligned and the right panel is right-aligned. The center panel is always full width.
+ @param width The width to set
+ @param panel The panel to set it for
+ @param animated Whether the change should be animated
  */
-//- (void)setWidth:(CGFloat)width forPanel:(DTSidePanelControllerPanel)panel;
+- (void)setWidth:(CGFloat)width forPanel:(DTSidePanelControllerPanel)panel animated:(BOOL)animated;
 
 /**
  @name Properties

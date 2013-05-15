@@ -62,6 +62,17 @@
 		A70D74BB1743AE4D00E6E626 /* DTSideTabController.h in Headers */ = {isa = PBXBuildFile; fileRef = A70D74AC1743AE4D00E6E626 /* DTSideTabController.h */; };
 		A70D74BC1743AE4D00E6E626 /* DTSideTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74AD1743AE4D00E6E626 /* DTSideTabController.m */; };
 		A70D74BD1743AE4D00E6E626 /* DTSideTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74AD1743AE4D00E6E626 /* DTSideTabController.m */; };
+		A70D74D11743AFBC00E6E626 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
+		A70D74D21743AFBC00E6E626 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
+		A70D74D31743AFBC00E6E626 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */; };
+		A70D74E91743AFC400E6E626 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A70D74C71743AF7300E6E626 /* Default-568h@2x.png */; };
+		A70D74EA1743AFC400E6E626 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A70D74C81743AF7300E6E626 /* Default.png */; };
+		A70D74EB1743AFC400E6E626 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A70D74C91743AF7300E6E626 /* Default@2x.png */; };
+		A70D74EC1743AFC900E6E626 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74C31743AF6900E6E626 /* AppDelegate.m */; };
+		A70D74ED1743AFC900E6E626 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74C41743AF6900E6E626 /* main.m */; };
+		A70D74EE1743AFC900E6E626 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74C61743AF6900E6E626 /* TableViewController.m */; };
+		A70D74F11743AFDF00E6E626 /* libDTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70B4CE71486637E00873A4A /* libDTFoundation.a */; };
+		A70D74F21743B01E00E6E626 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB1725D163004FF00B44EDC /* QuartzCore.framework */; };
 		A70ECD6016E09705004E9623 /* DTStripedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD5E16E09705004E9623 /* DTStripedLayer.h */; };
 		A70ECD6116E09705004E9623 /* DTStripedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD5E16E09705004E9623 /* DTStripedLayer.h */; };
 		A70ECD6216E09705004E9623 /* DTStripedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD5F16E09705004E9623 /* DTStripedLayer.m */; };
@@ -338,6 +349,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A70D74EF1743AFD700E6E626 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A70B4CE61486637E00873A4A;
+			remoteInfo = "Static Library";
+		};
 		A7239FF816A6CEDD0071E902 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
@@ -448,6 +466,17 @@
 		A70D74AB1743AE4D00E6E626 /* DTSideTabItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSideTabItem.h; sourceTree = "<group>"; };
 		A70D74AC1743AE4D00E6E626 /* DTSideTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSideTabController.h; sourceTree = "<group>"; };
 		A70D74AD1743AE4D00E6E626 /* DTSideTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSideTabController.m; sourceTree = "<group>"; };
+		A70D74C21743AF6900E6E626 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../../../../../Desktop/DTSidePanelController/Demo/Source/AppDelegate.h; sourceTree = "<group>"; };
+		A70D74C31743AF6900E6E626 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../../../../../Desktop/DTSidePanelController/Demo/Source/AppDelegate.m; sourceTree = "<group>"; };
+		A70D74C41743AF6900E6E626 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../../../../../Desktop/DTSidePanelController/Demo/Source/main.m; sourceTree = "<group>"; };
+		A70D74C51743AF6900E6E626 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TableViewController.h; path = ../../../../../../Desktop/DTSidePanelController/Demo/Source/TableViewController.h; sourceTree = "<group>"; };
+		A70D74C61743AF6900E6E626 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TableViewController.m; path = ../../../../../../Desktop/DTSidePanelController/Demo/Source/TableViewController.m; sourceTree = "<group>"; };
+		A70D74C71743AF7300E6E626 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A70D74C81743AF7300E6E626 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A70D74C91743AF7300E6E626 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A70D74CA1743AF7E00E6E626 /* DTSidePanels-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DTSidePanels-Info.plist"; sourceTree = "<group>"; };
+		A70D74CB1743AF7E00E6E626 /* DTSidePanels-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DTSidePanels-Prefix.pch"; sourceTree = "<group>"; };
+		A70D74D01743AFBC00E6E626 /* DTSidePanels Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DTSidePanels Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A70ECD5E16E09705004E9623 /* DTStripedLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTStripedLayer.h; sourceTree = "<group>"; };
 		A70ECD5F16E09705004E9623 /* DTStripedLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayer.m; sourceTree = "<group>"; };
 		A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTStripedLayerTile.h; sourceTree = "<group>"; };
@@ -636,6 +665,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A70D74CD1743AFBC00E6E626 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70D74F21743B01E00E6E626 /* QuartzCore.framework in Frameworks */,
+				A70D74F11743AFDF00E6E626 /* libDTFoundation.a in Frameworks */,
+				A70D74D11743AFBC00E6E626 /* UIKit.framework in Frameworks */,
+				A70D74D21743AFBC00E6E626 /* Foundation.framework in Frameworks */,
+				A70D74D31743AFBC00E6E626 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A710A4FD1607556000437D36 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -771,8 +812,8 @@
 		A70D74A51743AE3100E6E626 /* DTSidePanels */ = {
 			isa = PBXGroup;
 			children = (
-				A70D74A61743AE4D00E6E626 /* DTSidePanelController.m */,
 				A70D74A71743AE4D00E6E626 /* DTSidePanelController.h */,
+				A70D74A61743AE4D00E6E626 /* DTSidePanelController.m */,
 				A70D74A81743AE4D00E6E626 /* UIViewController+DTSideTabController.m */,
 				A70D74A91743AE4D00E6E626 /* UIViewController+DTSideTabController.h */,
 				A70D74AA1743AE4D00E6E626 /* DTSideTabItem.m */,
@@ -781,6 +822,47 @@
 				A70D74AD1743AE4D00E6E626 /* DTSideTabController.m */,
 			);
 			name = DTSidePanels;
+			sourceTree = "<group>";
+		};
+		A70D74BE1743AF5400E6E626 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				A70D74BF1743AF5400E6E626 /* DTSidePanels */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		A70D74BF1743AF5400E6E626 /* DTSidePanels */ = {
+			isa = PBXGroup;
+			children = (
+				A70D74CA1743AF7E00E6E626 /* DTSidePanels-Info.plist */,
+				A70D74CB1743AF7E00E6E626 /* DTSidePanels-Prefix.pch */,
+				A70D74C01743AF5400E6E626 /* Resources */,
+				A70D74C11743AF5400E6E626 /* Source */,
+			);
+			path = DTSidePanels;
+			sourceTree = "<group>";
+		};
+		A70D74C01743AF5400E6E626 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A70D74C71743AF7300E6E626 /* Default-568h@2x.png */,
+				A70D74C81743AF7300E6E626 /* Default.png */,
+				A70D74C91743AF7300E6E626 /* Default@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A70D74C11743AF5400E6E626 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A70D74C21743AF6900E6E626 /* AppDelegate.h */,
+				A70D74C31743AF6900E6E626 /* AppDelegate.m */,
+				A70D74C41743AF6900E6E626 /* main.m */,
+				A70D74C51743AF6900E6E626 /* TableViewController.h */,
+				A70D74C61743AF6900E6E626 /* TableViewController.m */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		A72121D3173BFF89003C6F0A /* DTReachability */ = {
@@ -1093,6 +1175,7 @@
 		A7F4DF98147FB61500F4059A = {
 			isa = PBXGroup;
 			children = (
+				A70D74BE1743AF5400E6E626 /* Demo */,
 				A7859D3D16DF8D180076F2DB /* AppledocSettings.plist */,
 				A7D60FE415D3B15300AEDD1B /* Test */,
 				A70B4CC41486621B00873A4A /* Core */,
@@ -1117,6 +1200,7 @@
 				A7D8C7C21723174600025675 /* libDTZipArchive_Mac.a */,
 				A72121DA173BFFB1003C6F0A /* libDTReachability_iOS.a */,
 				A72121EA173BFFED003C6F0A /* libDTReachability_Mac.a */,
+				A70D74D01743AFBC00E6E626 /* DTSidePanels Demo.app */,
 			);
 			name = Products;
 			path = ../..;
@@ -1333,6 +1417,24 @@
 			productReference = A70B4CE71486637E00873A4A /* libDTFoundation.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		A70D74CF1743AFBC00E6E626 /* DTSidePanels Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70D74E61743AFBC00E6E626 /* Build configuration list for PBXNativeTarget "DTSidePanels Demo" */;
+			buildPhases = (
+				A70D74CC1743AFBC00E6E626 /* Sources */,
+				A70D74CD1743AFBC00E6E626 /* Frameworks */,
+				A70D74CE1743AFBC00E6E626 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A70D74F01743AFD700E6E626 /* PBXTargetDependency */,
+			);
+			name = "DTSidePanels Demo";
+			productName = "DTSidePanels Demo";
+			productReference = A70D74D01743AFBC00E6E626 /* DTSidePanels Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A710A4FF1607556000437D36 /* Static Library (Mac) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A710A5081607556000437D36 /* Build configuration list for PBXNativeTarget "Static Library (Mac)" */;
@@ -1544,11 +1646,22 @@
 				A7E889A316A9B190009EF0DF /* DTUTI (Mac) */,
 				A72121D9173BFFB1003C6F0A /* DTReachability (iOS) */,
 				A72121E9173BFFED003C6F0A /* DTReachability (Mac) */,
+				A70D74CF1743AFBC00E6E626 /* DTSidePanels Demo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A70D74CE1743AFBC00E6E626 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70D74E91743AFC400E6E626 /* Default-568h@2x.png in Resources */,
+				A70D74EA1743AFC400E6E626 /* Default.png in Resources */,
+				A70D74EB1743AFC400E6E626 /* Default@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7BAD10B1483F934000E2B6A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1693,6 +1806,16 @@
 				A70D74B31743AE4D00E6E626 /* UIViewController+DTSideTabController.m in Sources */,
 				A70D74B71743AE4D00E6E626 /* DTSideTabItem.m in Sources */,
 				A70D74BD1743AE4D00E6E626 /* DTSideTabController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70D74CC1743AFBC00E6E626 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70D74EC1743AFC900E6E626 /* AppDelegate.m in Sources */,
+				A70D74ED1743AFC900E6E626 /* main.m in Sources */,
+				A70D74EE1743AFC900E6E626 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1870,6 +1993,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A70D74F01743AFD700E6E626 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A70B4CE61486637E00873A4A /* Static Library */;
+			targetProxy = A70D74EF1743AFD700E6E626 /* PBXContainerItemProxy */;
+		};
 		A7239FF916A6CEDD0071E902 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A7E383C1160DFEDB00CF72D6 /* DTHTMLParser */;
@@ -1953,6 +2081,42 @@
 				PRODUCT_NAME = DTFoundation;
 				PUBLIC_HEADERS_FOLDER_PATH = ../../DTFoundation;
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A70D74E71743AFBC00E6E626 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Demo/DTSidePanels/DTSidePanels-Prefix.pch";
+				INFOPLIST_FILE = "Demo/DTSidePanels/DTSidePanels-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A70D74E81743AFBC00E6E626 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Demo/DTSidePanels/DTSidePanels-Prefix.pch";
+				INFOPLIST_FILE = "Demo/DTSidePanels/DTSidePanels-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
@@ -2465,6 +2629,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A70D74E61743AFBC00E6E626 /* Build configuration list for PBXNativeTarget "DTSidePanels Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70D74E71743AFBC00E6E626 /* Debug */,
+				A70D74E81743AFBC00E6E626 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		A710A5081607556000437D36 /* Build configuration list for PBXNativeTarget "Static Library (Mac)" */ = {
 			isa = XCConfigurationList;
