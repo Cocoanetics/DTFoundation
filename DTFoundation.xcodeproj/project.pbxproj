@@ -819,10 +819,10 @@
 			children = (
 				A70D74A71743AE4D00E6E626 /* DTSidePanelController.h */,
 				A70D74A61743AE4D00E6E626 /* DTSidePanelController.m */,
-				A70D74A81743AE4D00E6E626 /* UIViewController+DTSideTabController.m */,
 				A70D74A91743AE4D00E6E626 /* UIViewController+DTSideTabController.h */,
-				A70D74AA1743AE4D00E6E626 /* DTSideTabItem.m */,
+				A70D74A81743AE4D00E6E626 /* UIViewController+DTSideTabController.m */,
 				A70D74AB1743AE4D00E6E626 /* DTSideTabItem.h */,
+				A70D74AA1743AE4D00E6E626 /* DTSideTabItem.m */,
 				A70D74AC1743AE4D00E6E626 /* DTSideTabController.h */,
 				A70D74AD1743AE4D00E6E626 /* DTSideTabController.m */,
 			);
