@@ -58,4 +58,10 @@ Pod::Spec.new do |spec|
     ss.ios.frameworks = ['MobileCoreServices']
     ss.source_files = 'Core/Source/DTUTI/*.{h,m}'
   end
+	
+  spec.subspec 'DTSidePanel' do |ss|
+    ss.ios.deployment_target = '5.0'
+    ss.source_files = 'Core/Source/iOS/DTSidePanel/*.{h,m}'
+  end
+	
 end
