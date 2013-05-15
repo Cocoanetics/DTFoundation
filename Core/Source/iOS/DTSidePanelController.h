@@ -17,6 +17,8 @@ typedef enum
 
 /**
  A container view controller with a main view and one or two optional panels that appear when moving the main view to the left or right side. Having a center panel is mandatory the left and right panels are optional.
+ 
+ If you don't set the width of the side panels then they auto-resize with the view, keeping a minimum visible portion of the center view always visible. If you set the width then they keep their width and the center view controller will be moved accordingly.
  */
 @interface DTSidePanelController : UIViewController
 

@@ -77,6 +77,27 @@
 	}
 }
 
+- (void)_updatePanelAutoresizingMasks
+{
+	if (_leftPanelWidth)
+	{
+		_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
+	}
+	else
+	{
+		_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	}
+	
+	if (_rightPanelWidth)
+	{
+		_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin;
+	}
+	else
+	{
+		_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	}
+}
+
 #pragma mark - Calculations
 
 - (CGFloat)_leftPanelVisibleWidth
@@ -508,6 +529,8 @@
 		_leftBaseView.frame = [self _leftPanelFrame];
 		_rightBaseView.frame = [self _rightPanelFrame];
 	}];
+	
+	[self _updatePanelAutoresizingMasks];
 }
 
 #pragma mark - Properties
@@ -563,19 +586,10 @@
 	if (!_leftBaseView)
 	{
 		_leftBaseView = [[UIView alloc] initWithFrame:[self _leftPanelFrame]];
-
-		if (_leftPanelWidth)
-		{
-			_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
-		}
-		else
-		{
-			_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-		}
-
 		[self.view addSubview:_leftBaseView];
 	}
 	
+	[self _updatePanelAutoresizingMasks];
 	[self _sortPanels];
 	
 	[self addChildViewController:_leftPanelController];
@@ -602,19 +616,10 @@
 	if (!_rightBaseView)
 	{
 		_rightBaseView = [[UIView alloc] initWithFrame:[self _rightPanelFrame]];
-		
-		if (_rightPanelWidth)
-		{
-			_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin;
-		}
-		else
-		{
-			_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-		}
-		
 		[self.view addSubview:_rightBaseView];
 	}
 	
+	[self _updatePanelAutoresizingMasks];
 	[self _sortPanels];
 	
 	[self addChildViewController:_rightPanelController];
