@@ -588,6 +588,16 @@
 				CGFloat dragDistance = sqrtf(translation.x * translation.x + translation.y + translation.y);
 				UIViewController *panel = [self _presentedPanelWithPosition:center];
 				
+				if (!panel)
+				{
+					// cancel gesture
+					gesture.enabled = NO;
+					gesture.enabled = YES;
+					
+					// no panel in this direction
+					return;
+				}
+				
 				if (dragDistance>_minimumDragOffsetToPrepPanels)
 				{
 					// update panels even though it maybe it is not going to be an drag
