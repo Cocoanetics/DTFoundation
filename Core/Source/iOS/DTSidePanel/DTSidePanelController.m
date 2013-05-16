@@ -30,7 +30,8 @@
 	NSTimeInterval _lastMoveTimestamp;
 	CGFloat _minimumAnimationMomentum;
 	CGFloat _maximumAnimationMomentum;
-	CGFloat _minimumDragOffsetToAccept;
+	CGFloat _minimumDragOffsetToAccept;  // minimum distance from which a panel drag is accepted
+	CGFloat _minimumDragOffsetToPrepPanels;  // minimum distance until subviews are added i.e. viewWillAppear etc.
 	
 	DTSidePanelControllerPanel _panelToPresentAfterLayout;  // the panel presentation to restore after subview layouting
 	BOOL _panelIsMoving;  // if the panel is being dragged or being animated
@@ -59,7 +60,8 @@
 	_minimumVisibleCenterWidth = 50;
 	_minimumAnimationMomentum = 700;
 	_maximumAnimationMomentum = 2000;
-	_minimumDragOffsetToAccept = 5;
+	_minimumDragOffsetToAccept = 15;
+	_minimumDragOffsetToPrepPanels = 7;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -591,17 +593,6 @@
 		{
 			CGPoint translation = [gesture translationInView:self.view];
 			
-			if (!_panelIsMoving)
-			{
-				// ignore drag attempts below threshold
-				if (fabs(translation.x)<_minimumDragOffsetToAccept)
-				{
-					return;
-				}
-				
-				_panelIsMoving = YES;
-			}
-			
 			_lastTranslation = translation;
 			_lastMoveTimestamp = [NSDate timeIntervalSinceReferenceDate];
 
@@ -610,6 +601,29 @@
 			
 			// restrict to valid region
 			center.x = MAX(MIN(_maxPanRange.x, center.x), _minPanRange.x);
+
+			if (!_panelIsMoving)
+			{
+				CGFloat dragDistance = sqrtf(translation.x * translation.x + translation.y + translation.y);
+				
+				if (dragDistance>_minimumDragOffsetToPrepPanels)
+				{
+					// update panels even though it maybe it is not going to be an drag
+					[self _updatePanelViewControllerPresentationForDraggingAtPosition:center];
+				}
+				
+				// ignore drag attempts below threshold
+				if (dragDistance<_minimumDragOffsetToAccept)
+				{
+					return;
+				}
+				
+				_panelIsMoving = YES;
+			}
+			else
+			{
+				[self _updatePanelViewControllerPresentationForDraggingAtPosition:center];
+			}
 			
 			[gesture setTranslation:CGPointZero inView:self.view];
 			
@@ -621,6 +635,7 @@
 			[CATransaction commit];
 			
 			[self _sortPanels];
+			
 			
 			break;
 		}
@@ -653,8 +668,6 @@
 		}
 			break;
 	}
-	
-	[self _updatePanelViewControllerPresentationForDraggingAtPosition:_centerBaseView.center];
 }
 
 #pragma mark - Public Interface

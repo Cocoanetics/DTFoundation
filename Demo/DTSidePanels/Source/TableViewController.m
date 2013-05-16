@@ -38,26 +38,26 @@
 {
 	[super viewWillAppear:animated];
 	
-	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+	NSLog(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+	NSLog(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 	
-	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+	NSLog(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+	NSLog(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)willMoveToParentViewController:(UIViewController *)parent
