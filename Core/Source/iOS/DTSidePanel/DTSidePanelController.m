@@ -30,9 +30,13 @@
 	NSTimeInterval _lastMoveTimestamp;
 	CGFloat _minimumAnimationMomentum;
 	CGFloat _maximumAnimationMomentum;
+	CGFloat _minimumDragOffsetToAccept;
 	
 	DTSidePanelControllerPanel _panelToPresentAfterLayout;  // the panel presentation to restore after subview layouting
 	BOOL _panelIsMoving;  // if the panel is being dragged or being animated
+	
+	CGPoint _minPanRange;
+	CGPoint _maxPanRange;
 	
 	UITapGestureRecognizer *_tapToCloseGesture;
 	UIPanGestureRecognizer *_centerPanelPanGesture;
@@ -53,6 +57,7 @@
 	_minimumVisibleCenterWidth = 50;
 	_minimumAnimationMomentum = 700;
 	_maximumAnimationMomentum = 2000;
+	_minimumDragOffsetToAccept = 5;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -434,20 +439,57 @@
 	{
 		case UIGestureRecognizerStateBegan:
 		{
-			_panelIsMoving = YES;
+			// maximum draggable distance based on current showing panel
+			switch (self.presentedPanel)
+			{
+				case DTSidePanelControllerPanelLeft:
+				{
+					_minPanRange = [self _centerPanelClosedPosition];
+					_maxPanRange = [self _centerPanelPositionWithLeftPanelOpen];
+					break;
+				}
+				
+				case DTSidePanelControllerPanelCenter:
+				{
+					_minPanRange = [self _centerPanelPositionWithRightPanelOpen];
+					_maxPanRange = [self _centerPanelPositionWithLeftPanelOpen];
+					break;
+				}
+					
+				case DTSidePanelControllerPanelRight:
+				{
+					_minPanRange = [self _centerPanelPositionWithRightPanelOpen];
+					_maxPanRange = [self _centerPanelClosedPosition];
+					break;
+				}
+			}
+			
 			break;
 		}
 			
 		case UIGestureRecognizerStateChanged:
 		{
-			_lastTranslation = [gesture translationInView:self.view];
+			CGPoint translation = [gesture translationInView:self.view];
+			
+			if (!_panelIsMoving)
+			{
+				// ignore drag attempts below threshold
+				if (fabs(translation.x)<_minimumDragOffsetToAccept)
+				{
+					return;
+				}
+				
+				_panelIsMoving = YES;
+			}
+			
+			_lastTranslation = translation;
 			_lastMoveTimestamp = [NSDate timeIntervalSinceReferenceDate];
 
 			CGPoint center = _centerBaseView.center;
 			center.x += _lastTranslation.x;
 			
 			// restrict to valid region
-			center.x = MAX(MIN([self _maxCenterPanelPosition], center.x), [self _minCenterPanelPosition]);
+			center.x = MAX(MIN(_maxPanRange.x, center.x), _minPanRange.x);
 			
 			[gesture setTranslation:CGPointZero inView:self.view];
 			
