@@ -34,6 +34,44 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+	[super viewDidDisappear:animated];
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+- (void)willMoveToParentViewController:(UIViewController *)parent
+{
+	[super willMoveToParentViewController:parent];
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent
+{
+	[super didMoveToParentViewController:parent];
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

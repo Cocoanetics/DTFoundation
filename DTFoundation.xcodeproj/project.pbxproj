@@ -858,10 +858,10 @@
 		A74663B11743D00500D4D7D5 /* DTSidePanel */ = {
 			isa = PBXGroup;
 			children = (
+				A74663B41743D43600D4D7D5 /* DTSideTabController.h */,
 				A74663BC1743D45300D4D7D5 /* DTSideTabController.m */,
 				A74663B21743D43600D4D7D5 /* DTSidePanelController.h */,
 				A74663B31743D43600D4D7D5 /* DTSidePanelController.m */,
-				A74663B41743D43600D4D7D5 /* DTSideTabController.h */,
 				A74663B51743D43600D4D7D5 /* DTSideTabItem.h */,
 				A74663B61743D43600D4D7D5 /* DTSideTabItem.m */,
 				A74663B71743D43600D4D7D5 /* UIViewController+DTSideTabController.h */,

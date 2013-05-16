@@ -40,6 +40,8 @@
 	
 	UITapGestureRecognizer *_tapToCloseGesture;
 	UIPanGestureRecognizer *_centerPanelPanGesture;
+	
+	UIViewController *_presentedPanelViewController;
 }
 
 
@@ -148,6 +150,121 @@
 	}
 	
 	return NO;
+}
+
+- (UIViewController *)_presentedPanelWithPosition:(CGPoint)position
+{
+	if (position.x > [self _centerPanelClosedPosition].x)
+	{
+		return _leftPanelController;
+	}
+	else if (position.x < [self _centerPanelClosedPosition].x)
+	{
+		return _rightPanelController;
+	}
+	else
+	{
+		return _centerPanelController;
+	}
+}
+
+
+- (void)_updatePanelViewControllerPresentationBeforeAnimationForPosition:(CGPoint)position
+{
+	UIViewController *_targetPanel = [self _presentedPanelWithPosition:position];
+	
+	if (_presentedPanelViewController && _targetPanel != _presentedPanelViewController)
+	{
+		[_presentedPanelViewController willMoveToParentViewController:nil];
+		
+		[_presentedPanelViewController beginAppearanceTransition:NO animated:YES];
+	}
+
+	if (_targetPanel == _centerPanelController || _targetPanel == _presentedPanelViewController)
+	{
+		return;
+	}
+
+	[self addChildViewController:_targetPanel];
+	
+	[_targetPanel beginAppearanceTransition:YES animated:YES];
+	
+	if (_targetPanel == _leftPanelController)
+	{
+		_leftPanelController.view.frame = _leftBaseView.bounds;
+		[_leftBaseView addSubview:_leftPanelController.view];
+	}
+	else if (_targetPanel == _rightPanelController)
+	{
+		_rightPanelController.view.frame = _rightBaseView.bounds;
+		[_rightBaseView addSubview:_rightPanelController.view];
+	}
+}
+
+- (void)_updatePanelViewControllerPresentationAfterAnimationForPosition:(CGPoint)position
+{
+	UIViewController *_targetPanel = [self _presentedPanelWithPosition:position];
+	
+	if (_presentedPanelViewController && _targetPanel != _presentedPanelViewController)
+	{
+		[_presentedPanelViewController.view removeFromSuperview];
+		[_presentedPanelViewController removeFromParentViewController];
+		[_presentedPanelViewController didMoveToParentViewController:nil];
+		
+		[_presentedPanelViewController endAppearanceTransition];
+		
+		_presentedPanelViewController = nil;
+	}
+	
+	if (_targetPanel == _centerPanelController || _targetPanel == _presentedPanelViewController)
+	{
+		return;
+	}
+	
+	[_targetPanel endAppearanceTransition];
+	
+	_presentedPanelViewController = _targetPanel;
+}
+
+- (void)_updatePanelViewControllerPresentationForDraggingAtPosition:(CGPoint)position
+{
+	UIViewController *_targetPanel = [self _presentedPanelWithPosition:position];
+	
+	if (_presentedPanelViewController && _targetPanel != _presentedPanelViewController)
+	{
+		[_presentedPanelViewController beginAppearanceTransition:NO animated:NO];
+		[_presentedPanelViewController willMoveToParentViewController:nil];
+		[_presentedPanelViewController.view removeFromSuperview];
+		[_presentedPanelViewController removeFromParentViewController];
+		[_presentedPanelViewController didMoveToParentViewController:nil];
+		[_presentedPanelViewController endAppearanceTransition];
+		
+		_presentedPanelViewController = nil;
+	}
+	
+	if (_targetPanel == _centerPanelController || _presentedPanelViewController == _targetPanel)
+	{
+		return;
+	}
+	
+	[_targetPanel beginAppearanceTransition:YES animated:NO];
+	
+	[self addChildViewController:_targetPanel];
+	
+	if (_targetPanel == _leftPanelController)
+	{
+		_leftPanelController.view.frame = _leftBaseView.bounds;
+		[_leftBaseView addSubview:_leftPanelController.view];
+	}
+	else if (_targetPanel == _rightPanelController)
+	{
+		_rightPanelController.view.frame = _rightBaseView.bounds;
+		[_rightBaseView addSubview:_rightPanelController.view];
+	}
+	
+	[_targetPanel endAppearanceTransition];
+	
+	_presentedPanelViewController = _targetPanel;
 }
 
 #pragma mark - Calculations
@@ -290,13 +407,16 @@
 - (void)_animateCenterPanelToPosition:(CGPoint)position duration:(NSTimeInterval)duration
 {
 	_panelIsMoving = YES;
-	
+
+	[self _updatePanelViewControllerPresentationBeforeAnimationForPosition:position];
+
 	[UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
 		_centerBaseView.center = position;
 	} completion:^(BOOL finished) {
 		_panelIsMoving = NO;
 		
 		[self _updateTapToCloseGesture];
+		[self _updatePanelViewControllerPresentationAfterAnimationForPosition:position];
 	}];
 }
 
@@ -533,6 +653,8 @@
 		}
 			break;
 	}
+	
+	[self _updatePanelViewControllerPresentationForDraggingAtPosition:_centerBaseView.center];
 }
 
 #pragma mark - Public Interface
@@ -671,7 +793,7 @@
 	
 	[self _sortPanels];
 	
-	[self addChildViewController:_centerPanelController];
+	//[self addChildViewController:_centerPanelController];
 	
 	centerPanelController.view.frame = _centerBaseView.bounds;
 	[_centerBaseView addSubview:_centerPanelController.view];
@@ -701,13 +823,6 @@
 	
 	[self _updatePanelAutoresizingMasks];
 	[self _sortPanels];
-	
-	[self addChildViewController:_leftPanelController];
-	
-	_leftPanelController.view.frame = _leftBaseView.bounds;
-	[_leftBaseView addSubview:_leftPanelController.view];
-	
-	[_leftPanelController didMoveToParentViewController:self];
 }
 
 - (void)setRightPanelController:(UIViewController *)rightPanelController
@@ -732,13 +847,6 @@
 	
 	[self _updatePanelAutoresizingMasks];
 	[self _sortPanels];
-	
-	[self addChildViewController:_rightPanelController];
-	
-	_rightPanelController.view.frame = _rightBaseView.bounds;
-	[_rightBaseView addSubview:_rightPanelController.view];
-	
-	[_rightPanelController didMoveToParentViewController:self];
 }
 
 
