@@ -149,4 +149,15 @@
 	[self.navigationController pushViewController:newTableViewController animated:YES];
 }
 
+- (NSString *)description
+{
+	NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+	if (self.navigationItem.title) {
+		[description appendString:self.navigationItem.title];
+	}
+	[description appendString:@">"];
+	return description;
+}
+
+
 @end

@@ -215,7 +215,6 @@
 	
 	[self _addSubviewForPresentedPanel:_targetPanel];
 	
-	[self addChildViewController:_targetPanel];
 }
 
 - (void)_updatePanelViewControllerPresentationAfterAnimationForPosition:(CGPoint)position
@@ -254,8 +253,6 @@
 	
 	[self _addSubviewForPresentedPanel:panel];
 	
-	[self addChildViewController:panel];
-
 	[panel endAppearanceTransition];
 	
 	_presentedPanelViewController = panel;
@@ -813,7 +810,7 @@
 	
 	[self _sortPanels];
 	
-	//[self addChildViewController:_centerPanelController];
+	[self addChildViewController:_centerPanelController];
 	
 	centerPanelController.view.frame = _centerBaseView.bounds;
 	[_centerBaseView addSubview:_centerPanelController.view];
@@ -843,6 +840,7 @@
 	
 	[self _updatePanelAutoresizingMasks];
 	
+	[self addChildViewController:_leftPanelController];
 	[self _addSubviewForPresentedPanel:_leftPanelController];
 	[self _sortPanels];
 }
@@ -868,7 +866,8 @@
 	}
 	
 	[self _updatePanelAutoresizingMasks];
-	
+
+	[self addChildViewController:_leftPanelController];
 	[self _addSubviewForPresentedPanel:_rightPanelController];
 
 	[self _sortPanels];
