@@ -224,7 +224,6 @@
 	if (_presentedPanelViewController && _targetPanel != _presentedPanelViewController)
 	{
 		[_presentedPanelViewController.view removeFromSuperview];
-		[_presentedPanelViewController removeFromParentViewController];
 		[_presentedPanelViewController didMoveToParentViewController:nil];
 		
 		[_presentedPanelViewController endAppearanceTransition];
@@ -265,7 +264,6 @@
 		[_presentedPanelViewController beginAppearanceTransition:NO animated:NO];
 		
 		[_presentedPanelViewController.view removeFromSuperview];
-		[_presentedPanelViewController removeFromParentViewController];
 		[_presentedPanelViewController didMoveToParentViewController:nil];
 		
 		[_presentedPanelViewController endAppearanceTransition];
