@@ -5,7 +5,8 @@ This is the history of version updates.
 
 Version 1.4
 
-- ADDED: DTSidePanelController
+- ADDED: [DTSidePanel] Container Controller
+- ADDED: [DTSQLite] Wrapper class for SQLite3 Databases
 - ADDED: [DTAlertView] Method to create a cancel button and/or set a cancelBlock.
 
 Version 1.3
