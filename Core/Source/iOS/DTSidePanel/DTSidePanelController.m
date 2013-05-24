@@ -8,8 +8,16 @@
 
 #import "DTSidePanelController.h"
 #import "UIView+DTFoundation.h"
+#import "UIViewController+DTSidePanelController.h"
 
 #import <QuartzCore/QuartzCore.h>
+
+@interface UIViewController ()
+
+- (void)setSidePanelController:(DTSidePanelController *)sidePanelController;
+
+@end
+
 
 @interface DTSidePanelController () <UIGestureRecognizerDelegate>
 
@@ -46,6 +54,14 @@
 	__weak id <DTSidePanelControllerDelegate> _sidePanelDelegate;
 }
 
+- (void)dealloc
+{
+	_centerPanelController.sidePanelController = nil;
+	_centerPanelController.sidePanelController = nil;
+	_centerPanelController.sidePanelController = nil;
+	
+	_sidePanelDelegate = nil;
+}
 
 - (void)loadView
 {
@@ -194,6 +210,8 @@
 			[self.view sendSubviewToBack:_leftBaseView];
 		}
 	}
+	
+	[self _sortPanels];
 }
 
 
@@ -212,7 +230,9 @@
 	{
 		return;
 	}
-
+	
+	[self addChildViewController:_targetPanel];
+	
 	[_targetPanel beginAppearanceTransition:YES animated:YES];
 	
 	[self _addSubviewForPresentedPanel:_targetPanel];
@@ -225,9 +245,11 @@
 	if (_presentedPanelViewController && _targetPanel != _presentedPanelViewController)
 	{
 		[_presentedPanelViewController.view removeFromSuperview];
+
+		[_presentedPanelViewController endAppearanceTransition];
+		
 		[_presentedPanelViewController didMoveToParentViewController:nil];
 		
-		[_presentedPanelViewController endAppearanceTransition];
 		
 		_presentedPanelViewController = nil;
 	}
@@ -239,6 +261,8 @@
 	
 	[_targetPanel endAppearanceTransition];
 	
+	[_targetPanel didMoveToParentViewController:self];
+	
 	_presentedPanelViewController = _targetPanel;
 }
 
@@ -249,11 +273,15 @@
 		return;
 	}
 	
+	[_presentedPanelViewController willMoveToParentViewController:self];
+	
 	[panel beginAppearanceTransition:YES animated:NO];
 	
 	[self _addSubviewForPresentedPanel:panel];
 	
 	[panel endAppearanceTransition];
+	
+	[_presentedPanelViewController didMoveToParentViewController:self];
 	
 	_presentedPanelViewController = panel;
 }
@@ -369,7 +397,7 @@
 
 - (CGRect)_leftPanelFrame
 {
-	return CGRectMake(0, 0, [self _usedLeftPanelWidth], self.view.bounds.size.height);
+	return CGRectMake(0, 0, [self _usedLeftPanelWidth]+500, self.view.bounds.size.height);
 }
 
 - (CGFloat)_usedRightPanelWidth
@@ -676,6 +704,21 @@
 	}
 }
 
+- (BOOL)shouldAutomaticallyForwardRotationMethods
+{
+	return NO;
+}
+
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods
+{
+	return NO;
+}
+
+- (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers
+{
+	return NO;
+}
+
 #pragma mark - Actions
 
 - (BOOL)_shouldAllowClosingOfPanel
@@ -943,11 +986,14 @@
 		return;
 	}
 	
+	_centerPanelController.sidePanelController = nil;
+	
 	[_centerPanelController willMoveToParentViewController:nil];
 	[_centerPanelController removeFromParentViewController];
 	[_centerPanelController didMoveToParentViewController:nil];
 	
 	_centerPanelController = centerPanelController;
+	_centerPanelController.sidePanelController = self;
 	
 	if (!_centerBaseView)
 	{
@@ -979,12 +1025,15 @@
 		return;
 	}
 	
+	_leftPanelController.sidePanelController = nil;
+
 	[_leftPanelController willMoveToParentViewController:nil];
 	[_leftPanelController removeFromParentViewController];
 	[_leftPanelController didMoveToParentViewController:nil];
 	
 	_leftPanelController = leftPanelController;
-	
+	_leftPanelController.sidePanelController = self;
+
 	if (!_leftBaseView)
 	{
 		_leftBaseView = [[UIView alloc] initWithFrame:[self _leftPanelFrame]];
@@ -993,10 +1042,6 @@
 	}
 	
 	[self _updatePanelAutoresizingMasks];
-	
-	[self addChildViewController:_leftPanelController];
-	[self _addSubviewForPresentedPanel:_leftPanelController];
-	[self _sortPanels];
 }
 
 - (void)setRightPanelController:(UIViewController *)rightPanelController
@@ -1006,11 +1051,14 @@
 		return;
 	}
 	
+	_rightPanelController.sidePanelController = nil;
+	
 	[_rightPanelController willMoveToParentViewController:nil];
 	[_rightPanelController removeFromParentViewController];
 	[_rightPanelController didMoveToParentViewController:nil];
 	
 	_rightPanelController = rightPanelController;
+	_rightPanelController.sidePanelController = self;
 	
 	if (!_rightBaseView)
 	{
@@ -1020,11 +1068,6 @@
 	}
 	
 	[self _updatePanelAutoresizingMasks];
-
-	[self addChildViewController:_leftPanelController];
-	[self _addSubviewForPresentedPanel:_rightPanelController];
-
-	[self _sortPanels];
 }
 
 
