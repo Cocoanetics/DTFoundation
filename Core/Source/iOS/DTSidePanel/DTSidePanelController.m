@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "DTSidePanelController.h"
 #import "UIView+DTFoundation.h"
 #import "UIViewController+DTSidePanelController.h"
-
 
 @interface UIViewController () // private setter
 - (void)setSidePanelController:(DTSidePanelController *)sidePanelController;
