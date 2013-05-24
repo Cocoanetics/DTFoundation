@@ -401,7 +401,7 @@
 
 - (CGRect)_leftPanelFrame
 {
-	return CGRectMake(0, 0, [self _usedLeftPanelWidth]+500, self.view.bounds.size.height);
+	return CGRectMake(0, 0, [self _usedLeftPanelWidth], self.view.bounds.size.height);
 }
 
 - (CGFloat)_usedRightPanelWidth
@@ -754,8 +754,6 @@
 			// for side panels ask delegate
 			if ([self _presentedPanelWithPosition:_centerBaseView.center] != _centerPanelController && ![self _shouldAllowClosingOfPanel])
 			{
-				NSLog(@"cancelled");
-				
 				// cancel gesture
 				gesture.enabled = NO;
 				gesture.enabled = YES;
