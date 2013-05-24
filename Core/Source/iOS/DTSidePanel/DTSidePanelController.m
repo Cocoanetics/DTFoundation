@@ -43,6 +43,7 @@
 	UIPanGestureRecognizer *_centerPanelPanGesture;
 	
 	UIViewController *_presentedPanelViewController;
+	__weak id <DTSidePanelControllerDelegate> _sidePanelDelegate;
 }
 
 
@@ -214,7 +215,6 @@
 	[_targetPanel beginAppearanceTransition:YES animated:YES];
 	
 	[self _addSubviewForPresentedPanel:_targetPanel];
-	
 }
 
 - (void)_updatePanelViewControllerPresentationAfterAnimationForPosition:(CGPoint)position
@@ -556,6 +556,16 @@
 
 - (void)tapToClose:(UITapGestureRecognizer *)gesture
 {
+	if ([_sidePanelDelegate respondsToSelector:@selector(sidePanelController:shouldAllowClosingOfPanel:)])
+	{
+		BOOL shouldAllow = [_sidePanelDelegate sidePanelController:self shouldAllowClosingOfPanel:[self presentedPanel]];
+		
+		if (!shouldAllow)
+		{
+			return;
+		}
+	}
+	
 	[self presentPanel:DTSidePanelControllerPanelCenter animated:YES];
 }
 
