@@ -7,6 +7,7 @@
 //
 
 #import "ModalPanelViewController.h"
+#import "UIViewController+DTSidePanelController.h"
 
 @implementation ModalPanelViewController
 
@@ -72,6 +73,8 @@
 
 - (IBAction)switchChanged:(UISwitch *)sender
 {
+	NSLog(@"%@", self.sidePanelController);
+	
 	self.allowClosing = sender.isOn;
 }
 
