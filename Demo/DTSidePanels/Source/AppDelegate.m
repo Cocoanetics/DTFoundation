@@ -19,36 +19,43 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-	// create a panel controller as root
-	_sidePanelController = [[DTSidePanelController alloc] init];
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
+	// set up panel for left side
 	UIViewController *leftVC = [[TableViewController alloc] init];
 	leftVC.navigationItem.title = @"Left";
 	UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftVC];
-
+	
+	// set up panel for right side
 	UIViewController *rightVC = [[TableViewController alloc] init];
 	rightVC.navigationItem.title = @"Right";
 	UINavigationController *rightNav = [[UINavigationController alloc] initWithRootViewController:rightVC];
 	
+	// set up center panel
 	UIViewController *centerVC = [[DemoViewController alloc] initWithNibName:@"DemoViewController" bundle:nil];
 	centerVC.navigationItem.title = @"Center";
-	centerVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Left" style:UIBarButtonItemStyleBordered target:self action:@selector(showLeftPanel:)];
-	centerVC.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Right" style:UIBarButtonItemStyleBordered target:self action:@selector(showRightPanel:)];
-	UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:centerVC];
 	
+	// create a left and right "Hamburger" icon on center VC's navigationItem
+	UIImage *hamburgerIcon = [UIImage imageNamed:@"toolbar-icon-menu"];
+	centerVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:hamburgerIcon style:UIBarButtonItemStyleBordered target:self action:@selector(showLeftPanel:)];
+	centerVC.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:hamburgerIcon style:UIBarButtonItemStyleBordered target:self action:@selector(showRightPanel:)];
+	UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:centerVC];
+
+	// create a panel controller as root
+	_sidePanelController = [[DTSidePanelController alloc] init];
+	
+	// left panel has fixed width, right panel width is variable
 	[_sidePanelController setWidth:100 forPanel:DTSidePanelControllerPanelLeft animated:NO];
 	
+	// set the panels on the controller
 	_sidePanelController.leftPanelController = leftNav;
 	_sidePanelController.centerPanelController = centerNav;
 	_sidePanelController.rightPanelController = rightNav;
 	
-	
 	self.window.rootViewController = _sidePanelController;
-    [self.window makeKeyAndVisible];
+	[self.window makeKeyAndVisible];
 	
-    return YES;
+	return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
