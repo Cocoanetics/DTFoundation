@@ -8,6 +8,7 @@ Version 1.4
 - ADDED: [DTSidePanel] Container Controller
 - ADDED: [DTSQLite] Wrapper class for SQLite3 Databases
 - ADDED: [DTAlertView] Method to create a cancel button and/or set a cancelBlock.
+- CHANGED: Moved experimental striped layer into Experimental folder
 
 Version 1.3
 
