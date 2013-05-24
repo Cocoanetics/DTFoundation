@@ -30,6 +30,10 @@
 	<true/>
 	<key>--no-repeat-first-par</key>
 	<true/>
+	<key>--include</key>
+	<array>
+		<string>./Documentation/Change Log-template.markdown</string>
+	</array>
 	<key>--ignore</key>
 	<array>
 		<string>*.m</string>

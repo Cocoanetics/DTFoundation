@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.1.0'
+  spec.version      = '1.4.0'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@drobnik.com" }
@@ -21,6 +21,13 @@ Pod::Spec.new do |spec|
     ss.ios.source_files = 'Core/Source/iOS/*.{h,m}'
   end
 
+  spec.subspec 'DTSidePanel' do |ss|
+    ss.platform = :ios, '5.0'
+    ss.dependency 'DTFoundation/Core'
+    ss.dependency 'DTFoundation/UIKit'
+    ss.ios.source_files = 'Core/Source/iOS/DTSidePanel/*.{h,m}'
+  end
+
   spec.subspec 'AppKit' do |ss|
     ss.platform = :osx, '10.6'
     ss.dependency 'DTFoundation/Core'
@@ -33,6 +40,20 @@ Pod::Spec.new do |spec|
     ss.source_files = 'Core/Source/DTHTMLParser/*.{h,m}'
     ss.library = 'xml2'
     ss.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
+  end
+
+  spec.subspec 'DTReachability' do |ss|
+    ss.ios.deployment_target = '4.3'
+    ss.osx.deployment_target = '10.6'
+    ss.framework = 'SystemConfiguration'
+    ss.source_files = 'Core/Source/DTReachability/*.{h,m}'
+  end
+
+  spec.subspec 'DTSSQLite' do |ss|
+    ss.ios.deployment_target = '4.3'
+    ss.osx.deployment_target = '10.6'
+    ss.library = 'sqlite3'
+    ss.source_files = 'Core/Source/DTSQLite/*.{h,m}'
   end
 
   spec.subspec 'DTZipArchive' do |ss|
@@ -51,4 +72,10 @@ Pod::Spec.new do |spec|
     ss.ios.frameworks = ['MobileCoreServices']
     ss.source_files = 'Core/Source/DTUTI/*.{h,m}'
   end
+	
+  spec.subspec 'DTSidePanel' do |ss|
+    ss.ios.deployment_target = '5.0'
+    ss.source_files = 'Core/Source/iOS/DTSidePanel/*.{h,m}'
+  end
+	
 end
