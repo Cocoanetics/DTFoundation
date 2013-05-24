@@ -10,17 +10,13 @@
 #import "UIView+DTFoundation.h"
 #import "UIViewController+DTSidePanelController.h"
 
-#import <QuartzCore/QuartzCore.h>
 
-@interface UIViewController ()
-
+@interface UIViewController () // private setter
 - (void)setSidePanelController:(DTSidePanelController *)sidePanelController;
-
 @end
 
 
 @interface DTSidePanelController () <UIGestureRecognizerDelegate>
-
 @end
 
 @implementation DTSidePanelController 
