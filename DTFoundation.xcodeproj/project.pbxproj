@@ -823,16 +823,9 @@
 		A70B4CC61486621B00873A4A /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A76DB48816A5E1D20010CD85 /* DTHTMLParser */,
-				A72121D3173BFF89003C6F0A /* DTReachability */,
-				A7C92B71174FB81C0019D70A /* DTSQLite */,
-				A76DB4F816A5E5940010CD85 /* DTUTI */,
-				A76DB4BC16A5E4760010CD85 /* DTZipArchive */,
 				A76DB48E16A5E37F0010CD85 /* iOS */,
 				A76DB4B716A5E3B20010CD85 /* OSX */,
-				A7D0AA6A153C395C0020F18B /* Classes */,
-				A7D0AA69153C39540020F18B /* Categories */,
-				A7D0AA68153C39490020F18B /* Utility Functions */,
+				A7D0AA6A153C395C0020F18B /* Universal */,
 				A77DD3D014E81A0B00F34B03 /* Externals */,
 				FAB1726916301F0D00B44EDC /* DTFoundationConstants.h */,
 				FAB1726A16301F0D00B44EDC /* DTFoundationConstants.m */,
@@ -1153,9 +1146,16 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
-		A7D0AA6A153C395C0020F18B /* Classes */ = {
+		A7D0AA6A153C395C0020F18B /* Universal */ = {
 			isa = PBXGroup;
 			children = (
+				A7D0AA68153C39490020F18B /* Utility Functions */,
+				A7D0AA69153C39540020F18B /* Categories */,
+				A76DB48816A5E1D20010CD85 /* DTHTMLParser */,
+				A72121D3173BFF89003C6F0A /* DTReachability */,
+				A7C92B71174FB81C0019D70A /* DTSQLite */,
+				A76DB4F816A5E5940010CD85 /* DTUTI */,
+				A76DB4BC16A5E4760010CD85 /* DTZipArchive */,
 				A7640E4116F32294003A7B43 /* DTASN1 */,
 				A7556F63162EEF6700A69F63 /* DTScripting */,
 				A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */,
@@ -1167,7 +1167,7 @@
 				A70B4CC71486621B00873A4A /* DTVersion.h */,
 				A70B4CC81486621B00873A4A /* DTVersion.m */,
 			);
-			name = Classes;
+			name = Universal;
 			sourceTree = "<group>";
 		};
 		A7D60FE415D3B15300AEDD1B /* Test */ = {
