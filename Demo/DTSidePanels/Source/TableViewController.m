@@ -23,21 +23,11 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
+#pragma mark - Appearance Notifications
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	
 	NSLog(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
@@ -50,7 +40,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-	
 	NSLog(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
@@ -72,10 +61,22 @@
 	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
 }
 
-- (void)didReceiveMemoryWarning
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	[super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
 }
 
 #pragma mark - Table view data source

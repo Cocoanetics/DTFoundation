@@ -10,7 +10,13 @@
 
 #import "DTSidePanelController.h"
 #import "TableViewController.h"
+#import "ModalPanelViewController.h"
 #import "DemoViewController.h"
+#import "LoggingNavigationController.h"
+
+@interface AppDelegate () <DTSidePanelControllerDelegate>
+
+@end
 
 @implementation AppDelegate
 {
@@ -24,12 +30,12 @@
 	// set up panel for left side
 	UIViewController *leftVC = [[TableViewController alloc] init];
 	leftVC.navigationItem.title = @"Left";
-	UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftVC];
+	LoggingNavigationController *leftNav = [[LoggingNavigationController alloc] initWithRootViewController:leftVC];
 	
 	// set up panel for right side
-	UIViewController *rightVC = [[TableViewController alloc] init];
+	ModalPanelViewController *rightVC = [[ModalPanelViewController alloc] initWithNibName:@"ModalPanelViewController" bundle:nil];
 	rightVC.navigationItem.title = @"Right";
-	UINavigationController *rightNav = [[UINavigationController alloc] initWithRootViewController:rightVC];
+	LoggingNavigationController *rightNav = [[LoggingNavigationController alloc] initWithRootViewController:rightVC];
 	
 	// set up center panel
 	UIViewController *centerVC = [[DemoViewController alloc] initWithNibName:@"DemoViewController" bundle:nil];
@@ -39,7 +45,7 @@
 	UIImage *hamburgerIcon = [UIImage imageNamed:@"toolbar-icon-menu"];
 	centerVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:hamburgerIcon style:UIBarButtonItemStyleBordered target:self action:@selector(showLeftPanel:)];
 	centerVC.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:hamburgerIcon style:UIBarButtonItemStyleBordered target:self action:@selector(showRightPanel:)];
-	UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:centerVC];
+	LoggingNavigationController *centerNav = [[LoggingNavigationController alloc] initWithRootViewController:centerVC];
 
 	// create a panel controller as root
 	_sidePanelController = [[DTSidePanelController alloc] init];
@@ -51,6 +57,7 @@
 	_sidePanelController.leftPanelController = leftNav;
 	_sidePanelController.centerPanelController = centerNav;
 	_sidePanelController.rightPanelController = rightNav;
+	_sidePanelController.sidePanelDelegate = self;
 	
 	self.window.rootViewController = _sidePanelController;
 	[self.window makeKeyAndVisible];
@@ -83,6 +90,21 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - DTSidePanelControllerDelegate
+
+- (BOOL)sidePanelController:(DTSidePanelController *)sidePanelController shouldAllowClosingOfSidePanel:(DTSidePanelControllerPanel)sidePanel
+{
+	if (sidePanel == DTSidePanelControllerPanelRight)
+	{
+		UINavigationController *navController = (UINavigationController *)sidePanelController.rightPanelController;
+		ModalPanelViewController *controller = (ModalPanelViewController *)[[navController viewControllers] objectAtIndex:0];
+		
+		return [controller allowClosing];
+	}
+	
+	return YES;
 }
 
 #pragma mark - Actions

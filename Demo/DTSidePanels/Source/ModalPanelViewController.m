@@ -1,14 +1,14 @@
 //
-//  DemoViewController.m
+//  ModalPanelViewController.m
 //  DTFoundation
 //
-//  Created by Oliver Drobnik on 15.05.13.
+//  Created by Oliver Drobnik on 5/24/13.
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
-#import "DemoViewController.h"
+#import "ModalPanelViewController.h"
 
-@implementation DemoViewController
+@implementation ModalPanelViewController
 
 #pragma mark - Appearance Notifications
 
@@ -48,6 +48,31 @@
 {
 	[super didMoveToParentViewController:parent];
 	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	[super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	[super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+}
+
+#pragma mark - Actions
+
+- (IBAction)switchChanged:(UISwitch *)sender
+{
+	self.allowClosing = sender.isOn;
 }
 
 @end
