@@ -101,9 +101,6 @@
 		A7437DE216147A450091C1A2 /* NSString+DTPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D8628014EBF65C001436AF /* NSString+DTPaths.m */; };
 		A7444D2C162C011C00DD3692 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
 		A74663B91743D43600D4D7D5 /* DTSidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A74663B31743D43600D4D7D5 /* DTSidePanelController.m */; };
-		A74663BA1743D43600D4D7D5 /* DTSideTabItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A74663B61743D43600D4D7D5 /* DTSideTabItem.m */; };
-		A74663BB1743D43600D4D7D5 /* UIViewController+DTSideTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = A74663B81743D43600D4D7D5 /* UIViewController+DTSideTabController.m */; };
-		A74663BD1743D45300D4D7D5 /* DTSideTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = A74663BC1743D45300D4D7D5 /* DTSideTabController.m */; };
 		A7556F66162EEF9200A69F63 /* DTScriptExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A7556F64162EEF9200A69F63 /* DTScriptExpression.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7556F67162EEF9200A69F63 /* DTScriptExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A7556F64162EEF9200A69F63 /* DTScriptExpression.h */; };
 		A7556F68162EEF9200A69F63 /* DTScriptExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A7556F64162EEF9200A69F63 /* DTScriptExpression.h */; };
@@ -489,12 +486,6 @@
 		A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DTError.m"; sourceTree = "<group>"; };
 		A74663B21743D43600D4D7D5 /* DTSidePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSidePanelController.h; sourceTree = "<group>"; };
 		A74663B31743D43600D4D7D5 /* DTSidePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSidePanelController.m; sourceTree = "<group>"; };
-		A74663B41743D43600D4D7D5 /* DTSideTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSideTabController.h; sourceTree = "<group>"; };
-		A74663B51743D43600D4D7D5 /* DTSideTabItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSideTabItem.h; sourceTree = "<group>"; };
-		A74663B61743D43600D4D7D5 /* DTSideTabItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSideTabItem.m; sourceTree = "<group>"; };
-		A74663B71743D43600D4D7D5 /* UIViewController+DTSideTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DTSideTabController.h"; sourceTree = "<group>"; };
-		A74663B81743D43600D4D7D5 /* UIViewController+DTSideTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DTSideTabController.m"; sourceTree = "<group>"; };
-		A74663BC1743D45300D4D7D5 /* DTSideTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSideTabController.m; sourceTree = "<group>"; };
 		A7556F64162EEF9200A69F63 /* DTScriptExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTScriptExpression.h; sourceTree = "<group>"; };
 		A7556F65162EEF9200A69F63 /* DTScriptExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTScriptExpression.m; sourceTree = "<group>"; };
 		A760F52A14F24B9F00AD1B0E /* DTASN1Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTASN1Parser.h; sourceTree = "<group>"; };
@@ -864,14 +855,8 @@
 		A74663B11743D00500D4D7D5 /* DTSidePanel */ = {
 			isa = PBXGroup;
 			children = (
-				A74663B41743D43600D4D7D5 /* DTSideTabController.h */,
-				A74663BC1743D45300D4D7D5 /* DTSideTabController.m */,
 				A74663B21743D43600D4D7D5 /* DTSidePanelController.h */,
 				A74663B31743D43600D4D7D5 /* DTSidePanelController.m */,
-				A74663B51743D43600D4D7D5 /* DTSideTabItem.h */,
-				A74663B61743D43600D4D7D5 /* DTSideTabItem.m */,
-				A74663B71743D43600D4D7D5 /* UIViewController+DTSideTabController.h */,
-				A74663B81743D43600D4D7D5 /* UIViewController+DTSideTabController.m */,
 			);
 			path = DTSidePanel;
 			sourceTree = "<group>";
@@ -1811,9 +1796,6 @@
 				A70D75001743C90A00E6E626 /* main.m in Sources */,
 				A70D75011743C90A00E6E626 /* TableViewController.m in Sources */,
 				A74663B91743D43600D4D7D5 /* DTSidePanelController.m in Sources */,
-				A74663BA1743D43600D4D7D5 /* DTSideTabItem.m in Sources */,
-				A74663BB1743D43600D4D7D5 /* UIViewController+DTSideTabController.m in Sources */,
-				A74663BD1743D45300D4D7D5 /* DTSideTabController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
