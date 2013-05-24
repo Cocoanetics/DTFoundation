@@ -59,14 +59,6 @@
 		A70D74FF1743C90A00E6E626 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74FB1743C90A00E6E626 /* AppDelegate.m */; };
 		A70D75001743C90A00E6E626 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74FC1743C90A00E6E626 /* main.m */; };
 		A70D75011743C90A00E6E626 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74FE1743C90A00E6E626 /* TableViewController.m */; };
-		A70ECD6016E09705004E9623 /* DTStripedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD5E16E09705004E9623 /* DTStripedLayer.h */; };
-		A70ECD6116E09705004E9623 /* DTStripedLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD5E16E09705004E9623 /* DTStripedLayer.h */; };
-		A70ECD6216E09705004E9623 /* DTStripedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD5F16E09705004E9623 /* DTStripedLayer.m */; };
-		A70ECD6316E09705004E9623 /* DTStripedLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD5F16E09705004E9623 /* DTStripedLayer.m */; };
-		A70ECD6616E0A06E004E9623 /* DTStripedLayerTile.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */; };
-		A70ECD6716E0A06E004E9623 /* DTStripedLayerTile.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */; };
-		A70ECD6816E0A06E004E9623 /* DTStripedLayerTile.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD6516E0A06E004E9623 /* DTStripedLayerTile.m */; };
-		A70ECD6916E0A06E004E9623 /* DTStripedLayerTile.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD6516E0A06E004E9623 /* DTStripedLayerTile.m */; };
 		A70ECD6C16E0A389004E9623 /* UIColor+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6A16E0A388004E9623 /* UIColor+DTDebug.h */; };
 		A70ECD6D16E0A389004E9623 /* UIColor+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6A16E0A388004E9623 /* UIColor+DTDebug.h */; };
 		A70ECD6E16E0A389004E9623 /* UIColor+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD6B16E0A389004E9623 /* UIColor+DTDebug.m */; };
@@ -483,10 +475,6 @@
 		A70D74FC1743C90A00E6E626 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A70D74FD1743C90A00E6E626 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		A70D74FE1743C90A00E6E626 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		A70ECD5E16E09705004E9623 /* DTStripedLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTStripedLayer.h; sourceTree = "<group>"; };
-		A70ECD5F16E09705004E9623 /* DTStripedLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayer.m; sourceTree = "<group>"; };
-		A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTStripedLayerTile.h; sourceTree = "<group>"; };
-		A70ECD6516E0A06E004E9623 /* DTStripedLayerTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayerTile.m; sourceTree = "<group>"; };
 		A70ECD6A16E0A388004E9623 /* UIColor+DTDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DTDebug.h"; sourceTree = "<group>"; };
 		A70ECD6B16E0A389004E9623 /* UIColor+DTDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DTDebug.m"; sourceTree = "<group>"; };
 		A710A5001607556000437D36 /* libDTFoundation_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTFoundation_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -599,6 +587,10 @@
 		A7C92B75174FB81C0019D70A /* DTSQLiteFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTSQLiteFunctions.m; sourceTree = "<group>"; };
 		A7C92B7A174FB8900019D70A /* libDTSQLite_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTSQLite_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C92B8C174FB9720019D70A /* libDTSQLite_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTSQLite_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7C92B9A174FBBAF0019D70A /* DTStripedLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTStripedLayer.h; sourceTree = "<group>"; };
+		A7C92B9B174FBBAF0019D70A /* DTStripedLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayer.m; sourceTree = "<group>"; };
+		A7C92B9C174FBBAF0019D70A /* DTStripedLayerTile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTStripedLayerTile.h; sourceTree = "<group>"; };
+		A7C92B9D174FBBAF0019D70A /* DTStripedLayerTile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayerTile.m; sourceTree = "<group>"; };
 		A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DTError.h"; sourceTree = "<group>"; };
 		A7D0AA24153C1B160020F18B /* NSDictionary+DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DTError.m"; sourceTree = "<group>"; };
 		A7D0AA29153C1FE40020F18B /* NSString+DTURLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTURLEncoding.h"; sourceTree = "<group>"; };
@@ -970,6 +962,7 @@
 			isa = PBXGroup;
 			children = (
 				A74663B11743D00500D4D7D5 /* DTSidePanel */,
+				A7C92B99174FBBAF0019D70A /* Experimental */,
 				A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */,
 				A730BCCD16D2892E003B849F /* DTTiledLayerWithoutFade.m */,
 				A76DB48F16A5E37F0010CD85 /* DTActionSheet.h */,
@@ -1002,10 +995,6 @@
 				A76DB4C916A5E50F0010CD85 /* UIView+DTFoundation.m */,
 				A76DB4CA16A5E50F0010CD85 /* UIWebView+DTFoundation.h */,
 				A76DB4CB16A5E5100010CD85 /* UIWebView+DTFoundation.m */,
-				A70ECD6416E0A06E004E9623 /* DTStripedLayerTile.h */,
-				A70ECD6516E0A06E004E9623 /* DTStripedLayerTile.m */,
-				A70ECD5E16E09705004E9623 /* DTStripedLayer.h */,
-				A70ECD5F16E09705004E9623 /* DTStripedLayer.m */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -1104,6 +1093,17 @@
 				A7C92B75174FB81C0019D70A /* DTSQLiteFunctions.m */,
 			);
 			path = DTSQLite;
+			sourceTree = "<group>";
+		};
+		A7C92B99174FBBAF0019D70A /* Experimental */ = {
+			isa = PBXGroup;
+			children = (
+				A7C92B9A174FBBAF0019D70A /* DTStripedLayer.h */,
+				A7C92B9B174FBBAF0019D70A /* DTStripedLayer.m */,
+				A7C92B9C174FBBAF0019D70A /* DTStripedLayerTile.h */,
+				A7C92B9D174FBBAF0019D70A /* DTStripedLayerTile.m */,
+			);
+			path = Experimental;
 			sourceTree = "<group>";
 		};
 		A7D0AA68153C39490020F18B /* Utility Functions */ = {
@@ -1327,8 +1327,6 @@
 				A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
 				A777831016CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
 				A730BCCF16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */,
-				A70ECD6116E09705004E9623 /* DTStripedLayer.h in Headers */,
-				A70ECD6716E0A06E004E9623 /* DTStripedLayerTile.h in Headers */,
 				A70ECD6D16E0A389004E9623 /* UIColor+DTDebug.h in Headers */,
 				A77D5BFB16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 				A779A38516EB850D001BD056 /* DTASN1Serialization.h in Headers */,
@@ -1416,8 +1414,6 @@
 				A7E88ED216BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
 				A777830F16CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
 				A730BCCE16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */,
-				A70ECD6016E09705004E9623 /* DTStripedLayer.h in Headers */,
-				A70ECD6616E0A06E004E9623 /* DTStripedLayerTile.h in Headers */,
 				A70ECD6C16E0A389004E9623 /* UIColor+DTDebug.h in Headers */,
 				A77D5BFA16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 				A779A38416EB850D001BD056 /* DTASN1Serialization.h in Headers */,
@@ -1896,8 +1892,6 @@
 				A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
 				A777831316CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */,
 				A730BCD116D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */,
-				A70ECD6316E09705004E9623 /* DTStripedLayer.m in Sources */,
-				A70ECD6916E0A06E004E9623 /* DTStripedLayerTile.m in Sources */,
 				A70ECD6F16E0A389004E9623 /* UIColor+DTDebug.m in Sources */,
 				A77D5BFE16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A779A38816EB850D001BD056 /* DTASN1Serialization.m in Sources */,
@@ -2017,8 +2011,6 @@
 				A7E88ED416BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
 				A777831216CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */,
 				A730BCD016D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */,
-				A70ECD6216E09705004E9623 /* DTStripedLayer.m in Sources */,
-				A70ECD6816E0A06E004E9623 /* DTStripedLayerTile.m in Sources */,
 				A70ECD6E16E0A389004E9623 /* UIColor+DTDebug.m in Sources */,
 				A77D5BFD16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A779A38716EB850D001BD056 /* DTASN1Serialization.m in Sources */,
@@ -2886,6 +2878,7 @@
 				A7C92B85174FB8900019D70A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A7C92B94174FB9720019D70A /* Build configuration list for PBXNativeTarget "DTSQLite (Mac)" */ = {
 			isa = XCConfigurationList;
@@ -2894,6 +2887,7 @@
 				A7C92B96174FB9720019D70A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A7D60FDE15D3B0BC00AEDD1B /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCConfigurationList;
