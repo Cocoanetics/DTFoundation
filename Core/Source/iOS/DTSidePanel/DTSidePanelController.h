@@ -22,10 +22,10 @@ typedef enum
 /**
  Asks the delegate if a presented panel can be closed. The default is to allow it, you may prevent the dragging or tap-to-close for example when showing a modal dialog.
  @param sidePanelController The side panel controller
- @param panel The panel type that the user is trying to close
+ @param sidePanel The panel type that the user is trying to close
  @returns `YES` if the user may close a presented panel
  */
-- (BOOL)sidePanelController:(DTSidePanelController *)sidePanelController shouldAllowClosingOfPanel:(DTSidePanelControllerPanel)panel;
+- (BOOL)sidePanelController:(DTSidePanelController *)sidePanelController shouldAllowClosingOfSidePanel:(DTSidePanelControllerPanel)sidePanel;
 
 @end
 
@@ -34,6 +34,12 @@ typedef enum
  A container view controller with a main view and one or two optional panels that appear when moving the main view to the left or right side. Having a center panel is mandatory the left and right panels are optional.
  
  If you don't set the width of the side panels then they auto-resize with the view, keeping a minimum visible portion of the center view always visible. If you set the width then they keep their width and the center view controller will be moved accordingly.
+ 
+ Possible values for DTSidePanelControllerPanel are:
+ 
+ - DTSidePanelControllerPanelCenter
+ - DTSidePanelControllerPanelLeft,
+ - DTSidePanelControllerPanelRight
  */
 @interface DTSidePanelController : UIViewController
 

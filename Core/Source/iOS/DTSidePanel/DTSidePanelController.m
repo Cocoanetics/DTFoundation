@@ -554,16 +554,21 @@
 
 #pragma mark - Actions
 
+- (BOOL)_shouldAllowClosingOfPanel
+{
+	if ([_sidePanelDelegate respondsToSelector:@selector(sidePanelController:shouldAllowClosingOfSidePanel:)])
+	{
+		return [_sidePanelDelegate sidePanelController:self shouldAllowClosingOfSidePanel:[self presentedPanel]];
+	}
+	
+	return YES;
+}
+
 - (void)tapToClose:(UITapGestureRecognizer *)gesture
 {
-	if ([_sidePanelDelegate respondsToSelector:@selector(sidePanelController:shouldAllowClosingOfPanel:)])
+	if (![self _shouldAllowClosingOfPanel])
 	{
-		BOOL shouldAllow = [_sidePanelDelegate sidePanelController:self shouldAllowClosingOfPanel:[self presentedPanel]];
-		
-		if (!shouldAllow)
-		{
-			return;
-		}
+		return;
 	}
 	
 	[self presentPanel:DTSidePanelControllerPanelCenter animated:YES];
@@ -575,6 +580,18 @@
 	{
 		case UIGestureRecognizerStateBegan:
 		{
+			// for side panels ask delegate
+			if ([self _presentedPanelWithPosition:_centerBaseView.center] != _centerPanelController && ![self _shouldAllowClosingOfPanel])
+			{
+				NSLog(@"cancelled");
+				
+				// cancel gesture
+				gesture.enabled = NO;
+				gesture.enabled = YES;
+				
+				return;
+			}
+			
 			break;
 		}
 			
