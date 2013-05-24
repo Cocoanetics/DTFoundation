@@ -273,7 +273,7 @@
 		return;
 	}
 	
-	[_presentedPanelViewController willMoveToParentViewController:self];
+	[panel willMoveToParentViewController:self];
 	
 	[panel beginAppearanceTransition:YES animated:NO];
 	
@@ -281,7 +281,7 @@
 	
 	[panel endAppearanceTransition];
 	
-	[_presentedPanelViewController didMoveToParentViewController:self];
+	[panel didMoveToParentViewController:self];
 	
 	_presentedPanelViewController = panel;
 }
@@ -290,13 +290,17 @@
 {
 	if (_presentedPanelViewController)
 	{
+		[_presentedPanelViewController willMoveToParentViewController:nil];
+		
 		[_presentedPanelViewController beginAppearanceTransition:NO animated:NO];
 		
+		[_presentedPanelViewController removeFromParentViewController];
 		[_presentedPanelViewController.view removeFromSuperview];
-		[_presentedPanelViewController didMoveToParentViewController:nil];
 		
 		[_presentedPanelViewController endAppearanceTransition];
-		
+
+		[_presentedPanelViewController didMoveToParentViewController:nil];
+
 		_presentedPanelViewController = nil;
 	}
 }
