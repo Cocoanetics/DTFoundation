@@ -33,6 +33,7 @@ Other classes simplify working with specialized data
 - DTHTMLParser - a libxml2-based HTML parser
 - DTPieProgressIndicator - pie-shaped progress indicator
 - DTScripting - things to work with Objective-C script
+- DTSidePanelController - A "Hamburger" Menu Controller
 - DTSmartPagingScrollView - a page-based scroll view
 - DTVersion - parsing and comparing version numbers
 - DTZipArchive - uncompressing ZIP and GZ files

@@ -3,6 +3,10 @@ Change Log
 
 This is the history of version updates.
 
+Version 1.4
+
+- ADDED: DTSidePanelController
+
 Version 1.3
 
 - ADDED: [DTReachability]
