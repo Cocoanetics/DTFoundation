@@ -16,6 +16,9 @@ typedef enum
 
 @class DTSidePanelController;
 
+/**
+ Protocol by whiy DTSidePanelController communicates with its delegate
+ */
 @protocol DTSidePanelControllerDelegate <NSObject>
 
 @optional
@@ -49,8 +52,8 @@ typedef enum
 
 /**
  Shows the specified panel
- @paramenter panel The panel to present
- @parameter animated Whether the presentation should be animated
+ @param panel The panel to present
+ @param animated Whether the presentation should be animated
  */
 - (void)presentPanel:(DTSidePanelControllerPanel)panel animated:(BOOL)animated;
 
