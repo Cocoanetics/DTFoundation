@@ -90,6 +90,15 @@
 	}
 }
 
+- (void)_updateUserInteractionEnabled
+{
+	DTSidePanelControllerPanel panel = [self presentedPanel];
+	
+	_leftBaseView.userInteractionEnabled = (panel == DTSidePanelControllerPanelLeft);
+	_rightBaseView.userInteractionEnabled = (panel == DTSidePanelControllerPanelRight);
+	_centerBaseView.userInteractionEnabled = (panel == DTSidePanelControllerPanelCenter);
+}
+
 - (void)_updatePanelAutoresizingMasks
 {
 	if (_leftPanelWidth)
@@ -122,19 +131,11 @@
 	}
 	
 	[self.view addGestureRecognizer:_tapToCloseGesture];
-
-	_centerBaseView.userInteractionEnabled = NO;
-	_leftBaseView.userInteractionEnabled = YES;
-	_rightBaseView.userInteractionEnabled = YES;
 }
 
 - (void)_removeTapToCloseGesture
 {
 	[self.view removeGestureRecognizer:_tapToCloseGesture];
-	
-	_centerBaseView.userInteractionEnabled = YES;
-	_leftBaseView.userInteractionEnabled = NO;
-	_rightBaseView.userInteractionEnabled = NO;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
@@ -422,6 +423,7 @@
 		
 		[self _updateTapToCloseGesture];
 		[self _updatePanelViewControllerPresentationAfterAnimationForPosition:position];
+		[self _updateUserInteractionEnabled];
 	}];
 }
 
@@ -542,14 +544,136 @@
 
 - (void)viewDidLayoutSubviews
 {
-	[super viewDidLayoutSubviews];
-	
 	if (!_panelIsMoving)
 	{
 		[self presentPanel:_panelToPresentAfterLayout animated:NO];
 	}
 	
 	[_centerBaseView updateShadowPathToBounds:_centerBaseView.bounds withDuration:0.3];
+	
+	[super viewDidLayoutSubviews];
+}
+
+// iOS 6 autorotation
+- (BOOL)shouldAutorotate
+{
+	if (_centerPanelController && ![_centerPanelController shouldAutorotate])
+	{
+		return NO;
+	}
+
+	if (_leftPanelController && ![_leftPanelController shouldAutorotate])
+	{
+		return NO;
+	}
+
+	if (_rightPanelController && ![_rightPanelController shouldAutorotate])
+	{
+		return NO;
+	}
+	
+	return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+	NSUInteger orientations = UIInterfaceOrientationMaskAll;
+	
+	// only support the orientations that are also supported by all child VCs
+	
+	if (_centerPanelController)
+	{
+		orientations &= [_centerPanelController supportedInterfaceOrientations];
+	}
+	
+	if (_leftPanelController)
+	{
+		orientations &= [_leftPanelController supportedInterfaceOrientations];
+	}
+	
+	if (_rightPanelController)
+	{
+		orientations &= [_rightPanelController supportedInterfaceOrientations];
+	}
+	
+	return orientations;
+}
+
+// iOS 5 autorotation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+	if (_centerPanelController && ![_centerPanelController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation])
+	{
+		return NO;
+	}
+
+	if (_leftPanelController && ![_leftPanelController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation])
+	{
+		return NO;
+	}
+
+	if (_rightPanelController && ![_rightPanelController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation])
+	{
+		return NO;
+	}
+
+	return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	if (_centerPanelController)
+	{
+		[_centerPanelController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	}
+
+	if (_leftPanelController)
+	{
+		[_leftPanelController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	}
+
+	if (_rightPanelController)
+	{
+		[_rightPanelController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	}
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+	if (_centerPanelController)
+	{
+		[_centerPanelController didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+	}
+	
+	if (_leftPanelController)
+	{
+		[_leftPanelController didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+	}
+	
+	if (_rightPanelController)
+	{
+		[_rightPanelController didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+	}
+}
+
+
+// need to forward this or else some navigation bars won't resize properly
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	if (_centerPanelController)
+	{
+		[_centerPanelController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	}
+	
+	if (_leftPanelController)
+	{
+		[_leftPanelController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	}
+	
+	if (_rightPanelController)
+	{
+		[_rightPanelController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+	}
 }
 
 #pragma mark - Actions
@@ -666,6 +790,11 @@
 		case UIGestureRecognizerStateCancelled:
 		case UIGestureRecognizerStateEnded:
 		{
+			if (!_panelIsMoving)
+			{
+				return;
+			}
+			
 			_panelIsMoving = NO;
 			
 			if (self.presentedPanel == DTSidePanelControllerPanelCenter)
