@@ -11,8 +11,6 @@ typedef void (^DTAlertViewBlock)(void);
 
 /**
  Extends UIAlertView with support for blocks
-
- UIAlertView does not have any public methods to set the cancelButtonIndex and firstOtherButtonIndex the last added button will always become the cancel button.
  */
 
 @interface DTAlertView : UIAlertView
