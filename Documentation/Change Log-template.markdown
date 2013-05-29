@@ -3,6 +3,10 @@ Change Log
 
 This is the history of version updates.
 
+Version 1.4.1
+
+- FIXED: [DTSidePanel] Appearance Notifications not set to replaced panels
+
 Version 1.4
 
 - ADDED: [DTSidePanel] Container Controller
