@@ -306,11 +306,6 @@
 	}
 }
 
-- (void)_addPanelViewController:(UIViewController *)viewController
-{
-	
-}
-
 #pragma mark - Calculations
 
 - (CGFloat)_leftPanelVisibleWidth
