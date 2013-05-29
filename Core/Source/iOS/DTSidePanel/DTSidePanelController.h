@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#import "UIViewController+DTSidePanelController.h"
+
 // types of panels
 typedef enum
 {
