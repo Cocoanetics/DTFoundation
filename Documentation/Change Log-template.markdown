@@ -3,14 +3,11 @@ Change Log
 
 This is the history of version updates.
 
-**Version 1.4.2**
+**Version 1.4.1**
 
 - ADDED: [DTCustomColoredAccessory] Added left arrow disclosure indicator
 - ADDED: [DTReachability] Demo App
 - CHANGED: [DTReachability] to observe reachability to apple.com instead of general IP connectivity as this addresses some issues where DNS resolving might lag behind
-
-**Version 1.4.1**
-
 - FIXED: [DTSidePanel] Appearance Notifications not sent to replaced panels
 
 **Version 1.4**
