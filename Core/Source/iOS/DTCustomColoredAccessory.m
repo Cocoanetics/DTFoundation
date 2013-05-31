@@ -64,6 +64,18 @@
 
             break;
         }
+			 
+		 case DTCustomColoredAccessoryTypeLeft:
+		 {
+			 // (x,y) is the tip of the arrow
+			 CGFloat x = CGRectGetMaxX(self.bounds)-10.0;;
+			 CGFloat y = CGRectGetMidY(self.bounds);
+			 
+			 CGContextMoveToPoint(ctxt, x+R, y+R);
+			 CGContextAddLineToPoint(ctxt, x, y);
+			 CGContextAddLineToPoint(ctxt, x+R, y-R);
+			 break;
+		 }
 
         case DTCustomColoredAccessoryTypeUp:
         {

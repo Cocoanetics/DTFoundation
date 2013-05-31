@@ -283,22 +283,26 @@
 	_presentedPanelViewController = panel;
 }
 
-- (void)_removePresentedPanel
+- (void)_removePanelViewController:(UIViewController *)viewController notifyDidMove:(BOOL)notifyDidMove
 {
-	if (_presentedPanelViewController)
+	if (!viewController)
 	{
-		[_presentedPanelViewController willMoveToParentViewController:nil];
-		
-		[_presentedPanelViewController beginAppearanceTransition:NO animated:NO];
-		
-		[_presentedPanelViewController removeFromParentViewController];
-		[_presentedPanelViewController.view removeFromSuperview];
-		
-		[_presentedPanelViewController endAppearanceTransition];
-
-		[_presentedPanelViewController didMoveToParentViewController:nil];
-
-		_presentedPanelViewController = nil;
+		return;
+	}
+	
+	[viewController willMoveToParentViewController:nil];
+	
+	[viewController beginAppearanceTransition:NO animated:NO];
+	
+	[viewController.view removeFromSuperview];
+	
+	[viewController endAppearanceTransition];
+	
+	[viewController removeFromParentViewController];
+	
+	if (notifyDidMove)
+	{
+		[viewController didMoveToParentViewController:nil];
 	}
 }
 
@@ -841,7 +845,8 @@
 			
 			if (self.presentedPanel == DTSidePanelControllerPanelCenter)
 			{
-				[self _removePresentedPanel];
+				[self _removePanelViewController:_presentedPanelViewController notifyDidMove:YES];
+				_presentedPanelViewController = nil;
 				return;
 			}
 			
@@ -986,10 +991,7 @@
 	}
 	
 	_centerPanelController.sidePanelController = nil;
-	
-	[_centerPanelController willMoveToParentViewController:nil];
-	[_centerPanelController removeFromParentViewController];
-	[_centerPanelController didMoveToParentViewController:nil];
+	[self _removePanelViewController:_centerPanelController notifyDidMove:NO];
 	
 	_centerPanelController = centerPanelController;
 	_centerPanelController.sidePanelController = self;
@@ -1011,10 +1013,12 @@
 	
 	[self addChildViewController:_centerPanelController];
 	
-	centerPanelController.view.frame = _centerBaseView.bounds;
+	[_centerPanelController beginAppearanceTransition:YES animated:NO];
+	_centerPanelController.view.frame = _centerBaseView.bounds;
 	[_centerBaseView addSubview:_centerPanelController.view];
+	[_centerPanelController endAppearanceTransition];
 	
-	[centerPanelController didMoveToParentViewController:self];
+	[_centerPanelController didMoveToParentViewController:self];
 }
 
 - (void)setLeftPanelController:(UIViewController *)leftPanelController
@@ -1025,11 +1029,8 @@
 	}
 	
 	_leftPanelController.sidePanelController = nil;
+	[self _removePanelViewController:_leftPanelController notifyDidMove:NO];
 
-	[_leftPanelController willMoveToParentViewController:nil];
-	[_leftPanelController removeFromParentViewController];
-	[_leftPanelController didMoveToParentViewController:nil];
-	
 	_leftPanelController = leftPanelController;
 	_leftPanelController.sidePanelController = self;
 
@@ -1051,10 +1052,7 @@
 	}
 	
 	_rightPanelController.sidePanelController = nil;
-	
-	[_rightPanelController willMoveToParentViewController:nil];
-	[_rightPanelController removeFromParentViewController];
-	[_rightPanelController didMoveToParentViewController:nil];
+	[self _removePanelViewController:_rightPanelController notifyDidMove:NO];
 	
 	_rightPanelController = rightPanelController;
 	_rightPanelController.sidePanelController = self;
