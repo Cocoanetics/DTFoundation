@@ -11,13 +11,19 @@
 
 typedef enum
 {
-    DTCustomColoredAccessoryTypeRight = 0,
-    DTCustomColoredAccessoryTypeUp,
-    DTCustomColoredAccessoryTypeDown
+	DTCustomColoredAccessoryTypeRight = 0,
+	DTCustomColoredAccessoryTypeLeft,
+	DTCustomColoredAccessoryTypeUp,
+	DTCustomColoredAccessoryTypeDown
 } DTCustomColoredAccessoryType;
 
 /**
- An accessory control that can be used instead of the standard disclosure indicator in a `UITableView`. Three styles are supported: right, up and down.
+ An accessory control that can be used instead of the standard disclosure indicator in a `UITableView`. These styles are supported: 
+ 
+ - DTCustomColoredAccessoryTypeRight
+ - DTCustomColoredAccessoryTypeLeft
+ - DTCustomColoredAccessoryTypeUp
+ - DTCustomColoredAccessoryTypeDown
  */
 
 @interface DTCustomColoredAccessory : UIControl
@@ -28,13 +34,13 @@ typedef enum
  */
 
 /**
- Creates a custom-colored right accessory with a given color
+ Creates a custom-colored right disclosure indicator accessory with a given color
  @param color The color to use
  */
 + (DTCustomColoredAccessory *)accessoryWithColor:(UIColor *)color;
 
 /**
- Creates a custom-colored right accessory with a given color and type
+ Creates a custom-colored accessory with a given color and type
  @param color The color to use
  @param type The type to use
  @see type
@@ -60,6 +66,7 @@ typedef enum
  The type of the accessory:
  
  - DTCustomColoredAccessoryTypeRight
+ - DTCustomColoredAccessoryTypeLeft
  - DTCustomColoredAccessoryTypeUp
  - DTCustomColoredAccessoryTypeDown
  */
