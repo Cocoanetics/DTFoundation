@@ -48,7 +48,8 @@
 	UIPanGestureRecognizer *_centerPanelPanGesture;
 	
 	UIViewController *_presentedPanelViewController;
-	__weak id <DTSidePanelControllerDelegate> _sidePanelDelegate;
+	
+	DT_WEAK_VARIABLE id <DTSidePanelControllerDelegate> _sidePanelDelegate;
 }
 
 - (void)dealloc

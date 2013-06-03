@@ -7,6 +7,8 @@
 //
 
 #import "UIViewController+DTSidePanelController.h"
+#import "DTWeakSupport.h"
+
 
 // types of panels
 typedef enum
@@ -99,6 +101,6 @@ typedef enum
 /**
  The DTSidePanelControllerDelegate.
  */
-@property (nonatomic, weak) id <DTSidePanelControllerDelegate> sidePanelDelegate;
+@property (nonatomic, DT_WEAK_PROPERTY) id <DTSidePanelControllerDelegate> sidePanelDelegate;
 
 @end

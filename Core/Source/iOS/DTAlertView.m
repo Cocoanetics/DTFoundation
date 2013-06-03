@@ -7,6 +7,7 @@
 //
 
 #import "DTAlertView.h"
+#import "DTWeakSupport.h"
 
 @interface DTAlertView() <UIAlertViewDelegate>
 
@@ -14,7 +15,7 @@
 
 @implementation DTAlertView
 {
-	id <UIAlertViewDelegate> _externalDelegate;
+	DT_WEAK_VARIABLE id <UIAlertViewDelegate> _externalDelegate;
 
 	NSMutableDictionary *_actionsPerIndex;
 
