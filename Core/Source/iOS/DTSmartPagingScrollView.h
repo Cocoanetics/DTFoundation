@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Stefan Gugarel. All rights reserved.
 //
 
+#import "DTWeakSupport.h"
+
 @class DTSmartPagingScrollView;
 
 
@@ -49,7 +51,7 @@
 /**
  The page data source for the receiver
  */
-@property (nonatomic, assign) id <DTSmartPagingScrollViewDatasource> pageDatasource;
+@property (nonatomic, DT_WEAK_PROPERTY) id <DTSmartPagingScrollViewDatasource> pageDatasource;
 
 /**
  The current page index visible on the receiver
