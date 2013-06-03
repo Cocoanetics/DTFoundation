@@ -3,6 +3,13 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.4.2**
+
+- ADDED: DTWeakSupport.h for tagging variables and properties to use weak refs if supported
+- FIXED: [DTSidePanel] classes missing from static library target
+- CHANGED: Implemented conditional weak support in DTSidePanelController, DTActionSheet, DTAlertView, 
+DTSmartPagingScrollView, DTHTMLParser, DTASN1Parser
+
 **Version 1.4.1**
 
 - ADDED: [DTCustomColoredAccessory] Added left arrow disclosure indicator

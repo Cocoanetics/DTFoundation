@@ -7,6 +7,7 @@
 //
 
 #import "DTActionSheet.h"
+#import "DTWeakSupport.h"
 
 @interface DTActionSheet () <UIActionSheetDelegate>
 
@@ -14,7 +15,7 @@
 
 @implementation DTActionSheet
 {
-	id <UIActionSheetDelegate> _externalDelegate;
+	DT_WEAK_VARIABLE id <UIActionSheetDelegate> _externalDelegate;
 	
 	NSMutableDictionary *_actionsPerIndex;
 	
