@@ -26,10 +26,7 @@
 
 #else
 
-	// dark times!
-	#error Something must be wrong, you don't have ARC enabled!
-
-	// still define something
+	// define something, as this header might be included in a non-ARC project for using compiled code from an ARC static lib
 	#define DT_WEAK_VARIABLE
 	#define DT_WEAK_PROPERTY assign
 
