@@ -3,6 +3,10 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.4.3**
+
+- FIXED: Removed Error in DTWeakSupport, as including this in non-ARC project is legitimate use
+
 **Version 1.4.2**
 
 - ADDED: DTWeakSupport.h for tagging variables and properties to use weak refs if supported
