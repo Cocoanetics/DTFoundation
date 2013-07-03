@@ -28,7 +28,6 @@
 		A70B4CD21486621B00873A4A /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
 		A70B4CD41486621B00873A4A /* NSString+DTFormatNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CD51486621B00873A4A /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
-		A70B4CE2148662B000873A4A /* DTFoundation-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CE0148662B000873A4A /* DTFoundation-Prefix.pch */; };
 		A70B4CE81486637E00873A4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A70B4CF2148663A800873A4A /* DTVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC71486621B00873A4A /* DTVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CF3148663A800873A4A /* NSString+DTFormatNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -59,7 +58,7 @@
 		A70D74FF1743C90A00E6E626 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74FB1743C90A00E6E626 /* AppDelegate.m */; };
 		A70D75001743C90A00E6E626 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74FC1743C90A00E6E626 /* main.m */; };
 		A70D75011743C90A00E6E626 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D74FE1743C90A00E6E626 /* TableViewController.m */; };
-		A70ECD6C16E0A389004E9623 /* UIColor+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6A16E0A388004E9623 /* UIColor+DTDebug.h */; };
+		A70ECD6C16E0A389004E9623 /* UIColor+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6A16E0A388004E9623 /* UIColor+DTDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70ECD6D16E0A389004E9623 /* UIColor+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = A70ECD6A16E0A388004E9623 /* UIColor+DTDebug.h */; };
 		A70ECD6E16E0A389004E9623 /* UIColor+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD6B16E0A389004E9623 /* UIColor+DTDebug.m */; };
 		A70ECD6F16E0A389004E9623 /* UIColor+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ECD6B16E0A389004E9623 /* UIColor+DTDebug.m */; };
@@ -75,7 +74,7 @@
 		A7239FF516A6C1BC0071E902 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A760F52B14F24B9F00AD1B0E /* DTASN1Parser.m */; };
 		A7239FFB16A6CEEF0071E902 /* libDTHTMLParser_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser_iOS.a */; };
 		A7239FFD16A6CF0B0071E902 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7239FFC16A6CF0B0071E902 /* CoreData.framework */; };
-		A730BCCE16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */ = {isa = PBXBuildFile; fileRef = A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */; };
+		A730BCCE16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */ = {isa = PBXBuildFile; fileRef = A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A730BCCF16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */ = {isa = PBXBuildFile; fileRef = A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */; };
 		A730BCD016D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */ = {isa = PBXBuildFile; fileRef = A730BCCD16D2892E003B849F /* DTTiledLayerWithoutFade.m */; };
 		A730BCD116D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */ = {isa = PBXBuildFile; fileRef = A730BCCD16D2892E003B849F /* DTTiledLayerWithoutFade.m */; };
@@ -171,27 +170,27 @@
 		A76DB4F616A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DB4EC16A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.h */; };
 		A76DB4F716A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4ED16A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m */; };
 		A76DB4FB16A5E5950010CD85 /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */; };
-		A777830F16CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */; };
+		A777830F16CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A777831016CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */; };
 		A777831116CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = A777830D16CA47F60048BED1 /* DTObjectBlockExecutor.h */; };
 		A777831216CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */; };
 		A777831316CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */; };
 		A777831416CA47F60048BED1 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A777830E16CA47F60048BED1 /* DTObjectBlockExecutor.m */; };
 		A777831516CA49C80048BED1 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FE30671548009A00F5DC66 /* NSObject+DTRuntime.m */; };
-		A779A38416EB850D001BD056 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A38216EB850D001BD056 /* DTASN1Serialization.h */; };
+		A779A38416EB850D001BD056 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A38216EB850D001BD056 /* DTASN1Serialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A779A38516EB850D001BD056 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A38216EB850D001BD056 /* DTASN1Serialization.h */; };
 		A779A38616EB850D001BD056 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A38216EB850D001BD056 /* DTASN1Serialization.h */; };
 		A779A38716EB850D001BD056 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A38316EB850D001BD056 /* DTASN1Serialization.m */; };
 		A779A38816EB850D001BD056 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A38316EB850D001BD056 /* DTASN1Serialization.m */; };
 		A779A38916EB850D001BD056 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A38316EB850D001BD056 /* DTASN1Serialization.m */; };
 		A779A38C16EB8BFB001BD056 /* DTASN1SerializationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A38B16EB8BFB001BD056 /* DTASN1SerializationTest.m */; };
-		A779A39F16EC816A001BD056 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A39D16EC8169001BD056 /* DTASN1BitString.h */; };
+		A779A39F16EC816A001BD056 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A39D16EC8169001BD056 /* DTASN1BitString.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A779A3A016EC816A001BD056 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A39D16EC8169001BD056 /* DTASN1BitString.h */; };
 		A779A3A116EC816A001BD056 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A779A39D16EC8169001BD056 /* DTASN1BitString.h */; };
 		A779A3A216EC816A001BD056 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A39E16EC8169001BD056 /* DTASN1BitString.m */; };
 		A779A3A316EC816A001BD056 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A39E16EC8169001BD056 /* DTASN1BitString.m */; };
 		A779A3A416EC816A001BD056 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A39E16EC8169001BD056 /* DTASN1BitString.m */; };
-		A77D5BFA16E4961A00A45C28 /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; };
+		A77D5BFA16E4961A00A45C28 /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A77D5BFB16E4961A00A45C28 /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; };
 		A77D5BFC16E4961A00A45C28 /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; };
 		A77D5BFD16E4961A00A45C28 /* DTBase64Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */; };
@@ -301,7 +300,7 @@
 		A7E38409160E03A600CF72D6 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41414E825FC00F34B03 /* zip.c */; };
 		A7E889A616A9B190009EF0DF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E889A516A9B190009EF0DF /* Cocoa.framework */; };
 		A7E889B416A9B1C4009EF0DF /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */; };
-		A7E88ED216BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */; };
+		A7E88ED216BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */; };
 		A7E88ED416BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */; };
 		A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */; };
@@ -313,7 +312,7 @@
 		A7FB1215175C9C6200D4B7F0 /* DTSidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A74663B31743D43600D4D7D5 /* DTSidePanelController.m */; };
 		A7FB1216175C9C8B00D4B7F0 /* DTSidePanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = A74663B21743D43600D4D7D5 /* DTSidePanelController.h */; settings = {ATTRIBUTES = (); }; };
 		A7FB1217175C9C8C00D4B7F0 /* DTSidePanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = A74663B21743D43600D4D7D5 /* DTSidePanelController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7FB1219175C9D5000D4B7F0 /* DTWeakSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */; };
+		A7FB1219175C9D5000D4B7F0 /* DTWeakSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7FB121A175C9D5000D4B7F0 /* DTWeakSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */; };
 		A7FB121B175C9D5000D4B7F0 /* DTWeakSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */; };
 		A7FE30641548005700F5DC66 /* NSObject+DTRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FE30631548005700F5DC66 /* NSObject+DTRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -337,7 +336,7 @@
 		E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA08F96016E4EEAF00BDF822 /* DTZipArchiveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */; };
 		FA2A29291609F7330023CDD7 /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
-		FA8D11DF16C4FC5B006CBAB4 /* UIView+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = FA8D11DD16C4FC5B006CBAB4 /* UIView+DTDebug.h */; };
+		FA8D11DF16C4FC5B006CBAB4 /* UIView+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = FA8D11DD16C4FC5B006CBAB4 /* UIView+DTDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA8D11E016C4FC5B006CBAB4 /* UIView+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = FA8D11DD16C4FC5B006CBAB4 /* UIView+DTDebug.h */; };
 		FA8D11E116C4FC5B006CBAB4 /* UIView+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8D11DE16C4FC5B006CBAB4 /* UIView+DTDebug.m */; };
 		FA8D11E216C4FC5B006CBAB4 /* UIView+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8D11DE16C4FC5B006CBAB4 /* UIView+DTDebug.m */; };
@@ -1468,7 +1467,6 @@
 				A70B4CD01486621B00873A4A /* DTFoundation.h in Headers */,
 				A70B4CD11486621B00873A4A /* DTVersion.h in Headers */,
 				A70B4CD41486621B00873A4A /* NSString+DTFormatNumbers.h in Headers */,
-				A70B4CE2148662B000873A4A /* DTFoundation-Prefix.pch in Headers */,
 				A7D8628114EBF65C001436AF /* NSString+DTPaths.h in Headers */,
 				A7FE30641548005700F5DC66 /* NSObject+DTRuntime.h in Headers */,
 				A79231CE157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */,
@@ -1503,6 +1501,7 @@
 				A7D0AA4A153C233E0020F18B /* NSString+DTUtilities.h in Headers */,
 				A7D0AA6D153C39920020F18B /* DTUtils.h in Headers */,
 				A73D5BAB155271FD0024BDB7 /* NSArray+DTError.h in Headers */,
+				A7FB1219175C9D5000D4B7F0 /* DTWeakSupport.h in Headers */,
 				FA8D11DF16C4FC5B006CBAB4 /* UIView+DTDebug.h in Headers */,
 				A7E88ED216BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
 				A777830F16CA47F60048BED1 /* DTObjectBlockExecutor.h in Headers */,
@@ -1513,7 +1512,6 @@
 				A779A39F16EC816A001BD056 /* DTASN1BitString.h in Headers */,
 				A7C92B69174F9AEC0019D70A /* UIViewController+DTSidePanelController.h in Headers */,
 				A7FB1217175C9C8C00D4B7F0 /* DTSidePanelController.h in Headers */,
-				A7FB1219175C9D5000D4B7F0 /* DTWeakSupport.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
