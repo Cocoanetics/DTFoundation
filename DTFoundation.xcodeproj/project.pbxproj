@@ -91,7 +91,6 @@
 		A73D5BAE155271FD0024BDB7 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
 		A7437DE216147A450091C1A2 /* NSString+DTPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D8628014EBF65C001436AF /* NSString+DTPaths.m */; };
 		A7444D2C162C011C00DD3692 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
-		A74663B91743D43600D4D7D5 /* DTSidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A74663B31743D43600D4D7D5 /* DTSidePanelController.m */; };
 		A7556F66162EEF9200A69F63 /* DTScriptExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A7556F64162EEF9200A69F63 /* DTScriptExpression.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7556F67162EEF9200A69F63 /* DTScriptExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A7556F64162EEF9200A69F63 /* DTScriptExpression.h */; };
 		A7556F68162EEF9200A69F63 /* DTScriptExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A7556F64162EEF9200A69F63 /* DTScriptExpression.h */; };
@@ -2032,7 +2031,6 @@
 				A70D74FF1743C90A00E6E626 /* AppDelegate.m in Sources */,
 				A70D75001743C90A00E6E626 /* main.m in Sources */,
 				A70D75011743C90A00E6E626 /* TableViewController.m in Sources */,
-				A74663B91743D43600D4D7D5 /* DTSidePanelController.m in Sources */,
 				A7C92B63174F72C30019D70A /* ModalPanelViewController.m in Sources */,
 				A7C92B6F174FA02E0019D70A /* LoggingNavigationController.m in Sources */,
 			);

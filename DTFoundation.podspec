@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.4.3'
+  spec.version      = '1.4.4'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@drobnik.com" }
@@ -59,6 +59,7 @@ Pod::Spec.new do |spec|
   spec.subspec 'DTZipArchive' do |ss|
     ss.ios.deployment_target = '4.3'
     ss.source_files = 'Core/Source/DTZipArchive/*.{h,m}'
+    ss.library = 'z'
 
     # Ideally minizip should have a Pod
     # ss.dependency 'Minizip'

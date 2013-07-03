@@ -3,6 +3,14 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.4.4**
+
+- FIXED: Warning for incomplete section pragma in DTActionSheet
+- FIXED: Added missing zLib dependency to PodSpec
+- FIXED: DTWeakSupport.h can now also be imported into non-ARC source files
+- FIXED: DTWeakSupport header missing from public headers for iOS Static Framework target
+- FIXED: Removed duplicate classes from side panel demo which are already included in lib
+
 **Version 1.4.3**
 
 - FIXED: Removed Error in DTWeakSupport, as including this in non-ARC project is legitimate use
