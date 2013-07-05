@@ -118,7 +118,7 @@
 		NSString *versionStr = [[UIDevice currentDevice] systemVersion];
 		version = [DTVersion versionWithString:versionStr];
 #else
-		NSString *versionStr = 	;
+		NSString *versionStr = [[NSProcessInfo processInfo] operatingSystemVersionString];
 		versionStr = [versionStr stringByReplacingOccurrencesOfString:@"Version" withString:@""];
 		versionStr = [versionStr stringByReplacingOccurrencesOfString:@"Build" withString:@""];
 		versionStr = [versionStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
