@@ -219,8 +219,6 @@
 		A7950101161D680000358BC3 /* NSData+DTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F6161D680000358BC3 /* NSData+DTCrypto.m */; };
 		A7950102161D680000358BC3 /* NSData+DTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F6161D680000358BC3 /* NSData+DTCrypto.m */; };
 		A79D999D1792D1F50082BC06 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
-		A79D99A21792D1F50082BC06 /* DTAWS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A79D99A11792D1F50082BC06 /* DTAWS.h */; };
-		A79D99A41792D1F50082BC06 /* DTAWS.m in Sources */ = {isa = PBXBuildFile; fileRef = A79D99A31792D1F50082BC06 /* DTAWS.m */; };
 		A79D99C21792D2490082BC06 /* NSURL+DTAWS.m in Sources */ = {isa = PBXBuildFile; fileRef = A79D99C11792D2490082BC06 /* NSURL+DTAWS.m */; };
 		A7A7CC7914866CAF00EC2EE4 /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
 		A7A7CC7A14866CAF00EC2EE4 /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
@@ -435,7 +433,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				A79D99A21792D1F50082BC06 /* DTAWS.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,13 +606,7 @@
 		A79500F5161D680000358BC3 /* NSData+DTCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DTCrypto.h"; sourceTree = "<group>"; };
 		A79500F6161D680000358BC3 /* NSData+DTCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DTCrypto.m"; sourceTree = "<group>"; };
 		A79D999C1792D1F50082BC06 /* libDTAWS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTAWS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A79D99A01792D1F50082BC06 /* DTAWS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DTAWS-Prefix.pch"; sourceTree = "<group>"; };
-		A79D99A11792D1F50082BC06 /* DTAWS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTAWS.h; sourceTree = "<group>"; };
-		A79D99A31792D1F50082BC06 /* DTAWS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTAWS.m; sourceTree = "<group>"; };
 		A79D99AA1792D1F50082BC06 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		A79D99B31792D1F60082BC06 /* DTAWSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DTAWSTests-Info.plist"; sourceTree = "<group>"; };
-		A79D99B51792D1F60082BC06 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A79D99B71792D1F60082BC06 /* DTAWSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTAWSTests.m; sourceTree = "<group>"; };
 		A79D99C01792D2490082BC06 /* NSURL+DTAWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTAWS.h"; sourceTree = "<group>"; };
 		A79D99C11792D2490082BC06 /* NSURL+DTAWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTAWS.m"; sourceTree = "<group>"; };
 		A7BAD10E1483F934000E2B6A /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1149,42 +1140,6 @@
 			path = minizip;
 			sourceTree = "<group>";
 		};
-		A79D999E1792D1F50082BC06 /* DTAWS */ = {
-			isa = PBXGroup;
-			children = (
-				A79D99A11792D1F50082BC06 /* DTAWS.h */,
-				A79D99A31792D1F50082BC06 /* DTAWS.m */,
-				A79D999F1792D1F50082BC06 /* Supporting Files */,
-			);
-			path = DTAWS;
-			sourceTree = "<group>";
-		};
-		A79D999F1792D1F50082BC06 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A79D99A01792D1F50082BC06 /* DTAWS-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A79D99B11792D1F60082BC06 /* DTAWSTests */ = {
-			isa = PBXGroup;
-			children = (
-				A79D99B71792D1F60082BC06 /* DTAWSTests.m */,
-				A79D99B21792D1F60082BC06 /* Supporting Files */,
-			);
-			path = DTAWSTests;
-			sourceTree = "<group>";
-		};
-		A79D99B21792D1F60082BC06 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A79D99B31792D1F60082BC06 /* DTAWSTests-Info.plist */,
-				A79D99B41792D1F60082BC06 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		A79D99BF1792D2380082BC06 /* DTAWS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1403,8 +1358,6 @@
 				A7D60FE415D3B15300AEDD1B /* Test */,
 				A70B4CC41486621B00873A4A /* Core */,
 				A70B4CDA1486626900873A4A /* Documentation */,
-				A79D999E1792D1F50082BC06 /* DTAWS */,
-				A79D99B11792D1F60082BC06 /* DTAWSTests */,
 				A7F4DFA6147FB61500F4059A /* Products */,
 				A7AB49DB1483C47F00028FE8 /* Frameworks */,
 			);
@@ -2199,7 +2152,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A79D99C21792D2490082BC06 /* NSURL+DTAWS.m in Sources */,
-				A79D99A41792D1F50082BC06 /* DTAWS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2369,17 +2321,6 @@
 			targetProxy = FAB17254163003F500B44EDC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		A79D99B41792D1F60082BC06 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A79D99B51792D1F60082BC06 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3D7CE545166613B60028D339 /* Debug */ = {
