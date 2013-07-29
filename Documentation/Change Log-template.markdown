@@ -3,7 +3,7 @@ Change Log
 
 This is the history of version updates.
 
-**Version 1.4.5**
+**Version 1.5.0**
 
 - CHANGED: DTASN1 Moved to sub-spec, out of Core
 - CHANGED: DTScripting classes moved to sub-spec, out of Core
