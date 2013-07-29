@@ -1,10 +1,10 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.4.4'
+  spec.version      = '1.4.5'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@drobnik.com" }
-  spec.source       = { :git => "https://github.com/Cocoanetics/DTFoundation.git", :branch => 'develop' }
+  spec.source       = { :git => "https://github.com/Cocoanetics/DTFoundation.git", :tag => spec.version.to_s }
   spec.license      = 'BSD'
   spec.requires_arc = true
 
@@ -24,7 +24,6 @@ Pod::Spec.new do |spec|
   spec.subspec 'UIKit_BlocksAdditions' do |ss|
     ss.platform = :ios, '4.3'
     ss.dependency 'DTFoundation/Core'
-    ss.ios.frameworks = 'QuartzCore'
     ss.ios.source_files = 'Core/Source/iOS/BlocksAdditions/*.{h,m}'
   end
 
