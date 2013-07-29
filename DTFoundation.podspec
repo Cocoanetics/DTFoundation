@@ -1,10 +1,10 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.4.5'
+  spec.version      = '1.4.4'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@drobnik.com" }
-  spec.source       = { :git => "https://github.com/Cocoanetics/DTFoundation.git", :tag => spec.version.to_s  }
+  spec.source       = { :git => "https://github.com/Cocoanetics/DTFoundation.git", :tag => spec.version.to_s }
   spec.license      = 'BSD'
   spec.requires_arc = true
 
@@ -19,6 +19,13 @@ Pod::Spec.new do |spec|
     ss.dependency 'DTFoundation/Core'
     ss.ios.frameworks = 'QuartzCore'
     ss.ios.source_files = 'Core/Source/iOS/*.{h,m}'
+  end
+
+  spec.subspec 'DTAWS' do |ss|
+    ss.ios.deployment_target = '4.3'
+    ss.osx.deployment_target = '10.6'
+    ss.dependency 'DTFoundation/Core'
+    ss.source_files = 'Core/Source/DTAWS/*.{h,m}'
   end
 
   spec.subspec 'DTSidePanel' do |ss|
