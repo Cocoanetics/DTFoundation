@@ -3,6 +3,29 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.5.0**
+
+- CHANGED: DTASN1 Moved to sub-spec, out of Core
+- CHANGED: DTScripting classes moved to sub-spec, out of Core
+- CHANGED: DTAlertView, DTActionSheet, UIView+DTActionHandlers moved to UIKit_BlocksAdditions sub-spec, out of UIKit
+- CHANGED: Moved DTDebug methods for UIColor and UIView into sub-folder, no spec
+- CHANGED: Moved Obj-C runtime methods to sub-folder, no spec
+- ADDED: DTAWS for communicating with Amazon Web Services
+- ADDED: Method on DTSmartPagingScrollView for accessing a specific page's view
+- FIXED: Typo on DTHTMLParser sub-spec
+- FIXED: Parsing the OS X version string was incorrect in DTVersion
+- FIXED: DTExtendedFileAttributes was using hard-coded length for buffer
+
+Note: While there are no breaking API changes the podspec cleanup will probably require updating your dependencies if you use projects that directly or indirectly depend on DTFoundation.
+
+**Version 1.4.4**
+
+- FIXED: Warning for incomplete section pragma in DTActionSheet
+- FIXED: Added missing zLib dependency to PodSpec
+- FIXED: DTWeakSupport.h can now also be imported into non-ARC source files
+- FIXED: DTWeakSupport header missing from public headers for iOS Static Framework target
+- FIXED: Removed duplicate classes from side panel demo which are already included in lib
+
 **Version 1.4.3**
 
 - FIXED: Removed Error in DTWeakSupport, as including this in non-ARC project is legitimate use
