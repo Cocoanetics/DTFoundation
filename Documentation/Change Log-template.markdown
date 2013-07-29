@@ -3,6 +3,21 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.4.5**
+
+- CHANGED: DTASN1 Moved to sub-spec, out of Core
+- CHANGED: DTScripting classes moved to sub-spec, out of Core
+- CHANGED: DTAlertView, DTActionSheet, UIView+DTActionHandlers moved to UIKit_BlocksAdditions sub-spec, out of UIKit
+- CHANGED: Moved DTDebug methods for UIColor and UIView into sub-folder, no spec
+- CHANGED: Moved Obj-C runtime methods to sub-folder, no spec
+- ADDED: DTAWS for communicating with Amazon Web Services
+- ADDED: Method on DTSmartPagingScrollView for accessing a specific page's view
+- FIXED: Typo on DTHTMLParser sub-spec
+- FIXED: Parsing the OS X version string was incorrect in DTVersion
+- FIXED: DTExtendedFileAttributes was using hard-coded length for buffer
+
+Note: While there are no breaking API changes the podspec cleanup will probably require updating your dependencies if you use projects that directly or indirectly depend on DTFoundation.
+
 **Version 1.4.4**
 
 - FIXED: Warning for incomplete section pragma in DTActionSheet
