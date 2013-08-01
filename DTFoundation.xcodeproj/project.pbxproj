@@ -42,6 +42,31 @@
 		A70C4FD317AA7CF900000DF5 /* DTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD5D17A65F7700480205 /* DTActionSheet.m */; };
 		A70C4FD417AA7CF900000DF5 /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD5F17A65F7700480205 /* DTAlertView.m */; };
 		A70C4FD517AA7CF900000DF5 /* UIView+DTActionHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD6117A65F7700480205 /* UIView+DTActionHandlers.m */; };
+		A70C4FE817AA7F0200000DF5 /* DTScriptExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1817A65AD700480205 /* DTScriptExpression.m */; };
+		A70C4FE917AA7F0200000DF5 /* DTScriptVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1A17A65AD700480205 /* DTScriptVariable.m */; };
+		A70C4FEA17AA7F0200000DF5 /* NSScanner+DTScripting.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1C17A65AD800480205 /* NSScanner+DTScripting.m */; };
+		A70C4FEB17AA7F0300000DF5 /* DTScriptExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1817A65AD700480205 /* DTScriptExpression.m */; };
+		A70C4FEC17AA7F0300000DF5 /* DTScriptVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1A17A65AD700480205 /* DTScriptVariable.m */; };
+		A70C4FED17AA7F0300000DF5 /* NSScanner+DTScripting.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1C17A65AD800480205 /* NSScanner+DTScripting.m */; };
+		A70C4FEE17AA7F0700000DF5 /* DTScriptExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1817A65AD700480205 /* DTScriptExpression.m */; };
+		A70C4FEF17AA7F0700000DF5 /* DTScriptVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1A17A65AD700480205 /* DTScriptVariable.m */; };
+		A70C4FF017AA7F0700000DF5 /* NSScanner+DTScripting.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1C17A65AD800480205 /* NSScanner+DTScripting.m */; };
+		A70C4FF117AA7F2000000DF5 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2617A65B8600480205 /* DTObjectBlockExecutor.m */; };
+		A70C4FF217AA7F2000000DF5 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2817A65B8600480205 /* NSObject+DTRuntime.m */; };
+		A70C4FF317AA7F2100000DF5 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2617A65B8600480205 /* DTObjectBlockExecutor.m */; };
+		A70C4FF417AA7F2100000DF5 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2817A65B8600480205 /* NSObject+DTRuntime.m */; };
+		A70C4FF517AA7F2300000DF5 /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2617A65B8600480205 /* DTObjectBlockExecutor.m */; };
+		A70C4FF617AA7F2300000DF5 /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2817A65B8600480205 /* NSObject+DTRuntime.m */; };
+		A70C4FF717AA7F5F00000DF5 /* NSObject+DTRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2717A65B8600480205 /* NSObject+DTRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70C4FF817AA7F6900000DF5 /* DTScriptExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1717A65AD700480205 /* DTScriptExpression.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70C4FF917AA7F6900000DF5 /* DTScriptVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1917A65AD700480205 /* DTScriptVariable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70C4FFA17AA7F6900000DF5 /* NSScanner+DTScripting.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1B17A65AD800480205 /* NSScanner+DTScripting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70C4FFB17AA7F7D00000DF5 /* DTUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA6B153C39920020F18B /* DTUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70C4FFC17AA7F9000000DF5 /* UIColor+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2A17A65D4B00480205 /* UIColor+DTDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70C4FFD17AA7F9000000DF5 /* UIView+DTDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2C17A65D4B00480205 /* UIView+DTDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70C4FFE17AA7F9C00000DF5 /* DTActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD5C17A65F7700480205 /* DTActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70C4FFF17AA7F9C00000DF5 /* DTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD5E17A65F7700480205 /* DTAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70C500017AA7F9C00000DF5 /* UIView+DTActionHandlers.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD6017A65F7700480205 /* UIView+DTActionHandlers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70D56A6162FDECF00120A98 /* DTScriptingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D56A5162FDECF00120A98 /* DTScriptingTest.m */; };
 		A70D74D11743AFBC00E6E626 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
 		A70D74D21743AFBC00E6E626 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
@@ -1434,6 +1459,7 @@
 				A76DB4F616A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.h in Headers */,
 				A77D5BFC16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 				A7FB121B175C9D5000D4B7F0 /* DTWeakSupport.h in Headers */,
+				A70C4FFB17AA7F7D00000DF5 /* DTUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,6 +1509,15 @@
 				A77D5BFA16E4961A00A45C28 /* DTBase64Coding.h in Headers */,
 				A7C92B69174F9AEC0019D70A /* UIViewController+DTSidePanelController.h in Headers */,
 				A7FB1217175C9C8C00D4B7F0 /* DTSidePanelController.h in Headers */,
+				A70C4FF717AA7F5F00000DF5 /* NSObject+DTRuntime.h in Headers */,
+				A70C4FF817AA7F6900000DF5 /* DTScriptExpression.h in Headers */,
+				A70C4FF917AA7F6900000DF5 /* DTScriptVariable.h in Headers */,
+				A70C4FFA17AA7F6900000DF5 /* NSScanner+DTScripting.h in Headers */,
+				A70C4FFC17AA7F9000000DF5 /* UIColor+DTDebug.h in Headers */,
+				A70C4FFD17AA7F9000000DF5 /* UIView+DTDebug.h in Headers */,
+				A70C4FFE17AA7F9C00000DF5 /* DTActionSheet.h in Headers */,
+				A70C4FFF17AA7F9C00000DF5 /* DTAlertView.h in Headers */,
+				A70C500017AA7F9C00000DF5 /* UIView+DTActionHandlers.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2002,6 +2037,11 @@
 				A70C4FD017AA7CF800000DF5 /* DTActionSheet.m in Sources */,
 				A70C4FD117AA7CF800000DF5 /* DTAlertView.m in Sources */,
 				A70C4FD217AA7CF800000DF5 /* UIView+DTActionHandlers.m in Sources */,
+				A70C4FE817AA7F0200000DF5 /* DTScriptExpression.m in Sources */,
+				A70C4FE917AA7F0200000DF5 /* DTScriptVariable.m in Sources */,
+				A70C4FEA17AA7F0200000DF5 /* NSScanner+DTScripting.m in Sources */,
+				A70C4FF117AA7F2000000DF5 /* DTObjectBlockExecutor.m in Sources */,
+				A70C4FF217AA7F2000000DF5 /* NSObject+DTRuntime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2041,6 +2081,11 @@
 				A76DB4F516A5E5590010CD85 /* NSView+DTAutoLayout.m in Sources */,
 				A76DB4F716A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.m in Sources */,
 				A77D5BFF16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
+				A70C4FEE17AA7F0700000DF5 /* DTScriptExpression.m in Sources */,
+				A70C4FEF17AA7F0700000DF5 /* DTScriptVariable.m in Sources */,
+				A70C4FF017AA7F0700000DF5 /* NSScanner+DTScripting.m in Sources */,
+				A70C4FF517AA7F2300000DF5 /* DTObjectBlockExecutor.m in Sources */,
+				A70C4FF617AA7F2300000DF5 /* NSObject+DTRuntime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2113,6 +2158,11 @@
 				A70C4FD317AA7CF900000DF5 /* DTActionSheet.m in Sources */,
 				A70C4FD417AA7CF900000DF5 /* DTAlertView.m in Sources */,
 				A70C4FD517AA7CF900000DF5 /* UIView+DTActionHandlers.m in Sources */,
+				A70C4FEB17AA7F0300000DF5 /* DTScriptExpression.m in Sources */,
+				A70C4FEC17AA7F0300000DF5 /* DTScriptVariable.m in Sources */,
+				A70C4FED17AA7F0300000DF5 /* NSScanner+DTScripting.m in Sources */,
+				A70C4FF317AA7F2100000DF5 /* DTObjectBlockExecutor.m in Sources */,
+				A70C4FF417AA7F2100000DF5 /* NSObject+DTRuntime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
