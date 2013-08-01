@@ -15,8 +15,8 @@
 @property (nonatomic, strong) NSError *parserError;
 @property (nonatomic, assign) NSStringEncoding encoding;
 
-- (void)resetAccumulateBufferAndReportCharacters;
-- (void)accumulateCharacters:(const xmlChar *)characters length:(int)length;
+- (void)_resetAccumulateBufferAndReportCharacters;
+- (void)_accumulateCharacters:(const xmlChar *)characters length:(int)length;
 
 @end
 
@@ -52,7 +52,7 @@ void _startElement(void *context, const xmlChar *name, const xmlChar **atts)
 {
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
     
-    [myself resetAccumulateBufferAndReportCharacters];
+    [myself _resetAccumulateBufferAndReportCharacters];
 
 	NSString *nameStr = [NSString stringWithUTF8String:(char *)name];
 	
@@ -107,7 +107,7 @@ void _endElement(void *context, const xmlChar *chars)
 {
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
     
-    [myself resetAccumulateBufferAndReportCharacters];
+    [myself _resetAccumulateBufferAndReportCharacters];
 
 	NSString *nameStr = [NSString stringWithUTF8String:(char *)chars];
 	
@@ -120,7 +120,7 @@ void _characters(void *context, const xmlChar *chars, int len)
 {
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
     
-    [myself accumulateCharacters:chars length:len];
+    [myself _accumulateCharacters:chars length:len];
 }
 
 void _comment(void *context, const xmlChar *chars)
@@ -218,7 +218,7 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	}
 }
 
-- (void)resetAccumulateBufferAndReportCharacters
+- (void)_resetAccumulateBufferAndReportCharacters
 {
     if (_accumulateBuffer.length > 0)
     {
@@ -228,7 +228,7 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
     }
 }
 
-- (void)accumulateCharacters:(const xmlChar *)characters length:(int)length
+- (void)_accumulateCharacters:(const xmlChar *)characters length:(int)length
 {
     if (!_accumulateBuffer)
     {
