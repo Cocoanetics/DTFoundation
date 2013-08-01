@@ -15,8 +15,8 @@
 @property (nonatomic, strong) NSError *parserError;
 @property (nonatomic, assign) NSStringEncoding encoding;
 
-- (void) resetAccumulateBufferAndReportCharacters;
-- (void) accumulateCharacters:(const xmlChar *)characters length:(int)length;
+- (void)resetAccumulateBufferAndReportCharacters;
+- (void)accumulateCharacters:(const xmlChar *)characters length:(int)length;
 
 @end
 
@@ -182,7 +182,7 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	DT_WEAK_VARIABLE id <DTHTMLParserDelegate> _delegate;
 	htmlParserCtxtPtr _parserContext;
 	   
-    NSMutableString* _accumulateBuffer;
+    NSMutableString *_accumulateBuffer;
 
 	BOOL _isAborting;
 }
@@ -218,22 +218,25 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	}
 }
 
-- (void) resetAccumulateBufferAndReportCharacters
+- (void)resetAccumulateBufferAndReportCharacters
 {
-    if (_accumulateBuffer.length > 0) {
+    if (_accumulateBuffer.length > 0)
+    {
         NSString* string = _accumulateBuffer;
         _accumulateBuffer = nil;
         [self.delegate parser:self foundCharacters:string];
     }
 }
 
-- (void) accumulateCharacters:(const xmlChar *)characters length:(int)length
+- (void)accumulateCharacters:(const xmlChar *)characters length:(int)length
 {
-    if (!_accumulateBuffer) {
+    if (!_accumulateBuffer)
+    {
         _accumulateBuffer = [[NSMutableString alloc] initWithBytes:characters length:length encoding:NSUTF8StringEncoding];
     }
-    else {
-        // We don't need to use the copy version since _accumulateBuffer will copy characters immediately
+    else
+    {
+        // we don't need to use the copy version since _accumulateBuffer will copy characters immediately
         [_accumulateBuffer appendString:[[NSString alloc] initWithBytesNoCopy:(void*)characters length:length encoding:NSUTF8StringEncoding freeWhenDone:NO]];
     }
 }
