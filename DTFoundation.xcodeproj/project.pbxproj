@@ -32,6 +32,16 @@
 		A70B4CF2148663A800873A4A /* DTVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC71486621B00873A4A /* DTVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CF3148663A800873A4A /* NSString+DTFormatNumbers.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CCA1486621B00873A4A /* NSString+DTFormatNumbers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CF7148663AF00873A4A /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70C4FCC17AA7CEC00000DF5 /* UIColor+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2B17A65D4B00480205 /* UIColor+DTDebug.m */; };
+		A70C4FCD17AA7CEC00000DF5 /* UIView+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2D17A65D4B00480205 /* UIView+DTDebug.m */; };
+		A70C4FCE17AA7CED00000DF5 /* UIColor+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2B17A65D4B00480205 /* UIColor+DTDebug.m */; };
+		A70C4FCF17AA7CED00000DF5 /* UIView+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2D17A65D4B00480205 /* UIView+DTDebug.m */; };
+		A70C4FD017AA7CF800000DF5 /* DTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD5D17A65F7700480205 /* DTActionSheet.m */; };
+		A70C4FD117AA7CF800000DF5 /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD5F17A65F7700480205 /* DTAlertView.m */; };
+		A70C4FD217AA7CF800000DF5 /* UIView+DTActionHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD6117A65F7700480205 /* UIView+DTActionHandlers.m */; };
+		A70C4FD317AA7CF900000DF5 /* DTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD5D17A65F7700480205 /* DTActionSheet.m */; };
+		A70C4FD417AA7CF900000DF5 /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD5F17A65F7700480205 /* DTAlertView.m */; };
+		A70C4FD517AA7CF900000DF5 /* UIView+DTActionHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD6117A65F7700480205 /* UIView+DTActionHandlers.m */; };
 		A70D56A6162FDECF00120A98 /* DTScriptingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A70D56A5162FDECF00120A98 /* DTScriptingTest.m */; };
 		A70D74D11743AFBC00E6E626 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
 		A70D74D21743AFBC00E6E626 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
@@ -1987,6 +1997,11 @@
 				A77D5BFE16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A7C92B6C174F9AEC0019D70A /* UIViewController+DTSidePanelController.m in Sources */,
 				A7FB1214175C9C6100D4B7F0 /* DTSidePanelController.m in Sources */,
+				A70C4FCC17AA7CEC00000DF5 /* UIColor+DTDebug.m in Sources */,
+				A70C4FCD17AA7CEC00000DF5 /* UIView+DTDebug.m in Sources */,
+				A70C4FD017AA7CF800000DF5 /* DTActionSheet.m in Sources */,
+				A70C4FD117AA7CF800000DF5 /* DTAlertView.m in Sources */,
+				A70C4FD217AA7CF800000DF5 /* UIView+DTActionHandlers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2093,6 +2108,11 @@
 				A77D5BFD16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A7C92B6B174F9AEC0019D70A /* UIViewController+DTSidePanelController.m in Sources */,
 				A7FB1215175C9C6200D4B7F0 /* DTSidePanelController.m in Sources */,
+				A70C4FCE17AA7CED00000DF5 /* UIColor+DTDebug.m in Sources */,
+				A70C4FCF17AA7CED00000DF5 /* UIView+DTDebug.m in Sources */,
+				A70C4FD317AA7CF900000DF5 /* DTActionSheet.m in Sources */,
+				A70C4FD417AA7CF900000DF5 /* DTAlertView.m in Sources */,
+				A70C4FD517AA7CF900000DF5 /* UIView+DTActionHandlers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
