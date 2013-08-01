@@ -20,6 +20,7 @@
  - webservices.amazon.com for US
 
  The secret key is a parameter. The access key is passed in the parameters dictionary.
+ @param host The domain name for the Amazon host to query
  @param parameters The request parameters
  @param secretKey The secret key
  @returns The prepared and signed `NSURL`

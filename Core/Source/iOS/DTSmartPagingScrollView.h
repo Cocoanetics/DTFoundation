@@ -77,7 +77,7 @@
 
 /**
  Get a view for a specified index
- @param index
+ @param index The index of the view to retrieve
  */
 - (UIView *)viewForIndex:(NSUInteger)index;
 
