@@ -7,6 +7,7 @@
 //
 
 #import "DTAlertView.h"
+#import "DTWeakSupport.h"
 
 @interface DTAlertView() <UIAlertViewDelegate>
 
@@ -14,10 +15,12 @@
 
 @implementation DTAlertView
 {
-	id <UIAlertViewDelegate> _externalDelegate;
-	
+	DT_WEAK_VARIABLE id <UIAlertViewDelegate> _externalDelegate;
+
 	NSMutableDictionary *_actionsPerIndex;
-	
+
+	DTAlertViewBlock _cancelBlock;
+
 	BOOL _isDeallocating;
 }
 
@@ -31,7 +34,7 @@
 		_actionsPerIndex = [[NSMutableDictionary alloc] init];
 		self.delegate = self;
 	}
-	
+
 	return self;
 }
 
@@ -49,18 +52,13 @@
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(DTAlertViewBlock)block
 {
 	NSInteger retIndex = [self addButtonWithTitle:title];
-	
+
 	if (block)
 	{
 		NSNumber *key = [NSNumber numberWithInt:retIndex];
 		[_actionsPerIndex setObject:[block copy] forKey:key];
 	}
-	
-	if (self.numberOfButtons>0 && self.cancelButtonIndex==0)
-	{
-		// we already have a cancel button
-	}
-	
+
 	return retIndex;
 }
 
@@ -68,8 +66,13 @@
 {
 	NSInteger retIndex = [self addButtonWithTitle:title block:block];
 	[self setCancelButtonIndex:retIndex];
-	
+
 	return retIndex;
+}
+
+- (void)setCancelBlock:(DTAlertViewBlock)block
+{
+	_cancelBlock = block;
 }
 
 # pragma mark - UIAlertViewDelegate
@@ -84,6 +87,11 @@
 
 - (void)alertViewCancel:(UIAlertView *)alertView
 {
+	if (_cancelBlock)
+	{
+		_cancelBlock();
+	}
+
 	if ([_externalDelegate respondsToSelector:@selector(alertViewCancel:)])
 	{
 		[_externalDelegate alertViewCancel:self];
@@ -117,14 +125,14 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
 	NSNumber *key = [NSNumber numberWithInt:buttonIndex];
-	
+
 	DTAlertViewBlock block = [_actionsPerIndex objectForKey:key];
-	
+
 	if (block)
 	{
 		block();
 	}
-	
+
 	if ([_externalDelegate respondsToSelector:@selector(alertView:didDismissWithButtonIndex:)])
 	{
 		[_externalDelegate alertView:self didDismissWithButtonIndex:buttonIndex];
@@ -137,7 +145,7 @@
 	{
 		return [_externalDelegate alertViewShouldEnableFirstOtherButton:self];
 	}
-	
+
 	return YES;
 }
 

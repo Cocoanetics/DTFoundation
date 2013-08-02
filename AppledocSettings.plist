@@ -7,7 +7,7 @@
 	<key>--project-company</key>
 	<string>Cocoanetics</string>
 	<key>--project-version</key>
-	<string>1.0</string>
+	<string>1.5</string>
 	<key>--company-id</key>
 	<string>com.cocoanetics</string>
 	<key>--docset-atom-filename</key>
@@ -30,6 +30,10 @@
 	<true/>
 	<key>--no-repeat-first-par</key>
 	<true/>
+	<key>--include</key>
+	<array>
+		<string>./Documentation/Change Log-template.markdown</string>
+	</array>
 	<key>--ignore</key>
 	<array>
 		<string>*.m</string>

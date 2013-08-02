@@ -7,6 +7,7 @@
 //
 
 #import "DTActionSheet.h"
+#import "DTWeakSupport.h"
 
 @interface DTActionSheet () <UIActionSheetDelegate>
 
@@ -14,7 +15,7 @@
 
 @implementation DTActionSheet
 {
-	id <UIActionSheetDelegate> _externalDelegate;
+	DT_WEAK_VARIABLE id <UIActionSheetDelegate> _externalDelegate;
 	
 	NSMutableDictionary *_actionsPerIndex;
 	
@@ -89,7 +90,7 @@
 	return retIndex;
 }
 
-#pragma UIActionSheetDelegate (forwarded)
+#pragma mark - UIActionSheetDelegate (forwarded)
 
 - (void)actionSheetCancel:(UIActionSheet *)actionSheet
 {
@@ -142,7 +143,7 @@
 }
 
 
-#pragma mark Properties
+#pragma mark - Properties
 
 - (id <UIActionSheetDelegate>)delegate
 {

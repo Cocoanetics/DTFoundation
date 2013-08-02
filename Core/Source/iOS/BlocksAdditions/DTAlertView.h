@@ -11,8 +11,6 @@ typedef void (^DTAlertViewBlock)(void);
 
 /**
  Extends UIAlertView with support for blocks
- 
- UIAlertView does not have any public methods to set the cancelButtonIndex and firstOtherButtonIndex the last added button will always become the cancel button. 
  */
 
 @interface DTAlertView : UIAlertView
@@ -26,12 +24,25 @@ typedef void (^DTAlertViewBlock)(void);
 
 /**
  Adds a button to the alert view
- 
- The last button added always becomes the cancel button
+
  @param title The title of the new button.
  @param block The block to execute when the button is tapped.
  @returns The index of the new button. Button indices start at 0 and increase in the order they are added.
  */
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(DTAlertViewBlock)block;
+
+/**
+ Same as above, but for a cancel button.
+ @param title The title of the cancel button.
+ @param block The block to execute when the button is tapped.
+ @returns The index of the new button. Button indices start at 0 and increase in the order they are added.
+ */
+- (NSInteger)addCancelButtonWithTitle:(NSString *)title block:(DTAlertViewBlock)block;
+
+/**
+ Set a block to be run on alertViewCancel:.
+ @param block The block to execute.
+ */
+- (void)setCancelBlock:(DTAlertViewBlock)block;
 
 @end
