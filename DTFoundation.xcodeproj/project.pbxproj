@@ -310,6 +310,11 @@
 		E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA08F96016E4EEAF00BDF822 /* DTZipArchiveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */; };
 		FA2A29291609F7330023CDD7 /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
+		FA9CB80D17ABDEF200A596C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
+		FA9CB81817ABDF1500A596C5 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; };
+		FA9CB81917ABDF1500A596C5 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; };
+		FA9CB81A17ABDF1500A596C5 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; };
+		FA9CB81D17ABDF6400A596C5 /* libDTASN1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */; };
 		FAA6841C16AD4E350092FD00 /* libDTZipArchive_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383DA160DFF8600CF72D6 /* libDTZipArchive_iOS.a */; };
 		FAA6842116AD50760092FD00 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA6842016AD50760092FD00 /* libz.1.1.3.dylib */; };
 		FAAC041416B1421F00EB1C7F /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAC041316B1421F00EB1C7F /* screenshot.png */; };
@@ -351,6 +356,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A72121D9173BFFB1003C6F0A;
 			remoteInfo = "DTReachability (iOS)";
+		};
+		FA9CB81B17ABDF5E00A596C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA9CB80B17ABDEF200A596C5;
+			remoteInfo = "DTASN1 (iOS)";
 		};
 		FAA6841916AD4E300092FD00 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -444,6 +456,15 @@
 				C0494033163C863A470098D8 /* DTZipArchiveNode.h in CopyFiles */,
 				C04946681218C94801D2AB78 /* DTZipArchivePKZip.h in CopyFiles */,
 				C049420F39CD4294FCE0F549 /* DTZipArchiveGZip.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA9CB80A17ABDEF200A596C5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +691,7 @@
 		C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveTest.m; sourceTree = "<group>"; };
 		C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchivePKZip.h; sourceTree = "<group>"; };
 		C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveNode.m; sourceTree = "<group>"; };
+		FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTASN1.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA6842016AD50760092FD00 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		FAAC041316B1421F00EB1C7F /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screenshot.png; path = Test/Resources/screenshot.png; sourceTree = SOURCE_ROOT; };
 		FAB17247162FFA6800B44EDC /* NSArrayDTErrorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayDTErrorTest.h; sourceTree = "<group>"; };
@@ -780,6 +802,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9CB81D17ABDF6400A596C5 /* libDTASN1.a in Frameworks */,
 				FAA6842116AD50760092FD00 /* libz.1.1.3.dylib in Frameworks */,
 				FAA6841C16AD4E350092FD00 /* libDTZipArchive_iOS.a in Frameworks */,
 				A7239FFD16A6CF0B0071E902 /* CoreData.framework in Frameworks */,
@@ -837,6 +860,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7E889A616A9B190009EF0DF /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA9CB80917ABDEF200A596C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9CB80D17ABDEF200A596C5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1377,6 +1408,7 @@
 				A7C92B8C174FB9720019D70A /* libDTSQLite_Mac.a */,
 				A7D9D62D1758C89800C29B6F /* DTReachability Demo.app */,
 				A79D999C1792D1F50082BC06 /* libDTAWS.a */,
+				FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */,
 			);
 			name = Products;
 			path = ../..;
@@ -1741,6 +1773,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FA9CB81C17ABDF5E00A596C5 /* PBXTargetDependency */,
 				FAA6841A16AD4E300092FD00 /* PBXTargetDependency */,
 				A7239FF916A6CEDD0071E902 /* PBXTargetDependency */,
 				FAB17255163003F500B44EDC /* PBXTargetDependency */,
@@ -1836,6 +1869,23 @@
 			productReference = A7E889A416A9B190009EF0DF /* libDTUTI_Mac.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		FA9CB80B17ABDEF200A596C5 /* DTASN1 (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA9CB81717ABDEF200A596C5 /* Build configuration list for PBXNativeTarget "DTASN1 (iOS)" */;
+			buildPhases = (
+				FA9CB80817ABDEF200A596C5 /* Sources */,
+				FA9CB80917ABDEF200A596C5 /* Frameworks */,
+				FA9CB80A17ABDEF200A596C5 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DTASN1 (iOS)";
+			productName = DTASN1;
+			productReference = FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1863,6 +1913,7 @@
 				A7D60FCE15D3B0BC00AEDD1B /* Unit Tests */,
 				A710A4FF1607556000437D36 /* Static Library (Mac) */,
 				A79D999B1792D1F50082BC06 /* DTAWS (iOS) */,
+				FA9CB80B17ABDEF200A596C5 /* DTASN1 (iOS) */,
 				A7E383C1160DFEDB00CF72D6 /* DTHTMLParser (iOS) */,
 				3D7CE53D166613B60028D339 /* DTHTMLParser (Mac) */,
 				A7E383D9160DFF8600CF72D6 /* DTZipArchive (iOS) */,
@@ -2255,6 +2306,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA9CB80817ABDEF200A596C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA9CB81817ABDF1500A596C5 /* DTASN1BitString.m in Sources */,
+				FA9CB81917ABDF1500A596C5 /* DTASN1Parser.m in Sources */,
+				FA9CB81A17ABDF1500A596C5 /* DTASN1Serialization.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2272,6 +2333,11 @@
 			isa = PBXTargetDependency;
 			target = A72121D9173BFFB1003C6F0A /* DTReachability (iOS) */;
 			targetProxy = A7D9D6601758CA5400C29B6F /* PBXContainerItemProxy */;
+		};
+		FA9CB81C17ABDF5E00A596C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA9CB80B17ABDEF200A596C5 /* DTASN1 (iOS) */;
+			targetProxy = FA9CB81B17ABDF5E00A596C5 /* PBXContainerItemProxy */;
 		};
 		FAA6841A16AD4E300092FD00 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3054,6 +3120,39 @@
 			};
 			name = Release;
 		};
+		FA9CB81517ABDEF200A596C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/DTASN1.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DTASN1;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FA9CB81617ABDEF200A596C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/DTASN1.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DTASN1;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3227,6 +3326,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		FA9CB81717ABDEF200A596C5 /* Build configuration list for PBXNativeTarget "DTASN1 (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA9CB81517ABDEF200A596C5 /* Debug */,
+				FA9CB81617ABDEF200A596C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

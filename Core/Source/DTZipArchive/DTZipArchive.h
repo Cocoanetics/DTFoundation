@@ -60,11 +60,6 @@ extern NSString * const DTZipArchiveErrorDomain;
 */
 @property (nonatomic, copy, readonly) NSString *path;
 
-/**
- All files and directories in zip archive
- */
-@property (nonatomic, strong, readonly) NSArray *listOfEntries;
-
 /**-------------------------------------------------------------------------------------
  @name Creating A Zip Archive
  ---------------------------------------------------------------------------------------
@@ -88,9 +83,9 @@ extern NSString * const DTZipArchiveErrorDomain;
 - (void)enumerateUncompressedFilesAsDataUsingBlock:(DTZipArchiveEnumerationResultsBlock)enumerationBlock;
 
 /**
- Creates a file tree with all given DTZipArchiveNodes starting with files and folders on root level
+  The nodes at the root level of the archive. Each node is a DTZipArchiveNode and can represent either a folder or a file. This forms the directory hierarchy of the archive.
  */
-- (NSArray *)createFileTree;
+@property (nonatomic, readonly) NSArray *nodes;
 
 @end
 
