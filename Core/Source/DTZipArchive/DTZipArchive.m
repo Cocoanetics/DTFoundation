@@ -27,8 +27,7 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 
 @implementation DTZipArchive
 {
-    NSString *_path;
-
+	NSString *_path;
 	NSArray *_fileTree;
 }
 
@@ -81,7 +80,7 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 
 #pragma mark - FileTree
 
-- (NSArray *)createFileTree
+- (NSArray *)nodes
 {
 	if (!_fileTree)
 	{
@@ -131,7 +130,6 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 #pragma mark - Properties
 
 @synthesize path;
-@synthesize listOfEntries = _listOfEntries;
 
 @end
 

@@ -20,11 +20,6 @@
  */
 @property (nonatomic, copy, readwrite) NSString *path;
 
-/**
- All files and directories in zip archive
- */
-@property (nonatomic, strong, readwrite) NSArray *listOfEntries;
-
 @end
 
 @implementation DTZipArchivePKZip
@@ -526,5 +521,6 @@
 #pragma mark - Properties
 
 @synthesize path = _path;
+
 
 @end

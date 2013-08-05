@@ -284,11 +284,15 @@
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
 	// choose file as node
-	DTZipArchiveNode *franzTxtNode = zipArchive.listOfEntries[8];
+	DTZipArchiveNode *zipFiles = (DTZipArchiveNode *)zipArchive.nodes[0];
+	DTZipArchiveNode *text = (DTZipArchiveNode *)zipFiles.children[2];
+	DTZipArchiveNode *andere = (DTZipArchiveNode *)text.children[0];
+	DTZipArchiveNode *franzTxt = (DTZipArchiveNode *)andere.children[0];
+	
 
 	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
-	[zipArchive uncompressZipArchiveNode:franzTxtNode toDataWithCompletion:^(NSData *data, NSError *error) {
+	[zipArchive uncompressZipArchiveNode:franzTxt toDataWithCompletion:^(NSData *data, NSError *error) {
 
 		STAssertNil(error, @"Error occured when uncompressing one single file: %@", [error localizedDescription]);
 
@@ -314,7 +318,7 @@
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
 	// choose directory node
-	DTZipArchiveNode *rootDirectoryNode = zipArchive.listOfEntries[0];
+	DTZipArchiveNode *rootDirectoryNode = zipArchive.nodes[0];
 
 	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 
@@ -392,6 +396,8 @@
 
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
+	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+	
     [zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
 
         STAssertNil(error, @"Error occured when uncompressing");
@@ -405,7 +411,12 @@
         NSData *uncompressedFileData = [NSData dataWithContentsOfFile:filePath];
 
         STAssertTrue([originalFileData isEqualToData:uncompressedFileData], @"Uncompressed file does not match original file");
+		 
+		 dispatch_semaphore_signal(semaphore);
     }];
+	
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(semaphore);
 }
 
 /**
@@ -436,21 +447,6 @@
     STAssertThrowsSpecificNamed([zipArchive enumerateUncompressedFilesAsDataUsingBlock:^(NSString *fileName, NSData *data, BOOL *stop) {
 
     }] , NSException, @"DTAbstractClassException", @"Calling this method on [[DTZipArchive alloc] init] object should cause exception");
-
-}
-
-
-- (void)testFileTreeCreation
-{
-	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
-
-	// create zip archive
-	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
-
-	NSArray *fileTree = [zipArchive createFileTree];
-
 
 }
 
