@@ -10,10 +10,16 @@
 #import "ZipArchiveModel.h"
 #import "DTZipArchive.h"
 #import "NSString+DTPaths.h"
+#import "DTFolderMonitor.h"
+
+
+NSString * const ZipArchiveManagerDidReloadArchivesNotification = @"ZipArchiveManagerDidReloadArchivesNotification";
 
 @implementation ZipArchiveManager
 {
     NSMutableDictionary *_zipArchivesDictionary;
+	
+	DTFolderMonitor *_documentsFolderMonitor;
 }
 
 
@@ -25,6 +31,17 @@
         _URL = URL;
         
         [self _setup];
+		
+		// install a folder monitor
+		__weak ZipArchiveManager *weakself = self;
+		_documentsFolderMonitor = [DTFolderMonitor folderMonitorForURL:_URL block:^{
+			
+			[weakself _setup];
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:ZipArchiveManagerDidReloadArchivesNotification object:weakself];
+		}];
+		
+		[_documentsFolderMonitor startMonitoring];
     }
     return self;
 }
