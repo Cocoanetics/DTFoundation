@@ -450,19 +450,4 @@
 
 }
 
-
-//- (void)testFileTreeCreation
-//{
-//	// get sample.zip file
-//	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-//	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
-//
-//	// create zip archive
-//	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
-//
-//	NSArray *fileTree = [zipArchive createFileTree];
-//
-//
-//}
-
 @end
