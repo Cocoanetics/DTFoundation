@@ -293,8 +293,15 @@
 		// Inflate another chunk.
 		status = inflate (&strm, Z_SYNC_FLUSH);
 		
+		// on last block reduce size of decompressed block
+		uInt lengthOfBlock = strm.total_out % BUFFER_SIZE;
+		if (lengthOfBlock)
+		{
+			[decompressed setLength:(uInt)lengthOfBlock];
+		}
+		
 		NSMutableData *decompressedBlock = [decompressed mutableCopy];
-
+		
 		// add each data block to have all data
 		[data appendData:[decompressed copy]];
 		
@@ -303,12 +310,7 @@
 		{
 			dispatch_group_async(fileWriteGroup, fileWriteQueue, ^{
 				
-				// on last block reduce size of decompressed block
-				uInt lengthOfBlock = strm.total_out % BUFFER_SIZE;
-				if (lengthOfBlock)
-				{
-					[decompressed setLength:(uInt)lengthOfBlock];
-				}
+				
 				
 				if (destinationFileHandle)
 				{
