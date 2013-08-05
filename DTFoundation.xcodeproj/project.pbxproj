@@ -316,7 +316,6 @@
 		FA9CB81A17ABDF1500A596C5 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; };
 		FA9CB81D17ABDF6400A596C5 /* libDTASN1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */; };
 		FAA6841C16AD4E350092FD00 /* libDTZipArchive_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383DA160DFF8600CF72D6 /* libDTZipArchive_iOS.a */; };
-		FAA6842116AD50760092FD00 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA6842016AD50760092FD00 /* libz.1.1.3.dylib */; };
 		FAAC041416B1421F00EB1C7F /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAC041316B1421F00EB1C7F /* screenshot.png */; };
 		FAB17249162FFA6800B44EDC /* NSArrayDTErrorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB17248162FFA6800B44EDC /* NSArrayDTErrorTest.m */; };
 		FAB1724C162FFC5200B44EDC /* DictionarySample.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB1724B162FFC5200B44EDC /* DictionarySample.plist */; };
@@ -333,6 +332,26 @@
 		FAB172AC163024E200B44EDC /* ArraySample.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB172AB163024E200B44EDC /* ArraySample.plist */; };
 		FAB172AF163027C700B44EDC /* NSDictionaryDTErrorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB172AE163027C700B44EDC /* NSDictionaryDTErrorTest.m */; };
 		FAB172B816302FC700B44EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
+		FAF37A2117AFDD93009AC27C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
+		FAF37A2217AFDD93009AC27C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
+		FAF37A2317AFDD93009AC27C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */; };
+		FAF37A5317AFDF0B009AC27C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF37A4D17AFDF0B009AC27C /* AppDelegate.m */; };
+		FAF37A5417AFDF0B009AC27C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF37A4E17AFDF0B009AC27C /* main.m */; };
+		FAF37A5517AFDF0B009AC27C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF37A5017AFDF0B009AC27C /* Default-568h@2x.png */; };
+		FAF37A5617AFDF0B009AC27C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF37A5117AFDF0B009AC27C /* Default.png */; };
+		FAF37A5717AFDF0B009AC27C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF37A5217AFDF0B009AC27C /* Default@2x.png */; };
+		FAF37A5A17AFDF63009AC27C /* libDTZipArchive_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383DA160DFF8600CF72D6 /* libDTZipArchive_iOS.a */; };
+		FAF37A6517AFE004009AC27C /* ZipNodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF37A5B17AFE004009AC27C /* ZipNodeViewController.m */; };
+		FAF37A6617AFE004009AC27C /* ZipArchiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF37A5D17AFE004009AC27C /* ZipArchiveModel.m */; };
+		FAF37A6717AFE004009AC27C /* ZipArchiveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF37A5F17AFE004009AC27C /* ZipArchiveManager.m */; };
+		FAF37A6817AFE004009AC27C /* ZipArchiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF37A6117AFE004009AC27C /* ZipArchiveCell.m */; };
+		FAF37A6917AFE004009AC27C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF37A6317AFE004009AC27C /* ViewController.m */; };
+		FAF37A6B17AFE01E009AC27C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF37A6A17AFE01E009AC27C /* Storyboard.storyboard */; };
+		FAF37A6D17AFE06B009AC27C /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF37A6C17AFE06B009AC27C /* libz.1.2.5.dylib */; };
+		FAF37A6E17AFE07F009AC27C /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF37A6C17AFE06B009AC27C /* libz.1.2.5.dylib */; };
+		FAF37A7017AFE098009AC27C /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF37A6F17AFE098009AC27C /* QuickLook.framework */; };
+		FAF37A7317AFE0D1009AC27C /* libDTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70B4CE71486637E00873A4A /* libDTFoundation.a */; };
+		FAF37A7417AFE11D009AC27C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB1725D163004FF00B44EDC /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -372,6 +391,20 @@
 			remoteInfo = DTZipArchive;
 		};
 		FAB17254163003F500B44EDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A70B4CE61486637E00873A4A;
+			remoteInfo = "Static Library";
+		};
+		FAF37A5817AFDF5D009AC27C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7E383D9160DFF8600CF72D6;
+			remoteInfo = "DTZipArchive (iOS)";
+		};
+		FAF37A7117AFE0CC009AC27C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
 			proxyType = 1;
@@ -692,7 +725,6 @@
 		C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchivePKZip.h; sourceTree = "<group>"; };
 		C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveNode.m; sourceTree = "<group>"; };
 		FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTASN1.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAA6842016AD50760092FD00 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		FAAC041316B1421F00EB1C7F /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screenshot.png; path = Test/Resources/screenshot.png; sourceTree = SOURCE_ROOT; };
 		FAB17247162FFA6800B44EDC /* NSArrayDTErrorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayDTErrorTest.h; sourceTree = "<group>"; };
 		FAB17248162FFA6800B44EDC /* NSArrayDTErrorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayDTErrorTest.m; sourceTree = "<group>"; };
@@ -704,6 +736,28 @@
 		FAB172AD163027C700B44EDC /* NSDictionaryDTErrorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryDTErrorTest.h; sourceTree = "<group>"; };
 		FAB172AE163027C700B44EDC /* NSDictionaryDTErrorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryDTErrorTest.m; sourceTree = "<group>"; };
 		FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FAF37A2017AFDD93009AC27C /* DTZipArchive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTZipArchive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAF37A3F17AFDE9E009AC27C /* DTZipArchiveDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DTZipArchiveDemo-Info.plist"; sourceTree = "<group>"; };
+		FAF37A4017AFDE9E009AC27C /* DTZipArchiveDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DTZipArchiveDemo-Prefix.pch"; sourceTree = "<group>"; };
+		FAF37A4C17AFDF0B009AC27C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAF37A4D17AFDF0B009AC27C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FAF37A4E17AFDF0B009AC27C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAF37A5017AFDF0B009AC27C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FAF37A5117AFDF0B009AC27C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FAF37A5217AFDF0B009AC27C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		FAF37A5B17AFE004009AC27C /* ZipNodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipNodeViewController.m; sourceTree = "<group>"; };
+		FAF37A5C17AFE004009AC27C /* ZipNodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipNodeViewController.h; sourceTree = "<group>"; };
+		FAF37A5D17AFE004009AC27C /* ZipArchiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchiveModel.m; sourceTree = "<group>"; };
+		FAF37A5E17AFE004009AC27C /* ZIpArchiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIpArchiveModel.h; sourceTree = "<group>"; };
+		FAF37A5F17AFE004009AC27C /* ZipArchiveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchiveManager.m; sourceTree = "<group>"; };
+		FAF37A6017AFE004009AC27C /* ZipArchiveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchiveManager.h; sourceTree = "<group>"; };
+		FAF37A6117AFE004009AC27C /* ZipArchiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchiveCell.m; sourceTree = "<group>"; };
+		FAF37A6217AFE004009AC27C /* ZipArchiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchiveCell.h; sourceTree = "<group>"; };
+		FAF37A6317AFE004009AC27C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FAF37A6417AFE004009AC27C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FAF37A6A17AFE01E009AC27C /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		FAF37A6C17AFE06B009AC27C /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		FAF37A6F17AFE098009AC27C /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -803,7 +857,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9CB81D17ABDF6400A596C5 /* libDTASN1.a in Frameworks */,
-				FAA6842116AD50760092FD00 /* libz.1.1.3.dylib in Frameworks */,
 				FAA6841C16AD4E350092FD00 /* libDTZipArchive_iOS.a in Frameworks */,
 				A7239FFD16A6CF0B0071E902 /* CoreData.framework in Frameworks */,
 				A7239FFB16A6CEEF0071E902 /* libDTHTMLParser_iOS.a in Frameworks */,
@@ -815,6 +868,7 @@
 				FAB1724D162FFF5300B44EDC /* MobileCoreServices.framework in Frameworks */,
 				A7D60FD115D3B0BC00AEDD1B /* SenTestingKit.framework in Frameworks */,
 				A7D60FD315D3B0BC00AEDD1B /* Foundation.framework in Frameworks */,
+				FAF37A6E17AFE07F009AC27C /* libz.1.2.5.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,6 +925,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FAF37A1D17AFDD93009AC27C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAF37A7317AFE0D1009AC27C /* libDTFoundation.a in Frameworks */,
+				FAF37A7017AFE098009AC27C /* QuickLook.framework in Frameworks */,
+				FAF37A6D17AFE06B009AC27C /* libz.1.2.5.dylib in Frameworks */,
+				FAF37A5A17AFDF63009AC27C /* libDTZipArchive_iOS.a in Frameworks */,
+				FAF37A2117AFDD93009AC27C /* UIKit.framework in Frameworks */,
+				FAF37A2217AFDD93009AC27C /* Foundation.framework in Frameworks */,
+				FAF37A2317AFDD93009AC27C /* CoreGraphics.framework in Frameworks */,
+				FAF37A7417AFE11D009AC27C /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -911,6 +980,7 @@
 		A70D74BE1743AF5400E6E626 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				FAF37A3917AFDE9E009AC27C /* DTZipArchiveDemo */,
 				A7D9D64C1758C8E600C29B6F /* DTReachability */,
 				A70D74BF1743AF5400E6E626 /* DTSidePanels */,
 			);
@@ -1181,12 +1251,13 @@
 			isa = PBXGroup;
 			children = (
 				A7D60FF715D3B28B00AEDD1B /* libxml2.dylib */,
-				FAA6842016AD50760092FD00 /* libz.1.1.3.dylib */,
+				FAF37A6C17AFE06B009AC27C /* libz.1.2.5.dylib */,
 				A7239FFC16A6CF0B0071E902 /* CoreData.framework */,
 				FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */,
 				A7F4DFFA147FD08F00F4059A /* Foundation.framework */,
 				A7C619EF162D8D84002C0C1A /* MobileCoreServices.framework */,
 				FAB1725D163004FF00B44EDC /* QuartzCore.framework */,
+				FAF37A6F17AFE098009AC27C /* QuickLook.framework */,
 				A7D60FD015D3B0BC00AEDD1B /* SenTestingKit.framework */,
 				A7D9D6631758CA6300C29B6F /* SystemConfiguration.framework */,
 				A7F4DFF8147FD08900F4059A /* UIKit.framework */,
@@ -1409,6 +1480,7 @@
 				A7D9D62D1758C89800C29B6F /* DTReachability Demo.app */,
 				A79D999C1792D1F50082BC06 /* libDTAWS.a */,
 				FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */,
+				FAF37A2017AFDD93009AC27C /* DTZipArchive.app */,
 			);
 			name = Products;
 			path = ../..;
@@ -1425,6 +1497,48 @@
 				C04945A5A98C7DDBA43FB17E /* UnitTests-Info.plist */,
 			);
 			path = zipContent;
+			sourceTree = "<group>";
+		};
+		FAF37A3917AFDE9E009AC27C /* DTZipArchiveDemo */ = {
+			isa = PBXGroup;
+			children = (
+				FAF37A3F17AFDE9E009AC27C /* DTZipArchiveDemo-Info.plist */,
+				FAF37A4017AFDE9E009AC27C /* DTZipArchiveDemo-Prefix.pch */,
+				FAF37A4B17AFDF0B009AC27C /* Source */,
+				FAF37A4F17AFDF0B009AC27C /* Resources */,
+			);
+			path = DTZipArchiveDemo;
+			sourceTree = "<group>";
+		};
+		FAF37A4B17AFDF0B009AC27C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FAF37A5C17AFE004009AC27C /* ZipNodeViewController.h */,
+				FAF37A5B17AFE004009AC27C /* ZipNodeViewController.m */,
+				FAF37A5E17AFE004009AC27C /* ZIpArchiveModel.h */,
+				FAF37A5D17AFE004009AC27C /* ZipArchiveModel.m */,
+				FAF37A6017AFE004009AC27C /* ZipArchiveManager.h */,
+				FAF37A5F17AFE004009AC27C /* ZipArchiveManager.m */,
+				FAF37A6217AFE004009AC27C /* ZipArchiveCell.h */,
+				FAF37A6117AFE004009AC27C /* ZipArchiveCell.m */,
+				FAF37A6417AFE004009AC27C /* ViewController.h */,
+				FAF37A6317AFE004009AC27C /* ViewController.m */,
+				FAF37A4C17AFDF0B009AC27C /* AppDelegate.h */,
+				FAF37A4D17AFDF0B009AC27C /* AppDelegate.m */,
+				FAF37A4E17AFDF0B009AC27C /* main.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		FAF37A4F17AFDF0B009AC27C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FAF37A6A17AFE01E009AC27C /* Storyboard.storyboard */,
+				FAF37A5017AFDF0B009AC27C /* Default-568h@2x.png */,
+				FAF37A5117AFDF0B009AC27C /* Default.png */,
+				FAF37A5217AFDF0B009AC27C /* Default@2x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1886,6 +2000,25 @@
 			productReference = FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		FAF37A1F17AFDD93009AC27C /* DTZipArchiveDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAF37A3817AFDD93009AC27C /* Build configuration list for PBXNativeTarget "DTZipArchiveDemo" */;
+			buildPhases = (
+				FAF37A1C17AFDD93009AC27C /* Sources */,
+				FAF37A1D17AFDD93009AC27C /* Frameworks */,
+				FAF37A1E17AFDD93009AC27C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAF37A7217AFE0CC009AC27C /* PBXTargetDependency */,
+				FAF37A5917AFDF5D009AC27C /* PBXTargetDependency */,
+			);
+			name = DTZipArchiveDemo;
+			productName = DTZipArchiveDemo;
+			productReference = FAF37A2017AFDD93009AC27C /* DTZipArchive.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1926,6 +2059,7 @@
 				A7C92B8B174FB9720019D70A /* DTSQLite (Mac) */,
 				A70D74CF1743AFBC00E6E626 /* DTSidePanels Demo */,
 				A7D9D62C1758C89800C29B6F /* DTReachability Demo */,
+				FAF37A1F17AFDD93009AC27C /* DTZipArchiveDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -1981,6 +2115,17 @@
 				A7D9D6771758CF7200C29B6F /* Default.png in Resources */,
 				A7D9D6781758CF7200C29B6F /* Default@2x.png in Resources */,
 				A7D9D6791758CF7200C29B6F /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAF37A1E17AFDD93009AC27C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAF37A5517AFDF0B009AC27C /* Default-568h@2x.png in Resources */,
+				FAF37A5617AFDF0B009AC27C /* Default.png in Resources */,
+				FAF37A5717AFDF0B009AC27C /* Default@2x.png in Resources */,
+				FAF37A6B17AFE01E009AC27C /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2316,6 +2461,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FAF37A1C17AFDD93009AC27C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAF37A5317AFDF0B009AC27C /* AppDelegate.m in Sources */,
+				FAF37A5417AFDF0B009AC27C /* main.m in Sources */,
+				FAF37A6517AFE004009AC27C /* ZipNodeViewController.m in Sources */,
+				FAF37A6617AFE004009AC27C /* ZipArchiveModel.m in Sources */,
+				FAF37A6717AFE004009AC27C /* ZipArchiveManager.m in Sources */,
+				FAF37A6817AFE004009AC27C /* ZipArchiveCell.m in Sources */,
+				FAF37A6917AFE004009AC27C /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2348,6 +2507,16 @@
 			isa = PBXTargetDependency;
 			target = A70B4CE61486637E00873A4A /* Static Library */;
 			targetProxy = FAB17254163003F500B44EDC /* PBXContainerItemProxy */;
+		};
+		FAF37A5917AFDF5D009AC27C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7E383D9160DFF8600CF72D6 /* DTZipArchive (iOS) */;
+			targetProxy = FAF37A5817AFDF5D009AC27C /* PBXContainerItemProxy */;
+		};
+		FAF37A7217AFE0CC009AC27C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A70B4CE61486637E00873A4A /* Static Library */;
+			targetProxy = FAF37A7117AFE0CC009AC27C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3153,6 +3322,49 @@
 			};
 			name = Release;
 		};
+		FAF37A3617AFDD93009AC27C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stefan Gugarel (5V5NEAJJ6M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Stefan Gugarel (5V5NEAJJ6M)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Prefix.pch";
+				INFOPLIST_FILE = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DTZipArchive;
+				PROVISIONING_PROFILE = "EE8FE43F-35E0-4192-91C6-0BFF3878BF03";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EE8FE43F-35E0-4192-91C6-0BFF3878BF03";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FAF37A3717AFDD93009AC27C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stefan Gugarel (5V5NEAJJ6M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Prefix.pch";
+				INFOPLIST_FILE = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DTZipArchive;
+				PROVISIONING_PROFILE = "EE8FE43F-35E0-4192-91C6-0BFF3878BF03";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3332,6 +3544,15 @@
 			buildConfigurations = (
 				FA9CB81517ABDEF200A596C5 /* Debug */,
 				FA9CB81617ABDEF200A596C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAF37A3817AFDD93009AC27C /* Build configuration list for PBXNativeTarget "DTZipArchiveDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAF37A3617AFDD93009AC27C /* Debug */,
+				FAF37A3717AFDD93009AC27C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
