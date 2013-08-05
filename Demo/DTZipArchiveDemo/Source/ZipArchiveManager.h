@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+// notification that gets sent if the zip archives at the location get reloaded
+extern NSString * const ZipArchiveManagerDidReloadArchivesNotification;
+
 @class ZipArchiveModel;
 
 @interface ZipArchiveManager : NSObject

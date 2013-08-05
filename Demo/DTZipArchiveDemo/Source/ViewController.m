@@ -33,6 +33,14 @@ static NSString *cellIdentifier = @"ZipArchiveCellIdentifier";
     ZipArchiveManager *_zipArchiveManager;
 }
 
+- (void)_prepIcons
+{
+    for (ZipArchiveModel *zipArchiveModel in _zipArchiveManager.archives)
+	{
+		[self _setupDocumentControllerWithURL:zipArchiveModel.URL];
+	}
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
@@ -42,10 +50,15 @@ static NSString *cellIdentifier = @"ZipArchiveCellIdentifier";
 	NSURL *documentsURL = [NSURL fileURLWithPath:documentsPath];
 	_zipArchiveManager = [[ZipArchiveManager alloc] initWithURL:documentsURL];
 	
-	for (ZipArchiveModel *zipArchiveModel in _zipArchiveManager.archives)
-	{
-		[self _setupDocumentControllerWithURL:zipArchiveModel.URL];
-	}
+	// monitor for changes to the list of archives, e.g. iTunes file sharing
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(archivesDidChange:) name:ZipArchiveManagerDidReloadArchivesNotification object:_zipArchiveManager];
+	
+	[self _prepIcons];
+}
+
+- (void)dealloc
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)_setupDocumentControllerWithURL:(NSURL *)url
@@ -148,6 +161,16 @@ static NSString *cellIdentifier = @"ZipArchiveCellIdentifier";
 
 		}
 	}
+}
+
+#pragma mark - Notifications
+- (void)archivesDidChange:(NSNotification *)notification
+{
+	dispatch_async(dispatch_get_main_queue(), ^{
+		
+		[self _prepIcons];
+		[self.tableView reloadData];
+	});
 }
 
 @end
