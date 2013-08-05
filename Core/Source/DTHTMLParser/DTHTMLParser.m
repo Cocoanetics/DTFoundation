@@ -53,7 +53,7 @@ void _startElement(void *context, const xmlChar *name, const xmlChar **atts)
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
     
     [myself _resetAccumulateBufferAndReportCharacters];
-
+	
 	NSString *nameStr = [NSString stringWithUTF8String:(char *)name];
 	
 	NSMutableDictionary *attributes = nil;
@@ -108,7 +108,7 @@ void _endElement(void *context, const xmlChar *chars)
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
     
     [myself _resetAccumulateBufferAndReportCharacters];
-
+	
 	NSString *nameStr = [NSString stringWithUTF8String:(char *)chars];
 	
 	[myself.delegate parser:myself didEndElement:nameStr];
@@ -181,9 +181,9 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	
 	DT_WEAK_VARIABLE id <DTHTMLParserDelegate> _delegate;
 	htmlParserCtxtPtr _parserContext;
-	   
+	
     NSMutableString *_accumulateBuffer;
-
+	
 	BOOL _isAborting;
 }
 
@@ -220,12 +220,16 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 
 - (void)_resetAccumulateBufferAndReportCharacters
 {
-    if (_accumulateBuffer.length > 0)
+    if (!_accumulateBuffer.length)
     {
-        NSString* string = _accumulateBuffer;
-        _accumulateBuffer = nil;
-        [self.delegate parser:self foundCharacters:string];
-    }
+		// nothing in the buffer
+		return;
+	}
+	
+    [self.delegate parser:self foundCharacters:_accumulateBuffer];
+	
+	// reset buffer
+	_accumulateBuffer = nil;
 }
 
 - (void)_accumulateCharacters:(const xmlChar *)characters length:(int)length
@@ -237,7 +241,7 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
     else
     {
         // we don't need to use the copy version since _accumulateBuffer will copy characters immediately
-        [_accumulateBuffer appendString:[[NSString alloc] initWithBytesNoCopy:(void*)characters length:length encoding:NSUTF8StringEncoding freeWhenDone:NO]];
+        [_accumulateBuffer appendString:[[NSString alloc] initWithBytesNoCopy:(void *)characters length:length encoding:NSUTF8StringEncoding freeWhenDone:NO]];
     }
 }
 
