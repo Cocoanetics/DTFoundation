@@ -105,7 +105,8 @@ extern NSString * const DTZipArchiveErrorDomain;
 /**
  Synchronous uncompressing the receiver and returning file as NSData
  
- @param targetPath path where the zip archive is being uncompressed
+ @param node path where the zip archive is being uncompressed
+ @param error the error returned when something went wrong
  @return data of uncompressed file. If nil error has occured.
  */
 - (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error;
