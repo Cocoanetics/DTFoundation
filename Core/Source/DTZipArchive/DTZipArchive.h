@@ -54,6 +54,9 @@ extern NSString * const DTZipArchiveErrorDomain;
 	NSArray *_listOfEntries;
 }
 
+/**
+ @name Getting Information about Archives
+ */
 
 /**
  Path of zip file
@@ -89,8 +92,9 @@ extern NSString * const DTZipArchiveErrorDomain;
 
 @end
 
+
 /**
- Here uncompressing to a targetPath is done
+ @name Uncompressing Methods
  */
 @interface DTZipArchive(Uncompressing)
 
@@ -105,7 +109,8 @@ extern NSString * const DTZipArchiveErrorDomain;
 /**
  Synchronous uncompressing the receiver and returning file as NSData
  
- @param targetPath path where the zip archive is being uncompressed
+ @param node The DTZipArchiveNode to uncompress
+ @param error Output parameter for an `NSError` if an error occurs
  @return data of uncompressed file. If nil error has occured.
  */
 - (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error;

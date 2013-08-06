@@ -10,13 +10,26 @@
 #import "DTWeakSupport.h"
 
 
-// types of panels
-typedef enum
+/**
+ Constant for describing the position of a panel in DTSidePanelController
+ */
+typedef NS_ENUM(NSUInteger, DTSidePanelControllerPanel)
 {
+	/**
+	 Panel in the center of the display
+	 */
 	DTSidePanelControllerPanelCenter = 0,
+	
+	/**
+	 Panel to the left of the center panel
+	 */
 	DTSidePanelControllerPanelLeft,
+	
+	/**
+	 Panel to the right of the center panel
+	 */
 	DTSidePanelControllerPanelRight
-} DTSidePanelControllerPanel;
+};
 
 @class DTSidePanelController;
 
@@ -29,7 +42,7 @@ typedef enum
 /**
  Asks the delegate if a presented panel can be closed. The default is to allow it, you may prevent the dragging or tap-to-close for example when showing a modal dialog.
  @param sidePanelController The side panel controller
- @param sidePanel The panel type that the user is trying to close
+ @param sidePanel The DTSidePanelControllerPanel that the user is trying to close
  @returns `YES` if the user may close a presented panel
  */
 - (BOOL)sidePanelController:(DTSidePanelController *)sidePanelController shouldAllowClosingOfSidePanel:(DTSidePanelControllerPanel)sidePanel;
@@ -42,11 +55,7 @@ typedef enum
  
  If you don't set the width of the side panels then they auto-resize with the view, keeping a minimum visible portion of the center view always visible. If you set the width then they keep their width and the center view controller will be moved accordingly.
  
- Possible values for DTSidePanelControllerPanel are:
- 
- - DTSidePanelControllerPanelCenter
- - DTSidePanelControllerPanelLeft,
- - DTSidePanelControllerPanelRight
+ Panels are addressed by the position via the DTSidePanelControllerPanel type.
  */
 @interface DTSidePanelController : UIViewController
 
@@ -56,7 +65,7 @@ typedef enum
 
 /**
  Shows the specified panel
- @param panel The panel to present
+ @param panel The DTSidePanelControllerPanel to present
  @param animated Whether the presentation should be animated
  */
 - (void)presentPanel:(DTSidePanelControllerPanel)panel animated:(BOOL)animated;
@@ -74,7 +83,7 @@ typedef enum
 /**
  Sets the display width for the given panel. The center panel is center-aligned, the left panel is left-aligned and the right panel is right-aligned. The center panel is always full width.
  @param width The width to set, or 0 to have the panel resize automatically
- @param panel The panel to set it for
+ @param panel The DTSidePanelControllerPanel to set it for
  @param animated Whether the change should be animated
  */
 - (void)setWidth:(CGFloat)width forPanel:(DTSidePanelControllerPanel)panel animated:(BOOL)animated;
