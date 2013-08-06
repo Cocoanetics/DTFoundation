@@ -8,12 +8,13 @@
 
 #import "UIView+DTDebug.h"
 #import "NSObject+DTRuntime.h"
+#import "DTLog.h"
 
 @implementation UIView (DTDebug)
 
 - (void)methodCalledNotFromMainThread:(NSString *)methodName
 {
-	NSLog(@"-[%@ %@] being called on background queue. Break on -[UIView methodCalledNotFromMainThread:] to find out where", NSStringFromClass([self class]), methodName);
+	DTLogError(@"-[%@ %@] being called on background queue. Break on -[UIView methodCalledNotFromMainThread:] to find out where", NSStringFromClass([self class]), methodName);
 }
 
 - (void)_setNeedsLayout_MainThreadCheck

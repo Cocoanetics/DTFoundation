@@ -55,7 +55,7 @@
 
 - (void)parser:(DTHTMLParser *)parser foundProcessingInstructionWithTarget:(NSString *)target data:(NSString *)data
 {
-	NSLog(@"target: %@ data: %@", target, data);
+	DTLogDebug(@"target: %@ data: %@", target, data);
 }
 
 @end

@@ -58,7 +58,7 @@
         
         [super setBounds:bounds];
         
-        NSLog(@"setbounds: %@ %@", NSStringFromCGRect(bounds), _tileDelegate);
+        DTLogDebug(@"setbounds: %@ %@", NSStringFromCGRect(bounds), _tileDelegate);
         
         // store for frequent use
         _contentSize = bounds.size;
@@ -77,7 +77,7 @@
         
         [super setFrame:frame];
         
-        NSLog(@"setFrame: %@ %@", NSStringFromCGRect(frame), _tileDelegate);
+        DTLogDebug(@"setFrame: %@ %@", NSStringFromCGRect(frame), _tileDelegate);
         
         // store for frequent use
         _contentSize = frame.size;
@@ -197,7 +197,7 @@
             }
             else
             {
-                NSLog(@"layer frame differs! %@ <-> %@", NSStringFromCGRect(oneSubLayer.frame), NSStringFromCGRect(tileFrame));
+                DTLogError(@"layer frame differs! %@ <-> %@", NSStringFromCGRect(oneSubLayer.frame), NSStringFromCGRect(tileFrame));
                 
                 oneSubLayer.anchorPoint = CGPointZero;
                 oneSubLayer.bounds = tileFrame;
@@ -241,7 +241,7 @@
                 [self _enqueueDrawingForTile:cachedTile];
             }
             
-            NSLog(@"cached %@", cachedTile);
+            DTLogDebug(@"cached %@", cachedTile);
         }
         else
         {
@@ -266,7 +266,7 @@
             newTile.borderColor = [UIColor redColor].CGColor;
             newTile.borderWidth = 3;
             
-            NSLog(@"new %@", newTile);
+            DTLogDebug(@"new %@", newTile);
             
             // cost in cache is number of pixels
             [self.tileCache setObject:newTile forKey:tileKey cost:tileFrame.size.width * tileFrame.size.height];
@@ -367,8 +367,6 @@
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx
 {
-    //  NSLog(@"draw %@", layer);
-    
     [_tileDelegate drawLayer:layer inContext:ctx];
     
     CGRect clipRect = CGContextGetClipBoundingBox(ctx);

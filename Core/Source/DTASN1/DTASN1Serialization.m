@@ -38,9 +38,6 @@
 {
 	self = [super init];
 	
-	NSString *bas = [DTBase64Coding stringByEncodingData:data];
-	NSLog(@"%@", bas);
-	
 	if (self)
 	{
 		DTASN1Parser *parser = [[DTASN1Parser alloc] initWithData:data];

@@ -41,10 +41,6 @@
     NSData *outdata = UIImagePNGRepresentation(image);
     
     [outdata writeToFile:path atomically:NO];
-    
-    NSLog(@"%@", path);
-    
-    
 }
 
 @end

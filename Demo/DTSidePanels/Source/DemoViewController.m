@@ -16,38 +16,38 @@
 {
 	[super viewWillAppear:animated];
 	
-	NSLog(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
+	DTLogInfo(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	NSLog(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
+	DTLogInfo(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 	
-	NSLog(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
+	DTLogInfo(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-	NSLog(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
+	DTLogInfo(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)willMoveToParentViewController:(UIViewController *)parent
 {
 	[super willMoveToParentViewController:parent];
-	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+	DTLogInfo(@"%@ %s", self, __PRETTY_FUNCTION__);
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent
 {
 	[super didMoveToParentViewController:parent];
-	NSLog(@"%@ %s", self, __PRETTY_FUNCTION__);
+	DTLogInfo(@"%@ %s", self, __PRETTY_FUNCTION__);
 }
 
 @end

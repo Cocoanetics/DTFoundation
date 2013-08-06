@@ -11,6 +11,7 @@
 #import "DTSidePanelController.h"
 #import "UIView+DTFoundation.h"
 #import "UIViewController+DTSidePanelController.h"
+#import "DTLog.h"
 
 @interface UIViewController () // private setter
 - (void)setSidePanelController:(DTSidePanelController *)sidePanelController;
@@ -967,7 +968,7 @@
 			
 		case DTSidePanelControllerPanelCenter:
 		{
-			NSLog(@"Setting width for center panel not supported");
+			DTLogError(@"Setting width for center panel not supported");
 			break;
 		}
 	}

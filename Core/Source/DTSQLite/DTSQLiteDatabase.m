@@ -112,7 +112,7 @@
 		return [tmpArray copy];
 	}
 	
-	NSLog(@"ignored result");
+	DTLogError(@"ignored result");
 	
 	return nil;
 }

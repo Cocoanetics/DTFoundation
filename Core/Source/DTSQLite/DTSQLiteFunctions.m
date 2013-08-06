@@ -51,7 +51,7 @@ void DTSQLiteEnumerateSQLStatementColumns(sqlite3_stmt *statement, DTSQLiteEnume
 				
 			default:
 			{
-				NSLog(@"Type %d not implemented", columnType);
+				DTLogError(@"Type %d not implemented", columnType);
 				break;
 			}
 		}

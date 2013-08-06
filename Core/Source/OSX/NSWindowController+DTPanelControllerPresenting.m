@@ -33,7 +33,7 @@ static char DTPresentedViewControllerDismissalQueueKey;
 	
 	if (windowController)
 	{
-		NSLog(@"Already presenting %@, cannot modally present another panel", NSStringFromClass([windowController class]));
+		DTLogError(@"Already presenting %@, cannot modally present another panel", NSStringFromClass([windowController class]));
 		return;
 	}
 
@@ -50,7 +50,7 @@ static char DTPresentedViewControllerDismissalQueueKey;
 	
 	if (!windowController)
 	{
-		NSLog(@"%s called, but nothing to dismiss", (const char *)__PRETTY_FUNCTION__);
+		DTLogError(@"%s called, but nothing to dismiss", (const char *)__PRETTY_FUNCTION__);
 		return;
 	}
 	
