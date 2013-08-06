@@ -11,6 +11,18 @@
  */
 @interface UIImage (DTFoundation)
 
+/**
+ @name Generating Images
+ */
+
+/**
+ Creates an image filled with a solid color
+ @param color The solid color that fills the image
+ @param size The size of the image
+ @return The image filled with given color and given size
+ */
++ (UIImage *)imageWithSolidColor:(UIColor *)color size:(CGSize)size;
+
 
 /**
  @name Loading from RemoteURLs

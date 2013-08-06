@@ -10,7 +10,27 @@
 
 @implementation UIImage (DTFoundation)
 
-#pragma mark Loading
+#pragma mark - Generating Images
+
++ (UIImage *)imageWithSolidColor:(UIColor *)color size:(CGSize)size
+{
+	CGRect rect = CGRectMake(0, 0, size.width, size.height);
+	
+	// Create a context depending on given size
+	UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+	
+	// Fill it with your color
+	[color setFill];
+	UIRectFill(rect);
+	
+	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	
+	return image;
+}
+
+
+#pragma mark - Loading
 
 + (UIImage *)imageWithContentsOfURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy error:(NSError **)error
 {
