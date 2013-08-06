@@ -9,14 +9,14 @@
 #import "DTLog.h"
 
 DTLogBlock DTLogHandler = nil;
-NSUInteger DTLogLevel = 6;
+DTLogLevel DTCurrentLogLevel = DTLogLevelInfo;
 
 void DTLogSetLoggerBlock(DTLogBlock handler)
 {
 	DTLogHandler = [handler copy];
 }
 
-void DTLogSetLogLevel(NSUInteger logLevel)
+void DTLogSetLogLevel(DTLogLevel logLevel)
 {
-	DTLogLevel = logLevel;
+	DTCurrentLogLevel = logLevel;
 }
