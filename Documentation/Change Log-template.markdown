@@ -3,6 +3,15 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.5.1**
+
+- ADDED: Ability to uncompress individual files in DTZipArchive
+- ADDED: DTFolderMonitor for watching a folder for changes
+- ADDED: DTZipArchive Demo demonstrating DTZipArchive and DTFolderMonitor on iOS
+- ADDED: DTLog logging hooks
+- CHANGED: DTHTMLParser now aggregates parsed characters into a single delegate call-back
+- CHANGED: Removed UIKit dependency for DTAsyncFileDeleter so that it can be moved to Core sub-spec
+
 **Version 1.5.0**
 
 - CHANGED: DTASN1 Moved to sub-spec, out of Core

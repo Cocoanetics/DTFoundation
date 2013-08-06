@@ -8,39 +8,151 @@
 
 #import "DTWeakSupport.h"
 
-// types of ASN1 tags
-typedef enum 
+/**
+ Types of ASN1 tags, specifying the type of the following value in TLV notation
+ */
+typedef NS_ENUM(NSUInteger, DTASN1Type)
 {
+	/**
+	 DTASN1 type for EOC
+	 */
 	DTASN1TypeEOC = 0x00,
+	
+	/**
+	 DTASN1 type for Boolean
+	 */
 	DTASN1TypeBoolean = 0x01,
+	
+	/**
+	 DTASN1 type for integer numbers
+	 */
 	DTASN1TypeInteger = 0x02,
+	
+	/**
+	 DTASN1 type for Bit Strings
+	 */
 	DTASN1TypeBitString = 0x03,
+	
+	/**
+	 DTASN1 type for Octet Strings
+	 */
 	DTASN1TypeOctetString = 0x04,
+	
+	/**
+	 DTASN1 type for NULL values
+	 */
 	DTASN1TypeNull = 0x05,
+	
+	/**
+	 DTASN1 type for object identifiers
+	 */
 	DTASN1TypeObjectIdentifier = 0x06,
+	
+	/**
+	 DTASN1 type for object descriptors
+	 */
 	DTASN1TypeObjectDescriptor = 0x07,
+	
+	/**
+	 DTASN1 type for external references
+	 */
 	DTASN1TypeExternal = 0x08,
+	
+	/**
+	 DTASN1 type for floating point numbers
+	 */
 	DTASN1TypeReal= 0x09,
+	
+	/**
+	 DTASN1 type for enumerated values
+	 */
 	DTASN1TypeEnumerated = 0x0a,
+	
+	/**
+	 DTASN1 type for embedded PDV values
+	 */
 	DTASN1TypeEmbeddedPDV = 0x0b,
+	
+	/**
+	 DTASN1 type for UTF8 strings
+	 */
 	DTASN1TypeUTF8String = 0x0c,
+	
+	/**
+	 DTASN1 type for sequences
+	 */
 	DTASN1TypeSequence = 0x10,
+	
+	/**
+	 DTASN1 type for sets
+	 */
 	DTASN1TypeSet = 0x11,
+	
+	/**
+	 DTASN1 type for numeric strings
+	 */
 	DTASN1TypeNumericString = 0x12,
+	
+	/**
+	 DTASN1 type for printable strings
+	 */
 	DTASN1TypePrintableString = 0x13,
+	
+	/**
+	 DTASN1 type for teletex strings
+	 */
 	DTASN1TypeTeletexString = 0x14,
-	DTASN1TypeVideoTexString = 0x15,
+	
+	/**
+	 DTASN1 type for video text strings
+	 */
+	DTASN1TypeVideoTextString = 0x15,
+	
+	/**
+	 DTASN1 type for IA5 strings
+	 */
 	DTASN1TypeIA5String = 0x16,
+	
+	/**
+	 DTASN1 type for UTC times
+	 */
 	DTASN1TypeUTCTime = 0x17,
+	
+	/**
+	 DTASN1 type for generalized times
+	 */
 	DTASN1TypeGeneralizedTime = 0x18,
+	
+	/**
+	 DTASN1 type for generalized time values
+	 */
 	DTASN1TypeGraphicString = 0x19,
-	DTASN1TypeVisibleString = 0x1a,
-	DTASN1TypeGeneralString = 0x1b,
-	DTASN1TypeUniversalString = 0x1c,
-	DTASN1TypeBitmapString = 0x1e,
-	DTASN1TypeUsesLongForm = 0x1f
-} DTASN1Type;
 
+	/**
+	 DTASN1 type for visible strings
+	 */
+	DTASN1TypeVisibleString = 0x1a,
+	
+	/**
+	 DTASN1 type for general strings
+	 */
+	DTASN1TypeGeneralString = 0x1b,
+	
+	/**
+	 DTASN1 type for universal strings
+	 */
+	DTASN1TypeUniversalString = 0x1c,
+	
+	/**
+	 DTASN1 type for bitmap strings
+	 */
+	DTASN1TypeBitmapString = 0x1e,
+	
+	/**
+	 DTASN1 value to signify that the value uses the long form
+	 */
+	DTASN1TypeUsesLongForm = 0x1f
+};
 
 @class DTASN1Parser, DTASN1BitString;
 

@@ -35,4 +35,14 @@
 @synthesize fileSize = _fileSize;
 @synthesize directory = _directory;
 
+- (NSMutableArray *)children
+{
+	if (!_children)
+	{
+		_children = [[NSMutableArray alloc] init];
+	}
+
+	return _children;
+}
+
 @end

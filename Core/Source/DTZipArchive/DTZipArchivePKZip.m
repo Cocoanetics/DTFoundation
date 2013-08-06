@@ -20,11 +20,6 @@
  */
 @property (nonatomic, copy, readwrite) NSString *path;
 
-/**
- All files and directories in zip archive
- */
-@property (nonatomic, strong, readwrite) NSArray *listOfEntries;
-
 @end
 
 @implementation DTZipArchivePKZip
@@ -45,8 +40,6 @@
     long long _totalNumberOfItems;
 
     NSString *_path;
-
-    NSArray *_listOfEntries;
 }
 
 - (id)initWithFileAtPath:(NSString *)sourcePath
@@ -192,7 +185,7 @@
     
     if ([tmpArray count])
     {
-        self.listOfEntries = tmpArray;
+        _listOfEntries = tmpArray;
     }
 }
 
@@ -385,6 +378,62 @@
     }
 }
 
+- (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error
+{
+	if (node.isDirectory)
+	{
+		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Zip Archive node is a directory"};
+		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:6 userInfo:userInfo];
+		return nil;
+	}
+	
+	// select given file in PKZip
+	unzFile _unzFile = unzOpen([_path UTF8String]);
+	
+	if (unzLocateFile(_unzFile, [node.name UTF8String], 1) != UNZ_OK)
+	{
+		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Given single file cannot be found to unzip"};
+		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
+		return nil;
+	}
+	
+	if (unzOpenCurrentFile(_unzFile) != UNZ_OK)
+	{
+		
+		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to open zip file"};
+		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:5 userInfo:userInfo];
+		return nil;
+	}
+	
+	int readBytes;
+	unsigned char buffer[BUFFER_SIZE] = {0};
+	NSMutableData *fileData = [[NSMutableData alloc] init];
+	while ((readBytes = unzReadCurrentFile(_unzFile, buffer, BUFFER_SIZE)) > 0)
+	{
+		[fileData appendBytes:buffer length:(uint)readBytes];
+	}
+	
+	unzCloseCurrentFile(_unzFile);
+	return [fileData copy];
+}
+
+- (void)uncompressZipArchiveNode:(DTZipArchiveNode *)node toDataWithCompletion:(DTZipArchiveUncompressFileCompletionBlock)completion
+{
+
+	// creating queue and group for uncompression
+	dispatch_queue_t uncompressingQueue = dispatch_queue_create("DTZipArchiveUncompressionQueue", DISPATCH_QUEUE_SERIAL);
+
+	dispatch_async(uncompressingQueue, ^{
+
+		NSError *error = nil;
+		NSData *data = [self uncompressZipArchiveNode:node withError:&error];
+
+		if (completion)
+		{
+			completion(data, error);
+		}
+	});
+}
 
 // adapted from: http://code.google.com/p/ziparchive
 - (void)enumerateUncompressedFilesAsDataUsingBlock:(DTZipArchiveEnumerationResultsBlock)enumerationBlock
@@ -472,7 +521,6 @@
 #pragma mark - Properties
 
 @synthesize path = _path;
-@synthesize listOfEntries = _listOfEntries;
 
 
 @end

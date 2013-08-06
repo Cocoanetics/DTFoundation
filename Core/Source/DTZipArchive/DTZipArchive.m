@@ -6,9 +6,11 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "DTZipArchive.h"
 #import "DTZipArchiveGZip.h"
 #import "DTZipArchivePKZip.h"
+#import "DTZipArchiveNode.h"
 
 NSString * const DTZipArchiveProgressNotification = @"DTZipArchiveProgressNotification";
 NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
@@ -25,9 +27,8 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 
 @implementation DTZipArchive
 {
-    NSString *_path;
-
-    NSArray *_listOfEntries;
+	NSString *_path;
+	NSArray *_fileTree;
 }
 
 + (DTZipArchive *)archiveAtPath:(NSString *)path;
@@ -77,22 +78,82 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
     [NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
 }
 
+#pragma mark - FileTree
+
+- (NSArray *)nodes
+{
+	if (!_fileTree)
+	{
+		NSMutableArray *temporaryfileTree = [[NSMutableArray alloc] init];
+
+		// dictionary for fast finding of directory nodes
+		NSMutableDictionary *nodeDictionary = [[NSMutableDictionary alloc] init];
+
+		for (DTZipArchiveNode *node in _listOfEntries)
+		{
+			NSRange slashOccurence = [node.name rangeOfString:@"/"];
+			if (slashOccurence.location == NSNotFound)
+			{
+				// entry on root level
+				[temporaryfileTree addObject:node];
+
+				// when it is a root directory add it also NSDictionary for fast finding
+				if (node.isDirectory)
+				{
+					nodeDictionary[node.name] = node;
+				}
+			}
+			else
+			{
+				// entry under root level
+
+				// delete last path extension to know parent node
+				NSString *parentPath = [node.name stringByDeletingLastPathComponent];
+				DTZipArchiveNode *parentNode = nodeDictionary[parentPath];
+
+				// we add only directories to dictionary
+				if (node.isDirectory)
+				{
+					nodeDictionary[node.name] = node;
+				}
+
+				[parentNode.children addObject:node];
+			}
+		}
+
+		_fileTree = [temporaryfileTree copy];
+	}
+
+	return _fileTree;
+}
+
 #pragma mark - Properties
 
 @synthesize path;
-@synthesize listOfEntries = _listOfEntries;
 
 @end
 
 @implementation DTZipArchive(Uncompressing)
 
 /**
- Abstract method -> should be never called here directly
+ Abstract methods -> should be never called here directly
  But have to be implemented in SubClass
  */
 - (void)uncompressToPath:(NSString *)targetPath completion:(DTZipArchiveUncompressionCompletionBlock)completion
 {
     [NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+}
+
+- (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error
+{
+	[NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+	
+	return nil;
+}
+
+- (void)uncompressZipArchiveNode:(DTZipArchiveNode *)node toDataWithCompletion:(DTZipArchiveUncompressFileCompletionBlock)completion
+{
+	[NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
 }
 
 @end

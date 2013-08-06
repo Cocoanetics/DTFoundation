@@ -7,7 +7,8 @@
 //
 
 #import "DTZipArchiveTest.h"
-#import "DTFoundation.h"
+#import "DTZipArchivePKZip.h"
+#import "DTZipArchiveNode.h"
 
 @implementation DTZipArchiveTest
 
@@ -48,7 +49,7 @@
             case 4:
             case 5:
             {
-                // ignor __MACOSX/ stuff
+                // ignore __MACOSX/ stuff
                 //STAssertTrue([fileName isEqualToString:@"__MACOSX/"], @"node uncompressed is not as expected");
                 break;
             }
@@ -259,16 +260,109 @@
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
     NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
 
+	// create zip archive
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
-
-
-
-    //BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:@"ILLEGAL PATH!!!"];
 
     [zipArchive uncompressToPath:@"ILLEGAL PATH!!!" completion:^(NSError *error) {
 
         STAssertNotNil(error, @"No error with illegal path");
     }];
+}
+
+
+/**
+ Tests uncompressing of one single file from PKZip
+ */
+- (void)testUncompressingSingleFileFromPKZipWithSuccess
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+
+	// create zip archive
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+
+	// choose file as node
+	DTZipArchiveNode *zipFiles = (DTZipArchiveNode *)zipArchive.nodes[0];
+	DTZipArchiveNode *text = (DTZipArchiveNode *)zipFiles.children[2];
+	DTZipArchiveNode *andere = (DTZipArchiveNode *)text.children[0];
+	DTZipArchiveNode *franzTxt = (DTZipArchiveNode *)andere.children[0];
+	
+
+	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+	[zipArchive uncompressZipArchiveNode:franzTxt toDataWithCompletion:^(NSData *data, NSError *error) {
+
+		STAssertNil(error, @"Error occured when uncompressing one single file: %@", [error localizedDescription]);
+
+		// TODO compare data
+		dispatch_semaphore_signal(semaphore);
+
+	}];
+
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(semaphore);
+}
+
+/**
+ Do uncompressing single file test with directory -> ILLEGAL -> Error should be raised
+ */
+- (void)testUncompressingDirectoryFromPKZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+
+	// create zip archive
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+
+	// choose directory node
+	DTZipArchiveNode *rootDirectoryNode = zipArchive.nodes[0];
+
+	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+	[zipArchive uncompressZipArchiveNode:rootDirectoryNode toDataWithCompletion:^(NSData *data, NSError *error) {
+
+		STAssertNotNil(error, @"No error raised when uncompressing directory", nil);
+		STAssertTrueNoThrow(error.code == 6, @"Wrong error raised. Error should be 6: %@", [error localizedDescription]);
+
+		dispatch_semaphore_signal(semaphore);
+	}];
+
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(semaphore);
+}
+
+/**
+ Do uncompressing with illegal manually create node -> Error should be raised
+ */
+- (void)testUncompressingWrongNodeFromPKZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+
+	// create zip archive
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+
+	// create illegal node manually
+	DTZipArchiveNode *wrongNode = [[DTZipArchiveNode alloc] init];
+	wrongNode.name = @"FALSCHER NAME!!!";
+	wrongNode.directory = NO;
+
+
+	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+	[zipArchive uncompressZipArchiveNode:wrongNode toDataWithCompletion:^(NSData *data, NSError *error) {
+
+		STAssertNotNil(error, @"No error raised when uncompressing wrong node", nil);
+		STAssertTrueNoThrow(error.code == 7, @"Wrong error raised. Error should be 7: %@", [error localizedDescription]);
+
+		dispatch_semaphore_signal(semaphore);
+	}];
+
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(semaphore);
 }
 
 /**
@@ -301,6 +395,8 @@
 
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
+	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+	
     [zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
 
         STAssertNil(error, @"Error occured when uncompressing");
@@ -314,7 +410,12 @@
         NSData *uncompressedFileData = [NSData dataWithContentsOfFile:filePath];
 
         STAssertTrue([originalFileData isEqualToData:uncompressedFileData], @"Uncompressed file does not match original file");
+		 
+		 dispatch_semaphore_signal(semaphore);
     }];
+	
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(semaphore);
 }
 
 /**

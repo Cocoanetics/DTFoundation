@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "DTZipArchive.h"
 
+@class DTZipArchiveNode;
+
 @interface DTZipArchivePKZip : DTZipArchive
 
 @end
