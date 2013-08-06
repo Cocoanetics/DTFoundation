@@ -10,6 +10,7 @@ This is the history of version updates.
 - ADDED: DTZipArchive Demo demonstrating DTZipArchive and DTFolderMonitor on iOS
 - ADDED: DTLog logging hooks
 - CHANGED: DTHTMLParser now aggregates parsed characters into a single delegate call-back
+- CHANGED: Removed UIKit dependency for DTAsyncFileDeleter so that it can be moved to Core sup spec
 
 **Version 1.5.0**
 
