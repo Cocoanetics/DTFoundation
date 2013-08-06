@@ -7,7 +7,7 @@
 //
 
 // block signature called for each log statement
-typedef void (^DTLogBlock)(NSUInteger level, NSString *fileName, NSString *methodName, NSUInteger lineNumber, NSString *format, ...);
+typedef void (^DTLogBlock)(NSUInteger logLevel, NSString *fileName, NSUInteger lineNumber, NSString *methodName, NSString *format, ...);
 
 
 // internal variables needed by macros
@@ -40,22 +40,22 @@ void DTLogSetLogLevel(NSUInteger logLevel);
  - DTLogDebug (7)
  */
 
-// log macro for error level (0)
+// log macro for emergency level (0)
 #define DTLogEmergency(format, ...) DTLogCallHandlerIfLevel(0, format, ##__VA_ARGS__);
 
-// log macro for error level (1)
+// log macro for alert level (1)
 #define DTLogAlert(format, ...) DTLogCallHandlerIfLevel(1, format, ##__VA_ARGS__);
 
-// log macro for error level (2)
+// log macro for critical level (2)
 #define DTLogCritical(format, ...) DTLogCallHandlerIfLevel(2, format, ##__VA_ARGS__);
 
 // log macro for error level (3)
 #define DTLogError(format, ...) DTLogCallHandlerIfLevel(3, format, ##__VA_ARGS__);
 
-// log macro for error level (4)
+// log macro for warning level (4)
 #define DTLogWarning(format, ...) DTLogCallHandlerIfLevel(4, format, ##__VA_ARGS__);
 
-// log macro for error level (5)
+// log macro for notice level (5)
 #define DTLogNotice(format, ...) DTLogCallHandlerIfLevel(5, format, ##__VA_ARGS__);
 
 // log macro for info level (6)
@@ -66,7 +66,7 @@ void DTLogSetLogLevel(NSUInteger logLevel);
 
 // macro that gets called by individual level macros
 #define DTLogCallHandlerIfLevel(minLevel, format, ...) \
-	if (DTLogHandler && DTLogLevel>=minLevel) DTLogHandler(7, DTLogSourceFileName, DTLogSourceMethodName, DTLogSourceLineNumber, format, ##__VA_ARGS__);
+	if (DTLogHandler && DTLogLevel>=minLevel) DTLogHandler(7, DTLogSourceFileName, DTLogSourceLineNumber, DTLogSourceMethodName, format, ##__VA_ARGS__);
 
 // helper to get the current source file name as NSString
 #define DTLogSourceFileName [[NSString stringWithUTF8String:__FILE__] lastPathComponent]
