@@ -288,6 +288,12 @@
 		A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */; };
 		A7E88ED416BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */; };
 		A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */; };
+		A7FA5FA417B0F7B4000FC61F /* DTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FA217B0F7B4000FC61F /* DTLog.h */; };
+		A7FA5FA517B0F7B4000FC61F /* DTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FA217B0F7B4000FC61F /* DTLog.h */; };
+		A7FA5FA617B0F7B4000FC61F /* DTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FA217B0F7B4000FC61F /* DTLog.h */; };
+		A7FA5FA717B0F7B4000FC61F /* DTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FA317B0F7B4000FC61F /* DTLog.m */; };
+		A7FA5FA817B0F7B4000FC61F /* DTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FA317B0F7B4000FC61F /* DTLog.m */; };
+		A7FA5FA917B0F7B4000FC61F /* DTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FA317B0F7B4000FC61F /* DTLog.m */; };
 		A7FAA3891652291D006ED151 /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; };
 		A7FAA38A1652291D006ED151 /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; };
 		A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
@@ -713,6 +719,8 @@
 		A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCustomColoredAccessory.m; sourceTree = "<group>"; };
 		A7F4DFF8147FD08900F4059A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A7FA5FA217B0F7B4000FC61F /* DTLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTLog.h; sourceTree = "<group>"; };
+		A7FA5FA317B0F7B4000FC61F /* DTLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTLog.m; sourceTree = "<group>"; };
 		A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTComparing.h"; sourceTree = "<group>"; };
 		A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTComparing.m"; sourceTree = "<group>"; };
 		A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTWeakSupport.h; sourceTree = "<group>"; };
@@ -1356,6 +1364,8 @@
 				A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */,
 				A78D661B17AFFCCC0039F5E6 /* DTFolderMonitor.h */,
 				A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */,
+				A7FA5FA217B0F7B4000FC61F /* DTLog.h */,
+				A7FA5FA317B0F7B4000FC61F /* DTLog.m */,
 				A70B4CC71486621B00873A4A /* DTVersion.h */,
 				A70B4CC81486621B00873A4A /* DTVersion.m */,
 				A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */,
@@ -1595,6 +1605,7 @@
 				A7FB1216175C9C8B00D4B7F0 /* DTSidePanelController.h in Headers */,
 				A7FB121A175C9D5000D4B7F0 /* DTWeakSupport.h in Headers */,
 				A78D661E17AFFCCC0039F5E6 /* DTFolderMonitor.h in Headers */,
+				A7FA5FA517B0F7B4000FC61F /* DTLog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1618,6 +1629,7 @@
 				A7FB121B175C9D5000D4B7F0 /* DTWeakSupport.h in Headers */,
 				A70C4FFB17AA7F7D00000DF5 /* DTUtils.h in Headers */,
 				A78D661F17AFFCCC0039F5E6 /* DTFolderMonitor.h in Headers */,
+				A7FA5FA617B0F7B4000FC61F /* DTLog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1677,6 +1689,7 @@
 				A70C4FFF17AA7F9C00000DF5 /* DTAlertView.h in Headers */,
 				A70C500017AA7F9C00000DF5 /* UIView+DTActionHandlers.h in Headers */,
 				A78D661D17AFFCCC0039F5E6 /* DTFolderMonitor.h in Headers */,
+				A7FA5FA417B0F7B4000FC61F /* DTLog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2252,6 +2265,7 @@
 				A70C4FF117AA7F2000000DF5 /* DTObjectBlockExecutor.m in Sources */,
 				A70C4FF217AA7F2000000DF5 /* NSObject+DTRuntime.m in Sources */,
 				A78D662117AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */,
+				A7FA5FA817B0F7B4000FC61F /* DTLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2297,6 +2311,7 @@
 				A70C4FF517AA7F2300000DF5 /* DTObjectBlockExecutor.m in Sources */,
 				A70C4FF617AA7F2300000DF5 /* NSObject+DTRuntime.m in Sources */,
 				A78D662217AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */,
+				A7FA5FA917B0F7B4000FC61F /* DTLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2375,6 +2390,7 @@
 				A70C4FF317AA7F2100000DF5 /* DTObjectBlockExecutor.m in Sources */,
 				A70C4FF417AA7F2100000DF5 /* NSObject+DTRuntime.m in Sources */,
 				A78D662017AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */,
+				A7FA5FA717B0F7B4000FC61F /* DTLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
