@@ -8,6 +8,7 @@ This is the history of version updates.
 - ADDED: Ability to uncompress individual files in DTZipArchive
 - ADDED: DTFolderMonitor for watching a folder for changes
 - ADDED: DTZipArchive Demo demonstrating DTZipArchive and DTFolderMonitor on iOS
+- ADDED: DTLog logging hooks
 - CHANGED: DTHTMLParser now aggregates parsed characters into a single delegate call-back
 
 **Version 1.5.0**
