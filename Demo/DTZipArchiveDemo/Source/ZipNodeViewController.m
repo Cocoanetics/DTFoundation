@@ -157,7 +157,7 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
 		
 		if (error)
 		{
-			NSLog(@"Error when uncompressing file: %@", [error localizedDescription]);
+			DTLogError(@"Error when uncompressing file: %@", [error localizedDescription]);
 		}
 				
 		NSString *directoryPath = [filePath stringByDeletingLastPathComponent];
@@ -165,7 +165,7 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
 		
 		if (error)
 		{
-			NSLog(@"Error when creating directory for uncompressed ZIP file: %@", [error localizedDescription]);
+			DTLogError(@"Error when creating directory for uncompressed ZIP file: %@", [error localizedDescription]);
 		}
 		
 		NSURL *fileURL = [NSURL fileURLWithPath:filePath];
@@ -173,7 +173,7 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
 		
 		if (error)
 		{
-			NSLog(@"Error when writing uncompressed ZIP file: %@", [error localizedDescription]);
+			DTLogError(@"Error when writing uncompressed ZIP file: %@", [error localizedDescription]);
 		}
 	}
 	

@@ -8,6 +8,7 @@
 
 #import "NSScanner+DTScripting.h"
 #import "DTScriptVariable.h"
+#import "DTLog.h"
 
 @implementation NSScanner (DTScripting)
 
@@ -45,7 +46,7 @@
 			if (!part && !stringIsTerminated)
 			{
 				self.scanLocation = previousScanLocation;
-				NSLog(@"Unterminated string at position %d in string '%@'", (int)[self scanLocation], self.string);
+				DTLogError(@"Unterminated string at position %d in string '%@'", (int)[self scanLocation], self.string);
 				return NO;
 			}
 		}
@@ -82,7 +83,7 @@
 		else
 		{
 			self.scanLocation = previousScanLocation;
-			NSLog(@"Illegal character in parameter at position %d in string '%@'", (int)[self scanLocation], self.string);
+			DTLogError(@"Illegal character in parameter at position %d in string '%@'", (int)[self scanLocation], self.string);
 			return NO;
 		}
 	}

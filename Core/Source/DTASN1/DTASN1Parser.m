@@ -134,7 +134,7 @@
 {
 	if (!dataRange.length && tag != DTASN1TypeNull)
 	{
-		NSLog(@"Encountered zero length data for tag %ld", (unsigned long)tag);
+		DTLogError(@"Encountered zero length data for tag %ld", (unsigned long)tag);
 		
 		// only NULL can have zero length
 		return NO;

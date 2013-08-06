@@ -142,7 +142,7 @@
                 STAssertTrue([fileName isEqualToString:@"zipFiles"], @"node uncompressed is not as expected");
 
                 // explicit stop -> no other iterations have to follow!
-                NSLog(@"Now stopping uncompressing with DTZipArchive");
+                DTLogInfo(@"Now stopping uncompressing with DTZipArchive");
                 *stop = YES;
 
                 break;

@@ -21,7 +21,6 @@
 	
 	DTScriptVariable *variable = nil;
 	BOOL result = [scanner scanScriptVariable:&variable];
-	//NSLog(@"value: %@ name: %@", variable.value, variable.name);
 
 	if (expectSuccess)
 	{
