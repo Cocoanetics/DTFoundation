@@ -22,6 +22,16 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
 @implementation ZipNodeViewController
 {
 	UIDocumentInteractionController *_documentInteractionController;
+	
+	/*
+	 Here we display all files except files starting with . they are hidden
+	 */
+	NSArray *_filteredNodeChildrenForQickLook;
+	
+	/**
+	 Here we display all except files starting with __MACOS and files or folders starting with .
+	 */
+	NSArray *_filteredNodeChildren;
 }
 
 
@@ -57,9 +67,7 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	DTZipArchiveNode *node =  self.node;
-
-	return [node.children count];
+	return [_filteredNodeChildren count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,7 +79,7 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
 	}
 
-	DTZipArchiveNode *node = [_node.children objectAtIndex:indexPath.row];
+	DTZipArchiveNode *node = [_filteredNodeChildren objectAtIndex:indexPath.row];
 
 	cell.textLabel.text = [node.name lastPathComponent];
 	
@@ -94,13 +102,13 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	DTZipArchiveNode *nodeToShow = _node.children[indexPath.row];
+	DTZipArchiveNode *nodeToShow = _filteredNodeChildren[indexPath.row];
 	
 	if (nodeToShow.isDirectory)
 	{
 		ZipNodeViewController *zipNodeViewController = [[ZipNodeViewController alloc] init];
 
-		zipNodeViewController.node = _node.children[indexPath.row];
+		zipNodeViewController.node = _filteredNodeChildren[indexPath.row];
 		zipNodeViewController.zipArchive = _zipArchive;
 
 		[self.navigationController pushViewController:zipNodeViewController animated:YES];
@@ -125,7 +133,7 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
  */
  - (NSInteger)numberOfPreviewItemsInPreviewController:(QLPreviewController *)previewController
 {
-	return [self.node.children count];
+	return [_filteredNodeChildrenForQickLook count];
 }
 
 /**
@@ -134,7 +142,7 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
 - (id)previewController:(QLPreviewController *)previewController previewItemAtIndex:(NSInteger)idx
 {
 	
-	DTZipArchiveNode *node = _node.children[idx];
+	DTZipArchiveNode *node = _filteredNodeChildrenForQickLook[idx];
 	
 	// create unique file path for this item
 	NSString *filePath = [[NSString cachesPath] stringByAppendingPathComponent:node.name];
@@ -171,5 +179,39 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
 	
 	return [NSURL fileURLWithPath:filePath];
 }
+
+#pragma mark - Properties
+
+- (void)setNode:(DTZipArchiveNode *)node
+{
+	if (node != _node)
+	{
+		_node = node;
+		
+		NSMutableArray *temporaryNodeChildrenForQuickLook = [NSMutableArray array];
+		NSMutableArray *temporaryNodeChildren = [NSMutableArray array];
+		
+		for (DTZipArchiveNode *childNode in node.children)
+		{
+			NSString *fileName = [childNode.name lastPathComponent];
+			
+			// filter files and directories starting with . (hidden) or __MACOS
+			if (![fileName hasPrefix:@"."] && ![fileName hasPrefix:@"__MACOSX"])
+			{
+				[temporaryNodeChildren addObject:childNode];
+				
+				// add filter to show only files in QuickLook controller
+				if (!childNode.isDirectory)
+				{
+					[temporaryNodeChildrenForQuickLook addObject:childNode];
+				}
+			}
+		}
+		
+		_filteredNodeChildrenForQickLook = [temporaryNodeChildrenForQuickLook copy];
+		_filteredNodeChildren = [temporaryNodeChildren copy];
+	}
+}
+
 
 @end

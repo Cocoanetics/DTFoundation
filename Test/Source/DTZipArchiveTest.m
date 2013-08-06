@@ -7,7 +7,6 @@
 //
 
 #import "DTZipArchiveTest.h"
-#import "DTFoundation.h"
 #import "DTZipArchivePKZip.h"
 #import "DTZipArchiveNode.h"
 
@@ -50,7 +49,7 @@
             case 4:
             case 5:
             {
-                // ignor __MACOSX/ stuff
+                // ignore __MACOSX/ stuff
                 //STAssertTrue([fileName isEqualToString:@"__MACOSX/"], @"node uncompressed is not as expected");
                 break;
             }
