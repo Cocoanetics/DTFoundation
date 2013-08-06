@@ -46,7 +46,7 @@ static SCNetworkConnectionFlags _connectionFlags = 0;
 		{
 			if(!SCNetworkReachabilityScheduleWithRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
 			{
-				NSLog(@"Error: Could not schedule reachability");
+				DTLogError(@"Error: Could not schedule reachability");
 				SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
 				return nil;
 			}
@@ -76,11 +76,11 @@ static SCNetworkConnectionFlags _connectionFlags = 0;
 			
 			if (SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
 			{
-				NSLog(@"Unscheduled reachability");
+				DTLogInfo(@"Unscheduled reachability");
 			}
 			else
 			{
-				NSLog(@"Error: Could not unschedule reachability");
+				DTLogError(@"Error: Could not unschedule reachability");
 			}
 			
 			_reachability = nil;

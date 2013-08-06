@@ -20,38 +20,38 @@
 {
 	[super viewWillAppear:animated];
 	
-	NSLog(@"%@ %@ %s animated:%d", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, animated);
+	DTLogInfo(@"%@ %@ %s animated:%d", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	NSLog(@"%@ %@ %s animated:%d", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, animated);
+	DTLogInfo(@"%@ %@ %s animated:%d", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 	
-	NSLog(@"%@ %@ %s animated:%d", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, animated);
+	DTLogInfo(@"%@ %@ %s animated:%d", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
-	NSLog(@"%@ %@ %s animated:%d", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, animated);
+	DTLogInfo(@"%@ %@ %s animated:%d", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, animated);
 }
 
 - (void)willMoveToParentViewController:(UIViewController *)parent
 {
 	[super willMoveToParentViewController:parent];
-	NSLog(@"%@ %@ %s %@", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, parent);
+	DTLogInfo(@"%@ %@ %s %@", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, parent);
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent
 {
 	[super didMoveToParentViewController:parent];
-	NSLog(@"%@ %@ %s %@", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, parent);
+	DTLogInfo(@"%@ %@ %s %@", self, self.topViewController.navigationItem.title, __PRETTY_FUNCTION__, parent);
 }
 
 @end

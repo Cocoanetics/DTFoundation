@@ -48,8 +48,6 @@
 	STAssertEquals(2, (int)version.minor, @"version.minor is not the correct value %d", version.minor);
 	STAssertEquals(3, (int)version.maintenance, @"version.maintenance is not the correct value %d", version.maintenance);
 	STAssertEquals(4, (int)version.build, @"version.build is not the correct value %d", version.build);
-
-
 }
 
 
@@ -90,7 +88,6 @@
 	first = [DTVersion versionWithString:@"1.2.3.4"];
 	second = [DTVersion versionWithString:@"1.2.3.4"];
 	STAssertTrue([first isEqualToVersion:second], @"first version is not equal to second, but should");
-
 }
 
 
@@ -117,7 +114,6 @@
 
 	second = [DTVersion versionWithString:@"0.9.9.0"];
 	STAssertEquals(NSOrderedDescending, [first compare:nil], @"%@ should be smaller then %@", first, second);
-
 }
 
 - (void)testLessThan
@@ -145,10 +141,7 @@
 	STAssertFalse([first isLessThenVersionString:@"8.00.047"], @"first version is not less than 8.00.047");
 
 	second = [DTVersion versionWithString:@"8.00.047 build 010"];
-	NSLog(@"version %@", second);
 	STAssertEquals(NSOrderedSame, [first compare:second], @"should be the same");
-
-
 }
 
 @end

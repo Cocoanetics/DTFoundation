@@ -7,6 +7,7 @@
 //
 
 #import "UIImage+DTFoundation.h"
+#import "DTLog.h"
 
 @implementation UIImage (DTFoundation)
 
@@ -43,12 +44,12 @@
 	if (cacheResponse)
 	{
 		data = [cacheResponse data];
-		NSLog(@"cache hit");
+		DTLogDebug(@"cache hit for %@", [URL absoluteString]);
 	}
-	else {
-		NSLog(@"cache fail");
+	else
+	{
+		DTLogDebug(@"cache fail for %@", [URL absoluteString]);
 	}
-
 	
 	NSURLResponse *response;
 	data = [NSURLConnection sendSynchronousRequest:request
@@ -57,7 +58,7 @@
 	
 	if (!data)
 	{
-		NSLog(@"Error loading image at %@", URL);
+		DTLogError(@"Error loading image at %@", URL);
 		return nil;
 	}
 	

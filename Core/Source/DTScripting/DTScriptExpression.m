@@ -9,6 +9,7 @@
 #import "DTScriptExpression.h"
 #import "DTScriptVariable.h"
 #import "NSScanner+DTScripting.h"
+#import "DTLog.h"
 
 
 @implementation DTScriptExpression
@@ -110,7 +111,7 @@
 	
 	if (![scanner scanString:@"[" intoString:nil])
 	{
-		NSLog(@"No [ at position %d in string '%@'", (int)[scanner scanLocation], string);
+		DTLogError(@"No [ at position %d in string '%@'", (int)[scanner scanLocation], string);
 		return NO;
 	}
 	
@@ -118,7 +119,7 @@
 	
 	if (![scanner scanScriptVariable:&receiver])
 	{
-		NSLog(@"No receiver at position %d in string '%@'", (int)[scanner scanLocation], string);
+		DTLogError(@"No receiver at position %d in string '%@'", (int)[scanner scanLocation], string);
 		return NO;
 	}
 
@@ -128,7 +129,7 @@
 	NSString *method = nil;
 	if (![scanner scanCharactersFromSet:[NSCharacterSet alphanumericCharacterSet] intoString:&method])
 	{
-		NSLog(@"No method name at position %d in string '%@'", (int)[scanner scanLocation], string);
+		DTLogError(@"No method name at position %d in string '%@'", (int)[scanner scanLocation], string);
 		return NO;
 	}
 	
@@ -141,7 +142,7 @@
 	NSString *decider = nil;
 	if (![scanner scanCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@":]"] intoString:&decider])
 	{
-		NSLog(@"No ] or : at position %d in string '%@'", (int)[scanner scanLocation], string);
+		DTLogError(@"No ] or : at position %d in string '%@'", (int)[scanner scanLocation], string);
 		return NO;
 	}
 	
@@ -178,7 +179,7 @@
 					
 					if (![scanner scanString:@":" intoString:nil])
 					{
-						NSLog(@"No : at position %d in string '%@'", (int)[scanner scanLocation], self);
+						DTLogError(@"No : at position %d in string '%@'", (int)[scanner scanLocation], self);
 						return NO;
 					}
 					
@@ -192,13 +193,13 @@
 					}
 					else
 					{
-						NSLog(@"Illegal character in parameter at position %d in string '%@'", (int)[scanner scanLocation], string);
+						DTLogError(@"Illegal character in parameter at position %d in string '%@'", (int)[scanner scanLocation], string);
 						return NO;
 					}
 				}
 				else
 				{
-					NSLog(@"Illegal character in parameter at position %d in string '%@'", (int)[scanner scanLocation], string);
+					DTLogError(@"Illegal character in parameter at position %d in string '%@'", (int)[scanner scanLocation], string);
 					return NO;
 				}
 			}

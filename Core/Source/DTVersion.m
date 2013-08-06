@@ -86,7 +86,6 @@
 			default:
 				break;
 		}
-		//NSLog(@"value for %d: %d", i, value);
 	}
 
 	if (major >= 0 &&
