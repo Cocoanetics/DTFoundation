@@ -51,7 +51,10 @@ void DTLogMessagev(DTLogLevel logLevel, NSString *format, va_list args)
 	aslmsg msg = asl_new(ASL_TYPE_MSG);
 	asl_set(msg, ASL_KEY_READ_UID, "-1");  // without this the message cannot be found by asl_search
 	
-	asl_vlog(client, msg, logLevel, [format UTF8String], args);
+	// convert to via NSString, since printf does not know %@
+	NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
+	
+	asl_log(client, msg, logLevel, "%s", [message UTF8String]);
 
 	asl_free(msg);
 	
