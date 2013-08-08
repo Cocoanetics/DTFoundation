@@ -150,7 +150,7 @@ if (DTLogHandler && DTCurrentLogLevel>=logLevel) DTLogHandler(logLevel, DTLogSou
 #define DTLogSourceFileName [[NSString stringWithUTF8String:__FILE__] lastPathComponent]
 
 // helper to get current method name
-#define DTLogSourceMethodName NSStringFromSelector(_cmd)
+#define DTLogSourceMethodName [NSString stringWithUTF8String:__PRETTY_FUNCTION__]
 
 // helper to get current line number
 #define DTLogSourceLineNumber __LINE__
