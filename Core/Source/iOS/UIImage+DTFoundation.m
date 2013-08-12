@@ -15,6 +15,9 @@
 
 + (UIImage *)imageWithSolidColor:(UIColor *)color size:(CGSize)size
 {
+	NSParameterAssert(color);
+	NSAssert(!CGSizeEqualToSize(size, CGSizeZero), @"Size cannot be CGSizeZero");
+
 	CGRect rect = CGRectMake(0, 0, size.width, size.height);
 	
 	// Create a context depending on given size
@@ -30,6 +33,25 @@
 	return image;
 }
 
+- (UIImage *)imageMaskedAndTintedWithColor:(UIColor *)color
+{
+	NSParameterAssert(color);
+	
+	UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
+	CGContextRef ctx = UIGraphicsGetCurrentContext();
+	
+	CGRect bounds = (CGRect){CGPointZero, self.size};
+	
+	CGContextClipToMask(ctx, bounds, self.CGImage);
+	
+	[color setFill];
+	CGContextFillRect(ctx, bounds);
+	
+	UIImage *retImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	
+	return retImage;
+}
 
 #pragma mark - Loading
 
