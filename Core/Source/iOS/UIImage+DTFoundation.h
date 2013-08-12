@@ -29,7 +29,7 @@
  @param color The color to use for tinting
  @returns A new image
  */
-- (UIImage *)imageMaskedAndTintedWithColor:(UIColor *)color;
++ (UIImage *)imageMaskedAndTintedWithColor:(UIColor *)color;
 
 /**
  @name Loading from RemoteURLs

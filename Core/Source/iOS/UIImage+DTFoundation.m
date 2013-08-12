@@ -33,7 +33,7 @@
 	return image;
 }
 
-- (UIImage *)imageMaskedAndTintedWithColor:(UIColor *)color
++ (UIImage *)imageMaskedAndTintedWithColor:(UIColor *)color
 {
 	NSParameterAssert(color);
 	
