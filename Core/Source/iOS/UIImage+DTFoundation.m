@@ -42,11 +42,18 @@
 	
 	CGRect bounds = (CGRect){CGPointZero, self.size};
 	
-	CGContextClipToMask(ctx, bounds, self.CGImage);
+	// do a vertical flip so that image is correct
+	CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, bounds.size.height);
+	CGContextConcatCTM(ctx, flipVertical);
 	
+	// create mask of image
+	CGContextClipToMask(ctx, bounds, self.CGImage);
+		
+	// fill with given color
 	[color setFill];
 	CGContextFillRect(ctx, bounds);
 	
+	// get back new image
 	UIImage *retImage = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	
