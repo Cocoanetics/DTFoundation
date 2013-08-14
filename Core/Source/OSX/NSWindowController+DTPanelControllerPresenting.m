@@ -8,6 +8,7 @@
 
 #import "objc/runtime.h"
 #import "NSWindowController+DTPanelControllerPresenting.h"
+#import "DTLog.h"
 
 static char DTPresentedViewControllerKey;
 static char DTPresentedViewControllerDismissalQueueKey;

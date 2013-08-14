@@ -3,6 +3,14 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.5.2**
+
+- ADDED: Method for duplicating template image tinting under iOS 6
+- ADDED: DTLog function for retrieving current app log messages
+- ADDED: DTLog function for duplicating NSLog but using ASL and specifying severity level
+- FIXED: DTLog issue when being called from C-function
+- FIXED: DTHTMLParser would not accumulate characters if no tag start and end delegate methods were set
+
 **Version 1.5.1**
 
 - ADDED: Ability to uncompress individual files in DTZipArchive

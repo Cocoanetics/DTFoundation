@@ -19,23 +19,6 @@ extern DTLogBlock DTLogHandler;
 extern NSUInteger DTCurrentLogLevel;
 
 /**
- @name name bla
- */
-
-/**
- Sets the block to be executed for messages with a log level less or equal the currently set log level
- @param logBlock
- */
-void DTLogSetLoggerBlock(DTLogBlock handler);
-
-/**
- Modifies the current log level
- @param logLevel The ASL log level (0-7) to set, lower numbers being more important
- */
-void DTLogSetLogLevel(NSUInteger logLevel);
-
-
-/**
  There is a macro for each ASL log level:
  
  - DTLogEmergency (0)
@@ -94,39 +77,80 @@ typedef NS_ENUM(NSUInteger, DTLogLevel)
 	DTLogLevelDebug     = 7
 };
 
+/**
+ @name Logging Functions
+ */
+
+/**
+ Sets the block to be executed for messages with a log level less or equal the currently set log level
+ @param logBlock
+ */
+void DTLogSetLoggerBlock(DTLogBlock handler);
+
+/**
+ Modifies the current log level
+ @param logLevel The ASL log level (0-7) to set, lower numbers being more important
+ */
+void DTLogSetLogLevel(NSUInteger logLevel);
+
+/**
+ Variant of DTLogMessage that takes a va_list.
+ @param logLevel The DTLogLevel for the message
+ @param format The log message format
+ @param args The va_list of arguments
+*/
+void DTLogMessagev(DTLogLevel logLevel, NSString *format, va_list args);
+
+/**
+ Same as `NSLog` but allows for setting a message log level
+ @param logLevel The DTLogLevel for the message
+ @param format The log message format and optional variables
+ */
+void DTLogMessage(DTLogLevel logLevel, NSString *format, ...);
+
+/**
+ Retrieves the log messages currently available for the running app
+ @returns an `NSArray` of `NSDictionary` entries
+ */
+NSArray *DTLogGetMessages(void);
+
+/**
+ @name Macros
+ */
+
 // log macro for error level (0)
-#define DTLogEmergency(format, ...) DTLogCallHandlerIfLevel(DTLogLevelEmergency, format, ##__VA_ARGS__);
+#define DTLogEmergency(format, ...) DTLogCallHandlerIfLevel(DTLogLevelEmergency, format, ##__VA_ARGS__)
 
 // log macro for error level (1)
-#define DTLogAlert(format, ...) DTLogCallHandlerIfLevel(DTLogLevelAlert, format, ##__VA_ARGS__);
+#define DTLogAlert(format, ...) DTLogCallHandlerIfLevel(DTLogLevelAlert, format, ##__VA_ARGS__)
 
 // log macro for error level (2)
-#define DTLogCritical(format, ...) DTLogCallHandlerIfLevel(DTLogLevelCritical, format, ##__VA_ARGS__);
+#define DTLogCritical(format, ...) DTLogCallHandlerIfLevel(DTLogLevelCritical, format, ##__VA_ARGS__)
 
 // log macro for error level (3)
-#define DTLogError(format, ...) DTLogCallHandlerIfLevel(DTLogLevelError, format, ##__VA_ARGS__);
+#define DTLogError(format, ...) DTLogCallHandlerIfLevel(DTLogLevelError, format, ##__VA_ARGS__)
 
 // log macro for error level (4)
-#define DTLogWarning(format, ...) DTLogCallHandlerIfLevel(DTLogLevelWarning, format, ##__VA_ARGS__);
+#define DTLogWarning(format, ...) DTLogCallHandlerIfLevel(DTLogLevelWarning, format, ##__VA_ARGS__)
 
 // log macro for error level (5)
-#define DTLogNotice(format, ...) DTLogCallHandlerIfLevel(DTLogLevelNotice, format, ##__VA_ARGS__);
+#define DTLogNotice(format, ...) DTLogCallHandlerIfLevel(DTLogLevelNotice, format, ##__VA_ARGS__)
 
 // log macro for info level (6)
-#define DTLogInfo(format, ...) DTLogCallHandlerIfLevel(DTLogLevelInfo, format, ##__VA_ARGS__);
+#define DTLogInfo(format, ...) DTLogCallHandlerIfLevel(DTLogLevelInfo, format, ##__VA_ARGS__)
 
 // log macro for debug level (7)
-#define DTLogDebug(format, ...) DTLogCallHandlerIfLevel(DTLogLevelDebug, format, ##__VA_ARGS__);
+#define DTLogDebug(format, ...) DTLogCallHandlerIfLevel(DTLogLevelDebug, format, ##__VA_ARGS__)
 
 // macro that gets called by individual level macros
 #define DTLogCallHandlerIfLevel(logLevel, format, ...) \
-if (DTLogHandler && DTCurrentLogLevel>=logLevel) DTLogHandler(logLevel, DTLogSourceFileName, DTLogSourceLineNumber, DTLogSourceMethodName, format, ##__VA_ARGS__);
+if (DTLogHandler && DTCurrentLogLevel>=logLevel) DTLogHandler(logLevel, DTLogSourceFileName, DTLogSourceLineNumber, DTLogSourceMethodName, format, ##__VA_ARGS__)
 
 // helper to get the current source file name as NSString
 #define DTLogSourceFileName [[NSString stringWithUTF8String:__FILE__] lastPathComponent]
 
 // helper to get current method name
-#define DTLogSourceMethodName NSStringFromSelector(_cmd)
+#define DTLogSourceMethodName [NSString stringWithUTF8String:__PRETTY_FUNCTION__]
 
 // helper to get current line number
 #define DTLogSourceLineNumber __LINE__

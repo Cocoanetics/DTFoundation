@@ -7,6 +7,7 @@
 //
 
 #import "DTSQLiteFunctions.h"
+#import "DTLog.h"
 
 #pragma mark - Database Helpers
 
