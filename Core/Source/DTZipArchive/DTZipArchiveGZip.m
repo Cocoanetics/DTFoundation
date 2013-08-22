@@ -253,7 +253,7 @@
 		NSFileManager *fileManager = [[NSFileManager alloc] init];
 		
 		// create file handle
-		destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:error];
+		destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:nil];
 		if(!destinationFileHandle)
 		{
 			// if we have no file create it first
