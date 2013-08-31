@@ -3021,11 +3021,6 @@
 		A7D60FDF15D3B0BC00AEDD1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-					"$(ARCHS_STANDARD_64_BIT)",
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -3048,11 +3043,6 @@
 		A7D60FE015D3B0BC00AEDD1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv6,
-					"$(ARCHS_STANDARD_32_BIT)",
-					"$(ARCHS_STANDARD_64_BIT)",
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -3067,9 +3057,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = UnitTests;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macos";
 				TEST_AFTER_BUILD = NO;
-				VALID_ARCHS = "armv7 armv7s x86_64";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
