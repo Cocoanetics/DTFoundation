@@ -2039,9 +2039,9 @@
 			productReference = FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		FAF37A1F17AFDD93009AC27C /* DTZipArchiveDemo */ = {
+		FAF37A1F17AFDD93009AC27C /* DTZipArchive Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAF37A3817AFDD93009AC27C /* Build configuration list for PBXNativeTarget "DTZipArchiveDemo" */;
+			buildConfigurationList = FAF37A3817AFDD93009AC27C /* Build configuration list for PBXNativeTarget "DTZipArchive Demo" */;
 			buildPhases = (
 				FAF37A1C17AFDD93009AC27C /* Sources */,
 				FAF37A1D17AFDD93009AC27C /* Frameworks */,
@@ -2053,7 +2053,7 @@
 				FAF37A7217AFE0CC009AC27C /* PBXTargetDependency */,
 				FAF37A5917AFDF5D009AC27C /* PBXTargetDependency */,
 			);
-			name = DTZipArchiveDemo;
+			name = "DTZipArchive Demo";
 			productName = DTZipArchiveDemo;
 			productReference = FAF37A2017AFDD93009AC27C /* DTZipArchive.app */;
 			productType = "com.apple.product-type.application";
@@ -2098,7 +2098,7 @@
 				A7C92B8B174FB9720019D70A /* DTSQLite (Mac) */,
 				A70D74CF1743AFBC00E6E626 /* DTSidePanels Demo */,
 				A7D9D62C1758C89800C29B6F /* DTReachability Demo */,
-				FAF37A1F17AFDD93009AC27C /* DTZipArchiveDemo */,
+				FAF37A1F17AFDD93009AC27C /* DTZipArchive Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -3579,7 +3579,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FAF37A3817AFDD93009AC27C /* Build configuration list for PBXNativeTarget "DTZipArchiveDemo" */ = {
+		FAF37A3817AFDD93009AC27C /* Build configuration list for PBXNativeTarget "DTZipArchive Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAF37A3617AFDD93009AC27C /* Debug */,
