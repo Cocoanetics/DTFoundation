@@ -53,7 +53,7 @@
 		_uncompressedLength = 0;
 		
 		// shift our bytes to get an NSUInteger
-		for (int i=0; i<last4Bytes.length; i++)
+		for (NSUInteger i=0; i<last4Bytes.length; i++)
 		{
 			_uncompressedLength += buffer[i] << (8 * i);
 		}
@@ -159,15 +159,13 @@
 
 - (void)_uncompressFile:(NSString *)targetPath completion:(DTZipArchiveUncompressFileCompletionBlock)completion
 {
-	__block NSError *error = nil;
-	
 	BOOL isDirectory = NO;
 	if (targetPath != nil && (![[NSFileManager defaultManager] fileExistsAtPath:targetPath isDirectory:&isDirectory] || !isDirectory))
 	{
 		if (completion)
 		{
 			NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Invalid target path"};
-			error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:1 userInfo:userInfo];
+			NSError *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:1 userInfo:userInfo];
 			
 			completion(nil, error);
 		}
@@ -235,9 +233,12 @@
 	
 	// inflateInit2 knows how to deal with gzip format
 	if (inflateInit2(&strm, (15+32)) != Z_OK)
-	{		
-		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to go to first file in zip archive"};
-		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:3 userInfo:userInfo];
+	{
+        if (error)
+        {
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to go to first file in zip archive"};
+            *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:3 userInfo:userInfo];
+        }
 		
 		return nil;
 	}
@@ -252,14 +253,17 @@
 		NSFileManager *fileManager = [[NSFileManager alloc] init];
 		
 		// create file handle
-		destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:error];
+		destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:nil];
 		if(!destinationFileHandle)
 		{
 			// if we have no file create it first
 			if (![fileManager createFileAtPath:filePath contents:nil attributes:nil])
 			{
-				NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unzip file cannot be created"};
-				*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:2 userInfo:userInfo];
+                if (error)
+                {
+                    NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unzip file cannot be created"};
+                    *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:2 userInfo:userInfo];
+                }
 				
 				return nil;
 			}
