@@ -2577,9 +2577,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = DTFoundation;
 				PUBLIC_HEADERS_FOLDER_PATH = ../../DTFoundation;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -2593,6 +2593,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = DTFoundation;
 				PUBLIC_HEADERS_FOLDER_PATH = ../../DTFoundation;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -2608,9 +2609,9 @@
 				GCC_PREFIX_HEADER = "Demo/DTSidePanels/DTSidePanels-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTSidePanels/DTSidePanels-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2630,6 +2631,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2651,7 +2653,6 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = DTFoundation_Mac;
 				PUBLIC_HEADERS_FOLDER_PATH = ../DTFoundation;
 				SDKROOT = macosx;
@@ -2676,7 +2677,6 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = DTFoundation_Mac;
 				PUBLIC_HEADERS_FOLDER_PATH = ../DTFoundation;
 				SDKROOT = macosx;
@@ -2695,6 +2695,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTReachability_iOS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -2710,6 +2711,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTReachability_iOS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -2730,7 +2732,6 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = DTReachability_Mac;
 				SDKROOT = macosx;
 			};
@@ -2770,6 +2771,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTUTI_iOS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -2786,6 +2788,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTUTI_iOS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -2811,8 +2814,8 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = DTAWS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -2836,6 +2839,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = DTAWS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -2857,6 +2861,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
 				PRODUCT_NAME = DTFoundation;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
 				WRAPPER_EXTENSION = framework;
@@ -2880,6 +2885,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
 				PRODUCT_NAME = DTFoundation;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
 				WRAPPER_EXTENSION = framework;
@@ -2897,6 +2903,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTSQLite_iOS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -2912,6 +2919,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTSQLite_iOS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -2932,7 +2940,6 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = DTSQLite_Mac;
 				SDKROOT = macosx;
 			};
@@ -2977,6 +2984,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = UnitTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -2998,6 +3006,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = UnitTests;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -3051,8 +3060,8 @@
 				GCC_PREFIX_HEADER = "Demo/DTReachability/DTReachability-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTReachability/DTReachability-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3071,6 +3080,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3087,8 +3097,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = DTHTMLParser_iOS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3106,6 +3116,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTHTMLParser_iOS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3123,6 +3134,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTZipArchive_iOS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -3139,6 +3151,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTZipArchive_iOS;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -3159,7 +3172,6 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = DTUTI_Mac;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -3220,8 +3232,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -3249,7 +3259,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -3259,8 +3268,6 @@
 			buildSettings = {
 				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = macosx;
-				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -3269,8 +3276,6 @@
 			buildSettings = {
 				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = macosx;
-				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
@@ -3285,6 +3290,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTASN1;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -3300,6 +3306,7 @@
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTASN1;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -3315,10 +3322,10 @@
 				GCC_PREFIX_HEADER = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = DTZipArchive;
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3338,6 +3345,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = DTZipArchive;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
