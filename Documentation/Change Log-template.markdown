@@ -3,6 +3,13 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.5.3**
+
+- FIXED: Warnings on DTZipArchive
+- FIXED: GZ file handle error
+- CHANGED: Updated build flags for static libs and frameworks
+- ADDED: Continuous Integration via Travis-CI
+
 **Version 1.5.2**
 
 - ADDED: Method for duplicating template image tinting under iOS 6
