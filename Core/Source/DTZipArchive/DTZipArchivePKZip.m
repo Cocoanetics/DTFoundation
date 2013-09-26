@@ -362,8 +362,13 @@
             
             unzGoToNextFile(_unzFile);
         }
+		 
+		 if (completion)
+		 {
+			 completion(nil);
+		 }
     });
-    
+   
     // wait for completion of uncompression and writing all files in Zip
     dispatch_group_wait(uncompressingGroup, DISPATCH_TIME_FOREVER);
    
@@ -372,10 +377,7 @@
     dispatch_release(uncompressingGroup);
 #endif
     
-    if (completion)
-    {
-        completion(nil);
-    }
+
 }
 
 - (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error
