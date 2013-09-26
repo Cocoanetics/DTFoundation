@@ -1,3 +1,4 @@
-language: objective-c
+---
+  language: objective-c
 
-script: xctool -project DTFoundation.xcodeproj -scheme "Static Library" build test -sdk iphonesimulator
+  script: Travis-CI/script.sh
