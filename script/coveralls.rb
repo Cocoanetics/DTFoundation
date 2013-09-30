@@ -53,9 +53,7 @@ Dir.chdir workingDir
 FileUtils.cp_r gcov_dir, "gcov"
 
 #call the coveralls
-result = %x( coveralls )
-
-puts "coveralls responds: #{result}"
+system 'coveralls', '--no-gcov'
 
 #clean up
 FileUtils.rm_rf("gcov")
