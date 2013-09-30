@@ -31,8 +31,8 @@ end
 #change back to working directory
 Dir.chdir workingDir
 
-#call the coveralls
-system 'coveralls', '--verbose'
+#call the coveralls, exclude some files
+system 'coveralls', '-e', 'Externals', '-e', 'Test', '-e', "Demo"
 
 #clean up
 FileUtils.rm_rf outputDir
