@@ -1,4 +1,4 @@
-#!/bin/bas#!/bin/bash
+#!/bin/bash
 
 trim()
 {
