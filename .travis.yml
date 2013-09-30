@@ -1,4 +1,11 @@
 ---
-  language: objective-c
+language: objective-c
 
-  script: Travis-CI/script.sh
+before_script:
+  - sudo easy_install cpp-coveralls
+
+script:
+  - xctool -project DTFoundation.xcodeproj -scheme "Static Library" build test -sdk iphonesimulator
+
+after_success:
+  - ./script/coveralls.sh
