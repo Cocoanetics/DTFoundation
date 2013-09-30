@@ -15,12 +15,13 @@ Find.find(derivedDataDir) do |file|
      
       #get just the folder name
       gcov_dir = File.dirname(file)
+      basename = File.basename(file)
      
       #chdir because gcov cannot work with absolute path
       Dir.chdir gcov_dir
 
       #process the file
-      system("gcov '#{file}' -o '#{gcov_dir}'")
+      system("gcov '#{basename}' -o '#{gcov_dir}'")
       
       Dir.glob("*.gcov") do |file|
         FileUtils.mv(file, outputDir)
