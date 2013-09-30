@@ -8,4 +8,4 @@ script:
   - xctool -project DTFoundation.xcodeproj -scheme "Static Library" build test -sdk iphonesimulator
 
 after_success:
-  - ./script/coveralls.rb
+  - ./script/coveralls2.rb
