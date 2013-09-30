@@ -6,7 +6,7 @@ require 'fileutils'
 workingDir = Dir.getwd
 
 # get xcode variables
-xcodeBuildSettings = `xctool -project DTFoundation.xcodeproj -configuration Coverage -scheme "Static Library" build -sdk iphonesimulator -showBuildSettings`
+xcodeBuildSettings = `xctool -project DTFoundation.xcodeproj -configuration Coverage -scheme "Static Library" clean -sdk iphonesimulator -showBuildSettings`
 
 # hash table to keep them while we iterate over them
 envVars = Hash.new
@@ -53,7 +53,7 @@ Dir.chdir workingDir
 FileUtils.cp_r gcov_dir, "gcov"
 
 #call the coveralls
-system 'coveralls', '--no-gcov'
+system 'coveralls', '--verbose'
 
 #clean up
 FileUtils.rm_rf("gcov")
