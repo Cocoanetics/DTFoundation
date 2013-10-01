@@ -2545,7 +2545,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/DTHTMLParser.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
@@ -2565,7 +2564,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/DTHTMLParser.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
@@ -2580,7 +2578,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/DTFoundation.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = DTFoundation;
@@ -2594,7 +2591,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/DTFoundation.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = DTFoundation;
@@ -2611,7 +2607,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/DTSidePanels/DTSidePanels-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTSidePanels/DTSidePanels-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
@@ -2630,7 +2625,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/DTSidePanels/DTSidePanels-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTSidePanels/DTSidePanels-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
@@ -2689,7 +2683,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
@@ -2710,7 +2703,6 @@
 				DSTROOT = /tmp/DTFoundation.dst;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = DTFoundation;
@@ -2732,7 +2724,6 @@
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test/UnitTests-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
@@ -2755,7 +2746,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -2778,7 +2768,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				DSTROOT = /tmp/DTAWS.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -2797,7 +2786,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTASN1.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTASN1;
@@ -2814,7 +2802,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DSTROOT = /tmp/DTHTMLParser.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTHTMLParser_iOS;
@@ -2833,7 +2820,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/DTHTMLParser.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
@@ -2852,7 +2838,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DSTROOT = /tmp/DTZipArchive.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTZipArchive_iOS;
@@ -2870,7 +2855,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/DTZipArchive.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTZipArchive_Mac;
@@ -2888,7 +2872,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DSTROOT = /tmp/DTUTI.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTUTI_iOS;
@@ -2909,7 +2892,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode46-DP4.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -2926,7 +2908,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTReachability_iOS;
@@ -2947,7 +2928,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -2963,7 +2943,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTSQLite.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTSQLite_iOS;
@@ -2984,7 +2963,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -3000,7 +2978,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/DTSidePanels/DTSidePanels-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTSidePanels/DTSidePanels-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
@@ -3019,7 +2996,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/DTReachability/DTReachability-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTReachability/DTReachability-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -3037,7 +3013,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
@@ -3062,7 +3037,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -3087,7 +3061,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -3106,7 +3079,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTReachability_iOS;
@@ -3122,7 +3094,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTReachability_iOS;
@@ -3144,7 +3115,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -3167,7 +3137,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -3184,7 +3153,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DSTROOT = /tmp/DTUTI.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTUTI_iOS;
@@ -3201,7 +3169,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DSTROOT = /tmp/DTUTI.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTUTI_iOS;
@@ -3221,7 +3188,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				DSTROOT = /tmp/DTAWS.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -3245,7 +3211,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				DSTROOT = /tmp/DTAWS.dst;
 				ENABLE_NS_ASSERTIONS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -3266,7 +3231,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
@@ -3290,7 +3254,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
@@ -3312,7 +3275,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTSQLite.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTSQLite_iOS;
@@ -3328,7 +3290,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTSQLite.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTSQLite_iOS;
@@ -3349,7 +3310,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -3371,7 +3331,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -3390,7 +3349,6 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test/UnitTests-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
@@ -3412,7 +3370,6 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Test/UnitTests-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
@@ -3433,7 +3390,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/DTZipArchive.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTZipArchive_Mac;
@@ -3452,7 +3408,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/DTZipArchive.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTZipArchive_Mac;
@@ -3469,7 +3424,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/DTReachability/DTReachability-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTReachability/DTReachability-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -3487,7 +3441,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/DTReachability/DTReachability-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTReachability/DTReachability-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -3507,7 +3460,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DSTROOT = /tmp/DTHTMLParser.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTHTMLParser_iOS;
@@ -3525,7 +3477,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DSTROOT = /tmp/DTHTMLParser.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTHTMLParser_iOS;
@@ -3543,7 +3494,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DSTROOT = /tmp/DTZipArchive.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTZipArchive_iOS;
@@ -3560,7 +3510,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				DSTROOT = /tmp/DTZipArchive.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				PRODUCT_NAME = DTZipArchive_iOS;
@@ -3582,7 +3531,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode46-DP4.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -3606,7 +3554,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode46-DP4.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -3630,6 +3577,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -3662,6 +3610,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -3700,7 +3649,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTASN1.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTASN1;
@@ -3716,7 +3664,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTASN1.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = DTASN1;
@@ -3732,7 +3679,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
@@ -3752,7 +3698,6 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
