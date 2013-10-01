@@ -3028,7 +3028,6 @@
 		A710A5091607556000437D36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -3051,7 +3050,6 @@
 		A710A50A1607556000437D36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -3105,7 +3103,6 @@
 		A72121F3173BFFED003C6F0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3126,7 +3123,6 @@
 		A72121F4173BFFED003C6F0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3521,7 +3517,6 @@
 		A7E889B216A9B190009EF0DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3543,7 +3538,6 @@
 		A7E889B316A9B190009EF0DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
