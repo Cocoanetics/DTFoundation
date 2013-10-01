@@ -7,7 +7,7 @@ require 'optparse'
 
 # arraw of source subfolders to exclude
 excludedFolders = []
-coveralls_cmd = "coveralls"
+coveralls_cmd = "coveralls -x m"
 
 excludeHeaders = false
 
