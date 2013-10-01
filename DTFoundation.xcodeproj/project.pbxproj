@@ -963,8 +963,6 @@
 				A76DB4B716A5E3B20010CD85 /* OSX */,
 				A7D0AA6A153C395C0020F18B /* Universal */,
 				A77DD3D014E81A0B00F34B03 /* Externals */,
-				FAB1726916301F0D00B44EDC /* DTFoundationConstants.h */,
-				FAB1726A16301F0D00B44EDC /* DTFoundationConstants.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -1351,6 +1349,8 @@
 				A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */,
 				A78D661B17AFFCCC0039F5E6 /* DTFolderMonitor.h */,
 				A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */,
+				FAB1726916301F0D00B44EDC /* DTFoundationConstants.h */,
+				FAB1726A16301F0D00B44EDC /* DTFoundationConstants.m */,
 				A7FA5FA217B0F7B4000FC61F /* DTLog.h */,
 				A7FA5FA317B0F7B4000FC61F /* DTLog.m */,
 				A70B4CC71486621B00873A4A /* DTVersion.h */,
@@ -2646,7 +2646,6 @@
 		A70ED6B617F98468008A801A /* Coverage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -2658,10 +2657,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -2785,10 +2780,6 @@
 				DSTROOT = /tmp/DTAWS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -3232,10 +3223,6 @@
 				DSTROOT = /tmp/DTAWS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -3632,7 +3619,6 @@
 		A7F4DFB0147FB61500F4059A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -3667,7 +3653,6 @@
 		A7F4DFB1147FB61500F4059A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
