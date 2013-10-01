@@ -3,6 +3,10 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.5.4**
+
+- ADDED: Coverage Monitoring via Coveralls
+
 **Version 1.5.3**
 
 - FIXED: Warnings on DTZipArchive
