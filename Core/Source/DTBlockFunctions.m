@@ -21,3 +21,15 @@ void DTBlockPerformSyncIfOnMainThreadElseAsync(void (^block)(void))
 		dispatch_async(dispatch_get_main_queue(), block);
 	}
 }
+
+void DTBlockPerformSyncOnMainThread(void (^block)(void))
+{
+	if ([NSThread isMainThread])
+	{
+		block();
+	}
+	else
+	{
+		dispatch_sync(dispatch_get_main_queue(), block);
+	}
+}

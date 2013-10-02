@@ -15,3 +15,11 @@
  @param block The block to execute
  */
 void DTBlockPerformSyncIfOnMainThreadElseAsync(void (^block)(void));
+
+/**
+ Performs a block synchronous on the main thread regardless of the current thread
+ @param block The block to execute
+ */
+void DTBlockPerformSyncOnMainThread(void (^block)(void));
+
+
