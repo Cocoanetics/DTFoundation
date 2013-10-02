@@ -111,6 +111,12 @@
 		A766136416143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */ = {isa = PBXBuildFile; fileRef = A766135F16143F8A00DF6C2B /* NSMutableArray+DTMoving.m */; };
 		A766136616143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */ = {isa = PBXBuildFile; fileRef = A766135F16143F8A00DF6C2B /* NSMutableArray+DTMoving.m */; };
 		A76613E5161444FD00DF6C2B /* NSString+DTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA49153C233E0020F18B /* NSString+DTUtilities.m */; };
+		A768BE3C17FC3C91008834C6 /* DTBlockFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = A768BE3A17FC3C91008834C6 /* DTBlockFunctions.h */; };
+		A768BE3D17FC3C91008834C6 /* DTBlockFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = A768BE3A17FC3C91008834C6 /* DTBlockFunctions.h */; };
+		A768BE3E17FC3C91008834C6 /* DTBlockFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = A768BE3A17FC3C91008834C6 /* DTBlockFunctions.h */; };
+		A768BE3F17FC3C91008834C6 /* DTBlockFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A768BE3B17FC3C91008834C6 /* DTBlockFunctions.m */; };
+		A768BE4017FC3C91008834C6 /* DTBlockFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A768BE3B17FC3C91008834C6 /* DTBlockFunctions.m */; };
+		A768BE4117FC3C91008834C6 /* DTBlockFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A768BE3B17FC3C91008834C6 /* DTBlockFunctions.m */; };
 		A76DB48B16A5E1D20010CD85 /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB48A16A5E1D20010CD85 /* DTHTMLParser.m */; };
 		A76DB48C16A5E1D20010CD85 /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB48A16A5E1D20010CD85 /* DTHTMLParser.m */; };
 		A76DB49F16A5E37F0010CD85 /* DTActivityTitleView.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DB49116A5E37F0010CD85 /* DTActivityTitleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -560,6 +566,8 @@
 		A7640E3D16F32139003A7B43 /* SelfSigned.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelfSigned.der; sourceTree = "<group>"; };
 		A766135E16143F8A00DF6C2B /* NSMutableArray+DTMoving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+DTMoving.h"; sourceTree = "<group>"; };
 		A766135F16143F8A00DF6C2B /* NSMutableArray+DTMoving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+DTMoving.m"; sourceTree = "<group>"; };
+		A768BE3A17FC3C91008834C6 /* DTBlockFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTBlockFunctions.h; sourceTree = "<group>"; };
+		A768BE3B17FC3C91008834C6 /* DTBlockFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTBlockFunctions.m; sourceTree = "<group>"; };
 		A76DB48916A5E1D20010CD85 /* DTHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTHTMLParser.h; sourceTree = "<group>"; };
 		A76DB48A16A5E1D20010CD85 /* DTHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTHTMLParser.m; sourceTree = "<group>"; };
 		A76DB49116A5E37F0010CD85 /* DTActivityTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTActivityTitleView.h; sourceTree = "<group>"; };
@@ -1356,6 +1364,8 @@
 				A70B4CC71486621B00873A4A /* DTVersion.h */,
 				A70B4CC81486621B00873A4A /* DTVersion.m */,
 				A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */,
+				A768BE3A17FC3C91008834C6 /* DTBlockFunctions.h */,
+				A768BE3B17FC3C91008834C6 /* DTBlockFunctions.m */,
 			);
 			name = Universal;
 			sourceTree = "<group>";
@@ -1569,6 +1579,7 @@
 				A7D0AA26153C1B160020F18B /* NSDictionary+DTError.h in Headers */,
 				A7D0AA2C153C1FE40020F18B /* NSString+DTURLEncoding.h in Headers */,
 				A7D0AA4B153C233E0020F18B /* NSString+DTUtilities.h in Headers */,
+				A768BE3D17FC3C91008834C6 /* DTBlockFunctions.h in Headers */,
 				A7D0AA6E153C39920020F18B /* DTUtils.h in Headers */,
 				A73D5BAC155271FD0024BDB7 /* NSArray+DTError.h in Headers */,
 				A79231CF157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */,
@@ -1604,6 +1615,7 @@
 				A766136216143F8A00DF6C2B /* NSMutableArray+DTMoving.h in Headers */,
 				A79500FF161D680000358BC3 /* NSData+DTCrypto.h in Headers */,
 				FAB1726D16301F0D00B44EDC /* DTFoundationConstants.h in Headers */,
+				A768BE3E17FC3C91008834C6 /* DTBlockFunctions.h in Headers */,
 				A73B6F8D163169BB002CCCA7 /* NSFileWrapper+DTCopying.h in Headers */,
 				E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */,
 				A7FAA38A1652291D006ED151 /* NSURL+DTComparing.h in Headers */,
@@ -1654,6 +1666,7 @@
 				A77DD41A14E825FC00F34B03 /* ioapi.h in Headers */,
 				A77DD41E14E825FC00F34B03 /* mztools.h in Headers */,
 				A77DD42214E825FC00F34B03 /* unzip.h in Headers */,
+				A768BE3C17FC3C91008834C6 /* DTBlockFunctions.h in Headers */,
 				A77DD42614E825FC00F34B03 /* zip.h in Headers */,
 				A7D6F2E515063448001CACDD /* DTExtendedFileAttributes.h in Headers */,
 				A7D0AA25153C1B160020F18B /* NSDictionary+DTError.h in Headers */,
@@ -2242,6 +2255,7 @@
 				A78D662117AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */,
 				A7FA5FA817B0F7B4000FC61F /* DTLog.m in Sources */,
 				A7FA5FAF17B127E0000FC61F /* DTAsyncFileDeleter.m in Sources */,
+				A768BE4017FC3C91008834C6 /* DTBlockFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2275,6 +2289,7 @@
 				A73B6FA716318EBC002CCCA7 /* NSString+DTFormatNumbers.m in Sources */,
 				A7FAA38C1652291D006ED151 /* NSURL+DTComparing.m in Sources */,
 				A76DB4BB16A5E3B20010CD85 /* DTScrollView.m in Sources */,
+				A768BE4117FC3C91008834C6 /* DTBlockFunctions.m in Sources */,
 				A76DB4EF16A5E5590010CD85 /* NSDocument+DTFoundation.m in Sources */,
 				A76DB4F116A5E5590010CD85 /* NSImage+DTUtilities.m in Sources */,
 				A76DB4F316A5E5590010CD85 /* NSValue+DTConversion.m in Sources */,
@@ -2365,6 +2380,7 @@
 				A70C4FED17AA7F0300000DF5 /* NSScanner+DTScripting.m in Sources */,
 				A70C4FF317AA7F2100000DF5 /* DTObjectBlockExecutor.m in Sources */,
 				A70C4FF417AA7F2100000DF5 /* NSObject+DTRuntime.m in Sources */,
+				A768BE3F17FC3C91008834C6 /* DTBlockFunctions.m in Sources */,
 				A78D662017AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */,
 				A7FA5FA717B0F7B4000FC61F /* DTLog.m in Sources */,
 				A7FA5FAE17B127E0000FC61F /* DTAsyncFileDeleter.m in Sources */,
