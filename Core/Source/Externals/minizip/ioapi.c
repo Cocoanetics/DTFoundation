@@ -192,7 +192,11 @@ static long ZCALLBACK fseek64_file_func (voidpf  opaque, voidpf stream, ZPOS64_T
     }
     ret = 0;
 
-    if(fseeko64((FILE *)stream, offset, fseek_origin) != 0)
+	
+#if !defined(USE_FILE32API)
+#warning In the following file we are casting to long to squash warning.
+#endif
+    if(fseeko64((FILE *)stream, (long)offset, fseek_origin) != 0)
                         ret = -1;
 
     return ret;

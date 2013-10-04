@@ -3,6 +3,29 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.5.4**
+
+- ADDED: Coverage Monitoring via Coveralls
+- ADDED: DTBlockFunctions
+- FIXED: DTZipArchive: completion block would be called twice if uncompressing has error
+- FIXED: Warning in minizip
+- CHANGED: Removed shadow from PieProgressIndicator to fit iOS7 style
+
+**Version 1.5.3**
+
+- FIXED: Warnings on DTZipArchive
+- FIXED: GZ file handle error
+- CHANGED: Updated build flags for static libs and frameworks
+- ADDED: Continuous Integration via Travis-CI
+
+**Version 1.5.2**
+
+- ADDED: Method for duplicating template image tinting under iOS 6
+- ADDED: DTLog function for retrieving current app log messages
+- ADDED: DTLog function for duplicating NSLog but using ASL and specifying severity level
+- FIXED: DTLog issue when being called from C-function
+- FIXED: DTHTMLParser would not accumulate characters if no tag start and end delegate methods were set
+
 **Version 1.5.1**
 
 - ADDED: Ability to uncompress individual files in DTZipArchive

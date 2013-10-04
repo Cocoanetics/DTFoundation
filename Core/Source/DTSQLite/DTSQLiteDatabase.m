@@ -8,6 +8,7 @@
 
 #import "DTSQLiteDatabase.h"
 #import "DTSQLiteFunctions.h"
+#import "DTLog.h"
 
 @implementation DTSQLiteDatabase
 {

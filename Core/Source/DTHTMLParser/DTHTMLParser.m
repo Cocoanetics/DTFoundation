@@ -26,7 +26,9 @@
 void _startDocument(void *context);
 void _endDocument(void *context);
 void _startElement(void *context, const xmlChar *name,const xmlChar **atts);
+void _startElement_no_delegate(void *context, const xmlChar *name, const xmlChar **atts);
 void _endElement(void *context, const xmlChar *name);
+void _endElement_no_delegate(void *context, const xmlChar *chars);
 void _characters(void *context, const xmlChar *ch, int len);
 void _comment(void *context, const xmlChar *value);
 void _dterror(void *context, const char *msg, ...);
@@ -103,6 +105,13 @@ void _startElement(void *context, const xmlChar *name, const xmlChar **atts)
 	[myself.delegate parser:myself didStartElement:nameStr attributes:attributes];
 }
 
+void _startElement_no_delegate(void *context, const xmlChar *name, const xmlChar **atts)
+{
+	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
+    
+    [myself _resetAccumulateBufferAndReportCharacters];
+}
+
 void _endElement(void *context, const xmlChar *chars)
 {
 	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
@@ -112,6 +121,13 @@ void _endElement(void *context, const xmlChar *chars)
 	NSString *nameStr = [NSString stringWithUTF8String:(char *)chars];
 	
 	[myself.delegate parser:myself didEndElement:nameStr];
+}
+
+void _endElement_no_delegate(void *context, const xmlChar *chars)
+{
+	DTHTMLParser *myself = (__bridge DTHTMLParser *)context;
+    
+    [myself _resetAccumulateBufferAndReportCharacters];
 }
 
 // libxml reports characters in batches of at most 1000 at a time
@@ -336,6 +352,15 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	{
 		_handler.endDocument = NULL;
 	}
+
+	if ([delegate respondsToSelector:@selector(parser:foundCharacters:)])
+	{
+		_handler.characters = _characters;
+	}
+	else
+	{
+		_handler.characters = NULL;
+	}
 	
 	if ([delegate respondsToSelector:@selector(parser:didStartElement:attributes:)])
 	{
@@ -343,7 +368,15 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	}
 	else
 	{
-		_handler.startElement = NULL;
+		// if there is a character handler we need to still report start of elements for accumulation
+		if (_handler.characters)
+		{
+			_handler.startElement = _startElement_no_delegate;
+		}
+		else
+		{
+			_handler.startElement = NULL;
+		}
 	}
 	
 	if ([delegate respondsToSelector:@selector(parser:didEndElement:)])
@@ -352,16 +385,15 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	}
 	else
 	{
-		_handler.endElement = NULL;
-	}
-	
-	if ([delegate respondsToSelector:@selector(parser:foundCharacters:)])
-	{
-		_handler.characters = _characters;
-	}
-	else
-	{
-		_handler.characters = NULL;
+		// if there is a character handler we need to still report start of elements for accumulation
+		if (_handler.characters)
+		{
+			_handler.endElement = _endElement_no_delegate;
+		}
+		else
+		{
+			_handler.endElement = NULL;
+		}
 	}
 	
 	if ([delegate respondsToSelector:@selector(parser:foundComment:)])

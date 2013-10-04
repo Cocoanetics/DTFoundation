@@ -362,8 +362,13 @@
             
             unzGoToNextFile(_unzFile);
         }
+		 
+		 if (completion)
+		 {
+			 completion(nil);
+		 }
     });
-    
+   
     // wait for completion of uncompression and writing all files in Zip
     dispatch_group_wait(uncompressingGroup, DISPATCH_TIME_FOREVER);
    
@@ -372,18 +377,18 @@
     dispatch_release(uncompressingGroup);
 #endif
     
-    if (completion)
-    {
-        completion(nil);
-    }
+
 }
 
 - (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error
 {
 	if (node.isDirectory)
 	{
-		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Zip Archive node is a directory"};
-		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:6 userInfo:userInfo];
+        if (error)
+        {
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Zip Archive node is a directory"};
+            *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:6 userInfo:userInfo];
+        }
 		return nil;
 	}
 	
@@ -392,16 +397,21 @@
 	
 	if (unzLocateFile(_unzFile, [node.name UTF8String], 1) != UNZ_OK)
 	{
-		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Given single file cannot be found to unzip"};
-		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
+        if (error)
+        {
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Given single file cannot be found to unzip"};
+            *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
+        }
 		return nil;
 	}
 	
 	if (unzOpenCurrentFile(_unzFile) != UNZ_OK)
 	{
-		
-		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to open zip file"};
-		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:5 userInfo:userInfo];
+		if (error)
+        {
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to open zip file"};
+            *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:5 userInfo:userInfo];
+        }
 		return nil;
 	}
 	

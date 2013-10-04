@@ -7,6 +7,7 @@
 //
 
 #import "DTReachability.h"
+#import "DTLog.h"
 
 #import <arpa/inet.h>
 
