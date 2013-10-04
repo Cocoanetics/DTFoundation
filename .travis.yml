@@ -5,9 +5,9 @@ before_script:
   - sudo easy_install cpp-coveralls
 
 script: 
- - xctool -project DTFoundation.xcodeproj -scheme "DTSidePanels Demo" build -sdk iphonesimulator
- - xctool -project DTFoundation.xcodeproj -scheme "DTReachability Demo" build -sdk iphonesimulator
- - xctool -project DTFoundation.xcodeproj -scheme "DTZipArchive Demo" build -sdk iphonesimulator
+ - xctool -project DTFoundation.xcodeproj -scheme "DTSidePanels Demo" build -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+ - xctool -project DTFoundation.xcodeproj -scheme "DTReachability Demo" build -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+ - xctool -project DTFoundation.xcodeproj -scheme "DTZipArchive Demo" build -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
  - xctool -project DTFoundation.xcodeproj -scheme "Static Library" build test -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -configuration Coverage
 
 after_success:
