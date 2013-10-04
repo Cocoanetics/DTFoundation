@@ -6,6 +6,10 @@ This is the history of version updates.
 **Version 1.5.4**
 
 - ADDED: Coverage Monitoring via Coveralls
+- ADDED: DTBlockFunctions
+- FIXED: DTZipArchive: completion block would be called twice if uncompressing has error
+- FIXED: Warning in minizip
+- CHANGED: Removed shadow from PieProgressIndicator to fit iOS7 style
 
 **Version 1.5.3**
 
