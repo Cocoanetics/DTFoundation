@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A70B4CE61486637E00873A4A"
-               BuildableName = "libDTFoundation.a"
-               BlueprintName = "Static Library"
+               BlueprintIdentifier = "A710A4FF1607556000437D36"
+               BuildableName = "libDTFoundation_Mac.a"
+               BlueprintName = "Static Library (Mac)"
                ReferencedContainer = "container:DTFoundation.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,18 +26,8 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Coverage">
+      buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A7D60FCE15D3B0BC00AEDD1B"
-               BuildableName = "UnitTests.octest"
-               BlueprintName = "Unit Tests"
-               ReferencedContainer = "container:DTFoundation.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
