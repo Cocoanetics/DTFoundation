@@ -29,21 +29,21 @@ typedef void(^DTReachabilityObserverBlock)(SCNetworkConnectionFlags connectionFl
 
  @returns An initialized DTReachability instance.
  */
-- (instancetype) init;
+- (instancetype)init;
 
 /**
- Returns an initialized DTReachability instance with a specific host name
+ Returns an initialized DTReachability instance with a given host name
  
  @returns An initialized DTReachability instance.
  */
 - (instancetype) initWithHostname:(NSString *)hostname;
 
 /**
- Returns a shared DTReachability instance. The default hostname is apple.com
+ Returns a shared DTReachability instance with the default hostname is apple.com. Generally you should use this because each DTReachability instance maintains its own table of observers.
  
  @returns the default DTReachability instance
  */
-+ (DTReachability *) defaultReachability;
++ (DTReachability *)defaultReachability;
 
 
 /**
