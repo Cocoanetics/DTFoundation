@@ -52,7 +52,7 @@ static DTReachability *_sharedInstance;
 
 - (void)dealloc
 {
-	[self _removeInternalReachability];
+	[self _unregisterNetworkReachability];
 }
 
 - (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkConnectionFlags connectionFlags))observer
@@ -149,22 +149,6 @@ static DTReachability *_sharedInstance;
 	
 	_reachability = nil;
 
-}
-
-- (void)_removeInternalReachability
-{
-	SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
-	
-	if (SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
-	{
-		DTLogInfo(@"Unscheduled reachability");
-	}
-	else
-	{
-		DTLogError(@"Error: Could not unschedule reachability");
-	}
-	
-	_reachability = nil;
 }
 
 - (void)_notifyObserversWithFlags:(SCNetworkConnectionFlags)flags
