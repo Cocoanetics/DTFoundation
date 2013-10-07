@@ -29,14 +29,14 @@ typedef void(^DTReachabilityObserverBlock)(SCNetworkConnectionFlags connectionFl
 
  @returns An initialized DTReachability instance.
  */
-- (instancetype) init;
+- (instancetype)init;
 
 /**
- Returns a shared DTReachability instance
+ Returns a shared DTReachability instance. Generally you should use this because each DTReachability instance maintains its own table of observers.
  
  @returns the default DTReachability instance
  */
-+ (DTReachability *) defaultReachability;
++ (DTReachability *)defaultReachability;
 
 
 /**
