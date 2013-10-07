@@ -23,18 +23,55 @@ typedef void(^DTReachabilityObserverBlock)(SCNetworkConnectionFlags connectionFl
  */
 @interface DTReachability : NSObject
 
+
 /**
+ Returns an initialized DTReachability instance.
+
+ @returns An initialized DTReachability instance.
+ */
+- (instancetype) init;
+
+/**
+ Returns a shared DTReachability instance
+ 
+ @returns the default DTReachability instance
+ */
++ (DTReachability *) defaultReachability;
+
+
+/**
+ 
  Adds a block to observe network reachability. Every time the reachability flags change this block is invoked. Also once right after adding the observer with the current state.
+ @warning use -[[DTReachability defaultReachability] addReachabilityObserverWithBlock:]
  @param observer An observation block
  @returns An opaque reference to the observer which you can use to remove it
  */
-+ (id)addReachabilityObserverWithBlock:(DTReachabilityObserverBlock)observer;
++ (id)addReachabilityObserverWithBlock:(DTReachabilityObserverBlock)observer __attribute__((deprecated("use -[[DTReachability defaultReachability] addReachabilityObserverWithBlock:]")));
 
 
 /**
  Removes a reachability observer.
+ @warning use -[[DTReachability defaultReachability] removeReachabilityObserver:]
  @param observer The opaque reference to a reachability observer
  */
-+ (void)removeReachabilityObserver:(id)observer;
++ (void)removeReachabilityObserver:(id)observer __attribute__((deprecated("use -[[DTReachability defaultReachability] removeReachabilityObserver:]")));
+
+/**
+ 
+ Adds a block to observe network reachability. Every time the reachability flags change this block is invoked. Also once right after adding the observer with the current state.
+ @warning use -[[DTReachability defaultReachability] addReachabilityObserverWithBlock:]
+ @param observer An observation block
+ @returns An opaque reference to the observer which you can use to remove it
+ */
+- (id)addReachabilityObserverWithBlock:(DTReachabilityObserverBlock)observer;
+
+
+/**
+ Removes a reachability observer.
+ @warning use -[[DTReachability defaultReachability] removeReachabilityObserver:]
+ @param observer The opaque reference to a reachability observer
+ */
+- (void)removeReachabilityObserver:(id)observer;
+
 
 @end

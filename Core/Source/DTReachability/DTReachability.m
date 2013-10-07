@@ -11,20 +11,36 @@
 
 #import <arpa/inet.h>
 
-@implementation DTReachability
-
-
-static NSMutableSet *_observers = nil;
-
-static SCNetworkReachabilityRef _reachability = NULL;
-static SCNetworkConnectionFlags _connectionFlags = 0;
-
-+ (void)initialize
-{
-	_observers = [[NSMutableSet alloc] init];
+@implementation DTReachability {
+	NSMutableSet *_observers;
+	SCNetworkReachabilityRef _reachability;
+	SCNetworkConnectionFlags _connectionFlags;
 }
 
-+ (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkConnectionFlags connectionFlags))observer
+
+static DTReachability *_sharedInstance;
+
++ (DTReachability *) defaultReachability {
+	static dispatch_once_t instanceOnceToken;
+	dispatch_once(&instanceOnceToken, ^{
+		_sharedInstance = [[DTReachability alloc] init];
+	});
+	
+	return _sharedInstance;
+}
+
+- (instancetype) init
+{
+	self = [super init];
+	if (self)
+	{
+		_observers = [[NSMutableSet alloc] init];
+	}
+	return self;
+}
+
+
+- (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkConnectionFlags connectionFlags))observer
 {
 	@synchronized(self)
 	{
@@ -41,7 +57,7 @@ static SCNetworkConnectionFlags _connectionFlags = 0;
 			_reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, "apple.com");
 		}
 		
-		SCNetworkReachabilityContext context = {0, NULL, NULL, NULL, NULL};
+		SCNetworkReachabilityContext context = {0, (__bridge void *)_observers, NULL, NULL, NULL};
 		
 		if(SCNetworkReachabilitySetCallback(_reachability, ReachabilityCallback, &context))
 		{
@@ -63,7 +79,7 @@ static SCNetworkConnectionFlags _connectionFlags = 0;
 	}
 }
 
-+ (void)removeReachabilityObserver:(id)observer
+- (void)removeReachabilityObserver:(id)observer
 {
 	@synchronized(self)
 	{
@@ -89,13 +105,24 @@ static SCNetworkConnectionFlags _connectionFlags = 0;
 	}
 }
 
++ (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkConnectionFlags connectionFlags))observer
+{
+	return [[DTReachability defaultReachability] addReachabilityObserverWithBlock:observer];
+}
+
++ (void)removeReachabilityObserver:(id)observer {
+	return [[DTReachability defaultReachability] removeReachabilityObserver:observer];
+}
+
 #pragma mark - Internals
 
 static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConnectionFlags flags, void* info)
 {
+	NSSet* observers = (__bridge NSSet*) info;
+
 	@autoreleasepool
 	{
-		for (DTReachabilityObserverBlock observer in _observers)
+		for (DTReachabilityObserverBlock observer in observers)
 		{
 			observer(flags);
 		}
