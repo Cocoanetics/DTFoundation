@@ -15,7 +15,7 @@
 {
 	NSMutableSet *_observers;
 	SCNetworkReachabilityRef _reachability;
-	SCNetworkConnectionFlags _connectionFlags;
+	SCNetworkReachabilityFlags _connectionFlags;
 	NSString *_hostname;
 }
 
@@ -55,7 +55,7 @@ static DTReachability *_sharedInstance;
 	[self _unregisterNetworkReachability];
 }
 
-- (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkConnectionFlags connectionFlags))observer
+- (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkReachabilityFlags connectionFlags))observer
 {
 	@synchronized(self)
 	{
@@ -93,7 +93,7 @@ static DTReachability *_sharedInstance;
 	}
 }
 
-+ (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkConnectionFlags connectionFlags))observer
++ (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkReachabilityFlags connectionFlags))observer
 {
 	return [[DTReachability defaultReachability] addReachabilityObserverWithBlock:observer];
 }
@@ -122,7 +122,7 @@ static DTReachability *_sharedInstance;
 	{
 		_reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, [_hostname UTF8String]);
 	
-		SCNetworkReachabilityContext context = {0, (__bridge void *)_observers, NULL, NULL, NULL};
+		SCNetworkReachabilityContext context = {0, (__bridge void *)self, NULL, NULL, NULL};
 	
 		if(SCNetworkReachabilitySetCallback(_reachability, DTReachabilityCallback, &context))
 		{
@@ -151,7 +151,7 @@ static DTReachability *_sharedInstance;
 
 }
 
-- (void)_notifyObserversWithFlags:(SCNetworkConnectionFlags)flags
+- (void)_notifyObserversWithFlags:(SCNetworkReachabilityFlags)flags
 {
 	@synchronized(self)
 	{
@@ -162,7 +162,7 @@ static DTReachability *_sharedInstance;
 	}
 }
 
-static void DTReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConnectionFlags flags, void *info)
+static void DTReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info)
 {
 	DTReachability *reachability = (__bridge DTReachability *)info;
 
