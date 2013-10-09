@@ -8,11 +8,22 @@
 
 #import <SystemConfiguration/SystemConfiguration.h>
 
-// macro to determine reachability status from connection flags
-#define DTReachabilityIsReachableFromFlags(connectionFlags) ((connectionFlags & kSCNetworkFlagsReachable) && !(connectionFlags & kSCNetworkFlagsConnectionRequired))
 
-// observer block
-typedef void(^DTReachabilityObserverBlock)(SCNetworkConnectionFlags connectionFlags);
+@interface DTReachabilityInformation : NSObject
+
+- (BOOL)isReachable;
+
+#if	TARGET_OS_IPHONE
+- (BOOL)isWWAN;
+#endif	// TARGET_OS_IPHONE
+
+@property (nonatomic, readonly) SCNetworkReachabilityFlags reachabilityFlags;
+
+@end
+
+
+typedef void(^DTReachabilityObserverBlock)(DTReachabilityInformation *reachabilityInformation);
+
 
 /**
  Block-Based Reachability Observation, using the SystemConfiguration.framework. Based largely on Erica Sadun's [UIDevice Reachability Extension](https://github.com/erica/uidevice-extension/blob/master/UIDevice-Reachability.m). Modified to use `SCNetworkReachabilityCreateWithName` instead based on Nick Lockwoods [FXReachability](http://github.com/nicklockwood/FXReachability) because this approach also takes the DNS resolvability into consideration.
