@@ -27,7 +27,6 @@
 
     [zipArchive enumerateUncompressedFilesAsDataUsingBlock:^(NSString *fileName, NSData *data, BOOL *stop) {
 
-
         switch (iteration)
         {
             case 0:
@@ -330,6 +329,41 @@
 
 	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 	dispatch_release(semaphore);
+}
+
+
+/**
+ Do uncompressing single file test with directory -> ILLEGAL -> Error should be raised
+ */
+- (void)testUncompressingNodesFromPKZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+	
+	// create zip archive
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	
+	// get specific nodes
+	DTZipArchiveNode *zipFilesFolderNode = zipArchive.nodes[0];
+	DTZipArchiveNode *textFolderNode = zipFilesFolderNode.children[2];
+	
+	for (DTZipArchiveNode *node in textFolderNode.children)
+	{
+		NSError *error = nil;
+		
+		[zipArchive uncompressZipArchiveNode:node withError:&error];
+		
+		if (node.isDirectory)
+		{
+			STAssertNotNil(error, @"No error raised when uncompressing directory", nil);
+			STAssertTrueNoThrow(error.code == 6, @"Wrong error raised. Error should be 6: %@", [error localizedDescription]);
+		}
+		else
+		{
+			STAssertNil(error, @"Error raised when uncompressing node", nil);
+		}
+	}
 }
 
 /**

@@ -39,7 +39,9 @@
      */
     long long _totalNumberOfItems;
 
-    NSString *_path;
+	NSString *_path;
+	
+	unzFile _unzFile;
 }
 
 - (id)initWithFileAtPath:(NSString *)sourcePath
@@ -56,6 +58,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+	if (_unzFile)
+	{
+		unzClose(_unzFile);
+	}
+}
+
 #pragma mark - Private methods
 
 /**
@@ -66,7 +76,7 @@
     NSMutableArray *tmpArray = [NSMutableArray array];
     
     // open the file for unzipping
-    unzFile _unzFile = unzOpen((const char *)[self.path UTF8String]);
+	_unzFile = unzOpen((const char *)[self.path UTF8String]);
 
     // return if failed
     if (!_unzFile)
@@ -239,10 +249,7 @@
     dispatch_group_t uncompressingGroup = dispatch_group_create();
     
     dispatch_group_async(uncompressingGroup, uncompressingQueue, ^{
-        
-        // open the file for unzipping
-        unzFile _unzFile = unzOpen((const char *) [_path UTF8String]);
-        
+       
         // return if failed
         if (!_unzFile)
         {
@@ -392,9 +399,6 @@
 		return nil;
 	}
 	
-	// select given file in PKZip
-	unzFile _unzFile = unzOpen([_path UTF8String]);
-	
 	if (unzLocateFile(_unzFile, [node.name UTF8String], 1) != UNZ_OK)
 	{
         if (error)
@@ -449,9 +453,6 @@
 - (void)enumerateUncompressedFilesAsDataUsingBlock:(DTZipArchiveEnumerationResultsBlock)enumerationBlock
 {
     unsigned char buffer[BUFFER_SIZE] = {0};
-
-    // open the file for unzipping
-    unzFile _unzFile = unzOpen((const char *)[_path UTF8String]);
 
     // return if failed
     if (!_unzFile)
@@ -531,6 +532,5 @@
 #pragma mark - Properties
 
 @synthesize path = _path;
-
 
 @end
