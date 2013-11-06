@@ -12,6 +12,13 @@
 
 @implementation DTZipArchiveTest
 
+- (void)tearDown
+{
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *newFilePath = [testBundle pathForResource:@"zipFiles" ofType:nil];
+	[[NSFileManager defaultManager] removeItemAtPath:newFilePath error:nil];
+}
+
 /**
  Very simple test for DTZipArchive to test if the files that are uncompressed with PKZip have the following order
  */
@@ -366,6 +373,45 @@
 	}
 }
 
+- (void)testCancelUncompressingPKZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+	
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+			
+	[zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
+		
+		STFail(@"Should not complete uncompressing after cancel was called");
+	}];
+	
+	[zipArchive cancelAllUncompressing];
+	
+	[NSThread sleepForTimeInterval:0.2f];
+}
+
+- (void)testCancelUncompressingPKZipAfter1ms
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+	
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+		
+	[zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
+		
+		STFail(@"Should not complete uncompressing after cancel was called");
+	}];
+	
+	[NSThread sleepForTimeInterval:0.0001f];
+	
+	// cancel uncompression after 1ms -> to cancel in while loop
+	[zipArchive cancelAllUncompressing];
+	
+	[NSThread sleepForTimeInterval:0.5f];
+}
+
 /**
  Do uncompressing with illegal manually create node -> Error should be raised
  */
@@ -466,6 +512,44 @@
 
         STAssertNotNil(error, @"No error with illegal path");
     }];
+}
+
+- (void)testCancelUncompressingGZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	
+	[zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
+		
+		STFail(@"Should not complete uncompressing after cancel was called");
+	}];
+	
+	[zipArchive cancelAllUncompressing];
+	
+	[NSThread sleepForTimeInterval:0.2];
+}
+
+- (void)testCancelUncompressingGZipAfter1ms
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	
+	[zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
+		
+		STFail(@"Should not complete uncompressing after cancel was called");
+	}];
+	
+	[NSThread sleepForTimeInterval:0.0001];
+	
+	[zipArchive cancelAllUncompressing];
+	
+	[NSThread sleepForTimeInterval:0.2];
 }
 
 /**

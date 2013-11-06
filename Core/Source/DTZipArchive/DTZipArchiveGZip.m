@@ -18,6 +18,9 @@
  */
 @property (nonatomic, copy, readwrite) NSString *path;
 
+@property (assign, getter = isCancelling) BOOL cancelling;
+@property (assign, getter = isUncompressing) BOOL uncompressing;
+
 @end
 
 @implementation DTZipArchiveGZip
@@ -30,6 +33,11 @@
 	NSString *_path;
 	
 	NSUInteger _uncompressedLength;
+	
+	/*
+	 Queue for asynchronous uncompressing
+	 */
+	dispatch_queue_t _uncompressingQueue;
 	
 }
 
@@ -65,9 +73,18 @@
 		
 		// we have only 1 entry for GZip
 		_listOfEntries = @[singleZipArchiveNode];
+		
+		_uncompressingQueue = dispatch_queue_create("DTZipArchiveUncompressionQueue", 0);
 	}
 	
 	return self;
+}
+
+- (void)dealloc
+{
+#if !OS_OBJECT_USE_OBJC
+	dispatch_release(_uncompressingQueue);
+#endif
 }
 
 
@@ -123,6 +140,11 @@
 
     while (!done)
     {
+		 if (self.isCancelling)
+		 {
+			 return;
+		 }
+		 
         // extend decompressed if too short
         if (strm.total_out >= [decompressed length])
         {
@@ -172,42 +194,30 @@
 		
 		return;
 	}
-		
-	// creating queue and group for uncompression
-	dispatch_queue_t uncompressingQueue = dispatch_queue_create("DTZipArchiveUncompressionQueue", 0);
-	dispatch_group_t uncompressingGroup = dispatch_group_create();
+	
+	NSError *error = nil;
+	DTZipArchiveNode *node = self.nodes[0];
 	
 	
-	dispatch_group_async(uncompressingGroup, uncompressingQueue, ^{
-
-		NSError *error = nil;
-		DTZipArchiveNode *node = self.nodes[0];
-		
-		
-		NSData *data = [self _uncompressZipArchiveNode:node targetPath:targetPath withError:&error];
-		
-		if (completion)
-		{
-			completion(data, error);
-		}
-	});
+	NSData *data = [self _uncompressZipArchiveNode:node targetPath:targetPath withError:&error];
 	
-#if !OS_OBJECT_USE_OBJC
-	dispatch_release(uncompressingQueue);
-	dispatch_release(uncompressingGroup);
-#endif
-
+	if (completion && !self.isCancelling)
+	{
+		completion(data, error);
+	}
 }
 
 // adapted from http://www.cocoadev.com/index.pl?NSDataCategory
 - (void)uncompressToPath:(NSString *)targetPath completion:(DTZipArchiveUncompressionCompletionBlock)completion
 {
-	[self _uncompressFile:targetPath completion:^(NSData *data, NSError *error) {
-		if (completion)
-		{
-			completion(error);
-		}
-	}];
+	dispatch_async(_uncompressingQueue, ^{
+		[self _uncompressFile:targetPath completion:^(NSData *data, NSError *error) {
+			if (completion)
+			{
+				completion(error);
+			}
+		}];
+	});
 }
 
 - (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error
