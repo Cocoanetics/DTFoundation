@@ -190,6 +190,7 @@
 - (void)_uncompressFile:(NSString *)targetPath completion:(DTZipArchiveUncompressFileCompletionBlock)completion
 {
 	BOOL isDirectory = NO;
+	
 	if (targetPath != nil && (![[NSFileManager defaultManager] fileExistsAtPath:targetPath isDirectory:&isDirectory] || !isDirectory))
 	{
 		if (completion)
@@ -207,7 +208,9 @@
 	DTZipArchiveNode *node = self.nodes[0];
 	
 	
-	NSData *data = [self _uncompressZipArchiveNode:node targetPath:targetPath withError:&error];
+	NSData *data;
+	
+	[self _uncompressZipArchiveNode:node targetPath:targetPath targetData:&data withError:&error];
 	
 	if (completion && !self.isCancelling)
 	{
@@ -236,49 +239,57 @@
 
 - (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error
 {
-	return [self _uncompressZipArchiveNode:node targetPath:nil withError:error];
-}
-
-- (NSData *)_uncompressZipArchiveNode:(DTZipArchiveNode *)node targetPath:(NSString *)targetPath withError:(NSError **)error
-{
-	NSParameterAssert(targetPath);
+	NSData *data;
 	
-	NSString *filePath = [targetPath stringByAppendingPathComponent:[self _inflatedFileName]];
-	NSURL *fileURL = [NSURL fileURLWithPath:filePath];
-	
-	NSFileManager *fileManager = [[NSFileManager alloc] init];
-	
-	// create file handle
-	NSFileHandle *destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:nil];
-	
-	if (!destinationFileHandle)
+	if ([self _uncompressZipArchiveNode:node targetPath:nil targetData:&data withError:error])
 	{
-		// if we have no file create it first
-		if (![fileManager createFileAtPath:filePath contents:nil attributes:nil])
-		{
-			if (error)
-			{
-				NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unzip file cannot be created"};
-				*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:2 userInfo:userInfo];
-			}
-			
-			return nil;
-		}
-		
-		destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:error];
-		if (!destinationFileHandle)
-		{
-			return nil;
-		}
+		return data;
 	}
 	
+	return nil;
+}
+
+
+// try to uncompress the node, will write to file at targetPath if set and create a data object if data is not nil
+- (BOOL)_uncompressZipArchiveNode:(DTZipArchiveNode *)node targetPath:(NSString *)targetPath targetData:(NSMutableData **)data withError:(NSError **)error
+{
+	NSFileHandle *destinationFileHandle;
 	
-	NSMutableData *data = [NSMutableData data];
+	if (targetPath)
+	{
+		NSString *filePath = [targetPath stringByAppendingPathComponent:[self _inflatedFileName]];
+		NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+		
+		NSFileManager *fileManager = [[NSFileManager alloc] init];
+		
+		// create file handle
+		destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:nil];
+		
+		if (!destinationFileHandle)
+		{
+			// if we have no file create it first
+			if (![fileManager createFileAtPath:filePath contents:nil attributes:nil])
+			{
+				if (error)
+				{
+					NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unzip file cannot be created"};
+					*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:2 userInfo:userInfo];
+				}
+				
+				return NO;
+			}
+			
+			destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:error];
+		}
+	}
+
+	NSAssert(destinationFileHandle||data, @"Cannot proceed without an output for %s", __PRETTY_FUNCTION__);
+	
+	NSMutableData *tmpData = [NSMutableData data];
 	
 	NSMutableData *decompressed = [NSMutableData dataWithLength:BUFFER_SIZE];
 	BOOL done = NO;
 	int status;
-	
 	
 	z_stream strm;
 	strm.next_in = (Bytef *)[_data bytes];
@@ -288,17 +299,9 @@
 	strm.zfree = Z_NULL;
 	
 	// inflateInit2 knows how to deal with gzip format
-	if (inflateInit2(&strm, (15+32)) != Z_OK)
-	{
-		if (error)
-		{
-			NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to go to first file in zip archive"};
-			*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:3 userInfo:userInfo];
-		}
-		
-		return nil;
-	}
+	status = inflateInit2(&strm, (15+32));
 	
+	NSAssert(status == Z_OK, @"This should never be failing, only if out of memory");
 	
 	// creating queue and group for file writing (files and directories)
 	dispatch_queue_t fileWriteQueue;
@@ -346,7 +349,7 @@
 		NSMutableData *decompressedBlock = [decompressed mutableCopy];
 		
 		// add each data block to have all data
-		[data appendData:[decompressed copy]];
+		[tmpData appendData:[decompressed copy]];
 
 		float percent = (float)strm.total_out / _uncompressedLength;
 
@@ -368,10 +371,6 @@
 		{
 			done = YES;
 		}
-		else if (status != Z_OK)
-		{
-			break;
-		}
 	}
 	
 	dispatch_group_wait(fileWriteGroup, DISPATCH_TIME_FOREVER);
@@ -383,10 +382,15 @@
 	
 	if (inflateEnd (&strm) != Z_OK || !done)
 	{
-		return nil;
+		return NO;
 	}
 	
-	return [data copy];
+	if (data)
+	{
+		*data = [tmpData copy];
+	}
+	
+	return YES;
 }
 
 - (void)uncompressZipArchiveNode:(DTZipArchiveNode *)node toDataWithCompletion:(DTZipArchiveUncompressFileCompletionBlock)completion
@@ -404,7 +408,6 @@
 	}
 	else
 	{
-		
 		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Invalid node specified, cannot uncompress GZip file."};
 		NSError *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
 		

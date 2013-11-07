@@ -20,6 +20,8 @@
 	[[NSFileManager defaultManager] removeItemAtPath:newFilePath error:nil];
 }
 
+#pragma mark - PKZip Unit Tests
+
 /**
  Very simple test for DTZipArchive to test if the files that are uncompressed with PKZip have the following order
  */
@@ -445,6 +447,9 @@
 	dispatch_release(semaphore);
 }
 
+
+#pragma mark - GZip Unit tests
+
 /**
  Tests uncompression for GZip
  */
@@ -731,6 +736,109 @@
 
     }] , NSException, @"DTAbstractClassException", @"Calling this method on [[DTZipArchive alloc] init] object should cause exception");
 
+}
+
+- (void)testUncompressZipArchiveNodeGZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	
+	//
+	DTZipArchiveNode *rootNode = zipArchive.nodes[0];
+	
+	NSError *error = nil;
+	[zipArchive uncompressZipArchiveNode:rootNode withError:&error];
+	
+	STAssertNil(error, @"Error occured when uncompressing");
+	
+}
+
+- (void)testUncompressZipArchiveNodeGZipTwice
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	
+	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+	
+	[zipArchive uncompressToPath:[NSString temporaryPath] completion:^(NSError *error) {
+		
+		dispatch_semaphore_signal(semaphore);
+		
+	}];
+	
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	semaphore = dispatch_semaphore_create(0);
+	
+	[zipArchive uncompressToPath:[NSString temporaryPath] completion:^(NSError *error) {
+			
+		STAssertNil(error, @"Error occured when uncompressing same file twice to same location");
+		
+		dispatch_semaphore_signal(semaphore);
+	}];
+	
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(semaphore);
+}
+
+- (void)testUncompressGZipToTargetPathWithMissingPermissions
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	
+	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+	
+	// Uncompress to folder with permission denied
+	[zipArchive uncompressToPath:@"/Library/" completion:^(NSError *error) {
+			
+		dispatch_semaphore_signal(semaphore);
+		
+		STAssertNotNil(error, @"No error raised when uncompressing to target path where permission is denied", nil);
+		STAssertTrueNoThrow(error.code == 2, @"Wrong error raised. Error should be 2: %@", [error localizedDescription]);
+		
+	}];
+	
+	dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(semaphore);
+}
+
+- (void)testSuccessfulUncompressZipArchiveNodeToDataGZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	
+	[zipArchive uncompressZipArchiveNode:zipArchive.nodes[0] toDataWithCompletion:^(NSData *data, NSError *error) {
+		
+		STAssertNil(error, @"Error raised when uncompressing node to data");
+		
+	}];
+}
+
+- (void)testUncompressInvalidZipArchiveNodeToDataGZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	
+	[zipArchive uncompressZipArchiveNode:nil toDataWithCompletion:^(NSData *data, NSError *error) {
+		
+		STAssertNotNil(error, @"No error raised when uncompressing to target path where permission is denied", nil);
+		STAssertTrueNoThrow(error.code == 7, @"Wrong error raised. Error should be 7: %@", [error localizedDescription]);
+		
+	}];
 }
 
 @end
