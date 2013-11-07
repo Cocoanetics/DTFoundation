@@ -50,8 +50,14 @@
 	{
 		_path = sourcePath;
 		
+		// only accept if valid file name
+		if (![self _inflatedFileName])
+		{
+			return nil;
+		}
+		
 		_data = [[NSData alloc] initWithContentsOfFile:sourcePath options:NSDataReadingMappedIfSafe error:NULL];
-				
+		
 		// the last 4 bytes contain the uncompressed size
 		// this only works when the uncompressed size of the file is smaller 4GB
 		NSRange last4Bytes = NSMakeRange([_data length] - 4, 4);
@@ -83,7 +89,10 @@
 - (void)dealloc
 {
 #if !OS_OBJECT_USE_OBJC
-	dispatch_release(_uncompressingQueue);
+	if (_uncompressingQueue)
+	{
+		dispatch_release(_uncompressingQueue);
+	}
 #endif
 }
 
@@ -92,24 +101,28 @@
 
 - (NSString *)_inflatedFileName
 {
-    NSString *fileName = [self.path lastPathComponent];
-    NSString *extension = [fileName pathExtension];
-
-    // man page mentions suffixes .gz, -gz, .z, -z, _z or .Z
-    if ([extension isEqualToString:@"gz"] || [extension isEqualToString:@"z"] || [extension isEqualToString:@"Z"])
-    {
-        fileName = [fileName stringByDeletingPathExtension];
-    }
-    else if ([fileName hasSuffix:@"-gz"])
-    {
-        fileName = [fileName substringToIndex:[fileName length]-3];
-    }
-    else if ([fileName hasSuffix:@"-z"] || [fileName hasSuffix:@"_z"])
-    {
-        fileName = [fileName substringToIndex:[fileName length]-2];
-    }
-
-    return fileName;
+	NSString *fileName = [self.path lastPathComponent];
+	NSString *extension = [fileName pathExtension];
+	
+	// man page mentions suffixes .gz, -gz, .z, -z, _z or .Z
+	if ([extension isEqualToString:@"gz"] || [extension isEqualToString:@"z"] || [extension isEqualToString:@"Z"])
+	{
+		fileName = [fileName stringByDeletingPathExtension];
+	}
+	else if ([fileName hasSuffix:@"-gz"])
+	{
+		fileName = [fileName substringToIndex:[fileName length]-3];
+	}
+	else if ([fileName hasSuffix:@"-z"] || [fileName hasSuffix:@"_z"])
+	{
+		fileName = [fileName substringToIndex:[fileName length]-2];
+	}
+	else
+	{
+		fileName = nil;
+	}
+	
+	return fileName;
 }
 
 #pragma mark - Overridden methods from DTZipArchive
@@ -117,66 +130,61 @@
 // adapted from http://www.cocoadev.com/index.pl?NSDataCategory
 - (void)enumerateUncompressedFilesAsDataUsingBlock:(DTZipArchiveEnumerationResultsBlock)enumerationBlock
 {
-    NSUInteger dataLength = [_data length];
-    NSUInteger halfLength = dataLength / 2;
-
-    NSMutableData *decompressed = [NSMutableData dataWithLength: dataLength + halfLength];
-    BOOL done = NO;
-    int status;
-
-
-    z_stream strm;
-    strm.next_in = (Bytef *)[_data bytes];
-    strm.avail_in = (uInt)dataLength;
-    strm.total_out = 0;
-    strm.zalloc = Z_NULL;
-    strm.zfree = Z_NULL;
-
-    // inflateInit2 knows how to deal with gzip format
-    if (inflateInit2(&strm, (15+32)) != Z_OK)
-    {
-        return;
-    }
-
-    while (!done)
-    {
-		 if (self.isCancelling)
-		 {
-			 return;
-		 }
-		 
-        // extend decompressed if too short
-        if (strm.total_out >= [decompressed length])
-        {
-            [decompressed increaseLengthBy: halfLength];
-        }
-
-        strm.next_out = [decompressed mutableBytes] + strm.total_out;
-        strm.avail_out = (uInt)[decompressed length] - (uInt)strm.total_out;
-
-        // Inflate another chunk.
-        status = inflate (&strm, Z_SYNC_FLUSH);
-
-        if (status == Z_STREAM_END)
-        {
-            done = YES;
-        }
-        else if (status != Z_OK)
-        {
-            break;
-        }
-    }
-
-    if (inflateEnd (&strm) != Z_OK || !done)
-    {
-        return;
-    }
-
-    // set actual length
-    [decompressed setLength:strm.total_out];
-
-    // call back block
-    enumerationBlock([self _inflatedFileName], decompressed, NULL);
+	NSUInteger dataLength = [_data length];
+	NSUInteger halfLength = dataLength / 2;
+	
+	NSMutableData *decompressed = [NSMutableData dataWithLength: dataLength + halfLength];
+	BOOL done = NO;
+	int status;
+	
+	
+	z_stream strm;
+	strm.next_in = (Bytef *)[_data bytes];
+	strm.avail_in = (uInt)dataLength;
+	strm.total_out = 0;
+	strm.zalloc = Z_NULL;
+	strm.zfree = Z_NULL;
+	
+	// inflateInit2 knows how to deal with gzip format
+	status = inflateInit2(&strm, (15+32));
+	
+	NSAssert(status == Z_OK, @"This should never be failing, only if out of memory");
+	
+	while (!done && !self.isCancelling)
+	{
+		// extend decompressed if too short
+		if (strm.total_out >= [decompressed length])
+		{
+			[decompressed increaseLengthBy: halfLength];
+		}
+		
+		strm.next_out = [decompressed mutableBytes] + strm.total_out;
+		strm.avail_out = (uInt)[decompressed length] - (uInt)strm.total_out;
+		
+		// Inflate another chunk.
+		status = inflate (&strm, Z_SYNC_FLUSH);
+		
+		if (status == Z_STREAM_END)
+		{
+			done = YES;
+		}
+		else if (status != Z_OK)
+		{
+			break;
+		}
+	}
+	
+	// we exit here if we did not reach the stream end (e.g. error or cancel)
+	if (inflateEnd (&strm) != Z_OK || !done)
+	{
+		return;
+	}
+	
+	// set actual length
+	[decompressed setLength:strm.total_out];
+	
+	// call back block
+	enumerationBlock([self _inflatedFileName], decompressed, NULL);
 }
 
 - (void)_uncompressFile:(NSString *)targetPath completion:(DTZipArchiveUncompressFileCompletionBlock)completion
@@ -210,12 +218,18 @@
 // adapted from http://www.cocoadev.com/index.pl?NSDataCategory
 - (void)uncompressToPath:(NSString *)targetPath completion:(DTZipArchiveUncompressionCompletionBlock)completion
 {
+	NSAssert(!self.isUncompressing, @"Calling %s multiple times is a programming error", __PRETTY_FUNCTION__);
+	
+	self.uncompressing = YES;
+	
 	dispatch_async(_uncompressingQueue, ^{
 		[self _uncompressFile:targetPath completion:^(NSData *data, NSError *error) {
 			if (completion)
 			{
 				completion(error);
 			}
+			
+			self.uncompressing = NO;
 		}];
 	});
 }
@@ -227,6 +241,38 @@
 
 - (NSData *)_uncompressZipArchiveNode:(DTZipArchiveNode *)node targetPath:(NSString *)targetPath withError:(NSError **)error
 {
+	NSParameterAssert(targetPath);
+	
+	NSString *filePath = [targetPath stringByAppendingPathComponent:[self _inflatedFileName]];
+	NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+	
+	NSFileManager *fileManager = [[NSFileManager alloc] init];
+	
+	// create file handle
+	NSFileHandle *destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:nil];
+	
+	if (!destinationFileHandle)
+	{
+		// if we have no file create it first
+		if (![fileManager createFileAtPath:filePath contents:nil attributes:nil])
+		{
+			if (error)
+			{
+				NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unzip file cannot be created"};
+				*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:2 userInfo:userInfo];
+			}
+			
+			return nil;
+		}
+		
+		destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:error];
+		if (!destinationFileHandle)
+		{
+			return nil;
+		}
+	}
+	
+	
 	NSMutableData *data = [NSMutableData data];
 	
 	NSMutableData *decompressed = [NSMutableData dataWithLength:BUFFER_SIZE];
@@ -244,71 +290,54 @@
 	// inflateInit2 knows how to deal with gzip format
 	if (inflateInit2(&strm, (15+32)) != Z_OK)
 	{
-        if (error)
-        {
-            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to go to first file in zip archive"};
-            *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:3 userInfo:userInfo];
-        }
+		if (error)
+		{
+			NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unable to go to first file in zip archive"};
+			*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:3 userInfo:userInfo];
+		}
 		
 		return nil;
 	}
 	
-	NSFileHandle *destinationFileHandle;
-	
-	if (targetPath)
-	{
-		NSString *filePath = [targetPath stringByAppendingPathComponent:[self _inflatedFileName]];
-		NSURL *fileURL = [NSURL fileURLWithPath:filePath];
-		
-		NSFileManager *fileManager = [[NSFileManager alloc] init];
-		
-		// create file handle
-		destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:nil];
-		if(!destinationFileHandle)
-		{
-			// if we have no file create it first
-			if (![fileManager createFileAtPath:filePath contents:nil attributes:nil])
-			{
-                if (error)
-                {
-                    NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unzip file cannot be created"};
-                    *error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:2 userInfo:userInfo];
-                }
-				
-				return nil;
-			}
-			
-			destinationFileHandle = [NSFileHandle fileHandleForWritingToURL:fileURL error:error];
-			if (!destinationFileHandle)
-			{
-				return nil;
-			}
-		}
-	}
 	
 	// creating queue and group for file writing (files and directories)
 	dispatch_queue_t fileWriteQueue;
 	dispatch_group_t fileWriteGroup;
 	
-	if (targetPath)
-	{
-		fileWriteQueue = dispatch_queue_create("DTZipArchiveFileQueue", 0);
-		fileWriteGroup = dispatch_group_create();
-	}
+	fileWriteQueue = dispatch_queue_create("DTZipArchiveFileQueue", 0);
+	fileWriteGroup = dispatch_group_create();
+	
+	// send 0%
+	dispatch_async(dispatch_get_main_queue(), ^{
+		
+		// prepare progress notification
+		NSDictionary *userInfo =  @{@"ProgressPercent" : [NSNumber numberWithFloat:0]};
+		[[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
+	});
 	
 	while (!done)
-	{		
+	{
 		// extend decompressed if too short
 		strm.next_out = [decompressed mutableBytes];
 		strm.avail_out = BUFFER_SIZE;
 		
-		float percent = (float)strm.total_out / _uncompressedLength;
-		
 		// Inflate another chunk.
 		status = inflate (&strm, Z_SYNC_FLUSH);
+	
+		if (status != Z_OK && status != Z_STREAM_END)
+		{
+			if (error)
+			{
+				NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Unzip file corrupt"};
+				*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:9 userInfo:userInfo];
+			}
+			
+			break;
+		}
 		
 		// on last block reduce size of decompressed block
 		uInt lengthOfBlock = strm.total_out % BUFFER_SIZE;
+		
 		if (lengthOfBlock)
 		{
 			[decompressed setLength:(uInt)lengthOfBlock];
@@ -318,48 +347,25 @@
 		
 		// add each data block to have all data
 		[data appendData:[decompressed copy]];
-		
+
+		float percent = (float)strm.total_out / _uncompressedLength;
+
 		// only write data to disk when we have a valid targetPath (is checked at the beginning of this method)
-		if (targetPath)
-		{
-			dispatch_group_async(fileWriteGroup, fileWriteQueue, ^{
-				
-				
-				
-				if (destinationFileHandle)
-				{
-					[destinationFileHandle writeData:decompressedBlock];
-				}
-				
-				dispatch_async(dispatch_get_main_queue(), ^{
-					
-					// prepare progress notification
-					NSDictionary *userInfo =  @{@"ProgressPercent" : [NSNumber numberWithFloat:percent]};
-					[[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
-				});
-				
-			});
-		}
-		else
-		{
+		dispatch_group_async(fileWriteGroup, fileWriteQueue, ^{
+			
+			[destinationFileHandle writeData:decompressedBlock];
+			
+			// always send progress report
 			dispatch_async(dispatch_get_main_queue(), ^{
 				
 				// prepare progress notification
 				NSDictionary *userInfo =  @{@"ProgressPercent" : [NSNumber numberWithFloat:percent]};
 				[[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
 			});
-		}
-		
+		});
 		
 		if (status == Z_STREAM_END)
 		{
-			dispatch_async(dispatch_get_main_queue(), ^{
-				
-				// prepare progress notification -> 100%
-				NSDictionary *userInfo =  @{@"ProgressPercent" : [NSNumber numberWithFloat:100.0f]};
-				[[NSNotificationCenter defaultCenter] postNotificationName:DTZipArchiveProgressNotification object:self userInfo:userInfo];
-			});
-			
 			done = YES;
 		}
 		else if (status != Z_OK)
@@ -368,15 +374,12 @@
 		}
 	}
 	
-	if (targetPath)
-	{
-		dispatch_group_wait(fileWriteGroup, DISPATCH_TIME_FOREVER);
-		
+	dispatch_group_wait(fileWriteGroup, DISPATCH_TIME_FOREVER);
+	
 #if !OS_OBJECT_USE_OBJC
-		dispatch_release(fileWriteQueue);
-		dispatch_release(fileWriteGroup);
+	dispatch_release(fileWriteQueue);
+	dispatch_release(fileWriteGroup);
 #endif
-	}
 	
 	if (inflateEnd (&strm) != Z_OK || !done)
 	{
@@ -387,7 +390,7 @@
 }
 
 - (void)uncompressZipArchiveNode:(DTZipArchiveNode *)node toDataWithCompletion:(DTZipArchiveUncompressFileCompletionBlock)completion
-{	
+{
 	if ([self.nodes containsObject:node])
 	{
 		NSError *error = nil;
