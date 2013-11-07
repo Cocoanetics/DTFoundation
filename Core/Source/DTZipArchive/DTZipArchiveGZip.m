@@ -239,14 +239,19 @@
 
 - (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error
 {
-	NSData *data;
-	
-	if ([self _uncompressZipArchiveNode:node targetPath:nil targetData:&data withError:error])
+	if (![self.nodes containsObject:node])
 	{
-		return data;
+		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Invalid node specified, cannot uncompress GZip file."};
+		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
+		
+		return nil;
 	}
 	
-	return nil;
+	NSData *data;
+	
+	[self _uncompressZipArchiveNode:node targetPath:nil targetData:&data withError:error];
+	
+	return data;
 }
 
 

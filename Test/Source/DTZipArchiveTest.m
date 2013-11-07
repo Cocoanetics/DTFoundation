@@ -825,7 +825,7 @@
 	}];
 }
 
-- (void)testUncompressInvalidZipArchiveNodeToDataGZip
+- (void)testUncompressNilZipArchiveNodeToDataGZip
 {
 	// get sample.zip file
 	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
@@ -839,6 +839,26 @@
 		STAssertTrueNoThrow(error.code == 7, @"Wrong error raised. Error should be 7: %@", [error localizedDescription]);
 		
 	}];
+}
+
+- (void)testUncompressInvalidZipArchiveNodeToDataGZip
+{
+	// get sample.zip file
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	
+	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	
+	DTZipArchiveNode *invalidNode = [[DTZipArchiveNode alloc] init];
+	
+	NSError *error;
+	
+	NSData *data = [zipArchive uncompressZipArchiveNode:invalidNode withError:&error];
+	
+	STAssertNil(data, @"No data should be returned when trying to uncompress invalid node");
+	STAssertNotNil(error, @"No error raised when uncompressing to target path where permission is denied", nil);
+	STAssertTrueNoThrow(error.code == 7, @"Wrong error raised. Error should be 7: %@", [error localizedDescription]);
+
 }
 
 @end
