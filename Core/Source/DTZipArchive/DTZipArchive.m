@@ -58,10 +58,12 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
     }
 }
 
+#ifndef COVERAGE
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"<%@ path='%@'>", NSStringFromClass([self class]), self.path];
 }
+#endif
 
 #pragma mark - Abstract Methods
 
@@ -149,7 +151,10 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 
 - (void)cancelAllUncompressing
 {
-	self.cancelling = YES;
+	if (self.isUncompressing)
+	{
+		self.cancelling = YES;
+	}
 }
 
 - (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error

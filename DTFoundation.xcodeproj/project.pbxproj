@@ -319,6 +319,10 @@
 		C0494E3EAE5FD2F61970FE00 /* Rene in Resources */ = {isa = PBXBuildFile; fileRef = C0494D374C86170585303054 /* Rene */; };
 		E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA08F96016E4EEAF00BDF822 /* DTZipArchiveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */; };
+		FA177353182BA95600432258 /* gzip_sample.txt.foo in Resources */ = {isa = PBXBuildFile; fileRef = FA17734F182BA95600432258 /* gzip_sample.txt.foo */; };
+		FA177354182BA95600432258 /* gzip_sample.txt-z in Resources */ = {isa = PBXBuildFile; fileRef = FA177350182BA95600432258 /* gzip_sample.txt-z */; };
+		FA177355182BA95600432258 /* gzip_sample.txt-gz in Resources */ = {isa = PBXBuildFile; fileRef = FA177351182BA95600432258 /* gzip_sample.txt-gz */; };
+		FA177356182BA95600432258 /* gzip_sample_invalid.gz in Resources */ = {isa = PBXBuildFile; fileRef = FA177352182BA95600432258 /* gzip_sample_invalid.gz */; };
 		FA2A29291609F7330023CDD7 /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
 		FA9CB81817ABDF1500A596C5 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; };
 		FA9CB81917ABDF1500A596C5 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; };
@@ -750,6 +754,10 @@
 		C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveTest.m; sourceTree = "<group>"; };
 		C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchivePKZip.h; sourceTree = "<group>"; };
 		C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveNode.m; sourceTree = "<group>"; };
+		FA17734F182BA95600432258 /* gzip_sample.txt.foo */ = {isa = PBXFileReference; lastKnownFileType = file; path = gzip_sample.txt.foo; sourceTree = "<group>"; };
+		FA177350182BA95600432258 /* gzip_sample.txt-z */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gzip_sample.txt-z"; sourceTree = "<group>"; };
+		FA177351182BA95600432258 /* gzip_sample.txt-gz */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gzip_sample.txt-gz"; sourceTree = "<group>"; };
+		FA177352182BA95600432258 /* gzip_sample_invalid.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = gzip_sample_invalid.gz; sourceTree = "<group>"; };
 		FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTASN1.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAAC041316B1421F00EB1C7F /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screenshot.png; path = Test/Resources/screenshot.png; sourceTree = SOURCE_ROOT; };
 		FAB17247162FFA6800B44EDC /* NSArrayDTErrorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayDTErrorTest.h; sourceTree = "<group>"; };
@@ -1421,6 +1429,10 @@
 				C0494767B5C59AFA489E561D /* sample.zip */,
 				C0494136CFE5018E95613EA7 /* gzip_sample.txt.gz */,
 				C04942C8BD89694FA3602A10 /* gzip_sample.txt.original */,
+				FA17734F182BA95600432258 /* gzip_sample.txt.foo */,
+				FA177350182BA95600432258 /* gzip_sample.txt-z */,
+				FA177351182BA95600432258 /* gzip_sample.txt-gz */,
+				FA177352182BA95600432258 /* gzip_sample_invalid.gz */,
 				C04949EA663FC46EA5E3F0B6 /* zipContent */,
 			);
 			path = Resources;
@@ -2124,13 +2136,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7D60FF415D3B1FB00AEDD1B /* html_doctype.html in Resources */,
+				FA177354182BA95600432258 /* gzip_sample.txt-z in Resources */,
 				A7D60FF515D3B1FB00AEDD1B /* processing_instruction.html in Resources */,
 				FAB1724C162FFC5200B44EDC /* DictionarySample.plist in Resources */,
 				FAB172AC163024E200B44EDC /* ArraySample.plist in Resources */,
 				C04947611C8CC4CC53CCCCC7 /* sample.zip in Resources */,
 				C0494413BF6B7DE719726BB7 /* gzip_sample.txt.gz in Resources */,
 				C0494D3AF5B2B0774E6136BF /* gzip_sample.txt.original in Resources */,
+				FA177356182BA95600432258 /* gzip_sample_invalid.gz in Resources */,
 				C0494CC105683DE968BE8369 /* Franz.txt in Resources */,
+				FA177355182BA95600432258 /* gzip_sample.txt-gz in Resources */,
+				FA177353182BA95600432258 /* gzip_sample.txt.foo in Resources */,
 				C049486B146FE0EFC414B13F /* Oliver.txt in Resources */,
 				C0494E3EAE5FD2F61970FE00 /* Rene in Resources */,
 				C0494CD3BEA39889ED032BCA /* Stefan.txt in Resources */,
@@ -2677,6 +2693,7 @@
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "COVERAGE=1";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
