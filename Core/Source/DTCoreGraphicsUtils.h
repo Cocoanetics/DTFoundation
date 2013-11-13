@@ -55,6 +55,3 @@ NSDictionary *DTCGRectCreateDictionaryRepresentation(CGRect rect);
  @returns The point which is the center of rect.
  */
 CGPoint DTCGRectCenter(CGRect rect);
-
-
-
