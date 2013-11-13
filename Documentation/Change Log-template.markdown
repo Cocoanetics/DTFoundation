@@ -9,6 +9,7 @@ This is the history of version updates.
 - CHANGED: DTReachability revamped to allow monitoring custom hosts, no longer a singleton
 - FIXED: Missing Code Coverage monitoring
 - CHANGED: Refactored DTZipArchive and added more unit tests for GZip
+- CHANGED: Prefixed some C-functions to avoid conflicts
 - FIXED: Analyze Warnings
 - FIXED: Some 64-bit and Xcode 4/5 build issues 
 
