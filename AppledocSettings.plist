@@ -33,6 +33,11 @@
 	<key>--include</key>
 	<array>
 		<string>./Documentation/Change Log-template.markdown</string>
+		<string>./Documentation/Core Subspec-template.markdown</string>
+		<string>./Documentation/UIKit Subspec-template.markdown</string>
+		<string>./Documentation/UIKit Blocks Subspec-template.markdown</string>
+		<string>./Documentation/AppKit Subspec-template.markdown</string>
+		<string>./Documentation/Other Subspecs-template.markdown</string>
 	</array>
 	<key>--ignore</key>
 	<array>

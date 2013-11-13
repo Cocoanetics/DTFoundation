@@ -663,6 +663,11 @@
 		A79D99C11792D2490082BC06 /* NSURL+DTAWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTAWS.m"; sourceTree = "<group>"; };
 		A7BAD10E1483F934000E2B6A /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C619EF162D8D84002C0C1A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A7C8181E18339146000CE7BD /* AppKit Subspec-template.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "AppKit Subspec-template.markdown"; sourceTree = "<group>"; };
+		A7C8181F18339146000CE7BD /* Core Subspec-template.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Core Subspec-template.markdown"; sourceTree = "<group>"; };
+		A7C8182018339146000CE7BD /* Other Subspecs-template.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Other Subspecs-template.markdown"; sourceTree = "<group>"; };
+		A7C8182118339146000CE7BD /* UIKit Blocks Subspec-template.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIKit Blocks Subspec-template.markdown"; sourceTree = "<group>"; };
+		A7C8182218339146000CE7BD /* UIKit Subspec-template.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIKit Subspec-template.markdown"; sourceTree = "<group>"; };
 		A7C92B5B174F6A1A0019D70A /* toolbar-icon-menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-icon-menu.png"; sourceTree = "<group>"; };
 		A7C92B5C174F6A1A0019D70A /* toolbar-icon-menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-icon-menu@2x.png"; sourceTree = "<group>"; };
 		A7C92B60174F72C30019D70A /* ModalPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalPanelViewController.h; sourceTree = "<group>"; };
@@ -988,6 +993,11 @@
 		A70B4CDA1486626900873A4A /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
+				A7C8181E18339146000CE7BD /* AppKit Subspec-template.markdown */,
+				A7C8181F18339146000CE7BD /* Core Subspec-template.markdown */,
+				A7C8182018339146000CE7BD /* Other Subspecs-template.markdown */,
+				A7C8182118339146000CE7BD /* UIKit Blocks Subspec-template.markdown */,
+				A7C8182218339146000CE7BD /* UIKit Subspec-template.markdown */,
 				A7859D3D16DF8D180076F2DB /* AppledocSettings.plist */,
 				A721221C173C06C4003C6F0A /* LICENSE */,
 				A721221B173C06B6003C6F0A /* Change Log-template.markdown */,

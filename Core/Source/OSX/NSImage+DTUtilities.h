@@ -7,7 +7,7 @@
 //
 
 /**
- Utilities for `NSImage`
+ Utilities for `NSImage`.
  */
 @interface NSImage (DTUtilities)
 

@@ -7,7 +7,7 @@
 //
 
 /**
- Useful shortcuts for auto layout on Mac
+ Useful shortcuts for auto layout on Mac.
  */
 
 @interface NSView (DTAutoLayout)
