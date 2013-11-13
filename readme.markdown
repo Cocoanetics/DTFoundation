@@ -10,17 +10,17 @@ Documentation can be [browsed online](https://docs.cocoanetics.com/DTFoundation)
 Methods, categories and functions are grouped into Subspecs. The grouping determined by the required dependencies. Please refer the programming guides linked from the documentation site for their contents.
 
 - **Core:** Enhancements for Apple frameworks and classes which are usable on Mac and iOS.
-- **UIKit**
-- **UIKit Blocks Additions**
-- **AppKit**
-- **DTAWS**
-- **DTASN1**
-- **DTHTMLParser**
-- **DTReachability**
-- **DTSidePanel**
-- **DTSQLite**
-- **DTUTI**
-- **DTZipArchive**
+- **UIKit:** Enhancements for UIKit
+- **UIKit Blocks Additions:** Adding blocks-support to UIKit
+- **AppKit:** Enhancements for AppKit
+- **DTAWS:** Talking to Amazon Web Services
+- **DTASN1:** Event-based parser for ASN.1 data
+- **DTHTMLParser:** Event-based HTML parser based on libxml2
+- **DTReachability:** Block-based Reachability
+- **DTSidePanel:** Side-Panel view controller
+- **DTSQLite:** Objective-C wrapper for SQLite
+- **DTUTI:** UTI methods
+- **DTZipArchive:** Handing of Pkzip and GZip files
 
 License
 -------
