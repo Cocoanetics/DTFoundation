@@ -12,15 +12,19 @@
 @implementation DTReachabilityInformation
 
 
-- (instancetype) initWithFlags:(SCNetworkReachabilityFlags)reachabilityFlags {
+- (instancetype)initWithFlags:(SCNetworkReachabilityFlags)reachabilityFlags
+{
 	self = [super init];
-	if (self) {
+
+	if (self)
+	{
 		_reachabilityFlags = reachabilityFlags;
 	}
 	return self;
 }
 
-- (BOOL)isReachable {
+- (BOOL)isReachable
+{
 	return (self.reachabilityFlags & kSCNetworkFlagsReachable) && !(self.reachabilityFlags & kSCNetworkFlagsConnectionRequired);
 }
 
@@ -50,6 +54,7 @@ static DTReachability *_sharedInstance;
 	static dispatch_once_t instanceOnceToken;
 	
 	dispatch_once(&instanceOnceToken, ^{
+		
 		_sharedInstance = [[DTReachability alloc] init];
 	});
 	
@@ -90,7 +95,6 @@ static DTReachability *_sharedInstance;
 		
 		[self _registerNetworkReachability];
 				
-	
 		// get the current flags if possible
 		if (SCNetworkReachabilityGetFlags(_reachability, &_connectionFlags))
 		{
@@ -107,10 +111,9 @@ static DTReachability *_sharedInstance;
 	{
 		[_observers removeObject:observer];
 		
-		// if this was the last we don't need the reachability no longer
-		
 		if (![_observers count])
 		{
+			// if this was the last we don't need the reachability no longer
 			[self _unregisterNetworkReachability];
 		}
 	}
@@ -126,8 +129,10 @@ static DTReachability *_sharedInstance;
 	return [[DTReachability defaultReachability] removeReachabilityObserver:observer];
 }
 
-- (void)setHostname:(NSString *)hostname {
-	@synchronized(self) {
+- (void)setHostname:(NSString *)hostname
+{
+	@synchronized(self)
+	{
 		if (![hostname isEqualToString:_hostname])
 		{
 			[self _unregisterNetworkReachability];
@@ -139,7 +144,8 @@ static DTReachability *_sharedInstance;
 
 #pragma mark - Internals
 
-- (void)_registerNetworkReachability {
+- (void)_registerNetworkReachability
+{
 	// first watcher creates reachability
 	if (!_reachability)
 	{
@@ -158,7 +164,8 @@ static DTReachability *_sharedInstance;
 	}
 }
 
-- (void)_unregisterNetworkReachability {
+- (void)_unregisterNetworkReachability
+{
 	SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
 	
 	if (SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
@@ -171,7 +178,6 @@ static DTReachability *_sharedInstance;
 	}
 	
 	_reachability = nil;
-
 }
 
 - (void)_notifyObserversWithFlags:(SCNetworkReachabilityFlags)flags
