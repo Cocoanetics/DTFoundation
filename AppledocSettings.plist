@@ -38,6 +38,7 @@
 		<string>./Documentation/UIKit Blocks Subspec-template.markdown</string>
 		<string>./Documentation/AppKit Subspec-template.markdown</string>
 		<string>./Documentation/Other Subspecs-template.markdown</string>
+		<string>./Documentation/Setup Guide-template.markdown</string>
 	</array>
 	<key>--ignore</key>
 	<array>

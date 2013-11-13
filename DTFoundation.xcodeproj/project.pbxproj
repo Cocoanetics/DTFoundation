@@ -668,6 +668,8 @@
 		A7C8182018339146000CE7BD /* Other Subspecs-template.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Other Subspecs-template.markdown"; sourceTree = "<group>"; };
 		A7C8182118339146000CE7BD /* UIKit Blocks Subspec-template.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIKit Blocks Subspec-template.markdown"; sourceTree = "<group>"; };
 		A7C8182218339146000CE7BD /* UIKit Subspec-template.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIKit Subspec-template.markdown"; sourceTree = "<group>"; };
+		A7C818231833926F000CE7BD /* readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.markdown; sourceTree = SOURCE_ROOT; };
+		A7C81825183392E0000CE7BD /* Setup Guide-template.markdown */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Setup Guide-template.markdown"; sourceTree = "<group>"; };
 		A7C92B5B174F6A1A0019D70A /* toolbar-icon-menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-icon-menu.png"; sourceTree = "<group>"; };
 		A7C92B5C174F6A1A0019D70A /* toolbar-icon-menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-icon-menu@2x.png"; sourceTree = "<group>"; };
 		A7C92B60174F72C30019D70A /* ModalPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalPanelViewController.h; sourceTree = "<group>"; };
@@ -993,11 +995,13 @@
 		A70B4CDA1486626900873A4A /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
+				A7C818231833926F000CE7BD /* readme.markdown */,
 				A7859D3D16DF8D180076F2DB /* AppledocSettings.plist */,
 				A7C8181E18339146000CE7BD /* AppKit Subspec-template.markdown */,
 				A721221B173C06B6003C6F0A /* Change Log-template.markdown */,
 				A7C8181F18339146000CE7BD /* Core Subspec-template.markdown */,
 				A7C8182018339146000CE7BD /* Other Subspecs-template.markdown */,
+				A7C81825183392E0000CE7BD /* Setup Guide-template.markdown */,
 				A7C8182118339146000CE7BD /* UIKit Blocks Subspec-template.markdown */,
 				A7C8182218339146000CE7BD /* UIKit Subspec-template.markdown */,
 				A721221C173C06C4003C6F0A /* LICENSE */,
