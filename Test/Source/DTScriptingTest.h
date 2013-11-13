@@ -2,7 +2,7 @@
 //  DTScriptingTest.h
 //  DTFoundation
 //
-//  Copyright 2011 Drobnik.com. All rights reserved.
+//  Copyright 2011 Cocoanetics. All rights reserved.
 //
 
 //  Logic unit tests contain unit test code that is designed to be linked into an independent test executable.

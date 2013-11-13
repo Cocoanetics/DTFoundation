@@ -3,7 +3,7 @@
 //  iCatalogEditor
 //
 //  Created by Oliver Drobnik on 10/23/12.
-//  Copyright (c) 2012 Oliver Drobnik. All rights reserved.
+//  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
 #import "DTScrollView.h"

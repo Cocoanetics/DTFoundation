@@ -3,7 +3,7 @@
 //  DTFoundation
 //
 //  Created by Oliver Drobnik on 7/18/10.
-//  Copyright 2010 Drobnik.com. All rights reserved.
+//  Copyright 2010 Cocoanetics. All rights reserved.
 //
 
 /**

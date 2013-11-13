@@ -3,7 +3,7 @@
 //  iCatalog
 //
 //  Created by Rene Pirringer on 20.07.11.
-//  Copyright 2011 Drobnik.com. All rights reserved.
+//  Copyright 2011 Cocoanetics. All rights reserved.
 //
 
 #import "DTScriptingTest.h"
