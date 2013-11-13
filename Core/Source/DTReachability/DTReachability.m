@@ -15,7 +15,8 @@
 {
 	NSMutableSet *_observers;
 	SCNetworkReachabilityRef _reachability;
-	SCNetworkConnectionFlags _connectionFlags;
+	SCNetworkReachabilityFlags _connectionFlags;
+	NSString *_hostname;
 }
 
 
@@ -34,21 +35,27 @@ static DTReachability *_sharedInstance;
 
 - (instancetype)init
 {
+	return [self initWithHostname:@"apple.com"];
+}
+
+- (instancetype) initWithHostname:(NSString *)hostname
+{
 	self = [super init];
 	
 	if (self)
 	{
 		_observers = [[NSMutableSet alloc] init];
+		_hostname = hostname;
 	}
 	return self;
 }
 
 - (void)dealloc
 {
-	[self _removeInternalReachability];
+	[self _unregisterNetworkReachability];
 }
 
-- (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkConnectionFlags connectionFlags))observer
+- (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkReachabilityFlags connectionFlags))observer
 {
 	@synchronized(self)
 	{
@@ -58,25 +65,9 @@ static DTReachability *_sharedInstance;
 		// add it to the observers
 		[_observers addObject:block];
 		
-		
-		// first watcher creates reachability
-		if (!_reachability)
-		{
-			_reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, "apple.com");
-		}
-		
-		SCNetworkReachabilityContext context = {0, (__bridge void *)self, NULL, NULL, NULL};
-		
-		if(SCNetworkReachabilitySetCallback(_reachability, DTReachabilityCallback, &context))
-		{
-			if(!SCNetworkReachabilityScheduleWithRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
-			{
-				DTLogError(@"Error: Could not schedule reachability");
-				SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
-				return nil;
-			}
-		}
-		
+		[self _registerNetworkReachability];
+				
+	
 		// get the current flags if possible
 		if (SCNetworkReachabilityGetFlags(_reachability, &_connectionFlags))
 		{
@@ -97,12 +88,12 @@ static DTReachability *_sharedInstance;
 		
 		if (![_observers count])
 		{
-			[self _removeInternalReachability];
+			[self _unregisterNetworkReachability];
 		}
 	}
 }
 
-+ (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkConnectionFlags connectionFlags))observer
++ (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkReachabilityFlags connectionFlags))observer
 {
 	return [[DTReachability defaultReachability] addReachabilityObserverWithBlock:observer];
 }
@@ -112,10 +103,39 @@ static DTReachability *_sharedInstance;
 	return [[DTReachability defaultReachability] removeReachabilityObserver:observer];
 }
 
+- (void)setHostname:(NSString *)hostname {
+	@synchronized(self) {
+		if (![hostname isEqualToString:_hostname])
+		{
+			[self _unregisterNetworkReachability];
+			_hostname = hostname;
+			[self _registerNetworkReachability];
+		}
+	}
+}
+
 #pragma mark - Internals
 
-- (void)_removeInternalReachability
-{
+- (void)_registerNetworkReachability {
+	// first watcher creates reachability
+	if (!_reachability)
+	{
+		_reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, [_hostname UTF8String]);
+	
+		SCNetworkReachabilityContext context = {0, (__bridge void *)self, NULL, NULL, NULL};
+	
+		if(SCNetworkReachabilitySetCallback(_reachability, DTReachabilityCallback, &context))
+		{
+			if(!SCNetworkReachabilityScheduleWithRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
+			{
+				DTLogError(@"Error: Could not schedule reachability");
+				SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
+			}
+		}
+	}
+}
+
+- (void)_unregisterNetworkReachability {
 	SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
 	
 	if (SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
@@ -128,9 +148,10 @@ static DTReachability *_sharedInstance;
 	}
 	
 	_reachability = nil;
+
 }
 
-- (void)_notifyObserversWithFlags:(SCNetworkConnectionFlags)flags
+- (void)_notifyObserversWithFlags:(SCNetworkReachabilityFlags)flags
 {
 	@synchronized(self)
 	{
@@ -141,7 +162,7 @@ static DTReachability *_sharedInstance;
 	}
 }
 
-static void DTReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConnectionFlags flags, void *info)
+static void DTReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info)
 {
 	DTReachability *reachability = (__bridge DTReachability *)info;
 
