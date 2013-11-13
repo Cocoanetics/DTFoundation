@@ -21,6 +21,18 @@ An event-based parser for HTML data, based on libxml2.
 
 A block-based reachability solution.
 
+### DTSQLite
+
+Objective-C wrapper for SQLite
+
+### DTUTI
+
+Helpful methods for dealing with UTIs
+
+### DTZipArchive
+
+Handing of Pkzip and GZip files
+
 ## iOS only
 
 ### DTSidePanel
