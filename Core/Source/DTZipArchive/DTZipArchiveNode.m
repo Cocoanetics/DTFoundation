@@ -17,6 +17,7 @@
     BOOL _directory;
 }
 
+#ifndef COVERAGE
 - (NSString *)description
 {
     if (self.isDirectory)
@@ -28,6 +29,7 @@
         return [NSString stringWithFormat:@"<%@ name='%@'>", NSStringFromClass([self class]), self.name];
     }
 }
+#endif
 
 #pragma mark - Properties
 

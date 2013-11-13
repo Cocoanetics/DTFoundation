@@ -1,14 +1,14 @@
 //
-//  DTUtils.m
+//  DTCoreGraphicsUtils.m
 //  DTFoundation
 //
 //  Created by Oliver Drobnik on 7/18/10.
-//  Copyright 2010 Drobnik.com. All rights reserved.
+//  Copyright 2010 Cocoanetics. All rights reserved.
 //
 
-#import "DTUtils.h"
+#import "DTCoreGraphicsUtils.h"
 
-CGSize sizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
+CGSize DTCGSizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
 {
 	CGFloat necessaryZoomWidth = sizeToFit.width / originalSize.width;
 	CGFloat necessaryZoomHeight = sizeToFit.height / originalSize.height;
@@ -18,7 +18,7 @@ CGSize sizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
 	return CGSizeMake(roundf(originalSize.width*smallerZoom), roundf(originalSize.height*smallerZoom));
 }
 
-CGSize sizeThatFillsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
+CGSize DTCGSizeThatFillsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
 {
 	CGFloat necessaryZoomWidth = sizeToFit.width / originalSize.width;
 	CGFloat necessaryZoomHeight = sizeToFit.height / originalSize.height;
@@ -89,7 +89,7 @@ NSDictionary *DTCGRectCreateDictionaryRepresentation(CGRect rect)
 	return [NSDictionary dictionaryWithObjectsAndKeys:widthNumber, @"Width", heightNumber, @"Height", xNumber, @"X", yNumber, @"Y", nil];
 }
 
-CGPoint CGRectCenter(CGRect rect)
+CGPoint DTCGRectCenter(CGRect rect)
 {
-	return (CGPoint){ CGRectGetMidX(rect), CGRectGetMidY(rect) };
+	return (CGPoint){CGRectGetMidX(rect), CGRectGetMidY(rect)};
 }

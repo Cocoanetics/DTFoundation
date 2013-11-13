@@ -22,6 +22,9 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
  */
 - (id)initWithFileAtPath:(NSString *)path;
 
+@property (assign, getter = isCancelling) BOOL cancelling;
+@property (assign, getter = isUncompressing) BOOL uncompressing;
+
 @end
 
 
@@ -55,10 +58,12 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
     }
 }
 
+#ifndef COVERAGE
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"<%@ path='%@'>", NSStringFromClass([self class]), self.path];
 }
+#endif
 
 #pragma mark - Abstract Methods
 
@@ -142,6 +147,14 @@ NSString * const DTZipArchiveErrorDomain = @"DTZipArchive";
 - (void)uncompressToPath:(NSString *)targetPath completion:(DTZipArchiveUncompressionCompletionBlock)completion
 {
     [NSException raise:@"DTAbstractClassException" format:@"You tried to call %@ on an abstract class %@",  NSStringFromSelector(_cmd), NSStringFromClass([self class])];
+}
+
+- (void)cancelAllUncompressing
+{
+	if (self.isUncompressing)
+	{
+		self.cancelling = YES;
+	}
 }
 
 - (NSData *)uncompressZipArchiveNode:(DTZipArchiveNode *)node withError:(NSError **)error

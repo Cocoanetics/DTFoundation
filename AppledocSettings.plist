@@ -7,7 +7,7 @@
 	<key>--project-company</key>
 	<string>Cocoanetics</string>
 	<key>--project-version</key>
-	<string>1.5</string>
+	<string>1.6</string>
 	<key>--company-id</key>
 	<string>com.cocoanetics</string>
 	<key>--docset-atom-filename</key>
@@ -33,6 +33,12 @@
 	<key>--include</key>
 	<array>
 		<string>./Documentation/Change Log-template.markdown</string>
+		<string>./Documentation/Core Subspec-template.markdown</string>
+		<string>./Documentation/UIKit Subspec-template.markdown</string>
+		<string>./Documentation/UIKit Blocks Subspec-template.markdown</string>
+		<string>./Documentation/AppKit Subspec-template.markdown</string>
+		<string>./Documentation/Other Subspecs-template.markdown</string>
+		<string>./Documentation/Setup Guide-template.markdown</string>
 	</array>
 	<key>--ignore</key>
 	<array>

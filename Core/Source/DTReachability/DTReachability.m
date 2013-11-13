@@ -9,22 +9,81 @@
 #import "DTReachability.h"
 #import "DTLog.h"
 
-#import <arpa/inet.h>
-
-@implementation DTReachability
+@implementation DTReachabilityInformation
 
 
-static NSMutableSet *_observers = nil;
-
-static SCNetworkReachabilityRef _reachability = NULL;
-static SCNetworkConnectionFlags _connectionFlags = 0;
-
-+ (void)initialize
+- (instancetype)initWithFlags:(SCNetworkReachabilityFlags)reachabilityFlags
 {
-	_observers = [[NSMutableSet alloc] init];
+	self = [super init];
+
+	if (self)
+	{
+		_reachabilityFlags = reachabilityFlags;
+	}
+	return self;
 }
 
-+ (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkConnectionFlags connectionFlags))observer
+- (BOOL)isReachable
+{
+	return (self.reachabilityFlags & kSCNetworkFlagsReachable) && !(self.reachabilityFlags & kSCNetworkFlagsConnectionRequired);
+}
+
+#if	TARGET_OS_IPHONE
+- (BOOL)isWWAN {
+	return [self isReachable] && self.reachabilityFlags & kSCNetworkReachabilityFlagsIsWWAN;
+}
+#endif	// TARGET_OS_IPHONE
+
+
+@end
+
+
+@implementation DTReachability
+{
+	NSMutableSet *_observers;
+	SCNetworkReachabilityRef _reachability;
+	SCNetworkReachabilityFlags _connectionFlags;
+	NSString *_hostname;
+}
+
+
+static DTReachability *_sharedInstance;
+
++ (DTReachability *)defaultReachability
+{
+	static dispatch_once_t instanceOnceToken;
+	
+	dispatch_once(&instanceOnceToken, ^{
+		
+		_sharedInstance = [[DTReachability alloc] init];
+	});
+	
+	return _sharedInstance;
+}
+
+- (instancetype)init
+{
+	return [self initWithHostname:@"apple.com"];
+}
+
+- (instancetype) initWithHostname:(NSString *)hostname
+{
+	self = [super init];
+	
+	if (self)
+	{
+		_observers = [[NSMutableSet alloc] init];
+		_hostname = hostname;
+	}
+	return self;
+}
+
+- (void)dealloc
+{
+	[self _unregisterNetworkReachability];
+}
+
+- (id)addReachabilityObserverWithBlock:(void(^)(DTReachabilityInformation *information))observer
 {
 	@synchronized(self)
 	{
@@ -34,72 +93,109 @@ static SCNetworkConnectionFlags _connectionFlags = 0;
 		// add it to the observers
 		[_observers addObject:block];
 		
-		
-		// first watcher creates reachability
-		if (!_reachability)
-		{
-			_reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, "apple.com");
-		}
-		
-		SCNetworkReachabilityContext context = {0, NULL, NULL, NULL, NULL};
-		
-		if(SCNetworkReachabilitySetCallback(_reachability, ReachabilityCallback, &context))
-		{
-			if(!SCNetworkReachabilityScheduleWithRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
-			{
-				DTLogError(@"Error: Could not schedule reachability");
-				SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
-				return nil;
-			}
-		}
-		
+		[self _registerNetworkReachability];
+				
 		// get the current flags if possible
 		if (SCNetworkReachabilityGetFlags(_reachability, &_connectionFlags))
 		{
-			block(_connectionFlags);
+			block([[DTReachabilityInformation alloc] initWithFlags:_connectionFlags]);
 		}
 		
 		return block;
 	}
 }
 
-+ (void)removeReachabilityObserver:(id)observer
+- (void)removeReachabilityObserver:(id)observer
 {
 	@synchronized(self)
 	{
 		[_observers removeObject:observer];
 		
-		// if this was the last we don't need the reachability no longer
-		
 		if (![_observers count])
 		{
-			SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
-			
-			if (SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
-			{
-				DTLogInfo(@"Unscheduled reachability");
-			}
-			else
-			{
-				DTLogError(@"Error: Could not unschedule reachability");
-			}
-			
-			_reachability = nil;
+			// if this was the last we don't need the reachability no longer
+			[self _unregisterNetworkReachability];
+		}
+	}
+}
+
++ (id)addReachabilityObserverWithBlock:(void(^)(DTReachabilityInformation *information))observer
+{
+	return [[DTReachability defaultReachability] addReachabilityObserverWithBlock:observer];
+}
+
++ (void)removeReachabilityObserver:(id)observer
+{
+	return [[DTReachability defaultReachability] removeReachabilityObserver:observer];
+}
+
+- (void)setHostname:(NSString *)hostname
+{
+	@synchronized(self)
+	{
+		if (![hostname isEqualToString:_hostname])
+		{
+			[self _unregisterNetworkReachability];
+			_hostname = hostname;
+			[self _registerNetworkReachability];
 		}
 	}
 }
 
 #pragma mark - Internals
 
-static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkConnectionFlags flags, void* info)
+- (void)_registerNetworkReachability
 {
-	@autoreleasepool
+	// first watcher creates reachability
+	if (!_reachability)
 	{
-		for (DTReachabilityObserverBlock observer in _observers)
+		_reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, [_hostname UTF8String]);
+	
+		SCNetworkReachabilityContext context = {0, (__bridge void *)self, NULL, NULL, NULL};
+	
+		if(SCNetworkReachabilitySetCallback(_reachability, DTReachabilityCallback, &context))
 		{
-			observer(flags);
+			if(!SCNetworkReachabilityScheduleWithRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
+			{
+				DTLogError(@"Error: Could not schedule reachability");
+				SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
+			}
 		}
 	}
+}
+
+- (void)_unregisterNetworkReachability
+{
+	SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
+	
+	if (SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
+	{
+		DTLogInfo(@"Unscheduled reachability");
+	}
+	else
+	{
+		DTLogError(@"Error: Could not unschedule reachability");
+	}
+	
+	_reachability = nil;
+}
+
+- (void)_notifyObserversWithFlags:(SCNetworkReachabilityFlags)flags
+{
+	@synchronized(self)
+	{
+		for (DTReachabilityObserverBlock block in _observers)
+		{
+			block([[DTReachabilityInformation alloc] initWithFlags:flags]);
+		}
+	}
+}
+
+static void DTReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info)
+{
+	DTReachability *reachability = (__bridge DTReachability *)info;
+
+	[reachability _notifyObserversWithFlags:flags];
 }
 
 @end

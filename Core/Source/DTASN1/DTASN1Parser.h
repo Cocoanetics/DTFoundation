@@ -3,7 +3,7 @@
 //  ssltest
 //
 //  Created by Oliver Drobnik on 19.02.12.
-//  Copyright (c) 2012 Drobnik KG. All rights reserved.
+//  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
 #import "DTWeakSupport.h"

@@ -99,12 +99,17 @@ extern NSString * const DTZipArchiveErrorDomain;
 @interface DTZipArchive(Uncompressing)
 
 /**
- Uncompresses the receiver to a given path overwriting existing files.
+ Uncompresses the receiver to a given path overwriting existing files. Can be cancelled by calling -cancelAllUncompressing. For a cancelled operation the completion block will not be called.
 
  @param targetPath path where the zip archive is being uncompressed
  @param completion block that executes when uncompressing is finished. Error is `nil` if successful.
  */
 - (void)uncompressToPath:(NSString *)targetPath completion:(DTZipArchiveUncompressionCompletionBlock)completion;
+
+/**
+ Cancels an uncompressing operation started by uncompressToPath:completion:.
+ */
+- (void)cancelAllUncompressing;
 
 /**
  Synchronous uncompressing the receiver and returning file as NSData

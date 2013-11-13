@@ -7,7 +7,7 @@
 //
 
 /**
- Utility Methods for working with `NSDocument` instances
+ Utility Methods for working with `NSDocument` instances.
  */
 
 @interface NSDocument (DTFoundation)

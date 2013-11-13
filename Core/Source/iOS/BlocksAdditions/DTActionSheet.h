@@ -10,7 +10,7 @@
 typedef void (^DTActionSheetBlock)(void);
 
 /**
- Extends UIActionSheet with support for blocks
+ Extends UIActionSheet with support for blocks.
  */
 
 @interface DTActionSheet : UIActionSheet

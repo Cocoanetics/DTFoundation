@@ -10,7 +10,7 @@
 typedef void (^DTAlertViewBlock)(void);
 
 /**
- Extends UIAlertView with support for blocks
+ Extends UIAlertView with support for blocks.
  */
 
 @interface DTAlertView : UIAlertView

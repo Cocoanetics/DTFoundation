@@ -3,7 +3,7 @@
 //  Zippo
 //
 //  Created by Stefan Gugarel on 3/15/13.
-//  Copyright (c) 2013 Drobnik KG. All rights reserved.
+//  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

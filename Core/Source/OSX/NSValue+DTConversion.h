@@ -7,7 +7,7 @@
 //
 
 /**
- Category on NSValue providing some struct encoding that is missing on Mac, but exists on iOS
+ Category on NSValue providing some struct encoding that is missing on Mac, but exists on iOS.
  */
 
 @interface NSValue (DTConversion)

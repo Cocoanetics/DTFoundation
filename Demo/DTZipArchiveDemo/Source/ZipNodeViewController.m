@@ -213,5 +213,6 @@ static NSString *cellIdentifier = @"ZipNodeCellIdentifier";
 	}
 }
 
+@synthesize previewItemURL = _previewItemURL;
 
 @end

@@ -25,11 +25,11 @@
 	// register a reachability observer
 	
 	__weak ViewController *weakself = self;
-	_observer = [DTReachability addReachabilityObserverWithBlock:^(SCNetworkConnectionFlags connectionFlags) {
+	_observer = [[DTReachability defaultReachability] addReachabilityObserverWithBlock:^(DTReachabilityInformation *information) {
 		
 		// update label based on connection flags
 		
-		if (DTReachabilityIsReachableFromFlags(connectionFlags))
+		if (information.isReachable)
 		{
 			weakself.label.text = @"Reachable";
 			weakself.label.textColor = [UIColor greenColor];
@@ -44,7 +44,7 @@
 
 - (void)dealloc
 {
-	[DTReachability removeReachabilityObserver:_observer];
+	[[DTReachability defaultReachability] removeReachabilityObserver:_observer];
 	_observer = nil;
 }
 

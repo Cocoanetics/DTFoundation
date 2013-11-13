@@ -1,18 +1,24 @@
 //
-//  DTUtils.h
+//  DTCoreGraphicsUtils.h
 //  DTFoundation
 //
 //  Created by Oliver Drobnik on 7/18/10.
-//  Copyright 2010 Drobnik.com. All rights reserved.
+//  Copyright 2010 Cocoanetics. All rights reserved.
 //
 
 /**
  Various CoreGraphics-related utility functions
  */
 
-CGSize sizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit);
+/**
+ Calculates a size that fits an original size into a different size preserving the aspect ratio.
+ */
+CGSize DTCGSizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit);
 
-CGSize sizeThatFillsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit);
+/**
+ Calculates a size that fits an original size into a different size preserving the aspect ratio and filling the target size.
+ */
+CGSize DTCGSizeThatFillsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit);
 
 /**
  Replacement for buggy CGSizeMakeWithDictionaryRepresentation
@@ -48,7 +54,4 @@ NSDictionary *DTCGRectCreateDictionaryRepresentation(CGRect rect);
  Convenience method to find the center of a CGRect. Uses CGRectGetMidX and CGRectGetMidY.
  @returns The point which is the center of rect.
  */
-CGPoint CGRectCenter(CGRect rect);
-
-
-
+CGPoint DTCGRectCenter(CGRect rect);
