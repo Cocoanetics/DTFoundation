@@ -67,7 +67,7 @@
 	
 	if (block)
 	{
-		NSNumber *key = [NSNumber numberWithInt:retIndex];
+		NSNumber *key = [NSNumber numberWithInteger:retIndex];
 		[_actionsPerIndex setObject:[block copy] forKey:key];
 	}
 	
@@ -127,7 +127,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	NSNumber *key = [NSNumber numberWithInt:buttonIndex];
+	NSNumber *key = [NSNumber numberWithInteger:buttonIndex];
 	
 	DTActionSheetBlock block = [_actionsPerIndex objectForKey:key];
 	

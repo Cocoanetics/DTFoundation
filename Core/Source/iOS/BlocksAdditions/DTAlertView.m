@@ -55,7 +55,7 @@
 
 	if (block)
 	{
-		NSNumber *key = [NSNumber numberWithInt:retIndex];
+		NSNumber *key = [NSNumber numberWithInteger:retIndex];
 		[_actionsPerIndex setObject:[block copy] forKey:key];
 	}
 
@@ -124,7 +124,7 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	NSNumber *key = [NSNumber numberWithInt:buttonIndex];
+	NSNumber *key = [NSNumber numberWithInteger:buttonIndex];
 
 	DTAlertViewBlock block = [_actionsPerIndex objectForKey:key];
 
