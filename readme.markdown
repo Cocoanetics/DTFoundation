@@ -1,6 +1,8 @@
 About DTFoundation
 ==================
 
+[![Build Status](https://travis-ci.org/Cocoanetics/DTFoundation.png?branch=master)](https://travis-ci.org/Cocoanetics/DTFoundation) [![Coverage Status](https://coveralls.io/repos/Cocoanetics/DTFoundation/badge.png?branch=develop)](https://coveralls.io/r/Cocoanetics/DTFoundation?branch=develop)
+
 DTFoundation is a collection of utility methods and category extensions that *Cocoanetics* is standardizing on. This should evolve into a toolset of well-documented and -tested code to accelerate future development.
 
 Documentation can be [browsed online](https://docs.cocoanetics.com/DTFoundation) or installed in your Xcode Organizer via the [Atom Feed URL](https://docs.cocoanetics.com/DTFoundation/DTFoundation.atom).
