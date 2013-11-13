@@ -9,7 +9,30 @@
 #import "DTReachability.h"
 #import "DTLog.h"
 
-#import <arpa/inet.h>
+@implementation DTReachabilityInformation
+
+
+- (instancetype) initWithFlags:(SCNetworkReachabilityFlags)reachabilityFlags {
+	self = [super init];
+	if (self) {
+		_reachabilityFlags = reachabilityFlags;
+	}
+	return self;
+}
+
+- (BOOL)isReachable {
+	return (self.reachabilityFlags & kSCNetworkFlagsReachable) && !(self.reachabilityFlags & kSCNetworkFlagsConnectionRequired);
+}
+
+#if	TARGET_OS_IPHONE
+- (BOOL)isWWAN {
+	return [self isReachable] && self.reachabilityFlags & kSCNetworkReachabilityFlagsIsWWAN;
+}
+#endif	// TARGET_OS_IPHONE
+
+
+@end
+
 
 @implementation DTReachability
 {
@@ -55,7 +78,7 @@ static DTReachability *_sharedInstance;
 	[self _unregisterNetworkReachability];
 }
 
-- (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkReachabilityFlags connectionFlags))observer
+- (id)addReachabilityObserverWithBlock:(void(^)(DTReachabilityInformation *information))observer
 {
 	@synchronized(self)
 	{
@@ -71,7 +94,7 @@ static DTReachability *_sharedInstance;
 		// get the current flags if possible
 		if (SCNetworkReachabilityGetFlags(_reachability, &_connectionFlags))
 		{
-			block(_connectionFlags);
+			block([[DTReachabilityInformation alloc] initWithFlags:_connectionFlags]);
 		}
 		
 		return block;
@@ -93,7 +116,7 @@ static DTReachability *_sharedInstance;
 	}
 }
 
-+ (id)addReachabilityObserverWithBlock:(void(^)(SCNetworkReachabilityFlags connectionFlags))observer
++ (id)addReachabilityObserverWithBlock:(void(^)(DTReachabilityInformation *information))observer
 {
 	return [[DTReachability defaultReachability] addReachabilityObserverWithBlock:observer];
 }
@@ -155,9 +178,9 @@ static DTReachability *_sharedInstance;
 {
 	@synchronized(self)
 	{
-		for (DTReachabilityObserverBlock observer in _observers)
+		for (DTReachabilityObserverBlock block in _observers)
 		{
-			observer(flags);
+			block([[DTReachabilityInformation alloc] initWithFlags:flags]);
 		}
 	}
 }
