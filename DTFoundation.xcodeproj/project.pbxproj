@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		355B26B862090A50B1ED1EB4 /* DTSidePanelPanGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B257CC69FC64D78ABE0BE /* DTSidePanelPanGestureRecognizer.h */; };
+		355B2F0AD6E0ED773FACD941 /* DTSidePanelPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B210F4174F2B22B0CD6A0 /* DTSidePanelPanGestureRecognizer.m */; };
 		A70B4CD01486621B00873A4A /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CD11486621B00873A4A /* DTVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC71486621B00873A4A /* DTVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70B4CD21486621B00873A4A /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
@@ -280,6 +282,8 @@
 		A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */; };
 		A7E88ED416BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */; };
 		A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */; };
+		A7F3BD2C18436A0F00DB7854 /* DTSidePanelPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B210F4174F2B22B0CD6A0 /* DTSidePanelPanGestureRecognizer.m */; };
+		A7F3BD2D18436A1200DB7854 /* DTSidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A74663B31743D43600D4D7D5 /* DTSidePanelController.m */; };
 		A7FA5FA417B0F7B4000FC61F /* DTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FA217B0F7B4000FC61F /* DTLog.h */; };
 		A7FA5FA517B0F7B4000FC61F /* DTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FA217B0F7B4000FC61F /* DTLog.h */; };
 		A7FA5FA617B0F7B4000FC61F /* DTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FA217B0F7B4000FC61F /* DTLog.h */; };
@@ -296,7 +300,6 @@
 		A7FAA38A1652291D006ED151 /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; };
 		A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
 		A7FAA38C1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
-		A7FB1214175C9C6100D4B7F0 /* DTSidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A74663B31743D43600D4D7D5 /* DTSidePanelController.m */; };
 		A7FB1215175C9C6200D4B7F0 /* DTSidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A74663B31743D43600D4D7D5 /* DTSidePanelController.m */; };
 		A7FB1216175C9C8B00D4B7F0 /* DTSidePanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = A74663B21743D43600D4D7D5 /* DTSidePanelController.h */; settings = {ATTRIBUTES = (); }; };
 		A7FB1217175C9C8C00D4B7F0 /* DTSidePanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = A74663B21743D43600D4D7D5 /* DTSidePanelController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -524,6 +527,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		355B210F4174F2B22B0CD6A0 /* DTSidePanelPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSidePanelPanGestureRecognizer.m; sourceTree = "<group>"; };
+		355B257CC69FC64D78ABE0BE /* DTSidePanelPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSidePanelPanGestureRecognizer.h; sourceTree = "<group>"; };
 		3D7CE547166613B60028D339 /* libDTHTMLParser_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A70B4CC51486621B00873A4A /* DTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTFoundation.h; sourceTree = "<group>"; };
 		A70B4CC71486621B00873A4A /* DTVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTVersion.h; sourceTree = "<group>"; };
@@ -1078,6 +1083,8 @@
 				A74663B31743D43600D4D7D5 /* DTSidePanelController.m */,
 				A7C92B67174F9AEC0019D70A /* UIViewController+DTSidePanelController.h */,
 				A7C92B68174F9AEC0019D70A /* UIViewController+DTSidePanelController.m */,
+				355B210F4174F2B22B0CD6A0 /* DTSidePanelPanGestureRecognizer.m */,
+				355B257CC69FC64D78ABE0BE /* DTSidePanelPanGestureRecognizer.h */,
 			);
 			path = DTSidePanel;
 			sourceTree = "<group>";
@@ -1721,6 +1728,7 @@
 				A78D661D17AFFCCC0039F5E6 /* DTFolderMonitor.h in Headers */,
 				A7FA5FA417B0F7B4000FC61F /* DTLog.h in Headers */,
 				A7FA5FB117B127E0000FC61F /* DTAsyncFileDeleter.h in Headers */,
+				355B26B862090A50B1ED1EB4 /* DTSidePanelPanGestureRecognizer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2270,11 +2278,11 @@
 				A76DB4D716A5E5100010CD85 /* UIImage+DTFoundation.m in Sources */,
 				A76DB4DF16A5E5100010CD85 /* UIView+DTFoundation.m in Sources */,
 				A76DB4E316A5E5100010CD85 /* UIWebView+DTFoundation.m in Sources */,
+				A7F3BD2C18436A0F00DB7854 /* DTSidePanelPanGestureRecognizer.m in Sources */,
 				A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */,
 				A730BCD116D2892E003B849F /* DTTiledLayerWithoutFade.m in Sources */,
 				A77D5BFE16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A7C92B6C174F9AEC0019D70A /* UIViewController+DTSidePanelController.m in Sources */,
-				A7FB1214175C9C6100D4B7F0 /* DTSidePanelController.m in Sources */,
 				A70C4FCC17AA7CEC00000DF5 /* UIColor+DTDebug.m in Sources */,
 				A70C4FCD17AA7CEC00000DF5 /* UIView+DTDebug.m in Sources */,
 				A70C4FD017AA7CF800000DF5 /* DTActionSheet.m in Sources */,
@@ -2289,6 +2297,7 @@
 				A7FA5FA817B0F7B4000FC61F /* DTLog.m in Sources */,
 				A7FA5FAF17B127E0000FC61F /* DTAsyncFileDeleter.m in Sources */,
 				A768BE4017FC3C91008834C6 /* DTBlockFunctions.m in Sources */,
+				A7F3BD2D18436A1200DB7854 /* DTSidePanelController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2417,6 +2426,7 @@
 				A78D662017AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */,
 				A7FA5FA717B0F7B4000FC61F /* DTLog.m in Sources */,
 				A7FA5FAE17B127E0000FC61F /* DTAsyncFileDeleter.m in Sources */,
+				355B2F0AD6E0ED773FACD941 /* DTSidePanelPanGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
