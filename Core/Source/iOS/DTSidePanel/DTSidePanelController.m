@@ -90,26 +90,7 @@
 	_centerBaseView.userInteractionEnabled = (panel == DTSidePanelControllerPanelCenter);
 }
 
-- (void)_updatePanelAutoresizingMasks
-{
-	if (_leftPanelWidth)
-	{
-		_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
-	}
-	else
-	{
-		_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	}
-	
-	if (_rightPanelWidth)
-	{
-		_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin;
-	}
-	else
-	{
-		_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	}
-}
+
 
 - (void)_installTapToCloseGesture
 {
@@ -828,15 +809,14 @@
 			break;
 		}
 	}
-	
+
 	CGFloat duration = animated?0.3:0;
 	
 	[UIView animateWithDuration:duration animations:^{
 		_leftBaseView.frame = [self _leftPanelFrame];
 		_rightBaseView.frame = [self _rightPanelFrame];
 	}];
-	
-	[self _updatePanelAutoresizingMasks];
+
 }
 
 #pragma mark - Properties
@@ -896,9 +876,10 @@
 	_leftBaseView.userInteractionEnabled = NO;
 	[self.view addSubview:_leftBaseView];
 	[self.view sendSubviewToBack:_leftBaseView];
+	_leftPanelController.view.frame = _leftBaseView.frame;
 	[_leftBaseView addSubview:leftPanelController.view];
 
-	[self _updatePanelAutoresizingMasks];
+
 }
 
 - (void)setRightPanelController:(UIViewController *)rightPanelController
@@ -918,9 +899,10 @@
 	_rightBaseView.userInteractionEnabled = NO;
 	[self.view addSubview:_rightBaseView];
 	[self.view sendSubviewToBack:_rightBaseView];
+	_rightPanelController.view.frame = _leftBaseView.frame;
+
 	[_rightBaseView addSubview:_rightPanelController.view];
 
-	[self _updatePanelAutoresizingMasks];
 }
 
 
