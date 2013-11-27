@@ -796,8 +796,17 @@
 	
 	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 	
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSString *tmpDirPath = [NSString pathForTemporaryFile];
+	NSURL *pathURL = [NSURL fileURLWithPath:tmpDirPath];
+	
+	NSDictionary *attributes = @{NSFilePosixPermissions: @(555)};
+	
+	BOOL createFolderWithoutWritePermission = [fileManager createDirectoryAtURL:pathURL withIntermediateDirectories:NO attributes:attributes error:NULL];
+	STAssertTrue(createFolderWithoutWritePermission, @"Cannot create tmp folder with 555");
+	
 	// Uncompress to folder with permission denied
-	[zipArchive uncompressToPath:@"/Library/" completion:^(NSError *error) {
+	[zipArchive uncompressToPath:tmpDirPath completion:^(NSError *error) {
 			
 		dispatch_semaphore_signal(semaphore);
 		
