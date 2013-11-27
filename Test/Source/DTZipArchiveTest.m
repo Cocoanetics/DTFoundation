@@ -11,6 +11,13 @@
 #import "DTZipArchiveGZip.h"
 #import "DTZipArchiveNode.h"
 
+
+@interface DTZipArchivePKZip (private)
+
+@property (readonly, nonatomic) dispatch_queue_t uncompressingQueue;
+
+@end
+
 @implementation DTZipArchiveTest
 
 - (void)tearDown
@@ -591,14 +598,20 @@
 	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
 	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
 	
-	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	DTZipArchivePKZip *zipArchive = (DTZipArchivePKZip *)[DTZipArchive archiveAtPath:sampleZipPath];
+	
+	// suspend the queue to let us set the cancel
+	dispatch_suspend(zipArchive.uncompressingQueue);
 	
 	[zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
 		
 		STFail(@"Should not complete uncompressing after cancel was called");
 	}];
 	
+	// resume
 	[zipArchive cancelAllUncompressing];
+	
+	dispatch_resume(zipArchive.uncompressingQueue);
 	
 	[NSThread sleepForTimeInterval:0.2];
 }
