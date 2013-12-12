@@ -54,7 +54,7 @@ static DTReachability *_sharedInstance;
 	static dispatch_once_t instanceOnceToken;
 	
 	dispatch_once(&instanceOnceToken, ^{
-		
+
 		_sharedInstance = [[DTReachability alloc] init];
 	});
 	
@@ -94,13 +94,13 @@ static DTReachability *_sharedInstance;
 		[_observers addObject:block];
 		
 		[self _registerNetworkReachability];
-				
+
 		// get the current flags if possible
 		if (SCNetworkReachabilityGetFlags(_reachability, &_connectionFlags))
 		{
 			block([[DTReachabilityInformation alloc] initWithFlags:_connectionFlags]);
 		}
-		
+
 		return block;
 	}
 }
@@ -150,7 +150,10 @@ static DTReachability *_sharedInstance;
 	if (!_reachability)
 	{
 		_reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, [_hostname UTF8String]);
-	
+		if (!_reachability) {
+			DTLogError(@"No Reachability can be created for hostname: %@", _hostname);
+			return;
+		}
 		SCNetworkReachabilityContext context = {0, (__bridge void *)self, NULL, NULL, NULL};
 	
 		if(SCNetworkReachabilitySetCallback(_reachability, DTReachabilityCallback, &context))
@@ -164,8 +167,12 @@ static DTReachability *_sharedInstance;
 	}
 }
 
-- (void)_unregisterNetworkReachability
-{
+- (void)_unregisterNetworkReachability {
+	if (!_reachability) {
+		// No reachability exisits, so there is nothing to unregister
+		return;
+	}
+
 	SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
 	
 	if (SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, CFRunLoopGetMain(), kCFRunLoopCommonModes))
