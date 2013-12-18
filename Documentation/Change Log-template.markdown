@@ -3,6 +3,12 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.6.1**
+
+- FIXED: Typo in DTFolderMonitor causing build to fail in some build scenarios
+- FIXED: DTSidePanelController panel jumping in rare cases
+- FIXED: DTReachability exception when specifying an invalid domain for monitoring
+
 **Version 1.6.0**
 
 - CHANGED: DTReachability now passes DTReachabilityInformation to observers
