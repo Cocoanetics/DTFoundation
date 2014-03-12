@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 /**
  Constant used by DTCustomColoredAccessory to specify the type of accessory.
  */
