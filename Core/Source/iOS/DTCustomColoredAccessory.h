@@ -64,6 +64,8 @@ typedef NS_ENUM(NSUInteger, DTCustomColoredAccessoryType)
 
 /**
  Creates a custom-colored square on top of a square with offset
+ @param color The color to use
+ @param backgroundColor The backgroundColor to use
  */
 + (DTCustomColoredAccessory *)squareAccessoryWithColor:(UIColor *)color backgroundColor:(UIColor *)backgroundColor;
 
