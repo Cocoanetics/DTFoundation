@@ -28,8 +28,21 @@
 {
 	DTCustomColoredAccessory *ret = [[DTCustomColoredAccessory alloc] initWithFrame:CGRectMake(0, 0, 15.0, 15.0)];
 	ret.accessoryColor = color;
+    ret.frontSquareAccessoryColor = color;
     ret.type = type;
+    ret.backSquareAccessoryColor = color == [UIColor blackColor] ? [UIColor whiteColor] : [UIColor blackColor];
 
+	return ret;
+}
+
++ (DTCustomColoredAccessory *)squareAccessoryWithColor:(UIColor *)color backgroundColor:(UIColor *)backgroundColor
+{
+	DTCustomColoredAccessory *ret = [[[DTCustomColoredAccessory alloc] initWithFrame:CGRectMake(0, 0, 15.0, 15.0)]autorelease];
+	ret.accessoryColor = color;
+    ret.frontSquareAccessoryColor = color;
+    ret.type = DTCustomColoredAccessoryTypeSquare;
+    ret.backSquareAccessoryColor = backgroundColor;
+    
 	return ret;
 }
 
@@ -49,6 +62,8 @@
     CGContextRef ctxt = UIGraphicsGetCurrentContext();
 
     const CGFloat R = 4.5;
+
+    BOOL doFinal = true;
 
     switch (_type)
     {
@@ -103,25 +118,88 @@
             break;
         }
 
+        case DTCustomColoredAccessoryTypeSquare:
+        {
+            doFinal = false;
+            
+            // (x,y) is the tip of the arrow
+            CGFloat x = CGRectGetMinX(self.bounds)+5.0;
+            CGFloat y = CGRectGetMinY(self.bounds)+1.0;
+            
+            CGFloat s = 9.0;
+            
+            CGContextMoveToPoint(ctxt, x, y);
+            CGContextAddLineToPoint(ctxt, x+s, y);
+            CGContextAddLineToPoint(ctxt, x+s, y+s);
+            CGContextAddLineToPoint(ctxt, x, y+s);
+            CGContextClosePath(ctxt);
+            
+            CGContextSetLineCap(ctxt, kCGLineCapSquare);
+            CGContextSetLineJoin(ctxt, kCGLineJoinMiter);
+            CGContextSetLineWidth(ctxt, 3);
+            
+            if (self.highlighted)
+            {
+                [self.highlightedColor setStroke];
+            }
+            else
+            {
+                _accessoryColor = self.backSquareAccessoryColor;
+                [self.accessoryColor setStroke];
+            }
+            
+            CGContextStrokePath(ctxt);
+            
+            x = CGRectGetMinX(self.bounds)+3.0;
+            y = CGRectGetMinY(self.bounds)+3.0;
+            
+            CGContextMoveToPoint(ctxt, x, y);
+            CGContextAddLineToPoint(ctxt, x+s, y);
+            CGContextAddLineToPoint(ctxt, x+s, y+s);
+            CGContextAddLineToPoint(ctxt, x, y+s);
+            CGContextClosePath(ctxt);
+            
+            CGContextSetLineCap(ctxt, kCGLineCapSquare);
+            CGContextSetLineJoin(ctxt, kCGLineJoinMiter);
+            CGContextSetLineWidth(ctxt, 3);
+            
+            if (self.highlighted)
+            {
+                [self.highlightedColor setStroke];
+            }
+            else
+            {
+                _accessoryColor = self.frontSquareAccessoryColor;
+                [self.accessoryColor setStroke];
+            }
+            
+            CGContextStrokePath(ctxt);
+            
+            break;
+        }
 
         default:
             break;
     }
 
-    CGContextSetLineCap(ctxt, kCGLineCapSquare);
-    CGContextSetLineJoin(ctxt, kCGLineJoinMiter);
-    CGContextSetLineWidth(ctxt, 3);
-
-	if (self.highlighted)
-	{
-		[self.highlightedColor setStroke];
-	}
-	else
-	{
-		[self.accessoryColor setStroke];
-	}
-
-	CGContextStrokePath(ctxt);
+    if (doFinal) {
+        
+        CGContextSetLineCap(ctxt, kCGLineCapSquare);
+        CGContextSetLineJoin(ctxt, kCGLineJoinMiter);
+        CGContextSetLineWidth(ctxt, 3);
+        
+        if (self.highlighted)
+        {
+            [self.highlightedColor setStroke];
+        }
+        else
+        {
+            [self.accessoryColor setStroke];
+        }
+        
+        CGContextStrokePath(ctxt);
+        
+    }
 }
 
 #pragma mark - Properties
