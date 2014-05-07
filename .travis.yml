@@ -3,7 +3,7 @@ language: objective-c
 
 before_script:
   - sudo easy_install cpp-coveralls
-  - brew upgrade xctool
+  - brew update; brew uninstall xctool; brew install xctool
 
 script: 
  - xctool -project DTFoundation.xcodeproj -scheme "DTSidePanels Demo" build -sdk iphonesimulator -arch i386 ONLY_ACTIVE_ARCH=NO
