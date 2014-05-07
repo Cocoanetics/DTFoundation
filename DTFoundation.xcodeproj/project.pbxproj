@@ -189,7 +189,6 @@
 		A78D662217AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */; };
 		A7917C78191A312700964D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79D99AA1792D1F50082BC06 /* XCTest.framework */; };
 		A7917C79191A312700964D63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
-		A7917C7A191A312700964D63 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
 		A7917C8A191A31A300964D63 /* DTASN1SerializationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A779A38B16EB8BFB001BD056 /* DTASN1SerializationTest.m */; };
 		A7917C8B191A31A300964D63 /* DTBlockFunctionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A768BE4317FC40E6008834C6 /* DTBlockFunctionsTest.m */; };
 		A7917C8C191A31A300964D63 /* DTVersionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D60FE915D3B15300AEDD1B /* DTVersionTest.m */; };
@@ -223,6 +222,7 @@
 		A7917CB2191A32E600964D63 /* Oliver.txt in Resources */ = {isa = PBXBuildFile; fileRef = C04946D87B7849C348B77475 /* Oliver.txt */; };
 		A7917CB3191A32E600964D63 /* Rene in Resources */ = {isa = PBXBuildFile; fileRef = C0494D374C86170585303054 /* Rene */; };
 		A7917CB4191A32E600964D63 /* Stefan.txt in Resources */ = {isa = PBXBuildFile; fileRef = C0494AE4697BA3400CC67BB8 /* Stefan.txt */; };
+		A7917CB6191A3CD500964D63 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7917CB5191A3CD500964D63 /* UIKit.framework */; };
 		A79231CE157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */ = {isa = PBXBuildFile; fileRef = A79231CC157A0B9400C3ACBB /* NSURL+DTUnshorten.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A79231CF157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */ = {isa = PBXBuildFile; fileRef = A79231CC157A0B9400C3ACBB /* NSURL+DTUnshorten.h */; };
 		A79231D0157A0B9400C3ACBB /* NSURL+DTUnshorten.m in Sources */ = {isa = PBXBuildFile; fileRef = A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */; };
@@ -662,6 +662,7 @@
 		A7917C77191A312600964D63 /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7917C9D191A322F00964D63 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libz.1.2.5.dylib; sourceTree = DEVELOPER_DIR; };
 		A7917CA2191A327A00964D63 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/usr/lib/libxml2.2.dylib; sourceTree = DEVELOPER_DIR; };
+		A7917CB5191A3CD500964D63 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A79231CC157A0B9400C3ACBB /* NSURL+DTUnshorten.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTUnshorten.h"; sourceTree = "<group>"; };
 		A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTUnshorten.m"; sourceTree = "<group>"; };
 		A79500F5161D680000358BC3 /* NSData+DTCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DTCrypto.h"; sourceTree = "<group>"; };
@@ -868,6 +869,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7917CB6191A3CD500964D63 /* UIKit.framework in Frameworks */,
 				A7917CA3191A327A00964D63 /* libxml2.2.dylib in Frameworks */,
 				A7917CA1191A325F00964D63 /* libDTZipArchive_iOS.a in Frameworks */,
 				A7917C9E191A323000964D63 /* libz.1.2.5.dylib in Frameworks */,
@@ -875,7 +877,6 @@
 				A7917C9B191A320600964D63 /* libDTHTMLParser_iOS.a in Frameworks */,
 				A7917C96191A31E500964D63 /* libDTFoundation.a in Frameworks */,
 				A7917C78191A312700964D63 /* XCTest.framework in Frameworks */,
-				A7917C7A191A312700964D63 /* UIKit.framework in Frameworks */,
 				A7917C79191A312700964D63 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1286,6 +1287,7 @@
 		A7AB49DB1483C47F00028FE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7917CB5191A3CD500964D63 /* UIKit.framework */,
 				A7917CA2191A327A00964D63 /* libxml2.2.dylib */,
 				A7917C9D191A322F00964D63 /* libz.1.2.5.dylib */,
 				A7D60FF715D3B28B00AEDD1B /* libxml2.dylib */,
@@ -3273,8 +3275,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-framework",
-					XCTest,
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3306,8 +3306,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-framework",
-					XCTest,
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3339,8 +3337,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-framework",
-					XCTest,
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
