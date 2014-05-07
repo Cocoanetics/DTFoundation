@@ -195,6 +195,7 @@
 		A78D662017AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */; };
 		A78D662117AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */; };
 		A78D662217AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */; };
+		A7917C72191A2C0700964D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79D99AA1792D1F50082BC06 /* XCTest.framework */; };
 		A79231CE157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */ = {isa = PBXBuildFile; fileRef = A79231CC157A0B9400C3ACBB /* NSURL+DTUnshorten.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A79231CF157A0B9400C3ACBB /* NSURL+DTUnshorten.h in Headers */ = {isa = PBXBuildFile; fileRef = A79231CC157A0B9400C3ACBB /* NSURL+DTUnshorten.h */; };
 		A79231D0157A0B9400C3ACBB /* NSURL+DTUnshorten.m in Sources */ = {isa = PBXBuildFile; fileRef = A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */; };
@@ -238,7 +239,6 @@
 		A7D0AA6E153C39920020F18B /* DTCoreGraphicsUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA6B153C39920020F18B /* DTCoreGraphicsUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D0AA6F153C39920020F18B /* DTCoreGraphicsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA6C153C39920020F18B /* DTCoreGraphicsUtils.m */; };
 		A7D0AA70153C39920020F18B /* DTCoreGraphicsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA6C153C39920020F18B /* DTCoreGraphicsUtils.m */; };
-		A7D60FD115D3B0BC00AEDD1B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D60FD015D3B0BC00AEDD1B /* SenTestingKit.framework */; };
 		A7D60FD315D3B0BC00AEDD1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A7D60FEC15D3B16900AEDD1B /* DTVersionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D60FE915D3B15300AEDD1B /* DTVersionTest.m */; };
 		A7D60FEF15D3B18A00AEDD1B /* DTHTMLParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D60FEE15D3B18A00AEDD1B /* DTHTMLParserTest.m */; };
@@ -708,7 +708,7 @@
 		A7D0AA49153C233E0020F18B /* NSString+DTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DTUtilities.m"; sourceTree = "<group>"; };
 		A7D0AA6B153C39920020F18B /* DTCoreGraphicsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCoreGraphicsUtils.h; sourceTree = "<group>"; };
 		A7D0AA6C153C39920020F18B /* DTCoreGraphicsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTCoreGraphicsUtils.m; sourceTree = "<group>"; };
-		A7D60FCF15D3B0BC00AEDD1B /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7D60FCF15D3B0BC00AEDD1B /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D60FD015D3B0BC00AEDD1B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A7D60FE815D3B15300AEDD1B /* DTVersionTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTVersionTest.h; sourceTree = "<group>"; };
 		A7D60FE915D3B15300AEDD1B /* DTVersionTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTVersionTest.m; sourceTree = "<group>"; };
@@ -899,6 +899,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7917C72191A2C0700964D63 /* XCTest.framework in Frameworks */,
 				FA9CB81D17ABDF6400A596C5 /* libDTASN1.a in Frameworks */,
 				FAA6841C16AD4E350092FD00 /* libDTZipArchive_iOS.a in Frameworks */,
 				A7239FFD16A6CF0B0071E902 /* CoreData.framework in Frameworks */,
@@ -909,7 +910,6 @@
 				FAB1725C163004CA00B44EDC /* CoreGraphics.framework in Frameworks */,
 				A7D60FF815D3B28B00AEDD1B /* libxml2.dylib in Frameworks */,
 				FAB1724D162FFF5300B44EDC /* MobileCoreServices.framework in Frameworks */,
-				A7D60FD115D3B0BC00AEDD1B /* SenTestingKit.framework in Frameworks */,
 				A7D60FD315D3B0BC00AEDD1B /* Foundation.framework in Frameworks */,
 				FAF37A6E17AFE07F009AC27C /* libz.1.2.5.dylib in Frameworks */,
 			);
@@ -1524,7 +1524,7 @@
 			children = (
 				A7BAD10E1483F934000E2B6A /* DTFoundation.framework */,
 				A70B4CE71486637E00873A4A /* libDTFoundation.a */,
-				A7D60FCF15D3B0BC00AEDD1B /* UnitTests.octest */,
+				A7D60FCF15D3B0BC00AEDD1B /* UnitTests.xctest */,
 				A710A5001607556000437D36 /* libDTFoundation_Mac.a */,
 				A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser_iOS.a */,
 				A7E383DA160DFF8600CF72D6 /* libDTZipArchive_iOS.a */,
@@ -1964,7 +1964,7 @@
 			);
 			name = "Unit Tests";
 			productName = UnitTest;
-			productReference = A7D60FCF15D3B0BC00AEDD1B /* UnitTests.octest */;
+			productReference = A7D60FCF15D3B0BC00AEDD1B /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		A7D8C7AF1723174600025675 /* DTZipArchive (Mac) */ = {
@@ -2792,7 +2792,6 @@
 		A70ED6BA17F98468008A801A /* Coverage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2803,11 +2802,11 @@
 				GCC_PREFIX_HEADER = "Test/UnitTests-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Coverage;
 		};
@@ -3446,7 +3445,6 @@
 		A7D60FDF15D3B0BC00AEDD1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -3457,18 +3455,17 @@
 				GCC_PREFIX_HEADER = "Test/UnitTests-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
 		A7D60FE015D3B0BC00AEDD1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -3479,11 +3476,11 @@
 				GCC_PREFIX_HEADER = "Test/UnitTests-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = UnitTests;
 				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
