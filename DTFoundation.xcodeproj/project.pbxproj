@@ -340,7 +340,7 @@
 		F88FF6C91920AE9700120808 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88FF6C81920AE9700120808 /* CoreGraphics.framework */; };
 		F88FF6CC1920AF2900120808 /* libDTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70B4CE71486637E00873A4A /* libDTFoundation.a */; };
 		F88FF6CF1920B0CC00120808 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88FF6CE1920B0CC00120808 /* QuartzCore.framework */; };
-		F88FF6D21920BF5200120808 /* DTWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6D11920BF5200120808 /* DTWindow.m */; };
+		F88FF6D21920BF5200120808 /* DTProgressHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6D11920BF5200120808 /* DTProgressHUDWindow.m */; };
 		F88FF6DA1920F1AF00120808 /* DTActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = F88FF6D41920F1AF00120808 /* DTActionSheet.h */; };
 		F88FF6DB1920F1AF00120808 /* DTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6D51920F1AF00120808 /* DTActionSheet.m */; };
 		F88FF6DC1920F1AF00120808 /* DTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = F88FF6D61920F1AF00120808 /* DTAlertView.h */; };
@@ -812,8 +812,8 @@
 		F88FF6B71920ABA000120808 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F88FF6C81920AE9700120808 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		F88FF6CE1920B0CC00120808 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		F88FF6D01920BF5200120808 /* DTWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTWindow.h; sourceTree = "<group>"; };
-		F88FF6D11920BF5200120808 /* DTWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTWindow.m; sourceTree = "<group>"; };
+		F88FF6D01920BF5200120808 /* DTProgressHUDWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProgressHUDWindow.h; sourceTree = "<group>"; };
+		F88FF6D11920BF5200120808 /* DTProgressHUDWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProgressHUDWindow.m; sourceTree = "<group>"; };
 		F88FF6D41920F1AF00120808 /* DTActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTActionSheet.h; sourceTree = "<group>"; };
 		F88FF6D51920F1AF00120808 /* DTActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTActionSheet.m; sourceTree = "<group>"; };
 		F88FF6D61920F1AF00120808 /* DTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAlertView.h; sourceTree = "<group>"; };
@@ -1623,8 +1623,8 @@
 			children = (
 				F88FF6831920A9DF00120808 /* DTProgressHUD.h */,
 				F88FF6841920A9DF00120808 /* DTProgressHUD.m */,
-				F88FF6D01920BF5200120808 /* DTWindow.h */,
-				F88FF6D11920BF5200120808 /* DTWindow.m */,
+				F88FF6D01920BF5200120808 /* DTProgressHUDWindow.h */,
+				F88FF6D11920BF5200120808 /* DTProgressHUDWindow.m */,
 			);
 			path = DTProgressHUD;
 			sourceTree = "<group>";
@@ -2699,7 +2699,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F88FF6851920A9DF00120808 /* DTProgressHUD.m in Sources */,
-				F88FF6D21920BF5200120808 /* DTWindow.m in Sources */,
+				F88FF6D21920BF5200120808 /* DTProgressHUDWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4011,7 +4011,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "DTProgressHUD (iOS)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4027,7 +4027,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "DTProgressHUD (iOS)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4043,7 +4043,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "DTProgressHUD (iOS)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
