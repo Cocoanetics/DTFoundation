@@ -107,7 +107,7 @@ typedef NS_ENUM(NSUInteger, HUDProgressType)
 /**
  Shows a message with progress on the HUD
  @param text The text that is displayed on the HUD
- @param image The image that is displayed on the HUD
+ @param progressType The type of progress indicator to show in animation
  */
 - (void)showWithText:(NSString *)text progressType:(HUDProgressType)progressType;
 
@@ -119,11 +119,15 @@ typedef NS_ENUM(NSUInteger, HUDProgressType)
 
 /**
  Update (set) text
+ 
+ @param The text to be (set) updated
  */
 - (void)setText:(NSString *)text;
 
 /**
  Update (set) image
+ 
+ @param The image to be (set) updated
  */
 - (void)setImage:(UIImage *)image;
 
@@ -152,6 +156,8 @@ typedef NS_ENUM(NSUInteger, HUDProgressType)
 
 /**
  Set progress when HUDProgressTypePie is used
+ 
+ @param progress The progress percentage
  */
 - (void)setProgress:(float)progress;
 
