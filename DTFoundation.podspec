@@ -95,5 +95,13 @@ Pod::Spec.new do |spec|
       sss.source_files = 'Core/Source/Externals/minizip/*.{h,c}'
     end
   end
+  
+  spec.subspec 'DTProgressHUD' do |ss|
+    ss.platform = :ios, '6.0'
+    ss.dependency 'DTFoundation/UIKit'
+	ss.dependency 'DTFoundation/Core'
+    ss.ios.frameworks = 'QuartzCore'
+    ss.ios.source_files = 'Core/Source/iOS/DTProgressHUD/*.{h,m}'
+  end
 
 end
