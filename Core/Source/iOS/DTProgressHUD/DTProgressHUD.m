@@ -297,6 +297,21 @@
 }
 
 
+#pragma mark - Updating
+
+- (void)setText:(NSString *)text
+{
+	self.textLabel.text = text;
+	
+	[self _configureTextLabel:text];
+}
+
+- (void)setImage:(UIImage *)image
+{
+	self.imageView.image = image;
+}
+
+
 #pragma mark - Hiding
 
 - (void)hide

@@ -48,6 +48,9 @@
 	_progressHUD.hideAnimationType = HUDProgressAnimationTypeFade;
 	_progressHUD.showAnimationType = HUDProgressAnimationTypeFade;
 	[_progressHUD showWithText:@"Added to favorites - This is a test with very very long TEXT TEXT TEXT" image:[UIImage imageNamed:@"Star"]];
+	
+	[self performSelector:@selector(_updateStarImage) withObject:self afterDelay:0.8];
+	
 	[_progressHUD hideAfterDelay:1.5f];
 }
 
@@ -108,8 +111,15 @@
 	progress += 0.05;
 	
 	[_progressHUD setProgress:progress];
+	[_progressHUD setText:[NSString stringWithFormat:@"Progress in percent: %f", progress]];
 	
 	[self performSelector:@selector(_increaseProgress) withObject:nil afterDelay:0.05];
+}
+
+- (void)_updateStarImage
+{
+	[_progressHUD setImage:[UIImage imageNamed:@"RotatedStar"]];
+	[_progressHUD setText:@"Text changed!!!"];
 }
 
 @end
