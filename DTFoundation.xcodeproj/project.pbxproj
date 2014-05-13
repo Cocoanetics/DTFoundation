@@ -335,7 +335,7 @@
 		F88FF6BF1920ABA000120808 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6B41920ABA000120808 /* AppDelegate.m */; };
 		F88FF6C11920ABA000120808 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6B51920ABA000120808 /* main.m */; };
 		F88FF6C31920ABA000120808 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6B71920ABA000120808 /* ViewController.m */; };
-		F88FF6C61920AC1900120808 /* libDTProgressHUD (iOS).a in Frameworks */ = {isa = PBXBuildFile; fileRef = F88FF6801920A83300120808 /* libDTProgressHUD (iOS).a */; };
+		F88FF6C61920AC1900120808 /* libDTProgressHUD_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F88FF6801920A83300120808 /* libDTProgressHUD_iOS.a */; };
 		F88FF6C71920AE7300120808 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7917CB5191A3CD500964D63 /* UIKit.framework */; };
 		F88FF6C91920AE9700120808 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88FF6C81920AE9700120808 /* CoreGraphics.framework */; };
 		F88FF6CC1920AF2900120808 /* libDTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70B4CE71486637E00873A4A /* libDTFoundation.a */; };
@@ -796,7 +796,7 @@
 		C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveTest.m; sourceTree = "<group>"; };
 		C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchivePKZip.h; sourceTree = "<group>"; };
 		C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveNode.m; sourceTree = "<group>"; };
-		F88FF6801920A83300120808 /* libDTProgressHUD (iOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libDTProgressHUD (iOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F88FF6801920A83300120808 /* libDTProgressHUD_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTProgressHUD_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88FF6831920A9DF00120808 /* DTProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProgressHUD.h; sourceTree = "<group>"; };
 		F88FF6841920A9DF00120808 /* DTProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProgressHUD.m; sourceTree = "<group>"; };
 		F88FF6A51920AAB600120808 /* DTProgressHUD Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DTProgressHUD Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1016,7 +1016,7 @@
 				F88FF6CC1920AF2900120808 /* libDTFoundation.a in Frameworks */,
 				F88FF6C91920AE9700120808 /* CoreGraphics.framework in Frameworks */,
 				F88FF6C71920AE7300120808 /* UIKit.framework in Frameworks */,
-				F88FF6C61920AC1900120808 /* libDTProgressHUD (iOS).a in Frameworks */,
+				F88FF6C61920AC1900120808 /* libDTProgressHUD_iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1598,7 +1598,7 @@
 				FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */,
 				FAF37A2017AFDD93009AC27C /* DTZipArchive.app */,
 				A7917C77191A312600964D63 /* Unit Tests.xctest */,
-				F88FF6801920A83300120808 /* libDTProgressHUD (iOS).a */,
+				F88FF6801920A83300120808 /* libDTProgressHUD_iOS.a */,
 				F88FF6A51920AAB600120808 /* DTProgressHUD Demo.app */,
 			);
 			name = Products;
@@ -2184,7 +2184,7 @@
 			);
 			name = "DTProgressHUD (iOS)";
 			productName = DTReachability;
-			productReference = F88FF6801920A83300120808 /* libDTProgressHUD (iOS).a */;
+			productReference = F88FF6801920A83300120808 /* libDTProgressHUD_iOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		F88FF6861920AAB600120808 /* DTProgressHUD Demo */ = {
@@ -4012,7 +4012,7 @@
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "DTProgressHUD (iOS)";
+				PRODUCT_NAME = DTProgressHUD_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -4028,7 +4028,7 @@
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "DTProgressHUD (iOS)";
+				PRODUCT_NAME = DTProgressHUD_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -4044,7 +4044,7 @@
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "DTProgressHUD (iOS)";
+				PRODUCT_NAME = DTProgressHUD_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
