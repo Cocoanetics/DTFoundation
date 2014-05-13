@@ -120,14 +120,14 @@ typedef NS_ENUM(NSUInteger, HUDProgressType)
 /**
  Update (set) text
  
- @param The text to be (set) updated
+ @param text The text to be (set) updated
  */
 - (void)setText:(NSString *)text;
 
 /**
  Update (set) image
  
- @param The image to be (set) updated
+ @param image The image to be (set) updated
  */
 - (void)setImage:(UIImage *)image;
 
