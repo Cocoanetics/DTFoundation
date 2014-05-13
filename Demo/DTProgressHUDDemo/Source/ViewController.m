@@ -20,7 +20,7 @@
 
 - (IBAction)showPieProgressWithSnapAnimation:(id)sender;
 
-- (IBAction)showInfiniteProgressFastFallPressed:(id)sender;
+- (IBAction)showInfiniteProgressWithGravityTilt:(id)sender;
 
 - (IBAction)hidePressed:(id)sender;
 
@@ -83,11 +83,11 @@
 	[self performSelector:@selector(_increaseProgress) withObject:nil afterDelay:0.3];
 }
 
-- (IBAction)showInfiniteProgressFastFallPressed:(id)sender
+- (IBAction)showInfiniteProgressWithGravityTilt:(id)sender
 {
 	_progressHUD.hideAnimationType = HUDProgressAnimationTypeGravityTilt;
 	_progressHUD.showAnimationType = HUDProgressAnimationTypeGravityTilt;
-	[_progressHUD showWithText:@"Infinite Progress with Fast Fall" progressType:HUDProgressTypeInfinite];
+	[_progressHUD showWithText:@"Infinite Progress with Gravity Tilt" progressType:HUDProgressTypeInfinite];
 }
 
 - (IBAction)hidePressed:(id)sender

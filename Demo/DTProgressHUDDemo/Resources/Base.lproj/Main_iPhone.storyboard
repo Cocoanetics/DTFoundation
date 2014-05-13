@@ -37,7 +37,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showInfiniteProgressFastFallPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vEL-SR-Ya1"/>
+                                    <action selector="showInfiniteProgressWithGravityTilt:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Xja-3j-1eP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdA-xj-qh9">

@@ -237,7 +237,7 @@
 		case HUDProgressAnimationTypeGravityTilt:
 		{
 			CGFloat offset;
-				
+			
 			CGFloat halfScreenHeight = self.bounds.size.height / 2;
 			
 			// formula for calculating correct start position depending on height
@@ -251,7 +251,7 @@
 			//
 			offset = 2.3246449 * pow(halfScreenHeight, 0.61329599);
 			
-						
+			
 			_hudView.alpha = 1.0f;
 			_hudView.bounds = CGRectMake(0.0f, 0.0f, PROGRESS_WIDTH, PROGRESS_HEIGHT);
 			_hudView.center = CGPointMake(self.center.x - offset, -PROGRESS_HEIGHT / 2);
@@ -532,7 +532,7 @@
 		[_hudWindow addSubview:self];
 		[_hudWindow makeKeyAndVisible];
 	}
-		
+	
 	if (_animator)
 	{
 		[self _resetAnimation];

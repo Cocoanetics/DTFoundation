@@ -59,7 +59,7 @@ typedef NS_ENUM(NSUInteger, HUDProgressType)
  The name of this class comes from Apples UIProgressHUD which is private API.
  
  You can display text with either an image or progress.
-
+ 
  There is no need to call addSubview on Superview of 'DTProgressHUD'. Creates own 'UIWindow' for displaying similar to 'UIAlertView'
  */
 @interface DTProgressHUD : UIView

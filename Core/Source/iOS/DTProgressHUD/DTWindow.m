@@ -38,7 +38,7 @@
 	
 	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
 	
-    [self setTransform:[self transformForOrientation:orientation]];
+	[self setTransform:[self transformForOrientation:orientation]];
 }
 
 - (void)dealloc
@@ -48,32 +48,32 @@
 
 - (CGAffineTransform)transformForOrientation:(UIInterfaceOrientation)orientation
 {
-    switch (orientation)
+	switch (orientation)
 	{
-        case UIInterfaceOrientationLandscapeLeft:
+		case UIInterfaceOrientationLandscapeLeft:
 		{
-            return CGAffineTransformMakeRotation(-DegreesToRadians(90));
+			return CGAffineTransformMakeRotation(-DegreesToRadians(90));
 		}
-        case UIInterfaceOrientationLandscapeRight:
+		case UIInterfaceOrientationLandscapeRight:
 		{
-            return CGAffineTransformMakeRotation(DegreesToRadians(90));
+			return CGAffineTransformMakeRotation(DegreesToRadians(90));
 		}
-        case UIInterfaceOrientationPortraitUpsideDown:
+		case UIInterfaceOrientationPortraitUpsideDown:
 		{
-            return CGAffineTransformMakeRotation(DegreesToRadians(180));
+			return CGAffineTransformMakeRotation(DegreesToRadians(180));
 		}
-        case UIInterfaceOrientationPortrait:
-        {
-            return CGAffineTransformMakeRotation(DegreesToRadians(0));
+		case UIInterfaceOrientationPortrait:
+		{
+			return CGAffineTransformMakeRotation(DegreesToRadians(0));
 		}
-    }
+	}
 }
 
 - (void)statusBarDidChangeFrame:(NSNotification *)notification
 {
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
 	
-    [self setTransform:[self transformForOrientation:orientation]];
+	[self setTransform:[self transformForOrientation:orientation]];
 }
 
 @end

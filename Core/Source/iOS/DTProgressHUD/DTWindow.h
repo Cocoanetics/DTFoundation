@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ Class for correcting rotations when using UIWindow in iOS
+ */
 @interface DTWindow : UIWindow
 
 @end
