@@ -7,7 +7,7 @@
 //
 
 #import "DTProgressHUD.h"
-#import "DTWindow.h"
+#import "DTProgressHUDWindow.h"
 
 #import "DTPieProgressIndicator.h"
 
@@ -52,7 +52,7 @@
 	
 	BOOL _hidden;
 	
-	DTWindow *_hudWindow;
+	DTProgressHUDWindow *_hudWindow;
 }
 
 - (instancetype)init
@@ -523,8 +523,8 @@
 	if (!_hudWindow)
 	{
 		// use own window
-		_hudWindow = [[DTWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-		_hudWindow.windowLevel = UIWindowLevelStatusBar;
+		_hudWindow = [[DTProgressHUDWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+		_hudWindow.windowLevel = UIWindowLevelAlert;
 		_hudWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		_hudWindow.autoresizesSubviews = NO;
 		_hudWindow.userInteractionEnabled = NO;
