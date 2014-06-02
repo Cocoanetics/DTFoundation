@@ -51,14 +51,14 @@
 	_sidePanelController = [[DTSidePanelController alloc] init];
 	
 	// left panel has fixed width, right panel width is variable
-	[_sidePanelController setWidth:100 forPanel:DTSidePanelControllerPanelLeft animated:NO];
+	[_sidePanelController setWidth:200 forPanel:DTSidePanelControllerPanelLeft animated:NO];
 	
 	// set the panels on the controller
 	_sidePanelController.leftPanelController = leftNav;
 	_sidePanelController.centerPanelController = centerNav;
 	_sidePanelController.rightPanelController = rightNav;
 	_sidePanelController.sidePanelDelegate = self;
-	
+
 	self.window.rootViewController = _sidePanelController;
 	[self.window makeKeyAndVisible];
 	

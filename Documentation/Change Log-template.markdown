@@ -3,6 +3,31 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.7.0**
+
+- ADDED: DTProgressHUD
+- FIXED: Deprecation warning in DTActivityTitleView when compiling >= iOS 7
+- FIXED: Some targets where built only for 64-bit
+- FIXED: Warning about weak variable being accessed multiple times
+
+**Version 1.6.3**
+
+- FIXED: DTFolderMonitor might cause exception if monitoring is started and stopped quickly in succession
+- CHANGED: Migrated unit testing to XCTest
+
+**Version 1.6.2**
+
+- ADDED: DTCustomColoredAccessory gains DTCustomColoredAccessoryTypeSquare
+- CHANGED: Made DTASN1Parser usable as stand-alone library
+- FIXED: DTHTMLParser pod build problem if Xcode installed in path containing spaces
+- FIXED: Xcode 5.1 warnings
+
+**Version 1.6.1**
+
+- FIXED: Typo in DTFolderMonitor causing build to fail in some build scenarios
+- FIXED: DTSidePanelController panel jumping in rare cases
+- FIXED: DTReachability exception when specifying an invalid domain for monitoring
+
 **Version 1.6.0**
 
 - CHANGED: DTReachability now passes DTReachabilityInformation to observers

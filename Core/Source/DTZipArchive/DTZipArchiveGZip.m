@@ -21,6 +21,8 @@
 @property (assign, getter = isCancelling) BOOL cancelling;
 @property (assign, getter = isUncompressing) BOOL uncompressing;
 
+@property (readonly, nonatomic) dispatch_queue_t uncompressingQueue;
+
 @end
 
 @implementation DTZipArchiveGZip
@@ -298,7 +300,7 @@
 	
 	z_stream strm;
 	strm.next_in = (Bytef *)[_data bytes];
-	strm.avail_in = [_data length];
+	strm.avail_in = (uInt)[_data length];
 	strm.total_out = 0;
 	strm.zalloc = Z_NULL;
 	strm.zfree = Z_NULL;

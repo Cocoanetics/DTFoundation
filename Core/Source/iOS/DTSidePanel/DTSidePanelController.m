@@ -12,6 +12,7 @@
 #import "UIView+DTFoundation.h"
 #import "UIViewController+DTSidePanelController.h"
 #import "DTLog.h"
+#import "DTSidePanelPanGestureRecognizer.h"
 
 @interface UIViewController () // private setter
 - (void)setSidePanelController:(DTSidePanelController *)sidePanelController;
@@ -33,12 +34,8 @@
 	CGFloat _minimumVisibleCenterWidth;
 	CGPoint _lastTranslation;
 	
-	NSTimeInterval _lastMoveTimestamp;
-	CGFloat _minimumAnimationMomentum;
-	CGFloat _maximumAnimationMomentum;
-	CGFloat _minimumDragOffsetToAccept;  // minimum distance from which a panel drag is accepted
-	CGFloat _minimumDragOffsetToPrepPanels;  // minimum distance until subviews are added i.e. viewWillAppear etc.
-	
+	CGFloat _animationVelocityMaximum;
+
 	DTSidePanelControllerPanel _panelToPresentAfterLayout;  // the panel presentation to restore after subview layouting
 	BOOL _panelIsMoving;  // if the panel is being dragged or being animated
 	
@@ -46,7 +43,7 @@
 	CGPoint _maxPanRange;
 	
 	UITapGestureRecognizer *_tapToCloseGesture;
-	UIPanGestureRecognizer *_centerPanelPanGesture;
+	DTSidePanelPanGestureRecognizer *_centerPanelPanGesture;
 	
 	UIViewController *_presentedPanelViewController;
 	
@@ -73,11 +70,8 @@
 	
 	self.view = view;
 	
-	_minimumVisibleCenterWidth = 50;
-	_minimumAnimationMomentum = 700;
-	_maximumAnimationMomentum = 2000;
-	_minimumDragOffsetToAccept = 15;
-	_minimumDragOffsetToPrepPanels = 7;
+	_minimumVisibleCenterWidth = 50.0f;
+	_animationVelocityMaximum = 700.0f;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -85,24 +79,6 @@
 	NSAssert(_centerPanelController, @"Must have a center panel controller");
 	
 	[super viewWillAppear:animated];
-}
-
-- (void)_sortPanels
-{
-	if (_centerBaseView)
-	{
-		[self.view bringSubviewToFront:_centerBaseView];
-	}
-	
-	if ([self _rightPanelVisibleWidth]==0)
-	{
-		[self.view sendSubviewToBack:_rightBaseView];
-	}
-	
-	if ([self _leftPanelVisibleWidth]==0)
-	{
-		[self.view sendSubviewToBack:_leftBaseView];
-	}
 }
 
 - (void)_updateUserInteractionEnabled
@@ -114,26 +90,7 @@
 	_centerBaseView.userInteractionEnabled = (panel == DTSidePanelControllerPanelCenter);
 }
 
-- (void)_updatePanelAutoresizingMasks
-{
-	if (_leftPanelWidth)
-	{
-		_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
-	}
-	else
-	{
-		_leftBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	}
-	
-	if (_rightPanelWidth)
-	{
-		_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin;
-	}
-	else
-	{
-		_rightBaseView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	}
-}
+
 
 - (void)_installTapToCloseGesture
 {
@@ -189,30 +146,9 @@
 
 - (void)_addSubviewForPresentedPanel:(UIViewController *)panel
 {
-	if (panel == _leftPanelController)
-	{
-		_leftPanelController.view.frame = _leftBaseView.bounds;
-		[_leftBaseView addSubview:_leftPanelController.view];
-		
-		if (_rightBaseView)
-		{
-			[self.view sendSubviewToBack:_rightBaseView];
-		}
-	}
-	else if (panel == _rightPanelController)
-	{
-		_rightPanelController.view.frame = _rightBaseView.bounds;
-		[_rightBaseView addSubview:_rightPanelController.view];
-		
-		if (_leftBaseView)
-		{
-			[self.view sendSubviewToBack:_leftBaseView];
-		}
-	}
-	
-	[self _sortPanels];
+	_leftBaseView.hidden = (panel != _leftPanelController);
+	_rightBaseView.hidden = (panel != _rightPanelController);
 }
-
 
 - (void)_updatePanelViewControllerPresentationBeforeAnimationForPosition:(CGPoint)position
 {
@@ -243,13 +179,10 @@
 	
 	if (_presentedPanelViewController && _targetPanel != _presentedPanelViewController)
 	{
-		[_presentedPanelViewController.view removeFromSuperview];
-
 		[_presentedPanelViewController endAppearanceTransition];
 		
 		[_presentedPanelViewController didMoveToParentViewController:nil];
-		
-		
+
 		_presentedPanelViewController = nil;
 	}
 	
@@ -265,7 +198,7 @@
 	_presentedPanelViewController = _targetPanel;
 }
 
-- (void)_updatePanelViewControllerPresentationForBeginningToShowPanel:(UIViewController *)panel
+- (void)_prepareViewControllerToBeShown:(UIViewController *)panel
 {
 	if (panel == _centerPanelController || _presentedPanelViewController == panel)
 	{
@@ -295,8 +228,6 @@
 	[viewController willMoveToParentViewController:nil];
 	
 	[viewController beginAppearanceTransition:NO animated:NO];
-	
-	[viewController.view removeFromSuperview];
 	
 	[viewController endAppearanceTransition];
 	
@@ -445,124 +376,56 @@
 	}
 }
 
-- (void)_animateCenterPanelToPosition:(CGPoint)position duration:(NSTimeInterval)duration
-{
-	_panelIsMoving = YES;
-
-	[self _updatePanelViewControllerPresentationBeforeAnimationForPosition:position];
-
-	[UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
-		_centerBaseView.center = position;
-	} completion:^(BOOL finished) {
-		_panelIsMoving = NO;
-		
-		[self _updateTapToCloseGesture];
-		[self _updatePanelViewControllerPresentationAfterAnimationForPosition:position];
-		[self _updateUserInteractionEnabled];
-	}];
-}
 
 
-- (void)_animateCenterPanelToPosition:(CGPoint)position withMomentum:(CGPoint)momentum
+- (void)_animateCenterPanelToPosition:(CGPoint)position withVelocity:(CGFloat)velocity
 {
 	CALayer *presentationlayer = _centerBaseView.layer.presentationLayer;
 	CGPoint currentPosition = presentationlayer.position;
 	
 	CGFloat deltaX = position.x - currentPosition.x;
-	CGFloat deltaY = position.y - currentPosition.y;
 
-	CGFloat distanceToTravel = sqrtf(deltaX*deltaX + deltaY*deltaY);
-	CGFloat distanceMomentum = sqrtf(momentum.x * momentum.x + momentum.y * momentum.y);
-	
-	// limit
-	distanceMomentum = MIN(MAX(distanceMomentum, _minimumAnimationMomentum), _maximumAnimationMomentum);
-	
-	CGFloat duration = distanceToTravel / distanceMomentum;
-	
-	[self _animateCenterPanelToPosition:position duration:duration];
+
+	CGFloat duration = deltaX / _animationVelocityMaximum;
+	DTLogInfo(@"duration %1.1f", duration);
+
+	_panelIsMoving = YES;
+
+		[self _updatePanelViewControllerPresentationBeforeAnimationForPosition:position];
+
+		[UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
+			_centerBaseView.center = position;
+		} completion:^(BOOL finished) {
+			_panelIsMoving = NO;
+
+			[self _updateTapToCloseGesture];
+			[self _updatePanelViewControllerPresentationAfterAnimationForPosition:position];
+			[self _updateUserInteractionEnabled];
+		}];
 }
 
-- (void)_animateCenterPanelToClosedPosition
-{
-	[self _animateCenterPanelToPosition:[self _centerPanelClosedPosition] withMomentum:CGPointZero];
-}
 
-- (void)_animateLeftPanelToOpenPosition
+- (void)_animateCenterPanelToRestingPositionWithVelocity:(CGFloat)velocity
 {
-	[self _animateCenterPanelToPosition:[self _centerPanelPositionWithLeftPanelOpen] withMomentum:CGPointZero];
-}
 
-- (void)_animateRightPanelToOpenPosition
-{
-	[self _animateCenterPanelToPosition:[self _centerPanelPositionWithRightPanelOpen] withMomentum:CGPointZero];
-}
+	CGPoint endPosition = [self _centerPanelClosedPosition];
 
-- (void)_animateCenterPanelToRestingPosition
-{
-	CGFloat leftVisibleWidth = [self _leftPanelVisibleWidth];
-	CGFloat rightVisibleWidth = [self _rightPanelVisibleWidth];
-	
-	if (leftVisibleWidth>0)
+	if ([self _leftPanelVisibleWidth]>0)
 	{
-		if (leftVisibleWidth<_leftBaseView.bounds.size.width/2.0f)
+		if (velocity > 100.0f)
 		{
-			[self _animateCenterPanelToClosedPosition];
+			endPosition = [self _centerPanelPositionWithLeftPanelOpen];
 		}
-		else
-		{
-			[self _animateLeftPanelToOpenPosition];
-		}
-		
-		return;
-	}
-	
-	if (rightVisibleWidth>0)
+	} else if ([self _rightPanelVisibleWidth]>0)
 	{
-		if (rightVisibleWidth<_rightBaseView.bounds.size.width/2.0f)
+		if (velocity < 100.0f)
 		{
-			[self _animateCenterPanelToClosedPosition];
+			endPosition = [self _centerPanelPositionWithRightPanelOpen];
 		}
-		else
-		{
-			[self _animateRightPanelToOpenPosition];
-		}
-		return;
 	}
-}
 
-- (void)_animateCenterPanelToRestingPositionWithMomentum:(CGPoint)momentum
-{
-	CGFloat leftVisibleWidth = [self _leftPanelVisibleWidth];
-	
-	if (leftVisibleWidth>0)
-	{
-		if (momentum.x>0)
-		{
-			[self _animateCenterPanelToPosition:[self _centerPanelPositionWithLeftPanelOpen] withMomentum:momentum];
-		}
-		else
-		{
-			[self _animateCenterPanelToPosition:[self _centerPanelClosedPosition] withMomentum:momentum];
-		}
-		
-		return;
-	}
-	
-	CGFloat rightVisibleWidth = [self _rightPanelVisibleWidth];
-	
-	if (rightVisibleWidth>0)
-	{
-		if (momentum.x<0)
-		{
-			[self _animateCenterPanelToPosition:[self _centerPanelPositionWithRightPanelOpen] withMomentum:momentum];
-		}
-		else
-		{
-			[self _animateCenterPanelToPosition:[self _centerPanelClosedPosition] withMomentum:momentum];
-		}
-		
-		return;
-	}
+	[self _animateCenterPanelToPosition:endPosition withVelocity:velocity];
+
 }
 
 #pragma mark - Rotation
@@ -772,14 +635,12 @@
 			CGPoint translation = [gesture translationInView:self.view];
 			
 			_lastTranslation = translation;
-			_lastMoveTimestamp = [NSDate timeIntervalSinceReferenceDate];
 
 			CGPoint center = _centerBaseView.center;
 			center.x += _lastTranslation.x;
 			
 			if (!_panelIsMoving)
 			{
-				CGFloat dragDistance = sqrtf(translation.x * translation.x + translation.y + translation.y);
 				UIViewController *panel = [self _presentedPanelWithPosition:center];
 				
 				if (!panel)
@@ -792,18 +653,8 @@
 					return;
 				}
 				
-				if (dragDistance>_minimumDragOffsetToPrepPanels)
-				{
-					// update panels even though it maybe it is not going to be an drag
-					[self _updatePanelViewControllerPresentationForBeginningToShowPanel:panel];
-				}
-				
-				// ignore drag attempts below threshold
-				if (dragDistance<_minimumDragOffsetToAccept)
-				{
-					return;
-				}
-				
+				[self _prepareViewControllerToBeShown:panel];
+
 				if (panel == _leftPanelController)
 				{
 					_minPanRange = [self _centerPanelClosedPosition];
@@ -827,14 +678,11 @@
 			[CATransaction setDisableActions:YES];
 			
 			_centerBaseView.center = center;
-			
+
 			[CATransaction commit];
-			
-			[self _sortPanels];
-			
 			break;
 		}
-			
+
 		case UIGestureRecognizerStateCancelled:
 		case UIGestureRecognizerStateEnded:
 		{
@@ -851,21 +699,10 @@
 				_presentedPanelViewController = nil;
 				return;
 			}
-			
-			NSTimeInterval timestamp = [NSDate timeIntervalSinceReferenceDate];
-			NSTimeInterval secondsSinceLastMovement = timestamp - _lastMoveTimestamp;
-			
-			if (secondsSinceLastMovement<0.2f)
-			{
-				CGPoint momentum = CGPointMake(_lastTranslation.x/secondsSinceLastMovement, _lastTranslation.y/secondsSinceLastMovement);
-				
-				[self _animateCenterPanelToRestingPositionWithMomentum:momentum];
-			}
-			else
-			{
-				[self _animateCenterPanelToRestingPosition];
-			}
-			
+
+			CGPoint velocity = [gesture velocityInView:self.view];
+			DTLogInfo(@"velocity %@", NSStringFromCGPoint(velocity));
+			[self _animateCenterPanelToRestingPositionWithVelocity:velocity.x];
 			break;
 		}
 			
@@ -925,7 +762,7 @@
 	if (animated)
 	{
 		// uses minimum momentum for animation
-		[self _animateCenterPanelToPosition:targetPosition duration:0.25];
+		[self _animateCenterPanelToPosition:targetPosition withVelocity:_animationVelocityMaximum];
 	}
 	else
 	{
@@ -972,15 +809,14 @@
 			break;
 		}
 	}
-	
+
 	CGFloat duration = animated?0.3:0;
 	
 	[UIView animateWithDuration:duration animations:^{
 		_leftBaseView.frame = [self _leftPanelFrame];
 		_rightBaseView.frame = [self _rightPanelFrame];
 	}];
-	
-	[self _updatePanelAutoresizingMasks];
+
 }
 
 #pragma mark - Properties
@@ -1006,12 +842,12 @@
 		
 		[_centerBaseView addShadowWithColor:[UIColor blackColor] alpha:1 radius:6 offset:CGSizeZero];
 		
-		_centerPanelPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+		_centerPanelPanGesture = [[DTSidePanelPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
 		_centerPanelPanGesture.delegate = self;
 		[self.view addGestureRecognizer:_centerPanelPanGesture];
 	}
 	
-	[self _sortPanels];
+	//[self _sortPanels];
 	
 	[self addChildViewController:_centerPanelController];
 	
@@ -1036,14 +872,14 @@
 	_leftPanelController = leftPanelController;
 	_leftPanelController.sidePanelController = self;
 
-	if (!_leftBaseView)
-	{
-		_leftBaseView = [[UIView alloc] initWithFrame:[self _leftPanelFrame]];
-		_leftBaseView.userInteractionEnabled = NO;
-		[self.view addSubview:_leftBaseView];
-	}
-	
-	[self _updatePanelAutoresizingMasks];
+	_leftBaseView = [[UIView alloc] initWithFrame:[self _leftPanelFrame]];
+	_leftBaseView.userInteractionEnabled = NO;
+	[self.view addSubview:_leftBaseView];
+	[self.view sendSubviewToBack:_leftBaseView];
+	_leftPanelController.view.frame = _leftBaseView.frame;
+	[_leftBaseView addSubview:leftPanelController.view];
+
+
 }
 
 - (void)setRightPanelController:(UIViewController *)rightPanelController
@@ -1058,15 +894,15 @@
 	
 	_rightPanelController = rightPanelController;
 	_rightPanelController.sidePanelController = self;
-	
-	if (!_rightBaseView)
-	{
-		_rightBaseView = [[UIView alloc] initWithFrame:[self _rightPanelFrame]];
-		_rightBaseView.userInteractionEnabled = NO;
-		[self.view addSubview:_rightBaseView];
-	}
-	
-	[self _updatePanelAutoresizingMasks];
+
+	_rightBaseView = [[UIView alloc] initWithFrame:[self _rightPanelFrame]];
+	_rightBaseView.userInteractionEnabled = NO;
+	[self.view addSubview:_rightBaseView];
+	[self.view sendSubviewToBack:_rightBaseView];
+	_rightPanelController.view.frame = _leftBaseView.frame;
+
+	[_rightBaseView addSubview:_rightPanelController.view];
+
 }
 
 

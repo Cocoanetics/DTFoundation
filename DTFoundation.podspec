@@ -1,9 +1,11 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.6.0'
+  spec.version      = '1.7.0'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@drobnik.com" }
+  spec.documentation_url = 'http://docs.cocoanetics.com/DTFoundation'
+  spec.social_media_url = 'https://twitter.com/cocoanetics'
   spec.source       = { :git => "https://github.com/Cocoanetics/DTFoundation.git", :tag => spec.version.to_s }
   spec.license      = 'BSD'
   spec.requires_arc = true
@@ -52,7 +54,7 @@ Pod::Spec.new do |spec|
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTHTMLParser/*.{h,m}'
     ss.library = 'xml2'
-    ss.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
+    ss.xcconfig = { 'HEADER_SEARCH_PATHS' => '"$(SDKROOT)/usr/include/libxml2"' }
   end
 
   spec.subspec 'DTReachability' do |ss|
@@ -92,6 +94,14 @@ Pod::Spec.new do |spec|
     ss.subspec 'Minizip' do |sss|
       sss.source_files = 'Core/Source/Externals/minizip/*.{h,c}'
     end
+  end
+  
+  spec.subspec 'DTProgressHUD' do |ss|
+    ss.platform = :ios, '6.0'
+    ss.dependency 'DTFoundation/UIKit'
+	ss.dependency 'DTFoundation/Core'
+    ss.ios.frameworks = 'QuartzCore'
+    ss.ios.source_files = 'Core/Source/iOS/DTProgressHUD/*.{h,m}'
   end
 
 end
