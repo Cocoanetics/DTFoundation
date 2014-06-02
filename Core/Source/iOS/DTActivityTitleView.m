@@ -82,7 +82,14 @@
 	self.titleLabel.text = title;
 	CGFloat gap = 5.0;
 	CGFloat height = self.activityIndicator.frame.size.height;
+	
+#if __IPHONE_OS_VERSION_MIN_REQUIRED > __IPHONE_6_1
+	// issue 60: sizeWithFont: is deprecated with deployment target >= iOS 7
+	NSDictionary *attribs = @{NSFontAttributeName:self.titleLabel.font};
+	CGSize neededSize = [self.titleLabel.text sizeWithAttributes:attribs];
+#else
 	CGSize neededSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font];
+#endif
 
 	if (height < neededSize.height)
     {
