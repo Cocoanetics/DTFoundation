@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.7.0'
+  spec.version      = '1.7.1'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@cocoanetics.com" }
@@ -35,6 +35,12 @@ Pod::Spec.new do |spec|
     ss.platform = :osx, '10.6'
     ss.dependency 'DTFoundation/Core'
     ss.osx.source_files = 'Core/Source/OSX/*.{h,m}'
+  end
+
+  spec.subspec 'DTAnimatedGIF' do |ss|
+    ss.ios.deployment_target = '4.3'
+    ss.ios.frameworks = 'ImageIO'
+    ss.source_files = 'Core/Source/iOS/DTAnimatedGIF/*.{h,m}'
   end
 
   spec.subspec 'DTAWS' do |ss|

@@ -3,6 +3,10 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.7.1**
+
+- ADDED: DTAnimatedGIF in separate static lib / subspec
+
 **Version 1.7.0**
 
 - ADDED: DTProgressHUD
