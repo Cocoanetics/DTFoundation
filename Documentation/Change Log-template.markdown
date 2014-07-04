@@ -6,6 +6,7 @@ This is the history of version updates.
 **Version 1.7.1**
 
 - ADDED: DTAnimatedGIF in separate static lib / subspec
+- FIXED: DTActionSheet "noticeable delay" choosing an action
 
 **Version 1.7.0**
 
