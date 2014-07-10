@@ -79,6 +79,9 @@
 	NSAssert(_centerPanelController, @"Must have a center panel controller");
 	
 	[super viewWillAppear:animated];
+	
+	// update center view shadow because bounds should now be accurate
+	[_centerBaseView updateShadowPathToBounds:_centerBaseView.bounds withDuration:0];
 }
 
 - (void)viewWillLayoutSubviews
@@ -101,8 +104,6 @@
 	{
 		[self presentPanel:_panelToPresentAfterLayout animated:NO];
 	}
-	
-	[_centerBaseView updateShadowPathToBounds:_centerBaseView.bounds withDuration:0.3];
 	
 	[super viewDidLayoutSubviews];
 }
@@ -594,6 +595,8 @@
 	{
 		[_rightPanelController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
 	}
+	
+	[_centerBaseView updateShadowPathToBounds:_centerBaseView.bounds withDuration:duration];
 }
 
 - (BOOL)shouldAutomaticallyForwardRotationMethods
@@ -858,8 +861,6 @@
 		_centerPanelPanGesture.delegate = self;
 		[self.view addGestureRecognizer:_centerPanelPanGesture];
 	}
-	
-	//[self _sortPanels];
 	
 	[self addChildViewController:_centerPanelController];
 	
