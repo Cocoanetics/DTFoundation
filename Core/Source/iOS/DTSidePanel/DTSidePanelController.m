@@ -52,9 +52,10 @@
 
 - (void)dealloc
 {
+	// update property because this panel controller is no more
+	_leftPanelController.sidePanelController = nil;
 	_centerPanelController.sidePanelController = nil;
-	_centerPanelController.sidePanelController = nil;
-	_centerPanelController.sidePanelController = nil;
+	_rightPanelController.sidePanelController = nil;
 	
 	_sidePanelDelegate = nil;
 }
@@ -62,8 +63,7 @@
 - (void)loadView
 {
 	// set up the base view
-	CGRect frame = [[UIScreen mainScreen] applicationFrame];
-	UIView *view = [[UIView alloc] initWithFrame:frame];
+	UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
 	view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	view.backgroundColor = [UIColor blackColor];
 	view.autoresizesSubviews = YES;
@@ -79,7 +79,36 @@
 	NSAssert(_centerPanelController, @"Must have a center panel controller");
 	
 	[super viewWillAppear:animated];
+	
+	// update center view shadow because bounds should now be accurate
+	[_centerBaseView updateShadowPathToBounds:_centerBaseView.bounds withDuration:0];
 }
+
+- (void)viewWillLayoutSubviews
+{
+	[super viewWillLayoutSubviews];
+	
+	// update the base view frames, they might be known now as opposed to -loadView
+	_leftBaseView.frame = [self _leftPanelFrame];
+	_rightBaseView.frame = [self _rightPanelFrame];
+	
+	if (!_panelIsMoving)
+	{
+		_panelToPresentAfterLayout = self.presentedPanel;
+	}
+}
+
+- (void)viewDidLayoutSubviews
+{
+	if (!_panelIsMoving)
+	{
+		[self presentPanel:_panelToPresentAfterLayout animated:NO];
+	}
+	
+	[super viewDidLayoutSubviews];
+}
+
+#pragma mark - Helpers
 
 - (void)_updateUserInteractionEnabled
 {
@@ -88,44 +117,6 @@
 	_leftBaseView.userInteractionEnabled = (panel == DTSidePanelControllerPanelLeft);
 	_rightBaseView.userInteractionEnabled = (panel == DTSidePanelControllerPanelRight);
 	_centerBaseView.userInteractionEnabled = (panel == DTSidePanelControllerPanelCenter);
-}
-
-
-
-- (void)_installTapToCloseGesture
-{
-	if (!_tapToCloseGesture)
-	{
-		_tapToCloseGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToClose:)];
-		_tapToCloseGesture.numberOfTapsRequired = 1;
-		_tapToCloseGesture.numberOfTouchesRequired = 1;
-		_tapToCloseGesture.delegate = self;
-	}
-	
-	[self.view addGestureRecognizer:_tapToCloseGesture];
-}
-
-- (void)_removeTapToCloseGesture
-{
-	[self.view removeGestureRecognizer:_tapToCloseGesture];
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-	CGPoint location = [touch locationInView:_centerBaseView];
-	BOOL locationIsInCenterPanel = CGRectContainsPoint(_centerBaseView.bounds, location);
-	
-	if (gestureRecognizer == _centerPanelPanGesture)
-	{
-		return locationIsInCenterPanel;
-	}
-	
-	if (gestureRecognizer ==_tapToCloseGesture)
-	{
-		return locationIsInCenterPanel;
-	}
-	
-	return NO;
 }
 
 - (UIViewController *)_presentedPanelWithPosition:(CGPoint)position
@@ -237,6 +228,74 @@
 	{
 		[viewController didMoveToParentViewController:nil];
 	}
+}
+
+- (BOOL)_shouldAllowClosingOfPanel
+{
+	if ([_sidePanelDelegate respondsToSelector:@selector(sidePanelController:shouldAllowClosingOfSidePanel:)])
+	{
+		return [_sidePanelDelegate sidePanelController:self shouldAllowClosingOfSidePanel:[self presentedPanel]];
+	}
+	
+	return YES;
+}
+
+#pragma mark - Gesture Helpers
+
+- (void)_installTapToCloseGesture
+{
+	if (!_tapToCloseGesture)
+	{
+		_tapToCloseGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToClose:)];
+		_tapToCloseGesture.numberOfTapsRequired = 1;
+		_tapToCloseGesture.numberOfTouchesRequired = 1;
+		_tapToCloseGesture.delegate = self;
+	}
+	
+	[self.view addGestureRecognizer:_tapToCloseGesture];
+}
+
+- (void)_removeTapToCloseGesture
+{
+	[self.view removeGestureRecognizer:_tapToCloseGesture];
+}
+
+- (void)_updateTapToCloseGesture
+{
+	if (self.presentedPanel == DTSidePanelControllerPanelCenter)
+	{
+		[self _removeTapToCloseGesture];
+	}
+	else
+	{
+		[self _installTapToCloseGesture];
+	}
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+	CGPoint location = [touch locationInView:_centerBaseView];
+	BOOL locationIsInCenterPanel = CGRectContainsPoint(_centerBaseView.bounds, location);
+	
+	if (gestureRecognizer == _centerPanelPanGesture)
+	{
+		return locationIsInCenterPanel;
+	}
+	
+	if (gestureRecognizer ==_tapToCloseGesture)
+	{
+		return locationIsInCenterPanel;
+	}
+	
+	return NO;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+	// never recognize simultaneously because then a table view cell swipe can close a panel
+	return NO;
 }
 
 #pragma mark - Calculations
@@ -364,20 +423,6 @@
 
 #pragma mark - Animations
 
-- (void)_updateTapToCloseGesture
-{
-	if (self.presentedPanel == DTSidePanelControllerPanelCenter)
-	{
-		[self _removeTapToCloseGesture];
-	}
-	else
-	{
-		[self _installTapToCloseGesture];
-	}
-}
-
-
-
 - (void)_animateCenterPanelToPosition:(CGPoint)position withVelocity:(CGFloat)velocity
 {
 	CALayer *presentationlayer = _centerBaseView.layer.presentationLayer;
@@ -429,28 +474,6 @@
 }
 
 #pragma mark - Rotation
-
-- (void)viewWillLayoutSubviews
-{
-	[super viewWillLayoutSubviews];
-	
-	if (!_panelIsMoving)
-	{
-		_panelToPresentAfterLayout = self.presentedPanel;
-	}
-}
-
-- (void)viewDidLayoutSubviews
-{
-	if (!_panelIsMoving)
-	{
-		[self presentPanel:_panelToPresentAfterLayout animated:NO];
-	}
-	
-	[_centerBaseView updateShadowPathToBounds:_centerBaseView.bounds withDuration:0.3];
-	
-	[super viewDidLayoutSubviews];
-}
 
 // iOS 6 autorotation
 - (BOOL)shouldAutorotate
@@ -572,6 +595,8 @@
 	{
 		[_rightPanelController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
 	}
+	
+	[_centerBaseView updateShadowPathToBounds:_centerBaseView.bounds withDuration:duration];
 }
 
 - (BOOL)shouldAutomaticallyForwardRotationMethods
@@ -590,16 +615,6 @@
 }
 
 #pragma mark - Actions
-
-- (BOOL)_shouldAllowClosingOfPanel
-{
-	if ([_sidePanelDelegate respondsToSelector:@selector(sidePanelController:shouldAllowClosingOfSidePanel:)])
-	{
-		return [_sidePanelDelegate sidePanelController:self shouldAllowClosingOfSidePanel:[self presentedPanel]];
-	}
-	
-	return YES;
-}
 
 - (void)tapToClose:(UITapGestureRecognizer *)gesture
 {
@@ -847,8 +862,6 @@
 		[self.view addGestureRecognizer:_centerPanelPanGesture];
 	}
 	
-	//[self _sortPanels];
-	
 	[self addChildViewController:_centerPanelController];
 	
 	[_centerPanelController beginAppearanceTransition:YES animated:NO];
@@ -876,10 +889,9 @@
 	_leftBaseView.userInteractionEnabled = NO;
 	[self.view addSubview:_leftBaseView];
 	[self.view sendSubviewToBack:_leftBaseView];
-	_leftPanelController.view.frame = _leftBaseView.frame;
+	_leftPanelController.view.frame = _leftBaseView.bounds;
+	
 	[_leftBaseView addSubview:leftPanelController.view];
-
-
 }
 
 - (void)setRightPanelController:(UIViewController *)rightPanelController
@@ -899,11 +911,9 @@
 	_rightBaseView.userInteractionEnabled = NO;
 	[self.view addSubview:_rightBaseView];
 	[self.view sendSubviewToBack:_rightBaseView];
-	_rightPanelController.view.frame = _leftBaseView.frame;
+	_rightPanelController.view.frame = _rightBaseView.bounds;
 
 	[_rightBaseView addSubview:_rightPanelController.view];
-
 }
-
 
 @end
