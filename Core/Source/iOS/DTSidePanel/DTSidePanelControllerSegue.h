@@ -10,6 +10,9 @@
 
 @class DTSidePanelController;
 
+/**
+ A segue for setting the DTSidePanelController panel ViewController via storyboard.
+ */
 @interface DTSidePanelControllerSegue : UIStoryboardSegue
 
 /**
