@@ -336,6 +336,9 @@
 		C04946681218C94801D2AB78 /* DTZipArchivePKZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */; };
 		C04948B5DABE59E8CC2340AF /* DTZipArchiveGZip.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494E1FBE9D6D4FB042F2A3 /* DTZipArchiveGZip.m */; };
 		C0494DA5BB16F9A0E8533152 /* DTZipArchivePKZip.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494776E02407791E96C641 /* DTZipArchivePKZip.m */; };
+		C9826823196DAD7800A84677 /* DTSidePanelControllerSegue.h in Headers */ = {isa = PBXBuildFile; fileRef = C9826821196DAD7800A84677 /* DTSidePanelControllerSegue.h */; };
+		C9826824196DAD7800A84677 /* DTSidePanelControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C9826822196DAD7800A84677 /* DTSidePanelControllerSegue.m */; };
+		C9826825196DAD8600A84677 /* DTSidePanelControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C9826822196DAD7800A84677 /* DTSidePanelControllerSegue.m */; };
 		E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F88FF6851920A9DF00120808 /* DTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6841920A9DF00120808 /* DTProgressHUD.m */; };
 		F88FF6B91920ABA000120808 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F88FF6AB1920ABA000120808 /* Main_iPad.storyboard */; };
@@ -836,6 +839,8 @@
 		C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveTest.m; sourceTree = "<group>"; };
 		C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTZipArchivePKZip.h; sourceTree = "<group>"; };
 		C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTZipArchiveNode.m; sourceTree = "<group>"; };
+		C9826821196DAD7800A84677 /* DTSidePanelControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSidePanelControllerSegue.h; sourceTree = "<group>"; };
+		C9826822196DAD7800A84677 /* DTSidePanelControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSidePanelControllerSegue.m; sourceTree = "<group>"; };
 		F88FF6801920A83300120808 /* libDTProgressHUD_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTProgressHUD_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88FF6831920A9DF00120808 /* DTProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProgressHUD.h; sourceTree = "<group>"; };
 		F88FF6841920A9DF00120808 /* DTProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProgressHUD.m; sourceTree = "<group>"; };
@@ -1213,6 +1218,8 @@
 				A7C92B68174F9AEC0019D70A /* UIViewController+DTSidePanelController.m */,
 				355B210F4174F2B22B0CD6A0 /* DTSidePanelPanGestureRecognizer.m */,
 				355B257CC69FC64D78ABE0BE /* DTSidePanelPanGestureRecognizer.h */,
+				C9826821196DAD7800A84677 /* DTSidePanelControllerSegue.h */,
+				C9826822196DAD7800A84677 /* DTSidePanelControllerSegue.m */,
 			);
 			path = DTSidePanel;
 			sourceTree = "<group>";
@@ -1935,6 +1942,7 @@
 				A7D6F2E515063448001CACDD /* DTExtendedFileAttributes.h in Headers */,
 				A7D0AA25153C1B160020F18B /* NSDictionary+DTError.h in Headers */,
 				A7D0AA2B153C1FE40020F18B /* NSString+DTURLEncoding.h in Headers */,
+				C9826823196DAD7800A84677 /* DTSidePanelControllerSegue.h in Headers */,
 				A7D0AA4A153C233E0020F18B /* NSString+DTUtilities.h in Headers */,
 				A7D0AA6D153C39920020F18B /* DTCoreGraphicsUtils.h in Headers */,
 				A73D5BAB155271FD0024BDB7 /* NSArray+DTError.h in Headers */,
@@ -2598,6 +2606,7 @@
 				A73D5BAE155271FD0024BDB7 /* NSArray+DTError.m in Sources */,
 				A79231D1157A0B9400C3ACBB /* NSURL+DTUnshorten.m in Sources */,
 				A766136416143F8A00DF6C2B /* NSMutableArray+DTMoving.m in Sources */,
+				C9826825196DAD8600A84677 /* DTSidePanelControllerSegue.m in Sources */,
 				A7950101161D680000358BC3 /* NSData+DTCrypto.m in Sources */,
 				F88FF6DF1920F1AF00120808 /* UIView+DTActionHandlers.m in Sources */,
 				FAB1726F16301F0D00B44EDC /* DTFoundationConstants.m in Sources */,
@@ -2779,6 +2788,7 @@
 				A77D5BFD16E4961A00A45C28 /* DTBase64Coding.m in Sources */,
 				A7C92B6B174F9AEC0019D70A /* UIViewController+DTSidePanelController.m in Sources */,
 				A7FB1215175C9C6200D4B7F0 /* DTSidePanelController.m in Sources */,
+				C9826824196DAD7800A84677 /* DTSidePanelControllerSegue.m in Sources */,
 				A70C4FCE17AA7CED00000DF5 /* UIColor+DTDebug.m in Sources */,
 				A70C4FCF17AA7CED00000DF5 /* UIView+DTDebug.m in Sources */,
 				A70C4FEB17AA7F0300000DF5 /* DTScriptExpression.m in Sources */,

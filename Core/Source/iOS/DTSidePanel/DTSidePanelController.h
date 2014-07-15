@@ -28,8 +28,18 @@ typedef NS_ENUM(NSUInteger, DTSidePanelControllerPanel)
 	/**
 	 Panel to the right of the center panel
 	 */
-	DTSidePanelControllerPanelRight
+	DTSidePanelControllerPanelRight,
+    
+    /**
+     No panel
+     */
+    DTSidePanelControllerPanelNone
 };
+
+static NSString * const DTSidePanelLeftIdentifier = @"DTSidePanelLeft";
+static NSString * const DTSidePanelCenterIdentifier = @"DTSidePanelCenter";
+static NSString * const DTSidePanelRightIdentifier = @"DTSidePanelRight";
+static NSString * const DTSidePanelModalIdentifier = @"DTSidePanelModal";
 
 @class DTSidePanelController;
 
@@ -111,5 +121,15 @@ typedef NS_ENUM(NSUInteger, DTSidePanelControllerPanel)
  The DTSidePanelControllerDelegate.
  */
 @property (nonatomic, DT_WEAK_PROPERTY) id <DTSidePanelControllerDelegate> sidePanelDelegate;
+
+/**
+ Shows the left panel of the DTSidePanelController.
+ */
+- (void)showLeftPanel;
+
+/**
+ Shows the right panel of the DTSidePanelController.
+ */
+- (void)showRightPanel;
 
 @end

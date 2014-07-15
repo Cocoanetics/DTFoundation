@@ -13,6 +13,7 @@
 #import "UIViewController+DTSidePanelController.h"
 #import "DTLog.h"
 #import "DTSidePanelPanGestureRecognizer.h"
+#import "DTSidePanelControllerSegue.h"
 
 @interface UIViewController () // private setter
 - (void)setSidePanelController:(DTSidePanelController *)sidePanelController;
@@ -76,9 +77,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	NSAssert(_centerPanelController, @"Must have a center panel controller");
-	
 	[super viewWillAppear:animated];
+    
+    // load any defined front/rear controllers from the storyboard
+    [self loadStoryboardControllers];
+    
+    NSAssert(_centerPanelController, @"Must have a center panel controller");
 	
 	// update center view shadow because bounds should now be accurate
 	[_centerBaseView updateShadowPathToBounds:_centerBaseView.bounds withDuration:0];
@@ -772,6 +776,11 @@
 			targetPosition = [self _centerPanelPositionWithRightPanelOpen];
 			break;
 		}
+            
+        case DTSidePanelControllerPanelNone:
+        {
+            break;
+        }
 	}
 	
 	if (animated)
@@ -823,6 +832,12 @@
 			DTLogError(@"Setting width for center panel not supported");
 			break;
 		}
+            
+        case DTSidePanelControllerPanelNone:
+        {
+            DTLogError(@"Setting width for no panel not supported");
+            break;
+        }
 	}
 
 	CGFloat duration = animated?0.3:0;
@@ -914,6 +929,64 @@
 	_rightPanelController.view.frame = _rightBaseView.bounds;
 
 	[_rightBaseView addSubview:_rightPanelController.view];
+}
+
+#pragma mark - Actions
+
+- (void)showLeftPanel
+{
+	if (self.presentedPanel == DTSidePanelControllerPanelCenter)
+	{
+		[self presentPanel:DTSidePanelControllerPanelLeft animated:YES];
+	}
+	else
+	{
+		[self presentPanel:DTSidePanelControllerPanelCenter animated:YES];
+	}
+}
+
+- (void)showRightPanel
+{
+	if (self.presentedPanel == DTSidePanelControllerPanelCenter)
+	{
+		[self presentPanel:DTSidePanelControllerPanelRight animated:YES];
+	}
+	else
+	{
+		[self presentPanel:DTSidePanelControllerPanelCenter animated:YES];
+	}
+}
+
+#pragma mark - Segue Support
+
+- (void)prepareForSegue:(DTSidePanelControllerSegue *)segue sender:(id)sender
+{
+    segue.sidePanelController = self;
+}
+
+// Try to load storyboard segue
+- (void)loadStoryboardControllers
+{
+    if ( self.storyboard && _leftPanelController == nil )
+    {
+        @try
+        {
+            [self performSegueWithIdentifier:DTSidePanelLeftIdentifier sender:nil];
+        }
+        @catch(NSException *exception) {}
+        
+        @try
+        {
+            [self performSegueWithIdentifier:DTSidePanelCenterIdentifier sender:nil];
+        }
+        @catch(NSException *exception) {}
+        
+        @try
+        {
+            [self performSegueWithIdentifier:DTSidePanelRightIdentifier sender:nil];
+        }
+        @catch(NSException *exception) {}
+    }
 }
 
 @end
