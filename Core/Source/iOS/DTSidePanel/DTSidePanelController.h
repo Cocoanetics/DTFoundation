@@ -104,11 +104,13 @@ static NSString * const DTSidePanelModalIdentifier = @"DTSidePanelModal";
 
 /**
  Toggles the left panel of the DTSidePanelController.
+ @param sender The object that initiated the action
  */
 - (IBAction)toggleLeftPanel:(id)sender;
 
 /**
  Toggles the right panel of the DTSidePanelController.
+ @param sender The object that initiated the action
  */
 - (IBAction)toggleRightPanel:(id)sender;
 
