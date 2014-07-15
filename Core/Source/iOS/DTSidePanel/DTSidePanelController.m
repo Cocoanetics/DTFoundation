@@ -933,7 +933,7 @@
 
 #pragma mark - Actions
 
-- (void)showLeftPanel
+- (IBAction)toggleLeftPanel:(id)sender
 {
 	if (self.presentedPanel == DTSidePanelControllerPanelCenter)
 	{
@@ -945,7 +945,7 @@
 	}
 }
 
-- (void)showRightPanel
+- (IBAction)toggleRightPanel:(id)sender
 {
 	if (self.presentedPanel == DTSidePanelControllerPanelCenter)
 	{

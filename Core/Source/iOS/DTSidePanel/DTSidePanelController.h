@@ -99,6 +99,20 @@ static NSString * const DTSidePanelModalIdentifier = @"DTSidePanelModal";
 - (void)setWidth:(CGFloat)width forPanel:(DTSidePanelControllerPanel)panel animated:(BOOL)animated;
 
 /**
+ @name Actions
+ */
+
+/**
+ Toggles the left panel of the DTSidePanelController.
+ */
+- (IBAction)toggleLeftPanel:(id)sender;
+
+/**
+ Toggles the right panel of the DTSidePanelController.
+ */
+- (IBAction)toggleRightPanel:(id)sender;
+
+/**
  @name Properties
  */
 
@@ -122,14 +136,5 @@ static NSString * const DTSidePanelModalIdentifier = @"DTSidePanelModal";
  */
 @property (nonatomic, DT_WEAK_PROPERTY) id <DTSidePanelControllerDelegate> sidePanelDelegate;
 
-/**
- Shows the left panel of the DTSidePanelController.
- */
-- (void)showLeftPanel;
-
-/**
- Shows the right panel of the DTSidePanelController.
- */
-- (void)showRightPanel;
 
 @end
