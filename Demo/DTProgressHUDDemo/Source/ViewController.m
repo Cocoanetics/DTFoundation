@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 #import "DTProgressHUD.h"
+#import "DTActionSheet.h"
 
 @interface ViewController ()
 
@@ -39,7 +40,6 @@
 	
 	[self _createProgressHUD];
 }
-
 
 #pragma mark - Actions
 
@@ -93,6 +93,27 @@
 - (IBAction)hidePressed:(id)sender
 {
 	[_progressHUD hide];
+}
+
+- (IBAction)showDTActionSheet:(id)sender
+{
+    DTActionSheet *actionSheet = [[DTActionSheet alloc] initWithTitle:@"This is a block-based DTActionSheet"
+                                                             delegate:nil
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+    
+    [actionSheet addDestructiveButtonWithTitle:@"Say hi" block:^
+     {
+         NSLog(@"Hi!");
+     }];
+    
+    [actionSheet addCancelButtonWithTitle:@"Cancel" block:^
+     {
+         NSLog(@"Cancelled :-(");
+     }];
+    [actionSheet showInView:self.view];
+
 }
 
 - (void)_createProgressHUD
