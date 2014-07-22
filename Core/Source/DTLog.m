@@ -8,8 +8,19 @@
 
 #import "DTLog.h"
 #import <asl.h>
+#import <Availability.h>
 
 DTLogLevel DTCurrentLogLevel = DTLogLevelInfo;
+
+#if TARGET_OS_IPHONE
+#if __IPHONE_OS_VERSION_MIN_REQUIRED > __IPHONE_6_1
+#define DTLOG_USE_NEW_ASL_METHODS 1
+#endif
+#else
+#if __MAC_OS_X_VERSION_MIN_REQUIRED > __MAC_10_9
+#define DTLOG_USE_NEW_ASL_METHODS 1
+#endif
+#endif
 
 #if DEBUG
 
@@ -106,7 +117,11 @@ NSArray *DTLogGetMessages(void)
 	}
 	
 	asl_free(query);
+#if DTLOG_USE_NEW_ASL_METHODS
+	asl_release(response);
+#else
 	aslresponse_free(response);
+#endif
 	
 	if ([tmpArray count])
 	{
