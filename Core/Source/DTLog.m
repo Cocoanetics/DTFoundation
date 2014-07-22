@@ -11,8 +11,6 @@
 #import <Availability.h>
 
 DTLogLevel DTCurrentLogLevel = DTLogLevelInfo;
-NSString * _DTLogFacilityIdentifier = nil;
-
 
 #if TARGET_OS_IPHONE
 #if __IPHONE_OS_VERSION_MIN_REQUIRED > __IPHONE_6_1
@@ -56,32 +54,10 @@ void DTLogSetLogLevel(DTLogLevel logLevel)
 	DTCurrentLogLevel = logLevel;
 }
 
-static NSString *_DTLogFacility()
-{
-	if (_DTLogFacilityIdentifier)
-	{
-		return _DTLogFacilityIdentifier;
-	}
-	
-	// usually the logger is the main bundle
-	_DTLogFacilityIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-	
-	// a unit test has no main bundle, so we use a uuid-string instead
-	if (!_DTLogFacilityIdentifier)
-	{
-		CFUUIDRef uuid = CFUUIDCreate(NULL);
-		CFStringRef uuidStr = CFUUIDCreateString(NULL, uuid);
-		CFRelease(uuid);
-		
-		_DTLogFacilityIdentifier = [NSString stringWithFormat:@"com.cocoanetics.%@", (__bridge_transfer NSString *)uuidStr];
-	}
-	
-	return _DTLogFacilityIdentifier;
-}
-
 void DTLogMessagev(DTLogLevel logLevel, NSString *format, va_list args)
 {
-	aslclient client = asl_open(NULL, [_DTLogFacility() UTF8String], ASL_OPT_STDERR); // also log to stderr
+	NSString *facility = [[NSBundle mainBundle] bundleIdentifier];
+	aslclient client = asl_open(NULL, [facility UTF8String], ASL_OPT_STDERR); // also log to stderr
 	
 	aslmsg msg = asl_new(ASL_TYPE_MSG);
 	asl_set(msg, ASL_KEY_READ_UID, "-1");  // without this the message cannot be found by asl_search
@@ -90,7 +66,7 @@ void DTLogMessagev(DTLogLevel logLevel, NSString *format, va_list args)
 	NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
 	
 	asl_log(client, msg, logLevel, "%s", [message UTF8String]);
-	
+
 	asl_free(msg);
 	
 	va_end(args);
@@ -112,35 +88,33 @@ NSArray *DTLogGetMessages(void)
 	int i;
 	const char *key, *val;
 	
+	NSString *facility = [[NSBundle mainBundle] bundleIdentifier];
+	
 	query = asl_new(ASL_TYPE_QUERY);
 	
 	// search only for current app messages
-	asl_set_query(query, ASL_KEY_FACILITY, [_DTLogFacility() UTF8String], ASL_QUERY_OP_EQUAL);
+	asl_set_query(query, ASL_KEY_FACILITY, [facility UTF8String], ASL_QUERY_OP_EQUAL);
 	
 	aslresponse response = asl_search(NULL, query);
 	
 	NSMutableArray *tmpArray = [NSMutableArray array];
 	
-#if DTLOG_USE_NEW_ASL_METHODS
-	while ((message = asl_next(response)))
-#else
 	while ((message = aslresponse_next(response)))
-#endif
+	{
+		NSMutableDictionary *tmpDict = [NSMutableDictionary dictionary];
+		
+		for (i = 0; ((key = asl_key(message, i))); i++)
 		{
-			NSMutableDictionary *tmpDict = [NSMutableDictionary dictionary];
+			NSString *keyString = [NSString stringWithUTF8String:(char *)key];
 			
-			for (i = 0; ((key = asl_key(message, i))); i++)
-			{
-				NSString *keyString = [NSString stringWithUTF8String:(char *)key];
-				
-				val = asl_get(message, key);
-				
-				NSString *string = val?[NSString stringWithUTF8String:val]:@"";
-				[tmpDict setObject:string forKey:keyString];
-			}
+			val = asl_get(message, key);
 			
-			[tmpArray addObject:tmpDict];
+			NSString *string = val?[NSString stringWithUTF8String:val]:@"";
+			[tmpDict setObject:string forKey:keyString];
 		}
+		
+		[tmpArray addObject:tmpDict];
+	}
 	
 	asl_free(query);
 #if DTLOG_USE_NEW_ASL_METHODS
