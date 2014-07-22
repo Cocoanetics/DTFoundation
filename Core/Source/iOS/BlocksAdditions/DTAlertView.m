@@ -46,7 +46,13 @@
 // designated initializer
 - (id)initWithTitle:(NSString *)title message:(NSString *)message
 {
-	return [self initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+	self = [super initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+	if (self)
+	{
+		_actionsPerIndex = [[NSMutableDictionary alloc] init];
+		self.delegate = self;
+	}
+	return self;
 }
 
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(DTAlertViewBlock)block
