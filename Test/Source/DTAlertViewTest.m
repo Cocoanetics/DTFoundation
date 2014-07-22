@@ -1,0 +1,40 @@
+//
+//  DTAlertViewTest.m
+//  DTFoundation
+//
+//  Created by Rene Pirringer on 22.07.14.
+//  Copyright (c) 2014 Cocoanetics. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <XCTest/XCTest.h>
+#import "DTAlertView.h"
+
+@interface DTAlertView(Private) <UIAlertViewDelegate>
+@end
+
+
+@implementation DTAlertView(Private)
+@end
+
+@interface DTAlertViewTest : XCTestCase
+
+@end
+
+@implementation DTAlertViewTest
+
+
+- (void)testInitWithTitle {
+	__block BOOL blockExecuted = NO;
+	DTAlertView *alertView = [[DTAlertView alloc] initWithTitle:@"Foo" message:@"bar"];
+	[alertView addButtonWithTitle:@"Ok" block:^{
+		blockExecuted = YES;
+	}];
+
+	[alertView alertView:alertView didDismissWithButtonIndex:0];
+	
+	XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
+}
+
+
+@end
