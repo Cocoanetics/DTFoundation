@@ -99,7 +99,11 @@ NSArray *DTLogGetMessages(void)
 	
 	NSMutableArray *tmpArray = [NSMutableArray array];
 	
+#if DTLOG_USE_NEW_ASL_METHODS
+	while ((message = asl_next(response)))
+#else
 	while ((message = aslresponse_next(response)))
+#endif
 	{
 		NSMutableDictionary *tmpDict = [NSMutableDictionary dictionary];
 		
