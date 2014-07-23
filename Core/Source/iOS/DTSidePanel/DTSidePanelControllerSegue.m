@@ -33,7 +33,8 @@
     }
     else if ([positionIdentifier isEqualToString:DTSidePanelModalIdentifier])
     {
-        [_sidePanelController presentModalViewController:self.destinationViewController animated:YES];
+        [_sidePanelController presentViewController:self.destinationViewController animated:YES completion:nil];
+
         return;
     }
     else if ([positionIdentifier isEqualToString:DTSidePanelLeftIdentifier])
