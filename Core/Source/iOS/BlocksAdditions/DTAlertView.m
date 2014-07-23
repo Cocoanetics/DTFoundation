@@ -26,18 +26,6 @@
 
 
 // overwrite standard initializer so that we can set our own delegate
-- (id)init
-{
-	self = [super init];
-	if (self)
-	{
-		_actionsPerIndex = [[NSMutableDictionary alloc] init];
-		self.delegate = self;
-	}
-
-	return self;
-}
-
 - (void)dealloc
 {
 	_isDeallocating = YES;
