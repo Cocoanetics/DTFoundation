@@ -33,25 +33,36 @@
 	BOOL _isDeallocating;
 }
 
-- (id)init 
+- (id)init
 {
-	self = [super init];
-	if (self)
-	{
-		_actionsPerIndex = [[NSMutableDictionary alloc] init];
-		self.delegate = self;
-	}
-	
-	return self;
+    return [self initWithTitle:nil];
+}
+
+- (id)initWithTitle:(NSString *)title
+{
+    return [self initWithTitle:title delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
 }
 
 // designated initializer
-- (id)initWithTitle:(NSString *)title
+- (id)initWithTitle:(NSString *)title delegate:(id<UIActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...
 {
-	self = [self init];
+	self = [super initWithTitle:title delegate:nil cancelButtonTitle:cancelButtonTitle destructiveButtonTitle:destructiveButtonTitle otherButtonTitles:nil];
 	if (self) 
 	{
-		self.title = title;
+        if (otherButtonTitles != nil) {
+            [self addButtonWithTitle:otherButtonTitles];
+            va_list args;
+            va_start(args, otherButtonTitles);
+            NSString *title = nil;
+            while( (title = va_arg(args, NSString *)) ) {
+                [self addButtonWithTitle:title];
+            }
+            va_end(args);
+        }
+
+        _actionsPerIndex = [[NSMutableDictionary alloc] init];
+        self.delegate = self;
+        _externalDelegate = delegate;
 	}
 	
 	return self;
