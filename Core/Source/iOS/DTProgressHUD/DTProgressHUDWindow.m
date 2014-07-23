@@ -8,45 +8,10 @@
 
 #import "DTProgressHUDWindow.h"
 
-@implementation DTProgressHUDWindow
-
 #define DegreesToRadians(degrees) (degrees * M_PI / 180)
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-	self = [super initWithFrame:frame];
-	if (self)
-	{
-		[self _setup];
-	}
-	return self;
-}
-
-- (instancetype)init
-{
-	self = [super init];
-	if (self)
-	{
-		[self _setup];
-	}
-	return self;
-}
-
-- (void)_setup
-{
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarDidChangeFrame:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-	
-	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-	
-	[self setTransform:[self transformForOrientation:orientation]];
-}
-
-- (void)dealloc
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (CGAffineTransform)transformForOrientation:(UIInterfaceOrientation)orientation
+// local helper function
+static CGAffineTransform _transformForInterfaceOrientation(UIInterfaceOrientation orientation)
 {
 	switch (orientation)
 	{
@@ -62,6 +27,7 @@
 		{
 			return CGAffineTransformMakeRotation(DegreesToRadians(180));
 		}
+		default:
 		case UIInterfaceOrientationPortrait:
 		{
 			return CGAffineTransformMakeRotation(DegreesToRadians(0));
@@ -69,11 +35,47 @@
 	}
 }
 
+@implementation DTProgressHUDWindow
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+	self = [super initWithFrame:frame];
+	
+	if (self)
+	{
+		[self _setup];
+	}
+	return self;
+}
+
+- (instancetype)init
+{
+	self = [super init];
+	
+	if (self)
+	{
+		[self _setup];
+	}
+	return self;
+}
+
+- (void)_setup
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarDidChangeFrame:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+	
+	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+	[self setTransform:_transformForInterfaceOrientation(orientation)];
+}
+
+- (void)dealloc
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)statusBarDidChangeFrame:(NSNotification *)notification
 {
 	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-	
-	[self setTransform:[self transformForOrientation:orientation]];
+	[self setTransform:_transformForInterfaceOrientation(orientation)];
 }
 
 @end
