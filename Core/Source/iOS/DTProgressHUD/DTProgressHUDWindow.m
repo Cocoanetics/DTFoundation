@@ -7,6 +7,7 @@
 //
 
 #import "DTProgressHUDWindow.h"
+#import "DTProgressHUD.h"
 
 #define DegreesToRadians(degrees) (degrees * M_PI / 180)
 
@@ -37,40 +38,40 @@ static CGAffineTransform _transformForInterfaceOrientation(UIInterfaceOrientatio
 
 @implementation DTProgressHUDWindow
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithProgressHUD:(DTProgressHUD *)progressHUD
 {
-	self = [super initWithFrame:frame];
+	NSParameterAssert(progressHUD);
+	
+	self = [super initWithFrame:[UIScreen mainScreen].bounds];
 	
 	if (self)
 	{
-		[self _setup];
+		self.windowLevel = UIWindowLevelAlert;
+		self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		self.autoresizesSubviews = NO;
+		self.userInteractionEnabled = NO;
+		
+		// use a dummy view controller to calm iOS 7's warning about missing root VC
+		UIViewController *viewController = [[UIViewController alloc] init];
+		viewController.view = progressHUD;
+		self.rootViewController = viewController; // this replaces the addSubview
+		
+		// observe interface rotations
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarDidChangeFrame:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+		
+		// set initial transform
+		UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+		[self setTransform:_transformForInterfaceOrientation(orientation)];
 	}
 	return self;
-}
-
-- (instancetype)init
-{
-	self = [super init];
-	
-	if (self)
-	{
-		[self _setup];
-	}
-	return self;
-}
-
-- (void)_setup
-{
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarDidChangeFrame:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-	
-	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-	[self setTransform:_transformForInterfaceOrientation(orientation)];
 }
 
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+#pragma mark - Notifications
 
 - (void)statusBarDidChangeFrame:(NSNotification *)notification
 {
