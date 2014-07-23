@@ -10,6 +10,7 @@
 
 #import "DTProgressHUD.h"
 #import "DTActionSheet.h"
+#import "DTAlertView.h"
 
 @interface ViewController ()
 
@@ -114,6 +115,22 @@
      }];
     [actionSheet showInView:self.view];
 
+}
+
+- (IBAction)showDTAlertViewidsender:(id)sender {
+    DTAlertView *alertView = [[DTAlertView alloc] initWithTitle:@"DTAlertView"
+                                                        message:@"This is a block-based DTAlertView"];
+    
+    [alertView addButtonWithTitle:@"Say hi" block:^
+     {
+         NSLog(@"Hi!");
+     }];
+    
+    [alertView addCancelButtonWithTitle:@"Cancel" block:^
+     {
+         NSLog(@"Cancelled :-(");
+     }];
+    [alertView show];
 }
 
 - (void)_createProgressHUD
