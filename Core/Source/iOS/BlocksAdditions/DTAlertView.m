@@ -85,6 +85,14 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    NSNumber *key = [NSNumber numberWithInteger:buttonIndex];
+    
+	DTAlertViewBlock block = [_actionsPerIndex objectForKey:key];
+	if (block)
+	{
+		block();
+	}
+
 	if ([_externalDelegate respondsToSelector:@selector(alertView:clickedButtonAtIndex:)])
 	{
 		[_externalDelegate alertView:self clickedButtonAtIndex:buttonIndex];
@@ -130,15 +138,6 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	NSNumber *key = [NSNumber numberWithInteger:buttonIndex];
-
-	DTAlertViewBlock block = [_actionsPerIndex objectForKey:key];
-
-	if (block)
-	{
-		block();
-	}
-
 	if ([_externalDelegate respondsToSelector:@selector(alertView:didDismissWithButtonIndex:)])
 	{
 		[_externalDelegate alertView:self didDismissWithButtonIndex:buttonIndex];
