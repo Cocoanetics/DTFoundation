@@ -31,9 +31,16 @@
 	_isDeallocating = YES;
 }
 
+// designated initializer
 - (id)init
 {
-    return [self initWithTitle:nil message:nil];
+    self = [super init];
+    if (self)
+    {
+        _actionsPerIndex = [[NSMutableDictionary alloc] init];
+        self.delegate = self;
+    }
+    return self;
 }
 
 - (id)initWithTitle:(NSString *)title message:(NSString *)message
@@ -41,12 +48,14 @@
     return [self initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
 }
 
-// designated initializer
 - (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...
 {
-	self = [super initWithTitle:title message:message delegate:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
+	self = [self init];
 	if (self)
 	{
+        self.title = title;
+        self.message = message;
+        
         if (otherButtonTitles != nil) {
             [self addButtonWithTitle:otherButtonTitles];
             va_list args;
@@ -57,9 +66,10 @@
             }
             va_end(args);
         }
-
-		_actionsPerIndex = [[NSMutableDictionary alloc] init];
-		self.delegate = self;
+        if (cancelButtonTitle) {
+            [self addCancelButtonWithTitle:cancelButtonTitle block:nil];
+        }
+        
         _externalDelegate = delegate;
 	}
 	return self;
