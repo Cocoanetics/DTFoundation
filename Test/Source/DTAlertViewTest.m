@@ -17,23 +17,43 @@
 @implementation DTAlertView(Private)
 @end
 
-@interface DTAlertViewTest : XCTestCase
 
+@interface DTAlertViewTest : XCTestCase
 @end
+
 
 @implementation DTAlertViewTest
 
-
-- (void)testInitWithTitle {
+- (void)testInitMethods {
 	__block BOOL blockExecuted = NO;
-	DTAlertView *alertView = [[DTAlertView alloc] initWithTitle:@"Foo" message:@"bar"];
+	DTAlertView *alertView = [[DTAlertView alloc] init];
 	[alertView addButtonWithTitle:@"Ok" block:^{
 		blockExecuted = YES;
 	}];
 
-	[alertView alertView:alertView didDismissWithButtonIndex:0];
+	[alertView alertView:alertView clickedButtonAtIndex:alertView.numberOfButtons - 1];
 	
 	XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
+
+    blockExecuted = NO;
+    alertView = [[DTAlertView alloc] initWithTitle:@"Foo" message:@"bar"];
+    [alertView addButtonWithTitle:@"Ok" block:^{
+        blockExecuted = YES;
+    }];
+    
+    [alertView alertView:alertView clickedButtonAtIndex:alertView.numberOfButtons - 1];
+    
+    XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
+
+    blockExecuted = NO;
+    alertView = [[DTAlertView alloc] initWithTitle:@"Foo" message:@"bar" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:@"a", @"b", nil];
+    [alertView addButtonWithTitle:@"Ok" block:^{
+        blockExecuted = YES;
+    }];
+    
+    [alertView alertView:alertView clickedButtonAtIndex:alertView.numberOfButtons - 1];
+    
+    XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
 }
 
 
