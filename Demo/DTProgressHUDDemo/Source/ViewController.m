@@ -98,12 +98,13 @@
 
 - (IBAction)showDTActionSheet:(id)sender
 {
+//    DTActionSheet *actionSheet = [[DTActionSheet alloc] initWithTitle:@"This is a block-based DTActionSheet"];
     DTActionSheet *actionSheet = [[DTActionSheet alloc] initWithTitle:@"This is a block-based DTActionSheet"
                                                              delegate:nil
                                                     cancelButtonTitle:nil
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:nil];
-    
+                                                    otherButtonTitles:@"a", @"b", nil];
+
     [actionSheet addDestructiveButtonWithTitle:@"Say hi" block:^
      {
          NSLog(@"Hi!");
@@ -119,7 +120,9 @@
 
 - (IBAction)showDTAlertViewidsender:(id)sender {
     DTAlertView *alertView = [[DTAlertView alloc] initWithTitle:@"DTAlertView"
-                                                        message:@"This is a block-based DTAlertView"];
+                                                        message:@"This is a block-based DTAlertView"
+                                                       delegate:nil
+                                              cancelButtonTitle:nil otherButtonTitles:@"a", @"b", nil];
     
     [alertView addButtonWithTitle:@"Say hi" block:^
      {
