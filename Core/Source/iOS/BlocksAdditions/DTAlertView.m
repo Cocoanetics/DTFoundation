@@ -31,14 +31,36 @@
 	_isDeallocating = YES;
 }
 
-// designated initializer
+- (id)init
+{
+    return [self initWithTitle:nil message:nil];
+}
+
 - (id)initWithTitle:(NSString *)title message:(NSString *)message
 {
-	self = [super initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    return [self initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+}
+
+// designated initializer
+- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...
+{
+	self = [super initWithTitle:title message:message delegate:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
 	if (self)
 	{
+        if (otherButtonTitles != nil) {
+            [self addButtonWithTitle:otherButtonTitles];
+            va_list args;
+            va_start(args, otherButtonTitles);
+            NSString *title = nil;
+            while( (title = va_arg(args, NSString *)) ) {
+                [self addButtonWithTitle:title];
+            }
+            va_end(args);
+        }
+
 		_actionsPerIndex = [[NSMutableDictionary alloc] init];
 		self.delegate = self;
+        _externalDelegate = delegate;
 	}
 	return self;
 }
