@@ -18,9 +18,9 @@ typedef void (^DTActionSheetBlock)(void);
 @interface DTActionSheet : NSObject
 
 /**
- Sets the receiver’s delegate.
+ The receiver’s delegate.
  
- @param delegate An object that is the new delegate. It is not retained. The delegate must conform to the UIActionSheetDelegate protocol.
+ The delegate is not retained and must conform to the UIActionSheetDelegate protocol.
  */
 @property (nonatomic, DT_WEAK_PROPERTY) id<UIActionSheetDelegate> delegate;
 
@@ -46,7 +46,8 @@ typedef void (^DTActionSheetBlock)(void);
  @param delegate The receiver’s delegate or nil if it doesn’t have a delegate.
  @param cancelButtonTitle The title of the cancel button or nil if there is no cancel button.
  @param destructiveButtonTitle The title of the destructive button or nil if there is no dectructive button.
- @param otherButtonTitles Titles of additional buttons to add to the receiver, terminated with nil.
+ @param otherButtonTitles The title of another button.
+ @param ... Titles of additional buttons to add to the receiver, terminated with nil.
  */
 
 - (id)initWithTitle:(NSString *)title delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;

@@ -18,9 +18,9 @@ typedef void (^DTAlertViewBlock)(void);
 @interface DTAlertView : NSObject
 
 /**
- Sets the receiver’s delegate.
+ The receiver’s delegate.
  
- @param delegate An object that is the new delegate. It is not retained. The delegate must conform to the UIAlertViewDelegate protocol.
+ The delegate is not retained and must conform to the UIAlertViewDelegate protocol.
  */
 @property (nonatomic, DT_WEAK_PROPERTY) id<UIAlertViewDelegate> delegate;
 
@@ -47,7 +47,8 @@ typedef void (^DTAlertViewBlock)(void);
  @param message The alert message
  @param delegate The receiver’s delegate or nil if it doesn’t have a delegate.
  @param cancelButtonTitle The title of the cancel button or nil if there is no cancel button.
- @param otherButtonTitles Titles of additional buttons to add to the receiver, terminated with nil.
+ @param otherButtonTitles The title of another button.
+ @param ... Titles of additional buttons to add to the receiver, terminated with nil.
  */
 
 - (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
