@@ -31,7 +31,7 @@
 		blockExecuted = YES;
 	}];
 
-	[alertView alertView:alertView clickedButtonAtIndex:alertView.numberOfButtons - 1];
+	[alertView alertView:alertView.wrappedAlertView clickedButtonAtIndex:alertView.numberOfButtons - 1];
 	
 	XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
 
@@ -41,7 +41,7 @@
         blockExecuted = YES;
     }];
     
-    [alertView alertView:alertView clickedButtonAtIndex:alertView.numberOfButtons - 1];
+    [alertView alertView:alertView.wrappedAlertView clickedButtonAtIndex:alertView.numberOfButtons - 1];
     
     XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
 
@@ -51,7 +51,7 @@
         blockExecuted = YES;
     }];
     
-    [alertView alertView:alertView clickedButtonAtIndex:alertView.numberOfButtons - 1];
+    [alertView alertView:alertView.wrappedAlertView clickedButtonAtIndex:alertView.numberOfButtons - 1];
     
     XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
 }
