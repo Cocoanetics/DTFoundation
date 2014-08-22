@@ -32,7 +32,7 @@
 		blockExecuted = YES;
 	}];
 
-	[actionSheet actionSheet:actionSheet clickedButtonAtIndex:actionSheet.numberOfButtons - 1];
+	[actionSheet actionSheet:actionSheet.wrappedActionSheet clickedButtonAtIndex:actionSheet.numberOfButtons - 1];
 	
 	XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
 
@@ -42,7 +42,7 @@
         blockExecuted = YES;
     }];
     
-    [actionSheet actionSheet:actionSheet clickedButtonAtIndex:actionSheet.numberOfButtons - 1];
+    [actionSheet actionSheet:actionSheet.wrappedActionSheet clickedButtonAtIndex:actionSheet.numberOfButtons - 1];
     
     XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
 
@@ -52,7 +52,7 @@
         blockExecuted = YES;
     }];
     
-    [actionSheet actionSheet:actionSheet clickedButtonAtIndex:actionSheet.numberOfButtons - 1];
+    [actionSheet actionSheet:actionSheet.wrappedActionSheet clickedButtonAtIndex:actionSheet.numberOfButtons - 1];
     
     XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
 }

@@ -7,7 +7,6 @@
 //
 
 #import "DTAlertView.h"
-#import "DTWeakSupport.h"
 
 @interface DTAlertView() <UIAlertViewDelegate>
 
@@ -15,20 +14,13 @@
 
 @implementation DTAlertView
 {
-	DT_WEAK_VARIABLE id <UIAlertViewDelegate> _externalDelegate;
-
+    UIAlertView *_alertView;
+    
+    DTAlertView *_strongSelf;
+    
 	NSMutableDictionary *_actionsPerIndex;
 
 	DTAlertViewBlock _cancelBlock;
-
-	BOOL _isDeallocating;
-}
-
-
-// overwrite standard initializer so that we can set our own delegate
-- (void)dealloc
-{
-	_isDeallocating = YES;
 }
 
 // designated initializer
@@ -38,7 +30,9 @@
     if (self)
     {
         _actionsPerIndex = [[NSMutableDictionary alloc] init];
-        self.delegate = self;
+        _alertView = [[UIAlertView alloc] init];
+        _alertView.delegate = self;
+        _strongSelf = self;
     }
     return self;
 }
@@ -53,16 +47,16 @@
 	self = [self init];
 	if (self)
 	{
-        self.title = title;
-        self.message = message;
+        _alertView.title = title;
+        _alertView.message = message;
         
         if (otherButtonTitles != nil) {
-            [self addButtonWithTitle:otherButtonTitles];
+            [_alertView addButtonWithTitle:otherButtonTitles];
             va_list args;
             va_start(args, otherButtonTitles);
             NSString *title = nil;
             while( (title = va_arg(args, NSString *)) ) {
-                [self addButtonWithTitle:title];
+                [_alertView addButtonWithTitle:title];
             }
             va_end(args);
         }
@@ -70,14 +64,14 @@
             [self addCancelButtonWithTitle:cancelButtonTitle block:nil];
         }
         
-        _externalDelegate = delegate;
+        self.delegate = delegate;
 	}
 	return self;
 }
 
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(DTAlertViewBlock)block
 {
-	NSInteger retIndex = [self addButtonWithTitle:title];
+	NSInteger retIndex = [_alertView addButtonWithTitle:title];
 
 	if (block)
 	{
@@ -91,7 +85,7 @@
 - (NSInteger)addCancelButtonWithTitle:(NSString *)title block:(DTAlertViewBlock)block
 {
 	NSInteger retIndex = [self addButtonWithTitle:title block:block];
-	[self setCancelButtonIndex:retIndex];
+	[_alertView setCancelButtonIndex:retIndex];
 
 	return retIndex;
 }
@@ -99,6 +93,11 @@
 - (void)setCancelBlock:(DTAlertViewBlock)block
 {
 	_cancelBlock = block;
+}
+
+- (void)show
+{
+    [_alertView show];
 }
 
 # pragma mark - UIAlertViewDelegate
@@ -113,9 +112,9 @@
 		block();
 	}
 
-	if ([_externalDelegate respondsToSelector:@selector(alertView:clickedButtonAtIndex:)])
+	if ([self.delegate respondsToSelector:@selector(alertView:clickedButtonAtIndex:)])
 	{
-		[_externalDelegate alertView:self clickedButtonAtIndex:buttonIndex];
+		[self.delegate alertView:_alertView clickedButtonAtIndex:buttonIndex];
 	}
 }
 
@@ -126,84 +125,66 @@
 		_cancelBlock();
 	}
 
-	if ([_externalDelegate respondsToSelector:@selector(alertViewCancel:)])
+	if ([self.delegate respondsToSelector:@selector(alertViewCancel:)])
 	{
-		[_externalDelegate alertViewCancel:self];
+		[self.delegate alertViewCancel:_alertView];
 	}
 }
 
 - (void)willPresentAlertView:(UIAlertView *)alertView
 {
-	if ([_externalDelegate respondsToSelector:@selector(willPresentAlertView:)])
+	if ([self.delegate respondsToSelector:@selector(willPresentAlertView:)])
 	{
-		[_externalDelegate willPresentAlertView:self];
+		[self.delegate willPresentAlertView:_alertView];
 	}
 }
 
 - (void)didPresentAlertView:(UIAlertView *)alertView
 {
-	if ([_externalDelegate respondsToSelector:@selector(didPresentAlertView:)])
+	if ([self.delegate respondsToSelector:@selector(didPresentAlertView:)])
 	{
-		[_externalDelegate didPresentAlertView:self];
+		[self.delegate didPresentAlertView:_alertView];
 	}
 }
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	if ([_externalDelegate respondsToSelector:@selector(alertView:willDismissWithButtonIndex:)])
+	if ([self.delegate respondsToSelector:@selector(alertView:willDismissWithButtonIndex:)])
 	{
-		[_externalDelegate alertView:self willDismissWithButtonIndex:buttonIndex];
+		[self.delegate alertView:_alertView willDismissWithButtonIndex:buttonIndex];
 	}
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	if ([_externalDelegate respondsToSelector:@selector(alertView:didDismissWithButtonIndex:)])
+	if ([self.delegate respondsToSelector:@selector(alertView:didDismissWithButtonIndex:)])
 	{
-		[_externalDelegate alertView:self didDismissWithButtonIndex:buttonIndex];
+		[self.delegate alertView:_alertView didDismissWithButtonIndex:buttonIndex];
 	}
+    _alertView = nil;
+    _strongSelf = nil;
 }
 
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
 {
-	if ([_externalDelegate respondsToSelector:@selector(alertViewShouldEnableFirstOtherButton:)])
+	if ([self.delegate respondsToSelector:@selector(alertViewShouldEnableFirstOtherButton:)])
 	{
-		return [_externalDelegate alertViewShouldEnableFirstOtherButton:self];
+		return [self.delegate alertViewShouldEnableFirstOtherButton:_alertView];
 	}
 
 	return YES;
 }
 
-#pragma mark - Properties
+# pragma mark - properties
 
-- (id <UIAlertViewDelegate>)delegate
+- (NSInteger)numberOfButtons
 {
-	return _externalDelegate;
+    return _alertView.numberOfButtons;
 }
 
-- (void)setDelegate:(id <UIAlertViewDelegate>)delegate
+- (UIAlertView *)wrappedAlertView
 {
-	if (delegate == self)
-	{
-		[super setDelegate:self];
-	}
-	else if (delegate == nil)
-	{
-		// UIAlertView dealloc sets delegate to nil
-		if (_isDeallocating)
-		{
-			[super setDelegate:nil];
-		}
-		else
-		{
-			[super setDelegate:self];
-			_externalDelegate = nil;
-		}
-	}
-	else
-	{
-		_externalDelegate = delegate;
-	}
+    return _alertView;
 }
 
 

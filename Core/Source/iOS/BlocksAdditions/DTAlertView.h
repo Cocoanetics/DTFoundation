@@ -6,14 +6,33 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import "DTWeakSupport.h"
+
 // the block to execute when an alert button is tapped
 typedef void (^DTAlertViewBlock)(void);
 
 /**
- Extends UIAlertView with support for blocks.
+ Wraps UIAlertView with support for blocks.
  */
 
-@interface DTAlertView : UIAlertView
+@interface DTAlertView : NSObject
+
+/**
+ Sets the receiver’s delegate.
+ 
+ @param delegate An object that is the new delegate. It is not retained. The delegate must conform to the UIAlertViewDelegate protocol.
+ */
+@property (nonatomic, DT_WEAK_PROPERTY) id<UIAlertViewDelegate> delegate;
+
+/**
+ The number of buttons on the alert view. (read-only)
+ */
+@property (nonatomic, readonly) NSInteger numberOfButtons;
+
+/**
+ The wrapped UIAlertView. (read-only)
+ */
+@property (nonatomic, readonly) UIAlertView *wrappedAlertView;
 
 /**
 * Initializes the alert view. Add buttons and their blocks afterwards.
@@ -21,6 +40,17 @@ typedef void (^DTAlertViewBlock)(void);
  @param message The alert message
 */
 - (id)initWithTitle:(NSString *)title message:(NSString *)message;
+
+/**
+ Convenience method for initializing an alert view.
+ @param title The alert title
+ @param message The alert message
+ @param delegate The receiver’s delegate or nil if it doesn’t have a delegate.
+ @param cancelButtonTitle The title of the cancel button or nil if there is no cancel button.
+ @param otherButtonTitles Titles of additional buttons to add to the receiver, terminated with nil.
+ */
+
+- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
 
 /**
  Adds a button to the alert view
@@ -44,5 +74,10 @@ typedef void (^DTAlertViewBlock)(void);
  @param block The block to execute.
  */
 - (void)setCancelBlock:(DTAlertViewBlock)block;
+
+/**
+ Displays the receiver using animation.
+ */
+- (void)show;
 
 @end

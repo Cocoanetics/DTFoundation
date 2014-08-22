@@ -7,7 +7,6 @@
 //
 
 #import "DTActionSheet.h"
-#import "DTWeakSupport.h"
 
 @interface DTActionSheet () <UIActionSheetDelegate>
 
@@ -15,7 +14,9 @@
 
 @implementation DTActionSheet
 {
-	DT_WEAK_VARIABLE id <UIActionSheetDelegate> _externalDelegate;
+	UIActionSheet *_actionSheet;
+    
+    DTActionSheet *_strongSelf;
 	
 	NSMutableDictionary *_actionsPerIndex;
 	
@@ -40,8 +41,9 @@
     if (self)
     {
         _actionsPerIndex = [[NSMutableDictionary alloc] init];
-        self.delegate = self;
-        
+        _actionSheet = [[UIActionSheet alloc] init];
+        _actionSheet.delegate = self;
+        _strongSelf = self;
     }
     return self;
 }
@@ -56,15 +58,15 @@
 	self = [self init];
 	if (self) 
 	{
-        self.title = title;
+        _actionSheet.title = title;
         
         if (otherButtonTitles != nil) {
-            [self addButtonWithTitle:otherButtonTitles];
+            [_actionSheet addButtonWithTitle:otherButtonTitles];
             va_list args;
             va_start(args, otherButtonTitles);
             NSString *title = nil;
             while( (title = va_arg(args, NSString *)) ) {
-                [self addButtonWithTitle:title];
+                [_actionSheet addButtonWithTitle:title];
             }
             va_end(args);
         }
@@ -76,7 +78,7 @@
             [self addCancelButtonWithTitle:cancelButtonTitle block:nil];
         }
 
-        _externalDelegate = delegate;
+        self.delegate = delegate;
 	}
 	
 	return self;
@@ -89,7 +91,7 @@
 
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(DTActionSheetBlock)block
 {
-	NSInteger retIndex = [self addButtonWithTitle:title];
+	NSInteger retIndex = [_actionSheet addButtonWithTitle:title];
 	
 	if (block)
 	{
@@ -103,7 +105,7 @@
 - (NSInteger)addDestructiveButtonWithTitle:(NSString *)title block:(DTActionSheetBlock)block
 {
 	NSInteger retIndex = [self addButtonWithTitle:title block:block];
-	[self setDestructiveButtonIndex:retIndex];
+	[_actionSheet setDestructiveButtonIndex:retIndex];
 	
 	return retIndex;
 }
@@ -116,9 +118,34 @@
 - (NSInteger)addCancelButtonWithTitle:(NSString *)title block:(DTActionSheetBlock)block
 {
 	NSInteger retIndex = [self addButtonWithTitle:title block:block];
-	[self setCancelButtonIndex:retIndex];
+	[_actionSheet setCancelButtonIndex:retIndex];
 	
 	return retIndex;
+}
+
+- (void)showFromToolbar:(UIToolbar *)view
+{
+    [_actionSheet showFromToolbar:view];
+}
+
+- (void)showFromTabBar:(UITabBar *)view
+{
+    [_actionSheet showFromTabBar:view];
+}
+
+- (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated
+{
+    [_actionSheet showFromBarButtonItem:item animated:animated];
+}
+
+- (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated
+{
+    [_actionSheet showFromRect:rect inView:view animated:animated];
+}
+
+- (void)showInView:(UIView *)view
+{
+    [_actionSheet showInView:view];
 }
 
 #pragma mark - UIActionSheetDelegate (forwarded)
@@ -127,7 +154,7 @@
 {
 	if (_delegateFlags.delegateSupportsActionSheetCancel)
 	{
-		[_externalDelegate actionSheetCancel:actionSheet];
+		[self.delegate actionSheetCancel:actionSheet];
 	}
 }
 
@@ -135,7 +162,7 @@
 {
 	if (_delegateFlags.delegateSupportsWillPresentActionSheet)
 	{
-		[_externalDelegate willPresentActionSheet:actionSheet];	
+		[self.delegate willPresentActionSheet:actionSheet];
 	}
 }
 
@@ -143,7 +170,7 @@
 {
 	if (_delegateFlags.delegateSupportsDidPresentActionSheet)
 	{
-		[_externalDelegate didPresentActionSheet:actionSheet];
+		[self.delegate didPresentActionSheet:actionSheet];
 	}
 }
 
@@ -151,7 +178,7 @@
 {
 	if (_delegateFlags.delegateSupportsWillDismissWithButtonIndex)
 	{
-		[_externalDelegate actionSheet:actionSheet willDismissWithButtonIndex:buttonIndex];
+		[self.delegate actionSheet:actionSheet willDismissWithButtonIndex:buttonIndex];
 	}
 }
 
@@ -159,8 +186,11 @@
 {
 	if (_delegateFlags.delegateSupportsDidDismissWithButtonIndex)
 	{
-		[_externalDelegate actionSheet:actionSheet didDismissWithButtonIndex:buttonIndex];
+		[self.delegate actionSheet:actionSheet didDismissWithButtonIndex:buttonIndex];
 	}
+    
+    _actionSheet = nil;
+    _strongSelf = nil;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -176,74 +206,59 @@
 
 	if (_delegateFlags.delegateSupportsClickedButtonAtIndex)
 	{
-		[_externalDelegate actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
+		[self.delegate actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
 	}
 }
 
 #pragma mark - Properties
 
-- (id <UIActionSheetDelegate>)delegate
-{
-	return _externalDelegate;
-}
-
 - (void)setDelegate:(id <UIActionSheetDelegate>)delegate
 {
-	if (delegate == self)
-	{
-		[super setDelegate:self];
-	}
-	else if (delegate == nil)
-	{
-		// UIActionSheet dealloc sets delegate to nil
-		if (_isDeallocating)
-		{
-			[super setDelegate:nil];
-		}
-		else
-		{
-			[super setDelegate:self];
-		}
-		_externalDelegate = nil;
-	}
-	else 
-	{
-		_externalDelegate = delegate;
-	}
+	_delegate = delegate;
 	
 	// wipe
 	memset(&_delegateFlags, 0, sizeof(_delegateFlags));
 	
 	// set flags according to available methods in delegate
-	if ([_externalDelegate respondsToSelector:@selector(actionSheetCancel:)])
+	if ([_delegate respondsToSelector:@selector(actionSheetCancel:)])
 	{
 		_delegateFlags.delegateSupportsActionSheetCancel = YES;
 	}
 
-	if ([_externalDelegate respondsToSelector:@selector(willPresentActionSheet:)])
+	if ([_delegate respondsToSelector:@selector(willPresentActionSheet:)])
 	{
 		_delegateFlags.delegateSupportsWillPresentActionSheet = YES;
 	}
 
-	if ([_externalDelegate respondsToSelector:@selector(didPresentActionSheet:)])
+	if ([_delegate respondsToSelector:@selector(didPresentActionSheet:)])
 	{
 		_delegateFlags.delegateSupportsDidPresentActionSheet = YES;
 	}
 
-	if ([_externalDelegate respondsToSelector:@selector(actionSheet:willDismissWithButtonIndex:)])
+	if ([_delegate respondsToSelector:@selector(actionSheet:willDismissWithButtonIndex:)])
 	{
 		_delegateFlags.delegateSupportsWillDismissWithButtonIndex = YES;
 	}
 
-	if ([_externalDelegate respondsToSelector:@selector(actionSheet:didDismissWithButtonIndex:)])
+	if ([_delegate respondsToSelector:@selector(actionSheet:didDismissWithButtonIndex:)])
 	{
 		_delegateFlags.delegateSupportsDidDismissWithButtonIndex = YES;
 	}
 	
-	if ([_externalDelegate respondsToSelector:@selector(actionSheet:clickedButtonAtIndex:)])
+	if ([_delegate respondsToSelector:@selector(actionSheet:clickedButtonAtIndex:)])
 	{
 		_delegateFlags.delegateSupportsClickedButtonAtIndex = YES;
 	}
+}
+
+- (UIActionSheet *)wrappedActionSheet
+{
+    return _actionSheet;
+}
+
+- (NSInteger)numberOfButtons
+{
+    return _actionSheet.numberOfButtons;
 }
 
 @end
