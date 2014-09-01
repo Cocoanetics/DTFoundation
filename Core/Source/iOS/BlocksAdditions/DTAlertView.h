@@ -19,6 +19,11 @@ typedef void (^DTAlertViewBlock)(void);
 @interface DTAlertView : UIAlertView
 
 /**
+ * Use the alertViewDelegate when you want to to receive UIAlertViewDelegate messages.
+ */
+@property (nonatomic, DT_WEAK_PROPERTY) id<UIAlertViewDelegate> alertViewDelegate;
+
+/**
 * Initializes the alert view. Add buttons and their blocks afterwards.
  @param title The alert title
  @param message The alert message
@@ -47,11 +52,5 @@ typedef void (^DTAlertViewBlock)(void);
  @param block The block to execute.
  */
 - (void)setCancelBlock:(DTAlertViewBlock)block;
-
-
-/**
- * Use the alertViewDelegate when you want to to receive UIAlertViewDelegate messages.
- */
-@property (nonatomic, DT_WEAK_PROPERTY) id<UIAlertViewDelegate> alertViewDelegate;
 
 @end
