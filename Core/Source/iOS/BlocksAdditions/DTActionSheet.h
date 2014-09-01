@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import "DTWeakSupport.h"
+
+
 // the block to execute when an option button is tapped
 typedef void (^DTActionSheetBlock)(void);
 
@@ -14,6 +17,11 @@ typedef void (^DTActionSheetBlock)(void);
  */
 
 @interface DTActionSheet : UIActionSheet
+
+/**
+ * Use the alertViewDelegate when you want to to receive UIAlertViewDelegate messages.
+ */
+@property (nonatomic, DT_WEAK_PROPERTY) id<UIActionSheetDelegate> actionSheetDelegate;
 
 /**
  Initializes the action sheet using the specified title. 
