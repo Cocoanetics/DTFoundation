@@ -22,6 +22,7 @@
 @end
 
 
+
 @implementation DTAlertViewTest
 
 - (void)testInitMethods {
@@ -66,7 +67,6 @@
 	[alertView addButtonWithTitle:@"Ok" block:^{
 		blockExecuted = YES;
 	}];
-	[alertView show];
 	
 	[alertView.delegate alertView:alertView	clickedButtonAtIndex:alertView.numberOfButtons - 1];
 	XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
