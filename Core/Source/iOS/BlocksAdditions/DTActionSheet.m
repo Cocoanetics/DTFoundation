@@ -164,7 +164,14 @@
 
 - (void)setDelegate:(id <UIActionSheetDelegate>)delegate
 {
-    DTLogWarning(@"Calling setDelegate is not supported! Use setActionSheetDelegate instead");
+    if (delegate == nil)
+    {
+        [super setDelegate:delegate];
+    }
+    else
+    {
+        DTLogWarning(@"Calling setDelegate is not supported! Use setActionSheetDelegate instead");
+    }
 }
 
 @end
