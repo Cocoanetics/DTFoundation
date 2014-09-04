@@ -180,7 +180,10 @@
 
 - (void)setDelegate:(id <UIAlertViewDelegate>)delegate
 {
-    DTLogWarning(@"Calling setDelegate is not supported! Use setAlertViewDelegate instead");
+	if (delegate)
+	{
+		DTLogWarning(@"Calling setDelegate is not supported! Use setAlertViewDelegate instead");
+	}
 }
 
 
