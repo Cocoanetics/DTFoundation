@@ -121,7 +121,7 @@
 
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet
 {
-	if ([self.actionSheetDelegate respondsToSelector:@selector(actionSheet:willDismissWithButtonIndex:)])
+    if ([self.actionSheetDelegate respondsToSelector:@selector(willPresentActionSheet:)])
 	{
 		[self.actionSheetDelegate willPresentActionSheet:actionSheet];
 	}
@@ -129,7 +129,7 @@
 
 - (void)didPresentActionSheet:(UIActionSheet *)actionSheet
 {
-	if ([self.actionSheetDelegate respondsToSelector:@selector(actionSheet:didDismissWithButtonIndex:)])
+    if ([self.actionSheetDelegate respondsToSelector:@selector(didPresentActionSheet:)])
 	{
 		[self.actionSheetDelegate didPresentActionSheet:actionSheet];
 	}
