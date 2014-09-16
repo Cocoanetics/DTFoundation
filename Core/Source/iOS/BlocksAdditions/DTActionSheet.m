@@ -162,7 +162,7 @@
 		block();
 	}
 
-	if ([self.actionSheetDelegate respondsToSelector:@selector(actionSheet:clickedButtonAtIndex:)])
+    if ([self.actionSheetDelegate respondsToSelector:@selector(actionSheet:clickedButtonAtIndex:)])
 	{
 		[self.actionSheetDelegate actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
 	}
@@ -170,7 +170,7 @@
 
 #pragma mark - Properties
 
-- (void)setDelegate:(id <UIAlertViewDelegate>)delegate
+- (void)setDelegate:(id <UIActionSheetDelegate>)delegate
 {
 	if (delegate)
 	{
