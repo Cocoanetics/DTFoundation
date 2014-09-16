@@ -23,47 +23,47 @@
 // designated initializer
 - (instancetype)init
 {
-    self = [super init];
-    if (self)
-    {
-        _actionsPerIndex = [[NSMutableDictionary alloc] init];
-        [super setDelegate:self];
-        
-    }
-    return self;
+	self = [super init];
+	if (self)
+	{
+		_actionsPerIndex = [[NSMutableDictionary alloc] init];
+		[super setDelegate:self];
+		
+	}
+	return self;
 }
 
 - (instancetype)initWithTitle:(NSString *)title
 {
-    return [self initWithTitle:title delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+	return [self initWithTitle:title delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
 }
 
 - (instancetype)initWithTitle:(NSString *)title delegate:(id<UIActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...
 {
 	self = [self init];
-	if (self) 
+	if (self)
 	{
-        self.title = title;
-        
-        if (otherButtonTitles != nil) {
-            [self addButtonWithTitle:otherButtonTitles];
-            va_list args;
-            va_start(args, otherButtonTitles);
-            NSString *title = nil;
-            while( (title = va_arg(args, NSString *)) ) {
-                [self addButtonWithTitle:title];
-            }
-            va_end(args);
-        }
-        
-        if (destructiveButtonTitle) {
-            [self addDestructiveButtonWithTitle:destructiveButtonTitle block:nil];
-        }
-        if (cancelButtonTitle) {
-            [self addCancelButtonWithTitle:cancelButtonTitle block:nil];
-        }
-
-        self.actionSheetDelegate = delegate;
+		self.title = title;
+		
+		if (otherButtonTitles != nil) {
+			[self addButtonWithTitle:otherButtonTitles];
+			va_list args;
+			va_start(args, otherButtonTitles);
+			NSString *title = nil;
+			while( (title = va_arg(args, NSString *)) ) {
+				[self addButtonWithTitle:title];
+			}
+			va_end(args);
+		}
+		
+		if (destructiveButtonTitle) {
+			[self addDestructiveButtonWithTitle:destructiveButtonTitle block:nil];
+		}
+		if (cancelButtonTitle) {
+			[self addCancelButtonWithTitle:cancelButtonTitle block:nil];
+		}
+		
+		self.actionSheetDelegate = delegate;
 	}
 	
 	return self;
@@ -98,7 +98,7 @@
 
 - (NSInteger)addCancelButtonWithTitle:(NSString *)title
 {
-    return [self addCancelButtonWithTitle:title block:nil];
+	return [self addCancelButtonWithTitle:title block:nil];
 }
 
 - (NSInteger)addCancelButtonWithTitle:(NSString *)title block:(DTActionSheetBlock)block
@@ -121,7 +121,7 @@
 
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet
 {
-    if ([self.actionSheetDelegate respondsToSelector:@selector(willPresentActionSheet:)])
+	if ([self.actionSheetDelegate respondsToSelector:@selector(willPresentActionSheet:)])
 	{
 		[self.actionSheetDelegate willPresentActionSheet:actionSheet];
 	}
@@ -129,7 +129,7 @@
 
 - (void)didPresentActionSheet:(UIActionSheet *)actionSheet
 {
-    if ([self.actionSheetDelegate respondsToSelector:@selector(didPresentActionSheet:)])
+	if ([self.actionSheetDelegate respondsToSelector:@selector(didPresentActionSheet:)])
 	{
 		[self.actionSheetDelegate didPresentActionSheet:actionSheet];
 	}
@@ -161,8 +161,8 @@
 	{
 		block();
 	}
-
-    if ([self.actionSheetDelegate respondsToSelector:@selector(actionSheet:clickedButtonAtIndex:)])
+	
+	if ([self.actionSheetDelegate respondsToSelector:@selector(actionSheet:clickedButtonAtIndex:)])
 	{
 		[self.actionSheetDelegate actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
 	}
