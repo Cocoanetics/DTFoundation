@@ -378,11 +378,6 @@
 		FAC284DA19B84B5F0010C385 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		FAC284DB19B84B5F0010C385 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */; };
 		FAC284DC19B84B5F0010C385 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB1725D163004FF00B44EDC /* QuartzCore.framework */; };
-		FAC284DE19B84B5F0010C385 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF37A5017AFDF0B009AC27C /* Default-568h@2x.png */; };
-		FAC284DF19B84B5F0010C385 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF37A5117AFDF0B009AC27C /* Default.png */; };
-		FAC284E019B84B5F0010C385 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF37A5217AFDF0B009AC27C /* Default@2x.png */; };
-		FAC284E119B84B5F0010C385 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF37A6A17AFE01E009AC27C /* Storyboard.storyboard */; };
-		FAC284F619B84BFC0010C385 /* DTActionSheetDemo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC284E919B84BFC0010C385 /* DTActionSheetDemo-Info.plist */; };
 		FAC284F719B84BFC0010C385 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC284EC19B84BFC0010C385 /* Default-568h@2x.png */; };
 		FAC284F819B84BFC0010C385 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC284ED19B84BFC0010C385 /* Default.png */; };
 		FAC284F919B84BFC0010C385 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC284EE19B84BFC0010C385 /* Default@2x.png */; };
@@ -2654,13 +2649,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC284F919B84BFC0010C385 /* Default@2x.png in Resources */,
-				FAC284DE19B84B5F0010C385 /* Default-568h@2x.png in Resources */,
 				FAC284FA19B84BFC0010C385 /* ActionSheetStoryboard.storyboard in Resources */,
-				FAC284DF19B84B5F0010C385 /* Default.png in Resources */,
-				FAC284E019B84B5F0010C385 /* Default@2x.png in Resources */,
-				FAC284F619B84BFC0010C385 /* DTActionSheetDemo-Info.plist in Resources */,
 				FAC284F819B84BFC0010C385 /* Default.png in Resources */,
-				FAC284E119B84B5F0010C385 /* Storyboard.storyboard in Resources */,
 				FAC284F719B84BFC0010C385 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
