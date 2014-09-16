@@ -15,16 +15,11 @@
 
 @implementation DTAlertView
 {
-	DT_WEAK_VARIABLE id <UIAlertViewDelegate> _externalDelegate;
-
 	NSMutableDictionary *_actionsPerIndex;
 
 	DTAlertViewBlock _cancelBlock;
-
 }
 
-
-// overwrite standard initializer so that we can set our own delegate
 - (void)dealloc
 {
 	[super setDelegate:nil];
@@ -38,7 +33,7 @@
     if (self)
     {
         _actionsPerIndex = [[NSMutableDictionary alloc] init];
-		    [super setDelegate:self];
+        [super setDelegate:self];
     }
     return self;
 }
@@ -185,6 +180,5 @@
 		DTLogWarning(@"Calling setDelegate is not supported! Use setAlertViewDelegate instead");
 	}
 }
-
 
 @end
