@@ -90,14 +90,13 @@ static UIImage *DTAnimatedGIFFromImageSource(CGImageSourceRef source)
 	for (NSUInteger i=0; i<numImages; i++)
 	{
 		CGImageRef cgImage = CGImageSourceCreateImageAtIndex(source, i, NULL);
-		UIImage *frame = [UIImage imageWithCGImage:cgImage];
 		
 		NSUInteger centiSecs = DTAnimatedGIFFrameDurationForImageAtIndex(source, i);
 		NSUInteger repeat = centiSecs/greatestCommonFactor;
 		
 		for (NSUInteger j=0; j<repeat; j++)
 		{
-			[frames addObject:frame];
+            [frames addObject:[UIImage imageWithCGImage:cgImage scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp]];
 		}
 		
 		CGImageRelease(cgImage);
