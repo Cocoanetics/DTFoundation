@@ -109,14 +109,21 @@ Pod::Spec.new do |spec|
   spec.subspec 'DTProgressHUD' do |ss|
     ss.platform = :ios, '6.0'
     ss.dependency 'DTFoundation/UIKit'
-	ss.dependency 'DTFoundation/Core'
+	  ss.dependency 'DTFoundation/Core'
     ss.ios.frameworks = 'QuartzCore'
     ss.ios.source_files = 'Core/Source/iOS/DTProgressHUD/*.{h,m}'
   end
 
   spec.subspec 'Debug' do |ss|
     ss.platform = :ios, '4.3'
+    ss.dependency 'DTFoundation/Runtime'
     ss.source_files = 'Core/Source/iOS/Debug/*.{h,m}'
+  end
+
+  spec.subspec 'Runtime' do |ss|
+    ss.ios.deployment_target = '4.3'
+    ss.osx.deployment_target = '10.6'
+    ss.source_files = 'Core/Source/Universal/Runtime/*.{h,m}'
   end
 
 end
