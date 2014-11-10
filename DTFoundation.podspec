@@ -123,7 +123,7 @@ Pod::Spec.new do |spec|
   spec.subspec 'Runtime' do |ss|
     ss.ios.deployment_target = '4.3'
     ss.osx.deployment_target = '10.6'
-    ss.source_files = 'Core/Source/Universal/Runtime/*.{h,m}'
+    ss.source_files = 'Core/Source/Runtime/*.{h,m}'
   end
 
 end
