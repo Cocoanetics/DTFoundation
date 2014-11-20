@@ -3,58 +3,81 @@
 //  DTFoundation
 //
 //  Created by Rene Pirringer on 12.09.12.
-//  Copyright (c) 2012 Cocoanetics. All rights reserved.
+//  Copyright (c) 2012-2014 Cocoanetics. All rights reserved.
 //
 
 #import "DTActivityTitleView.h"
 
-@interface DTActivityTitleView ()
-
-@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
-@property (nonatomic, strong) UILabel *titleLabel;
-
-@end
-
 
 @implementation DTActivityTitleView
+{
+	UILabel *_titleLabel;
+	UIActivityIndicatorView *_activityIndicator;
+	CGFloat _margin;
+	NSLayoutConstraint *_titleLabelMaxWidthContraint;
+}
 
-- (id)init
+- (instancetype)init
+{
+	return [self initWithTitle:nil];
+}
+
+- (instancetype)initWithTitle:(NSString *)title
 {
 	self = [super init];
 	
 	if (self)
 	{
-		self.titleLabel = [[UILabel alloc] init];
-		self.titleLabel.backgroundColor = [UIColor clearColor];
-		
-		self.activityIndicator.hidesWhenStopped = YES;
-		
-		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-		{
-			self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-			self.titleLabel.textColor = [UIColor colorWithRed:113.0/255.0 green:120.0/255.0 blue:128.0/255.0 alpha:1.0];
-			self.titleLabel.shadowOffset = CGSizeMake(0, 1);
-			self.titleLabel.shadowColor = [UIColor whiteColor];
-		}
-		else
-		{
-			self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-			self.titleLabel.textColor = [UIColor whiteColor];
-			self.titleLabel.shadowOffset = CGSizeMake(0, -1);
-			self.titleLabel.shadowColor = [UIColor blackColor];
-		}
-		
-		self.titleLabel.font = [UIFont boldSystemFontOfSize:20];
-		[self addSubview:self.titleLabel];
-		[self addSubview:self.activityIndicator];
+		_titleLabel = [[UILabel alloc] init];
+		_titleLabel.font = [self defaultFontForTitle];
+		_titleLabel.text = title;
+		_titleLabel.textColor = [UIColor blackColor];
+		_titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+		_titleLabel.adjustsFontSizeToFitWidth = YES;
+		_titleLabel.minimumFontSize = 10.0f;
+
+		_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		_activityIndicator.translatesAutoresizingMaskIntoConstraints = NO;
+		[self addSubview:_titleLabel];
+		[self addSubview:_activityIndicator];
+
+		_margin = 50;
+
+		// center title label
+		[self addConstraints:@[
+			[NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0],
+			[NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0],
+
+		]];
+
+		// set activity left of title view
+		[self addConstraints:@[
+			[NSLayoutConstraint constraintWithItem:_activityIndicator attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_titleLabel attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-8.0],
+			[NSLayoutConstraint constraintWithItem:_activityIndicator attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0],
+		]];
+
 	}
 	return self;
 }
 
-- (void)layoutSubviews
-{
-	[super layoutSubviews];
+
+
+- (void)layoutSubviews {
+
+
+	CGFloat width = self.superview.frame.size.width - 2*(_margin + _activityIndicator.frame.size.width);
+	if (width < 50) {
+		width = 50;
+	}
+	if (_titleLabelMaxWidthContraint) {
+		[self removeConstraint:_titleLabelMaxWidthContraint];
+	}
+
+	_titleLabelMaxWidthContraint = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationLessThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width],
+	[self addConstraint:_titleLabelMaxWidthContraint];
+
 }
+
 
 #pragma mark - Properties
 
@@ -62,11 +85,13 @@
 {
 	if (busy)
 	{
-		[self.activityIndicator startAnimating];
+		[_activityIndicator startAnimating];
+		_activityIndicator.hidden = NO;
 	}
 	else
 	{
-		[self.activityIndicator stopAnimating];
+		[_activityIndicator stopAnimating];
+		_activityIndicator.hidden = YES;
 	}
 	
 	[self setNeedsLayout];
@@ -74,39 +99,35 @@
 
 - (BOOL)busy
 {
-	return self.activityIndicator.isAnimating;
+	return _activityIndicator.isAnimating;
 }
 
 - (void)setTitle:(NSString *)title
 {
-	self.titleLabel.text = title;
-	CGFloat gap = 5.0;
-	CGFloat height = self.activityIndicator.frame.size.height;
-	
-#if __IPHONE_OS_VERSION_MIN_REQUIRED > __IPHONE_6_1
-	// issue 60: sizeWithFont: is deprecated with deployment target >= iOS 7
-	NSDictionary *attribs = @{NSFontAttributeName:self.titleLabel.font};
-	CGSize neededSize = [self.titleLabel.text sizeWithAttributes:attribs];
-#else
-	CGSize neededSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font];
-#endif
-	
-	if (height < neededSize.height)
-	{
-		height = neededSize.height;
-	}
-	
-	CGRect titleRect = CGRectMake(self.activityIndicator.frame.size.width+gap, 0, neededSize.width, height);
-	self.titleLabel.frame = titleRect;
-	self.bounds  = CGRectMake(0, 0, self.activityIndicator.frame.size.width+neededSize.width+gap, height);
+	_titleLabel.text = title;
 	[self setNeedsLayout];
 }
 
 - (NSString *)title
 {
-	return self.titleLabel.text;
+	return _titleLabel.text;
 }
 
-@synthesize activityIndicator = _activityIndicator;
+- (UIFont *)defaultFontForTitle
+{
+	UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+	return [font fontWithSize:font.pointSize+2.0f];
+}
+
+- (void)setTitleFont:(UIFont *)font {
+	if (font) {
+		_titleLabel.font = font;
+	}
+}
+
+- (void)setMargin:(CGFloat)margin {
+	_margin = margin;
+	[self setNeedsLayout];
+}
 
 @end

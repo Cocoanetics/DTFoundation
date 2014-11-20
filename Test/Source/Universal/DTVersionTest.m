@@ -6,8 +6,14 @@
 //  Copyright 2011 Cocoanetics. All rights reserved.
 //
 
-#import "DTVersionTest.h"
+#import <XCTest/XCTest.h>
 #import "DTVersion.h"
+
+@interface DTVersionTest : XCTestCase
+
+
+@end
+
 
 @implementation DTVersionTest
 

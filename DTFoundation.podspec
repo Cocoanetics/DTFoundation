@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'UIKit' do |ss|
-    ss.platform = :ios, '4.3'
+    ss.platform = :ios, '6.0'
     ss.dependency 'DTFoundation/Core'
     ss.ios.frameworks = 'QuartzCore'
     ss.ios.source_files = 'Core/Source/iOS/*.{h,m}'

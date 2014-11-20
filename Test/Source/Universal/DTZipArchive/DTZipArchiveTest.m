@@ -6,11 +6,16 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
-#import "DTZipArchiveTest.h"
+#import <Foundation/Foundation.h>
+#import <XCTest/XCTest.h>
 #import "DTZipArchivePKZip.h"
 #import "DTZipArchiveGZip.h"
 #import "DTZipArchiveNode.h"
 
+
+@interface DTZipArchiveTest : XCTestCase
+
+@end
 
 @interface DTZipArchivePKZip (private)
 

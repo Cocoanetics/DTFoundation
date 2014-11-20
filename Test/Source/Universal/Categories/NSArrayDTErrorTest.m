@@ -6,8 +6,12 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-#import "NSArrayDTErrorTest.h"
+#import <XCTest/XCTest.h>
 #import "NSArray+DTError.h"
+
+@interface NSArrayDTErrorTest : XCTestCase
+
+@end
 
 /**
  Tests for NSArray+DTError Category

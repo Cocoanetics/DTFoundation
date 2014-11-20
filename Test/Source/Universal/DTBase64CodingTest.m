@@ -6,9 +6,15 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
-#import "DTBase64CodingTest.h"
+#import <XCTest/XCTest.h>
 #import "DTBase64Coding.h"
 #import "NSString+DTPaths.h"
+
+
+@interface DTBase64CodingTest : XCTestCase
+
+@end
+
 
 @implementation DTBase64CodingTest
 

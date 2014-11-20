@@ -6,8 +6,13 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-#import "DTHTMLParserTest.h"
 #import "DTHTMLParser.h"
+
+#import <XCTest/XCTest.h>
+
+@interface DTHTMLParserTest : XCTestCase
+
+@end
 
 @interface DTHTMLParserTest ()<DTHTMLParserDelegate>
 

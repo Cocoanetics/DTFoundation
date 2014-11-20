@@ -7,15 +7,28 @@
 //
 
 #import "DemoViewController.h"
+#import "DTActivityTitleView.h"
 
 @implementation DemoViewController
+{
+	DTActivityTitleView *_activityTitleView;
+}
 
 #pragma mark - Appearance Notifications
+
+
+- (void)viewDidLoad {
+	//_activityTitleView = [[DTActivityTitleView alloc] initWithTitle:@"A very very very very very very very very long title"];
+
+	_activityTitleView = [[DTActivityTitleView alloc] initWithTitle:@"Test Test Test Test Test Test Test"];
+	[_activityTitleView setTitleFont:[UIFont systemFontOfSize:15.0f]];
+	self.navigationItem.titleView = _activityTitleView;
+
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	
 	DTLogInfo(@"%@ %s animated:%d", self, __PRETTY_FUNCTION__, animated);
 }
 
@@ -50,4 +63,22 @@
 	DTLogInfo(@"%@ %s", self, __PRETTY_FUNCTION__);
 }
 
+
+- (IBAction)busySwitchPressed:(id)sender {
+	if ([sender isKindOfClass:[UISwitch class]]) {
+		UISwitch *busySwitch = (UISwitch *)sender;
+		_activityTitleView.busy = busySwitch.on;
+
+	}
+}
+
+- (IBAction)marginSliderValueChanged:(id)sender {
+	if ([sender isKindOfClass:[UISlider class]]) {
+		UISlider *slider = (UISlider *)sender;
+		[_activityTitleView setMargin:slider.value];
+
+	}
+
+
+}
 @end

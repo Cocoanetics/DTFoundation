@@ -6,11 +6,16 @@
 //  Copyright 2011 Cocoanetics. All rights reserved.
 //
 
-#import "DTScriptingTest.h"
+#import <XCTest/XCTest.h>
 
 #import "NSScanner+DTScripting.h"
 #import "DTScriptVariable.h"
 #import "DTScriptExpression.h"
+
+@interface DTScriptingTest : XCTestCase
+
+
+@end
 
 @implementation DTScriptingTest
 

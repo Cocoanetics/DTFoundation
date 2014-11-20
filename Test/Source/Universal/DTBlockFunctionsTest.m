@@ -6,8 +6,12 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
-#import "DTBlockFunctionsTest.h"
 #import "DTBlockFunctions.h"
+#import <XCTest/XCTest.h>
+
+@interface DTBlockFunctionsTest : XCTestCase
+
+@end
 
 @implementation DTBlockFunctionsTest
 

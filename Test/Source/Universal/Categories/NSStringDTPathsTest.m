@@ -6,8 +6,13 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
-#import "NSStringDTPathsTest.h"
 #import "NSString+DTPaths.h"
+#import <XCTest/XCTest.h>
+
+@interface NSStringDTPathsTest : XCTestCase
+
+@end
+
 
 @implementation NSStringDTPathsTest
 
