@@ -87,7 +87,7 @@
 - (void)testTitleDefaultFont {
 	UILabel *titleLabel = [self titleLabel];
 
-	XCTAssert(titleLabel.font.pointSize == 19.0, @"Expected font size of 19pt but was %@", @(titleLabel.font.pointSize));
+	XCTAssert(titleLabel.font.pointSize == 17.0, @"Expected font size of 17pt but was %@", @(titleLabel.font.pointSize));
 
 }
 

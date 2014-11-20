@@ -14,7 +14,7 @@
 	UILabel *_titleLabel;
 	UIActivityIndicatorView *_activityIndicator;
 	CGFloat _margin;
-	NSLayoutConstraint *_titleLabelMaxWidthContraint;
+	NSLayoutConstraint *_titleLabelMaxWidthConstraint;
 }
 
 - (instancetype)init
@@ -29,7 +29,7 @@
 	if (self)
 	{
 		_titleLabel = [[UILabel alloc] init];
-		_titleLabel.font = [self defaultFontForTitle];
+		_titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
 		_titleLabel.text = title;
 		_titleLabel.textColor = [UIColor blackColor];
 		_titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -69,12 +69,12 @@
 	if (width < 50) {
 		width = 50;
 	}
-	if (_titleLabelMaxWidthContraint) {
-		[self removeConstraint:_titleLabelMaxWidthContraint];
+	if (_titleLabelMaxWidthConstraint) {
+		[self removeConstraint:_titleLabelMaxWidthConstraint];
 	}
 
-	_titleLabelMaxWidthContraint = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationLessThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width],
-	[self addConstraint:_titleLabelMaxWidthContraint];
+	_titleLabelMaxWidthConstraint = [NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationLessThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width],
+	[self addConstraint:_titleLabelMaxWidthConstraint];
 
 }
 
@@ -113,11 +113,6 @@
 	return _titleLabel.text;
 }
 
-- (UIFont *)defaultFontForTitle
-{
-	UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-	return [font fontWithSize:font.pointSize+2.0f];
-}
 
 - (void)setTitleFont:(UIFont *)font {
 	if (font) {
