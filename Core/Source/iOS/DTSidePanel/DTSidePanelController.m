@@ -737,7 +737,7 @@
 
 - (void)presentPanel:(DTSidePanelControllerPanel)panel animated:(BOOL)animated
 {
-	CGPoint targetPosition;
+	CGPoint targetPosition = [self _centerPanelPositionWithLeftPanelOpen];
 	
 	_panelToPresentAfterLayout = panel;
 
