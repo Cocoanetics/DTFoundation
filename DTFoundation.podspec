@@ -90,6 +90,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTUTI' do |ss|
     ss.ios.deployment_target = '4.3'
+    ss.osx.deployment_target = '10.6'
     ss.ios.frameworks = ['MobileCoreServices']
     ss.source_files = 'Core/Source/DTUTI/*.{h,m}'
   end
@@ -112,6 +113,14 @@ Pod::Spec.new do |spec|
 	  ss.dependency 'DTFoundation/Core'
     ss.ios.frameworks = 'QuartzCore'
     ss.ios.source_files = 'Core/Source/iOS/DTProgressHUD/*.{h,m}'
+  end
+
+
+  spec.subspec 'DTScripting' do |ss|
+    ss.ios.deployment_target = '4.3'
+    ss.osx.deployment_target = '10.6'
+    ss.dependency 'DTFoundation/Core'
+    ss.source_files = 'Core/Source/DTScripting/*.{h,m}'
   end
 
   spec.subspec 'Debug' do |ss|
