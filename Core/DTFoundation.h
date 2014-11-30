@@ -30,7 +30,7 @@
 #import "NSArray+DTError.h"
 #import "NSData+DTCrypto.h"
 #import "NSDictionary+DTError.h"
-#import "NSFileWrapper+DTCopying.h
+#import "NSFileWrapper+DTCopying.h"
 #import "NSMutableArray+DTMoving.h"
 #import "NSString+DTFormatNumbers.h"
 #import "NSString+DTUtilities.h"
