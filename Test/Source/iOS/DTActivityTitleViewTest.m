@@ -18,9 +18,10 @@
 	_activityTitleView = [[DTActivityTitleView alloc] initWithTitle:@"Test"];
 	XCTAssertNotNil(_activityTitleView);
 
-	_activityTitleView.frame = CGRectMake(0, 0, 320, 44);
-	[_activityTitleView layoutSubviews];
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
+	
+	_activityTitleView.frame = CGRectMake(0, 0, window.frame.size.width, 44);
+	[_activityTitleView layoutSubviews];
 	[window addSubview:_activityTitleView];
 	XCTAssertNotNil(window);
 	[window makeKeyAndVisible];
@@ -104,7 +105,7 @@
 
 
 - (void)testActivityWithLongTitle {
-	_activityTitleView.title = @"Test Test Test Test Test Test Test Test Test Test";
+	_activityTitleView.title = @"Test Test Test Test Test Test Test Test Test Test Test";
 
 	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1) {
 		[CATransaction commit];

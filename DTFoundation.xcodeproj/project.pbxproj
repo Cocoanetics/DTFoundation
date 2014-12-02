@@ -450,6 +450,13 @@
 			remoteGlobalIDString = A7E383D9160DFF8600CF72D6;
 			remoteInfo = "DTZipArchive (iOS)";
 		};
+		A79DAD1D1A2DD1F800CAB3B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAC284C719B84B5F0010C385;
+			remoteInfo = "DTActionSheet Demo";
+		};
 		A7AC21CA196417CC0009E1B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
@@ -2269,6 +2276,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A79DAD1E1A2DD1F800CAB3B9 /* PBXTargetDependency */,
 				A7917CA0191A325A00964D63 /* PBXTargetDependency */,
 				A7917C9A191A320300964D63 /* PBXTargetDependency */,
 				A7917C98191A31FA00964D63 /* PBXTargetDependency */,
@@ -3136,6 +3144,11 @@
 			isa = PBXTargetDependency;
 			target = A7E383D9160DFF8600CF72D6 /* DTZipArchive (iOS) */;
 			targetProxy = A7917C9F191A325A00964D63 /* PBXContainerItemProxy */;
+		};
+		A79DAD1E1A2DD1F800CAB3B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAC284C719B84B5F0010C385 /* DTActionSheet Demo */;
+			targetProxy = A79DAD1D1A2DD1F800CAB3B9 /* PBXContainerItemProxy */;
 		};
 		A7AC21CB196417CC0009E1B9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
