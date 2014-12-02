@@ -126,6 +126,7 @@ Pod::Spec.new do |spec|
   spec.subspec 'Debug' do |ss|
     ss.platform = :ios, '4.3'
     ss.dependency 'DTFoundation/Runtime'
+    ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/iOS/Debug/*.{h,m}'
   end
 
