@@ -7,6 +7,8 @@ This is the history of version updates.
 
 - FIXED: Added armv7s to static library targets (iOS)
 - FIXED: [DTZipArchive] unit test would sometimes fail
+- FIXED: Analyzer warnings
+- FIXED: Log message of main thread checker would mention incorrect symbol for debugging
 - ADDED: CocoaPods specs for DTScripting, Debug and Runtime
 - ADDED: Dynamic framework for iOS8
 - REMOVED: Deprecated static framework for iOS

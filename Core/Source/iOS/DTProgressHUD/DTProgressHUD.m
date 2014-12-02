@@ -276,7 +276,6 @@
 			[collision addBoundaryWithIdentifier:@"barrier1" fromPoint:leftPoint toPoint:rightPoint];
 			
 			// calculate points for barrier
-			height = self.center.y + PROGRESS_HEIGHT / 2;
 			leftPoint = CGPointMake(0, 0);
 			rightPoint = CGPointMake(self.center.x - PROGRESS_WIDTH / 2 - offset + BARRIER_LENGTH, 0);
 			[collision addBoundaryWithIdentifier:@"barrier2" fromPoint:leftPoint toPoint:rightPoint];
