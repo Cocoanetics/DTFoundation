@@ -3,6 +3,14 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.7.4**
+
+- FIXED: Added armv7s to static library targets (iOS)
+- FIXED: [DTZipArchive] unit test would sometimes fail
+- ADDED: CocoaPods specs for DTScripting, Debug and Runtime
+- ADDED: Dynamic framework for iOS8
+- REMOVED: Deprecated static framework for iOS
+
 **Version 1.7.3**
 
 - FIXED: [DTAlertView] Completion blocks for the buttons are not executed on iOS 8 GM
@@ -12,7 +20,7 @@ This is the history of version updates.
 
 - FIXED: [DTAlertView] Completion blocks for the buttons are not executed on iOS 8
 - FIXED: [DTLog] Deprecation warnings with iOS 8 deployment target
-- FIXED: [DTProgressHUD] Warning about no rootViewController might show if instantiated in app's first run loop (<= iOS 7) 
+- FIXED: [DTProgressHUD] Warning about no rootViewController might show if instantiated in app's first run loop (<= iOS 7)
 - FIXED: [DTSidePanelController] Horizontal swipe gesture interfering with edit gesture on table view
 - FIXED: [DTSidePanelController] Panel sizing issue resulting in black areas showing
 - ADDED: [DTSidePanelController] Support for creation via storyboard
@@ -55,7 +63,7 @@ This is the history of version updates.
 - CHANGED: Refactored DTZipArchive and added more unit tests for GZip
 - CHANGED: Prefixed some C-functions to avoid conflicts
 - FIXED: Analyze Warnings
-- FIXED: Some 64-bit and Xcode 4/5 build issues 
+- FIXED: Some 64-bit and Xcode 4/5 build issues
 
 **Version 1.5.4**
 
@@ -120,7 +128,7 @@ Note: While there are no breaking API changes the podspec cleanup will probably 
 
 - ADDED: DTWeakSupport.h for tagging variables and properties to use weak refs if supported
 - FIXED: [DTSidePanel] classes missing from static library target
-- CHANGED: Implemented conditional weak support in DTSidePanelController, DTActionSheet, DTAlertView, 
+- CHANGED: Implemented conditional weak support in DTSidePanelController, DTActionSheet, DTAlertView,
 DTSmartPagingScrollView, DTHTMLParser, DTASN1Parser
 
 **Version 1.4.1**
