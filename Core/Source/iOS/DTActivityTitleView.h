@@ -20,13 +20,13 @@
 
 /**
  Initializes the title view with an empty title
- @param title The title
  */
 - (instancetype)init;
 
 
 /**
 * Sets a custom font for the title
+* @param font The font that should be use for the title
 */
 - (void)setTitleFont:(UIFont *)font;
 
@@ -46,6 +46,7 @@
 * Sets a custom margin that is applied left and right of the titleView
 * The default value is 50
 * You can use this value to avoid overlapping of the title with bar button items, if you have more than one
+* @param margin The margin the should be used
 */
 - (void)setMargin:(CGFloat)margin;
 

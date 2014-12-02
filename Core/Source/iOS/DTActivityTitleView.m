@@ -34,7 +34,8 @@
 		_titleLabel.textColor = [UIColor blackColor];
 		_titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
 		_titleLabel.adjustsFontSizeToFitWidth = YES;
-		_titleLabel.minimumFontSize = 10.0f;
+		_titleLabel.minimumScaleFactor = 10.0f/17.0f; // minimum font should be 10pt (default headline is 17pt)
+
 
 		_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 		_activityIndicator.translatesAutoresizingMaskIntoConstraints = NO;
