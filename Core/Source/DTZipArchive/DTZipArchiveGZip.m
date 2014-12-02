@@ -244,8 +244,11 @@
 {
 	if (![self.nodes containsObject:node])
 	{
-		NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Invalid node specified, cannot uncompress GZip file."};
-		*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
+		if (error)
+		{
+			NSDictionary *userInfo = @{NSLocalizedDescriptionKey : @"Invalid node specified, cannot uncompress GZip file."};
+			*error = [[NSError alloc] initWithDomain:DTZipArchiveErrorDomain code:7 userInfo:userInfo];
+		}
 		
 		return nil;
 	}
