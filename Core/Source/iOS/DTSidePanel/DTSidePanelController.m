@@ -777,10 +777,10 @@
 			break;
 		}
             
-        case DTSidePanelControllerPanelNone:
-        {
-            break;
-        }
+		case DTSidePanelControllerPanelNone:
+		{
+			break;
+		}
 	}
 	
 	if (animated)
