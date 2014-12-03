@@ -30,7 +30,7 @@ extern NSString * const DTKeychainErrorDomain;
  Query the keychain for items matching the query
  @param query The query to find certain keychain items
  @param error An optional output parameter to take on an error if one occurs
- @param Returns an array of results or `nil` if the query failed
+ @returns An array of results or `nil` if the query failed
  */
 - (NSArray *)keychainItemsMatchingQuery:(NSDictionary *)query error:(NSError *__autoreleasing *)error;
 

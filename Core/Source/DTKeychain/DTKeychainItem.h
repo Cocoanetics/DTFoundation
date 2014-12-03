@@ -17,6 +17,7 @@
 
 /**
  Instantiates the receiver with a dictionary as returned by a keychain query
+ @param dictionary The dictionary as it would come out of keychain queries
  */
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
@@ -28,6 +29,8 @@
 
 /**
  Determines the correct class of the class cluster for a given itemClass
+ @param itemClass The keychain item class string
+ @returns The class to represent items with this item class as
  */
 + (Class)classForItemClass:(NSString *)itemClass;
 
