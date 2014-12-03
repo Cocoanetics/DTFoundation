@@ -51,6 +51,9 @@
 #import "DTBase64Coding.h"
 #import "DTExtendedFileAttributes.h"
 #import "DTFolderMonitor.h"
+#import "DTKeychain.h"
+#import "DTKeychainItem.h"
+#import "DTKeychainGenericPassword.h"
 #import "DTLog.h"
 #import "DTVersion.h"
 
