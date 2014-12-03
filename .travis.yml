@@ -1,5 +1,6 @@
 ---
 language: objective-c
+osx_image: xcode61
 
 before_install: 
 # - brew update
@@ -13,8 +14,8 @@ script:
  - xctool -project DTFoundation.xcodeproj -scheme "DTReachability Demo" build -sdk iphonesimulator -arch i386 ONLY_ACTIVE_ARCH=NO
  - xctool -project DTFoundation.xcodeproj -scheme "DTZipArchive Demo" build -sdk iphonesimulator -arch i386 ONLY_ACTIVE_ARCH=NO
  - xctool -project DTFoundation.xcodeproj -scheme "DTProgressHUD Demo" build -sdk iphonesimulator -arch i386 ONLY_ACTIVE_ARCH=NO
-# - xctool -project DTFoundation.xcodeproj -scheme "Static Library" build test -sdk iphonesimulator -arch i386 ONLY_ACTIVE_ARCH=NO -configuration Coverage
- - xcodebuild -project DTFoundation.xcodeproj -scheme "Static Library" -configuration Coverage -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch)' test
+ - xctool -project DTFoundation.xcodeproj -scheme "Static Library" build test -sdk iphonesimulator -arch i386 ONLY_ACTIVE_ARCH=NO -configuration Coverage
+# - xcodebuild -project DTFoundation.xcodeproj -scheme "Static Library" -configuration Coverage -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch)' test
  - appledoc -o /tmp .
 
 after_success:
