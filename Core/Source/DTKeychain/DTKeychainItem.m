@@ -116,9 +116,7 @@
 
 - (NSDictionary *)attributesToUpdate
 {
-	// there must be always an item class present
-	NSString *itemClass = [[self class] itemClass];
-	return @{(__bridge __strong id)(kSecClass): itemClass};
+	return [NSDictionary dictionary];
 }
 
 

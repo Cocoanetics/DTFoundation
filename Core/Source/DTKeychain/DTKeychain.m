@@ -147,7 +147,7 @@ NSString * const DTKeychainErrorDomain = @"DTKeychainErrorDomain";
 	CFArrayRef result = NULL;
 	OSStatus status = SecItemCopyMatching((__bridge CFTypeRef)tmpDict, (CFTypeRef *)&result);
 	
-	if (status == errSecSuccess)
+	if (status == errSecSuccess || status == errSecItemNotFound)
 	{
 		NSMutableArray *tmpArray = [NSMutableArray array];
 		
@@ -157,6 +157,7 @@ NSString * const DTKeychainErrorDomain = @"DTKeychainErrorDomain";
 			[tmpArray addObject:item];
 		}
 		
+		// returns 0 element arrow if nothing found
 		return [tmpArray copy];
 	}
 	else
@@ -196,6 +197,9 @@ NSString * const DTKeychainErrorDomain = @"DTKeychainErrorDomain";
 - (BOOL)_createKeychainItem:(DTKeychainItem *)keychainItem error:(NSError *__autoreleasing *)error
 {
 	NSMutableDictionary *attributes = [[keychainItem attributesToUpdate] mutableCopy];
+	
+	// there must be always an item class present
+	attributes[(__bridge __strong id)(kSecClass)] = [[keychainItem class] itemClass];
 	
 	// get the attributes
 	[attributes setObject:(__bridge id) kCFBooleanTrue forKey:(__bridge NSString *)kSecReturnAttributes];
