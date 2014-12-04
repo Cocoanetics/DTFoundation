@@ -148,24 +148,8 @@
 		A7950101161D680000358BC3 /* NSData+DTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F6161D680000358BC3 /* NSData+DTCrypto.m */; };
 		A7950102161D680000358BC3 /* NSData+DTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F6161D680000358BC3 /* NSData+DTCrypto.m */; };
 		A79D99C21792D2490082BC06 /* NSURL+DTAWS.m in Sources */ = {isa = PBXBuildFile; fileRef = A79D99C11792D2490082BC06 /* NSURL+DTAWS.m */; };
-		A7A5F08F1A2F946F00DA3B62 /* DTKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A5F0871A2F946F00DA3B62 /* DTKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A5F0901A2F946F00DA3B62 /* DTKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A5F0871A2F946F00DA3B62 /* DTKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A5F0931A2F946F00DA3B62 /* DTKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F0881A2F946F00DA3B62 /* DTKeychain.m */; };
-		A7A5F0941A2F946F00DA3B62 /* DTKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F0881A2F946F00DA3B62 /* DTKeychain.m */; };
-		A7A5F0971A2F946F00DA3B62 /* DTKeychainGenericPassword.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A5F0891A2F946F00DA3B62 /* DTKeychainGenericPassword.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A5F0981A2F946F00DA3B62 /* DTKeychainGenericPassword.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A5F0891A2F946F00DA3B62 /* DTKeychainGenericPassword.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A5F09B1A2F946F00DA3B62 /* DTKeychainGenericPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F08A1A2F946F00DA3B62 /* DTKeychainGenericPassword.m */; };
-		A7A5F09C1A2F946F00DA3B62 /* DTKeychainGenericPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F08A1A2F946F00DA3B62 /* DTKeychainGenericPassword.m */; };
-		A7A5F09F1A2F946F00DA3B62 /* DTKeychainItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A5F08B1A2F946F00DA3B62 /* DTKeychainItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A5F0A01A2F946F00DA3B62 /* DTKeychainItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A5F08B1A2F946F00DA3B62 /* DTKeychainItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7A5F0A31A2F946F00DA3B62 /* DTKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F08C1A2F946F00DA3B62 /* DTKeychainItem.m */; };
-		A7A5F0A41A2F946F00DA3B62 /* DTKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F08C1A2F946F00DA3B62 /* DTKeychainItem.m */; };
 		A7A5F0A61A2F97F600DA3B62 /* DTKeychainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F0A51A2F97F600DA3B62 /* DTKeychainTest.m */; };
 		A7A5F0AB1A2FA92400DA3B62 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A5F0AA1A2FA92400DA3B62 /* Security.framework */; };
-		A7A5F0C91A2FA9D900DA3B62 /* DTKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F0881A2F946F00DA3B62 /* DTKeychain.m */; };
-		A7A5F0CA1A2FA9D900DA3B62 /* DTKeychainGenericPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F08A1A2F946F00DA3B62 /* DTKeychainGenericPassword.m */; };
-		A7A5F0CB1A2FA9D900DA3B62 /* DTKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F08C1A2F946F00DA3B62 /* DTKeychainItem.m */; };
-		A7A5F0CE1A2FAA6600DA3B62 /* libDTKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A5F0B01A2FA9A400DA3B62 /* libDTKeychain.a */; };
 		A7A7CC7A14866CAF00EC2EE4 /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
 		A7A8434D197EA49000170F3F /* DTAlertViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A8434C197EA49000170F3F /* DTAlertViewTest.m */; };
 		A7AC21C9196417BF0009E1B9 /* DTAnimatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AC21A8196409560009E1B9 /* DTAnimatedGIF.m */; };
@@ -482,13 +466,6 @@
 			remoteGlobalIDString = A7E383D9160DFF8600CF72D6;
 			remoteInfo = "DTZipArchive (iOS)";
 		};
-		A7A5F0CC1A2FA9F400DA3B62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A7A5F0AF1A2FA9A400DA3B62;
-			remoteInfo = "DTKeychain (iOS)";
-		};
 		A7AC21CA196417CC0009E1B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
@@ -583,15 +560,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A79D999A1792D1F50082BC06 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A5F0AE1A2FA9A400DA3B62 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -835,15 +803,8 @@
 		A79D99AA1792D1F50082BC06 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A79D99C01792D2490082BC06 /* NSURL+DTAWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTAWS.h"; sourceTree = "<group>"; };
 		A79D99C11792D2490082BC06 /* NSURL+DTAWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTAWS.m"; sourceTree = "<group>"; };
-		A7A5F0871A2F946F00DA3B62 /* DTKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTKeychain.h; sourceTree = "<group>"; };
-		A7A5F0881A2F946F00DA3B62 /* DTKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTKeychain.m; sourceTree = "<group>"; };
-		A7A5F0891A2F946F00DA3B62 /* DTKeychainGenericPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTKeychainGenericPassword.h; sourceTree = "<group>"; };
-		A7A5F08A1A2F946F00DA3B62 /* DTKeychainGenericPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTKeychainGenericPassword.m; sourceTree = "<group>"; };
-		A7A5F08B1A2F946F00DA3B62 /* DTKeychainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTKeychainItem.h; sourceTree = "<group>"; };
-		A7A5F08C1A2F946F00DA3B62 /* DTKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTKeychainItem.m; sourceTree = "<group>"; };
 		A7A5F0A51A2F97F600DA3B62 /* DTKeychainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTKeychainTest.m; sourceTree = "<group>"; };
 		A7A5F0AA1A2FA92400DA3B62 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		A7A5F0B01A2FA9A400DA3B62 /* libDTKeychain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTKeychain.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7A8434C197EA49000170F3F /* DTAlertViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAlertViewTest.m; sourceTree = "<group>"; };
 		A7AC21A7196409560009E1B9 /* DTAnimatedGIF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTAnimatedGIF.h; sourceTree = "<group>"; };
 		A7AC21A8196409560009E1B9 /* DTAnimatedGIF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTAnimatedGIF.m; sourceTree = "<group>"; };
@@ -1097,7 +1058,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A5F0CE1A2FAA6600DA3B62 /* libDTKeychain.a in Frameworks */,
 				A7A5F0AB1A2FA92400DA3B62 /* Security.framework in Frameworks */,
 				A7917CB6191A3CD500964D63 /* UIKit.framework in Frameworks */,
 				A7917CA3191A327A00964D63 /* libxml2.2.dylib in Frameworks */,
@@ -1112,13 +1072,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A79D99991792D1F50082BC06 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A7A5F0AD1A2FA9A400DA3B62 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1593,19 +1546,6 @@
 			path = DTAWS;
 			sourceTree = "<group>";
 		};
-		A7A5F0861A2F946F00DA3B62 /* DTKeychain */ = {
-			isa = PBXGroup;
-			children = (
-				A7A5F0871A2F946F00DA3B62 /* DTKeychain.h */,
-				A7A5F0881A2F946F00DA3B62 /* DTKeychain.m */,
-				A7A5F0891A2F946F00DA3B62 /* DTKeychainGenericPassword.h */,
-				A7A5F08A1A2F946F00DA3B62 /* DTKeychainGenericPassword.m */,
-				A7A5F08B1A2F946F00DA3B62 /* DTKeychainItem.h */,
-				A7A5F08C1A2F946F00DA3B62 /* DTKeychainItem.m */,
-			);
-			path = DTKeychain;
-			sourceTree = "<group>";
-		};
 		A7AB49DB1483C47F00028FE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1706,7 +1646,6 @@
 		A7D0AA6A153C395C0020F18B /* Universal */ = {
 			isa = PBXGroup;
 			children = (
-				A7A5F0861A2F946F00DA3B62 /* DTKeychain */,
 				A7D0AA69153C39540020F18B /* Categories */,
 				A7D0AA68153C39490020F18B /* Core Graphics */,
 				A78EDD1D17A65AD800480205 /* DTASN1 */,
@@ -1884,7 +1823,6 @@
 				FAC284E619B84B5F0010C385 /* DTActionSheet Demo.app */,
 				A7EA07391A2B215200B61CCE /* DTFoundation.framework */,
 				A7EA07B81A2B2F6A00B61CCE /* DTFoundation.framework */,
-				A7A5F0B01A2FA9A400DA3B62 /* libDTKeychain.a */,
 			);
 			name = Products;
 			path = ../..;
@@ -2103,7 +2041,6 @@
 				A7EA07671A2B221300B61CCE /* NSData+DTCrypto.h in Headers */,
 				A7EA07691A2B221300B61CCE /* NSDictionary+DTError.h in Headers */,
 				A7EA079A1A2B232500B61CCE /* DTBlockFunctions.h in Headers */,
-				A7A5F0901A2F946F00DA3B62 /* DTKeychain.h in Headers */,
 				A7EA07931A2B232500B61CCE /* DTBase64Coding.h in Headers */,
 				A7EA07981A2B232500B61CCE /* DTVersion.h in Headers */,
 				A7EA07751A2B221300B61CCE /* NSString+DTURLEncoding.h in Headers */,
@@ -2112,7 +2049,6 @@
 				A7EA075B1A2B220100B61CCE /* NSDocument+DTFoundation.h in Headers */,
 				A7EA07991A2B232500B61CCE /* DTWeakSupport.h in Headers */,
 				A7EA075D1A2B220100B61CCE /* NSImage+DTUtilities.h in Headers */,
-				A7A5F0981A2F946F00DA3B62 /* DTKeychainGenericPassword.h in Headers */,
 				A7EA07B01A2B299D00B61CCE /* DTObjectBlockExecutor.h in Headers */,
 				A7EA076F1A2B221300B61CCE /* NSString+DTFormatNumbers.h in Headers */,
 				A7EA07631A2B220100B61CCE /* NSWindowController+DTPanelControllerPresenting.h in Headers */,
@@ -2122,7 +2058,6 @@
 				A7EA07651A2B221300B61CCE /* NSArray+DTError.h in Headers */,
 				A7EA07971A2B232500B61CCE /* DTLog.h in Headers */,
 				A7EA07611A2B220100B61CCE /* NSView+DTAutoLayout.h in Headers */,
-				A7A5F0A01A2F946F00DA3B62 /* DTKeychainItem.h in Headers */,
 				A7EA076D1A2B221300B61CCE /* NSMutableArray+DTMoving.h in Headers */,
 				A7EA075F1A2B220100B61CCE /* NSValue+DTConversion.h in Headers */,
 				A7EA076B1A2B221300B61CCE /* NSFileWrapper+DTCopying.h in Headers */,
@@ -2153,20 +2088,17 @@
 				A7EA07F01A2B310600B61CCE /* UIViewController+DTSidePanelController.h in Headers */,
 				A7EA08081A2B316100B61CCE /* NSData+DTCrypto.h in Headers */,
 				A7EA08181A2B316100B61CCE /* NSURL+DTUnshorten.h in Headers */,
-				A7A5F09F1A2F946F00DA3B62 /* DTKeychainItem.h in Headers */,
 				A7EA07E41A2B30F000B61CCE /* UIApplication+DTNetworkActivity.h in Headers */,
 				A7EA081C1A2B317300B61CCE /* DTCoreGraphicsUtils.h in Headers */,
 				A7EA080E1A2B316100B61CCE /* NSMutableArray+DTMoving.h in Headers */,
 				A7EA07F41A2B310600B61CCE /* DTSidePanelControllerSegue.h in Headers */,
 				A7EA081E1A2B318500B61CCE /* DTObjectBlockExecutor.h in Headers */,
 				A7EA07DC1A2B30F000B61CCE /* DTActivityTitleView.h in Headers */,
-				A7A5F08F1A2F946F00DA3B62 /* DTKeychain.h in Headers */,
 				A7EA08201A2B318500B61CCE /* NSObject+DTRuntime.h in Headers */,
 				A7EA07F31A2B310600B61CCE /* DTSidePanelPanGestureRecognizer.h in Headers */,
 				A7EA082C1A2B318E00B61CCE /* DTLog.h in Headers */,
 				A7EA08281A2B318E00B61CCE /* DTFolderMonitor.h in Headers */,
 				A7EA07E01A2B30F000B61CCE /* DTPieProgressIndicator.h in Headers */,
-				A7A5F0971A2F946F00DA3B62 /* DTKeychainGenericPassword.h in Headers */,
 				A7EA07E81A2B30F000B61CCE /* NSURL+DTAppLinks.h in Headers */,
 				A7EA08101A2B316100B61CCE /* NSString+DTFormatNumbers.h in Headers */,
 				A7EA07FE1A2B312300B61CCE /* UIView+DTActionHandlers.h in Headers */,
@@ -2338,7 +2270,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A7A5F0CD1A2FA9F400DA3B62 /* PBXTargetDependency */,
 				A7917CA0191A325A00964D63 /* PBXTargetDependency */,
 				A7917C9A191A320300964D63 /* PBXTargetDependency */,
 				A7917C98191A31FA00964D63 /* PBXTargetDependency */,
@@ -2364,23 +2295,6 @@
 			name = "DTAWS (iOS)";
 			productName = DTAWS;
 			productReference = A79D999C1792D1F50082BC06 /* libDTAWS.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		A7A5F0AF1A2FA9A400DA3B62 /* DTKeychain (iOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A7A5F0C11A2FA9A400DA3B62 /* Build configuration list for PBXNativeTarget "DTKeychain (iOS)" */;
-			buildPhases = (
-				A7A5F0AC1A2FA9A400DA3B62 /* Sources */,
-				A7A5F0AD1A2FA9A400DA3B62 /* Frameworks */,
-				A7A5F0AE1A2FA9A400DA3B62 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "DTKeychain (iOS)";
-			productName = "DTKeychain (iOS)";
-			productReference = A7A5F0B01A2FA9A400DA3B62 /* libDTKeychain.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		A7AC21AE196417830009E1B9 /* DTAnimatedGIF (iOS) */ = {
@@ -2664,9 +2578,6 @@
 					A7917C76191A312600964D63 = {
 						TestTargetID = A7F4DFED147FBAC600F4059A;
 					};
-					A7A5F0AF1A2FA9A400DA3B62 = {
-						CreatedOnToolsVersion = 6.1;
-					};
 					A7AC21AE196417830009E1B9 = {
 						CreatedOnToolsVersion = 6.0;
 					};
@@ -2699,7 +2610,6 @@
 				FA9CB80B17ABDEF200A596C5 /* DTASN1 (iOS) */,
 				A7E383C1160DFEDB00CF72D6 /* DTHTMLParser (iOS) */,
 				3D7CE53D166613B60028D339 /* DTHTMLParser (Mac) */,
-				A7A5F0AF1A2FA9A400DA3B62 /* DTKeychain (iOS) */,
 				F88FF6771920A83300120808 /* DTProgressHUD (iOS) */,
 				A72121D9173BFFB1003C6F0A /* DTReachability (iOS) */,
 				A72121E9173BFFED003C6F0A /* DTReachability (Mac) */,
@@ -3018,16 +2928,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7A5F0AC1A2FA9A400DA3B62 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A7A5F0C91A2FA9D900DA3B62 /* DTKeychain.m in Sources */,
-				A7A5F0CA1A2FA9D900DA3B62 /* DTKeychainGenericPassword.m in Sources */,
-				A7A5F0CB1A2FA9D900DA3B62 /* DTKeychainItem.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A7AC21AB196417830009E1B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3114,8 +3014,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7A5F0A41A2F946F00DA3B62 /* DTKeychainItem.m in Sources */,
-				A7A5F09C1A2F946F00DA3B62 /* DTKeychainGenericPassword.m in Sources */,
 				A7EA07601A2B220100B61CCE /* NSValue+DTConversion.m in Sources */,
 				A7EA076A1A2B221300B61CCE /* NSDictionary+DTError.m in Sources */,
 				A7EA075C1A2B220100B61CCE /* NSDocument+DTFoundation.m in Sources */,
@@ -3136,7 +3034,6 @@
 				A7EA07661A2B221300B61CCE /* NSArray+DTError.m in Sources */,
 				A7EA07741A2B221300B61CCE /* NSString+DTPaths.m in Sources */,
 				A7EA07781A2B221300B61CCE /* NSURL+DTUnshorten.m in Sources */,
-				A7A5F0941A2F946F00DA3B62 /* DTKeychain.m in Sources */,
 				A7EA07AE1A2B25B900B61CCE /* NSObject+DTRuntime.m in Sources */,
 				A7EA076E1A2B221300B61CCE /* NSMutableArray+DTMoving.m in Sources */,
 				A7EA07761A2B221300B61CCE /* NSString+DTURLEncoding.m in Sources */,
@@ -3153,7 +3050,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7EA07DD1A2B30F000B61CCE /* DTActivityTitleView.m in Sources */,
-				A7A5F0931A2F946F00DA3B62 /* DTKeychain.m in Sources */,
 				A7EA081B1A2B316100B61CCE /* NSURL+DTComparing.m in Sources */,
 				A7EA080D1A2B316100B61CCE /* NSFileWrapper+DTCopying.m in Sources */,
 				A7EA08071A2B316100B61CCE /* NSArray+DTError.m in Sources */,
@@ -3179,7 +3075,6 @@
 				A7EA08171A2B316100B61CCE /* NSString+DTURLEncoding.m in Sources */,
 				A7EA07F11A2B310600B61CCE /* UIViewController+DTSidePanelController.m in Sources */,
 				A7EA07E11A2B30F000B61CCE /* DTPieProgressIndicator.m in Sources */,
-				A7A5F09B1A2F946F00DA3B62 /* DTKeychainGenericPassword.m in Sources */,
 				A7EA080B1A2B316100B61CCE /* NSDictionary+DTError.m in Sources */,
 				A7EA080F1A2B316100B61CCE /* NSMutableArray+DTMoving.m in Sources */,
 				A7EA08271A2B318E00B61CCE /* DTExtendedFileAttributes.m in Sources */,
@@ -3194,7 +3089,6 @@
 				A7EA08321A2B318E00B61CCE /* DTBlockFunctions.m in Sources */,
 				A7EA08151A2B316100B61CCE /* NSString+DTPaths.m in Sources */,
 				A7EA081D1A2B317300B61CCE /* DTCoreGraphicsUtils.m in Sources */,
-				A7A5F0A31A2F946F00DA3B62 /* DTKeychainItem.m in Sources */,
 				A7EA07F71A2B311700B61CCE /* UIColor+DTDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3284,11 +3178,6 @@
 			isa = PBXTargetDependency;
 			target = A7E383D9160DFF8600CF72D6 /* DTZipArchive (iOS) */;
 			targetProxy = A7917C9F191A325A00964D63 /* PBXContainerItemProxy */;
-		};
-		A7A5F0CD1A2FA9F400DA3B62 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A7A5F0AF1A2FA9A400DA3B62 /* DTKeychain (iOS) */;
-			targetProxy = A7A5F0CC1A2FA9F400DA3B62 /* PBXContainerItemProxy */;
 		};
 		A7AC21CB196417CC0009E1B9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4228,87 +4117,6 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = DTAWS;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		A7A5F0C21A2FA9A400DA3B62 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = DTKeychain;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		A7A5F0C31A2FA9A400DA3B62 /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = DTKeychain;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Coverage;
-		};
-		A7A5F0C41A2FA9A400DA3B62 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = DTKeychain;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -5301,15 +5109,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		A7A5F0C11A2FA9A400DA3B62 /* Build configuration list for PBXNativeTarget "DTKeychain (iOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A7A5F0C21A2FA9A400DA3B62 /* Debug */,
-				A7A5F0C31A2FA9A400DA3B62 /* Coverage */,
-				A7A5F0C41A2FA9A400DA3B62 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 		A7AC21C0196417830009E1B9 /* Build configuration list for PBXNativeTarget "DTAnimatedGIF (iOS)" */ = {
 			isa = XCConfigurationList;
