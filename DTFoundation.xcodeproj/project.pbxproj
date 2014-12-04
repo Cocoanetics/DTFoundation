@@ -148,7 +148,6 @@
 		A7950101161D680000358BC3 /* NSData+DTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F6161D680000358BC3 /* NSData+DTCrypto.m */; };
 		A7950102161D680000358BC3 /* NSData+DTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F6161D680000358BC3 /* NSData+DTCrypto.m */; };
 		A79D99C21792D2490082BC06 /* NSURL+DTAWS.m in Sources */ = {isa = PBXBuildFile; fileRef = A79D99C11792D2490082BC06 /* NSURL+DTAWS.m */; };
-		A7A5F0A61A2F97F600DA3B62 /* DTKeychainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A5F0A51A2F97F600DA3B62 /* DTKeychainTest.m */; };
 		A7A5F0AB1A2FA92400DA3B62 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A5F0AA1A2FA92400DA3B62 /* Security.framework */; };
 		A7A7CC7A14866CAF00EC2EE4 /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
 		A7A8434D197EA49000170F3F /* DTAlertViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A8434C197EA49000170F3F /* DTAlertViewTest.m */; };
@@ -803,7 +802,6 @@
 		A79D99AA1792D1F50082BC06 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A79D99C01792D2490082BC06 /* NSURL+DTAWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTAWS.h"; sourceTree = "<group>"; };
 		A79D99C11792D2490082BC06 /* NSURL+DTAWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTAWS.m"; sourceTree = "<group>"; };
-		A7A5F0A51A2F97F600DA3B62 /* DTKeychainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTKeychainTest.m; sourceTree = "<group>"; };
 		A7A5F0AA1A2FA92400DA3B62 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		A7A8434C197EA49000170F3F /* DTAlertViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAlertViewTest.m; sourceTree = "<group>"; };
 		A7AC21A7196409560009E1B9 /* DTAnimatedGIF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTAnimatedGIF.h; sourceTree = "<group>"; };
@@ -1714,7 +1712,6 @@
 				A70ED6B417F98135008A801A /* NSStringDTPathsTest.m */,
 				A7A8434C197EA49000170F3F /* DTAlertViewTest.m */,
 				A705E8A1197ED5D2001B16A7 /* DTLogTest.m */,
-				A7A5F0A51A2F97F600DA3B62 /* DTKeychainTest.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -2908,7 +2905,6 @@
 				BC4D93C1198044CC00961495 /* DTActionSheetTest.m in Sources */,
 				A7917C8F191A31A300964D63 /* NSArrayDTErrorTest.m in Sources */,
 				A7917C91191A31A300964D63 /* DTZipArchiveTest.m in Sources */,
-				A7A5F0A61A2F97F600DA3B62 /* DTKeychainTest.m in Sources */,
 				A7917C8A191A31A300964D63 /* DTASN1SerializationTest.m in Sources */,
 				A7917C93191A31A300964D63 /* NSStringDTPathsTest.m in Sources */,
 				A7A8434D197EA49000170F3F /* DTAlertViewTest.m in Sources */,
