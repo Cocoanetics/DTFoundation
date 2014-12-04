@@ -54,11 +54,6 @@
 #import "DTLog.h"
 #import "DTVersion.h"
 
-// DTKeychain
-#import "DTKeychain.h"
-#import "DTKeychainItem.h"
-#import "DTKeychainGenericPassword.h"
-
 
 #pragma mark - iOS
 
