@@ -7,6 +7,7 @@
 //
 
 #import "DTCoreGraphicsUtils.h"
+#import <tgmath.h>
 
 CGSize DTCGSizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
 {
@@ -15,7 +16,7 @@ CGSize DTCGSizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
 	
 	CGFloat smallerZoom = MIN(necessaryZoomWidth, necessaryZoomHeight);
 	
-	return CGSizeMake(roundf(originalSize.width*smallerZoom), roundf(originalSize.height*smallerZoom));
+	return CGSizeMake(round(originalSize.width*smallerZoom), round(originalSize.height*smallerZoom));
 }
 
 CGSize DTCGSizeThatFillsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
@@ -25,7 +26,7 @@ CGSize DTCGSizeThatFillsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit
 	
 	CGFloat largerZoom = MAX(necessaryZoomWidth, necessaryZoomHeight);
 	
-	return CGSizeMake(roundf(originalSize.width*largerZoom), roundf(originalSize.height*largerZoom));
+	return CGSizeMake(round(originalSize.width*largerZoom), round(originalSize.height*largerZoom));
 }
 
 BOOL DTCGSizeMakeWithDictionaryRepresentation(NSDictionary *dict, CGSize *size)
@@ -40,8 +41,13 @@ BOOL DTCGSizeMakeWithDictionaryRepresentation(NSDictionary *dict, CGSize *size)
 	
 	if (size)
 	{
+#if CGFLOAT_IS_DOUBLE
+		size->width = [widthNumber doubleValue];
+		size->height = [heightNumber doubleValue];
+#else
 		size->width = [widthNumber floatValue];
 		size->height = [heightNumber floatValue];
+#endif
 	}
 	
 	return YES;
@@ -49,8 +55,13 @@ BOOL DTCGSizeMakeWithDictionaryRepresentation(NSDictionary *dict, CGSize *size)
 
 NSDictionary *DTCGSizeCreateDictionaryRepresentation(CGSize size)
 {
+#if CGFLOAT_IS_DOUBLE
+	NSNumber *widthNumber = [NSNumber numberWithDouble:size.width];
+	NSNumber *heightNumber = [NSNumber numberWithDouble:size.height];
+#else
 	NSNumber *widthNumber = [NSNumber numberWithFloat:size.width];
 	NSNumber *heightNumber = [NSNumber numberWithFloat:size.height];
+#endif
 	
 	return [NSDictionary dictionaryWithObjectsAndKeys:widthNumber, @"Width", heightNumber, @"Height", nil];
 }
@@ -70,10 +81,17 @@ BOOL DTCGRectMakeWithDictionaryRepresentation(NSDictionary *dict, CGRect *rect)
 	
 	if (rect)
 	{
+#if CGFLOAT_IS_DOUBLE
+		rect->origin.x = [xNumber doubleValue];
+		rect->origin.y = [yNumber doubleValue];
+		rect->size.width = [widthNumber doubleValue];
+		rect->size.height = [heightNumber doubleValue];
+#else
 		rect->origin.x = [xNumber floatValue];
 		rect->origin.y = [yNumber floatValue];
 		rect->size.width = [widthNumber floatValue];
 		rect->size.height = [heightNumber floatValue];
+#endif
 	}
 	
 	return YES;
@@ -81,10 +99,17 @@ BOOL DTCGRectMakeWithDictionaryRepresentation(NSDictionary *dict, CGRect *rect)
 
 NSDictionary *DTCGRectCreateDictionaryRepresentation(CGRect rect)
 {
+#if CGFLOAT_IS_DOUBLE
+	NSNumber *widthNumber = [NSNumber numberWithDouble:rect.size.width];
+	NSNumber *heightNumber = [NSNumber numberWithDouble:rect.size.height];
+	NSNumber *xNumber = [NSNumber numberWithDouble:rect.origin.x];
+	NSNumber *yNumber = [NSNumber numberWithDouble:rect.origin.y];
+#else
 	NSNumber *widthNumber = [NSNumber numberWithFloat:rect.size.width];
 	NSNumber *heightNumber = [NSNumber numberWithFloat:rect.size.height];
 	NSNumber *xNumber = [NSNumber numberWithFloat:rect.origin.x];
 	NSNumber *yNumber = [NSNumber numberWithFloat:rect.origin.y];
+#endif
 	
 	return [NSDictionary dictionaryWithObjectsAndKeys:widthNumber, @"Width", heightNumber, @"Height", xNumber, @"X", yNumber, @"Y", nil];
 }
