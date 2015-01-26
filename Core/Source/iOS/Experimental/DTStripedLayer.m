@@ -8,6 +8,7 @@
 
 #import "DTStripedLayer.h"
 #import "DTStripedLayerTile.h"
+#import "DTCoreGraphicsUtils.h"
 #import "UIColor+DTDebug.h"
 
 @interface DTStripedLayer () // private
@@ -37,7 +38,7 @@
     
     if (self)
     {
-        _stripeHeight = 512.0f;
+        _stripeHeight = CGFloat_(512);
         _visibleTileKeys = [[NSMutableSet alloc] init];
         _tileCreationQueue = [[NSOperationQueue alloc] init];
         _tilesWithDrawingInQueue = [[NSMutableSet alloc] init];
@@ -89,15 +90,23 @@
 
 - (NSRange)_rangeOfVisibleStripesInBounds:(CGRect)bounds
 {
-    NSUInteger firstIndex = floorf(MAX(0, CGRectGetMinY(bounds))/_stripeHeight);
-    NSUInteger lastIndex = floorf(MIN(_contentSize.height, CGRectGetMaxY(bounds))/_stripeHeight);
+    NSInteger firstIndex = floor(MAX(CGFloat_(0), CGRectGetMinY(bounds))/_stripeHeight);
+    NSInteger lastIndex = floor(MIN(_contentSize.height, CGRectGetMaxY(bounds))/_stripeHeight);
     
-    return NSMakeRange(firstIndex, lastIndex - firstIndex + 1);
+    // validate range length
+    NSInteger length = lastIndex - firstIndex + 1;
+    if (length < 0)
+    {
+        DTLogDebug(@"length of visible stripes < 0: %ld", (long int)length);
+        length = 0;
+    }
+    
+    return NSMakeRange(firstIndex, length);
 }
 
 - (CGRect)_frameOfStripeAtIndex:(NSUInteger)index
 {
-    CGRect frame = CGRectMake(0, index*_stripeHeight, _contentSize.width, _stripeHeight);
+    CGRect frame = CGRectMake(0, CGFloat_(index)*_stripeHeight, _contentSize.width, _stripeHeight);
     
     // need to crop by total bounds, last item not full height
     frame = CGRectIntersection(self.bounds, frame);

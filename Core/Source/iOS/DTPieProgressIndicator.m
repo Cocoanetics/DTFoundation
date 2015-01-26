@@ -7,12 +7,13 @@
 //
 
 #import "DTPieProgressIndicator.h"
+#import "DTCoreGraphicsUtils.h"
 
-#define PIE_SIZE 34.0f
+#define PIE_SIZE CGFloat_(34)
 
 @implementation DTPieProgressIndicator
 {
-	CGFloat _progressPercent;
+	float _progressPercent;
 	UIColor *_color;
 }
 
@@ -58,10 +59,10 @@
 	
 	CGContextBeginTransparencyLayer(ctx, NULL);
 	
-	CGFloat smallerDimension = MIN(self.bounds.size.width-6.0f, self.bounds.size.height-6.0f);
-	CGRect drawRect =  CGRectMake(roundf(CGRectGetMidX(self.bounds)-smallerDimension/2.0f), roundf(CGRectGetMidY(self.bounds)-smallerDimension/2.0f), smallerDimension, smallerDimension);
+	CGFloat smallerDimension = MIN(self.bounds.size.width-CGFloat_(6), self.bounds.size.height-CGFloat_(6));
+	CGRect drawRect =  CGRectMake(round(CGRectGetMidX(self.bounds)-smallerDimension/CGFloat_(2)), round(CGRectGetMidY(self.bounds)-smallerDimension/CGFloat_(2)), smallerDimension, smallerDimension);
 	
-	CGContextSetLineWidth(ctx, 3.0f);
+	CGContextSetLineWidth(ctx, CGFloat_(3));
 	CGContextStrokeEllipseInRect(ctx, drawRect);
 	
 	// enough percent to draw
@@ -69,10 +70,10 @@
 	{
 		CGPoint center = CGPointMake(CGRectGetMidX(drawRect), CGRectGetMidY(drawRect));
 		CGFloat radius = center.x - drawRect.origin.x;
-		CGFloat angle = _progressPercent * 2.0f * M_PI;
+		CGFloat angle = CGFloat_(_progressPercent) * CGFloat_(2.0 * M_PI);
 		
 		CGContextMoveToPoint(ctx, center.x, center.y);
-		CGContextAddArc(ctx, center.x, center.y, radius, -M_PI_2, angle-M_PI_2, 0);
+		CGContextAddArc(ctx, center.x, center.y, radius, CGFloat_(-M_PI_2), angle-CGFloat_(M_PI_2), 0);
 		CGContextAddLineToPoint(ctx, center.x, center.y);
 		
 		CGContextFillPath(ctx);
@@ -84,7 +85,7 @@
 
 #pragma mark Properties
 
-- (void)setProgressPercent:(CGFloat)progressPercent
+- (void)setProgressPercent:(float)progressPercent
 {
 	if (_progressPercent != progressPercent)
 	{

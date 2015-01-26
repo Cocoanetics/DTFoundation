@@ -7,7 +7,6 @@
 //
 
 #import "DTCoreGraphicsUtils.h"
-#import <tgmath.h>
 
 CGSize DTCGSizeThatFitsKeepingAspectRatio(CGSize originalSize, CGSize sizeToFit)
 {
