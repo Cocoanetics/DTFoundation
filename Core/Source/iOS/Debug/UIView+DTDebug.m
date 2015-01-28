@@ -14,7 +14,7 @@
 
 - (void)methodCalledNotFromMainThread:(NSString *)methodName
 {
-	DTLogError(@"-[%@ %@] being called on background queue. Break on -[UIView methodCalledNotFromMainThread:] to find out where", NSStringFromClass([self class]), methodName);
+	DTLogError(@"-[%@ %@] being called on background queue. Break on %s to find out where", NSStringFromClass([self class]), methodName, __PRETTY_FUNCTION__);
 }
 
 - (void)_setNeedsLayout_MainThreadCheck

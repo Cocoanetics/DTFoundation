@@ -4,6 +4,9 @@
 
 // Global System Headers
 // this prevents problems if you include DTFoundation.h in your PCH file but are missing these other system frameworks
+
+#import <Foundation/Foundation.h>
+
 #if TARGET_OS_IPHONE
 	#import <UIKit/UIKit.h>
 #else
@@ -11,52 +14,90 @@
 	#import <Cocoa/Cocoa.h>
 #endif
 
+
+#pragma mark - Universal
+
 // Constants
 #import "DTFoundationConstants.h"
 
-// Classes
-#import "DTASN1Parser.h"
-#import "DTBase64Coding.h"
-#import "DTExtendedFileAttributes.h"
-#import "DTHTMLParser.h"
-#import "DTVersion.h"
-#import "DTZipArchive.h"
+// Functions
+#import "DTBlockFunctions.h"
 
-#if TARGET_OS_IPHONE
-	#import "DTActionSheet.h"
-    #import "DTAsyncFileDeleter.h"
-    #import "DTCustomColoredAccessory.h"
-    #import "DTPieProgressIndicator.h"
-#endif
+// Headers
+#import "DTWeakSupport.h"
 
 // Categories
 #import "NSArray+DTError.h"
 #import "NSData+DTCrypto.h"
 #import "NSDictionary+DTError.h"
+#import "NSFileWrapper+DTCopying.h"
 #import "NSMutableArray+DTMoving.h"
-#import "NSObject+DTRuntime.h"
 #import "NSString+DTFormatNumbers.h"
+#import "NSString+DTUtilities.h"
 #import "NSString+DTPaths.h"
 #import "NSString+DTURLEncoding.h"
-#import "NSString+DTUTI.h"
 #import "NSURL+DTComparing.h"
 #import "NSURL+DTUnshorten.h"
 
+// Core Graphics
+#import "DTCoreGraphicsUtils.h"
+
+// Runtime
+#import "DTObjectBlockExecutor.h"
+#import "NSObject+DTRuntime.h"
+
+// Classes
+#import "DTAsyncFileDeleter.h"
+#import "DTBase64Coding.h"
+#import "DTExtendedFileAttributes.h"
+#import "DTFolderMonitor.h"
+#import "DTLog.h"
+#import "DTVersion.h"
+
+
+#pragma mark - iOS
+
 #if TARGET_OS_IPHONE
-	#import "NSURL+DTAppLinks.h"
-	#import "UIApplication+DTNetworkActivity.h"
-	#import "UIImage+DTFoundation.h"
-	#import "UIView+DTFoundation.h"
-	#import "UIWebView+DTFoundation.h"
-	#import "UIView+DTActionHandlers.h"
-#else
-	#import "NSImage+DTUtilities.h"
-	#import "NSDocument+DTFoundation.h"
-    #import "NSValue+DTConversion.h"
-	#import "NSView+DTAutoLayout.h"
-	#import "NSWindowController+DTPanelControllerPresenting.h"
+
+// BlocksAdditions
+#import "DTActionSheet.h"
+#import "DTAlertView.h"
+#import "UIView+DTActionHandlers.h"
+
+// Debug
+#import "UIColor+DTDebug.h"
+#import "UIView+DTDebug.h"
+
+// DTSidePanel
+#import "DTSidePanelController.h"
+#import "UIViewController+DTSidePanelController.h"
+#import "DTSidePanelPanGestureRecognizer.h"
+#import "DTSidePanelControllerSegue.h"
+
+// Misc
+#import "DTTiledLayerWithoutFade.h"
+#import "DTActivityTitleView.h"
+#import "DTCustomColoredAccessory.h"
+#import "DTPieProgressIndicator.h"
+#import "DTSmartPagingScrollView.h"
+#import "UIApplication+DTNetworkActivity.h"
+#import "UIImage+DTFoundation.h"
+#import "NSURL+DTAppLinks.h"
+#import "UIView+DTFoundation.h"
+#import "UIWebView+DTFoundation.h"
+
 #endif
 
-// Utility Functions
-#import "DTCoreGraphicsUtils.h"
-#import "DTLog.h"
+
+#pragma mark - OSX
+
+#if !TARGET_OS_IPHONE
+
+#import "DTScrollView.h"
+#import "NSDocument+DTFoundation.h"
+#import "NSImage+DTUtilities.h"
+#import "NSValue+DTConversion.h"
+#import "NSView+DTAutoLayout.h"
+#import "NSWindowController+DTPanelControllerPresenting.h"
+
+#endif
