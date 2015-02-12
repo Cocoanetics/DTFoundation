@@ -324,13 +324,13 @@
 				
 				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSUTF8StringEncoding freeWhenDone:YES];
 
-                if (string) {
-                    [_delegate parser:self foundString:string];
-                }
-                else {
-                    free(buffer);
-                    buffer = NULL;
-                }
+				if (string) {
+					[_delegate parser:self foundString:string];
+				}
+				else {
+					free(buffer);
+					buffer = NULL;
+				}
 			}
 			break;
 		}
