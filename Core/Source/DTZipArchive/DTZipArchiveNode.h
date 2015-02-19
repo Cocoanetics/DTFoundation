@@ -18,7 +18,7 @@
 /**
  File or directory name
  */
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 /**
  Size of file in bytes

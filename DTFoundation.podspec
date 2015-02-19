@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.7.4'
+  spec.version      = '1.7.5'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@cocoanetics.com" }
@@ -59,6 +59,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTHTMLParser' do |ss|
     ss.ios.deployment_target = '4.3'
+    ss.osx.deployment_target = '10.6'
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTHTMLParser/*.{h,m}'
     ss.library = 'xml2'

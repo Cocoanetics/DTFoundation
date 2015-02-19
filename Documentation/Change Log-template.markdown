@@ -3,6 +3,14 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.7.5**
+
+- FIXED: [DTHTMLParser] Implemented check for invalid encoding when auto-detecting HTML encoding
+- FIXED: [DTHTMLParser] Added missing deployment target in pod spec to allow usage of parser under OS X
+- FIXED: [DTASN1Parser] Crash when parsing ASN.1 data containing Latin1 string, instead ignore the string contents
+- FIXED: Improved 64-bit handling in DTCoreGraphicsUtils, DTPieProgressIndicator and UIImage+DTFoundation
+- FIXED: DTPieProgressIndicator would not display properly when instantiated from XIB
+
 **Version 1.7.4**
 
 - FIXED: Added armv7s to static library targets (iOS)

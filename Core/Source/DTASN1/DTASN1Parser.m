@@ -314,8 +314,8 @@
 		case DTASN1TypeTeletexString:
 		case DTASN1TypeGraphicString:
 		case DTASN1TypePrintableString:
-        case DTASN1TypeUTF8String:
-        case DTASN1TypeIA5String:
+		case DTASN1TypeUTF8String:
+		case DTASN1TypeIA5String:
 		{
 			if (_delegateFlags.delegateSupportsString)
 			{
@@ -324,7 +324,17 @@
 				
 				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSUTF8StringEncoding freeWhenDone:YES];
 				
-				[_delegate parser:self foundString:string];
+				// FIXME: This does not properly deal with Latin1 strings, those get simply ignored
+
+				if (string)
+				{
+					[_delegate parser:self foundString:string];
+				}
+				else
+				{
+					free(buffer);
+					buffer = NULL;
+				}
 			}
 			break;
 		}
