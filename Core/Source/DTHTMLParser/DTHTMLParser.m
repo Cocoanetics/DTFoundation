@@ -276,12 +276,15 @@ void _processingInstruction (void *context, const xmlChar *target, const xmlChar
 	else
 	{
 		// convert the encoding
-		// TODO: proper mapping from _encoding to xmlCharEncoding
 		CFStringEncoding cfenc = CFStringConvertNSStringEncodingToEncoding(_encoding);
-		if (cfenc != kCFStringEncodingInvalidId) {
+		
+		if (cfenc != kCFStringEncodingInvalidId)
+		{
 			CFStringRef cfencstr = CFStringConvertEncodingToIANACharSetName(cfenc);
-			if (cfencstr != NULL) {
-				NSString* NS_VALID_UNTIL_END_OF_SCOPE encstr = [NSString stringWithString:(__bridge NSString*)cfencstr];
+			
+			if (cfencstr)
+			{
+				NSString *NS_VALID_UNTIL_END_OF_SCOPE encstr = [NSString stringWithString:(__bridge NSString*)cfencstr];
 				const char *enc = [encstr UTF8String];
 				
 				charEnc = xmlParseCharEncoding(enc);
