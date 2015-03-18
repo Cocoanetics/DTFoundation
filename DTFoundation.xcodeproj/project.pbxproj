@@ -197,6 +197,8 @@
 		A7E38407160E03A600CF72D6 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41014E825FC00F34B03 /* mztools.c */; };
 		A7E38408160E03A600CF72D6 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41214E825FC00F34B03 /* unzip.c */; };
 		A7E38409160E03A600CF72D6 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41414E825FC00F34B03 /* zip.c */; };
+		A7E799791AB9AF3B008C2393 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7E7997A1AB9AFA9008C2393 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7E889B416A9B1C4009EF0DF /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */; };
 		A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */; };
 		A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */; };
@@ -2033,6 +2035,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7EA07941A2B232500B61CCE /* DTExtendedFileAttributes.h in Headers */,
+				A7E7997A1AB9AFA9008C2393 /* DTFoundation.h in Headers */,
 				A7EA07591A2B220100B61CCE /* DTScrollView.h in Headers */,
 				A7EA07AB1A2B259300B61CCE /* DTCoreGraphicsUtils.h in Headers */,
 				A7EA07671A2B221300B61CCE /* NSData+DTCrypto.h in Headers */,
@@ -2098,6 +2101,7 @@
 				A7EA07E01A2B30F000B61CCE /* DTPieProgressIndicator.h in Headers */,
 				A7EA07E81A2B30F000B61CCE /* NSURL+DTAppLinks.h in Headers */,
 				A7EA08101A2B316100B61CCE /* NSString+DTFormatNumbers.h in Headers */,
+				A7E799791AB9AF3B008C2393 /* DTFoundation.h in Headers */,
 				A7EA07FE1A2B312300B61CCE /* UIView+DTActionHandlers.h in Headers */,
 				A7EA07DE1A2B30F000B61CCE /* DTCustomColoredAccessory.h in Headers */,
 				A7EA08311A2B318E00B61CCE /* DTBlockFunctions.h in Headers */,
