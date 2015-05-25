@@ -171,7 +171,7 @@
 			
 			if (dataRange.length<=4)
 			{
-				char *buffer = malloc(dataRange.length);
+				uint8_t *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
 				if (_delegateFlags.delegateSupportsNumber)
@@ -470,7 +470,7 @@
 		
 		if (tagClass == 2)
 		{
-			if (_delegateFlags.delegateSupportsContextStart)
+			if (_delegateFlags.delegateSupportsContextEnd)
 			{
 				[_delegate parser:self didEndContextWithTag:tagType];
 			}
