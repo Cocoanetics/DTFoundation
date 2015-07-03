@@ -54,6 +54,8 @@
 #import "DTLog.h"
 #import "DTVersion.h"
 
+#import "DTHTMLParser.h"
+
 
 #pragma mark - iOS
 
@@ -85,6 +87,8 @@
 #import "NSURL+DTAppLinks.h"
 #import "UIView+DTFoundation.h"
 #import "UIWebView+DTFoundation.h"
+
+#import "DTAnimatedGIF.h"
 
 #endif
 

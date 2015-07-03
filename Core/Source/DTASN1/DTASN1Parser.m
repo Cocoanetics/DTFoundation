@@ -88,7 +88,7 @@
 	NSUInteger retValue = 0;
 	NSUInteger currentLocation = location;
 	
-	unsigned char buffer;
+	uint8_t buffer;
 	[_data getBytes:&buffer range:NSMakeRange(location, 1)];
 	currentLocation++;
 	
@@ -102,8 +102,15 @@
 		NSUInteger lengthLength = buffer-0x80;
 		NSRange lengthRange = NSMakeRange(currentLocation,lengthLength);
 		
+		if (NSMaxRange(lengthRange)> [_data length])
+		{
+			[self _parseErrorEncountered:@"Invalid length encountered"];
+
+			return 0;
+		}
+		
 		// get the length bytes
-		unsigned char *lengthBytes = malloc(lengthLength);
+		uint8_t *lengthBytes = malloc(lengthLength);
 		[_data getBytes:lengthBytes range:lengthRange];
 		currentLocation += lengthLength;
 		
@@ -154,7 +161,7 @@
 			
 			if (_delegateFlags.delegateSupportsNumber)
 			{
-				unsigned char boolByte;
+				uint8_t boolByte;
 				[_data getBytes:&boolByte range:NSMakeRange(dataRange.location, 1)];
 				
 				BOOL b = boolByte!=0;
@@ -171,7 +178,7 @@
 			
 			if (dataRange.length<=4)
 			{
-				char *buffer = malloc(dataRange.length);
+				uint8_t *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
 				if (_delegateFlags.delegateSupportsNumber)
@@ -204,7 +211,7 @@
 			
 			if (sendAsData && _delegateFlags.delegateSupportsData)
 			{
-				char *buffer = malloc(dataRange.length);
+				uint8_t *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				NSData *data = [NSData dataWithBytesNoCopy:buffer length:dataRange.length freeWhenDone:YES];
 				
@@ -218,7 +225,7 @@
 		{
 			if (_delegateFlags.delegateSupportsBitString)
 			{
-				char *buffer = malloc(dataRange.length);
+				uint8_t *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
 				// primitive encoding
@@ -239,7 +246,7 @@
 		{
 			if (_delegateFlags.delegateSupportsData)
 			{
-				char *buffer = malloc(dataRange.length);
+				uint8_t *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				NSData *data = [NSData dataWithBytesNoCopy:buffer length:dataRange.length freeWhenDone:YES];
 				
@@ -265,7 +272,7 @@
 			{
 				NSMutableArray *indexes = [NSMutableArray array];
 				
-				unsigned char *buffer = malloc(dataRange.length);
+				uint8_t *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
 				// first byte is different
@@ -279,7 +286,7 @@
 					BOOL more = NO;
 					do
 					{
-						unsigned char b = buffer[i];
+						uint8_t b = buffer[i];
 						value = value * 128;
 						value += (b & 0x7f);
 						
@@ -319,7 +326,7 @@
 		{
 			if (_delegateFlags.delegateSupportsString)
 			{
-				char *buffer = malloc(dataRange.length);
+				uint8_t *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
 				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSUTF8StringEncoding freeWhenDone:YES];
@@ -344,7 +351,7 @@
 		{
 			if (_delegateFlags.delegateSupportsDate)
 			{
-				char *buffer = malloc(dataRange.length);
+				uint8_t *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
 				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSASCIIStringEncoding freeWhenDone:YES];
@@ -391,7 +398,7 @@
 		}
 		
 		// get type
-		unsigned char tagByte;
+		uint8_t tagByte;
 		[_data getBytes:&tagByte range:NSMakeRange(location, 1)];
 		location++;
 		
@@ -470,7 +477,7 @@
 		
 		if (tagClass == 2)
 		{
-			if (_delegateFlags.delegateSupportsContextStart)
+			if (_delegateFlags.delegateSupportsContextEnd)
 			{
 				[_delegate parser:self didEndContextWithTag:tagType];
 			}

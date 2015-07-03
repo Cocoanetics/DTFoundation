@@ -147,6 +147,18 @@
 		A792968F1619F0FA00D5C979 /* DTCoreGraphicsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA6C153C39920020F18B /* DTCoreGraphicsUtils.m */; };
 		A7950101161D680000358BC3 /* NSData+DTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F6161D680000358BC3 /* NSData+DTCrypto.m */; };
 		A7950102161D680000358BC3 /* NSData+DTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F6161D680000358BC3 /* NSData+DTCrypto.m */; };
+		A79BA5D81B46A0D50086C2F6 /* DTHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DB48916A5E1D20010CD85 /* DTHTMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A79BA5D91B46A0D50086C2F6 /* DTHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DB48916A5E1D20010CD85 /* DTHTMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A79BA6C31B46A38A0086C2F6 /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB48A16A5E1D20010CD85 /* DTHTMLParser.m */; };
+		A79BA6C71B46A3CA0086C2F6 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A79BA6C61B46A3CA0086C2F6 /* libxml2.dylib */; };
+		A79BA6CA1B46A3E40086C2F6 /* DTAnimatedGIF.h in Headers */ = {isa = PBXBuildFile; fileRef = A7AC21A7196409560009E1B9 /* DTAnimatedGIF.h */; };
+		A79BA6CB1B46A3E40086C2F6 /* DTAnimatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AC21A8196409560009E1B9 /* DTAnimatedGIF.m */; };
+		A79BA7CF1B46C3EF0086C2F6 /* DTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FA217B0F7B4000FC61F /* DTLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A79BA7D01B46C3EF0086C2F6 /* DTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FA217B0F7B4000FC61F /* DTLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A79BA7E61B46C4260086C2F6 /* DTWeakSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A79BA7E71B46C4270086C2F6 /* DTWeakSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A79BA7E81B46C5050086C2F6 /* NSString+DTUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA48153C233E0020F18B /* NSString+DTUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A79BA7E91B46C5060086C2F6 /* NSString+DTUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA48153C233E0020F18B /* NSString+DTUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A79D99C21792D2490082BC06 /* NSURL+DTAWS.m in Sources */ = {isa = PBXBuildFile; fileRef = A79D99C11792D2490082BC06 /* NSURL+DTAWS.m */; };
 		A7A5F0AB1A2FA92400DA3B62 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A5F0AA1A2FA92400DA3B62 /* Security.framework */; };
 		A7A7CC7A14866CAF00EC2EE4 /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
@@ -197,6 +209,8 @@
 		A7E38407160E03A600CF72D6 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41014E825FC00F34B03 /* mztools.c */; };
 		A7E38408160E03A600CF72D6 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41214E825FC00F34B03 /* unzip.c */; };
 		A7E38409160E03A600CF72D6 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41414E825FC00F34B03 /* zip.c */; };
+		A7E799791AB9AF3B008C2393 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7E7997A1AB9AFA9008C2393 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7E889B416A9B1C4009EF0DF /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */; };
 		A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */ = {isa = PBXBuildFile; fileRef = A7E88ED016BC0278008CBA9C /* DTCustomColoredAccessory.h */; };
 		A7E88ED516BC0278008CBA9C /* DTCustomColoredAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E88ED116BC0278008CBA9C /* DTCustomColoredAccessory.m */; };
@@ -798,6 +812,7 @@
 		A79231CD157A0B9400C3ACBB /* NSURL+DTUnshorten.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTUnshorten.m"; sourceTree = "<group>"; };
 		A79500F5161D680000358BC3 /* NSData+DTCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DTCrypto.h"; sourceTree = "<group>"; };
 		A79500F6161D680000358BC3 /* NSData+DTCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DTCrypto.m"; sourceTree = "<group>"; };
+		A79BA6C61B46A3CA0086C2F6 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libxml2.dylib; sourceTree = DEVELOPER_DIR; };
 		A79D999C1792D1F50082BC06 /* libDTAWS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTAWS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79D99AA1792D1F50082BC06 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A79D99C01792D2490082BC06 /* NSURL+DTAWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTAWS.h"; sourceTree = "<group>"; };
@@ -1149,6 +1164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79BA6C71B46A3CA0086C2F6 /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1547,6 +1563,7 @@
 		A7AB49DB1483C47F00028FE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A79BA6C61B46A3CA0086C2F6 /* libxml2.dylib */,
 				A7A5F0AA1A2FA92400DA3B62 /* Security.framework */,
 				A7AC21CD1964184F0009E1B9 /* ImageIO.framework */,
 				F88FF6CE1920B0CC00120808 /* QuartzCore.framework */,
@@ -1985,6 +2002,7 @@
 				A77DD42314E825FC00F34B03 /* unzip.h in Headers */,
 				A77DD42714E825FC00F34B03 /* zip.h in Headers */,
 				A76DB4A016A5E37F0010CD85 /* DTActivityTitleView.h in Headers */,
+				A79BA7E91B46C5060086C2F6 /* NSString+DTUtilities.h in Headers */,
 				A76DB4AC16A5E37F0010CD85 /* DTPieProgressIndicator.h in Headers */,
 				A76DB4B216A5E37F0010CD85 /* DTSmartPagingScrollView.h in Headers */,
 				A76DB4CD16A5E5100010CD85 /* NSURL+DTAppLinks.h in Headers */,
@@ -1992,9 +2010,11 @@
 				A76DB4D516A5E5100010CD85 /* UIImage+DTFoundation.h in Headers */,
 				A76DB4DD16A5E5100010CD85 /* UIView+DTFoundation.h in Headers */,
 				A76DB4E116A5E5100010CD85 /* UIWebView+DTFoundation.h in Headers */,
+				A79BA7E71B46C4270086C2F6 /* DTWeakSupport.h in Headers */,
 				A7E88ED316BC0278008CBA9C /* DTCustomColoredAccessory.h in Headers */,
 				A730BCCF16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */,
 				A7C92B6A174F9AEC0019D70A /* UIViewController+DTSidePanelController.h in Headers */,
+				A79BA7D01B46C3EF0086C2F6 /* DTLog.h in Headers */,
 				A7FB1216175C9C8B00D4B7F0 /* DTSidePanelController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2003,7 +2023,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79BA7E61B46C4260086C2F6 /* DTWeakSupport.h in Headers */,
 				E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */,
+				A79BA7CF1B46C3EF0086C2F6 /* DTLog.h in Headers */,
+				A79BA7E81B46C5050086C2F6 /* NSString+DTUtilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2033,11 +2056,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7EA07941A2B232500B61CCE /* DTExtendedFileAttributes.h in Headers */,
+				A7E7997A1AB9AFA9008C2393 /* DTFoundation.h in Headers */,
 				A7EA07591A2B220100B61CCE /* DTScrollView.h in Headers */,
 				A7EA07AB1A2B259300B61CCE /* DTCoreGraphicsUtils.h in Headers */,
 				A7EA07671A2B221300B61CCE /* NSData+DTCrypto.h in Headers */,
 				A7EA07691A2B221300B61CCE /* NSDictionary+DTError.h in Headers */,
 				A7EA079A1A2B232500B61CCE /* DTBlockFunctions.h in Headers */,
+				A79BA5D81B46A0D50086C2F6 /* DTHTMLParser.h in Headers */,
 				A7EA07931A2B232500B61CCE /* DTBase64Coding.h in Headers */,
 				A7EA07981A2B232500B61CCE /* DTVersion.h in Headers */,
 				A7EA07751A2B221300B61CCE /* NSString+DTURLEncoding.h in Headers */,
@@ -2072,12 +2097,14 @@
 				A7EA07EA1A2B30F000B61CCE /* UIView+DTFoundation.h in Headers */,
 				A7EA08061A2B316100B61CCE /* NSArray+DTError.h in Headers */,
 				A7EA08161A2B316100B61CCE /* NSString+DTURLEncoding.h in Headers */,
+				A79BA6CA1B46A3E40086C2F6 /* DTAnimatedGIF.h in Headers */,
 				A7EA07E21A2B30F000B61CCE /* DTSmartPagingScrollView.h in Headers */,
 				A7EA07FA1A2B312300B61CCE /* DTActionSheet.h in Headers */,
 				A7EA07EE1A2B310600B61CCE /* DTSidePanelController.h in Headers */,
 				A7EA080C1A2B316100B61CCE /* NSFileWrapper+DTCopying.h in Headers */,
 				A7EA08261A2B318E00B61CCE /* DTExtendedFileAttributes.h in Headers */,
 				A7EA07EC1A2B30F000B61CCE /* UIWebView+DTFoundation.h in Headers */,
+				A79BA5D91B46A0D50086C2F6 /* DTHTMLParser.h in Headers */,
 				A7EA08141A2B316100B61CCE /* NSString+DTPaths.h in Headers */,
 				A7EA07DA1A2B30F000B61CCE /* DTTiledLayerWithoutFade.h in Headers */,
 				A7EA082E1A2B318E00B61CCE /* DTVersion.h in Headers */,
@@ -2098,6 +2125,7 @@
 				A7EA07E01A2B30F000B61CCE /* DTPieProgressIndicator.h in Headers */,
 				A7EA07E81A2B30F000B61CCE /* NSURL+DTAppLinks.h in Headers */,
 				A7EA08101A2B316100B61CCE /* NSString+DTFormatNumbers.h in Headers */,
+				A7E799791AB9AF3B008C2393 /* DTFoundation.h in Headers */,
 				A7EA07FE1A2B312300B61CCE /* UIView+DTActionHandlers.h in Headers */,
 				A7EA07DE1A2B30F000B61CCE /* DTCustomColoredAccessory.h in Headers */,
 				A7EA08311A2B318E00B61CCE /* DTBlockFunctions.h in Headers */,
@@ -2566,7 +2594,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Cocoanetics;
 				TargetAttributes = {
 					A78381C21963F8D700AF09D3 = {
@@ -3046,6 +3074,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7EA07DD1A2B30F000B61CCE /* DTActivityTitleView.m in Sources */,
+				A79BA6C31B46A38A0086C2F6 /* DTHTMLParser.m in Sources */,
 				A7EA081B1A2B316100B61CCE /* NSURL+DTComparing.m in Sources */,
 				A7EA080D1A2B316100B61CCE /* NSFileWrapper+DTCopying.m in Sources */,
 				A7EA08071A2B316100B61CCE /* NSArray+DTError.m in Sources */,
@@ -3057,6 +3086,7 @@
 				A7EA07FD1A2B312300B61CCE /* DTAlertView.m in Sources */,
 				A7EA07FF1A2B312300B61CCE /* UIView+DTActionHandlers.m in Sources */,
 				A7EA07EF1A2B310600B61CCE /* DTSidePanelController.m in Sources */,
+				A79BA6CB1B46A3E40086C2F6 /* DTAnimatedGIF.m in Sources */,
 				A7EA08111A2B316100B61CCE /* NSString+DTFormatNumbers.m in Sources */,
 				A7EA07EB1A2B30F000B61CCE /* UIView+DTFoundation.m in Sources */,
 				A7EA08251A2B318E00B61CCE /* DTBase64Coding.m in Sources */,
