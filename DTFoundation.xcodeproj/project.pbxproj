@@ -151,7 +151,7 @@
 		A79BA5D91B46A0D50086C2F6 /* DTHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DB48916A5E1D20010CD85 /* DTHTMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A79BA6C31B46A38A0086C2F6 /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB48A16A5E1D20010CD85 /* DTHTMLParser.m */; };
 		A79BA6C71B46A3CA0086C2F6 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A79BA6C61B46A3CA0086C2F6 /* libxml2.dylib */; };
-		A79BA6CA1B46A3E40086C2F6 /* DTAnimatedGIF.h in Headers */ = {isa = PBXBuildFile; fileRef = A7AC21A7196409560009E1B9 /* DTAnimatedGIF.h */; };
+		A79BA6CA1B46A3E40086C2F6 /* DTAnimatedGIF.h in Headers */ = {isa = PBXBuildFile; fileRef = A7AC21A7196409560009E1B9 /* DTAnimatedGIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A79BA6CB1B46A3E40086C2F6 /* DTAnimatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AC21A8196409560009E1B9 /* DTAnimatedGIF.m */; };
 		A79BA7CF1B46C3EF0086C2F6 /* DTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FA217B0F7B4000FC61F /* DTLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A79BA7D01B46C3EF0086C2F6 /* DTLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FA217B0F7B4000FC61F /* DTLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -159,6 +159,8 @@
 		A79BA7E71B46C4270086C2F6 /* DTWeakSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A79BA7E81B46C5050086C2F6 /* NSString+DTUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA48153C233E0020F18B /* NSString+DTUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A79BA7E91B46C5060086C2F6 /* NSString+DTUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA48153C233E0020F18B /* NSString+DTUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A79BA8481B46E5840086C2F6 /* DTHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB48A16A5E1D20010CD85 /* DTHTMLParser.m */; };
+		A79BA84A1B46E5DF0086C2F6 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D60FF715D3B28B00AEDD1B /* libxml2.dylib */; };
 		A79D99C21792D2490082BC06 /* NSURL+DTAWS.m in Sources */ = {isa = PBXBuildFile; fileRef = A79D99C11792D2490082BC06 /* NSURL+DTAWS.m */; };
 		A7A5F0AB1A2FA92400DA3B62 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A5F0AA1A2FA92400DA3B62 /* Security.framework */; };
 		A7A7CC7A14866CAF00EC2EE4 /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
@@ -1157,6 +1159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79BA84A1B46E5DF0086C2F6 /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3048,6 +3051,7 @@
 				A7EA079F1A2B233E00B61CCE /* DTFoundationConstants.m in Sources */,
 				A7EA076C1A2B221300B61CCE /* NSFileWrapper+DTCopying.m in Sources */,
 				A7EA07701A2B221300B61CCE /* NSString+DTFormatNumbers.m in Sources */,
+				A79BA8481B46E5840086C2F6 /* DTHTMLParser.m in Sources */,
 				A7EA07681A2B221300B61CCE /* NSData+DTCrypto.m in Sources */,
 				A7EA075E1A2B220100B61CCE /* NSImage+DTUtilities.m in Sources */,
 				A7EA07621A2B220100B61CCE /* NSView+DTAutoLayout.m in Sources */,
