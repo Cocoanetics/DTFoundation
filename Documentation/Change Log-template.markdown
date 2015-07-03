@@ -3,6 +3,12 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.7.6**
+
+- FIXED [DTASN1Parser] 2 Bugs
+- ADDED: Method for SHA1 generation
+- ADDED: iOS Framework
+
 **Version 1.7.5**
 
 - FIXED: [DTHTMLParser] Implemented check for invalid encoding when auto-detecting HTML encoding
