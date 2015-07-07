@@ -373,6 +373,8 @@
 		A7EA08321A2B318E00B61CCE /* DTBlockFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A768BE3B17FC3C91008834C6 /* DTBlockFunctions.m */; };
 		A7F3BD2C18436A0F00DB7854 /* DTSidePanelPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B210F4174F2B22B0CD6A0 /* DTSidePanelPanGestureRecognizer.m */; };
 		A7F3BD2D18436A1200DB7854 /* DTSidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A74663B31743D43600D4D7D5 /* DTSidePanelController.m */; };
+		A7F8CD9C1B4BD8F7007DAD63 /* DTCoreGraphicsUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA6B153C39920020F18B /* DTCoreGraphicsUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7F8CD9D1B4BD8F7007DAD63 /* DTCoreGraphicsUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA6B153C39920020F18B /* DTCoreGraphicsUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7FA5FA917B0F7B4000FC61F /* DTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FA317B0F7B4000FC61F /* DTLog.m */; };
 		A7FA5FB017B127E0000FC61F /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FAC17B127E0000FC61F /* DTAsyncFileDeleter.m */; };
 		A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
@@ -2023,6 +2025,7 @@
 				A7FB1216175C9C8B00D4B7F0 /* DTSidePanelController.h in Headers */,
 				A79BA7E91B46C5060086C2F6 /* NSString+DTUtilities.h in Headers */,
 				A79BA89A1B46ED880086C2F6 /* DTHTMLParser.h in Headers */,
+				A7F8CD9D1B4BD8F7007DAD63 /* DTCoreGraphicsUtils.h in Headers */,
 				A79BA7E71B46C4270086C2F6 /* DTWeakSupport.h in Headers */,
 				A730BCCF16D2892E003B849F /* DTTiledLayerWithoutFade.h in Headers */,
 				A79BA7D01B46C3EF0086C2F6 /* DTLog.h in Headers */,
@@ -2035,6 +2038,7 @@
 			files = (
 				A79BA89B1B46ED880086C2F6 /* DTHTMLParser.h in Headers */,
 				A79BA7E61B46C4260086C2F6 /* DTWeakSupport.h in Headers */,
+				A7F8CD9C1B4BD8F7007DAD63 /* DTCoreGraphicsUtils.h in Headers */,
 				E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */,
 				A79BA7CF1B46C3EF0086C2F6 /* DTLog.h in Headers */,
 				A79BA7E81B46C5050086C2F6 /* NSString+DTUtilities.h in Headers */,
