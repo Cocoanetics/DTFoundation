@@ -500,9 +500,9 @@
 	return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-	NSUInteger orientations = UIInterfaceOrientationMaskAll;
+	UIInterfaceOrientationMask orientations = UIInterfaceOrientationMaskAll;
 	
 	// only support the orientations that are also supported by all child VCs
 	
