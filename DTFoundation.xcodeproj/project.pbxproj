@@ -3484,7 +3484,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PUBLIC_HEADERS_FOLDER_PATH = "${TARGET_BUILD_DIR}/DTFoundation";
+				PUBLIC_HEADERS_FOLDER_PATH = DTFoundation;
 			};
 			name = Coverage;
 		};
@@ -4798,7 +4798,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
-				PUBLIC_HEADERS_FOLDER_PATH = "${TARGET_BUILD_DIR}/DTFoundation";
+				PUBLIC_HEADERS_FOLDER_PATH = DTFoundation;
 			};
 			name = Debug;
 		};
@@ -4828,7 +4828,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PUBLIC_HEADERS_FOLDER_PATH = "${TARGET_BUILD_DIR}/DTFoundation";
+				PUBLIC_HEADERS_FOLDER_PATH = DTFoundation;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
