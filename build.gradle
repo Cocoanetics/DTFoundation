@@ -1,15 +1,17 @@
 buildscript {
-    repositories {
-				maven {
-					url('http://openbakery.org/repository/')
-				}
-				mavenCentral()
-    }
-    dependencies {
-        classpath group: 'org.openbakery', name: 'xcodePlugin', version: '0.9.+'
-    }
+	repositories {
+		maven {
+			url('http://repository.openbakery.org/')
+		}
+		mavenCentral()
+  }
+
+	dependencies {
+	    classpath "org.openbakery:xcode-plugin:0.11.+"
+	}
+		
 }
-apply plugin: 'xcode'
+apply plugin: "org.openbakery.xcode-plugin"
 
 
 repositories {
@@ -33,10 +35,22 @@ ant.taskdef(
 
 
 xcodebuild {
-	scheme = 'Static Library'
-  target = 'Static Library'
+	scheme = 'DTFoundation (OSX)'
+  target = 'DTFoundation (OSX)'
+	sdk = 'macosx'
 	configuration = 'Debug'
+	
 }
+
+oclint {
+	excludes = [ 'build' ]
+	rules = [
+				"LONG_LINE=200",
+				"LONG_VARIABLE_NAME=64",
+				"LONG_METHOD=150",
+				]
+}
+
 
 
 task documentationUpload << {
