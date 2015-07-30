@@ -9,7 +9,7 @@ buildscript {
 	dependencies {
 	    classpath "org.openbakery:xcode-plugin:0.11.+"
 	}
-		
+
 }
 apply plugin: "org.openbakery.xcode-plugin"
 
@@ -18,7 +18,7 @@ repositories {
 	mavenCentral()
 }
 
-configurations { 
+configurations {
 	ftpAntTask
 }
 
@@ -39,13 +39,13 @@ xcodebuild {
   target = 'DTFoundation (OSX)'
 	sdk = 'macosx'
 	configuration = 'Debug'
-	
+
 }
 
 oclint {
 	excludes = [ 'build' ]
 	rules = [
-				"LONG_LINE=200",
+				"LONG_LINE=250",
 				"LONG_VARIABLE_NAME=64",
 				"LONG_METHOD=150",
 				]
@@ -58,14 +58,14 @@ task documentationUpload << {
 	if (project.ext.properties.containsKey("uploadHost")) {
 		uploadHost = project.ext.uploadHost
 	}
-	
+
 	def uploadUser = null
 	if (project.ext.properties.containsKey("uploadUser")) {
 		uploadUser = project.ext.uploadUser
 	} else {
 		uploadUser = System.console().readLine("\nPlease enter the upload user: ")
 	}
-	
+
 	def uploadPassword = null
 	if (project.ext.properties.containsKey("uploadPassword")) {
 		uploadPassword = project.ext.uploadPassword
@@ -109,7 +109,7 @@ gradle.taskGraph.whenReady { taskGraph ->
 	if (taskGraph.hasTask(test)) {
 		println "CONFIGURE CONTINUOUS"
 		xcodebuild {
-		
+
 			destination {
 				platform = 'iOS Simulator'
 				name = 'iPad'
@@ -121,7 +121,7 @@ gradle.taskGraph.whenReady { taskGraph ->
 				name = 'iPhone Retina (3.5-inch)'
 				os='7.1'
 			}
-			
+
 			destination {
 				platform = 'iOS Simulator'
 				name = 'iPhone Retina (4-inch)'
@@ -133,7 +133,7 @@ gradle.taskGraph.whenReady { taskGraph ->
 				name = 'iPad Retina'
 				os='7.1'
 			}
-			
+
 
 		}
 	}
