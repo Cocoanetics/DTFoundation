@@ -49,6 +49,9 @@ oclint {
 				"LONG_VARIABLE_NAME=64",
 				"LONG_METHOD=150",
 				]
+	disableRules = [
+			"IvarAssignmentOutsideAccessorsOrInit"
+	]
 }
 
 
