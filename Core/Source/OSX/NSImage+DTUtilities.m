@@ -15,7 +15,7 @@
 	NSData *imageData = [self TIFFRepresentation];
 	NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
     NSDictionary *imageProps = @{NSImageCompressionFactor: [NSNumber numberWithFloat:compressionFactor]};
-    eData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
+    imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
 	
     return [imageData writeToFile:path atomically:useAuxiliaryFile];
 }
