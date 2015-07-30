@@ -62,7 +62,8 @@ NSDictionary *DTCGSizeCreateDictionaryRepresentation(CGSize size)
 	NSNumber *heightNumber = [NSNumber numberWithFloat:size.height];
 #endif
 	
-	return [NSDictionary dictionaryWithObjectsAndKeys:widthNumber, @"Width", heightNumber, @"Height", nil];
+    return @{@"Width": widthNumber,
+             @"Height": heightNumber};
 }
 
 
@@ -110,7 +111,10 @@ NSDictionary *DTCGRectCreateDictionaryRepresentation(CGRect rect)
 	NSNumber *yNumber = [NSNumber numberWithFloat:rect.origin.y];
 #endif
 	
-	return [NSDictionary dictionaryWithObjectsAndKeys:widthNumber, @"Width", heightNumber, @"Height", xNumber, @"X", yNumber, @"Y", nil];
+    return @{@"Width": widthNumber,
+             @"Height": heightNumber,
+             @"X": xNumber,
+             @"Y": yNumber};
 }
 
 CGPoint DTCGRectCenter(CGRect rect)
