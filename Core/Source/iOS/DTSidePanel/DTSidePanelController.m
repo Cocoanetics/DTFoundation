@@ -499,7 +499,8 @@
 	return YES;
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+
+- (DT_SUPPORTED_INTERFACE_ORIENTATIONS_RETURN_TYPE)supportedInterfaceOrientations
 {
 	UIInterfaceOrientationMask orientations = UIInterfaceOrientationMaskAll;
 	
