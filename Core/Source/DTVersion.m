@@ -97,10 +97,10 @@
 
 + (DTVersion*)appBundleVersion 
 {
-	NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-	DTVersion* retVersion = [DTVersion versionWithString:version];
-	
-	return retVersion;
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+	NSString *version = info[@"CFBundleVersion"];
+    
+	return [DTVersion versionWithString:version];
 }
 
 + (DTVersion *)osVersion
