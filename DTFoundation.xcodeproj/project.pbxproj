@@ -179,6 +179,8 @@
 		A7AC21C9196417BF0009E1B9 /* DTAnimatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = A7AC21A8196409560009E1B9 /* DTAnimatedGIF.m */; };
 		A7AC21CC196417D00009E1B9 /* libDTAnimatedGIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AC21AF196417830009E1B9 /* libDTAnimatedGIF.a */; };
 		A7AC21CE1964184F0009E1B9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AC21CD1964184F0009E1B9 /* ImageIO.framework */; };
+		A7B505351B6A594F00BC743A /* DTCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = A74549681B6A3F26004B0CA7 /* DTCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7B505361B6A595700BC743A /* DTCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = A74549681B6A3F26004B0CA7 /* DTCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7C92B5D174F6A1A0019D70A /* toolbar-icon-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C92B5B174F6A1A0019D70A /* toolbar-icon-menu.png */; };
 		A7C92B5E174F6A1A0019D70A /* toolbar-icon-menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C92B5C174F6A1A0019D70A /* toolbar-icon-menu@2x.png */; };
 		A7C92B63174F72C30019D70A /* ModalPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C92B61174F72C30019D70A /* ModalPanelViewController.m */; };
@@ -2061,6 +2063,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7F8CDB71B4BE67E007DAD63 /* NSString+DTPaths.h in Headers */,
+				A7B505351B6A594F00BC743A /* DTCompatibility.h in Headers */,
 				A79BA89D1B46EDE90086C2F6 /* DTBase64Coding.h in Headers */,
 				A7F8CDB51B4BE67E007DAD63 /* NSMutableArray+DTMoving.h in Headers */,
 				A7F8CDB11B4BE67E007DAD63 /* NSArray+DTError.h in Headers */,
@@ -2235,6 +2238,7 @@
 				A7EA08221A2B318E00B61CCE /* DTAsyncFileDeleter.h in Headers */,
 				A7EA07E61A2B30F000B61CCE /* UIImage+DTFoundation.h in Headers */,
 				A7EA080A1A2B316100B61CCE /* NSDictionary+DTError.h in Headers */,
+				A7B505361B6A595700BC743A /* DTCompatibility.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
