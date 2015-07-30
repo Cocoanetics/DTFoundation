@@ -3,6 +3,13 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.7.7**
+
+- FIXED: [DTSidePanelController] Panel might get stuck half way opened
+- CHANGED: DTSmartPagingScrollView can now be instantiated from NIB / Storyboard
+- FIXED: Warnings from XCode7
+- FIXED: Some warnings from OClint
+
 **Version 1.7.6**
 
 - FIXED [DTASN1Parser] 2 Bugs

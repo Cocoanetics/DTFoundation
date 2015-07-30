@@ -62,15 +62,15 @@ static char DTRuntimeDeallocBlocks;
 + (void)swizzleMethod:(SEL)selector withMethod:(SEL)otherSelector
 {
 	// my own class is being targetted
-	Class c = [self class];
+	Class myClass = [self class];
 	
 	// get the methods from the selectors
-	Method originalMethod = class_getInstanceMethod(c, selector);
-    Method otherMethod = class_getInstanceMethod(c, otherSelector);
+	Method originalMethod = class_getInstanceMethod(myClass, selector);
+    Method otherMethod = class_getInstanceMethod(myClass, otherSelector);
 	
-    if (class_addMethod(c, selector, method_getImplementation(otherMethod), method_getTypeEncoding(otherMethod)))
+    if (class_addMethod(myClass, selector, method_getImplementation(otherMethod), method_getTypeEncoding(otherMethod)))
 	{
-		class_replaceMethod(c, otherSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+		class_replaceMethod(myClass, otherSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
 	}
 	else
 	{
@@ -81,11 +81,11 @@ static char DTRuntimeDeallocBlocks;
 + (void)swizzleClassMethod:(SEL)selector withMethod:(SEL)otherSelector
 {
 	// my own class is being targetted
-	Class c = [self class];
+	Class myClass = [self class];
 	
 	// get the methods from the selectors
-	Method originalMethod = class_getClassMethod(c, selector);
-    Method otherMethod = class_getClassMethod(c, otherSelector);
+	Method originalMethod = class_getClassMethod(myClass, selector);
+    Method otherMethod = class_getClassMethod(myClass, otherSelector);
 	
 //    if (class_addMethod(c, selector, method_getImplementation(otherMethod), method_getTypeEncoding(otherMethod)))
 //	{

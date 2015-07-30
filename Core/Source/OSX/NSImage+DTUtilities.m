@@ -14,9 +14,10 @@
 {
 	NSData *imageData = [self TIFFRepresentation];
 	NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
-	NSDictionary *imageProps = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:compressionFactor] forKey:NSImageCompressionFactor];
-	imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
-	return [imageData writeToFile:path atomically:useAuxiliaryFile];
+    NSDictionary *imageProps = @{NSImageCompressionFactor: [NSNumber numberWithFloat:compressionFactor]};
+    imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
+	
+    return [imageData writeToFile:path atomically:useAuxiliaryFile];
 }
 
 @end

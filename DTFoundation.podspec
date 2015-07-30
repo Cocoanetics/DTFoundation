@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.7.6'
+  spec.version      = '1.7.7'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@cocoanetics.com" }
@@ -75,7 +75,7 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'DTSidePanel' do |ss|
-    ss.platform = :ios, '5.0'
+    ss.platform = :ios, '6.0'
     ss.dependency 'DTFoundation/UIKit'
     ss.ios.frameworks = 'QuartzCore'
     ss.ios.source_files = 'Core/Source/iOS/DTSidePanel/*.{h,m}'

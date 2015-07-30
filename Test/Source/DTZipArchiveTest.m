@@ -407,7 +407,7 @@
 	[NSThread sleepForTimeInterval:0.2f];
 }
 
-- (void)testCancelUncompressingPKZipAfter1ms
+- (void)testCancelUncompressingPKZipAfter100us
 {
 	// get sample.zip file
 	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
@@ -420,7 +420,7 @@
 		XCTFail(@"Should not complete uncompressing after cancel was called");
 	}];
 	
-	[NSThread sleepForTimeInterval:0.0001f];
+	[NSThread sleepForTimeInterval:0.00001f];
 	
 	// cancel uncompression after 1ms -> to cancel in while loop
 	[zipArchive cancelAllUncompressing];
