@@ -26,11 +26,7 @@
 
 - (DTVersion *)initWithMajor:(NSUInteger)major minor:(NSUInteger)minor maintenance:(NSUInteger)maintenance
 {
-	self = [self initWithMajor:major minor:minor maintenance:maintenance build:0];
-	if (self)
-	{
-	}
-	return self;
+	return [self initWithMajor:major minor:minor maintenance:maintenance build:0];
 }
 
 + (DTVersion *)versionWithString:(NSString*)versionString
