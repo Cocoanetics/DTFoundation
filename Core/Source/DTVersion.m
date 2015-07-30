@@ -165,19 +165,27 @@
 
 
 
-- (BOOL) isEqualToVersion:(DTVersion *)version
+- (BOOL)isEqualToVersion:(DTVersion *)version
 {
 	return (self.major == version.major) && (self.minor == version.minor) && (self.maintenance == version.maintenance);
 }
 
-- (BOOL) isEqualToString:(NSString *)versionString
+- (BOOL)isEqualToString:(NSString *)versionString
 {
 	DTVersion *versionToTest = [DTVersion versionWithString:versionString];
 	return [self isEqualToVersion:versionToTest];
 }
 
+- (NSUInteger)hash
+{
+	NSUInteger hash = self.major;
+	hash = hash * 31u + self.minor;
+	hash = hash * 31u + self.maintenance;
+	hash = hash * 31u + self.build;
+	return hash;
+}
 
-- (BOOL) isEqual:(id)object
+- (BOOL)isEqual:(id)object
 {
 	if ([object isKindOfClass:[DTVersion class]]) 
 	{
