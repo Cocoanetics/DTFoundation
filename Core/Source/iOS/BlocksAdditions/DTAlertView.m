@@ -8,7 +8,7 @@
 
 #import "DTAlertView.h"
 #import "DTLog.h"
-
+#if !TARGET_OS_TV
 @interface DTAlertView() <UIAlertViewDelegate>
 
 @end
@@ -182,3 +182,4 @@
 }
 
 @end
+#endif

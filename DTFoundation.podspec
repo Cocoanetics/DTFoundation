@@ -7,13 +7,16 @@ Pod::Spec.new do |spec|
   spec.documentation_url = 'http://docs.cocoanetics.com/DTFoundation'
   spec.social_media_url = 'https://twitter.com/cocoanetics'
   spec.source       = { :git => "https://github.com/Cocoanetics/DTFoundation.git", :tag => spec.version.to_s }
+  
   spec.ios.deployment_target = '6.0'
+  spec.tvos.deployment_target = '9.0'
   spec.osx.deployment_target = '10.6'
   spec.license      = 'BSD'
   spec.requires_arc = true
-
+  
   spec.subspec 'Core' do |ss|
     ss.ios.deployment_target = '4.3'
+    ss.tvos.deployment_target = '9.0'
     ss.osx.deployment_target = '10.6'
     ss.source_files = 'Core/Source/*.{h,m}'
   end
