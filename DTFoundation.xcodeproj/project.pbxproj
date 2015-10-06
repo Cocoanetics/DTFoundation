@@ -389,6 +389,24 @@
 		A7D8C7BC1723174600025675 /* DTZipArchiveNode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494CD06FFAB6AEAC8ADAD4 /* DTZipArchiveNode.h */; };
 		A7D8C7BD1723174600025675 /* DTZipArchivePKZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */; };
 		A7D8C7BE1723174600025675 /* DTZipArchiveGZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C04943358446F1A9BA86F458 /* DTZipArchiveGZip.h */; };
+		A7D95AD81BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1E17A65AD800480205 /* DTASN1BitString.h */; settings = {ASSET_TAGS = (); }; };
+		A7D95AD91BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95ADA1BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2017A65AD800480205 /* DTASN1Parser.h */; settings = {ASSET_TAGS = (); }; };
+		A7D95ADB1BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95ADC1BC40DAB00AB8A21 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2217A65AD800480205 /* DTASN1Serialization.h */; settings = {ASSET_TAGS = (); }; };
+		A7D95ADD1BC40DAB00AB8A21 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95ADE1BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1E17A65AD800480205 /* DTASN1BitString.h */; settings = {ASSET_TAGS = (); }; };
+		A7D95ADF1BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE01BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2017A65AD800480205 /* DTASN1Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7D95AE11BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE21BC40DAB00AB8A21 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2217A65AD800480205 /* DTASN1Serialization.h */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE31BC40DAB00AB8A21 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE41BC40DAC00AB8A21 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1E17A65AD800480205 /* DTASN1BitString.h */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE51BC40DAC00AB8A21 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE61BC40DAC00AB8A21 /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2017A65AD800480205 /* DTASN1Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7D95AE71BC40DAC00AB8A21 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE81BC40DAC00AB8A21 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2217A65AD800480205 /* DTASN1Serialization.h */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE91BC40DAC00AB8A21 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; settings = {ASSET_TAGS = (); }; };
 		A7D9D62E1758C89800C29B6F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
 		A7D9D62F1758C89800C29B6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A7D9D6301758C89800C29B6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */; };
@@ -2316,6 +2334,7 @@
 				384471221BA33ED80037C68D /* UIView+DTFoundation.h in Headers */,
 				384471231BA33ED80037C68D /* NSArray+DTError.h in Headers */,
 				384471241BA33ED80037C68D /* NSString+DTURLEncoding.h in Headers */,
+				A7D95ADC1BC40DAB00AB8A21 /* DTASN1Serialization.h in Headers */,
 				384471251BA33ED80037C68D /* DTAnimatedGIF.h in Headers */,
 				384471261BA33ED80037C68D /* DTSmartPagingScrollView.h in Headers */,
 				384471271BA33ED80037C68D /* DTActionSheet.h in Headers */,
@@ -2334,6 +2353,7 @@
 				384471341BA33ED80037C68D /* UIApplication+DTNetworkActivity.h in Headers */,
 				384471351BA33ED80037C68D /* DTCoreGraphicsUtils.h in Headers */,
 				384471361BA33ED80037C68D /* NSMutableArray+DTMoving.h in Headers */,
+				A7D95ADA1BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */,
 				384471371BA33ED80037C68D /* DTSidePanelControllerSegue.h in Headers */,
 				384471381BA33ED80037C68D /* DTObjectBlockExecutor.h in Headers */,
 				384471391BA33ED80037C68D /* DTActivityTitleView.h in Headers */,
@@ -2352,6 +2372,7 @@
 				384471461BA33ED80037C68D /* UIView+DTDebug.h in Headers */,
 				384471471BA33ED80037C68D /* NSString+DTUtilities.h in Headers */,
 				384471481BA33ED80037C68D /* UIColor+DTDebug.h in Headers */,
+				A7D95AD81BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */,
 				384471491BA33ED80037C68D /* NSURL+DTComparing.h in Headers */,
 				3844714A1BA33ED80037C68D /* DTAlertView.h in Headers */,
 				3844714B1BA33ED80037C68D /* DTProgressHUD.h in Headers */,
@@ -2461,6 +2482,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7D95AE01BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */,
 				A7EA07941A2B232500B61CCE /* DTExtendedFileAttributes.h in Headers */,
 				A7E7997A1AB9AFA9008C2393 /* DTFoundation.h in Headers */,
 				A7EA07591A2B220100B61CCE /* DTScrollView.h in Headers */,
@@ -2469,6 +2491,7 @@
 				A7EA07691A2B221300B61CCE /* NSDictionary+DTError.h in Headers */,
 				A7EA079A1A2B232500B61CCE /* DTBlockFunctions.h in Headers */,
 				A79BA5D81B46A0D50086C2F6 /* DTHTMLParser.h in Headers */,
+				A7D95ADE1BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */,
 				A7EA07931A2B232500B61CCE /* DTBase64Coding.h in Headers */,
 				A7EA07981A2B232500B61CCE /* DTVersion.h in Headers */,
 				A7EA07751A2B221300B61CCE /* NSString+DTURLEncoding.h in Headers */,
@@ -2477,6 +2500,7 @@
 				A7EA075B1A2B220100B61CCE /* NSDocument+DTFoundation.h in Headers */,
 				A7EA07991A2B232500B61CCE /* DTWeakSupport.h in Headers */,
 				A7EA075D1A2B220100B61CCE /* NSImage+DTUtilities.h in Headers */,
+				A7D95AE21BC40DAB00AB8A21 /* DTASN1Serialization.h in Headers */,
 				A7EA07B01A2B299D00B61CCE /* DTObjectBlockExecutor.h in Headers */,
 				A7EA076F1A2B221300B61CCE /* NSString+DTFormatNumbers.h in Headers */,
 				A7EA07631A2B220100B61CCE /* NSWindowController+DTPanelControllerPresenting.h in Headers */,
@@ -2503,6 +2527,7 @@
 				A7EA07EA1A2B30F000B61CCE /* UIView+DTFoundation.h in Headers */,
 				A7EA08061A2B316100B61CCE /* NSArray+DTError.h in Headers */,
 				A7EA08161A2B316100B61CCE /* NSString+DTURLEncoding.h in Headers */,
+				A7D95AE81BC40DAC00AB8A21 /* DTASN1Serialization.h in Headers */,
 				A79BA6CA1B46A3E40086C2F6 /* DTAnimatedGIF.h in Headers */,
 				A7EA07E21A2B30F000B61CCE /* DTSmartPagingScrollView.h in Headers */,
 				A7EA07FA1A2B312300B61CCE /* DTActionSheet.h in Headers */,
@@ -2521,6 +2546,7 @@
 				A7EA07E41A2B30F000B61CCE /* UIApplication+DTNetworkActivity.h in Headers */,
 				A7EA081C1A2B317300B61CCE /* DTCoreGraphicsUtils.h in Headers */,
 				A7EA080E1A2B316100B61CCE /* NSMutableArray+DTMoving.h in Headers */,
+				A7D95AE61BC40DAC00AB8A21 /* DTASN1Parser.h in Headers */,
 				A7EA07F41A2B310600B61CCE /* DTSidePanelControllerSegue.h in Headers */,
 				A7EA081E1A2B318500B61CCE /* DTObjectBlockExecutor.h in Headers */,
 				A7EA07DC1A2B30F000B61CCE /* DTActivityTitleView.h in Headers */,
@@ -2539,6 +2565,7 @@
 				A7EA07F81A2B311700B61CCE /* UIView+DTDebug.h in Headers */,
 				A7EA08121A2B316100B61CCE /* NSString+DTUtilities.h in Headers */,
 				A7EA07F61A2B311700B61CCE /* UIColor+DTDebug.h in Headers */,
+				A7D95AE41BC40DAC00AB8A21 /* DTASN1BitString.h in Headers */,
 				A7EA081A1A2B316100B61CCE /* NSURL+DTComparing.h in Headers */,
 				A7EA07FC1A2B312300B61CCE /* DTAlertView.h in Headers */,
 				A74988821B6EA91F00A66234 /* DTProgressHUD.h in Headers */,
@@ -3320,6 +3347,7 @@
 				3844710A1BA33ED80037C68D /* NSDictionary+DTError.m in Sources */,
 				3844710B1BA33ED80037C68D /* NSMutableArray+DTMoving.m in Sources */,
 				3844710C1BA33ED80037C68D /* DTExtendedFileAttributes.m in Sources */,
+				A7D95ADB1BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */,
 				3844710D1BA33ED80037C68D /* NSObject+DTRuntime.m in Sources */,
 				3844710E1BA33ED80037C68D /* NSURL+DTAppLinks.m in Sources */,
 				3844710F1BA33ED80037C68D /* UIImage+DTFoundation.m in Sources */,
@@ -3329,7 +3357,9 @@
 				384471131BA33ED80037C68D /* DTObjectBlockExecutor.m in Sources */,
 				384471141BA33ED80037C68D /* DTActionSheet.m in Sources */,
 				384471151BA33ED80037C68D /* DTBlockFunctions.m in Sources */,
+				A7D95ADD1BC40DAB00AB8A21 /* DTASN1Serialization.m in Sources */,
 				384471161BA33ED80037C68D /* NSString+DTPaths.m in Sources */,
+				A7D95AD91BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */,
 				384471171BA33ED80037C68D /* DTCoreGraphicsUtils.m in Sources */,
 				384471181BA33ED80037C68D /* UIColor+DTDebug.m in Sources */,
 			);
@@ -3596,6 +3626,7 @@
 				A7EA07601A2B220100B61CCE /* NSValue+DTConversion.m in Sources */,
 				A7EA076A1A2B221300B61CCE /* NSDictionary+DTError.m in Sources */,
 				A7EA075C1A2B220100B61CCE /* NSDocument+DTFoundation.m in Sources */,
+				A7D95AE11BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */,
 				A7EA077A1A2B221300B61CCE /* NSURL+DTComparing.m in Sources */,
 				A7EA079B1A2B233E00B61CCE /* DTAsyncFileDeleter.m in Sources */,
 				A7EA07641A2B220100B61CCE /* NSWindowController+DTPanelControllerPresenting.m in Sources */,
@@ -3606,6 +3637,7 @@
 				A79BA8481B46E5840086C2F6 /* DTHTMLParser.m in Sources */,
 				A7EA07681A2B221300B61CCE /* NSData+DTCrypto.m in Sources */,
 				A7EA075E1A2B220100B61CCE /* NSImage+DTUtilities.m in Sources */,
+				A7D95ADF1BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */,
 				A7EA07621A2B220100B61CCE /* NSView+DTAutoLayout.m in Sources */,
 				A7EA07A11A2B233E00B61CCE /* DTVersion.m in Sources */,
 				A7EA07A01A2B233E00B61CCE /* DTLog.m in Sources */,
@@ -3616,6 +3648,7 @@
 				A7EA07781A2B221300B61CCE /* NSURL+DTUnshorten.m in Sources */,
 				A7EA07AE1A2B25B900B61CCE /* NSObject+DTRuntime.m in Sources */,
 				A7EA076E1A2B221300B61CCE /* NSMutableArray+DTMoving.m in Sources */,
+				A7D95AE31BC40DAB00AB8A21 /* DTASN1Serialization.m in Sources */,
 				A7EA07761A2B221300B61CCE /* NSString+DTURLEncoding.m in Sources */,
 				A7EA079D1A2B233E00B61CCE /* DTExtendedFileAttributes.m in Sources */,
 				A7EA07AC1A2B259300B61CCE /* DTCoreGraphicsUtils.m in Sources */,
@@ -3660,6 +3693,7 @@
 				A7EA080B1A2B316100B61CCE /* NSDictionary+DTError.m in Sources */,
 				A7EA080F1A2B316100B61CCE /* NSMutableArray+DTMoving.m in Sources */,
 				A7EA08271A2B318E00B61CCE /* DTExtendedFileAttributes.m in Sources */,
+				A7D95AE71BC40DAC00AB8A21 /* DTASN1Parser.m in Sources */,
 				A7EA08211A2B318500B61CCE /* NSObject+DTRuntime.m in Sources */,
 				A7EA07E91A2B30F000B61CCE /* NSURL+DTAppLinks.m in Sources */,
 				A7EA07E71A2B30F000B61CCE /* UIImage+DTFoundation.m in Sources */,
@@ -3669,7 +3703,9 @@
 				A7EA081F1A2B318500B61CCE /* DTObjectBlockExecutor.m in Sources */,
 				A7EA07FB1A2B312300B61CCE /* DTActionSheet.m in Sources */,
 				A7EA08321A2B318E00B61CCE /* DTBlockFunctions.m in Sources */,
+				A7D95AE91BC40DAC00AB8A21 /* DTASN1Serialization.m in Sources */,
 				A7EA08151A2B316100B61CCE /* NSString+DTPaths.m in Sources */,
+				A7D95AE51BC40DAC00AB8A21 /* DTASN1BitString.m in Sources */,
 				A7EA081D1A2B317300B61CCE /* DTCoreGraphicsUtils.m in Sources */,
 				A7EA07F71A2B311700B61CCE /* UIColor+DTDebug.m in Sources */,
 			);
