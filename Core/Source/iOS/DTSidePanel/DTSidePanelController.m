@@ -251,7 +251,9 @@
 	{
 		_tapToCloseGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToClose:)];
 		_tapToCloseGesture.numberOfTapsRequired = 1;
+#if !TARGET_OS_TV
 		_tapToCloseGesture.numberOfTouchesRequired = 1;
+#endif
 		_tapToCloseGesture.delegate = self;
 	}
 	
