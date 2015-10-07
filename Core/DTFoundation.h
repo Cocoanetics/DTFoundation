@@ -59,6 +59,7 @@
 // DTASN1
 
 #import "DTASN1Parser.h"
+#import "DTASN1Serialization.h"
 
 
 #pragma mark - iOS
