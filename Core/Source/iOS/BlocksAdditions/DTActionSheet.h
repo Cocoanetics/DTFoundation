@@ -14,7 +14,7 @@ typedef void (^DTActionSheetBlock)(void);
 /**
  Extends UIActionSheet with support for blocks.
  */
-#if !TARGET_OS_TV
+#if !TARGET_OS_TV && __IPHONE_OS_VERSION_MAX_ALLOWED < 80300
 @interface DTActionSheet : UIActionSheet
 
 /**
