@@ -84,6 +84,18 @@
     XCTAssertEqualObjects(object, @(1000000029801036));
 }
 
+- (void)testDecodingEmptyString
+{
+    NSString *string = @"FgA=";
+    NSData *data = [DTBase64Coding dataByDecodingString:string];
+    
+    NSString *object = [DTASN1Serialization objectWithData:data];
+    
+    XCTAssertNotNil(object, @"Should be able to decode as number");
+    XCTAssertTrue([object isKindOfClass:[NSString class]], @"Decoded object should be a string");
+    XCTAssertEqualObjects(object, @"");
+}
+
 - (void)testCertificateDecoding
 {
     NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"SelfSigned" ofType:@"der"];
