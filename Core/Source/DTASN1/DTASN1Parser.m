@@ -176,14 +176,14 @@
 		{
 			BOOL sendAsData = NO;
 			
-			if (dataRange.length<=4)
+			if (dataRange.length <= sizeof(unsigned long long))
 			{
 				uint8_t *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
 				if (_delegateFlags.delegateSupportsNumber)
 				{
-					NSUInteger value = 0;
+					unsigned long long value = 0;
 					
 					for (int i=0; i<dataRange.length; i++)
 					{
@@ -191,7 +191,7 @@
 						value += buffer[i];
 					}
 					
-					NSNumber *number = [NSNumber numberWithUnsignedInteger:value];
+					NSNumber *number = [NSNumber numberWithUnsignedLongLong:value];
 					
 					[_delegate parser:self foundNumber:number];
 				}
