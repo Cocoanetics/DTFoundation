@@ -10,6 +10,9 @@
 #import <XCTest/XCTest.h>
 #import "DTAlertView.h"
 
+#if !TARGET_OS_TV && __IPHONE_OS_VERSION_MAX_ALLOWED < 90000
+
+
 @interface DTAlertView(Private) <UIAlertViewDelegate>
 @end
 
@@ -73,5 +76,6 @@
 
 }
 
-
 @end
+
+#endif

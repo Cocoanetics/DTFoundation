@@ -9,6 +9,7 @@
 #import "DTWeakSupport.h"
 
 #if !TARGET_OS_TV && __IPHONE_OS_VERSION_MAX_ALLOWED < 90000
+
 // the block to execute when an alert button is tapped
 typedef void (^DTAlertViewBlock)(void);
 
