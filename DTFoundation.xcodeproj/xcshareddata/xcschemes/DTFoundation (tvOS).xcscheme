@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0710"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A710A4FF1607556000437D36"
-               BuildableName = "libDTFoundation_Mac.a"
-               BlueprintName = "Static Library (Mac)"
+               BlueprintIdentifier = "384470EC1BA33ED80037C68D"
+               BuildableName = "DTFoundation.framework"
+               BlueprintName = "DTFoundation (tvOS)"
                ReferencedContainer = "container:DTFoundation.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A710A4FF1607556000437D36"
-            BuildableName = "libDTFoundation_Mac.a"
-            BlueprintName = "Static Library (Mac)"
+            BlueprintIdentifier = "384470EC1BA33ED80037C68D"
+            BuildableName = "DTFoundation.framework"
+            BlueprintName = "DTFoundation (tvOS)"
             ReferencedContainer = "container:DTFoundation.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -60,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "384470EC1BA33ED80037C68D"
+            BuildableName = "DTFoundation.framework"
+            BlueprintName = "DTFoundation (tvOS)"
+            ReferencedContainer = "container:DTFoundation.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

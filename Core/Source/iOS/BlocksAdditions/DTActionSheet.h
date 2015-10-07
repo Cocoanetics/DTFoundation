@@ -14,7 +14,7 @@ typedef void (^DTActionSheetBlock)(void);
 /**
  Extends UIActionSheet with support for blocks.
  */
-
+#if !TARGET_OS_TV
 @interface DTActionSheet : UIActionSheet
 
 /**
@@ -66,3 +66,4 @@ typedef void (^DTActionSheetBlock)(void);
 @property (nonatomic, DT_WEAK_PROPERTY) id<UIActionSheetDelegate> actionSheetDelegate;
 
 @end
+#endif

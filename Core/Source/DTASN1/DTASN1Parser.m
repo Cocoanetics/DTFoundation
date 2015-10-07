@@ -141,12 +141,22 @@
 
 - (BOOL)_parseValueWithTag:(NSUInteger)tag dataRange:(NSRange)dataRange
 {
-	if (!dataRange.length && tag != DTASN1TypeNull)
+	if (!dataRange.length)
 	{
-		//DTLogError(@"Encountered zero length data for tag %ld", (unsigned long)tag);
-		
-		// only NULL can have zero length
-		return NO;
+        // only NULL and strings can have zero length
+
+        switch (tag)
+        {
+            case DTASN1TypeNull:
+            case DTASN1TypeTeletexString:
+            case DTASN1TypeGraphicString:
+            case DTASN1TypePrintableString:
+            case DTASN1TypeUTF8String:
+            case DTASN1TypeIA5String:
+                break;
+            default:
+                return NO;
+        }
 	}
 	
 	switch (tag)
@@ -176,14 +186,14 @@
 		{
 			BOOL sendAsData = NO;
 			
-			if (dataRange.length<=4)
+			if (dataRange.length <= sizeof(unsigned long long))
 			{
 				uint8_t *buffer = malloc(dataRange.length);
 				[_data getBytes:buffer range:dataRange];
 				
 				if (_delegateFlags.delegateSupportsNumber)
 				{
-					NSUInteger value = 0;
+					unsigned long long value = 0;
 					
 					for (int i=0; i<dataRange.length; i++)
 					{
@@ -191,7 +201,7 @@
 						value += buffer[i];
 					}
 					
-					NSNumber *number = [NSNumber numberWithUnsignedInteger:value];
+					NSNumber *number = [NSNumber numberWithUnsignedLongLong:value];
 					
 					[_delegate parser:self foundNumber:number];
 				}

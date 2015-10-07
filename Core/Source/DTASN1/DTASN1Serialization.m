@@ -25,7 +25,7 @@
 	NSMutableArray *_stack;
 }
 
-+ (id)objectWithData:(NSData *)data
++ (nullable id)objectWithData:(nonnull NSData *)data
 {
 	DTASN1Serialization *decoder = [[DTASN1Serialization alloc] initWithData:data];
 	
@@ -34,7 +34,7 @@
 
 
 // private initializer
-- (id)initWithData:(NSData *)data
+- (nullable id)initWithData:(nonnull NSData *)data
 {
 	self = [super init];
 	

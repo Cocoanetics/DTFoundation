@@ -58,6 +58,44 @@
 	XCTAssertTrue([object isKindOfClass:[NSArray class]], @"Decoded object should be an array");
 }
 
+- (void)testDecodingSimpleInt
+{
+    NSMutableData *data = [NSMutableData new];
+    uint8_t byte = 2;
+    [data appendBytes:&byte length:1];
+    byte = 1;
+    [data appendBytes:&byte length:1];
+    byte = 3;
+    [data appendBytes:&byte length:1];
+    
+    NSNumber *object = [DTASN1Serialization objectWithData:data];
+    XCTAssertEqualObjects(object, @(3));
+}
+
+- (void)testDecodingLongInt
+{
+    NSString *string = @"AgcDjX6mjTpM";
+    NSData *data = [DTBase64Coding dataByDecodingString:string];
+    
+    NSNumber *object = [DTASN1Serialization objectWithData:data];
+    
+    XCTAssertNotNil(object, @"Should be able to decode as number");
+    XCTAssertTrue([object isKindOfClass:[NSNumber class]], @"Decoded object should be a number");
+    XCTAssertEqualObjects(object, @(1000000029801036));
+}
+
+- (void)testDecodingEmptyString
+{
+    NSString *string = @"FgA=";
+    NSData *data = [DTBase64Coding dataByDecodingString:string];
+    
+    NSString *object = [DTASN1Serialization objectWithData:data];
+    
+    XCTAssertNotNil(object, @"Should be able to decode as number");
+    XCTAssertTrue([object isKindOfClass:[NSString class]], @"Decoded object should be a string");
+    XCTAssertEqualObjects(object, @"");
+}
+
 - (void)testCertificateDecoding
 {
     NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"SelfSigned" ofType:@"der"];

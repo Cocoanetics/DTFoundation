@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import "DTWeakSupport.h"
+
 /**
  Types of ASN1 tags, specifying the type of the following value in TLV notation
  */
@@ -321,20 +323,9 @@ typedef NS_ENUM(NSUInteger, DTASN1Type)
 - (void)abortParsing;
 
 /**
- Sets the receiver’s delegate.
- 
- @param delegate An object that is the new delegate. It is not retained. The delegate must conform to the DTASN1ParserDelegate Protocol protocol.
- 
- @see delegate
+ An object that is the parsing delegate. It is not retained. The delegate must conform to the DTASN1ParserDelegate Protocol protocol.
  */
-- (void)setDelegate:(id <DTASN1ParserDelegate>)delegate;
-
-/**
- Returns the receiver’s delegate.
- 
- @see delegate
- */
-- (id <DTASN1ParserDelegate>)delegate;
+@property (nonatomic, DT_WEAK_PROPERTY) id <DTASN1ParserDelegate>delegate;
 
 
 /**

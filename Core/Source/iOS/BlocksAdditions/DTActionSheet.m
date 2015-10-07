@@ -11,6 +11,8 @@
 
 #import "DTLog.h"
 
+#if !TARGET_OS_TV
+
 @interface DTActionSheet () <UIActionSheetDelegate>
 
 @end
@@ -179,3 +181,4 @@
 }
 
 @end
+#endif
