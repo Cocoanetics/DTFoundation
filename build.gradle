@@ -1,18 +1,6 @@
-buildscript {
-	repositories {
-		maven {
-			url('http://repository.openbakery.org/')
-		}
-		mavenCentral()
-  }
-
-	dependencies {
-	    classpath "org.openbakery:xcode-plugin:0.11.+"
-	}
-
+plugins {
+  id "org.openbakery.xcode-plugin" version "0.11.6"
 }
-apply plugin: "org.openbakery.xcode-plugin"
-
 
 repositories {
 	mavenCentral()
