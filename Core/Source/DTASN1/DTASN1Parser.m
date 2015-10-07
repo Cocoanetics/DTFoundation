@@ -141,12 +141,22 @@
 
 - (BOOL)_parseValueWithTag:(NSUInteger)tag dataRange:(NSRange)dataRange
 {
-	if (!dataRange.length && tag != DTASN1TypeNull)
+	if (!dataRange.length)
 	{
-		//DTLogError(@"Encountered zero length data for tag %ld", (unsigned long)tag);
-		
-		// only NULL can have zero length
-		return NO;
+        // only NULL and strings can have zero length
+
+        switch (tag)
+        {
+            case DTASN1TypeNull:
+            case DTASN1TypeTeletexString:
+            case DTASN1TypeGraphicString:
+            case DTASN1TypePrintableString:
+            case DTASN1TypeUTF8String:
+            case DTASN1TypeIA5String:
+                break;
+            default:
+                return NO;
+        }
 	}
 	
 	switch (tag)
