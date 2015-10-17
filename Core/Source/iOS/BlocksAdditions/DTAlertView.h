@@ -7,6 +7,7 @@
 //
 
 #import "DTWeakSupport.h"
+#import <Availability.h>
 
 #if !TARGET_OS_TV && __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
 
