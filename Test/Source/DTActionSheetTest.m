@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "DTActionSheet.h"
 
-#if !TARGET_OS_TV && __IPHONE_OS_VERSION_MAX_ALLOWED < 80300
+#if !TARGET_OS_TV && __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
 
 @interface DTActionSheet(Private) <UIActionSheetDelegate>
 @end
