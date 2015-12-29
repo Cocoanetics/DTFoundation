@@ -3,6 +3,26 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.7.9**
+
+- ADDED: Support for app extensions
+- FIXED: Missing resume for data task in URL unshortener
+- CHANGED: Made smart paging delegate outlet so that it can be connected in IB
+- CHANGED: tvOS settings for combining HiDPI artwork, as suggested by Xcode
+- CHANGED: Exclude DTAlertView and DTActionSheet based on min OS instead of max OS
+- CHANGED: Removed deprecated classes from progress HUD demo
+- CHANGED: Xcode 7.1 update
+- FIXED: Unit tests
+
+**Version 1.7.8**
+
+- ADDED: Support for tvOS
+- ADDED: Define to disable code that does not work when building for extensions
+- ADDED: [DTASN1] now part of DTFoundation Core
+- FIXED: [DTASN1] Numbers with more than 4 bytes would not be represented as NSNumber
+- FIXED: [DTASN1] Zero-length strings would cause parsing to assume an error
+- CHANGED: Removed DTZipArchive unit tests that would sometimes randomly fail (timing)
+
 **Version 1.7.7**
 
 - FIXED: [DTSidePanelController] Panel might get stuck half way opened

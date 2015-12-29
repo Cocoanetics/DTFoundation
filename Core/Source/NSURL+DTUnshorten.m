@@ -43,14 +43,14 @@
             void (^networkCompletion)(NSURL *responseURL) = ^void(NSURL *responseURL) {
                 // cache result
                 
-                if (longURL)
+                if (responseURL)
                 {
-                    [unshortenCache setObject:longURL forKey:shortURL];
+                    [unshortenCache setObject:responseURL forKey:shortURL];
                 }
                     
                 if (completion)
                 {
-                    completion(longURL);
+                    completion(responseURL);
                 }
             };
             
@@ -60,9 +60,9 @@
 			[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
             networkCompletion([response URL]);
 #else
-            [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * data, NSURLResponse * response, NSError * error) {
+            [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * data, NSURLResponse * response, NSError * error) {
                 networkCompletion([response URL]);
-            }];
+            }] resume];
 #endif
         } else if (completion) {
             

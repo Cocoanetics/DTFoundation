@@ -10,6 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "DTActionSheet.h"
 
+#if !TARGET_OS_TV && __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
 
 @interface DTActionSheet(Private) <UIActionSheetDelegate>
 @end
@@ -70,5 +71,6 @@
 	XCTAssertTrue(blockExecuted, @"The ok button block should be executed");
 }
 
-
 @end
+
+#endif

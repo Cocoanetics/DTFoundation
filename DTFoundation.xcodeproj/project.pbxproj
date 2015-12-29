@@ -207,6 +207,12 @@
 		A705E8A2197ED5D2001B16A7 /* DTLogTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A705E8A1197ED5D2001B16A7 /* DTLogTest.m */; };
 		A70B4CE81486637E00873A4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A70B4CF7148663AF00873A4A /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70BCEC41BF4A5EF000CD60D /* DTObjectBlockExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2517A65B8600480205 /* DTObjectBlockExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70BCEC51BF4A5F0000CD60D /* DTObjectBlockExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2517A65B8600480205 /* DTObjectBlockExecutor.h */; };
+		A70BCEC61BF4A5F0000CD60D /* DTObjectBlockExecutor.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2517A65B8600480205 /* DTObjectBlockExecutor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70BCEC71BF4A61A000CD60D /* NSObject+DTRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2717A65B8600480205 /* NSObject+DTRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70BCEC81BF4A61B000CD60D /* NSObject+DTRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2717A65B8600480205 /* NSObject+DTRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A70BCEC91BF4A61C000CD60D /* NSObject+DTRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2717A65B8600480205 /* NSObject+DTRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A70C4FCC17AA7CEC00000DF5 /* UIColor+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2B17A65D4B00480205 /* UIColor+DTDebug.m */; };
 		A70C4FCD17AA7CEC00000DF5 /* UIView+DTDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2D17A65D4B00480205 /* UIView+DTDebug.m */; };
 		A70C4FE817AA7F0200000DF5 /* DTScriptExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1817A65AD700480205 /* DTScriptExpression.m */; };
@@ -389,24 +395,24 @@
 		A7D8C7BC1723174600025675 /* DTZipArchiveNode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494CD06FFAB6AEAC8ADAD4 /* DTZipArchiveNode.h */; };
 		A7D8C7BD1723174600025675 /* DTZipArchivePKZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494E7390203BE4105C5070 /* DTZipArchivePKZip.h */; };
 		A7D8C7BE1723174600025675 /* DTZipArchiveGZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C04943358446F1A9BA86F458 /* DTZipArchiveGZip.h */; };
-		A7D95AD81BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1E17A65AD800480205 /* DTASN1BitString.h */; settings = {ASSET_TAGS = (); }; };
-		A7D95AD91BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; settings = {ASSET_TAGS = (); }; };
-		A7D95ADA1BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2017A65AD800480205 /* DTASN1Parser.h */; settings = {ASSET_TAGS = (); }; };
-		A7D95ADB1BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95AD81BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1E17A65AD800480205 /* DTASN1BitString.h */; };
+		A7D95AD91BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; };
+		A7D95ADA1BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2017A65AD800480205 /* DTASN1Parser.h */; };
+		A7D95ADB1BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; };
 		A7D95ADC1BC40DAB00AB8A21 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2217A65AD800480205 /* DTASN1Serialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7D95ADD1BC40DAB00AB8A21 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; settings = {ASSET_TAGS = (); }; };
-		A7D95ADE1BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1E17A65AD800480205 /* DTASN1BitString.h */; settings = {ASSET_TAGS = (); }; };
-		A7D95ADF1BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95ADD1BC40DAB00AB8A21 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; };
+		A7D95ADE1BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1E17A65AD800480205 /* DTASN1BitString.h */; };
+		A7D95ADF1BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; };
 		A7D95AE01BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2017A65AD800480205 /* DTASN1Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7D95AE11BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE11BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; };
 		A7D95AE21BC40DAB00AB8A21 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2217A65AD800480205 /* DTASN1Serialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7D95AE31BC40DAB00AB8A21 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; settings = {ASSET_TAGS = (); }; };
-		A7D95AE41BC40DAC00AB8A21 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1E17A65AD800480205 /* DTASN1BitString.h */; settings = {ASSET_TAGS = (); }; };
-		A7D95AE51BC40DAC00AB8A21 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE31BC40DAB00AB8A21 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; };
+		A7D95AE41BC40DAC00AB8A21 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1E17A65AD800480205 /* DTASN1BitString.h */; };
+		A7D95AE51BC40DAC00AB8A21 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; };
 		A7D95AE61BC40DAC00AB8A21 /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2017A65AD800480205 /* DTASN1Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7D95AE71BC40DAC00AB8A21 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE71BC40DAC00AB8A21 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; };
 		A7D95AE81BC40DAC00AB8A21 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2217A65AD800480205 /* DTASN1Serialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7D95AE91BC40DAC00AB8A21 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; settings = {ASSET_TAGS = (); }; };
+		A7D95AE91BC40DAC00AB8A21 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; };
 		A7D9D62E1758C89800C29B6F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFF8147FD08900F4059A /* UIKit.framework */; };
 		A7D9D62F1758C89800C29B6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F4DFFA147FD08F00F4059A /* Foundation.framework */; };
 		A7D9D6301758C89800C29B6F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE5B9311610A38200CA0D99 /* CoreGraphics.framework */; };
@@ -2294,11 +2300,13 @@
 				384470C71BA3330F0037C68D /* DTAnimatedGIF.h in Headers */,
 				384470C81BA3330F0037C68D /* crypt.h in Headers */,
 				384470C91BA3330F0037C68D /* ioapi.h in Headers */,
+				A70BCEC81BF4A61B000CD60D /* NSObject+DTRuntime.h in Headers */,
 				384470CA1BA3330F0037C68D /* mztools.h in Headers */,
 				384470CB1BA3330F0037C68D /* unzip.h in Headers */,
 				384470CC1BA3330F0037C68D /* zip.h in Headers */,
 				384470CD1BA3330F0037C68D /* DTActivityTitleView.h in Headers */,
 				384470CE1BA3330F0037C68D /* DTPieProgressIndicator.h in Headers */,
+				A70BCEC51BF4A5F0000CD60D /* DTObjectBlockExecutor.h in Headers */,
 				384470CF1BA3330F0037C68D /* NSURL+DTComparing.h in Headers */,
 				384470D01BA3330F0037C68D /* DTSmartPagingScrollView.h in Headers */,
 				384470D11BA3330F0037C68D /* NSURL+DTAppLinks.h in Headers */,
@@ -2396,11 +2404,13 @@
 				A79BA89C1B46EDDD0086C2F6 /* DTAnimatedGIF.h in Headers */,
 				A77DD41714E825FC00F34B03 /* crypt.h in Headers */,
 				A77DD41B14E825FC00F34B03 /* ioapi.h in Headers */,
+				A70BCEC71BF4A61A000CD60D /* NSObject+DTRuntime.h in Headers */,
 				A77DD41F14E825FC00F34B03 /* mztools.h in Headers */,
 				A77DD42314E825FC00F34B03 /* unzip.h in Headers */,
 				A77DD42714E825FC00F34B03 /* zip.h in Headers */,
 				A76DB4A016A5E37F0010CD85 /* DTActivityTitleView.h in Headers */,
 				A76DB4AC16A5E37F0010CD85 /* DTPieProgressIndicator.h in Headers */,
+				A70BCEC61BF4A5F0000CD60D /* DTObjectBlockExecutor.h in Headers */,
 				A7F8CDA51B4BE671007DAD63 /* NSURL+DTComparing.h in Headers */,
 				A76DB4B216A5E37F0010CD85 /* DTSmartPagingScrollView.h in Headers */,
 				A76DB4CD16A5E5100010CD85 /* NSURL+DTAppLinks.h in Headers */,
@@ -2433,6 +2443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7F8CDBE1B4BE694007DAD63 /* NSView+DTAutoLayout.h in Headers */,
+				A70BCEC91BF4A61C000CD60D /* NSObject+DTRuntime.h in Headers */,
 				A79BA89B1B46ED880086C2F6 /* DTHTMLParser.h in Headers */,
 				A7F8CDA71B4BE67D007DAD63 /* NSData+DTCrypto.h in Headers */,
 				A7F8CDAD1B4BE67D007DAD63 /* NSString+DTURLEncoding.h in Headers */,
@@ -2447,6 +2458,7 @@
 				E2262E82163846AB00BFDAD7 /* DTFoundation.h in Headers */,
 				A7F8CDAC1B4BE67D007DAD63 /* NSString+DTPaths.h in Headers */,
 				A7F8CDA61B4BE67D007DAD63 /* NSArray+DTError.h in Headers */,
+				A70BCEC41BF4A5EF000CD60D /* DTObjectBlockExecutor.h in Headers */,
 				A7F8CDA41B4BE671007DAD63 /* NSURL+DTComparing.h in Headers */,
 				A7F8CDBB1B4BE694007DAD63 /* NSDocument+DTFoundation.h in Headers */,
 				A7F8CDAA1B4BE67D007DAD63 /* NSMutableArray+DTMoving.h in Headers */,
@@ -3875,6 +3887,7 @@
 		384470E81BA3330F0037C68D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/DTFoundation.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -3888,6 +3901,7 @@
 		384470E91BA3330F0037C68D /* Coverage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/DTFoundation.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -3901,6 +3915,7 @@
 		384470EA1BA3330F0037C68D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/DTFoundation.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -3919,6 +3934,7 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -3949,6 +3965,7 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -3981,6 +3998,7 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -4712,7 +4730,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4739,7 +4757,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4766,7 +4784,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
