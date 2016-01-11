@@ -21,6 +21,15 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		355B20F69317B1E7568164F6 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
+		355B22005C6FF867B17E26F9 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B2F8E4A180F7C3D2C3C09 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		355B24337EF95201E703181B /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
+		355B24DBAB74800514C38814 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
+		355B25BECDAE01CBBE99387B /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
+		355B29154AF44F9FC611EAF8 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
+		355B298E94B837A80AB34682 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
+		355B29F4DAA9E868E2113E4D /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B2F8E4A180F7C3D2C3C09 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		355B2EA1F5BC8455D7607F0D /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B2F8E4A180F7C3D2C3C09 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		384470921BA3330F0037C68D /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
 		384470931BA3330F0037C68D /* DTFolderMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */; };
 		384470941BA3330F0037C68D /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
@@ -36,7 +45,6 @@
 		3844709E1BA3330F0037C68D /* NSData+DTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = A79500F6161D680000358BC3 /* NSData+DTCrypto.m */; };
 		3844709F1BA3330F0037C68D /* DTBlockFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A768BE3B17FC3C91008834C6 /* DTBlockFunctions.m */; };
 		384470A01BA3330F0037C68D /* UIView+DTActionHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6D91920F1AF00120808 /* UIView+DTActionHandlers.m */; };
-		384470A11BA3330F0037C68D /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FAC17B127E0000FC61F /* DTAsyncFileDeleter.m */; };
 		384470A21BA3330F0037C68D /* NSFileWrapper+DTCopying.m in Sources */ = {isa = PBXBuildFile; fileRef = A73B6F8A163169BB002CCCA7 /* NSFileWrapper+DTCopying.m */; };
 		384470A31BA3330F0037C68D /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
 		384470A41BA3330F0037C68D /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6D71920F1AF00120808 /* DTAlertView.m */; };
@@ -123,7 +131,6 @@
 		384470FF1BA33ED80037C68D /* DTSmartPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB49816A5E37F0010CD85 /* DTSmartPagingScrollView.m */; };
 		384471001BA33ED80037C68D /* NSString+DTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D0AA49153C233E0020F18B /* NSString+DTUtilities.m */; };
 		384471011BA33ED80037C68D /* DTSidePanelPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B210F4174F2B22B0CD6A0 /* DTSidePanelPanGestureRecognizer.m */; };
-		384471021BA33ED80037C68D /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FAC17B127E0000FC61F /* DTAsyncFileDeleter.m */; };
 		384471031BA33ED80037C68D /* UIApplication+DTNetworkActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4C316A5E50E0010CD85 /* UIApplication+DTNetworkActivity.m */; };
 		384471041BA33ED80037C68D /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
 		384471051BA33ED80037C68D /* UIWebView+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4CB16A5E5100010CD85 /* UIWebView+DTFoundation.m */; };
@@ -195,7 +202,6 @@
 		384471491BA33ED80037C68D /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3844714A1BA33ED80037C68D /* DTAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = F88FF6D61920F1AF00120808 /* DTAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3844714B1BA33ED80037C68D /* DTProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = F88FF6831920A9DF00120808 /* DTProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3844714C1BA33ED80037C68D /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FAD17B127E0000FC61F /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3844714D1BA33ED80037C68D /* UIImage+DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DB4C416A5E50E0010CD85 /* UIImage+DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3844714E1BA33ED80037C68D /* NSDictionary+DTError.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3844714F1BA33ED80037C68D /* DTCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = A74549681B6A3F26004B0CA7 /* DTCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -469,7 +475,6 @@
 		A7EA07791A2B221300B61CCE /* NSURL+DTComparing.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7EA077A1A2B221300B61CCE /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
 		A7EA077F1A2B230B00B61CCE /* DTExtendedFileAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */; };
-		A7EA07821A2B230F00B61CCE /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FAC17B127E0000FC61F /* DTAsyncFileDeleter.m */; };
 		A7EA07841A2B230F00B61CCE /* DTBase64Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */; };
 		A7EA07861A2B230F00B61CCE /* DTExtendedFileAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */; };
 		A7EA07881A2B230F00B61CCE /* DTFolderMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */; };
@@ -477,7 +482,6 @@
 		A7EA078C1A2B230F00B61CCE /* DTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FA317B0F7B4000FC61F /* DTLog.m */; };
 		A7EA078E1A2B230F00B61CCE /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
 		A7EA07911A2B230F00B61CCE /* DTBlockFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A768BE3B17FC3C91008834C6 /* DTBlockFunctions.m */; };
-		A7EA07921A2B232500B61CCE /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FAD17B127E0000FC61F /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7EA07931A2B232500B61CCE /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7EA07941A2B232500B61CCE /* DTExtendedFileAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D6F2E315063448001CACDD /* DTExtendedFileAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7EA07951A2B232500B61CCE /* DTFolderMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = A78D661B17AFFCCC0039F5E6 /* DTFolderMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -486,7 +490,6 @@
 		A7EA07981A2B232500B61CCE /* DTVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC71486621B00873A4A /* DTVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7EA07991A2B232500B61CCE /* DTWeakSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7EA079A1A2B232500B61CCE /* DTBlockFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = A768BE3A17FC3C91008834C6 /* DTBlockFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7EA079B1A2B233E00B61CCE /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FAC17B127E0000FC61F /* DTAsyncFileDeleter.m */; };
 		A7EA079C1A2B233E00B61CCE /* DTBase64Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */; };
 		A7EA079D1A2B233E00B61CCE /* DTExtendedFileAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D6F2E415063448001CACDD /* DTExtendedFileAttributes.m */; };
 		A7EA079E1A2B233E00B61CCE /* DTFolderMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */; };
@@ -568,8 +571,6 @@
 		A7EA081F1A2B318500B61CCE /* DTObjectBlockExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2617A65B8600480205 /* DTObjectBlockExecutor.m */; };
 		A7EA08201A2B318500B61CCE /* NSObject+DTRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2717A65B8600480205 /* NSObject+DTRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7EA08211A2B318500B61CCE /* NSObject+DTRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2817A65B8600480205 /* NSObject+DTRuntime.m */; };
-		A7EA08221A2B318E00B61CCE /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = A7FA5FAD17B127E0000FC61F /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7EA08231A2B318E00B61CCE /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FAC17B127E0000FC61F /* DTAsyncFileDeleter.m */; };
 		A7EA08241A2B318E00B61CCE /* DTBase64Coding.h in Headers */ = {isa = PBXBuildFile; fileRef = A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7EA08251A2B318E00B61CCE /* DTBase64Coding.m in Sources */ = {isa = PBXBuildFile; fileRef = A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */; };
 		A7EA08261A2B318E00B61CCE /* DTExtendedFileAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D6F2E315063448001CACDD /* DTExtendedFileAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -618,7 +619,6 @@
 		A7F8CDBE1B4BE694007DAD63 /* NSView+DTAutoLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DB4EA16A5E5590010CD85 /* NSView+DTAutoLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7F8CDBF1B4BE694007DAD63 /* NSWindowController+DTPanelControllerPresenting.h in Headers */ = {isa = PBXBuildFile; fileRef = A76DB4EC16A5E5590010CD85 /* NSWindowController+DTPanelControllerPresenting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7FA5FA917B0F7B4000FC61F /* DTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FA317B0F7B4000FC61F /* DTLog.m */; };
-		A7FA5FB017B127E0000FC61F /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FA5FAC17B127E0000FC61F /* DTAsyncFileDeleter.m */; };
 		A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
 		A7FAA38C1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
 		A7FB1216175C9C8B00D4B7F0 /* DTSidePanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = A74663B21743D43600D4D7D5 /* DTSidePanelController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -917,8 +917,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAsyncFileDeleter.m; path = Core/Source/DTAsyncFileDeleter.m; sourceTree = SOURCE_ROOT; };
 		355B210F4174F2B22B0CD6A0 /* DTSidePanelPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSidePanelPanGestureRecognizer.m; sourceTree = "<group>"; };
 		355B257CC69FC64D78ABE0BE /* DTSidePanelPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSidePanelPanGestureRecognizer.h; sourceTree = "<group>"; };
+		355B2F8E4A180F7C3D2C3C09 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTAsyncFileDeleter.h; path = Core/Source/DTAsyncFileDeleter.h; sourceTree = SOURCE_ROOT; };
 		384470EB1BA3330F0037C68D /* libStatic Library (tvOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libStatic Library (tvOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		384471551BA33ED80037C68D /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D7CE547166613B60028D339 /* libDTHTMLParser_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1160,8 +1162,6 @@
 		A7F4DFFA147FD08F00F4059A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A7FA5FA217B0F7B4000FC61F /* DTLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTLog.h; sourceTree = "<group>"; };
 		A7FA5FA317B0F7B4000FC61F /* DTLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTLog.m; sourceTree = "<group>"; };
-		A7FA5FAC17B127E0000FC61F /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
-		A7FA5FAD17B127E0000FC61F /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTComparing.h"; sourceTree = "<group>"; };
 		A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTComparing.m"; sourceTree = "<group>"; };
 		A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTWeakSupport.h; sourceTree = "<group>"; };
@@ -1512,6 +1512,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		355B29D40C8F973BCF5B387B /* DTAsyncFileDeleter */ = {
+			isa = PBXGroup;
+			children = (
+				355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */,
+				355B2F8E4A180F7C3D2C3C09 /* DTAsyncFileDeleter.h */,
+			);
+			path = DTAsyncFileDeleter;
+			sourceTree = "<group>";
+		};
 		A70B4CC41486621B00873A4A /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -1965,8 +1974,6 @@
 				A76DB4F816A5E5940010CD85 /* DTUTI */,
 				A76DB4BC16A5E4760010CD85 /* DTZipArchive */,
 				A78EDD2417A65B8600480205 /* Runtime */,
-				A7FA5FAD17B127E0000FC61F /* DTAsyncFileDeleter.h */,
-				A7FA5FAC17B127E0000FC61F /* DTAsyncFileDeleter.m */,
 				A77D5BF816E4961A00A45C28 /* DTBase64Coding.h */,
 				A77D5BF916E4961A00A45C28 /* DTBase64Coding.m */,
 				A7D6F2E315063448001CACDD /* DTExtendedFileAttributes.h */,
@@ -1983,6 +1990,7 @@
 				A768BE3A17FC3C91008834C6 /* DTBlockFunctions.h */,
 				A768BE3B17FC3C91008834C6 /* DTBlockFunctions.m */,
 				A74549681B6A3F26004B0CA7 /* DTCompatibility.h */,
+				355B29D40C8F973BCF5B387B /* DTAsyncFileDeleter */,
 			);
 			name = Universal;
 			sourceTree = "<group>";
@@ -2384,10 +2392,10 @@
 				384471491BA33ED80037C68D /* NSURL+DTComparing.h in Headers */,
 				3844714A1BA33ED80037C68D /* DTAlertView.h in Headers */,
 				3844714B1BA33ED80037C68D /* DTProgressHUD.h in Headers */,
-				3844714C1BA33ED80037C68D /* DTAsyncFileDeleter.h in Headers */,
 				3844714D1BA33ED80037C68D /* UIImage+DTFoundation.h in Headers */,
 				3844714E1BA33ED80037C68D /* NSDictionary+DTError.h in Headers */,
 				3844714F1BA33ED80037C68D /* DTCompatibility.h in Headers */,
+				355B22005C6FF867B17E26F9 /* DTAsyncFileDeleter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2526,8 +2534,8 @@
 				A7EA075F1A2B220100B61CCE /* NSValue+DTConversion.h in Headers */,
 				A7EA076B1A2B221300B61CCE /* NSFileWrapper+DTCopying.h in Headers */,
 				A7EA07961A2B232500B61CCE /* DTFoundationConstants.h in Headers */,
-				A7EA07921A2B232500B61CCE /* DTAsyncFileDeleter.h in Headers */,
 				A7EA07951A2B232500B61CCE /* DTFolderMonitor.h in Headers */,
+				355B2EA1F5BC8455D7607F0D /* DTAsyncFileDeleter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2581,10 +2589,10 @@
 				A7EA081A1A2B316100B61CCE /* NSURL+DTComparing.h in Headers */,
 				A7EA07FC1A2B312300B61CCE /* DTAlertView.h in Headers */,
 				A74988821B6EA91F00A66234 /* DTProgressHUD.h in Headers */,
-				A7EA08221A2B318E00B61CCE /* DTAsyncFileDeleter.h in Headers */,
 				A7EA07E61A2B30F000B61CCE /* UIImage+DTFoundation.h in Headers */,
 				A7EA080A1A2B316100B61CCE /* NSDictionary+DTError.h in Headers */,
 				A7B505361B6A595700BC743A /* DTCompatibility.h in Headers */,
+				355B29F4DAA9E868E2113E4D /* DTAsyncFileDeleter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3292,7 +3300,6 @@
 				3844709E1BA3330F0037C68D /* NSData+DTCrypto.m in Sources */,
 				3844709F1BA3330F0037C68D /* DTBlockFunctions.m in Sources */,
 				384470A01BA3330F0037C68D /* UIView+DTActionHandlers.m in Sources */,
-				384470A11BA3330F0037C68D /* DTAsyncFileDeleter.m in Sources */,
 				384470A21BA3330F0037C68D /* NSFileWrapper+DTCopying.m in Sources */,
 				384470A31BA3330F0037C68D /* NSURL+DTComparing.m in Sources */,
 				384470A41BA3330F0037C68D /* DTAlertView.m in Sources */,
@@ -3321,6 +3328,7 @@
 				384470BB1BA3330F0037C68D /* DTObjectBlockExecutor.m in Sources */,
 				384470BC1BA3330F0037C68D /* NSObject+DTRuntime.m in Sources */,
 				384470BD1BA3330F0037C68D /* DTSidePanelController.m in Sources */,
+				355B24337EF95201E703181B /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3348,7 +3356,6 @@
 				384470FF1BA33ED80037C68D /* DTSmartPagingScrollView.m in Sources */,
 				384471001BA33ED80037C68D /* NSString+DTUtilities.m in Sources */,
 				384471011BA33ED80037C68D /* DTSidePanelPanGestureRecognizer.m in Sources */,
-				384471021BA33ED80037C68D /* DTAsyncFileDeleter.m in Sources */,
 				384471031BA33ED80037C68D /* UIApplication+DTNetworkActivity.m in Sources */,
 				384471041BA33ED80037C68D /* DTVersion.m in Sources */,
 				384471051BA33ED80037C68D /* UIWebView+DTFoundation.m in Sources */,
@@ -3374,6 +3381,7 @@
 				A7D95AD91BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */,
 				384471171BA33ED80037C68D /* DTCoreGraphicsUtils.m in Sources */,
 				384471181BA33ED80037C68D /* UIColor+DTDebug.m in Sources */,
+				355B29154AF44F9FC611EAF8 /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3404,7 +3412,6 @@
 				A7950101161D680000358BC3 /* NSData+DTCrypto.m in Sources */,
 				A7EA07911A2B230F00B61CCE /* DTBlockFunctions.m in Sources */,
 				F88FF6DF1920F1AF00120808 /* UIView+DTActionHandlers.m in Sources */,
-				A7EA07821A2B230F00B61CCE /* DTAsyncFileDeleter.m in Sources */,
 				A73B6F8F163169BB002CCCA7 /* NSFileWrapper+DTCopying.m in Sources */,
 				A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */,
 				F88FF6DD1920F1AF00120808 /* DTAlertView.m in Sources */,
@@ -3433,6 +3440,7 @@
 				A70C4FF117AA7F2000000DF5 /* DTObjectBlockExecutor.m in Sources */,
 				A70C4FF217AA7F2000000DF5 /* NSObject+DTRuntime.m in Sources */,
 				A7F3BD2D18436A1200DB7854 /* DTSidePanelController.m in Sources */,
+				355B25BECDAE01CBBE99387B /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3483,7 +3491,7 @@
 				A70C4FF617AA7F2300000DF5 /* NSObject+DTRuntime.m in Sources */,
 				A78D662217AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */,
 				A7FA5FA917B0F7B4000FC61F /* DTLog.m in Sources */,
-				A7FA5FB017B127E0000FC61F /* DTAsyncFileDeleter.m in Sources */,
+				355B24DBAB74800514C38814 /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3640,7 +3648,6 @@
 				A7EA075C1A2B220100B61CCE /* NSDocument+DTFoundation.m in Sources */,
 				A7D95AE11BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */,
 				A7EA077A1A2B221300B61CCE /* NSURL+DTComparing.m in Sources */,
-				A7EA079B1A2B233E00B61CCE /* DTAsyncFileDeleter.m in Sources */,
 				A7EA07641A2B220100B61CCE /* NSWindowController+DTPanelControllerPresenting.m in Sources */,
 				A7EA07A21A2B233E00B61CCE /* DTBlockFunctions.m in Sources */,
 				A7EA079F1A2B233E00B61CCE /* DTFoundationConstants.m in Sources */,
@@ -3667,6 +3674,7 @@
 				A7EA075A1A2B220100B61CCE /* DTScrollView.m in Sources */,
 				A7EA07721A2B221300B61CCE /* NSString+DTUtilities.m in Sources */,
 				A7EA07B11A2B299D00B61CCE /* DTObjectBlockExecutor.m in Sources */,
+				355B298E94B837A80AB34682 /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3694,7 +3702,6 @@
 				A7EA07E31A2B30F000B61CCE /* DTSmartPagingScrollView.m in Sources */,
 				A7EA08131A2B316100B61CCE /* NSString+DTUtilities.m in Sources */,
 				A7EA07F21A2B310600B61CCE /* DTSidePanelPanGestureRecognizer.m in Sources */,
-				A7EA08231A2B318E00B61CCE /* DTAsyncFileDeleter.m in Sources */,
 				A7EA07E51A2B30F000B61CCE /* UIApplication+DTNetworkActivity.m in Sources */,
 				A7EA082F1A2B318E00B61CCE /* DTVersion.m in Sources */,
 				A7EA07ED1A2B30F000B61CCE /* UIWebView+DTFoundation.m in Sources */,
@@ -3720,6 +3727,7 @@
 				A7D95AE51BC40DAC00AB8A21 /* DTASN1BitString.m in Sources */,
 				A7EA081D1A2B317300B61CCE /* DTCoreGraphicsUtils.m in Sources */,
 				A7EA07F71A2B311700B61CCE /* UIColor+DTDebug.m in Sources */,
+				355B20F69317B1E7568164F6 /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
