@@ -21,15 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		355B20F69317B1E7568164F6 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
-		355B22005C6FF867B17E26F9 /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B2F8E4A180F7C3D2C3C09 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		355B24337EF95201E703181B /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
-		355B24DBAB74800514C38814 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
-		355B25BECDAE01CBBE99387B /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
-		355B29154AF44F9FC611EAF8 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
-		355B298E94B837A80AB34682 /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */; };
-		355B29F4DAA9E868E2113E4D /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B2F8E4A180F7C3D2C3C09 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		355B2EA1F5BC8455D7607F0D /* DTAsyncFileDeleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 355B2F8E4A180F7C3D2C3C09 /* DTAsyncFileDeleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		355B2A1D8280CBDC2DF9861F /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B2C1BBA9ABB5F60754FFA /* DTAsyncFileDeleter.m */; };
+		355B2CDE17365B083079286B /* DTAsyncFileDeleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355B2C1BBA9ABB5F60754FFA /* DTAsyncFileDeleter.m */; };
 		384470921BA3330F0037C68D /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
 		384470931BA3330F0037C68D /* DTFolderMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */; };
 		384470941BA3330F0037C68D /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
@@ -882,6 +875,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A7E3EAB31C441665000DC98B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7E3EAC41C44167D000DC98B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7EA07D51A2B2F6B00B61CCE /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -917,10 +928,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAsyncFileDeleter.m; path = Core/Source/DTAsyncFileDeleter.m; sourceTree = SOURCE_ROOT; };
 		355B210F4174F2B22B0CD6A0 /* DTSidePanelPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSidePanelPanGestureRecognizer.m; sourceTree = "<group>"; };
+		355B21D74604E1BB46BB7FC8 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAsyncFileDeleter.h; sourceTree = "<group>"; };
 		355B257CC69FC64D78ABE0BE /* DTSidePanelPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSidePanelPanGestureRecognizer.h; sourceTree = "<group>"; };
-		355B2F8E4A180F7C3D2C3C09 /* DTAsyncFileDeleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTAsyncFileDeleter.h; path = Core/Source/DTAsyncFileDeleter.h; sourceTree = SOURCE_ROOT; };
+		355B2C1BBA9ABB5F60754FFA /* DTAsyncFileDeleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAsyncFileDeleter.m; sourceTree = "<group>"; };
 		384470EB1BA3330F0037C68D /* libStatic Library (tvOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libStatic Library (tvOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		384471551BA33ED80037C68D /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D7CE547166613B60028D339 /* libDTHTMLParser_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1149,6 +1160,8 @@
 		A7D9D6721758CF7200C29B6F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTHTMLParser_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E383DA160DFF8600CF72D6 /* libDTZipArchive_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTZipArchive_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7E3EAB81C441665000DC98B /* libDTAsyncFileDeleter (iOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libDTAsyncFileDeleter (iOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7E3EACC1C44167D000DC98B /* libDTAsyncFileDeleter (Mac).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libDTAsyncFileDeleter (Mac).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E889A416A9B190009EF0DF /* libDTUTI_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTUTI_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E889A516A9B190009EF0DF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		A7E889A816A9B190009EF0DF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -1425,6 +1438,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A7E3EAB21C441665000DC98B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7E3EAC31C44167D000DC98B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7E889A116A9B190009EF0DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1515,8 +1542,8 @@
 		355B29D40C8F973BCF5B387B /* DTAsyncFileDeleter */ = {
 			isa = PBXGroup;
 			children = (
-				355B20185916B9C14FC277F9 /* DTAsyncFileDeleter.m */,
-				355B2F8E4A180F7C3D2C3C09 /* DTAsyncFileDeleter.h */,
+				355B21D74604E1BB46BB7FC8 /* DTAsyncFileDeleter.h */,
+				355B2C1BBA9ABB5F60754FFA /* DTAsyncFileDeleter.m */,
 			);
 			path = DTAsyncFileDeleter;
 			sourceTree = "<group>";
@@ -2141,6 +2168,8 @@
 				A7EA07B81A2B2F6A00B61CCE /* DTFoundation.framework */,
 				384470EB1BA3330F0037C68D /* libStatic Library (tvOS).a */,
 				384471551BA33ED80037C68D /* DTFoundation.framework */,
+				A7E3EAB81C441665000DC98B /* libDTAsyncFileDeleter (iOS).a */,
+				A7E3EACC1C44167D000DC98B /* libDTAsyncFileDeleter (Mac).a */,
 			);
 			name = Products;
 			path = ../..;
@@ -2395,7 +2424,6 @@
 				3844714D1BA33ED80037C68D /* UIImage+DTFoundation.h in Headers */,
 				3844714E1BA33ED80037C68D /* NSDictionary+DTError.h in Headers */,
 				3844714F1BA33ED80037C68D /* DTCompatibility.h in Headers */,
-				355B22005C6FF867B17E26F9 /* DTAsyncFileDeleter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2535,7 +2563,6 @@
 				A7EA076B1A2B221300B61CCE /* NSFileWrapper+DTCopying.h in Headers */,
 				A7EA07961A2B232500B61CCE /* DTFoundationConstants.h in Headers */,
 				A7EA07951A2B232500B61CCE /* DTFolderMonitor.h in Headers */,
-				355B2EA1F5BC8455D7607F0D /* DTAsyncFileDeleter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2592,7 +2619,6 @@
 				A7EA07E61A2B30F000B61CCE /* UIImage+DTFoundation.h in Headers */,
 				A7EA080A1A2B316100B61CCE /* NSDictionary+DTError.h in Headers */,
 				A7B505361B6A595700BC743A /* DTCompatibility.h in Headers */,
-				355B29F4DAA9E868E2113E4D /* DTAsyncFileDeleter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2933,6 +2959,40 @@
 			productReference = A7E383DA160DFF8600CF72D6 /* libDTZipArchive_iOS.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		A7E3EAAE1C441665000DC98B /* DTAsyncFileDeleter (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7E3EAB41C441665000DC98B /* Build configuration list for PBXNativeTarget "DTAsyncFileDeleter (iOS)" */;
+			buildPhases = (
+				A7E3EAAF1C441665000DC98B /* Sources */,
+				A7E3EAB21C441665000DC98B /* Frameworks */,
+				A7E3EAB31C441665000DC98B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DTAsyncFileDeleter (iOS)";
+			productName = DTReachability;
+			productReference = A7E3EAB81C441665000DC98B /* libDTAsyncFileDeleter (iOS).a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A7E3EAB91C44167D000DC98B /* DTAsyncFileDeleter (Mac) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7E3EAC81C44167D000DC98B /* Build configuration list for PBXNativeTarget "DTAsyncFileDeleter (Mac)" */;
+			buildPhases = (
+				A7E3EABA1C44167D000DC98B /* Sources */,
+				A7E3EAC31C44167D000DC98B /* Frameworks */,
+				A7E3EAC41C44167D000DC98B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DTAsyncFileDeleter (Mac)";
+			productName = DTZipArchive;
+			productReference = A7E3EACC1C44167D000DC98B /* libDTAsyncFileDeleter (Mac).a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		A7E889A316A9B190009EF0DF /* DTUTI (Mac) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7E889B116A9B190009EF0DF /* Build configuration list for PBXNativeTarget "DTUTI (Mac)" */;
@@ -3135,6 +3195,8 @@
 				A7E889A316A9B190009EF0DF /* DTUTI (Mac) */,
 				A7E383D9160DFF8600CF72D6 /* DTZipArchive (iOS) */,
 				A7D8C7AF1723174600025675 /* DTZipArchive (Mac) */,
+				A7E3EAAE1C441665000DC98B /* DTAsyncFileDeleter (iOS) */,
+				A7E3EAB91C44167D000DC98B /* DTAsyncFileDeleter (Mac) */,
 				A78381C21963F8D700AF09D3 /* DTAnimatedGIF Demo */,
 				F88FF6861920AAB600120808 /* DTProgressHUD Demo */,
 				A7D9D62C1758C89800C29B6F /* DTReachability Demo */,
@@ -3328,7 +3390,6 @@
 				384470BB1BA3330F0037C68D /* DTObjectBlockExecutor.m in Sources */,
 				384470BC1BA3330F0037C68D /* NSObject+DTRuntime.m in Sources */,
 				384470BD1BA3330F0037C68D /* DTSidePanelController.m in Sources */,
-				355B24337EF95201E703181B /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3381,7 +3442,6 @@
 				A7D95AD91BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */,
 				384471171BA33ED80037C68D /* DTCoreGraphicsUtils.m in Sources */,
 				384471181BA33ED80037C68D /* UIColor+DTDebug.m in Sources */,
-				355B29154AF44F9FC611EAF8 /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3440,7 +3500,6 @@
 				A70C4FF117AA7F2000000DF5 /* DTObjectBlockExecutor.m in Sources */,
 				A70C4FF217AA7F2000000DF5 /* NSObject+DTRuntime.m in Sources */,
 				A7F3BD2D18436A1200DB7854 /* DTSidePanelController.m in Sources */,
-				355B25BECDAE01CBBE99387B /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3491,7 +3550,6 @@
 				A70C4FF617AA7F2300000DF5 /* NSObject+DTRuntime.m in Sources */,
 				A78D662217AFFCCC0039F5E6 /* DTFolderMonitor.m in Sources */,
 				A7FA5FA917B0F7B4000FC61F /* DTLog.m in Sources */,
-				355B24DBAB74800514C38814 /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3631,6 +3689,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A7E3EAAF1C441665000DC98B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				355B2A1D8280CBDC2DF9861F /* DTAsyncFileDeleter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7E3EABA1C44167D000DC98B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				355B2CDE17365B083079286B /* DTAsyncFileDeleter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A7E889A016A9B190009EF0DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3674,7 +3748,6 @@
 				A7EA075A1A2B220100B61CCE /* DTScrollView.m in Sources */,
 				A7EA07721A2B221300B61CCE /* NSString+DTUtilities.m in Sources */,
 				A7EA07B11A2B299D00B61CCE /* DTObjectBlockExecutor.m in Sources */,
-				355B298E94B837A80AB34682 /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3727,7 +3800,6 @@
 				A7D95AE51BC40DAC00AB8A21 /* DTASN1BitString.m in Sources */,
 				A7EA081D1A2B317300B61CCE /* DTCoreGraphicsUtils.m in Sources */,
 				A7EA07F71A2B311700B61CCE /* UIColor+DTDebug.m in Sources */,
-				355B20F69317B1E7568164F6 /* DTAsyncFileDeleter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5136,6 +5208,108 @@
 			};
 			name = Release;
 		};
+		A7E3EAB51C441665000DC98B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/DTReachability.dst;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator";
+			};
+			name = Debug;
+		};
+		A7E3EAB61C441665000DC98B /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/DTReachability.dst;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator";
+			};
+			name = Coverage;
+		};
+		A7E3EAB71C441665000DC98B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/DTReachability.dst;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator";
+			};
+			name = Release;
+		};
+		A7E3EAC91C44167D000DC98B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DSTROOT = /tmp/DTZipArchive.dst;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Debug;
+		};
+		A7E3EACA1C44167D000DC98B /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DSTROOT = /tmp/DTZipArchive.dst;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Coverage;
+		};
+		A7E3EACB1C44167D000DC98B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DSTROOT = /tmp/DTZipArchive.dst;
+				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Release;
+		};
 		A7E889B216A9B190009EF0DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5904,6 +6078,26 @@
 				A7E383E4160DFF8600CF72D6 /* Debug */,
 				A70ED6C017F98468008A801A /* Coverage */,
 				A7E383E5160DFF8600CF72D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7E3EAB41C441665000DC98B /* Build configuration list for PBXNativeTarget "DTAsyncFileDeleter (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7E3EAB51C441665000DC98B /* Debug */,
+				A7E3EAB61C441665000DC98B /* Coverage */,
+				A7E3EAB71C441665000DC98B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7E3EAC81C44167D000DC98B /* Build configuration list for PBXNativeTarget "DTAsyncFileDeleter (Mac)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7E3EAC91C44167D000DC98B /* Debug */,
+				A7E3EACA1C44167D000DC98B /* Coverage */,
+				A7E3EACB1C44167D000DC98B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
