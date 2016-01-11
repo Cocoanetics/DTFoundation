@@ -47,7 +47,6 @@
 #import "NSObject+DTRuntime.h"
 
 // Classes
-#import "DTAsyncFileDeleter.h"
 #import "DTBase64Coding.h"
 #import "DTExtendedFileAttributes.h"
 #import "DTFolderMonitor.h"
