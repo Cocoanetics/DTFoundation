@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "DTWeakSupport.h"
 #import <Availability.h>
 
