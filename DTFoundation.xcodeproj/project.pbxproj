@@ -368,6 +368,10 @@
 		A7AC21CE1964184F0009E1B9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AC21CD1964184F0009E1B9 /* ImageIO.framework */; };
 		A7B505351B6A594F00BC743A /* DTCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = A74549681B6A3F26004B0CA7 /* DTCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7B505361B6A595700BC743A /* DTCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = A74549681B6A3F26004B0CA7 /* DTCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7BDB4221C64D6FE00E8CD84 /* DTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6841920A9DF00120808 /* DTProgressHUD.m */; };
+		A7BDB4231C64D70000E8CD84 /* DTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6841920A9DF00120808 /* DTProgressHUD.m */; };
+		A7BDB4241C64D71900E8CD84 /* DTProgressHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6D11920BF5200120808 /* DTProgressHUDWindow.m */; };
+		A7BDB4251C64D71A00E8CD84 /* DTProgressHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6D11920BF5200120808 /* DTProgressHUDWindow.m */; };
 		A7C92B5D174F6A1A0019D70A /* toolbar-icon-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C92B5B174F6A1A0019D70A /* toolbar-icon-menu.png */; };
 		A7C92B5E174F6A1A0019D70A /* toolbar-icon-menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C92B5C174F6A1A0019D70A /* toolbar-icon-menu@2x.png */; };
 		A7C92B63174F72C30019D70A /* ModalPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C92B61174F72C30019D70A /* ModalPanelViewController.m */; };
@@ -3334,6 +3338,7 @@
 				384470F11BA33ED80037C68D /* NSFileWrapper+DTCopying.m in Sources */,
 				384470F21BA33ED80037C68D /* NSArray+DTError.m in Sources */,
 				384470F31BA33ED80037C68D /* DTFoundationConstants.m in Sources */,
+				A7BDB4251C64D71A00E8CD84 /* DTProgressHUDWindow.m in Sources */,
 				384470F41BA33ED80037C68D /* NSURL+DTUnshorten.m in Sources */,
 				384470F51BA33ED80037C68D /* DTCustomColoredAccessory.m in Sources */,
 				384470F61BA33ED80037C68D /* DTTiledLayerWithoutFade.m in Sources */,
@@ -3373,6 +3378,7 @@
 				384471161BA33ED80037C68D /* NSString+DTPaths.m in Sources */,
 				A7D95AD91BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */,
 				384471171BA33ED80037C68D /* DTCoreGraphicsUtils.m in Sources */,
+				A7BDB4231C64D70000E8CD84 /* DTProgressHUD.m in Sources */,
 				384471181BA33ED80037C68D /* UIColor+DTDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3680,6 +3686,7 @@
 				A7EA080D1A2B316100B61CCE /* NSFileWrapper+DTCopying.m in Sources */,
 				A7EA08071A2B316100B61CCE /* NSArray+DTError.m in Sources */,
 				A7EA082B1A2B318E00B61CCE /* DTFoundationConstants.m in Sources */,
+				A7BDB4241C64D71900E8CD84 /* DTProgressHUDWindow.m in Sources */,
 				A7EA08191A2B316100B61CCE /* NSURL+DTUnshorten.m in Sources */,
 				A7EA07DF1A2B30F000B61CCE /* DTCustomColoredAccessory.m in Sources */,
 				A7EA07DB1A2B30F000B61CCE /* DTTiledLayerWithoutFade.m in Sources */,
@@ -3719,6 +3726,7 @@
 				A7EA08151A2B316100B61CCE /* NSString+DTPaths.m in Sources */,
 				A7D95AE51BC40DAC00AB8A21 /* DTASN1BitString.m in Sources */,
 				A7EA081D1A2B317300B61CCE /* DTCoreGraphicsUtils.m in Sources */,
+				A7BDB4221C64D6FE00E8CD84 /* DTProgressHUD.m in Sources */,
 				A7EA07F71A2B311700B61CCE /* UIColor+DTDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
