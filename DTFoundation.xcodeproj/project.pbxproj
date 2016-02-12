@@ -21,6 +21,15 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		29DA9D7D1C6DC22800F5F22A /* DTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A72121D5173BFF89003C6F0A /* DTReachability.m */; };
+		29DA9D7E1C6DC22800F5F22A /* DTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A72121D5173BFF89003C6F0A /* DTReachability.m */; };
+		29DA9D7F1C6DC22900F5F22A /* DTReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A72121D5173BFF89003C6F0A /* DTReachability.m */; };
+		29DA9D811C6DC25300F5F22A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29DA9D801C6DC25300F5F22A /* SystemConfiguration.framework */; };
+		29DA9D821C6DC25A00F5F22A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D9D6631758CA6300C29B6F /* SystemConfiguration.framework */; };
+		29DA9D841C6DC26000F5F22A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29DA9D831C6DC26000F5F22A /* SystemConfiguration.framework */; };
+		29DA9D851C6DC27500F5F22A /* DTReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A72121D4173BFF89003C6F0A /* DTReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29DA9D861C6DC27600F5F22A /* DTReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A72121D4173BFF89003C6F0A /* DTReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29DA9D871C6DC27600F5F22A /* DTReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A72121D4173BFF89003C6F0A /* DTReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		384470921BA3330F0037C68D /* DTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CC81486621B00873A4A /* DTVersion.m */; };
 		384470931BA3330F0037C68D /* DTFolderMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A78D661C17AFFCCC0039F5E6 /* DTFolderMonitor.m */; };
 		384470941BA3330F0037C68D /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
@@ -921,6 +930,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		29DA9D801C6DC25300F5F22A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		29DA9D831C6DC26000F5F22A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS9.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		355B210F4174F2B22B0CD6A0 /* DTSidePanelPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTSidePanelPanGestureRecognizer.m; sourceTree = "<group>"; };
 		355B257CC69FC64D78ABE0BE /* DTSidePanelPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTSidePanelPanGestureRecognizer.h; sourceTree = "<group>"; };
 		384470EB1BA3330F0037C68D /* libStatic Library (tvOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libStatic Library (tvOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1276,6 +1287,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29DA9D841C6DC26000F5F22A /* SystemConfiguration.framework in Frameworks */,
 				3844711A1BA33ED80037C68D /* ImageIO.framework in Frameworks */,
 				3844711B1BA33ED80037C68D /* CoreGraphics.framework in Frameworks */,
 				3844711C1BA33ED80037C68D /* Foundation.framework in Frameworks */,
@@ -1440,6 +1452,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29DA9D821C6DC25A00F5F22A /* SystemConfiguration.framework in Frameworks */,
 				A704BEBB1B6176D70067BF7E /* Foundation.framework in Frameworks */,
 				A704BEBA1B6176D10067BF7E /* AppKit.framework in Frameworks */,
 				A79BA84A1B46E5DF0086C2F6 /* libxml2.dylib in Frameworks */,
@@ -1450,6 +1463,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29DA9D811C6DC25300F5F22A /* SystemConfiguration.framework in Frameworks */,
 				A74A7A8E1B617186004163BE /* ImageIO.framework in Frameworks */,
 				A74A7A8C1B61716E004163BE /* CoreGraphics.framework in Frameworks */,
 				A74A7A8A1B617158004163BE /* Foundation.framework in Frameworks */,
@@ -1854,6 +1868,8 @@
 		A7AB49DB1483C47F00028FE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29DA9D831C6DC26000F5F22A /* SystemConfiguration.framework */,
+				29DA9D801C6DC25300F5F22A /* SystemConfiguration.framework */,
 				A704BEB91B6176D10067BF7E /* AppKit.framework */,
 				A74A7A8D1B617186004163BE /* ImageIO.framework */,
 				A74A7A8B1B61716E004163BE /* CoreGraphics.framework */,
@@ -2349,6 +2365,7 @@
 				A7D95ADC1BC40DAB00AB8A21 /* DTASN1Serialization.h in Headers */,
 				384471251BA33ED80037C68D /* DTAnimatedGIF.h in Headers */,
 				384471261BA33ED80037C68D /* DTSmartPagingScrollView.h in Headers */,
+				29DA9D871C6DC27600F5F22A /* DTReachability.h in Headers */,
 				384471271BA33ED80037C68D /* DTActionSheet.h in Headers */,
 				384471281BA33ED80037C68D /* DTSidePanelController.h in Headers */,
 				384471291BA33ED80037C68D /* NSFileWrapper+DTCopying.h in Headers */,
@@ -2502,6 +2519,7 @@
 				A7EA07941A2B232500B61CCE /* DTExtendedFileAttributes.h in Headers */,
 				A7E7997A1AB9AFA9008C2393 /* DTFoundation.h in Headers */,
 				A7EA07591A2B220100B61CCE /* DTScrollView.h in Headers */,
+				29DA9D861C6DC27600F5F22A /* DTReachability.h in Headers */,
 				A7EA07AB1A2B259300B61CCE /* DTCoreGraphicsUtils.h in Headers */,
 				A7EA07671A2B221300B61CCE /* NSData+DTCrypto.h in Headers */,
 				A7EA07691A2B221300B61CCE /* NSDictionary+DTError.h in Headers */,
@@ -2546,6 +2564,7 @@
 				A7D95AE81BC40DAC00AB8A21 /* DTASN1Serialization.h in Headers */,
 				A79BA6CA1B46A3E40086C2F6 /* DTAnimatedGIF.h in Headers */,
 				A7EA07E21A2B30F000B61CCE /* DTSmartPagingScrollView.h in Headers */,
+				29DA9D851C6DC27500F5F22A /* DTReachability.h in Headers */,
 				A7EA07FA1A2B312300B61CCE /* DTActionSheet.h in Headers */,
 				A7EA07EE1A2B310600B61CCE /* DTSidePanelController.h in Headers */,
 				A7EA080C1A2B316100B61CCE /* NSFileWrapper+DTCopying.h in Headers */,
@@ -3365,6 +3384,7 @@
 				3844710B1BA33ED80037C68D /* NSMutableArray+DTMoving.m in Sources */,
 				3844710C1BA33ED80037C68D /* DTExtendedFileAttributes.m in Sources */,
 				A7D95ADB1BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */,
+				29DA9D7D1C6DC22800F5F22A /* DTReachability.m in Sources */,
 				3844710D1BA33ED80037C68D /* NSObject+DTRuntime.m in Sources */,
 				3844710E1BA33ED80037C68D /* NSURL+DTAppLinks.m in Sources */,
 				3844710F1BA33ED80037C68D /* UIImage+DTFoundation.m in Sources */,
@@ -3643,6 +3663,7 @@
 			files = (
 				A7EA07601A2B220100B61CCE /* NSValue+DTConversion.m in Sources */,
 				A7EA076A1A2B221300B61CCE /* NSDictionary+DTError.m in Sources */,
+				29DA9D7E1C6DC22800F5F22A /* DTReachability.m in Sources */,
 				A7EA075C1A2B220100B61CCE /* NSDocument+DTFoundation.m in Sources */,
 				A7D95AE11BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */,
 				A7EA077A1A2B221300B61CCE /* NSURL+DTComparing.m in Sources */,
@@ -3713,6 +3734,7 @@
 				A7EA080F1A2B316100B61CCE /* NSMutableArray+DTMoving.m in Sources */,
 				A7EA08271A2B318E00B61CCE /* DTExtendedFileAttributes.m in Sources */,
 				A7D95AE71BC40DAC00AB8A21 /* DTASN1Parser.m in Sources */,
+				29DA9D7F1C6DC22900F5F22A /* DTReachability.m in Sources */,
 				A7EA08211A2B318500B61CCE /* NSObject+DTRuntime.m in Sources */,
 				A7EA07E91A2B30F000B61CCE /* NSURL+DTAppLinks.m in Sources */,
 				A7EA07E71A2B30F000B61CCE /* UIImage+DTFoundation.m in Sources */,
