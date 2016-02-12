@@ -61,6 +61,9 @@
 #import "DTASN1Parser.h"
 #import "DTASN1Serialization.h"
 
+// Reachability
+#import "DTReachability.h"
+
 
 #pragma mark - iOS
 
