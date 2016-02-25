@@ -8,7 +8,7 @@
 
 #import "DTASN1Parser.h"
 #import "DTASN1BitString.h"
-#import "DTWeakSupport.h"
+#import <DTFoundation/DTWeakSupport.h>
 #import "DTLog.h"
 
 @implementation DTASN1Parser
