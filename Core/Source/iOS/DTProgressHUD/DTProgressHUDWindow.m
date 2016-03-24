@@ -60,7 +60,7 @@ static CGAffineTransform _transformForInterfaceOrientation(UIInterfaceOrientatio
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarDidChangeFrame:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
 		
 		// set initial transform
-        UIInterfaceOrientation orientation = self.rootViewController.interfaceOrientation;
+		UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
 		[self setTransform:_transformForInterfaceOrientation(orientation)];
 	}
 	return self;
@@ -75,7 +75,7 @@ static CGAffineTransform _transformForInterfaceOrientation(UIInterfaceOrientatio
 
 - (void)statusBarDidChangeFrame:(NSNotification *)notification
 {
-	UIInterfaceOrientation orientation = self.rootViewController.interfaceOrientation;
+	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
 	[self setTransform:_transformForInterfaceOrientation(orientation)];
 }
 
