@@ -7,7 +7,7 @@
 //
 
 
-#import "DTWeakSupport.h"
+#import <DTFoundation/DTWeakSupport.h>
 
 @class DTHTMLParser;
 /** The DTHTMLParserDelegate protocol defines the optional methods implemented by delegates of DTHTMLParser objects. 
