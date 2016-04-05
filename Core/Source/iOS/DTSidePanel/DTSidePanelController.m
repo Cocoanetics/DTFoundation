@@ -15,6 +15,8 @@
 #import "DTSidePanelPanGestureRecognizer.h"
 #import "DTSidePanelControllerSegue.h"
 
+#import <DTFoundation/DTCompatibility.h>
+
 @interface UIViewController () // private setter
 - (void)setSidePanelController:(DTSidePanelController *)sidePanelController;
 @end
