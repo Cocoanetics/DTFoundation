@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-#import "DTWeakSupport.h"
+#import <DTFoundation/DTWeakSupport.h>
 #import <Availability.h>
 
 // the block to execute when an option button is tapped
