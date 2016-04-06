@@ -3,6 +3,13 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.7.10**
+
+- FIXED: stringByURLEncoding returned incorrect strings with iOS 9 SDK
+- FIXED: Warnings related to modular header imports
+- FIXED: Compiler warnings for iOS 9
+- FIXED: [DTPieProgressIndicator] now using tintColor by default
+
 **Version 1.7.9**
 
 - ADDED: Support for app extensions

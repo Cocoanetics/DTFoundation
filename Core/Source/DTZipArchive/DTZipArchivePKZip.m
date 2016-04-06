@@ -102,7 +102,7 @@
 	// get file info
 	unz_global_info  globalInfo = {0};
 	
-	if (!unzGetGlobalInfo(_unzFile, &globalInfo )==UNZ_OK )
+	if (unzGetGlobalInfo(_unzFile, &globalInfo )!=UNZ_OK )
 	{
 		// there's a problem
 		return;
@@ -497,7 +497,7 @@
 	// get file info
 	unz_global_info  globalInfo = {0};
 	
-	if (!unzGetGlobalInfo(_unzFile, &globalInfo )==UNZ_OK )
+	if (unzGetGlobalInfo(_unzFile, &globalInfo )!=UNZ_OK )
 	{
 		// there's a problem
 		return;

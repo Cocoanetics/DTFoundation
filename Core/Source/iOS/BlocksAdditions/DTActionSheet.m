@@ -7,7 +7,7 @@
 //
 
 #import "DTActionSheet.h"
-#import "DTWeakSupport.h"
+#import <DTFoundation/DTWeakSupport.h>
 
 #import "DTLog.h"
 
