@@ -89,6 +89,7 @@ Pod::Spec.new do |spec|
     ss.osx.deployment_target = '10.6'
     ss.library = 'sqlite3'
     ss.source_files = 'Core/Source/DTSQLite/*.{h,m}'
+	ss.private_header_files = 'Core/Source/DTSQLite/DTSQLiteFunctions.h'
     ss.dependency 'DTFoundation/Core'
   end
 
