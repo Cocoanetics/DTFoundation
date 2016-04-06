@@ -9,6 +9,9 @@
 #import "DTZipArchiveGZip.h"
 #import "DTZipArchiveNode.h"
 
+#include "zip.h"
+#include "unzip.h"
+
 @interface DTZipArchiveGZip()
 
 - (NSString *)_inflatedFileName;
