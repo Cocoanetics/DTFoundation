@@ -9,6 +9,9 @@
 #import "DTZipArchivePKZip.h"
 #import "DTZipArchiveNode.h"
 
+#include "zip.h"
+#include "unzip.h"
+
 @interface DTZipArchivePKZip()
 
 - (void)_buildIndex;
