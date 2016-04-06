@@ -21,9 +21,9 @@
 {
 	NSString *email = @"oliver+test@cocoanetics.com";
 	NSString *output = [email stringByURLEncoding];
-	NSString *result = @"oliver%2Btest@cocoanetics.com";
+	NSString *result = @"oliver%2Btest%40cocoanetics.com";
 	
-	XCTAssertEqual(output, result);
+	XCTAssertTrue([output isEqualToString:result]);
 }
 
 @end
