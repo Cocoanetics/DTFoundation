@@ -109,6 +109,7 @@ Pod::Spec.new do |spec|
     # ss.dependency 'Minizip'
     ss.subspec 'Minizip' do |sss|
       sss.source_files = 'Core/Source/Externals/minizip/*.{h,c}'
+      sss.private_header_files = 'Core/Source/Externals/minizip/*.h'
     end
   end
 
