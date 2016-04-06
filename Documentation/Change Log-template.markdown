@@ -9,6 +9,7 @@ This is the history of version updates.
 - FIXED: Warnings related to modular header imports
 - FIXED: Compiler warnings for iOS 9
 - FIXED: [DTPieProgressIndicator] now using tintColor by default
+- CHANGED: Moved DTAsyncFileDeleter into separate sub spec
 
 **Version 1.7.9**
 
