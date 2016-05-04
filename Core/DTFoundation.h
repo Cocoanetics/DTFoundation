@@ -17,6 +17,8 @@
 
 #pragma mark - Universal
 
+#import "DTCompatibility.h"
+
 // Constants
 #import "DTFoundationConstants.h"
 
