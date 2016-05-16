@@ -139,11 +139,7 @@
 - (void)abortParsing;
 
 /**
- The receiver’s delegate.
- 
- @param delegate An object that is the new delegate. It is not retained. The delegate must conform to the DTHTMLParserDelegate Protocol protocol.
- 
- @see delegate
+ The receiver’s delegate. It is not retained. The delegate must conform to the DTHTMLParserDelegate Protocol protocol.
  */
 @property (nonatomic, DT_WEAK_PROPERTY) id <DTHTMLParserDelegate> delegate;
 
