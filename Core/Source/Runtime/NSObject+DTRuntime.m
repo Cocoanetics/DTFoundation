@@ -48,7 +48,7 @@ static char DTRuntimeDeallocBlocks;
 #if MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_7
     void *impBlockForIMP = (void *)objc_unretainedPointer(block);
 #else
-    id impBlockForIMP = (__bridge id)objc_unretainedPointer(block);
+    void (^impBlockForIMP)(id) = block;
 #endif
     
     IMP myIMP = imp_implementationWithBlock(impBlockForIMP);
