@@ -3,6 +3,11 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.7.11**
+
+- FIXED: Xcode 8 build error in Runtime
+- ADDED: tvOS Subspec
+
 **Version 1.7.10**
 
 - FIXED: stringByURLEncoding returned incorrect strings with iOS 9 SDK
