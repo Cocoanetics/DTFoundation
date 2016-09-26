@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.7.10'
+  spec.version      = '1.7.11'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@cocoanetics.com" }
@@ -22,10 +22,11 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'UIKit' do |ss|
-    ss.platform = :ios, '4.3'
+    ss.ios.deployment_target = '4.3'
+    ss.tvos.deployment_target = '9.0'
     ss.dependency 'DTFoundation/Core'
-    ss.ios.frameworks = 'QuartzCore'
-    ss.ios.source_files = 'Core/Source/iOS/*.{h,m}'
+    ss.frameworks = 'QuartzCore'
+    ss.source_files = 'Core/Source/iOS/*.{h,m}'
   end
 
   spec.subspec 'UIKit_BlocksAdditions' do |ss|
@@ -42,7 +43,8 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTAnimatedGIF' do |ss|
     ss.ios.deployment_target = '4.3'
-    ss.ios.frameworks = 'ImageIO'
+    ss.tvos.deployment_target = '9.0'
+    ss.frameworks = 'ImageIO'
     ss.source_files = 'Core/Source/iOS/DTAnimatedGIF/*.{h,m}'
   end
 
@@ -62,6 +64,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTHTMLParser' do |ss|
     ss.ios.deployment_target = '4.3'
+    ss.tvos.deployment_target = '9.0'
     ss.osx.deployment_target = '10.6'
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTHTMLParser/*.{h,m}'

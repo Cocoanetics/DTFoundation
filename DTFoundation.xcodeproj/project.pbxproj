@@ -257,6 +257,7 @@
 		A73B6FA716318EBC002CCCA7 /* NSString+DTFormatNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = A70B4CCB1486621B00873A4A /* NSString+DTFormatNumbers.m */; };
 		A73C6D251CB55B710058920A /* NSStringDTURLEncodingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A73C6D241CB55B710058920A /* NSStringDTURLEncodingTest.m */; };
 		A73D5BAE155271FD0024BDB7 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
+		A741709E1CEA10E600F15DA9 /* DTCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = A74549681B6A3F26004B0CA7 /* DTCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7437DE216147A450091C1A2 /* NSString+DTPaths.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D8628014EBF65C001436AF /* NSString+DTPaths.m */; };
 		A7444D2C162C011C00DD3692 /* NSArray+DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = A73D5BAA155271FD0024BDB7 /* NSArray+DTError.m */; };
 		A74988811B6EA91C00A66234 /* DTProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = F88FF6831920A9DF00120808 /* DTProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -379,9 +380,7 @@
 		A7B505351B6A594F00BC743A /* DTCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = A74549681B6A3F26004B0CA7 /* DTCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7B505361B6A595700BC743A /* DTCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = A74549681B6A3F26004B0CA7 /* DTCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7BDB4221C64D6FE00E8CD84 /* DTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6841920A9DF00120808 /* DTProgressHUD.m */; };
-		A7BDB4231C64D70000E8CD84 /* DTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6841920A9DF00120808 /* DTProgressHUD.m */; };
 		A7BDB4241C64D71900E8CD84 /* DTProgressHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6D11920BF5200120808 /* DTProgressHUDWindow.m */; };
-		A7BDB4251C64D71A00E8CD84 /* DTProgressHUDWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F88FF6D11920BF5200120808 /* DTProgressHUDWindow.m */; };
 		A7C92B5D174F6A1A0019D70A /* toolbar-icon-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C92B5B174F6A1A0019D70A /* toolbar-icon-menu.png */; };
 		A7C92B5E174F6A1A0019D70A /* toolbar-icon-menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C92B5C174F6A1A0019D70A /* toolbar-icon-menu@2x.png */; };
 		A7C92B63174F72C30019D70A /* ModalPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7C92B61174F72C30019D70A /* ModalPanelViewController.m */; };
@@ -2519,6 +2518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7D95AE01BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */,
+				A741709E1CEA10E600F15DA9 /* DTCompatibility.h in Headers */,
 				A7EA07941A2B232500B61CCE /* DTExtendedFileAttributes.h in Headers */,
 				A7E7997A1AB9AFA9008C2393 /* DTFoundation.h in Headers */,
 				A7EA07591A2B220100B61CCE /* DTScrollView.h in Headers */,
@@ -3360,7 +3360,6 @@
 				384470F11BA33ED80037C68D /* NSFileWrapper+DTCopying.m in Sources */,
 				384470F21BA33ED80037C68D /* NSArray+DTError.m in Sources */,
 				384470F31BA33ED80037C68D /* DTFoundationConstants.m in Sources */,
-				A7BDB4251C64D71A00E8CD84 /* DTProgressHUDWindow.m in Sources */,
 				384470F41BA33ED80037C68D /* NSURL+DTUnshorten.m in Sources */,
 				384470F51BA33ED80037C68D /* DTCustomColoredAccessory.m in Sources */,
 				384470F61BA33ED80037C68D /* DTTiledLayerWithoutFade.m in Sources */,
@@ -3401,7 +3400,6 @@
 				384471161BA33ED80037C68D /* NSString+DTPaths.m in Sources */,
 				A7D95AD91BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */,
 				384471171BA33ED80037C68D /* DTCoreGraphicsUtils.m in Sources */,
-				A7BDB4231C64D70000E8CD84 /* DTProgressHUD.m in Sources */,
 				384471181BA33ED80037C68D /* UIColor+DTDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
