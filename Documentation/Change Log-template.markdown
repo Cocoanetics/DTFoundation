@@ -3,6 +3,10 @@ Change Log
 
 This is the history of version updates.
 
+**Version 1.7.12**
+
+- FIXED: [DTAnimatedGIF] An invalid file path causes a crash on loading
+
 **Version 1.7.11**
 
 - FIXED: Xcode 8 build error in Runtime
