@@ -44,6 +44,7 @@
 	SCNetworkReachabilityRef _reachability;
 	SCNetworkReachabilityFlags _connectionFlags;
 	NSString *_hostname;
+	SCNetworkReachabilityFlags _oldFlags;
 }
 
 
@@ -74,8 +75,19 @@ static DTReachability *_sharedInstance;
 	{
 		_observers = [[NSMutableSet alloc] init];
 		_hostname = hostname;
+		
+	#if	TARGET_OS_IPHONE
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+	#endif
 	}
 	return self;
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+	SCNetworkReachabilityGetFlags(_reachability, &_connectionFlags);
+	
+	[self _notifyObserversWithFlags:_connectionFlags];
 }
 
 - (void)dealloc
@@ -191,10 +203,17 @@ static DTReachability *_sharedInstance;
 {
 	@synchronized(self)
 	{
+		if (_oldFlags == flags)
+		{
+			return;
+		}
+		
 		for (DTReachabilityObserverBlock block in _observers)
 		{
 			block([[DTReachabilityInformation alloc] initWithFlags:flags]);
 		}
+		
+		_oldFlags = flags;
 	}
 }
 
