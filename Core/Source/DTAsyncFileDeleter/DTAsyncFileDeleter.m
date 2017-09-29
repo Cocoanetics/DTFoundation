@@ -74,7 +74,7 @@ static DTAsyncFileDeleter *_sharedInstance;
 				__block UIBackgroundTaskIdentifier backgroundTaskID = UIBackgroundTaskInvalid;
 				
 				// block to use for timeout as well as completed task
-				void (^completionBlock)() = ^{
+				void (^completionBlock)(void) = ^{
 					[[UIApplication sharedApplication] endBackgroundTask:backgroundTaskID];
 					backgroundTaskID = UIBackgroundTaskInvalid;
 				};

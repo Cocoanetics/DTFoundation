@@ -16,11 +16,11 @@
  Convenience method to create a block executor with a deallocation block
  @param block The block to execute when the created receiver is being deallocated
  */
-+ (id)blockExecutorWithDeallocBlock:(void(^)())block;
++ (id)blockExecutorWithDeallocBlock:(void(^)(void))block;
 
 /**
  Block to execute when dealloc of the receiver is called
  */
-@property (nonatomic, copy) void (^deallocBlock)();
+@property (nonatomic, copy) void (^deallocBlock)(void);
 
 @end
