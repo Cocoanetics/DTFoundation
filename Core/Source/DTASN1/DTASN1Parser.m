@@ -59,6 +59,7 @@
 		_UTCFormatter = [[NSDateFormatter alloc] init];
 		_UTCFormatter.dateFormat = @"yyMMddHHmmss'Z'";
 		_UTCFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+		_UTCFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
 		
 		if (!_dataLength)
 		{
