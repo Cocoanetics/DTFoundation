@@ -63,13 +63,14 @@
 
 #pragma mark - Loading
 
-+ (UIImage *)imageWithContentsOfURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy error:(NSError * __autoreleasing *)error
++ (UIImage *)imageWithContentsOfURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy error:(NSError **)error
 {
 	NSURLRequest *request = [NSURLRequest requestWithURL:URL cachePolicy:cachePolicy timeoutInterval:10.0];
 	
 	NSCachedURLResponse *cacheResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:request];
 	
 	__block NSData *data;
+	__block NSError *internalError;
 	
 	if (cacheResponse)
 	{
@@ -92,7 +93,7 @@
     [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *responseData, NSURLResponse *response, NSError *responseError) {
         
         data = responseData;
-        *error = responseError;
+        internalError = responseError;
         dispatch_semaphore_signal(semaphore);
     }];
     
@@ -103,6 +104,11 @@
 	{
 		DTLogError(@"Error loading image at %@", URL);
 		return nil;
+	}
+	
+	if (error)
+	{
+		*error = internalError;
 	}
 	
 	UIImage *image = [UIImage imageWithData:data];
