@@ -90,12 +90,12 @@
 #else
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
-    [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *responseData, NSURLResponse *response, NSError *responseError) {
-        
-        data = responseData;
-        internalError = responseError;
-        dispatch_semaphore_signal(semaphore);
-    }];
+	[[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *responseData, NSURLResponse *response, NSError *responseError) {
+		
+		data = responseData;
+		internalError = responseError;
+		dispatch_semaphore_signal(semaphore);
+	}] resume];
     
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
 #endif
