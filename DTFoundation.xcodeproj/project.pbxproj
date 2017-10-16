@@ -635,6 +635,8 @@
 		A7FAA38B1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
 		A7FAA38C1652291D006ED151 /* NSURL+DTComparing.m in Sources */ = {isa = PBXBuildFile; fileRef = A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */; };
 		A7FB1216175C9C8B00D4B7F0 /* DTSidePanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = A74663B21743D43600D4D7D5 /* DTSidePanelController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A8C4A7791F949E5100FC611D /* UIScreen+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4A7781F949D5500FC611D /* UIScreen+DTFoundation.m */; };
+		A8C4A77D1F949F6900FC611D /* UIScreen+DTFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C4A7781F949D5500FC611D /* UIScreen+DTFoundation.m */; };
 		BC4D93C1198044CC00961495 /* DTActionSheetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4D93C0198044C800961495 /* DTActionSheetTest.m */; };
 		C0494033163C863A470098D8 /* DTZipArchiveNode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C0494CD06FFAB6AEAC8ADAD4 /* DTZipArchiveNode.h */; };
 		C04941BC829C1022DF240F4C /* DTZipArchiveNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494FCC2C675F2CDF315027 /* DTZipArchiveNode.m */; };
@@ -1181,6 +1183,8 @@
 		A7FAA3871652291D006ED151 /* NSURL+DTComparing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DTComparing.h"; sourceTree = "<group>"; };
 		A7FAA3881652291D006ED151 /* NSURL+DTComparing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DTComparing.m"; sourceTree = "<group>"; };
 		A7FB1218175C9D5000D4B7F0 /* DTWeakSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTWeakSupport.h; sourceTree = "<group>"; };
+		A8C4A7771F949D4500FC611D /* UIScreen+DTFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScreen+DTFoundation.h"; sourceTree = "<group>"; };
+		A8C4A7781F949D5500FC611D /* UIScreen+DTFoundation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+DTFoundation.m"; sourceTree = "<group>"; };
 		BC4D93C0198044C800961495 /* DTActionSheetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTActionSheetTest.m; sourceTree = "<group>"; };
 		C0494136CFE5018E95613EA7 /* gzip_sample.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = gzip_sample.txt.gz; sourceTree = "<group>"; };
 		C04942C8BD89694FA3602A10 /* gzip_sample.txt.original */ = {isa = PBXFileReference; lastKnownFileType = file.original; path = gzip_sample.txt.original; sourceTree = "<group>"; };
@@ -1701,6 +1705,8 @@
 				A76DB4C516A5E50E0010CD85 /* UIImage+DTFoundation.m */,
 				A76DB4C016A5E50D0010CD85 /* NSURL+DTAppLinks.h */,
 				A76DB4C116A5E50D0010CD85 /* NSURL+DTAppLinks.m */,
+				A8C4A7771F949D4500FC611D /* UIScreen+DTFoundation.h */,
+				A8C4A7781F949D5500FC611D /* UIScreen+DTFoundation.m */,
 				A76DB4C816A5E50F0010CD85 /* UIView+DTFoundation.h */,
 				A76DB4C916A5E50F0010CD85 /* UIView+DTFoundation.m */,
 				A76DB4CA16A5E50F0010CD85 /* UIWebView+DTFoundation.h */,
@@ -3735,6 +3741,7 @@
 				A7EA080B1A2B316100B61CCE /* NSDictionary+DTError.m in Sources */,
 				A7EA080F1A2B316100B61CCE /* NSMutableArray+DTMoving.m in Sources */,
 				A7EA08271A2B318E00B61CCE /* DTExtendedFileAttributes.m in Sources */,
+				A8C4A7791F949E5100FC611D /* UIScreen+DTFoundation.m in Sources */,
 				A7D95AE71BC40DAC00AB8A21 /* DTASN1Parser.m in Sources */,
 				29DA9D7F1C6DC22900F5F22A /* DTReachability.m in Sources */,
 				A7EA08211A2B318500B61CCE /* NSObject+DTRuntime.m in Sources */,
@@ -3759,6 +3766,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C4A77D1F949F6900FC611D /* UIScreen+DTFoundation.m in Sources */,
 				F88FF6851920A9DF00120808 /* DTProgressHUD.m in Sources */,
 				F88FF6D21920BF5200120808 /* DTProgressHUDWindow.m in Sources */,
 			);
@@ -3961,6 +3969,7 @@
 		384471521BA33ED80037C68D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -3993,6 +4002,7 @@
 		384471531BA33ED80037C68D /* Coverage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -4027,6 +4037,7 @@
 		384471541BA33ED80037C68D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -5222,6 +5233,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -5255,6 +5267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -5290,6 +5303,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -5324,6 +5338,7 @@
 		A7EA07D21A2B2F6B00B61CCE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -5356,6 +5371,7 @@
 		A7EA07D31A2B2F6B00B61CCE /* Coverage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -5390,6 +5406,7 @@
 		A7EA07D41A2B2F6B00B61CCE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
