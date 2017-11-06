@@ -50,11 +50,11 @@
 /**
  @param block The block to perform
  */
-- (void)performBlock:(void (^)())block;
+- (void)performBlock:(void (^)(void))block;
 
 /**
  @param block The block to perform
  */
-- (void)performBlockAndWait:(void (^)())block;
+- (void)performBlockAndWait:(void (^)(void))block;
 
 @end
