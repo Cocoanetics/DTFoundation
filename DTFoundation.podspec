@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.7.12'
+  spec.version      = '1.7.13'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@cocoanetics.com" }
@@ -10,14 +10,14 @@ Pod::Spec.new do |spec|
   
   spec.ios.deployment_target = '6.0'
   spec.tvos.deployment_target = '9.0'
-  spec.osx.deployment_target = '10.6'
+  spec.osx.deployment_target = '10.8'
   spec.license      = 'BSD'
   spec.requires_arc = true
   
   spec.subspec 'Core' do |ss|
     ss.ios.deployment_target = '4.3'
     ss.tvos.deployment_target = '9.0'
-    ss.osx.deployment_target = '10.6'
+    ss.osx.deployment_target = '10.8'
     ss.source_files = 'Core/Source/*.{h,m}'
   end
 
@@ -27,6 +27,7 @@ Pod::Spec.new do |spec|
     ss.dependency 'DTFoundation/Core'
     ss.frameworks = 'QuartzCore'
     ss.source_files = 'Core/Source/iOS/*.{h,m}'
+	ss.tvos.exclude_files = 'Core/Source/iOS/UIScreen*.{h,m}'
   end
 
   spec.subspec 'UIKit_BlocksAdditions' do |ss|
@@ -36,7 +37,7 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'AppKit' do |ss|
-    ss.platform = :osx, '10.6'
+    ss.platform = :osx, '10.8'
     ss.dependency 'DTFoundation/Core'
     ss.osx.source_files = 'Core/Source/OSX/*.{h,m}'
   end
