@@ -51,14 +51,14 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTAWS' do |ss|
     ss.ios.deployment_target = '4.3'
-    ss.osx.deployment_target = '10.6'
+    ss.osx.deployment_target = '10.8'
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTAWS/*.{h,m}'
   end
 
   spec.subspec 'DTASN1' do |ss|
     ss.ios.deployment_target = '4.3'
-    ss.osx.deployment_target = '10.6'
+    ss.osx.deployment_target = '10.8'
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTASN1/*.{h,m}'
   end
@@ -66,7 +66,7 @@ Pod::Spec.new do |spec|
   spec.subspec 'DTHTMLParser' do |ss|
     ss.ios.deployment_target = '4.3'
     ss.tvos.deployment_target = '9.0'
-    ss.osx.deployment_target = '10.6'
+    ss.osx.deployment_target = '10.8'
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTHTMLParser/*.{h,m}'
     ss.library = 'xml2'
@@ -75,7 +75,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTReachability' do |ss|
     ss.ios.deployment_target = '4.3'
-    ss.osx.deployment_target = '10.6'
+    ss.osx.deployment_target = '10.8'
     ss.framework = 'SystemConfiguration'
     ss.source_files = 'Core/Source/DTReachability/*.{h,m}'
     ss.dependency 'DTFoundation/Core'
@@ -90,7 +90,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTSQLite' do |ss|
     ss.ios.deployment_target = '4.3'
-    ss.osx.deployment_target = '10.6'
+    ss.osx.deployment_target = '10.8'
     ss.library = 'sqlite3'
     ss.source_files = 'Core/Source/DTSQLite/*.{h,m}'
 	ss.private_header_files = 'Core/Source/DTSQLite/DTSQLiteFunctions.h'
@@ -99,7 +99,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTUTI' do |ss|
     ss.ios.deployment_target = '4.3'
-    ss.osx.deployment_target = '10.6'
+    ss.osx.deployment_target = '10.8'
     ss.ios.frameworks = ['MobileCoreServices']
     ss.source_files = 'Core/Source/DTUTI/*.{h,m}'
   end
@@ -128,14 +128,14 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTScripting' do |ss|
     ss.ios.deployment_target = '4.3'
-    ss.osx.deployment_target = '10.6'
+    ss.osx.deployment_target = '10.8'
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTScripting/*.{h,m}'
   end
   
   spec.subspec 'DTAsyncFileDeleter' do |ss|
     ss.ios.deployment_target = '4.3'
-    ss.osx.deployment_target = '10.6'
+    ss.osx.deployment_target = '10.8'
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTAsyncFileDeleter/*.{h,m}'
   end
@@ -149,7 +149,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'Runtime' do |ss|
     ss.ios.deployment_target = '4.3'
-    ss.osx.deployment_target = '10.6'
+    ss.osx.deployment_target = '10.8'
     ss.source_files = 'Core/Source/Runtime/*.{h,m}'
   end
 
