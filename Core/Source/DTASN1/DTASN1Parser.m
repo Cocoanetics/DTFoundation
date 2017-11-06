@@ -59,6 +59,7 @@
 		_UTCFormatter = [[NSDateFormatter alloc] init];
 		_UTCFormatter.dateFormat = @"yyMMddHHmmss'Z'";
 		_UTCFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+		_UTCFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
 		
 		if (!_dataLength)
 		{
@@ -336,10 +337,16 @@
 		{
 			if (_delegateFlags.delegateSupportsString)
 			{
-				uint8_t *buffer = malloc(dataRange.length);
-				[_data getBytes:buffer range:dataRange];
+				NSString *string = @"";
+				uint8_t *buffer = NULL;
 				
-				NSString *string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSUTF8StringEncoding freeWhenDone:YES];
+				if (dataRange.length)
+				{
+					buffer = malloc(dataRange.length);
+					[_data getBytes:buffer range:dataRange];
+				
+					string = [[NSString alloc] initWithBytesNoCopy:buffer length:dataRange.length encoding:NSUTF8StringEncoding freeWhenDone:YES];
+				}
 				
 				// FIXME: This does not properly deal with Latin1 strings, those get simply ignored
 
@@ -349,8 +356,11 @@
 				}
 				else
 				{
-					free(buffer);
-					buffer = NULL;
+					if (buffer)
+					{
+						free(buffer);
+						buffer = NULL;
+					}
 				}
 			}
 			break;
@@ -423,7 +433,7 @@
 		}
 		
 		// get length
-		NSUInteger lengthOfLength;
+		NSUInteger lengthOfLength = 0;
 		NSUInteger length = [self _parseLengthAtLocation:location lengthOfLength:&lengthOfLength];
 		
 		// abort if there was a problem with the length

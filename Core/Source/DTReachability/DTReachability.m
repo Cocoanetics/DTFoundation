@@ -74,9 +74,26 @@ static DTReachability *_sharedInstance;
 	{
 		_observers = [[NSMutableSet alloc] init];
 		_hostname = hostname;
+		
+		#if TARGET_OS_IPHONE
+			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+		#endif
 	}
 	return self;
 }
+
+- (void)applicationDidEnterBackground:(NSNotification *)notification
+{
+	[self _unregisterNetworkReachability];
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+	[self _registerNetworkReachability];
+}
+
+
 
 - (void)dealloc
 {

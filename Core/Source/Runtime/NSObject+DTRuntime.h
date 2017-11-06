@@ -21,7 +21,7 @@
  Adds a block to be executed as soon as the receiver's memory is deallocated
  @param block The block to execute when the receiver is being deallocated
  */
-- (void)addDeallocBlock:(void(^)())block;
+- (void)addDeallocBlock:(void(^)(void))block;
 
 /**
  Adds a new instance method to a class. All instances of this class will have this method.

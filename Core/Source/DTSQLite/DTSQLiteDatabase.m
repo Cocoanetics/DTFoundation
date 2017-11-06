@@ -120,12 +120,12 @@
 
 #pragma mark - Block Operations
 
-- (void)performBlock:(void (^)())block
+- (void)performBlock:(void (^)(void))block
 {
 	[_queue addOperationWithBlock:block];
 }
 
-- (void)performBlockAndWait:(void (^)())block
+- (void)performBlockAndWait:(void (^)(void))block
 {
 	[_queue addOperationWithBlock:block];
 	[_queue waitUntilAllOperationsAreFinished];

@@ -11,7 +11,7 @@
 
 @implementation DTObjectBlockExecutor
 
-+ (id)blockExecutorWithDeallocBlock:(void(^)())block
++ (id)blockExecutorWithDeallocBlock:(void(^)(void))block
 {
     DTObjectBlockExecutor *executor = [[DTObjectBlockExecutor alloc] init];
     executor.deallocBlock = block; // copy

@@ -8,6 +8,7 @@
 
 #import "DTProgressHUDWindow.h"
 #import "DTProgressHUD.h"
+#import "UIScreen+DTFoundation.h"
 
 #define DegreesToRadians(degrees) (degrees * M_PI / 180)
 
@@ -60,7 +61,7 @@ static CGAffineTransform _transformForInterfaceOrientation(UIInterfaceOrientatio
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarDidChangeFrame:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
 		
 		// set initial transform
-		UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+		UIInterfaceOrientation orientation = [[UIScreen mainScreen] orientation];
 		[self setTransform:_transformForInterfaceOrientation(orientation)];
 	}
 	return self;
@@ -75,7 +76,7 @@ static CGAffineTransform _transformForInterfaceOrientation(UIInterfaceOrientatio
 
 - (void)statusBarDidChangeFrame:(NSNotification *)notification
 {
-	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+	UIInterfaceOrientation orientation = [[UIScreen mainScreen] orientation];
 	[self setTransform:_transformForInterfaceOrientation(orientation)];
 }
 

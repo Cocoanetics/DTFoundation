@@ -15,7 +15,7 @@ static char DTRuntimeDeallocBlocks;
 
 #pragma mark - Blocks
 
-- (void)addDeallocBlock:(void(^)())block
+- (void)addDeallocBlock:(void(^)(void))block
 {
     // don't accept NULL block
     NSParameterAssert(block);
