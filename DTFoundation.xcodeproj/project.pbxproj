@@ -410,7 +410,7 @@
 		A7D8C7BE1723174600025675 /* DTZipArchiveGZip.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C04943358446F1A9BA86F458 /* DTZipArchiveGZip.h */; };
 		A7D95AD81BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD1E17A65AD800480205 /* DTASN1BitString.h */; };
 		A7D95AD91BC40DAB00AB8A21 /* DTASN1BitString.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD1F17A65AD800480205 /* DTASN1BitString.m */; };
-		A7D95ADA1BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2017A65AD800480205 /* DTASN1Parser.h */; };
+		A7D95ADA1BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2017A65AD800480205 /* DTASN1Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D95ADB1BC40DAB00AB8A21 /* DTASN1Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2117A65AD800480205 /* DTASN1Parser.m */; };
 		A7D95ADC1BC40DAB00AB8A21 /* DTASN1Serialization.h in Headers */ = {isa = PBXBuildFile; fileRef = A78EDD2217A65AD800480205 /* DTASN1Serialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D95ADD1BC40DAB00AB8A21 /* DTASN1Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A78EDD2317A65AD800480205 /* DTASN1Serialization.m */; };
@@ -2390,7 +2390,6 @@
 				384471341BA33ED80037C68D /* UIApplication+DTNetworkActivity.h in Headers */,
 				384471351BA33ED80037C68D /* DTCoreGraphicsUtils.h in Headers */,
 				384471361BA33ED80037C68D /* NSMutableArray+DTMoving.h in Headers */,
-				A7D95ADA1BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */,
 				384471371BA33ED80037C68D /* DTSidePanelControllerSegue.h in Headers */,
 				384471381BA33ED80037C68D /* DTObjectBlockExecutor.h in Headers */,
 				384471391BA33ED80037C68D /* DTActivityTitleView.h in Headers */,
@@ -2409,14 +2408,15 @@
 				384471461BA33ED80037C68D /* UIView+DTDebug.h in Headers */,
 				384471471BA33ED80037C68D /* NSString+DTUtilities.h in Headers */,
 				384471481BA33ED80037C68D /* UIColor+DTDebug.h in Headers */,
-				A7D95AD81BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */,
 				384471491BA33ED80037C68D /* NSURL+DTComparing.h in Headers */,
 				3844714A1BA33ED80037C68D /* DTAlertView.h in Headers */,
 				3844714B1BA33ED80037C68D /* DTProgressHUD.h in Headers */,
 				3844714C1BA33ED80037C68D /* DTAsyncFileDeleter.h in Headers */,
+				A7D95ADA1BC40DAB00AB8A21 /* DTASN1Parser.h in Headers */,
 				3844714D1BA33ED80037C68D /* UIImage+DTFoundation.h in Headers */,
 				3844714E1BA33ED80037C68D /* NSDictionary+DTError.h in Headers */,
 				3844714F1BA33ED80037C68D /* DTCompatibility.h in Headers */,
+				A7D95AD81BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2534,7 +2534,6 @@
 				A7EA07691A2B221300B61CCE /* NSDictionary+DTError.h in Headers */,
 				A7EA079A1A2B232500B61CCE /* DTBlockFunctions.h in Headers */,
 				A79BA5D81B46A0D50086C2F6 /* DTHTMLParser.h in Headers */,
-				A7D95ADE1BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */,
 				A7EA07931A2B232500B61CCE /* DTBase64Coding.h in Headers */,
 				A7EA07981A2B232500B61CCE /* DTVersion.h in Headers */,
 				A7EA07751A2B221300B61CCE /* NSString+DTURLEncoding.h in Headers */,
@@ -2559,6 +2558,7 @@
 				A7EA07961A2B232500B61CCE /* DTFoundationConstants.h in Headers */,
 				A7EA07921A2B232500B61CCE /* DTAsyncFileDeleter.h in Headers */,
 				A7EA07951A2B232500B61CCE /* DTFolderMonitor.h in Headers */,
+				A7D95ADE1BC40DAB00AB8A21 /* DTASN1BitString.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2609,7 +2609,6 @@
 				A7EA07F81A2B311700B61CCE /* UIView+DTDebug.h in Headers */,
 				A7EA08121A2B316100B61CCE /* NSString+DTUtilities.h in Headers */,
 				A7EA07F61A2B311700B61CCE /* UIColor+DTDebug.h in Headers */,
-				A7D95AE41BC40DAC00AB8A21 /* DTASN1BitString.h in Headers */,
 				A7EA081A1A2B316100B61CCE /* NSURL+DTComparing.h in Headers */,
 				A7EA07FC1A2B312300B61CCE /* DTAlertView.h in Headers */,
 				A74988821B6EA91F00A66234 /* DTProgressHUD.h in Headers */,
@@ -2617,6 +2616,7 @@
 				A7EA07E61A2B30F000B61CCE /* UIImage+DTFoundation.h in Headers */,
 				A7EA080A1A2B316100B61CCE /* NSDictionary+DTError.h in Headers */,
 				A7B505361B6A595700BC743A /* DTCompatibility.h in Headers */,
+				A7D95AE41BC40DAC00AB8A21 /* DTASN1BitString.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3991,6 +3991,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = DTFoundation;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4025,6 +4026,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = DTFoundation;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4058,6 +4060,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = DTFoundation;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Headers";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
