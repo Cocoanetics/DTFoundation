@@ -58,6 +58,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTASN1' do |ss|
     ss.ios.deployment_target = '4.3'
+    ss.tvos.deployment_target = '9.0'
     ss.osx.deployment_target = '10.8'
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTASN1/*.{h,m}'
