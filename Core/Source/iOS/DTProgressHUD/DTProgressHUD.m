@@ -193,7 +193,7 @@
 			_hudView.alpha = 0.0f;
 			
 			[UIView animateWithDuration:_fadeInDuration animations:^{
-				_hudView.alpha = 1.0f;
+				self->_hudView.alpha = 1.0f;
 			}];
 			
 			break;
@@ -339,7 +339,7 @@
 			[UIView animateWithDuration:_fadeOutDuration animations:^{
 				
 				// fade out
-				_hudView.alpha = 0.0f;
+				self->_hudView.alpha = 0.0f;
 			} completion:^(BOOL finished) {
 				//
 				
