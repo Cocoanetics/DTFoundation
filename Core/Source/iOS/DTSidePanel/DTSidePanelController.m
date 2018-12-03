@@ -9,9 +9,9 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "DTSidePanelController.h"
-#import "UIView+DTFoundation.h"
+#import <DTFoundation/UIView+DTFoundation.h>
 #import "UIViewController+DTSidePanelController.h"
-#import "DTLog.h"
+#import <DTFoundation/DTLog.h>
 #import "DTSidePanelPanGestureRecognizer.h"
 #import "DTSidePanelControllerSegue.h"
 
