@@ -97,7 +97,6 @@
 #import "UIImage+DTFoundation.h"
 #import "NSURL+DTAppLinks.h"
 #import "UIView+DTFoundation.h"
-#import "UIWebView+DTFoundation.h"
 
 #import "DTAnimatedGIF.h"
 
