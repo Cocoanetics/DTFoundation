@@ -23,7 +23,7 @@
 		NSMutableCharacterSet *tmpSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
 		
 		// add some characters that might have special meaning
-                [tmpSet  addCharactersInString: @"!*'();:@&=+$,/?%#[]"];
+        [tmpSet  removeCharactersInString: @"!*'();:@&=+$,/?%#[]"];
 		allowedCharacters = [tmpSet copy];
 	});
 	
