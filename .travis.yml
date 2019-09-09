@@ -2,9 +2,6 @@
 language: objective-c
 osx_image: xcode8.3
 
-install: 
- - sudo easy_install cpp-coveralls
-
 script: 
  - xctool -project DTFoundation.xcodeproj -scheme "DTSidePanels Demo" build -sdk iphonesimulator -arch i386 ONLY_ACTIVE_ARCH=NO
  - xctool -project DTFoundation.xcodeproj -scheme "DTReachability Demo" build -sdk iphonesimulator -arch i386 ONLY_ACTIVE_ARCH=NO
@@ -13,6 +10,3 @@ script:
  - xctool -project DTFoundation.xcodeproj -scheme "Static Library" build test -sdk iphonesimulator -arch i386 ONLY_ACTIVE_ARCH=NO -configuration Coverage
  - xctool -project DTFoundation.xcodeproj -scheme "DTFoundation (iOS)" test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6 Plus'
  - xctool -project DTFoundation.xcodeproj -scheme "DTFoundation (OSX)" clean build
-
-after_success:
-  - ./coveralls.rb --extension m --exclude-folder Demo --exclude-folder Test --exclude-folder Externals
