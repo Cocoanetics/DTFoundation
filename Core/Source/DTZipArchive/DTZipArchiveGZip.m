@@ -233,7 +233,7 @@
 	dispatch_async(_uncompressingQueue, ^{
 		[self _uncompressFile:targetPath completion:^(NSData *data, NSError *error) {
 			
-			_uncompressing = NO;
+            self->_uncompressing = NO;
 			
 			if (completion)
 			{
