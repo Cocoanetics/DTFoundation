@@ -44,7 +44,3 @@ Methods to help with working with images.
 ### UIView (DTFoundation)
 
 Enhancements for `UIView`.
-
-### UIWebView (DTFoundation)
-
-Some convenient functions that can be also achieved if you know JavaScript, but are way more easy to remember like this.
