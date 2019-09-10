@@ -46,8 +46,8 @@
     
     // create a left and right "Hamburger" icon on center VC's navigationItem
 	UIImage *hamburgerIcon = [UIImage imageNamed:@"toolbar-icon-menu"];
-	centerVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:hamburgerIcon style:UIBarButtonItemStyleBordered target:_sidePanelController action:@selector(toggleLeftPanel:)];
-	centerVC.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:hamburgerIcon style:UIBarButtonItemStyleBordered target:_sidePanelController action:@selector(toggleRightPanel:)];
+	centerVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:hamburgerIcon style:UIBarButtonItemStylePlain target:_sidePanelController action:@selector(toggleLeftPanel:)];
+	centerVC.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:hamburgerIcon style:UIBarButtonItemStylePlain target:_sidePanelController action:@selector(toggleRightPanel:)];
 	LoggingNavigationController *centerNav = [[LoggingNavigationController alloc] initWithRootViewController:centerVC];
 	
 	// left panel has fixed width, right panel width is variable

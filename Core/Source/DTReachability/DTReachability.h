@@ -38,7 +38,7 @@
 
 
 // block type for the reachability observers
-typedef void(^DTReachabilityObserverBlock)(DTReachabilityInformation *reachabilityInformation);
+typedef void(^DTReachabilityObserverBlock)(DTReachabilityInformation * _Nonnull reachabilityInformation);
 
 
 /**
@@ -54,7 +54,7 @@ typedef void(^DTReachabilityObserverBlock)(DTReachabilityInformation *reachabili
 
  @returns An initialized DTReachability instance.
  */
-- (instancetype)init;
+- (instancetype _Nonnull)init;
 
 /**
  Returns an initialized DTReachability instance with a given host name
@@ -62,14 +62,14 @@ typedef void(^DTReachabilityObserverBlock)(DTReachabilityInformation *reachabili
  @param hostname The host name to monitor
  @returns An initialized DTReachability instance.
  */
-- (instancetype)initWithHostname:(NSString *)hostname;
+- (instancetype _Nonnull)initWithHostname:(NSString * _Nonnull)hostname;
 
 /**
  Returns a shared DTReachability instance with the default hostname is apple.com. Generally you should use this because each DTReachability instance maintains its own table of observers.
  
  @returns the default DTReachability instance
  */
-+ (DTReachability *)defaultReachability;
++ (DTReachability * _Nonnull)defaultReachability;
 
 
 /**
@@ -78,7 +78,7 @@ typedef void(^DTReachabilityObserverBlock)(DTReachabilityInformation *reachabili
  @param observer An observation block
  @returns An opaque reference to the observer which you can use to remove it
  */
-+ (id)addReachabilityObserverWithBlock:(DTReachabilityObserverBlock)observer __attribute__((deprecated("use -[[DTReachability defaultReachability] addReachabilityObserverWithBlock:]")));
++ (_Nonnull id)addReachabilityObserverWithBlock:(DTReachabilityObserverBlock _Nonnull )observer __attribute__((deprecated("use -[[DTReachability defaultReachability] addReachabilityObserverWithBlock:]")));
 
 
 /**
@@ -86,7 +86,7 @@ typedef void(^DTReachabilityObserverBlock)(DTReachabilityInformation *reachabili
  @warning use -[[DTReachability defaultReachability] removeReachabilityObserver:]
  @param observer The opaque reference to a reachability observer
  */
-+ (void)removeReachabilityObserver:(id)observer __attribute__((deprecated("use -[[DTReachability defaultReachability] removeReachabilityObserver:]")));
++ (void)removeReachabilityObserver:(id _Nonnull)observer __attribute__((deprecated("use -[[DTReachability defaultReachability] removeReachabilityObserver:]")));
 
 /**
  
@@ -94,14 +94,14 @@ typedef void(^DTReachabilityObserverBlock)(DTReachabilityInformation *reachabili
  @param observer An observation block
  @returns An opaque reference to the observer which you can use to remove it
  */
-- (id)addReachabilityObserverWithBlock:(DTReachabilityObserverBlock)observer;
+- (id _Nonnull)addReachabilityObserverWithBlock:(DTReachabilityObserverBlock _Nonnull)observer;
 
 
 /**
  Removes a reachability observer block from the receiver.
  @param observer The opaque reference to a reachability observer
  */
-- (void)removeReachabilityObserver:(id)observer;
+- (void)removeReachabilityObserver:(id _Nonnull)observer;
 
 
 /**
@@ -109,7 +109,7 @@ typedef void(^DTReachabilityObserverBlock)(DTReachabilityInformation *reachabili
  
  @param hostname The new hostname that is monitored
  */
-- (void)setHostname:(NSString *)hostname;
+- (void)setHostname:(NSString * _Nonnull) hostname;
 
 
 @end

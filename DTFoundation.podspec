@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.7.13'
+  spec.version      = '1.7.14'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@cocoanetics.com" }
@@ -58,6 +58,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'DTASN1' do |ss|
     ss.ios.deployment_target = '4.3'
+    ss.tvos.deployment_target = '9.0'
     ss.osx.deployment_target = '10.8'
     ss.dependency 'DTFoundation/Core'
     ss.source_files = 'Core/Source/DTASN1/*.{h,m}'

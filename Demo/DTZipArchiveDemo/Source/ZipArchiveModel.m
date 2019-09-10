@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Drobnik KG. All rights reserved.
 //
 
-#import "ZipArchiveModel.h"
+#import "ZIpArchiveModel.h"
 
 @implementation ZipArchiveModel
 

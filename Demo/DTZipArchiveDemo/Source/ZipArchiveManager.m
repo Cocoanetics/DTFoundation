@@ -7,7 +7,7 @@
 //
 
 #import "ZipArchiveManager.h"
-#import "ZipArchiveModel.h"
+#import "ZIpArchiveModel.h"
 #import "DTZipArchive.h"
 #import "NSString+DTPaths.h"
 #import "DTFolderMonitor.h"

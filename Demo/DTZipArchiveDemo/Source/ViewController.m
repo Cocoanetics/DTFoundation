@@ -14,7 +14,7 @@
 #import "ZipArchiveCell.h"
 #import "DTZipArchive.h"
 #import "ZipArchiveManager.h"
-#import "ZipArchiveModel.h"
+#import "ZIpArchiveModel.h"
 #import "DTZipArchiveNode.h"
 #import "ZipNodeViewController.h"
 
