@@ -71,7 +71,7 @@
 	
 	[self performBlock:^{
 		// set cancelling back after queue was cleared out
-		_isCancelling = NO;
+		self->_isCancelling = NO;
 	}];
 	
 	[_queue setSuspended:NO];
