@@ -18,13 +18,9 @@
 	
 	static NSCharacterSet *allowedCharacters = nil;
 	static dispatch_once_t onceToken;
-	
+
 	dispatch_once(&onceToken, ^{
-		NSMutableCharacterSet *tmpSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
-		
-		// add some characters that might have special meaning
-        [tmpSet  removeCharactersInString: @"!*'();:@&=+$,/?%#[]"];
-		allowedCharacters = [tmpSet copy];
+        allowedCharacters = [[NSCharacterSet characterSetWithCharactersInString:@"=:/?@+#[]!$ &'()*,;""<>%{}|^~`"] invertedSet];
 	});
 	
     return [self stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacters];
