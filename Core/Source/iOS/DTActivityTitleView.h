@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 /**
  Alternative view for showing titles with a configurable activity indicator
  instead of default title view in navigationItem.
@@ -24,3 +28,5 @@
 @property (nonatomic, assign) BOOL busy;
 
 @end
+
+#endif

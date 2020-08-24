@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+
 #import "UIViewController+DTSidePanelController.h"
 #import <DTFoundation/DTWeakSupport.h>
 
@@ -141,3 +144,5 @@ static NSString * const DTSidePanelModalIdentifier = @"DTSidePanelModal";
 
 
 @end
+
+#endif

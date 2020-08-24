@@ -9,6 +9,10 @@
 #import "DTReachability.h"
 #import "DTLog.h"
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#endif
+
 @implementation DTReachabilityInformation
 
 

@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
 #import "DTSidePanelControllerSegue.h"
 #import "DTSidePanelController.h"
 
@@ -103,3 +105,5 @@
 }
 
 @end
+
+#endif

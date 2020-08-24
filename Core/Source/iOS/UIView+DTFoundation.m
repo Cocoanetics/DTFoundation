@@ -6,6 +6,10 @@
 //  Copyright (c) 2011 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 #import "UIView+DTFoundation.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -71,3 +75,5 @@ NSString *shadowContext = @"Shadow";
 }
 
 @end
+
+#endif

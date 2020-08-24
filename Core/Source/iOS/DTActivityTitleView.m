@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 #import "DTActivityTitleView.h"
 
 @interface DTActivityTitleView ()
@@ -114,3 +118,5 @@
 @synthesize activityIndicator = _activityIndicator;
 
 @end
+
+#endif

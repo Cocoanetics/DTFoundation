@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_OSX
+
 #import "NSImage+DTUtilities.h"
 
 @implementation NSImage (DTUtilities)
@@ -21,3 +23,5 @@
 }
 
 @end
+
+#endif

@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+
 @class DTProgressHUD;
 
 /**
@@ -20,3 +23,5 @@
 - (instancetype)initWithProgressHUD:(DTProgressHUD *)progressHUD;
 
 @end
+
+#endif

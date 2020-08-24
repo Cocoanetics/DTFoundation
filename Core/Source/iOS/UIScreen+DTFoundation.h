@@ -8,8 +8,14 @@
 
 /** DTFoundation enhancements for `UIView` */
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 @interface UIScreen (DTFoundation)
 
 - (UIInterfaceOrientation)orientation;
 
 @end
+
+#endif

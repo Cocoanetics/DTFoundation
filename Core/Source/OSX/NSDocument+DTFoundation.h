@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+
 /**
  Utility Methods for working with `NSDocument` instances.
  */
@@ -21,3 +24,5 @@
 - (NSWindowController *)mainDocumentWindowController;
 
 @end
+
+#endif
