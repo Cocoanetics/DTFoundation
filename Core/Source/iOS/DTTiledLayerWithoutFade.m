@@ -6,6 +6,10 @@
 //  Copyright 2011 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 #import "DTTiledLayerWithoutFade.h"
 
 @implementation DTTiledLayerWithoutFade
@@ -21,3 +25,5 @@
 }
 
 @end
+
+#endif

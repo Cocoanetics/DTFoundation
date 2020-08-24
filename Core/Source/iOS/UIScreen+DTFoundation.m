@@ -6,6 +6,10 @@
 //  Copyright © 2017 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 #import "UIScreen+DTFoundation.h"
 
 @implementation UIScreen (DTFoundation)
@@ -26,3 +30,5 @@
 }
 
 @end
+
+#endif

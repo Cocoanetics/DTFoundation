@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+
 #import <QuartzCore/QuartzCore.h>
 
 /**
@@ -23,3 +26,5 @@
 @property (nonatomic, assign) CGFloat stripeHeight;
 
 @end
+
+#endif

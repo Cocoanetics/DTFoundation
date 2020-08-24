@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+
 
 /**
  Loads an animated GIF from file, compatible with UIImageView
@@ -16,3 +19,5 @@ UIImage *DTAnimatedGIFFromFile(NSString *path);
  Loads an animated GIF from data, compatible with UIImageView
  */
 UIImage *DTAnimatedGIFFromData(NSData *data);
+
+#endif

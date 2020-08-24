@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
 #import "UIApplication+DTNetworkActivity.h"
 
 static NSUInteger __internalOperationCount = 0;
@@ -53,3 +56,5 @@ static NSUInteger __internalOperationCount = 0;
 }
 
 @end
+
+#endif

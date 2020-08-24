@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 /**
  Methods to add simple block-based actions to UIViews.
  */
@@ -25,3 +29,5 @@
 - (void)setLongPressActionWithBlock:(void (^)(void))block;
 
 @end
+
+#endif

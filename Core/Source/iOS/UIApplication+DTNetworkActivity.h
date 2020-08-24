@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 /**
  Enhancement for `UIApplication` to properly count active network sessions and show the network activity indicator whenever there are more than 0 active sessions.
  */
@@ -22,3 +26,5 @@
 - (void)popActiveNetworkOperation;
 
 @end
+
+#endif

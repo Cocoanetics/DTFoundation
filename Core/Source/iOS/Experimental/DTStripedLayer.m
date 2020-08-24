@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
 #import "DTStripedLayer.h"
 #import "DTStripedLayerTile.h"
 #import "DTCoreGraphicsUtils.h"
@@ -410,3 +412,5 @@
 @synthesize tileCache = _tileCache;
 
 @end
+
+#endif

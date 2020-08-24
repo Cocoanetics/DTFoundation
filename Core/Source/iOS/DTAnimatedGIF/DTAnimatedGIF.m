@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
 #import "DTAnimatedGIF.h"
 #import <ImageIO/ImageIO.h>
 
@@ -138,3 +140,5 @@ UIImage * _Nullable DTAnimatedGIFFromData(NSData * _Nonnull data)
 	
 	return image;
 }
+
+#endif

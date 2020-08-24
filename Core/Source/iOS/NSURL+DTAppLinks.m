@@ -6,6 +6,10 @@
 //  Copyright (c) 2011 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 #import "NSURL+DTAppLinks.h"
 
 @implementation NSURL (DTAppLinks)
@@ -24,3 +28,5 @@
 }
 
 @end
+
+#endif

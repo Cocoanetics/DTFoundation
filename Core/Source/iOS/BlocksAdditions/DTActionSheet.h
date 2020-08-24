@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+
 #import <DTFoundation/DTWeakSupport.h>
 #import <Availability.h>
 
@@ -69,4 +72,6 @@ typedef void (^DTActionSheetBlock)(void);
 @property (nonatomic, DT_WEAK_PROPERTY) id<UIActionSheetDelegate> actionSheetDelegate;
 
 @end
+#endif
+
 #endif

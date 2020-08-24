@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+
 /**
  Useful shortcuts for auto layout on Mac.
  */
@@ -37,3 +40,5 @@
 - (void)addLayoutConstraintsForSubview:(NSView *)subview edgeInsets:(NSEdgeInsets)edgeInsets;
 
 @end
+
+#endif

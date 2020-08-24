@@ -6,6 +6,10 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 /**
  Helpful extensions for UIColor
  */
@@ -21,3 +25,5 @@
 + (UIColor *)randomColor;
 
 @end
+
+#endif

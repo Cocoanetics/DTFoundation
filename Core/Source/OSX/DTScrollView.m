@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_OSX
+
 #import "DTScrollView.h"
 
 @implementation DTScrollView
@@ -46,3 +48,5 @@
 }
 
 @end
+
+#endif

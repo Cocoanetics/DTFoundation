@@ -6,6 +6,8 @@
 //  Copyright 2014 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
 #import "DTProgressHUD.h"
 #import "DTProgressHUDWindow.h"
 
@@ -664,3 +666,5 @@
 }
 
 @end
+
+#endif

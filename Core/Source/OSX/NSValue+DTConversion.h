@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_OSX
+#import <AppKit/AppKit.h>
+
 /**
  Category on NSValue providing some struct encoding that is missing on Mac, but exists on iOS.
  */
@@ -52,3 +55,5 @@
 - (CGPoint)CGPointValue;
 
 @end
+
+#endif

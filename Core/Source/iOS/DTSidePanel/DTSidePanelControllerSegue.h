@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+
 #import <DTFoundation/DTWeakSupport.h>
 
 @class DTSidePanelController;
@@ -35,3 +38,5 @@
 + (NSString *) getOptionIdentifier:(NSString *)identifier;
 
 @end
+
+#endif
