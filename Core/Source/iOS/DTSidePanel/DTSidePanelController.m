@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
 #import <QuartzCore/QuartzCore.h>
 
 #import "DTSidePanelController.h"
@@ -994,3 +996,5 @@
 }
 
 @end
+
+#endif

@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
 #import "DTActionSheet.h"
 #import <DTFoundation/DTWeakSupport.h>
 
@@ -181,4 +183,6 @@
 }
 
 @end
+#endif
+
 #endif

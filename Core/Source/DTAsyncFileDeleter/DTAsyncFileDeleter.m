@@ -9,6 +9,10 @@
 #import "DTAsyncFileDeleter.h"
 #import "NSString+DTPaths.h"
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#endif
+
 
 static dispatch_queue_t _delQueue;
 static dispatch_group_t _delGroup;

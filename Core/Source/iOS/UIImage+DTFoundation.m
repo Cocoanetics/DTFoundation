@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 #import "UIImage+DTFoundation.h"
 #import "DTCoreGraphicsUtils.h"
 #import "DTLog.h"
@@ -349,3 +353,5 @@
 }
 
 @end
+
+#endif

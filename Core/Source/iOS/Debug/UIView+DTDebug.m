@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
 #import "UIView+DTDebug.h"
 #import "NSObject+DTRuntime.h"
 #import "DTLog.h"
@@ -58,3 +60,5 @@
 }
 
 @end
+
+#endif

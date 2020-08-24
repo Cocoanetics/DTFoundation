@@ -6,6 +6,10 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 /**
  Methods to enhance `UIViewController` for use with DTSidePanelController
  */
@@ -23,3 +27,5 @@
 - (DTSidePanelController *)sidePanelController;
 
 @end
+
+#endif

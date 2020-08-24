@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
 #import "UIViewController+DTSidePanelController.h"
 #import <objc/runtime.h>
 #import "DTSidePanelController.h"
@@ -38,3 +40,5 @@ static char DTSidePanelControllerKey;
 }
 
 @end
+
+#endif

@@ -7,6 +7,8 @@
 // 
 //
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIGestureRecognizerSubclass.h>
@@ -14,3 +16,5 @@
 
 @interface DTSidePanelPanGestureRecognizer : UIPanGestureRecognizer
 @end
+
+#endif

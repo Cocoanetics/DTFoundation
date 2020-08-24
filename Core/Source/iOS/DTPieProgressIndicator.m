@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 #import "DTPieProgressIndicator.h"
 #import "DTCoreGraphicsUtils.h"
 
@@ -109,3 +113,5 @@
 }
 
 @end
+
+#endif

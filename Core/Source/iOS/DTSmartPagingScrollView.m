@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 #import "DTSmartPagingScrollView.h"
 #import "DTCoreGraphicsUtils.h"
 #import <QuartzCore/QuartzCore.h>
@@ -272,3 +276,5 @@
 @synthesize currentPageIndex = _currentPageIndex;
 
 @end
+
+#endif

@@ -8,6 +8,10 @@
 
 /** DTFoundation enhancements for `UIView` */
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 @interface UIView (DTFoundation)
 
 /**---------------------------------------------------------------------------------------
@@ -67,3 +71,5 @@
 - (void)updateShadowPathToBounds:(CGRect)bounds withDuration:(NSTimeInterval)duration;
 
 @end
+
+#endif

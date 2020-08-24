@@ -6,6 +6,10 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+
 #import <DTFoundation/DTWeakSupport.h>
 
 @class DTSmartPagingScrollView;
@@ -82,3 +86,5 @@
 - (UIView *)viewForIndex:(NSUInteger)index;
 
 @end
+
+#endif
