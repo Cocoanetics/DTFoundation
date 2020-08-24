@@ -8,6 +8,8 @@
 
 #if TARGET_OS_IPHONE
 
+#import <UIKit/UIKit.h>
+
 #import "DTAnimatedGIF.h"
 #import <ImageIO/ImageIO.h>
 

@@ -7,6 +7,7 @@
 //
 
 #if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
 
 #import "DTStripedLayerTile.h"
 
@@ -30,7 +31,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ index=%d width=%@>", NSStringFromClass([self class]), _index, NSStringFromCGRect(self.frame)];
+    return [NSString stringWithFormat:@"<%@ index=%lu width=%@>", NSStringFromClass([self class]), (unsigned long)_index, NSStringFromCGRect(self.frame)];
 }
 
 
