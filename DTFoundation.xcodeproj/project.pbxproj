@@ -1113,10 +1113,6 @@
 		A7C92B75174FB81C0019D70A /* DTSQLiteFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTSQLiteFunctions.m; sourceTree = "<group>"; };
 		A7C92B7A174FB8900019D70A /* libDTSQLite_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTSQLite_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C92B8C174FB9720019D70A /* libDTSQLite_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTSQLite_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7C92B9A174FBBAF0019D70A /* DTStripedLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTStripedLayer.h; sourceTree = "<group>"; };
-		A7C92B9B174FBBAF0019D70A /* DTStripedLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayer.m; sourceTree = "<group>"; };
-		A7C92B9C174FBBAF0019D70A /* DTStripedLayerTile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTStripedLayerTile.h; sourceTree = "<group>"; };
-		A7C92B9D174FBBAF0019D70A /* DTStripedLayerTile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayerTile.m; sourceTree = "<group>"; };
 		A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DTError.h"; sourceTree = "<group>"; };
 		A7D0AA24153C1B160020F18B /* NSDictionary+DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DTError.m"; sourceTree = "<group>"; };
 		A7D0AA29153C1FE40020F18B /* NSString+DTURLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTURLEncoding.h"; sourceTree = "<group>"; };
@@ -1678,7 +1674,6 @@
 				F88FF6821920A9DF00120808 /* DTProgressHUD */,
 				A78EDD2917A65D4A00480205 /* Debug */,
 				A74663B11743D00500D4D7D5 /* DTSidePanel */,
-				A7C92B99174FBBAF0019D70A /* Experimental */,
 				A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */,
 				A730BCCD16D2892E003B849F /* DTTiledLayerWithoutFade.m */,
 				A76DB49116A5E37F0010CD85 /* DTActivityTitleView.h */,
@@ -1915,17 +1910,6 @@
 				A7C92B75174FB81C0019D70A /* DTSQLiteFunctions.m */,
 			);
 			path = DTSQLite;
-			sourceTree = "<group>";
-		};
-		A7C92B99174FBBAF0019D70A /* Experimental */ = {
-			isa = PBXGroup;
-			children = (
-				A7C92B9A174FBBAF0019D70A /* DTStripedLayer.h */,
-				A7C92B9B174FBBAF0019D70A /* DTStripedLayer.m */,
-				A7C92B9C174FBBAF0019D70A /* DTStripedLayerTile.h */,
-				A7C92B9D174FBBAF0019D70A /* DTStripedLayerTile.m */,
-			);
-			path = Experimental;
 			sourceTree = "<group>";
 		};
 		A7D0AA68153C39490020F18B /* Core Graphics */ = {
