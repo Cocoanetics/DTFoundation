@@ -1,1 +1,0 @@
-../../Source/iOS/Experimental/DTStripedLayer.h
