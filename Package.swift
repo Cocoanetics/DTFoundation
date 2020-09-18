@@ -31,5 +31,6 @@ let package = Package(
         .testTarget(
             name: "DTFoundationTests",
             dependencies: ["DTFoundation"]),
+            path: "Test"
     ]
 )
