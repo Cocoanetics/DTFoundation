@@ -6,11 +6,12 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import "UIImage+DTFoundation.h"
+
 #if TARGET_OS_IPHONE
 
 #import <UIKit/UIKit.h>
 
-#import "UIImage+DTFoundation.h"
 #import "DTCoreGraphicsUtils.h"
 #import "DTLog.h"
 

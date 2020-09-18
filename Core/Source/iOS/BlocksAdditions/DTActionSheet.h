@@ -6,11 +6,13 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-#if TARGET_OS_IPHONE
-#import <UIKit/UIKit.h>
-
-#import <DTFoundation/DTWeakSupport.h>
 #import <Availability.h>
+#import <TargetConditionals.h>
+
+#if TARGET_OS_IPHONE
+
+#import <UIKit/UIKit.h>
+#import <DTFoundation/DTWeakSupport.h>
 
 // the block to execute when an option button is tapped
 typedef void (^DTActionSheetBlock)(void);

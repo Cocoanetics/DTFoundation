@@ -6,11 +6,13 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import <Availability.h>
+#import <TargetConditionals.h>
+
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 
 #import <DTFoundation/DTWeakSupport.h>
-#import <Availability.h>
 
 #if !TARGET_OS_TV && __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
 

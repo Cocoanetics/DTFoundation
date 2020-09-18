@@ -6,11 +6,12 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#import "DTSidePanelController.h"
+
 #if TARGET_OS_IPHONE
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "DTSidePanelController.h"
 #import <DTFoundation/UIView+DTFoundation.h>
 #import "UIViewController+DTSidePanelController.h"
 #import <DTFoundation/DTLog.h>

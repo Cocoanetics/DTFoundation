@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import "DTActionSheet.h"
+
 #if TARGET_OS_IPHONE
 
-#import "DTActionSheet.h"
 #import <DTFoundation/DTWeakSupport.h>
 
 #import "DTLog.h"

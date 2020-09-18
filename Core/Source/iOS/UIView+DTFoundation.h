@@ -8,6 +8,7 @@
 
 /** DTFoundation enhancements for `UIView` */
 
+#import <Availability.h>
 #import <TargetConditionals.h>
 
 #if TARGET_OS_IPHONE

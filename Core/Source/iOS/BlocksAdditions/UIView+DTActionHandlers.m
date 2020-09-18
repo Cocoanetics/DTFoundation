@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-#if TARGET_OS_IPHONE
-
 #import "UIView+DTActionHandlers.h"
+
+#if TARGET_OS_IPHONE
 
 #import <objc/runtime.h>
 

@@ -6,11 +6,12 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import "DTPieProgressIndicator.h"
+
 #if TARGET_OS_IPHONE
 
 #import <UIKit/UIKit.h>
 
-#import "DTPieProgressIndicator.h"
 #import "DTCoreGraphicsUtils.h"
 
 #define PIE_SIZE CGFloat_(34)

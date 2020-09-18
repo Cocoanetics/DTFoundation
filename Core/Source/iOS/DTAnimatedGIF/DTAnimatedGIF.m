@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Cocoanetics. All rights reserved.
 //
 
+#import "DTAnimatedGIF.h"
+
 #if TARGET_OS_IPHONE
 
-#import "DTAnimatedGIF.h"
 #import <ImageIO/ImageIO.h>
 
 // returns the frame duration for a given image in 1/100th seconds
