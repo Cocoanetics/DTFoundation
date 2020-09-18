@@ -27,7 +27,7 @@ NSString *shadowContext = @"Shadow";
 	return image;
 }
 
-- (void)setRoundedCornersWithRadius:(CGFloat)radius width:(CGFloat)width color:(UIColor *)color
+- (void)setRoundedCornersWithRadius:(CGFloat)radius width:(CGFloat)width color:(UIColor * _Nullable)color
 {
 	self.clipsToBounds = YES;
 	self.layer.cornerRadius = radius;
@@ -39,7 +39,7 @@ NSString *shadowContext = @"Shadow";
 	}
 }
 
-- (void)addShadowWithColor:(UIColor *)color alpha:(CGFloat)alpha radius:(CGFloat)radius offset:(CGSize)offset
+- (void)addShadowWithColor:(UIColor * _Nullable)color alpha:(CGFloat)alpha radius:(CGFloat)radius offset:(CGSize)offset
 {
 	self.layer.shadowOpacity = alpha;
 	self.layer.shadowRadius = radius;

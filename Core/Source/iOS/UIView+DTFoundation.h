@@ -26,7 +26,7 @@
  
  @return Returns a bitmap image with the same contents and dimensions as the receiver.
  */
-- (UIImage *)snapshotImage;
+- (UIImage  * _Nonnull)snapshotImage;
 
 
 /**---------------------------------------------------------------------------------------
@@ -41,7 +41,7 @@
  @param width The width of the border line.
  @param color The color to be used for the border line. Can be `nil` to leave it unchanged.
  */
-- (void)setRoundedCornersWithRadius:(CGFloat)radius width:(CGFloat)width color:(UIColor *)color;
+- (void)setRoundedCornersWithRadius:(CGFloat)radius width:(CGFloat)width color:(UIColor * _Nullable)color;
 
 
 /**---------------------------------------------------------------------------------------
@@ -61,7 +61,7 @@
  @param offset The offset of the shadow
  @see updateShadowPathToBounds:withDuration:
  */
-- (void)addShadowWithColor:(UIColor *)color alpha:(CGFloat)alpha radius:(CGFloat)radius offset:(CGSize)offset;
+- (void)addShadowWithColor:(UIColor * _Nullable)color alpha:(CGFloat)alpha radius:(CGFloat)radius offset:(CGSize)offset;
 
 
 /** sets the shadow path to fit the receiver's bounds.
