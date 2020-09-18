@@ -8,7 +8,9 @@
 
 /** DTFoundation enhancements for `UIView` */
 
-//#if TARGET_OS_IPHONE
+#import <TargetConditionals.h>
+
+#if TARGET_OS_IPHONE
 
 #import <UIKit/UIKit.h>
 
@@ -72,4 +74,4 @@
 
 @end
 
-//#endif
+#endif
