@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Cocoanetics. All rights reserved.
 //
 
-#if TARGET_OS_IPHONE
+//#if TARGET_OS_IPHONE
 
 #import <UIKit/UIKit.h>
 
@@ -76,4 +76,4 @@ NSString *shadowContext = @"Shadow";
 
 @end
 
-#endif
+//#endif
