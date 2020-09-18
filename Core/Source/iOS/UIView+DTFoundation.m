@@ -19,6 +19,8 @@ NSString *shadowContext = @"Shadow";
 
 - (UIImage *)snapshotImage
 {
+	NSAssert(self.bounds.size.height > 0 && self.bounds.size.width > 0, @"Trying to create a snapshot from a zero size view");
+	
 	UIGraphicsBeginImageContext(self.bounds.size);
 	[self.layer renderInContext:UIGraphicsGetCurrentContext()];
 	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
