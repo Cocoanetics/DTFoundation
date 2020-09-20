@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Cocoanetics. All rights reserved.
 //
 
+#import "DTProgressHUDWindow.h"
+
 #if TARGET_OS_IPHONE
 
-#import "DTProgressHUDWindow.h"
 #import "DTProgressHUD.h"
 #import "UIScreen+DTFoundation.h"
 

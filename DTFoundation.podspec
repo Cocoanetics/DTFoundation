@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'DTFoundation'
-  spec.version      = '1.7.14'
+  spec.version      = '1.7.15'
   spec.summary      = "Standard toolset classes and categories."
   spec.homepage     = "https://github.com/Cocoanetics/DTFoundation"
   spec.author       = { "Oliver Drobnik" => "oliver@cocoanetics.com" }
@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.social_media_url = 'https://twitter.com/cocoanetics'
   spec.source       = { :git => "https://github.com/Cocoanetics/DTFoundation.git", :tag => spec.version.to_s }
   
-  spec.ios.deployment_target = '6.0'
+  spec.ios.deployment_target = '9.0'
   spec.tvos.deployment_target = '9.0'
   spec.osx.deployment_target = '10.8'
   spec.license      = 'BSD'

@@ -6,12 +6,11 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import "DTCustomColoredAccessory.h"
+
 #if TARGET_OS_IPHONE
 
 #import <UIKit/UIKit.h>
-
-#import "DTCustomColoredAccessory.h"
-
 
 @implementation DTCustomColoredAccessory
 {

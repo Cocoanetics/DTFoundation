@@ -1113,10 +1113,6 @@
 		A7C92B75174FB81C0019D70A /* DTSQLiteFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTSQLiteFunctions.m; sourceTree = "<group>"; };
 		A7C92B7A174FB8900019D70A /* libDTSQLite_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTSQLite_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C92B8C174FB9720019D70A /* libDTSQLite_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTSQLite_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7C92B9A174FBBAF0019D70A /* DTStripedLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTStripedLayer.h; sourceTree = "<group>"; };
-		A7C92B9B174FBBAF0019D70A /* DTStripedLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayer.m; sourceTree = "<group>"; };
-		A7C92B9C174FBBAF0019D70A /* DTStripedLayerTile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTStripedLayerTile.h; sourceTree = "<group>"; };
-		A7C92B9D174FBBAF0019D70A /* DTStripedLayerTile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTStripedLayerTile.m; sourceTree = "<group>"; };
 		A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DTError.h"; sourceTree = "<group>"; };
 		A7D0AA24153C1B160020F18B /* NSDictionary+DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DTError.m"; sourceTree = "<group>"; };
 		A7D0AA29153C1FE40020F18B /* NSString+DTURLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTURLEncoding.h"; sourceTree = "<group>"; };
@@ -1678,7 +1674,6 @@
 				F88FF6821920A9DF00120808 /* DTProgressHUD */,
 				A78EDD2917A65D4A00480205 /* Debug */,
 				A74663B11743D00500D4D7D5 /* DTSidePanel */,
-				A7C92B99174FBBAF0019D70A /* Experimental */,
 				A730BCCC16D2892E003B849F /* DTTiledLayerWithoutFade.h */,
 				A730BCCD16D2892E003B849F /* DTTiledLayerWithoutFade.m */,
 				A76DB49116A5E37F0010CD85 /* DTActivityTitleView.h */,
@@ -1915,17 +1910,6 @@
 				A7C92B75174FB81C0019D70A /* DTSQLiteFunctions.m */,
 			);
 			path = DTSQLite;
-			sourceTree = "<group>";
-		};
-		A7C92B99174FBBAF0019D70A /* Experimental */ = {
-			isa = PBXGroup;
-			children = (
-				A7C92B9A174FBBAF0019D70A /* DTStripedLayer.h */,
-				A7C92B9B174FBBAF0019D70A /* DTStripedLayer.m */,
-				A7C92B9C174FBBAF0019D70A /* DTStripedLayerTile.h */,
-				A7C92B9D174FBBAF0019D70A /* DTStripedLayerTile.m */,
-			);
-			path = Experimental;
 			sourceTree = "<group>";
 		};
 		A7D0AA68153C39490020F18B /* Core Graphics */ = {
@@ -3092,7 +3076,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Cocoanetics;
 				TargetAttributes = {
 					A78381C21963F8D700AF09D3 = {
@@ -3966,7 +3950,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
@@ -4001,7 +3984,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
@@ -4035,7 +4017,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
@@ -4059,7 +4040,6 @@
 				DSTROOT = /tmp/DTHTMLParser.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTHTMLParser_Mac;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -4078,7 +4058,6 @@
 				DSTROOT = /tmp/DTHTMLParser.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTHTMLParser_Mac;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -4123,7 +4102,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTSidePanels/DTSidePanels-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTSidePanels/DTSidePanels-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "cocoanetics.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4142,7 +4120,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTSidePanels/DTSidePanels-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTSidePanels/DTSidePanels-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "cocoanetics.${PRODUCT_NAME:rfc1034identifier}";
@@ -4171,13 +4148,14 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.7.14;
+				CURRENT_PROJECT_VERSION = 1.7.15;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -4197,7 +4175,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PUBLIC_HEADERS_FOLDER_PATH = DTFoundation;
 			};
 			name = Coverage;
@@ -4260,7 +4238,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTAWS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4276,7 +4253,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTASN1.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTASN1;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4313,7 +4289,6 @@
 				DSTROOT = /tmp/DTHTMLParser.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTHTMLParser_Mac;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -4402,7 +4377,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTReachability_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4437,7 +4411,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTSQLite.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTSQLite_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4474,7 +4447,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTSidePanels/DTSidePanels-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTSidePanels/DTSidePanels-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "cocoanetics.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4493,7 +4465,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTReachability/DTReachability-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTReachability/DTReachability-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -4511,7 +4482,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTZipArchive;
@@ -4573,7 +4543,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTReachability_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4588,7 +4557,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTReachability_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4691,7 +4659,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Demo/DTAnimatedGIF/DTAnimatedGIFDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoanetics.${PRODUCT_NAME:rfc1034identifier}";
@@ -4718,7 +4685,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Demo/DTAnimatedGIF/DTAnimatedGIFDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoanetics.${PRODUCT_NAME:rfc1034identifier}";
@@ -4745,7 +4711,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Demo/DTAnimatedGIF/DTAnimatedGIFDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoanetics.${PRODUCT_NAME:rfc1034identifier}";
@@ -4772,7 +4737,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4799,7 +4763,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4826,7 +4789,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Test/UnitTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4853,7 +4815,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTAWS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4877,7 +4838,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTAWS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4962,7 +4922,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTSQLite.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTSQLite_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4978,7 +4937,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTSQLite.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTSQLite_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -5072,7 +5030,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTReachability/DTReachability-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTReachability/DTReachability-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -5090,7 +5047,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTReachability/DTReachability-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTReachability/DTReachability-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5334,7 +5290,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
@@ -5368,7 +5323,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
@@ -5401,7 +5355,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
@@ -5433,13 +5386,14 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.7.14;
+				CURRENT_PROJECT_VERSION = 1.7.15;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -5462,7 +5416,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PUBLIC_HEADERS_FOLDER_PATH = DTFoundation;
 			};
@@ -5486,13 +5440,14 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1.7.14;
+				CURRENT_PROJECT_VERSION = 1.7.15;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -5507,7 +5462,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PUBLIC_HEADERS_FOLDER_PATH = DTFoundation;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5537,7 +5492,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTProgressHUD_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -5553,7 +5507,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTProgressHUD_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -5569,7 +5522,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTReachability.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTProgressHUD_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -5588,7 +5540,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTProgressHUDDemo/DTProgressHUDDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTProgressHUDDemo/DTProgressHUDDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "DTProgressHUD Demo";
@@ -5610,7 +5561,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTProgressHUDDemo/DTProgressHUDDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTProgressHUDDemo/DTProgressHUDDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "DTProgressHUD Demo";
@@ -5632,7 +5582,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTProgressHUDDemo/DTProgressHUDDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTProgressHUDDemo/DTProgressHUDDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
@@ -5651,7 +5600,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTASN1.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTASN1;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -5667,7 +5615,6 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				DSTROOT = /tmp/DTASN1.dst;
 				GCC_PREFIX_HEADER = "Core/DTFoundation-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = DTASN1;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -5684,7 +5631,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTActionSheetDemo/DTActionSheetDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTActionSheetDemo/DTActionSheetDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "DTActionSheet Demo";
@@ -5704,7 +5650,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTActionSheetDemo/DTActionSheetDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTActionSheetDemo/DTActionSheetDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "DTActionSheet Demo";
@@ -5724,7 +5669,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTActionSheetDemo/DTActionSheetDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTActionSheetDemo/DTActionSheetDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
@@ -5744,7 +5688,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTZipArchive;
@@ -5764,7 +5707,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Prefix.pch";
 				INFOPLIST_FILE = "Demo/DTZipArchiveDemo/DTZipArchiveDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";

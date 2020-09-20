@@ -6,11 +6,12 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import "DTSmartPagingScrollView.h"
+
 #if TARGET_OS_IPHONE
 
 #import <UIKit/UIKit.h>
 
-#import "DTSmartPagingScrollView.h"
 #import "DTCoreGraphicsUtils.h"
 #import <QuartzCore/QuartzCore.h>
 

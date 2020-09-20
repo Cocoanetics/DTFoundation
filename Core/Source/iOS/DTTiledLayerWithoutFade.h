@@ -6,6 +6,9 @@
 //  Copyright 2011 Cocoanetics. All rights reserved.
 //
 
+#import <Availability.h>
+#import <TargetConditionals.h>
+
 #if TARGET_OS_IPHONE
 
 #import <UIKit/UIKit.h>

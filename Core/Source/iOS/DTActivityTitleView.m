@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
+#import "DTActivityTitleView.h"
+
 #if TARGET_OS_IPHONE
 
 #import <UIKit/UIKit.h>
-
-#import "DTActivityTitleView.h"
 
 @interface DTActivityTitleView ()
 

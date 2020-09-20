@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "DTFoundation",
     platforms: [
-        .iOS(.v8),         //.v8 - .v13
+        .iOS(.v9),         //.v8 - .v13
         .macOS(.v10_10),    //.v10_10 - .v10_15
         .tvOS(.v9),        //.v9 - .v13
     ],
@@ -30,6 +30,7 @@ let package = Package(
         ),
         .testTarget(
             name: "DTFoundationTests",
-            dependencies: ["DTFoundation"]),
+            dependencies: ["DTFoundation"],
+            path: "Test")
     ]
 )

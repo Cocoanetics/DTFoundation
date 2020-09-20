@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#import "UIViewController+DTSidePanelController.h"
+
 #if TARGET_OS_IPHONE
 
-#import "UIViewController+DTSidePanelController.h"
 #import <objc/runtime.h>
 #import "DTSidePanelController.h"
 

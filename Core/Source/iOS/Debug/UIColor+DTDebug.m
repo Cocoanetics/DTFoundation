@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
-#if TARGET_OS_IPHONE
 
 #import "UIColor+DTDebug.h"
+
+#if TARGET_OS_IPHONE
 
 @implementation UIColor (DTDebug)
 

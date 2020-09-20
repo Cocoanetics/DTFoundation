@@ -7,9 +7,10 @@
 // 
 //
 
+#import "DTSidePanelPanGestureRecognizer.h"
+
 #if TARGET_OS_IPHONE
 
-#import "DTSidePanelPanGestureRecognizer.h"
 
 int const static kDirectionPanThreshold = 20;
 
