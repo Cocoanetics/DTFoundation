@@ -7,7 +7,8 @@
 //
 
 #import "DTVersionTest.h"
-#import "DTVersion.h"
+
+@import DTFoundation;
 
 @implementation DTVersionTest
 

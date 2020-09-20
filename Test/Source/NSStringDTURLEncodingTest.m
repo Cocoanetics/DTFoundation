@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "NSString+DTURLEncoding.h"
+@import DTFoundation;
 
 @interface NSStringDTURLEncodingTest : XCTestCase
 

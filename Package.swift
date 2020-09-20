@@ -24,13 +24,15 @@ let package = Package(
             cSettings: [
                 .headerSearchPath("include/DTFoundation"),
                 .headerSearchPath("Source/Externals/minizip"),
-                .define("TARGET_OS_IPHONE=1", .when(platforms: [.iOS, .tvOS])),
-                .define("TARGET_OS_OSX=1", .when(platforms: [.macOS])),
             ]
         ),
         .testTarget(
             name: "DTFoundationTests",
             dependencies: ["DTFoundation"],
-            path: "Test")
+            path: "Test",
+            cSettings: [
+                .headerSearchPath("include"),
+            ]
+        )
     ]
 )
