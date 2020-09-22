@@ -7,7 +7,8 @@
 //
 
 #import "NSDictionaryDTErrorTest.h"
-#import "NSDictionary+DTError.h"
+
+@import DTFoundation;
 
 /**
  Tests for NSDictionary+DTError Category

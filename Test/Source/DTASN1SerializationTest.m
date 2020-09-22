@@ -7,10 +7,9 @@
 //
 
 #import "DTASN1SerializationTest.h"
-
-#import "DTASN1Serialization.h"
-#import "DTBase64Coding.h"
 #import "DTASN1BitString.h"
+
+@import DTFoundation;
 
 @implementation DTASN1SerializationTest
 

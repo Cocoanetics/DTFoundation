@@ -7,7 +7,8 @@
 //
 
 #import "NSStringDTPathsTest.h"
-#import "NSString+DTPaths.h"
+
+@import DTFoundation;
 
 @implementation NSStringDTPathsTest
 

@@ -7,7 +7,8 @@
 //
 
 #import "DTHTMLParserTest.h"
-#import "DTHTMLParser.h"
+
+@import DTFoundation;
 
 @interface DTHTMLParserTest ()<DTHTMLParserDelegate>
 
