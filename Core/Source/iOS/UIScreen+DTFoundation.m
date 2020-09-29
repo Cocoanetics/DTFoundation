@@ -8,7 +8,7 @@
 
 #import "UIScreen+DTFoundation.h"
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE && !TARGET_OS_TV
 
 #import <UIKit/UIKit.h>
 

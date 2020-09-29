@@ -113,7 +113,7 @@
 	static DTVersion *version = nil;
 	
 	dispatch_once(&onceToken, ^{
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE && !TARGET_OS_TV
 		NSString *versionStr = [[UIDevice currentDevice] systemVersion];
 		version = [DTVersion versionWithString:versionStr];
 #else
