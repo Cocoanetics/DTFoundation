@@ -13,8 +13,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import <QuartzCore/QuartzCore.h>
-
 /**
  Simple subclass of `CATiledLayer` that does not fade in drawn tiles.
  */
