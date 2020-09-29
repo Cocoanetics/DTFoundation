@@ -7,8 +7,8 @@
 //
 
 #import "DTBase64CodingTest.h"
-#import "DTBase64Coding.h"
-#import "NSString+DTPaths.h"
+
+@import DTFoundation;
 
 @implementation DTBase64CodingTest
 

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "DTLog.h"
+
+@import DTFoundation;
 
 @interface DTLogTest : XCTestCase
 

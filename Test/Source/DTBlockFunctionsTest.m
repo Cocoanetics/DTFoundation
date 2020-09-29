@@ -7,7 +7,8 @@
 //
 
 #import "DTBlockFunctionsTest.h"
-#import "DTBlockFunctions.h"
+
+@import DTFoundation;
 
 @implementation DTBlockFunctionsTest
 
