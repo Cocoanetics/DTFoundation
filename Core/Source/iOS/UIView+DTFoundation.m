@@ -11,7 +11,6 @@
 #if TARGET_OS_IPHONE
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
 
 NSString *shadowContext = @"Shadow";
 

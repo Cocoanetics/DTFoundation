@@ -11,6 +11,8 @@
 #import "DTZipArchiveGZip.h"
 #import "DTZipArchiveNode.h"
 
+@import DTFoundation;
+
 
 @interface DTZipArchivePKZip (private)
 

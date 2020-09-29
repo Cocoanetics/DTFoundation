@@ -10,8 +10,6 @@
 
 #if TARGET_OS_IPHONE
 
-#import <QuartzCore/QuartzCore.h>
-
 #import <DTFoundation/UIView+DTFoundation.h>
 #import "UIViewController+DTSidePanelController.h"
 #import <DTFoundation/DTLog.h>
