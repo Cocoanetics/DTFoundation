@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Cocoanetics. All rights reserved.
 //
 
-#if TARGET_OS_OSX
-
 #import "NSView+DTAutoLayout.h"
+
+#if TARGET_OS_OSX
 
 @implementation NSView (DTAutoLayout)
 
