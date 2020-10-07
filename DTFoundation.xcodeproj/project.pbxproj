@@ -1113,6 +1113,7 @@
 		A7C92B75174FB81C0019D70A /* DTSQLiteFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTSQLiteFunctions.m; sourceTree = "<group>"; };
 		A7C92B7A174FB8900019D70A /* libDTSQLite_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTSQLite_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C92B8C174FB9720019D70A /* libDTSQLite_Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTSQLite_Mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7CC8465252E0FF70056BC22 /*  */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ""; sourceTree = SOURCE_ROOT; };
 		A7D0AA23153C1B160020F18B /* NSDictionary+DTError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DTError.h"; sourceTree = "<group>"; };
 		A7D0AA24153C1B160020F18B /* NSDictionary+DTError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DTError.m"; sourceTree = "<group>"; };
 		A7D0AA29153C1FE40020F18B /* NSString+DTURLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DTURLEncoding.h"; sourceTree = "<group>"; };
@@ -2102,6 +2103,7 @@
 		A7F4DF98147FB61500F4059A = {
 			isa = PBXGroup;
 			children = (
+				A7CC8465252E0FF70056BC22 /*  */,
 				A70B4CC41486621B00873A4A /* Core */,
 				A70D74BE1743AF5400E6E626 /* Demo */,
 				A70B4CDA1486626900873A4A /* Documentation */,
