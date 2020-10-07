@@ -7,9 +7,10 @@
 //
 
 #import "DTReachability.h"
-#import "DTLog.h"
 
 #if TARGET_OS_IPHONE && !TARGET_OS_WATCH
+
+#import "DTLog.h"
 
 @implementation DTReachabilityInformation
 
