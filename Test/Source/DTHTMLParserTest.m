@@ -8,6 +8,8 @@
 
 #import "DTHTMLParserTest.h"
 
+#if !TARGET_OS_WATCH
+
 @import DTFoundation;
 
 @interface DTHTMLParserTest ()<DTHTMLParserDelegate>
@@ -60,3 +62,5 @@
 }
 
 @end
+
+#endif

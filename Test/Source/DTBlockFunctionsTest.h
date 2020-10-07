@@ -6,8 +6,12 @@
 //  Copyright (c) 2013 Cocoanetics. All rights reserved.
 //
 
+#if !TARGET_OS_WATCH
+
 #import <XCTest/XCTest.h>
 
 @interface DTBlockFunctionsTest : XCTestCase
 
 @end
+
+#endif

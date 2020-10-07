@@ -8,6 +8,8 @@
 
 #import "NSStringDTPathsTest.h"
 
+#if !TARGET_OS_WATCH
+
 @import DTFoundation;
 
 @implementation NSStringDTPathsTest
@@ -87,3 +89,5 @@
 }
 
 @end
+
+#endif

@@ -8,6 +8,8 @@
 
 #import "DTBlockFunctionsTest.h"
 
+#if !TARGET_OS_WATCH
+
 @import DTFoundation;
 
 @implementation DTBlockFunctionsTest
@@ -56,3 +58,5 @@
 }
 
 @end
+
+#endif

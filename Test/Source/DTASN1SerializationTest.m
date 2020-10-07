@@ -7,6 +7,9 @@
 //
 
 #import "DTASN1SerializationTest.h"
+
+#if !TARGET_OS_WATCH
+
 #import "DTASN1BitString.h"
 
 @import DTFoundation;
@@ -109,3 +112,5 @@
 }
 
 @end
+
+#if !TARGET_OS_WATCH

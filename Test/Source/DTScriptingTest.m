@@ -8,6 +8,8 @@
 
 #import "DTScriptingTest.h"
 
+#if !TARGET_OS_WATCH
+
 #import "NSScanner+DTScripting.h"
 #import "DTScriptVariable.h"
 #import "DTScriptExpression.h"
@@ -74,3 +76,5 @@
 }
 
 @end
+
+#endif
