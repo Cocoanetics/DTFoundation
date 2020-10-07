@@ -10,6 +10,8 @@
 
 #if TARGET_OS_IPHONE && !TARGET_OS_WATCH
 
+#import <UIKit/UIKit.h>
+
 #import "DTLog.h"
 
 @implementation DTReachabilityInformation
@@ -78,7 +80,7 @@ static DTReachability *_sharedInstance;
 		_observers = [[NSMutableSet alloc] init];
 		_hostname = hostname;
 		
-		#if TARGET_OS_IPHONE
+        #if TARGET_OS_PHONE && !TARGET_OS_WATCH
 			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
 		#endif
