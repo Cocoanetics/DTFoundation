@@ -1912,6 +1912,15 @@
 			path = DTSQLite;
 			sourceTree = "<group>";
 		};
+		A7CC8354252DA9FC0056BC22 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				BC4D93C0198044C800961495 /* DTActionSheetTest.m */,
+				A7A8434C197EA49000170F3F /* DTAlertViewTest.m */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		A7D0AA68153C39490020F18B /* Core Graphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -2000,7 +2009,7 @@
 		A7D60FE515D3B15300AEDD1B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BC4D93C0198044C800961495 /* DTActionSheetTest.m */,
+				A7CC8354252DA9FC0056BC22 /* iOS */,
 				A7640E4016F3226B003A7B43 /* DTASN1 */,
 				A768BE4217FC40E6008834C6 /* DTBlockFunctionsTest.h */,
 				A768BE4317FC40E6008834C6 /* DTBlockFunctionsTest.m */,
@@ -2020,7 +2029,6 @@
 				A77D5C0116E4B1D300A45C28 /* DTBase64CodingTest.m */,
 				A70ED6B317F98135008A801A /* NSStringDTPathsTest.h */,
 				A70ED6B417F98135008A801A /* NSStringDTPathsTest.m */,
-				A7A8434C197EA49000170F3F /* DTAlertViewTest.m */,
 				A73C6D241CB55B710058920A /* NSStringDTURLEncodingTest.m */,
 				A705E8A1197ED5D2001B16A7 /* DTLogTest.m */,
 			);

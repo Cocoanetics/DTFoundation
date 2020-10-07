@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Cocoanetics. All rights reserved.
 //
 
-@import DTFoundation;
+@import DTFoundation
 
-#if !TARGET_OS_TV && __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
+#if TARGET_OS_IPHONE && !TARGET_OS_TV && __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
 
-@import UIKit;
-@import XCTest;
+@import UIKit
+@import XCTest
 
 @interface DTAlertView(Private) <UIAlertViewDelegate>
 @end
