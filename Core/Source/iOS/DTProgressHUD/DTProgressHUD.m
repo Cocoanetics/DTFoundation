@@ -8,7 +8,7 @@
 
 #import "DTProgressHUD.h"
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE && !TARGET_OS_TV
 
 #import "DTProgressHUDWindow.h"
 
@@ -159,7 +159,18 @@
 	{
 		case HUDProgressTypeInfinite:
 		{
-			_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+			if (@available(iOS 13, tvOS 13, *)) {
+				_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
+			}
+			else
+			{
+				#if TARGET_OS_TV
+				_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+				#else
+				_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+				#endif
+			}
+				
 			_activityIndicator.translatesAutoresizingMaskIntoConstraints = NO;
 			
 			[_hudView addSubview:_activityIndicator];

@@ -8,7 +8,7 @@
 
 @import DTFoundation;
 
-#if !TARGET_OS_TV && __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
+#if TARGET_OS_IPHONE && !TARGET_OS_TV && __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
 
 @import UIKit;
 @import XCTest;

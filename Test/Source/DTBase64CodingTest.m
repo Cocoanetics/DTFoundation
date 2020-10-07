@@ -24,6 +24,7 @@
     XCTAssertTrue([expectedOutput isEqualToString:encodedString], @"Expected output and encoded string don't match");
 }
 
+#if TARGET_OS_IPHONE
 - (void)testDecoding
 {
     NSString *string = @"R0lGODlhDwAPAKECAAAAzMzM/////\n\nwAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4ML\nwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==";
@@ -42,5 +43,6 @@
     
     [outdata writeToFile:path atomically:NO];
 }
+#endif
 
 @end
