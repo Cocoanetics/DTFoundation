@@ -35,7 +35,7 @@
 		
 		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 		{
-			if (@available(iOS 13, *)) {
+			if (@available(iOS 13, tvOS 13, *)) {
 				self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
 			}
 			else

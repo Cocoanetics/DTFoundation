@@ -159,7 +159,7 @@
 	{
 		case HUDProgressTypeInfinite:
 		{
-			if (@available(iOS 13, *)) {
+			if (@available(iOS 13, tvOS 13, *)) {
 				_activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
 			}
 			else
