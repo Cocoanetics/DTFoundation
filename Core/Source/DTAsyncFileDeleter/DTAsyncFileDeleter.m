@@ -74,7 +74,7 @@ static DTAsyncFileDeleter *_sharedInstance;
 		{
 			// schedule the removal and immediately return
 			dispatch_group_async(_delGroup, _delQueue, ^{
-#if TARGET_OS_IPHONE && !defined(DT_APP_EXTENSIONS)
+#if TARGET_OS_IPHONE && !defined(DT_APP_EXTENSIONS) && !TARGET_OS_WATCH
 				__block UIBackgroundTaskIdentifier backgroundTaskID = UIBackgroundTaskInvalid;
 				
 				// block to use for timeout as well as completed task
@@ -93,7 +93,7 @@ static DTAsyncFileDeleter *_sharedInstance;
 				// file manager is not used any more in the rename queue, so we reuse it
 				[fileManager removeItemAtPath:tmpPath error:NULL];
 				
-#if TARGET_OS_IPHONE && !defined(DT_APP_EXTENSIONS)
+#if TARGET_OS_IPHONE && !defined(DT_APP_EXTENSIONS) && !TARGET_OS_WATCH
 				// ... when the task completes:
 				if (backgroundTaskID != UIBackgroundTaskInvalid)
 				{
@@ -115,7 +115,7 @@ static DTAsyncFileDeleter *_sharedInstance;
 #pragma mark Utilities
 - (BOOL)_supportsTaskCompletion
 {
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE && !TARGET_OS_WATCH
 	UIDevice *device = [UIDevice currentDevice];
 	
 	if ([device respondsToSelector:@selector(isMultitaskingSupported)])

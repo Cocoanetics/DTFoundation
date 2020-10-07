@@ -6,6 +6,8 @@
 //  Copyright © 2016 Cocoanetics. All rights reserved.
 //
 
+#if !TARGET_OS_WATCH
+
 #import <XCTest/XCTest.h>
 
 @import DTFoundation;
@@ -66,3 +68,5 @@
 }
 
 @end
+
+#endif

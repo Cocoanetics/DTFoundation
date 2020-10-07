@@ -8,6 +8,8 @@
 
 #import "DTBase64CodingTest.h"
 
+#if !TARGET_OS_WATCH
+
 @import DTFoundation;
 
 @implementation DTBase64CodingTest
@@ -46,3 +48,5 @@
 #endif
 
 @end
+
+#endif

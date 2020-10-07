@@ -7,6 +7,9 @@
 //
 
 #import "DTZipArchiveTest.h"
+
+#if !TARGET_OS_WATCH
+
 #import "DTZipArchivePKZip.h"
 #import "DTZipArchiveGZip.h"
 #import "DTZipArchiveNode.h"
@@ -873,3 +876,5 @@
 }
 
 @end
+
+#endif

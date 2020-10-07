@@ -8,7 +8,7 @@
 
 #import "DTProgressHUD.h"
 
-#if TARGET_OS_IPHONE && !TARGET_OS_TV
+#if TARGET_OS_IPHONE && !TARGET_OS_TV && !TARGET_OS_WATCH
 
 #import "DTProgressHUDWindow.h"
 

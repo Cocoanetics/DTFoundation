@@ -9,7 +9,7 @@
 #import <Availability.h>
 #import <TargetConditionals.h>
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE && !TARGET_OS_WATCH
 #if !TARGET_OS_TV && __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
 
 @import UIKit;

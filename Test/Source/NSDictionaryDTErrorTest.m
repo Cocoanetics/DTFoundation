@@ -8,6 +8,8 @@
 
 #import "NSDictionaryDTErrorTest.h"
 
+#if !TARGET_OS_WATCH
+
 @import DTFoundation;
 
 /**
@@ -55,3 +57,5 @@
 }
 
 @end
+
+#endif
