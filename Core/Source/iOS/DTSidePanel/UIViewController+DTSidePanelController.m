@@ -8,7 +8,7 @@
 
 #import "UIViewController+DTSidePanelController.h"
 
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE && !TARGET_OS_WATCH
 
 #import <objc/runtime.h>
 #import "DTSidePanelController.h"
