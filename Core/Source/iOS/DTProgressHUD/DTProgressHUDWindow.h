@@ -9,7 +9,7 @@
 #import <Availability.h>
 #import <TargetConditionals.h>
 
-#if TARGET_OS_IPHONE && !TARGET_OS_TV
+#if TARGET_OS_IPHONE && !TARGET_OS_TV && !TARGET_OS_WATCH
 
 #import <UIKit/UIKit.h>
 

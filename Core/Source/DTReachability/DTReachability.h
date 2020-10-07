@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#if !TARGET_OS_WATCH
+
 #import <SystemConfiguration/SystemConfiguration.h>
 
 /**
@@ -115,3 +117,5 @@ typedef void(^DTReachabilityObserverBlock)(DTReachabilityInformation * _Nonnull 
 
 
 @end
+
+#endif
