@@ -404,7 +404,7 @@
 	return YES;
 }
 
-- (BOOL)_parseRange:(NSRange)range
+- (BOOL)_parseRange:(NSRange)range actualLength:(NSUInteger *)actualLength
 {
 	_parseLevel++;
 	
@@ -425,6 +425,11 @@
 		NSUInteger tagClass = tagByte >> 6;
 		DTASN1Type tagType = tagByte & 31;
 		BOOL tagConstructed = (tagByte >> 5) & 1;
+		
+		if (tagType == DTASN1TypeEOC && !tagConstructed)
+		{
+			NSLog(@"hier");
+		}
 		
 		if (tagType == DTASN1TypeUsesLongForm)
 		{
@@ -485,9 +490,17 @@
 			// allow for sequence without content
 			if (subRange.length > 0)
 			{
-				if (![self _parseRange:subRange])
+				NSUInteger actualLength;
+				
+				if (![self _parseRange:subRange actualLength:&actualLength])
 				{
 					_abortParsing = YES;
+					break;
+				}
+				
+				if (length == NSUIntegerMax)
+				{
+					length = actualLength;
 				}
 			}
 			
@@ -498,6 +511,23 @@
 		}
 		else
 		{
+			if (tagType == DTASN1TypeEOC)
+			{
+				if (actualLength)
+				{
+					*actualLength = location - range.location;
+				}
+				
+				break;
+			}
+			
+			
+			if (length == NSUIntegerMax)
+			{
+				[self _parseErrorEncountered:@"Indefinite length not implemented for primitive types"];
+				return NO;
+			}
+			
 			// primitive
 			if (![self _parseValueWithTag:tagType dataRange:subRange])
 			{
@@ -520,13 +550,6 @@
 		
 	} while (location < NSMaxRange(range));
 	
-	// check that previous length matches up with where we ended up
-	if (location != NSMaxRange(range))
-	{
-		[self _parseErrorEncountered:@"Location not matching up with end of range"];
-		return NO;
-	}
-	
 	_parseLevel--;
 	
 	return YES;
@@ -541,7 +564,7 @@
 			[_delegate parserDidStartDocument:self];
 		}
 		
-		BOOL result = [self _parseRange:NSMakeRange(0, _dataLength)];
+		BOOL result = [self _parseRange:NSMakeRange(0, _dataLength) actualLength:NULL];
 		
 		if (result && _delegateFlags.delegateSupportsDocumentEnd)
 		{
