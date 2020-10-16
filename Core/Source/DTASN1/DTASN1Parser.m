@@ -444,8 +444,18 @@
 		
 		location += lengthOfLength;
 		
+		NSRange subRange;
+		
+		if (length == NSUIntegerMax)
+		{
+			subRange = NSMakeRange(location, _dataLength - location);
+		}
+		else
+		{
+			subRange = NSMakeRange(location, length);
+		}
+		
 		// make range
-		NSRange subRange = NSMakeRange(location, length);
 		
 		if (NSMaxRange(subRange) > NSMaxRange(range))
 		{
@@ -502,6 +512,8 @@
 				[_delegate parser:self didEndContextWithTag:tagType];
 			}
 		}
+		
+		NSAssert(length < NSUIntegerMax, @"Invalid Length");
 		
 		// advance
 		location += length;
