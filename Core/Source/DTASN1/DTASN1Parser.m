@@ -129,7 +129,7 @@
 	else
 	{
 		// length 0x80 means "indefinite"
-		[self _parseErrorEncountered:@"Indefinite Length form encounted, not implemented"];
+		retValue = NSUIntegerMax;
 	}
 	
 	if (lengthOfLength)
