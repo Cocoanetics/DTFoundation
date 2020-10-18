@@ -426,11 +426,6 @@
 		DTASN1Type tagType = tagByte & 31;
 		BOOL tagConstructed = (tagByte >> 5) & 1;
 		
-		if (tagType == DTASN1TypeEOC && !tagConstructed)
-		{
-			NSLog(@"hier");
-		}
-		
 		if (tagType == DTASN1TypeUsesLongForm)
 		{
 			[self _parseErrorEncountered:@"Long form not implemented"];
