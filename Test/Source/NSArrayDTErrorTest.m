@@ -44,7 +44,15 @@
 {
     // get Plist data from file
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-    NSString *finalPath = [testBundle pathForResource:@"ArraySample" ofType:@"plist"];
+	
+#if SWIFT_PACKAGE
+	NSURL *url = [[[testBundle bundleURL] URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"DTFoundation_DTFoundationTests.bundle"];
+	NSBundle *resourceBundle = [NSBundle bundleWithURL:url];
+	NSString *finalPath = [resourceBundle pathForResource:@"ArraySample" ofType:@"plist"];
+#else
+	NSString *finalPath = [testBundle pathForResource:@"ArraySample" ofType:@"plist"];
+#endif
+	
     NSData *plistData = [NSData dataWithContentsOfFile:finalPath];
     
     // do conversion to NSArray

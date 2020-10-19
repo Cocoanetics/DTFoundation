@@ -27,8 +27,7 @@
 
 - (void)tearDown
 {
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *newFilePath = [testBundle pathForResource:@"zipFiles" ofType:nil];
+	NSString *newFilePath = [self pathForTestResource:@"zipFiles" ofType:nil];
 	[[NSFileManager defaultManager] removeItemAtPath:newFilePath error:nil];
 }
 
@@ -40,8 +39,7 @@
 - (void)testPKZip
 {
     // get sample.zip file
-    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-    NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+    NSString *sampleZipPath = [self pathForTestResource:@"sample" ofType:@"zip"];
 
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
@@ -87,7 +85,7 @@
             case 8:
             {
                 XCTAssertTrue([fileName isEqualToString:@"zipFiles/text/Andere/Franz.txt"], @"node uncompressed is not as expected");
-                NSString *originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Franz.txt"];
+				NSString *originalFilePath = [self pathForTestResource:@"Franz" ofType:@"txt"];
                 [self _compareOriginalFile:originalFilePath withUncompressedFileData:data uncompressedFileName:fileName];
                 
                 break;
@@ -95,7 +93,7 @@
             case 9:
             {
                 XCTAssertTrue([fileName isEqualToString:@"zipFiles/text/Oliver.txt"], @"node uncompressed is not as expected");
-                NSString *originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Oliver.txt"];
+				NSString *originalFilePath = [self pathForTestResource:@"Oliver" ofType:@"txt"];
                 [self _compareOriginalFile:originalFilePath withUncompressedFileData:data uncompressedFileName:fileName];
                 
                 break;
@@ -103,7 +101,7 @@
             case 10:
             {
                 XCTAssertTrue([fileName isEqualToString:@"zipFiles/text/Rene"], @"node uncompressed is not as expected");
-                NSString *originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Rene"];
+				NSString *originalFilePath = [self pathForTestResource:@"Rene" ofType:nil];
                 [self _compareOriginalFile:originalFilePath withUncompressedFileData:data uncompressedFileName:fileName];
                 
                 break;
@@ -111,7 +109,7 @@
             case 11:
             {
                 XCTAssertTrue([fileName isEqualToString:@"zipFiles/text/Stefan.txt"], @"node uncompressed is not as expected");
-                NSString *originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Stefan.txt"];
+				NSString *originalFilePath = [self pathForTestResource:@"Stefan" ofType:@"txt"];
                 [self _compareOriginalFile:originalFilePath withUncompressedFileData:data uncompressedFileName:fileName];
                 
                 break;
@@ -147,8 +145,7 @@
 - (void)testPKZipStop
 {
     // get sample.zip file
-    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-    NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+    NSString *sampleZipPath = [self pathForTestResource:@"sample" ofType:@"zip"];
 
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
@@ -182,64 +179,73 @@
 {
     // get sample.zip file
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-    NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+    NSString *sampleZipPath = [self pathForTestResource:@"sample" ofType:@"zip"];
 
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
+	
+	XCTestExpectation *expection = [[XCTestExpectation alloc] initWithDescription:@"Uncompressing"];
+	
+	NSString *tempDir = [NSString temporaryPath];
 
-    [zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
-
-        XCTAssertNil(error, @"Error occured when uncompressing");
-
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-
-        NSString *unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/plist/"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Andere/"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Andere/Franz.txt"];
-        NSString *originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Franz.txt"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-        [self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
-
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Oliver.txt"];
-        originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Oliver.txt"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-        [self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
-
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Rene"];
-        originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Rene"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected");
-        [self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
-
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/Stefan.txt"];
-        originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"Stefan.txt"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-        [self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
-
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/text/test/"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/UnitTests-Info.plist"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/UnitTests-Prefix.pch"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-        
-        // test a file larger than 4K
-        unzippedFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"zipFiles/screenshot.png"];
-        originalFilePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"screenshot.png"];
-        XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
-        [self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
-
+	[zipArchive uncompressToPath:tempDir completion:^(NSError *error) {
+		
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			XCTAssertNil(error, @"Error occured when uncompressing");
+			
+			NSFileManager *fileManager = [NSFileManager defaultManager];
+			
+			NSString *unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/plist/"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/text/"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/text/Andere/"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/text/Andere/Franz.txt"];
+			NSString *originalFilePath = [self pathForTestResource:@"Franz" ofType:@"txt"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			[self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
+			
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/text/Oliver.txt"];
+			originalFilePath = [self pathForTestResource:@"Oliver" ofType:@"txt"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			[self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
+			
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/text/Rene"];
+			originalFilePath = [self pathForTestResource:@"Rene" ofType:nil];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected");
+			[self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
+			
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/text/Stefan.txt"];
+			originalFilePath = [self pathForTestResource:@"Stefan" ofType:@"txt"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			[self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
+			
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/text/test/"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/UnitTests-Info.plist"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/UnitTests-Prefix.pch"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			
+			// test a file larger than 4K
+			unzippedFilePath = [tempDir stringByAppendingPathComponent:@"zipFiles/screenshot.png"];
+			originalFilePath = [self pathForTestResource:@"screenshot" ofType:@"png.dat"];
+			XCTAssertTrue([fileManager fileExistsAtPath:unzippedFilePath], @"node uncompressed is not as expected: %@", unzippedFilePath);
+			[self _compareOriginalFile:originalFilePath withUncompressedFile:unzippedFilePath];
+			
+			[expection fulfill];
+		});
     }];
+	
+	(void)[XCTWaiter waitForExpectations:@[expection] timeout:3];
 }
 
 
@@ -277,8 +283,7 @@
 - (void)testUncompressingPKZipWithInvalidTargetPath
 {
     // get sample.zip file
-    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-    NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+    NSString *sampleZipPath = [self pathForTestResource:@"sample" ofType:@"zip"];
 
 	// create zip archive
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
@@ -296,8 +301,7 @@
 - (void)testUncompressingSingleFileFromPKZipWithSuccess
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+	NSString *sampleZipPath = [self pathForTestResource:@"sample" ofType:@"zip"];
 
 	// create zip archive
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
@@ -333,8 +337,7 @@
 - (void)testUncompressingDirectoryFromPKZip
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+	NSString *sampleZipPath = [self pathForTestResource:@"sample" ofType:@"zip"];
 
 	// create zip archive
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
@@ -366,8 +369,7 @@
 - (void)testUncompressingNodesFromPKZip
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+	NSString *sampleZipPath = [self pathForTestResource:@"sample" ofType:@"zip"];
 	
 	// create zip archive
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
@@ -400,7 +402,7 @@
 {
 	// get sample.zip file
 	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+	NSString *sampleZipPath = [self pathForTestResource:@"sample" ofType:@"zip"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 			
@@ -421,8 +423,7 @@
 - (void)testUncompressingWrongNodeFromPKZip
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"sample" ofType:@"zip"];
+	NSString *sampleZipPath = [self pathForTestResource:@"sample" ofType:@"zip"];
 
 	// create zip archive
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
@@ -459,8 +460,7 @@
 - (void)testGZip
 {
     // get sample.zip file
-    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-    NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+    NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
@@ -480,7 +480,7 @@
 {
     // get sample.zip file
     NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-    NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+    NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
@@ -495,7 +495,7 @@
         NSString *filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"gzip_sample.txt"];
         XCTAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
 
-        NSData *originalFileData = [NSData dataWithContentsOfFile:[testBundle pathForResource:@"gzip_sample.txt" ofType:@"original"]];
+        NSData *originalFileData = [NSData dataWithContentsOfFile:[self pathForTestResource:@"gzip_sample.txt" ofType:@"original"]];
         NSData *uncompressedFileData = [NSData dataWithContentsOfFile:filePath];
 
         XCTAssertTrue([originalFileData isEqualToData:uncompressedFileData], @"Uncompressed file does not match original file");
@@ -515,7 +515,7 @@
 {
 	// get sample.zip file
 	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -530,7 +530,7 @@
 		NSString *filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"gzip_sample.txt"];
 		XCTAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
 		
-		NSData *originalFileData = [NSData dataWithContentsOfFile:[testBundle pathForResource:@"gzip_sample.txt" ofType:@"original"]];
+		NSData *originalFileData = [NSData dataWithContentsOfFile:[self pathForTestResource:@"gzip_sample.txt" ofType:@"original"]];
 		NSData *uncompressedFileData = [NSData dataWithContentsOfFile:filePath];
 		
 		XCTAssertTrue([originalFileData isEqualToData:uncompressedFileData], @"Uncompressed file does not match original file");
@@ -583,8 +583,7 @@
 - (void)testUncompressingGzipWithInvalidTargetPath
 {
     // get sample.zip file
-    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-    NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+    NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 
     DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 
@@ -600,7 +599,7 @@
 {
 	// get sample.zip file
 	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 	
 	DTZipArchivePKZip *zipArchive = (DTZipArchivePKZip *)[DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -619,13 +618,13 @@
 - (void)testGZipFilenameWithDashGz
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample" ofType:@"txt-gz"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample" ofType:@"txt-gz"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
 	dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
 	
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
 	[zipArchive uncompressToPath:[testBundle bundlePath] completion:^(NSError *error) {
 		
 		XCTAssertNil(error, @"Error occured when uncompressing");
@@ -635,7 +634,7 @@
 		NSString *filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"gzip_sample.txt"];
 		XCTAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
 		
-		NSData *originalFileData = [NSData dataWithContentsOfFile:[testBundle pathForResource:@"gzip_sample.txt" ofType:@"original"]];
+		NSData *originalFileData = [NSData dataWithContentsOfFile:[self pathForTestResource:@"gzip_sample.txt" ofType:@"original"]];
 		NSData *uncompressedFileData = [NSData dataWithContentsOfFile:filePath];
 		
 		XCTAssertTrue([originalFileData isEqualToData:uncompressedFileData], @"Uncompressed file does not match original file");
@@ -654,7 +653,7 @@
 {
 	// get sample.zip file
 	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample" ofType:@"txt-z"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample" ofType:@"txt-z"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -669,7 +668,7 @@
 		NSString *filePath = [[testBundle bundlePath] stringByAppendingPathComponent:@"gzip_sample.txt"];
 		XCTAssertTrue([fileManager fileExistsAtPath:filePath], @"node uncompressed is not as expected: %@", filePath);
 		
-		NSData *originalFileData = [NSData dataWithContentsOfFile:[testBundle pathForResource:@"gzip_sample.txt" ofType:@"original"]];
+		NSData *originalFileData = [NSData dataWithContentsOfFile:[self pathForTestResource:@"gzip_sample.txt" ofType:@"original"]];
 		NSData *uncompressedFileData = [NSData dataWithContentsOfFile:filePath];
 		
 		XCTAssertTrue([originalFileData isEqualToData:uncompressedFileData], @"Uncompressed file does not match original file");
@@ -687,8 +686,7 @@
 - (void)testGzipInvalidFilename
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"foo"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"foo"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -699,7 +697,7 @@
 {
 	// get sample.zip file
 	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample_invalid" ofType:@"gz"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample_invalid" ofType:@"gz"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -740,8 +738,7 @@
 - (void)testUncompressZipArchiveNodeGZip
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -758,8 +755,7 @@
 - (void)testUncompressZipArchiveNodeGZipTwice
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -791,8 +787,7 @@
 - (void)testUncompressGZipToTargetPathWithMissingPermissions
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -827,8 +822,7 @@
 - (void)testSuccessfulUncompressZipArchiveNodeToDataGZip
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -842,8 +836,7 @@
 - (void)testUncompressNilZipArchiveNodeToDataGZip
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -858,8 +851,7 @@
 - (void)testUncompressInvalidZipArchiveNodeToDataGZip
 {
 	// get sample.zip file
-	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-	NSString *sampleZipPath = [testBundle pathForResource:@"gzip_sample.txt" ofType:@"gz"];
+	NSString *sampleZipPath = [self pathForTestResource:@"gzip_sample.txt" ofType:@"gz"];
 	
 	DTZipArchive *zipArchive = [DTZipArchive archiveAtPath:sampleZipPath];
 	
@@ -872,7 +864,21 @@
 	XCTAssertNil(data, @"No data should be returned when trying to uncompress invalid node");
 	XCTAssertNotNil(error, @"No error raised when uncompressing to target path where permission is denied", nil);
 	XCTAssertTrue(error.code == 7, @"Wrong error raised. Error should be 7: %@", [error localizedDescription]);
+}
 
+- (NSString *)pathForTestResource:(nullable NSString *)name ofType:(nullable NSString *)ext
+{
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+
+#if SWIFT_PACKAGE
+	NSURL *url = [[[testBundle bundleURL] URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"DTFoundation_DTFoundationTests.bundle"];
+	NSBundle *resourceBundle = [NSBundle bundleWithURL:url];
+	NSString *finalPath = [resourceBundle pathForResource:name ofType:ext];
+#else
+	NSString *finalPath = [testBundle pathForResource:name ofType:ext];
+#endif
+	
+	return finalPath;
 }
 
 @end

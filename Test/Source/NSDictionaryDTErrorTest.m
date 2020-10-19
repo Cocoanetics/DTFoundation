@@ -42,9 +42,17 @@
  */
 - (void)testArrayWithValidPlist
 {
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+
     // get Plist data from file
-    NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
-    NSString *finalPath = [testBundle pathForResource:@"DictionarySample" ofType:@"plist"];
+#if SWIFT_PACKAGE
+	NSURL *url = [[[testBundle bundleURL] URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"DTFoundation_DTFoundationTests.bundle"];
+	NSBundle *resourceBundle = [NSBundle bundleWithURL:url];
+	NSString *finalPath = [resourceBundle pathForResource:@"DictionarySample" ofType:@"plist"];
+#else
+	NSString *finalPath = [testBundle pathForResource:@"DictionarySample" ofType:@"plist"];
+#endif
+	
     NSData *plistData = [NSData dataWithContentsOfFile:finalPath];
     
     // do conversion to NSDictionary

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -318,11 +318,7 @@
 		A7917C91191A31A300964D63 /* DTZipArchiveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0494E27A3F90498A211E228 /* DTZipArchiveTest.m */; };
 		A7917C92191A31A300964D63 /* DTBase64CodingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A77D5C0116E4B1D300A45C28 /* DTBase64CodingTest.m */; };
 		A7917C93191A31A300964D63 /* NSStringDTPathsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A70ED6B417F98135008A801A /* NSStringDTPathsTest.m */; };
-		A7917C96191A31E500964D63 /* libDTFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A70B4CE71486637E00873A4A /* libDTFoundation.a */; };
-		A7917C9B191A320600964D63 /* libDTHTMLParser_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383C2160DFEDB00CF72D6 /* libDTHTMLParser_iOS.a */; };
-		A7917C9C191A320C00964D63 /* libDTASN1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */; };
 		A7917C9E191A323000964D63 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A7917C9D191A322F00964D63 /* libz.1.2.5.dylib */; };
-		A7917CA1191A325F00964D63 /* libDTZipArchive_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7E383DA160DFF8600CF72D6 /* libDTZipArchive_iOS.a */; };
 		A7917CA3191A327A00964D63 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A7917CA2191A327A00964D63 /* libxml2.2.dylib */; };
 		A7917CA4191A329400964D63 /* SelfSigned.der in Resources */ = {isa = PBXBuildFile; fileRef = A7640E3D16F32139003A7B43 /* SelfSigned.der */; };
 		A7917CA5191A329F00964D63 /* html_doctype.html in Resources */ = {isa = PBXBuildFile; fileRef = A7D60FF215D3B1FB00AEDD1B /* html_doctype.html */; };
@@ -336,7 +332,7 @@
 		A7917CAD191A329F00964D63 /* gzip_sample.txt-z in Resources */ = {isa = PBXBuildFile; fileRef = FA177350182BA95600432258 /* gzip_sample.txt-z */; };
 		A7917CAE191A329F00964D63 /* gzip_sample.txt-gz in Resources */ = {isa = PBXBuildFile; fileRef = FA177351182BA95600432258 /* gzip_sample.txt-gz */; };
 		A7917CAF191A329F00964D63 /* gzip_sample_invalid.gz in Resources */ = {isa = PBXBuildFile; fileRef = FA177352182BA95600432258 /* gzip_sample_invalid.gz */; };
-		A7917CB0191A32E600964D63 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAC041316B1421F00EB1C7F /* screenshot.png */; };
+		A7917CB0191A32E600964D63 /* screenshot.png.dat in Resources */ = {isa = PBXBuildFile; fileRef = FAAC041316B1421F00EB1C7F /* screenshot.png.dat */; };
 		A7917CB1191A32E600964D63 /* Franz.txt in Resources */ = {isa = PBXBuildFile; fileRef = C0494DD0964249B5EA38129F /* Franz.txt */; };
 		A7917CB2191A32E600964D63 /* Oliver.txt in Resources */ = {isa = PBXBuildFile; fileRef = C04946D87B7849C348B77475 /* Oliver.txt */; };
 		A7917CB3191A32E600964D63 /* Rene in Resources */ = {isa = PBXBuildFile; fileRef = C0494D374C86170585303054 /* Rene */; };
@@ -436,6 +432,7 @@
 		A7E38407160E03A600CF72D6 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41014E825FC00F34B03 /* mztools.c */; };
 		A7E38408160E03A600CF72D6 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41214E825FC00F34B03 /* unzip.c */; };
 		A7E38409160E03A600CF72D6 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A77DD41414E825FC00F34B03 /* zip.c */; };
+		A7E77949253D9E6A00E011D3 /* DTFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = A7E77948253D9E6A00E011D3 /* DTFoundation */; };
 		A7E799791AB9AF3B008C2393 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7E7997A1AB9AFA9008C2393 /* DTFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = A70B4CC51486621B00873A4A /* DTFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7E889B416A9B1C4009EF0DF /* NSString+DTUTI.m in Sources */ = {isa = PBXBuildFile; fileRef = A76DB4FA16A5E5950010CD85 /* NSString+DTUTI.m */; };
@@ -707,34 +704,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = A70B4CE61486637E00873A4A;
 			remoteInfo = "Static Library";
-		};
-		A7917C94191A31DF00964D63 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A70B4CE61486637E00873A4A;
-			remoteInfo = "Static Library";
-		};
-		A7917C97191A31FA00964D63 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FA9CB80B17ABDEF200A596C5;
-			remoteInfo = "DTASN1 (iOS)";
-		};
-		A7917C99191A320300964D63 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A7E383C1160DFEDB00CF72D6;
-			remoteInfo = "DTHTMLParser (iOS)";
-		};
-		A7917C9F191A325A00964D63 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A7F4DF9A147FB61500F4059A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A7E383D9160DFF8600CF72D6;
-			remoteInfo = "DTZipArchive (iOS)";
 		};
 		A7AC21CA196417CC0009E1B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1220,7 +1189,7 @@
 		FA177351182BA95600432258 /* gzip_sample.txt-gz */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gzip_sample.txt-gz"; sourceTree = "<group>"; };
 		FA177352182BA95600432258 /* gzip_sample_invalid.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = gzip_sample_invalid.gz; sourceTree = "<group>"; };
 		FA9CB80C17ABDEF200A596C5 /* libDTASN1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTASN1.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAAC041316B1421F00EB1C7F /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screenshot.png; path = Test/Resources/screenshot.png; sourceTree = SOURCE_ROOT; };
+		FAAC041316B1421F00EB1C7F /* screenshot.png.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = screenshot.png.dat; path = Test/Resources/screenshot.png.dat; sourceTree = SOURCE_ROOT; };
 		FAB17247162FFA6800B44EDC /* NSArrayDTErrorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayDTErrorTest.h; sourceTree = "<group>"; };
 		FAB17248162FFA6800B44EDC /* NSArrayDTErrorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayDTErrorTest.m; sourceTree = "<group>"; };
 		FAB1724B162FFC5200B44EDC /* DictionarySample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DictionarySample.plist; sourceTree = "<group>"; };
@@ -1361,11 +1330,8 @@
 				A7A5F0AB1A2FA92400DA3B62 /* Security.framework in Frameworks */,
 				A7917CB6191A3CD500964D63 /* UIKit.framework in Frameworks */,
 				A7917CA3191A327A00964D63 /* libxml2.2.dylib in Frameworks */,
-				A7917CA1191A325F00964D63 /* libDTZipArchive_iOS.a in Frameworks */,
+				A7E77949253D9E6A00E011D3 /* DTFoundation in Frameworks */,
 				A7917C9E191A323000964D63 /* libz.1.2.5.dylib in Frameworks */,
-				A7917C9C191A320C00964D63 /* libDTASN1.a in Frameworks */,
-				A7917C9B191A320600964D63 /* libDTHTMLParser_iOS.a in Frameworks */,
-				A7917C96191A31E500964D63 /* libDTFoundation.a in Frameworks */,
 				A7917C78191A312700964D63 /* XCTest.framework in Frameworks */,
 				A7917C79191A312700964D63 /* Foundation.framework in Frameworks */,
 			);
@@ -2151,7 +2117,7 @@
 		C04949EA663FC46EA5E3F0B6 /* zipContent */ = {
 			isa = PBXGroup;
 			children = (
-				FAAC041316B1421F00EB1C7F /* screenshot.png */,
+				FAAC041316B1421F00EB1C7F /* screenshot.png.dat */,
 				C0494DD0964249B5EA38129F /* Franz.txt */,
 				C04946D87B7849C348B77475 /* Oliver.txt */,
 				C0494D374C86170585303054 /* Rene */,
@@ -2787,12 +2753,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				A7917CA0191A325A00964D63 /* PBXTargetDependency */,
-				A7917C9A191A320300964D63 /* PBXTargetDependency */,
-				A7917C98191A31FA00964D63 /* PBXTargetDependency */,
-				A7917C95191A31DF00964D63 /* PBXTargetDependency */,
+				A7E77947253D9E5600E011D3 /* PBXTargetDependency */,
 			);
 			name = "Unit Tests";
+			packageProductDependencies = (
+				A7E77948253D9E6A00E011D3 /* DTFoundation */,
+			);
 			productName = "Unit Tests";
 			productReference = A7917C77191A312600964D63 /* Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -3197,7 +3163,7 @@
 				A7917CAC191A329F00964D63 /* gzip_sample.txt.foo in Resources */,
 				A7917CAE191A329F00964D63 /* gzip_sample.txt-gz in Resources */,
 				A7917CB2191A32E600964D63 /* Oliver.txt in Resources */,
-				A7917CB0191A32E600964D63 /* screenshot.png in Resources */,
+				A7917CB0191A32E600964D63 /* screenshot.png.dat in Resources */,
 				A7917CA6191A329F00964D63 /* processing_instruction.html in Resources */,
 				A7917CA9191A329F00964D63 /* sample.zip in Resources */,
 				A7917CB1191A32E600964D63 /* Franz.txt in Resources */,
@@ -3803,26 +3769,6 @@
 			target = A70B4CE61486637E00873A4A /* Static Library */;
 			targetProxy = A74A764E17BBB15D007073C8 /* PBXContainerItemProxy */;
 		};
-		A7917C95191A31DF00964D63 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A70B4CE61486637E00873A4A /* Static Library */;
-			targetProxy = A7917C94191A31DF00964D63 /* PBXContainerItemProxy */;
-		};
-		A7917C98191A31FA00964D63 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FA9CB80B17ABDEF200A596C5 /* DTASN1 (iOS) */;
-			targetProxy = A7917C97191A31FA00964D63 /* PBXContainerItemProxy */;
-		};
-		A7917C9A191A320300964D63 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A7E383C1160DFEDB00CF72D6 /* DTHTMLParser (iOS) */;
-			targetProxy = A7917C99191A320300964D63 /* PBXContainerItemProxy */;
-		};
-		A7917CA0191A325A00964D63 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A7E383D9160DFF8600CF72D6 /* DTZipArchive (iOS) */;
-			targetProxy = A7917C9F191A325A00964D63 /* PBXContainerItemProxy */;
-		};
 		A7AC21CB196417CC0009E1B9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A7AC21AE196417830009E1B9 /* DTAnimatedGIF (iOS) */;
@@ -3832,6 +3778,10 @@
 			isa = PBXTargetDependency;
 			target = A72121D9173BFFB1003C6F0A /* DTReachability (iOS) */;
 			targetProxy = A7D9D6601758CA5400C29B6F /* PBXContainerItemProxy */;
+		};
+		A7E77947253D9E5600E011D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = A7E77946253D9E5600E011D3 /* DTFoundation */;
 		};
 		A7EA07CE1A2B2F6B00B61CCE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3960,7 +3910,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTFoundation;
@@ -3994,7 +3948,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTFoundation;
@@ -4027,7 +3985,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTFoundation;
@@ -4669,7 +4631,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Demo/DTAnimatedGIF/DTAnimatedGIFDemo-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoanetics.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4695,7 +4660,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Demo/DTAnimatedGIF/DTAnimatedGIFDemo-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoanetics.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4721,7 +4689,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Demo/DTAnimatedGIF/DTAnimatedGIFDemo-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoanetics.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5200,7 +5171,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTFoundation;
@@ -5235,7 +5210,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTFoundation;
@@ -5270,7 +5249,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTFoundation;
@@ -5300,7 +5283,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTFoundation;
@@ -5333,7 +5320,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTFoundation;
@@ -5365,7 +5356,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Core/DTFoundation-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drobnik.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DTFoundation;
@@ -6021,6 +6016,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A7E77946253D9E5600E011D3 /* DTFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DTFoundation;
+		};
+		A7E77948253D9E6A00E011D3 /* DTFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DTFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A7F4DF9A147FB61500F4059A /* Project object */;
 }
