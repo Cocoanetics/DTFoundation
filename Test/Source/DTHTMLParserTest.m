@@ -30,8 +30,7 @@
 
 - (void)testPlainFile
 {
-	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *path = [bundle pathForResource:@"html_doctype" ofType:@"html"];
+	NSString *path = [self pathForTestResource:@"html_doctype" ofType:@"html"];
     NSData *data = [[NSData alloc] initWithContentsOfFile:path];
 
     DTHTMLParser *parser = [[DTHTMLParser alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -43,8 +42,7 @@
 
 - (void)testProcessingInstruction
 {
-	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *path = [bundle pathForResource:@"processing_instruction" ofType:@"html"];
+	NSString *path = [self pathForTestResource:@"processing_instruction" ofType:@"html"];
     NSData *data = [[NSData alloc] initWithContentsOfFile:path];
 	DTHTMLParser *parser = [[DTHTMLParser alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	parser.delegate = self;
@@ -60,6 +58,25 @@
 {
 	DTLogDebug(@"target: %@ data: %@", target, data);
 }
+
+
+#pragma mark - Helper
+
+- (NSString *)pathForTestResource:(nullable NSString *)name ofType:(nullable NSString *)ext
+{
+	NSBundle *testBundle = [NSBundle bundleForClass:[self class]];
+
+#if SWIFT_PACKAGE
+	NSURL *url = [[[testBundle bundleURL] URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"DTFoundation_DTFoundationTests.bundle"];
+	NSBundle *resourceBundle = [NSBundle bundleWithURL:url];
+	NSString *finalPath = [resourceBundle pathForResource:name ofType:ext];
+#else
+	NSString *finalPath = [testBundle pathForResource:name ofType:ext];
+#endif
+	
+	return finalPath;
+}
+
 
 @end
 

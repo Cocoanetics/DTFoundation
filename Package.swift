@@ -47,7 +47,7 @@ let package = Package(
 				.copy("Resources/html_doctype.html"),
 				.copy("Resources/DictionarySample.plist"),
 				.copy("Resources/ArraySample.plist"),
-				.copy("Resources/screenshot.png"),
+				.copy("Resources/screenshot.png.dat"),
 				.copy("Resources/sample.zip"),
 				.copy("Resources/SelfSigned.der")
 			],
