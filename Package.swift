@@ -25,6 +25,8 @@ let package = Package(
             cSettings: [
                 .headerSearchPath("include/DTFoundation"),
                 .headerSearchPath("Source/Externals/minizip"),
+                .define("BITCODE_GENERATION_MODE", to: "bitcode"),
+                .define("ENABLE_BITCODE", to: "YES")
             ]
         ),
         .testTarget(
