@@ -8,7 +8,6 @@
 
 #import "DTASN1Serialization.h"
 #import "DTASN1Parser.h"
-#import "DTBase64Coding.h"
 
 @interface DTASN1Serialization () <DTASN1ParserDelegate>
 
