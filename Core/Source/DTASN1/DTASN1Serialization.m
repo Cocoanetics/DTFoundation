@@ -95,7 +95,7 @@
 	[self _popContainer];
 }
 
-- (void)parser:(DTASN1Parser *)parser didStartContextWithTag:(NSUInteger)tag constructed:(BOOL)constructed
+- (void)parser:(DTASN1Parser *)parser didStartContextWithTag:(NSUInteger)tag
 {
 	NSNumber *tagNumber = [NSNumber numberWithUnsignedInteger:tag];
 	
@@ -106,7 +106,7 @@
 	_currentContainer = newContainer;
 }
 
-- (void)parser:(DTASN1Parser *)parser didEndContextWithTag:(NSUInteger)tag constructed:(BOOL)constructed
+- (void)parser:(DTASN1Parser *)parser didEndContextWithTag:(NSUInteger)tag
 {
 	[self _popContainer];
 }
