@@ -26,7 +26,7 @@
 #import "DTBlockFunctions.h"
 
 // Headers
-#import "DTWeakSupport.h"
+#import <DTFoundation/DTWeakSupport.h>
 
 // Categories
 #import "NSArray+DTError.h"
